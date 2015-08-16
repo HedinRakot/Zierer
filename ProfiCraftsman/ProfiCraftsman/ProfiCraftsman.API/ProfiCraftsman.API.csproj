@@ -309,6 +309,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Controllers\Settings\CollectionTypes.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>CollectionTypes.txt</LastGenOutput>
