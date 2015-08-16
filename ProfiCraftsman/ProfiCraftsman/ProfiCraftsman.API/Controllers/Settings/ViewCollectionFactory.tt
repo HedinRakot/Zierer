@@ -1,0 +1,11 @@
+﻿<#@ template language="C#" debug="true" hostspecific="true" linePragmas="true"#>
+<#@ output extension=".txt"#>
+<#@ include file="..\..\..\Generation\ProfiCraftsman.Generation\TTMasterData\ProfiCraftsman.Settings.ttinclude" once="true"#>
+<# 
+    const string filesDir = @"..\..\..\Generation\ProfiCraftsman.Generation\Declarations\";
+	defaultNamespace = "ProfiCraftsman.API.Controllers";
+	extraUsages = new[] {"ProfiCraftsman.Contracts.Entities", "ProfiCraftsman.Contracts.Managers", "CoreBase.Controllers"};
+	var masterData = "MasterData";
+#>
+<#@ include file="..\..\..\Generation\ProfiCraftsman.Generation\TTMasterData\ProfiCraftsman.GenerationContext.ttinclude" once="true"#>
+<#@ include file="..\..\..\Generation\ProfiCraftsman.Generation\TTMasterData\ViewCollectionFactories.ttinclude"  once="true"#>

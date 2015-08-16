@@ -1,0 +1,10 @@
+﻿<#@ template language="C#" debug="true" hostspecific="true" linePragmas="true"#>
+<#@ output extension=".txt"#>
+<#@ include file="..\..\Generation\ProfiCraftsman.Generation\TTMasterData\ProfiCraftsman.Settings.ttinclude" once="true"#>
+<# 
+    const string filesDir = @"..\..\Generation\ProfiCraftsman.Generation\Declarations\";
+	defaultNamespace = "ProfiCraftsman.Contracts.Entities";
+	extraUsages = new[] {"CoreBase.Entities"};
+#>
+<#@ include file="..\..\Generation\ProfiCraftsman.Generation\TTMasterData\ProfiCraftsman.GenerationContext.ttinclude" once="true"#>
+<#@ include file="..\..\Generation\ProfiCraftsman.Generation\TTCommon\Entities.ttinclude"  once="true"#>

@@ -1,0 +1,9 @@
+﻿<#@ template language="C#" debug="true" hostspecific="true" linePragmas="true"#>
+<#@ output extension=".cs"#>
+<#@ include file="..\Generation\ProfiCraftsman.Generation\TTMasterData\ProfiCraftsman.Settings.ttinclude" once="true"#>
+<# 
+    const string filesDir = @"..\Generation\ProfiCraftsman.Generation\Declarations\";
+    extraUsages = new[] {"ProfiCraftsman.Contracts.Entities"};
+#>
+<#@ include file="..\Generation\ProfiCraftsman.Generation\TTMasterData\ProfiCraftsman.GenerationContext.ttinclude" once="true"#>
+<#@ include file="..\Generation\ProfiCraftsman.Generation\TTCommon\Context.Interface.ttinclude"  once="true"#>

@@ -1,0 +1,9 @@
+﻿<#
+    const string conn = @"Data Source=.;Initial Catalog=ProfiCraftsman;Integrated Security=True;MultipleActiveResultSets=True";
+    const string contextName = "ProfiCraftsman";
+	const string tableContext = "Configuration";
+	var tableGroup = "";
+	var tableSubGroup = "";
+	var extraUsages = new string[0];
+	string defaultNamespace = null;
+#>

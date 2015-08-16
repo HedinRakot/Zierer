@@ -1,0 +1,9 @@
+﻿<#@ template language="C#" debug="true" hostspecific="true" linePragmas="true"#>
+<#@ output extension=".txt"#>
+<#@ include file="..\..\..\..\Generation\ProfiCraftsman.Generation\TTMasterData\ProfiCraftsman.Settings.ttinclude" once="true"#>
+<#
+	var masterDataName = "Settings";
+    const string filesDir = @"..\..\..\..\Generation\ProfiCraftsman.Generation\Declarations\";
+#>
+<#@ include file="..\..\..\..\Generation\ProfiCraftsman.Generation\TTMasterData\ProfiCraftsman.GenerationContext.ttinclude" once="true"#>
+<#@ include file="..\..\..\..\Generation\ProfiCraftsman.Generation\TTMasterData\Web\templates.ttinclude"  once="true"#>
