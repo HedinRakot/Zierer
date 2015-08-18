@@ -27,7 +27,11 @@ define(function () {
 			                        editable: Application.canTableItemBeEdit('Positions', 'paymentType'), 
 				                    validation: { required: true } }
             ,amount: { type: "number", validation: { required: true } }
-            ,description: { type: "string", validation: { required: true } }		
+            ,description: { type: "string", 
+                                    validation: { required: true } }
+            ,number: { type: "string", 
+                                    editable: false, 
+                                    validation: { required: true } }
 		}
 	});
 	return model;

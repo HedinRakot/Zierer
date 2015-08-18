@@ -6,7 +6,7 @@
 	    add: 'Ausstattungen anlegen',
 	    edit: 'Ausstattungen editieren',
 	    pleaseSelect: 'Bitte auswählen',
-	    materialId: 'Ausstattung',
+	    materialId: 'Material',
 	    amount: 'Menge',
 	};
 

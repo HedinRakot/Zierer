@@ -1,38 +1,37 @@
 ﻿define([
     'base/related-object-grid-view',
     'collections/Positions',
-    'l!t!Orders/AddPositions',
     'l!t!Orders/SelectProduct',
     'l!t!Orders/SelectMaterial',
     'l!t!Orders/Materials'
-], function (BaseView, Collection, AddNewModelView, SelectProductView, SelectMaterialView, DetailView) {
+], function (BaseView, Collection, SelectProductView, SelectMaterialView, DetailView) {
     'use strict';
 
-    var amountEditor = function (cont, options) {
-        if (options.model.get('productId') == null) {
-            //$('<input data-role="numerictextbox" required data-text-field="' + options.field + '" data-value-field="' + options.field + '" data-bind="value:' + options.field + '"/>')
-            //    .appendTo(cont);
+    var descriptionEditor = function (container, options) {
+        if (options.model.get('containerId') == null) {
+            $('<input type="text" class="k-textbox" required data-text-field="' + options.field + '" data-value-field="' + options.field + '" data-bind="value:' + options.field + '"/>')
+                .appendTo(container);
 
-            $('<span class="k-widget k-numerictextbox">' +
-                '<span class="k-numeric-wrap k-state-default">' +
-                    '<input tabindex="0" class="k-formatted-value k-input" aria-disabled="false" aria-readonly="false" style="display: inline-block;" type="text">' +
-                    '<input class="k-input" role="spinbutton" aria-disabled="false" aria-readonly="false" aria-valuenow="-1" style="display: none;" required="required" type="text" data-role="numerictextbox" data-bind="value:amount" data-value-field="amount" data-text-field="amount">' +
-                    '<span class="k-select"><span class="k-link" style="-ms-touch-action: double-tap-zoom pinch-zoom;" unselectable="on">' +
-                        '<span title="Wert erhöhen" class="k-icon k-i-arrow-n" unselectable="on">Wert erhöhen</span>' +
-                    '</span>' +
-                    '<div class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" style="margin: 0.5em; display: none;" data-for="_amount_"><span class="k-icon k-warning"> </span>Das Feld muss befüllt werden<div class="k-callout k-callout-n"></div></div>' +
-                    '<span class="k-link" style="-ms-touch-action: double-tap-zoom pinch-zoom;" unselectable="on">' +
-                        '<span title="Wert verkleinern" class="k-icon k-i-arrow-s" unselectable="on">Wert verkleinern</span>' +
-                    '</span>' +
-                '</span>' +
-            '</span></span>' +
-            '<div class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" style="margin: 0.5em; display: none;" data-for="' +
-                options.field + '" role="alert"><span class="k-icon k-warning"> </span>Das Feld muss befüllt werden<div class="k-callout k-callout-n"></div></div>').appendTo(cont);
-            //$('<div class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" style="margin: 0.5em; display: none;" data-for="' +
-            //    options.field + '" role="alert"><span class="k-icon k-warning"> </span>Das Feld muss befüllt werden<div class="k-callout k-callout-n"></div></div>').appendTo(cont);
+            //$('<span class="k-widget k-numerictextbox">' +
+            //    '<span class="k-numeric-wrap k-state-default">' +
+            //        '<input tabindex="0" class="k-formatted-value k-input" aria-disabled="false" aria-readonly="false" style="display: inline-block;" type="text">' +
+            //        '<input class="k-input" role="spinbutton" aria-disabled="false" aria-readonly="false" aria-valuenow="-1" style="display: none;" required="required" type="text" data-role="numerictextbox" data-bind="value:amount" data-value-field="amount" data-text-field="amount">' +
+            //        '<span class="k-select"><span class="k-link" style="-ms-touch-action: double-tap-zoom pinch-zoom;" unselectable="on">' +
+            //            '<span title="Wert erhöhen" class="k-icon k-i-arrow-n" unselectable="on">Wert erhöhen</span>' +
+            //        '</span>' +
+            //        '<div class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" style="margin: 0.5em; display: none;" data-for="_amount_"><span class="k-icon k-warning"> </span>Das Feld muss befüllt werden<div class="k-callout k-callout-n"></div></div>' +
+            //        '<span class="k-link" style="-ms-touch-action: double-tap-zoom pinch-zoom;" unselectable="on">' +
+            //            '<span title="Wert verkleinern" class="k-icon k-i-arrow-s" unselectable="on">Wert verkleinern</span>' +
+            //        '</span>' +
+            //    '</span>' +
+            //'</span></span>' +
+            //'<div class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" style="margin: 0.5em; display: none;" data-for="' +
+            //    options.field + '" role="alert"><span class="k-icon k-warning"> </span>Das Feld muss befüllt werden<div class="k-callout k-callout-n"></div></div>').appendTo(container);
+            ////$('<div class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" style="margin: 0.5em; display: none;" data-for="' +
+            ////    options.field + '" role="alert"><span class="k-icon k-warning"> </span>Das Feld muss befüllt werden<div class="k-callout k-callout-n"></div></div>').appendTo(container);
         }
         else {
-            $('<span>1</span>').appendTo(cont);
+            $('<span>' + options.model.get(options.field) + '</span>').appendTo(container);
         }
     },
 
@@ -84,7 +83,6 @@
         isMaterialPosition: null,
         selectProductView: SelectProductView,
         selectMaterialView: SelectMaterialView,
-        addNewModelView: AddNewModelView,
         collectionType: Collection,
         gridSelector: '.grid',
         tableName: 'Positions',
@@ -111,25 +109,19 @@
         columns: function () {
 
             var columns = [
-                 { field: 'description', title: this.resources.description, filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
-                 { field: 'price', title: this.resources.price, attributes: { "class": "detail-view-grid-cell" } }];
-
-            var self = this;
-            if (!self.isSellOrder) {
-                $.merge(columns, [{ field: 'paymentType', title: this.resources.paymentType, collection: this.options.paymentTypes, attributes: { "class": "detail-view-grid-cell" } }]);
-            }
-
-
-            $.merge(columns, [{
-                field: 'amount',
-                editor: amountEditor, template: "#=amount#",
-                title: this.resources.amount,
-                attributes: { "class": "detail-view-grid-cell" }
-            },
-                 { field: 'isMain', title: this.resources.isMain, headerTitle: this.resources.isMain, checkbox: true, attributes: { "class": "detail-view-grid-cell" } },
-                 { field: 'fromDate', title: this.resources.fromDate, format: '{0:d}', attributes: { "class": "detail-view-grid-cell" } },
-                 { field: 'toDate', title: this.resources.toDate, format: '{0:d}', attributes: { "class": "detail-view-grid-cell" } }
-            ]);
+                { field: 'isAlternative', title: this.resources.isAlternative, headerTitle: this.resources.isAlternativeTitle, checkbox: true, attributes: { "class": "detail-view-grid-cell" } },
+                { field: 'number', title: this.resources.number, filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
+                //{ field: 'description', title: this.resources.description, filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
+                {
+                    field: 'description',
+                    editor: descriptionEditor, template: "#=description#",
+                    title: this.resources.description,
+                    attributes: { "class": "detail-view-grid-cell" }
+                },
+                { field: 'amount', title: this.resources.amount, filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
+                { field: 'price', title: this.resources.price, attributes: { "class": "detail-view-grid-cell" } },
+                { field: 'paymentType', title: this.resources.paymentType, collection: this.options.paymentTypes, attributes: { "class": "detail-view-grid-cell" } }
+            ];
 
             return columns;
         },
@@ -172,6 +164,7 @@
                     model.set('orderId', self.model.id);
                     model.set('productId', item.id);
                     model.set('price', item.get('price'));
+                    model.set('amount', 1);
                     model.set('isMaterialPosition', self.isMaterialPosition);
                     model.set('isAlternarive', false);
 

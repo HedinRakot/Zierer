@@ -4,19 +4,14 @@ define(function () {
 	var resources = {
 
 		pleaseSelect: 'Bitte auswählen',
-		orderId: 'Auftrag',
-		isSellOrder: 'ist Verkauf Position',
-		productId: 'Produkt',
-		additionalCostId: 'Nebenkosten',
-		description: 'Beschreibung',
+		description: 'Bezeichnung',
+		number: 'Artikelnummer',
 		price: 'Preis',
-		fromDate: 'Von Datum',
-		toDate: 'Bis Datum',
 		addProduct: 'Leistung anlegen',
 		addMaterial: 'Material hinzufügen',
-		selectAdditionalCosts: 'Nebenkosten',
 		amount: 'Menge',
-		isMain: 'Haupt',
+		isAlternative: 'N/A',
+		isAlternativeTitle: 'Normal/Alternativ',
 		paymentType: 'Preiseinheit',
 		deleteAllPositions: 'Alle löschen'
 	};

@@ -20,7 +20,8 @@
                 },
                 closeWindow: function () {
                     self.close();
-                }
+                },
+                materialAmountTypes: self.options.materialAmountTypes,
             };
 
             var materialSearchView = new MaterialSearchView(options);

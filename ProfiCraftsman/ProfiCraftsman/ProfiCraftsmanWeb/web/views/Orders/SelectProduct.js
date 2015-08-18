@@ -32,6 +32,7 @@
                     self.close();
                 },
                 productTypes: self.options.productTypes,
+                productAmountTypes: self.options.productAmountTypes,
             };
             
 

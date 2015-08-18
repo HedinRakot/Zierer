@@ -4,19 +4,14 @@ define(function () {
 	var resources = {
 
 		pleaseSelect: 'Please select',
-		orderId: 'Order',
-		isSellOrder: 'is sell position',
-		productId: 'Product',
-		additionalCostId: 'Additional cost',
 		description: 'Description',
+		number: 'Number',
 		price: 'Price',
-		fromDate: 'From date',
-		toDate: 'To date',
 		addProduct: 'Add product',
 		addMaterial: 'Add material',
-		selectAdditionalCosts: 'additional costs',
 		amount: 'Amount',
-		isMain: 'Main',
+		isAlternative: 'N/A',
+		isAlternativeTitle: 'Normal/Alternativ',
 		paymentType: 'Payment type',
 		deleteAllPositions: 'Delete all positions'
 	};

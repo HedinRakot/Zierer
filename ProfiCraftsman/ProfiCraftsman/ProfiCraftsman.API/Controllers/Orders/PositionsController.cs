@@ -36,19 +36,19 @@ namespace ProfiCraftsman.API.Controllers
             model.orderId = entity.OrderId;
             model.isMaterialPosition = entity.IsMaterialPosition;
             model.productId = entity.ProductId;
+            model.materialId = entity.MaterialId;
             model.isAlternative = entity.IsAlternative;
             model.paymentType = entity.PaymentType;
 
             if (entity.ProductId.HasValue)
             {
-                model.description = String.Format("{0} {1}", entity.Products.Number, entity.Products.Name);
+                model.description = entity.Products.Name;
+                model.number = entity.Products.Number;
             }
-
-            model.materialId = entity.MaterialId;
-
-            if (entity.MaterialId.HasValue)
+            else if (entity.MaterialId.HasValue)
             {
                 model.description = entity.Materials.Name;
+                model.number = entity.Materials.Number;
             }
 
             model.amount = entity.Amount;
@@ -66,11 +66,6 @@ namespace ProfiCraftsman.API.Controllers
             entity.Price = model.price;
             entity.IsAlternative = model.isAlternative;
             entity.PaymentType = model.paymentType;
-
-            if (model.productId.HasValue)
-                entity.Amount = 1;
-            else
-                entity.Amount = model.amount;
 
             if(actionType == ActionTypes.Add && model.productId.HasValue)
             {

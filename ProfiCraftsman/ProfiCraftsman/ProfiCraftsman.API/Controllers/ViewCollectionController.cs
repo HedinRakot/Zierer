@@ -55,9 +55,8 @@ namespace ProfiCraftsman.API.Controllers
             if (model.PaymentTypes)
                 result.Add("PaymentTypes", new[]
                 {
-                    new { id = 0, name = "Monat"},
-                    new { id = 1, name = "Tag"},
-                    new { id = 2, name = "Pauschal"},
+                    new { id = 0, name = "Standard"},
+                    new { id = 1, name = "Pauschal"},
                 });
 
             if (model.ProductAmountTypes)
