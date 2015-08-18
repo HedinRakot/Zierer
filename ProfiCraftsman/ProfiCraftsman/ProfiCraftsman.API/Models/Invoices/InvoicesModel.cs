@@ -28,7 +28,7 @@ namespace ProfiCraftsman.API.Models.Invoices
         public string customerAddress { get; set; }
         
         [DataMember]
-        public string rentOrderNumber { get; set; }
+        public string orderNumber { get; set; }
 
         [DataMember]
         public string communicationPartnerName { get; set; }

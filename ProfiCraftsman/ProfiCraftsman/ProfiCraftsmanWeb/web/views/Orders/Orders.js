@@ -134,7 +134,7 @@
         selectable: true,
 
         defaultSorting: {
-            field: 'rentOrderNumber',
+            field: 'orderNumber',
             dir: 'desc'
         },
 
@@ -154,9 +154,12 @@
 		columns: function () {
 			
 			return [
-				{ field: 'rentOrderNumber', title: this.resources.rentOrderNumber },
+				{ field: 'orderNumber', title: this.resources.orderNumber },
 				{ field: 'customerName', title: this.resources.customerId },
 				{ field: 'communicationPartnerTitle', title: this.resources.communicationPartnerId },
+				{ field: 'street', title: this.resources.street },
+				{ field: 'city', title: this.resources.city },
+				{ field: 'zip', title: this.resources.zip },
 			];
 		},
 

@@ -12,11 +12,14 @@ define(function () {
 		generateRentInvoice: 'Vermiet-Rechnung',
 		generateInvoice: 'Rechnung',
 		printRentOrder: 'MV drucken',
-		rentOrderNumber: 'Nummer',
+		orderNumber: 'Nummer',
 		closeOrder: 'Abschließen',
 		copyOrder: 'Kopieren',
 		printDeliveryNote: 'Lieferschein',
 		printBackDeliveryNote: 'Rücklieferschein',
+		street: 'Straße',
+		zip: 'PLZ',
+		city: 'Ort',
 	};
 
 	return resources;

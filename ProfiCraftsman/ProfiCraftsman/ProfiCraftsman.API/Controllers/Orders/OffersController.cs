@@ -37,12 +37,7 @@ namespace ProfiCraftsman.API.Controllers
             {
                 order.OrderNumber = numberProvider.GetNextOrderNumber();
             }
-
-            if (String.IsNullOrEmpty(order.RentOrderNumber))
-            {
-                order.RentOrderNumber = numberProvider.GetNextRentOrderNumber(Contracts.Configuration.RentOrderPreffix);
-            }
-
+            
             if(order.Customers.IsProspectiveCustomer)
             {
                 order.Customers.IsProspectiveCustomer = false;

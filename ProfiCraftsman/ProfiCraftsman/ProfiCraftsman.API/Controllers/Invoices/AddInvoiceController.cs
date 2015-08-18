@@ -137,7 +137,7 @@ namespace ProfiCraftsman.API.Controllers.Invoices
             {
                 var maxDate = invoicePositions.Max(o => o.ToDate);               
                 //if not auto prolongation dont add 
-                if (!order.AutoProlongation &&
+                if (//!order.AutoProlongation &&
                      orderPosition.ToDate <= maxDate)
                 {
                     amount = 0;
@@ -171,7 +171,7 @@ namespace ProfiCraftsman.API.Controllers.Invoices
                 //check prolongation - (if not set end date)
                 //if not monthly invoice set to end date
                 if (!isMonthlyInvoice ||
-                    (!order.AutoProlongation && 
+                    (//!order.AutoProlongation && 
                      orderPosition.ToDate.Month == toDate.Month &&
                      orderPosition.ToDate.Year == toDate.Year))
                 {

@@ -10,10 +10,7 @@ define(function () {
 				                    validation: { required: true } }			
 			,communicationPartnerId: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Orders', 'communicationPartnerId'), 
-				                    validation: { required: false } }			
-			,deliveryPlace: { type: "string", 
-			                        editable: Application.canTableItemBeEdit('Orders', 'deliveryPlace'), 
-				                    validation: { required: true, maxLength: 128 } }			
+				                    validation: { required: false } }					
 			,street: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('Orders', 'street'), 
 				                    validation: { required: true, maxLength: 128 } }			
@@ -25,37 +22,16 @@ define(function () {
 				                    validation: { required: true, maxLength: 128 } }			
 			,comment: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('Orders', 'comment'), 
-				                    validation: { required: false, maxLength: 128 } }			
-			,orderDate: { type: "date", 
-			                        editable: Application.canTableItemBeEdit('Orders', 'orderDate'), 
-				                    validation: { required: false, date: true } }			
-			,orderedFrom: { type: "string", 
-			                        editable: Application.canTableItemBeEdit('Orders', 'orderedFrom'), 
-				                    validation: { required: false, maxLength: 128 } }			
+				                    validation: { required: false, maxLength: 128 } }						
 			,orderNumber: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('Orders', 'orderNumber'), 
-				                    validation: { required: false, maxLength: 50 } }
-            ,customerOrderNumber: { type: "string", 
-			                        editable: Application.canTableItemBeEdit('Orders', 'customerOrderNumber'), 
-				                    validation: { required: false, maxLength: 50 } }
-			,rentOrderNumber: { type: "string", 
-			                        editable: Application.canTableItemBeEdit('Orders', 'rentOrderNumber'), 
-				                    validation: { required: true, maxLength: 50 } }			
-			,rentFromDate: { type: "date", 
-			                        editable: Application.canTableItemBeEdit('Orders', 'rentFromDate'), 
-				                    validation: { required: false, date: true } }			
-			,rentToDate: { type: "date", 
-			                        editable: Application.canTableItemBeEdit('Orders', 'rentToDate'), 
-				                    validation: { required: false, date: true } }			
+				                    validation: { required: false, maxLength: 50 } }		
 			,autoBill: { type: "boolean", 
 			                        editable: Application.canTableItemBeEdit('Orders', 'autoBill'), 
 				                    validation: { required: false } }			
 			,discount: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Orders', 'discount'), 
 				                    validation: { required: false } }			
-			,billTillDate: { type: "date", 
-			                        editable: Application.canTableItemBeEdit('Orders', 'billTillDate'), 
-				                    validation: { required: false, date: true } }
 			,customerStreet: { type: "string", 
 	                                editable: Application.canTableItemBeEdit('Orders', 'customerStreet'), 
 	                                validation: { required: true, maxLength: 128 } }			
@@ -83,9 +59,6 @@ define(function () {
             ,isOffer: { type: "boolean", 
 			                        editable: Application.canTableItemBeEdit('Orders', 'isOffer'), 
 				                    validation: { required: false } }
-            ,autoProlongation: { type: "boolean", 
-                                    editable: Application.canTableItemBeEdit('Orders', 'autoProlongation'),
-                                    validation: { required: false } }
             ,createDate: { type: "date", 
 			                        editable: false,
 			                        validation: { required: false, date: true } }			

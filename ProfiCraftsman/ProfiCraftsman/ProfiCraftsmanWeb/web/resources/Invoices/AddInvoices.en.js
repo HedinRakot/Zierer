@@ -8,7 +8,7 @@ define(function () {
 		pleaseSelect: 'Please select',
 		invoiceNumber: 'Invoicenumber',	
 		createDate: 'Create date',
-		rentOrderNumber: 'Rent order number',
+		orderNumber: 'Order number',
 		customerName: 'Customer',
 		customerAddress: 'Address',
 		withTaxes: 'With taxes',

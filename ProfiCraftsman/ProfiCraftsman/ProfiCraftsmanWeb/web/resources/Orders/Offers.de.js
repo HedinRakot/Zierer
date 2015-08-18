@@ -13,7 +13,10 @@ define(function () {
 		printRentOrder: 'MV drucken',
 		rentOrderNumber: 'MV-Nummer',
 		printOffer: 'Angebot drucken',
-	    createDate: 'Datum',
+		createDate: 'Datum',
+		street: 'Straße',
+		zip: 'PLZ',
+		city: 'Ort',
 	};
 
 	return resources;

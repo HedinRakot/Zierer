@@ -8,7 +8,7 @@ define(function () {
 		pleaseSelect: 'Bitte auswählen',
 		invoiceNumber: 'Rechnung-Nummer',	
 		createDate: 'Erstellt am',
-		rentOrderNumber: 'MV-Nummer',
+		orderNumber: 'Auftrags-Nummer',
 		customerName: 'Kunde',
 		customerAddress: 'Adresse',
 		withTaxes: 'Rechnung mit MwSt.',

@@ -18,7 +18,7 @@ define(function () {
 	    printRemainder: 'Mahnung drucken',
 	    generateMonthInvoices: 'Monatsrechnungen',
 	    pay: 'Bezahlen',
-	    rentOrderNumber: 'MV-Nummer',
+	    orderNumber: 'Auftrags-Nummer',
         reminderCount: 'Mahnstufe'
 	};
 

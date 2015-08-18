@@ -12,11 +12,14 @@ define(function () {
 		generateInvoice: 'Generate invoice',
 		generateRentInvoice: 'Generate rent invoice',
 		printRentOrder: 'Print rent order',
-		rentOrderNumber: 'Order number',
+		orderNumber: 'Order number',
 		closeOrder: 'Close',
 		copyOrder: 'Copy',
 		printDeliveryNote: 'Delivery note',
-	    printBackDeliveryNote: 'Back delivery note',
+		printBackDeliveryNote: 'Back delivery note',
+		street: 'Street',
+		zip: 'ZIP',
+		city: 'City',
 	};
 
 	return resources;

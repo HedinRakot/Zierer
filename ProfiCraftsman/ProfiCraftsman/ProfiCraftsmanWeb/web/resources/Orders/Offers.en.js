@@ -14,6 +14,9 @@ define(function () {
 		rentOrderNumber: 'Rent order number',
 		printOffer: 'Print offer',
 		createDate: 'Date',
+		street: 'Street',
+		zip: 'ZIP',
+		city: 'City',
 	};
 
 	return resources;

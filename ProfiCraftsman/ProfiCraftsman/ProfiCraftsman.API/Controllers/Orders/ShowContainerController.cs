@@ -188,7 +188,7 @@ namespace ProfiCraftsman.API.Controllers
                     end = position.ToDate.AddDays(1).ToString("yyyy-MM-dd"), //Add 1 days because calender end date is not included
                     url = String.Format("#Orders/{0}", position.OrderId),
                     title = String.Format("{0} {1} ({2})", position.Products.Number,
-                        position.Products.ProductTypes.Name, position.Orders.RentOrderNumber)
+                        position.Products.ProductTypes.Name, position.Orders.OrderNumber)
                 });
             }
         }

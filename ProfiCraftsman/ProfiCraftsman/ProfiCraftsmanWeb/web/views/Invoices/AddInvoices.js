@@ -39,7 +39,7 @@ define([
             var self = this;
             var result = {
                 '#orderId': 'orderId',
-                '#rentOrderNumber': 'rentOrderNumber',
+                '#orderNumber': 'orderNumber',
                 '#customerName': 'customerName',
                 '#customerAddress': 'customerAddress',
                 '#invoiceNumber': 'invoiceNumber',

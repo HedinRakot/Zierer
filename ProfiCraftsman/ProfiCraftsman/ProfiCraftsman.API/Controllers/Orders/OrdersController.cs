@@ -50,11 +50,6 @@ namespace ProfiCraftsman.API.Controllers
                         order.OrderNumber = numberProvider.GetNextOrderNumber();
                     }
 
-                    if (String.IsNullOrEmpty(order.RentOrderNumber))
-                    {
-                        order.RentOrderNumber = numberProvider.GetNextRentOrderNumber(Contracts.Configuration.RentOrderPreffix);
-                    }
-
                     Manager.SaveChanges();
                 }
             }
@@ -65,25 +60,16 @@ namespace ProfiCraftsman.API.Controllers
             model.Id = entity.Id;
             model.customerId = entity.CustomerId;
             model.communicationPartnerId = entity.CommunicationPartnerId;
-            model.deliveryPlace = entity.DeliveryPlace;
             model.street = entity.Street;
             model.zip = entity.Zip;
             model.city = entity.City;
             model.comment = entity.Comment;
-            model.orderDate = entity.OrderDate;
-            model.orderedFrom = entity.OrderedFrom;
             model.orderNumber = entity.OrderNumber;
-            model.rentOrderNumber = entity.RentOrderNumber;
-            model.rentFromDate = entity.RentFromDate;
-            model.rentToDate = entity.RentToDate;
             model.autoBill = entity.AutoBill;
             model.discount = entity.Discount;
-            model.billTillDate = entity.BillTillDate;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
             model.isOffer = entity.IsOffer;
-            model.customerOrderNumber = entity.CustomerOrderNumber;
-            model.autoProlongation = entity.AutoProlongation;
             model.status = entity.Status;
 
             ExtraEntityToModel(entity, model);
@@ -121,23 +107,14 @@ namespace ProfiCraftsman.API.Controllers
                 entity.CommunicationPartnerId = model.communicationPartnerId > 0 ? model.communicationPartnerId : (int?)null;
             }
 
-            entity.DeliveryPlace = model.deliveryPlace;
             entity.Street = model.street;
             entity.Zip = model.zip;
             entity.City = model.city;
             entity.Comment = model.comment;
-            entity.OrderDate = model.orderDate;
-            entity.OrderedFrom = model.orderedFrom;
             entity.OrderNumber = model.orderNumber;
-            entity.RentOrderNumber = model.rentOrderNumber;
-            entity.RentFromDate = model.rentFromDate;
-            entity.RentToDate = model.rentToDate;
             entity.AutoBill = model.autoBill;
             entity.Discount = model.discount;
-            entity.BillTillDate = model.billTillDate;
             entity.IsOffer = model.isOffer;
-            entity.AutoProlongation = model.autoProlongation;
-            entity.CustomerOrderNumber = model.customerOrderNumber;
 
             if (entity.IsNew())
             {
@@ -169,8 +146,11 @@ namespace ProfiCraftsman.API.Controllers
 
                 clauses.AddRange(new[] { 
         				base.BuildWhereClause<T>(new Filter { Field = "Customers.Name", Operator = filter.Operator, Value = filter.Value }),
-        				base.BuildWhereClause<T>(new Filter { Field = "RentOrderNumber", Operator = filter.Operator, Value = filter.Value }),
-        			});
+        				base.BuildWhereClause<T>(new Filter { Field = "OrderNumber", Operator = filter.Operator, Value = filter.Value }),
+        				base.BuildWhereClause<T>(new Filter { Field = "Street", Operator = filter.Operator, Value = filter.Value }),
+        				base.BuildWhereClause<T>(new Filter { Field = "City", Operator = filter.Operator, Value = filter.Value }),
+        				base.BuildWhereClause<T>(new Filter { Field = "Zip", Operator = filter.Operator, Value = filter.Value }),
+                    });
 
                 return string.Join(" or ", clauses);
             }

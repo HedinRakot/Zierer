@@ -36,10 +36,6 @@ namespace ProfiCraftsman.Contracts.Entities
             /// </summary>
             public static readonly string IsOffer = "IsOffer";
             /// <summary>
-            /// Column name 'DeliveryPlace' for property <see cref="Orders.DeliveryPlace"/>
-            /// </summary>
-            public static readonly string DeliveryPlace = "DeliveryPlace";
-            /// <summary>
             /// Column name 'Street' for property <see cref="Orders.Street"/>
             /// </summary>
             public static readonly string Street = "Street";
@@ -56,29 +52,9 @@ namespace ProfiCraftsman.Contracts.Entities
             /// </summary>
             public static readonly string Comment = "Comment";
             /// <summary>
-            /// Column name 'OrderDate' for property <see cref="Orders.OrderDate"/>
-            /// </summary>
-            public static readonly string OrderDate = "OrderDate";
-            /// <summary>
-            /// Column name 'OrderedFrom' for property <see cref="Orders.OrderedFrom"/>
-            /// </summary>
-            public static readonly string OrderedFrom = "OrderedFrom";
-            /// <summary>
             /// Column name 'OrderNumber' for property <see cref="Orders.OrderNumber"/>
             /// </summary>
             public static readonly string OrderNumber = "OrderNumber";
-            /// <summary>
-            /// Column name 'RentOrderNumber' for property <see cref="Orders.RentOrderNumber"/>
-            /// </summary>
-            public static readonly string RentOrderNumber = "RentOrderNumber";
-            /// <summary>
-            /// Column name 'RentFromDate' for property <see cref="Orders.RentFromDate"/>
-            /// </summary>
-            public static readonly string RentFromDate = "RentFromDate";
-            /// <summary>
-            /// Column name 'RentToDate' for property <see cref="Orders.RentToDate"/>
-            /// </summary>
-            public static readonly string RentToDate = "RentToDate";
             /// <summary>
             /// Column name 'AutoBill' for property <see cref="Orders.AutoBill"/>
             /// </summary>
@@ -87,10 +63,6 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'Discount' for property <see cref="Orders.Discount"/>
             /// </summary>
             public static readonly string Discount = "Discount";
-            /// <summary>
-            /// Column name 'BillTillDate' for property <see cref="Orders.BillTillDate"/>
-            /// </summary>
-            public static readonly string BillTillDate = "BillTillDate";
             /// <summary>
             /// Column name 'CreateDate' for property <see cref="Orders.CreateDate"/>
             /// </summary>
@@ -104,14 +76,6 @@ namespace ProfiCraftsman.Contracts.Entities
             /// </summary>
             public static readonly string DeleteDate = "DeleteDate";
             /// <summary>
-            /// Column name 'CustomerOrderNumber' for property <see cref="Orders.CustomerOrderNumber"/>
-            /// </summary>
-            public static readonly string CustomerOrderNumber = "CustomerOrderNumber";
-            /// <summary>
-            /// Column name 'AutoProlongation' for property <see cref="Orders.AutoProlongation"/>
-            /// </summary>
-            public static readonly string AutoProlongation = "AutoProlongation";
-            /// <summary>
             /// Column name 'Status' for property <see cref="Orders.Status"/>
             /// </summary>
             public static readonly string Status = "Status";
@@ -122,25 +86,16 @@ namespace ProfiCraftsman.Contracts.Entities
         public int CustomerId{ get; set; }
         public int? CommunicationPartnerId{ get; set; }
         public bool IsOffer{ get; set; }
-        public string DeliveryPlace{ get; set; }
         public string Street{ get; set; }
         public string Zip{ get; set; }
         public string City{ get; set; }
         public string Comment{ get; set; }
-        public DateTime? OrderDate{ get; set; }
-        public string OrderedFrom{ get; set; }
         public string OrderNumber{ get; set; }
-        public string RentOrderNumber{ get; set; }
-        public DateTime? RentFromDate{ get; set; }
-        public DateTime? RentToDate{ get; set; }
         public bool AutoBill{ get; set; }
         public double? Discount{ get; set; }
-        public DateTime? BillTillDate{ get; set; }
         public DateTime CreateDate{ get; set; }
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
-        public string CustomerOrderNumber{ get; set; }
-        public bool AutoProlongation{ get; set; }
         public int Status{ get; set; }
         public virtual Customers Customers{ get; set; }
         public virtual CommunicationPartners CommunicationPartners{ get; set; }
@@ -176,25 +131,16 @@ namespace ProfiCraftsman.Contracts.Entities
                        CustomerId = CustomerId,
                        CommunicationPartnerId = CommunicationPartnerId,
                        IsOffer = IsOffer,
-                       DeliveryPlace = DeliveryPlace,
                        Street = Street,
                        Zip = Zip,
                        City = City,
                        Comment = Comment,
-                       OrderDate = OrderDate,
-                       OrderedFrom = OrderedFrom,
                        OrderNumber = OrderNumber,
-                       RentOrderNumber = RentOrderNumber,
-                       RentFromDate = RentFromDate,
-                       RentToDate = RentToDate,
                        AutoBill = AutoBill,
                        Discount = Discount,
-                       BillTillDate = BillTillDate,
                        CreateDate = CreateDate,
                        ChangeDate = ChangeDate,
                        DeleteDate = DeleteDate,
-                       CustomerOrderNumber = CustomerOrderNumber,
-                       AutoProlongation = AutoProlongation,
                        Status = Status,
         	           };
         }

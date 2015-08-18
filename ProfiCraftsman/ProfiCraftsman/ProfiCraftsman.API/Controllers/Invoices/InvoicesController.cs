@@ -31,7 +31,7 @@ namespace ProfiCraftsman.API.Controllers.Invoices
             model.changeDate = ((ISystemFields)entity).ChangeDate;
             model.customerName = entity.Orders.CustomerName;
             model.customerAddress = String.Format("{0}, {1} {2}", entity.Orders.Customers.Street, entity.Orders.Customers.Zip, entity.Orders.Customers.City);
-            model.rentOrderNumber = entity.Orders.RentOrderNumber;
+            model.orderNumber = entity.Orders.OrderNumber;
             model.communicationPartnerName = entity.Orders.CommunicationPartnerTitle;
             model.withTaxes = entity.WithTaxes;
             model.discount = entity.Discount;
@@ -134,12 +134,12 @@ namespace ProfiCraftsman.API.Controllers.Invoices
                     return entities.OrderBy(o => o.Orders.CommunicationPartners.Name).
                         ThenBy(o => o.Orders.CommunicationPartners.FirstName);
             }
-            else if (sorting.Field == "rentOrderNumber")
+            else if (sorting.Field == "orderNumber")
             {
                 if (sorting.Direction == "desc")
-                    return entities.OrderByDescending(o => o.Orders.RentOrderNumber);
+                    return entities.OrderByDescending(o => o.Orders.OrderNumber);
                 else
-                    return entities.OrderBy(o => o.Orders.RentOrderNumber);
+                    return entities.OrderBy(o => o.Orders.OrderNumber);
             }
 
             return base.Sort(entities, sorting);

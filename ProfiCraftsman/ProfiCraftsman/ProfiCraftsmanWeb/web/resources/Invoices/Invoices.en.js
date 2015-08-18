@@ -18,7 +18,7 @@ define(function () {
 		printRemainder: 'Print remainder',
 	    generateMonthInvoices: 'Month invoices',
 		pay: 'Pay',
-		rentOrderNumber: 'Rent order number',
+		orderNumber: 'Order number',
 		reminderCount: 'Reminder count'
 	};
 
