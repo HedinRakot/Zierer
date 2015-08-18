@@ -34,45 +34,37 @@ namespace ProfiCraftsman.API.Controllers
         protected override void EntityToModel(Positions entity, PositionsModel model)
         {
             model.orderId = entity.OrderId;
-            model.isSellOrder = entity.IsSellOrder;
+            model.isMaterialPosition = entity.IsMaterialPosition;
             model.productId = entity.ProductId;
-            model.isMain = entity.IsMain;
+            model.isAlternative = entity.IsAlternative;
             model.paymentType = entity.PaymentType;
 
             if (entity.ProductId.HasValue)
             {
-                model.description = String.Format("{0} {1}", entity.Products.Number, entity.Products.ProductTypes.Name);
-
-                if(entity.FromDate != DateTime.MinValue)
-                    model.fromDate = entity.FromDate;
-
-                if (entity.ToDate != DateTime.MinValue)
-                    model.toDate = entity.ToDate;
+                model.description = String.Format("{0} {1}", entity.Products.Number, entity.Products.Name);
             }
 
-            model.additionalCostId = entity.AdditionalCostId;
+            model.materialId = entity.MaterialId;
 
-            if (entity.AdditionalCostId.HasValue)
+            if (entity.MaterialId.HasValue)
             {
-                model.description = entity.AdditionalCosts.Name;
+                model.description = entity.Materials.Name;
             }
 
             model.amount = entity.Amount;
             model.price = entity.Price;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
-
-            model.isOffer = entity.Orders.IsOffer;
         }
 
         protected override void ModelToEntity(PositionsModel model, Positions entity, ActionTypes actionType)
         {
             entity.OrderId = model.orderId;
-            entity.IsSellOrder = model.isSellOrder;
+            entity.IsMaterialPosition = model.isMaterialPosition;
             entity.ProductId = model.productId;
-            entity.AdditionalCostId = model.additionalCostId;
+            entity.MaterialId = model.materialId;
             entity.Price = model.price;
-            entity.IsMain = model.isMain;
+            entity.IsAlternative = model.isAlternative;
             entity.PaymentType = model.paymentType;
 
             if (model.productId.HasValue)
@@ -82,9 +74,6 @@ namespace ProfiCraftsman.API.Controllers
 
             if(actionType == ActionTypes.Add && model.productId.HasValue)
             {
-                entity.FromDate = model.fromDate.HasValue ? model.fromDate.Value.Date : DateTime.Now.Date;
-                entity.ToDate = model.toDate.HasValue ? model.toDate.Value.Date : DateTime.Now.Date;
-
                 var product = ProductManager.GetById(model.productId.Value);
                 foreach (var material in product.ProductMaterialRsps)
                 {

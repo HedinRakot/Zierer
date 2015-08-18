@@ -1,16 +1,14 @@
 ﻿define([
     'base/related-object-grid-view',
-    'collections/Equipments',
-    'l!t!Settings/AddProductEquipmentRsp'
-], function (BaseView, Collection, AddNewModelView) {
+    'collections/Materials'
+], function (BaseView, Collection) {
     'use strict';
 
     var view = BaseView.extend({
 
-        addNewModelView: AddNewModelView,
         collectionType: Collection,
         gridSelector: '.grid',
-        tableName: 'OrderProductEquipmentRsps',
+        tableName: 'OrderProductMaterialRsps',
 
         addingInPopup: false,
 
@@ -27,7 +25,7 @@
         columns: function () {
 
             return [
-                 { field: 'equipmentId', title: this.resources.equipmentId, collection: this.options.equipments, defaultText: this.resources.pleaseSelect, attributes: { "class": "detail-view-grid-cell" } },
+                 { field: 'materialId', title: this.resources.materialId, collection: this.options.materials, defaultText: this.resources.pleaseSelect, attributes: { "class": "detail-view-grid-cell" } },
                  { field: 'amount', title: this.resources.amount, attributes: { "class": "detail-view-grid-cell" } },
             ];
         },

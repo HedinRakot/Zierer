@@ -3,9 +3,9 @@
     'collections/Positions',
     'l!t!Orders/AddPositions',
     'l!t!Orders/SelectProduct',
-    'l!t!Orders/SelectAdditionalCosts',
-    'l!t!Orders/Equipments'
-], function (BaseView, Collection, AddNewModelView, SelectProductView, SelectAdditionalCostsView, DetailView) {
+    'l!t!Orders/SelectMaterial',
+    'l!t!Orders/Materials'
+], function (BaseView, Collection, AddNewModelView, SelectProductView, SelectMaterialView, DetailView) {
     'use strict';
 
     var amountEditor = function (cont, options) {
@@ -42,7 +42,7 @@
         var model = new Backbone.Model();
         model.url = Application.apiUrl + 'deleteAllOrderPositions';
         model.set('id', self.model.id);
-        model.set('isSellOrder', self.isSellOrder);
+        model.set('isMaterialPosition', self.isMaterialPosition);
 
         model.save({}, {
             success: function (model, response) {
@@ -81,9 +81,9 @@
 
     view = BaseView.extend({
 
-        isSellOrder: null,
+        isMaterialPosition: null,
         selectProductView: SelectProductView,
-        selectAdditionalCostsView: SelectAdditionalCostsView,
+        selectMaterialView: SelectMaterialView,
         addNewModelView: AddNewModelView,
         collectionType: Collection,
         gridSelector: '.grid',
@@ -102,7 +102,7 @@
 
             this.defaultFiltering = [
                 { field: 'orderId', operator: 'eq', value: this.model.id },
-                { field: 'isSellOrder', operator: 'eq', value: self.isSellOrder }
+                { field: 'isMaterialPosition', operator: 'eq', value: self.isMaterialPosition }
             ];
 
             this.collection = new Collection();
@@ -156,11 +156,11 @@
         },
 
         events: {
-            'click .selectProduct': function (e) {
+            'click .selectProducts': function (e) {
                 e.preventDefault();
 
                 var self = this,
-                options = _.extend({}, self.options, { isOffer: self.model.get('isOffer') });
+                options = _.extend({}, self.options);
 
                 var view = new SelectProductView(options);
 
@@ -171,18 +171,9 @@
                     model.url = Application.apiUrl + '/positions';
                     model.set('orderId', self.model.id);
                     model.set('productId', item.id);
-
-                    if (self.isSellOrder) {
-                        model.set('price', item.get('sellPrice'));
-                    }
-                    else {
-                        model.set('price', item.get('price'));
-                    }
-
-                    model.set('fromDate', item.get('fromDate'));
-                    model.set('toDate', item.get('toDate'));
-                    model.set('isSellOrder', self.isSellOrder);
-                    model.set('isMain', true);
+                    model.set('price', item.get('price'));
+                    model.set('isMaterialPosition', self.isMaterialPosition);
+                    model.set('isAlternarive', false);
 
                     model.save({}, {
                         data: kendo.stringify(model),
@@ -201,23 +192,23 @@
                 self.addView(view);
                 self.$el.append(view.render().$el);
             },
-            'click .selectAdditionalCosts': function (e) {
+            'click .selectMaterials': function (e) {
                 e.preventDefault();
 
                 var self = this,
-                    view = new SelectAdditionalCostsView(self.options);
+                    view = new SelectMaterialView(self.options);
 
-                self.listenTo(view, 'selectAdditionalCosts', function (item) {
+                self.listenTo(view, 'selectMaterial', function (item) {
 
                     var model = new Backbone.Model();
                     model.isNew = function () { return true; }
                     model.url = Application.apiUrl + '/positions';
                     model.set('orderId', self.model.id);
-                    model.set('additionalCostId', item.id);
+                    model.set('materialId', item.id);
                     model.set('price', item.get('price'));
                     model.set('amount', 1);
-                    model.set('isSellOrder', self.isSellOrder);
-                    model.set('isMain', false);
+                    model.set('isMaterialPosition', self.isMaterialPosition);
+                    model.set('isAlternarive', false);
 
                     model.save({}, {
                         data: kendo.stringify(model),
@@ -260,9 +251,9 @@
 		        result =
 		    [{
 		        template: function () {
-		            return '<a class="k-button k-button-icontext selectProduct" style="min-width: 180px;" href="#" data-localized="' +
-                        (self.isSellOrder ? 'saleProduct' : 'rentProduct') + '"></a>' +
-		                   '<a class="k-button k-button-icontext selectAdditionalCosts"  style="min-width: 120px;"href="#" data-localized="selectAdditionalCosts"></a>' +
+		            return '<a class="k-button k-button-icontext ' +
+                        (self.isMaterialPosition ? 'selectMaterials' : 'selectProducts') + '" style="min-width: 180px;" href="#" data-localized="' +
+                        (self.isMaterialPosition ? 'addMaterial' : 'addProduct') + '"></a>' +
 		            '<a class="k-button k-button-icontext deleteAllPositions"  style="min-width: 120px;"href="#" data-localized="deleteAllPositions"></a>';
 		        }
 		    }];

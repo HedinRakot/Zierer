@@ -1,7 +1,6 @@
 using CoreBase.Entities;
 using ProfiCraftsman.Contracts;
 using System;
-using System.Collections.Generic;
 
 namespace ProfiCraftsman.Contracts.Entities
 {
@@ -72,7 +71,6 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime CreateDate{ get; set; }
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
-        public virtual ICollection<Positions> Positions{ get; set; }
         DateTime ISystemFields.CreateDate
         {
             get { return CreateDate; }

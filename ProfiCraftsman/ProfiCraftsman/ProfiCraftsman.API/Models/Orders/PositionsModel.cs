@@ -17,7 +17,7 @@ namespace ProfiCraftsman.API.Models
 
         [Required]
         [DataMember]
-        public bool isSellOrder { get; set; }
+        public bool isMaterialPosition { get; set; }
 
         [DataMember]
         public int? productId { get; set; }
@@ -26,7 +26,7 @@ namespace ProfiCraftsman.API.Models
         public string description { get; set; }
 
         [DataMember]
-        public int? additionalCostId { get; set; }
+        public int? materialId { get; set; }
         
         [Required]
         [DataMember]
@@ -40,17 +40,8 @@ namespace ProfiCraftsman.API.Models
         [DataMember]
         public int paymentType { get; set; }
 
-        [DataMember]
-        public DateTime? fromDate { get; set; }
-
-        [DataMember]
-        public DateTime? toDate { get; set; }
-
         [Required]
         [DataMember]
-        public bool isMain { get; set; }
-
-        [DataMember]
-        public bool isOffer { get; set; }
+        public bool isAlternative { get; set; }
     }
 }

@@ -55,15 +55,13 @@ namespace ProfiCraftsman.API.Controllers
             
             manager.AddEntity(newOrder);
 
-            foreach(var position in order.Positions.Where(o => o.AdditionalCostId.HasValue && !o.DeleteDate.HasValue).ToList())
+            foreach(var position in order.Positions.Where(o => o.MaterialId.HasValue && !o.DeleteDate.HasValue).ToList())
             {
                 var newPosition = new Positions()
                 {
-                    AdditionalCostId = position.AdditionalCostId.Value,
-                    IsMain = position.IsMain,
-                    IsSellOrder = position.IsSellOrder,
-                    FromDate = DateTime.Now,
-                    ToDate = DateTime.Now,
+                    MaterialId = position.MaterialId.Value,
+                    IsAlternative = position.IsAlternative,
+                    IsMaterialPosition = position.IsMaterialPosition,
                     Amount = position.Amount,
                     Price = position.Price,
                     PaymentType = position.PaymentType,

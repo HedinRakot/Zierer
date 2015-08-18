@@ -15,7 +15,7 @@ using System.Web.Http;
 namespace ProfiCraftsman.API.Controllers.Invoices
 {
     [AuthorizeByPermissions(PermissionTypes = new[] { Permissions.Invoices })]
-    public partial class AddInvoicesController: ApiController
+    public partial class AddInvoicesController : ApiController
     {
         protected readonly IInvoicesManager invoicesManager;
         protected readonly IUniqueNumberProvider numberProvider;
@@ -52,7 +52,7 @@ namespace ProfiCraftsman.API.Controllers.Invoices
             };
 
 
-            if(AddInvoicePositions(model.isMonthlyInvoice, model.isSell, order, invoice))
+            if (AddInvoicePositions(model.isMonthlyInvoice, model.isSell, order, invoice))
             {
                 invoice.InvoiceNumber = numberProvider.GetNextInvoiceNumber();
 
@@ -72,35 +72,47 @@ namespace ProfiCraftsman.API.Controllers.Invoices
 
             bool hasOpenPositions = false;
 
-            foreach (var orderPosition in orderPositions.Where(o => o.IsSellOrder == isSell))
+            foreach (var orderPosition in orderPositions.Where(o => o.IsMaterialPosition == isSell))
             {
                 var invoicePositions = allInvoicePositions.Where(o => o.PositionId == orderPosition.Id);
                 var amount = 0;
-                var fromDate = orderPosition.FromDate;
-                var toDate = orderPosition.ToDate;
+                
+                var oldAmount = invoicePositions.Sum(o => o.Amount);
 
-                if(orderPosition.AdditionalCosts != null)
+                if (oldAmount == 0)
                 {
-                    var oldAmount = invoicePositions.Sum(o => o.Amount);
-
-                    if(oldAmount == 0)
+                    if (!isMonthlyInvoice)
                     {
-                        if(orderPosition.AdditionalCosts.IncludeInFirstBill || !isMonthlyInvoice)
-                        {
-                            amount = orderPosition.Amount;
-                        }
-                    }
-                    else if (orderPosition.Amount > oldAmount)
-                    {
-                        amount = orderPosition.Amount - oldAmount;
+                        amount = orderPosition.Amount;
                     }
                 }
-                else if (orderPosition.Products != null)
+                else if (orderPosition.Amount > oldAmount)
                 {
-                    amount = 1;
-
-                    GetPeriod(isMonthlyInvoice, order, orderPosition, invoicePositions, ref fromDate, ref toDate, ref amount);
+                    amount = orderPosition.Amount - oldAmount;
                 }
+
+                //if (orderPosition.Materials != null)
+                //{
+                //    var oldAmount = invoicePositions.Sum(o => o.Amount);
+
+                //    if (oldAmount == 0)
+                //    {
+                //        if (!isMonthlyInvoice)
+                //        {
+                //            amount = orderPosition.Amount;
+                //        }
+                //    }
+                //    else if (orderPosition.Amount > oldAmount)
+                //    {
+                //        amount = orderPosition.Amount - oldAmount;
+                //    }
+                //}
+                //else if (orderPosition.Products != null)
+                //{
+                //    amount = 1;
+
+                //    //GetPeriod(isMonthlyInvoice, order, orderPosition, invoicePositions, ref amount);
+                //}
 
                 if (amount != 0)
                 {
@@ -118,8 +130,6 @@ namespace ProfiCraftsman.API.Controllers.Invoices
                         Amount = amount,
                         CreateDate = DateTime.Now,
                         ChangeDate = DateTime.Now,
-                        FromDate = fromDate,
-                        ToDate = toDate,
                         PaymentType = orderPosition.PaymentType
                     };
                     invoice.InvoicePositions.Add(newPosition);
@@ -130,76 +140,75 @@ namespace ProfiCraftsman.API.Controllers.Invoices
             return hasOpenPositions;
         }
 
-        protected void GetPeriod(bool isMonthlyInvoice, Orders order, Positions orderPosition, IEnumerable<InvoicePositions> invoicePositions, 
-            ref DateTime fromDate, ref DateTime toDate, ref int amount)
-        {
-            if (invoicePositions != null && invoicePositions.Count() != 0)
-            {
-                var maxDate = invoicePositions.Max(o => o.ToDate);               
-                //if not auto prolongation dont add 
-                if (//!order.AutoProlongation &&
-                     orderPosition.ToDate <= maxDate)
-                {
-                    amount = 0;
-                    return;
-                }
+        //protected void GetPeriod(bool isMonthlyInvoice, Orders order, Positions orderPosition, IEnumerable<InvoicePositions> invoicePositions, ref int amount)
+        //{
+        //    if (invoicePositions != null && invoicePositions.Count() != 0)
+        //    {
+        //        var maxDate = invoicePositions.Max(o => o.ToDate);
+        //        //if not auto prolongation dont add 
+        //        if (//!order.AutoProlongation &&
+        //             orderPosition.ToDate <= maxDate)
+        //        {
+        //            amount = 0;
+        //            return;
+        //        }
 
-                //only if in current month doesnt exist invoices
-                if(maxDate.Month == DateTime.Now.Month && maxDate.Year == DateTime.Now.Year)
-                {
-                    amount = 0;
-                    return;
-                }
-
-
-                if (maxDate.Day == DateTime.DaysInMonth(maxDate.Year, maxDate.Month))
-                {
-                    fromDate = maxDate.AddDays(1);
-                    var month = maxDate.Month == 12 ? 1 : maxDate.Month + 1;
-                    var year = maxDate.Month == 12 ? maxDate.Year + 1 : maxDate.Year;
-
-                    toDate = new DateTime(year, month, DateTime.DaysInMonth(year, month));
-                }
-                else
-                {
-                    fromDate = maxDate;
-                    toDate = new DateTime(maxDate.Year, maxDate.Month,
-                        DateTime.DaysInMonth(maxDate.Year, maxDate.Month));
-                }
+        //        //only if in current month doesnt exist invoices
+        //        if (maxDate.Month == DateTime.Now.Month && maxDate.Year == DateTime.Now.Year)
+        //        {
+        //            amount = 0;
+        //            return;
+        //        }
 
 
-                //check prolongation - (if not set end date)
-                //if not monthly invoice set to end date
-                if (!isMonthlyInvoice ||
-                    (//!order.AutoProlongation && 
-                     orderPosition.ToDate.Month == toDate.Month &&
-                     orderPosition.ToDate.Year == toDate.Year))
-                {
-                    if (orderPosition.ToDate > toDate)
-                    {
-                        toDate = orderPosition.ToDate;
-                    }
-                }
-            }
-            else
-            {
-                if (isMonthlyInvoice && (orderPosition.ToDate.Month != DateTime.Now.Month ||
-                    orderPosition.ToDate.Year != DateTime.Now.Year))
-                {
-                    var temp = new DateTime(DateTime.Now.Year, DateTime.Now.Month,
-                        DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
+        //        if (maxDate.Day == DateTime.DaysInMonth(maxDate.Year, maxDate.Month))
+        //        {
+        //            fromDate = maxDate.AddDays(1);
+        //            var month = maxDate.Month == 12 ? 1 : maxDate.Month + 1;
+        //            var year = maxDate.Month == 12 ? maxDate.Year + 1 : maxDate.Year;
 
-                    if (temp < fromDate)
-                    {
-                        toDate = new DateTime(fromDate.Year, fromDate.Month,
-                            DateTime.DaysInMonth(fromDate.Year, fromDate.Month));
-                    }
-                    else
-                    {
-                        toDate = temp;
-                    }
-                }
-            }
-        }
+        //            toDate = new DateTime(year, month, DateTime.DaysInMonth(year, month));
+        //        }
+        //        else
+        //        {
+        //            fromDate = maxDate;
+        //            toDate = new DateTime(maxDate.Year, maxDate.Month,
+        //                DateTime.DaysInMonth(maxDate.Year, maxDate.Month));
+        //        }
+
+
+        //        //check prolongation - (if not set end date)
+        //        //if not monthly invoice set to end date
+        //        if (!isMonthlyInvoice ||
+        //            (//!order.AutoProlongation && 
+        //             orderPosition.ToDate.Month == toDate.Month &&
+        //             orderPosition.ToDate.Year == toDate.Year))
+        //        {
+        //            if (orderPosition.ToDate > toDate)
+        //            {
+        //                toDate = orderPosition.ToDate;
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (isMonthlyInvoice && (orderPosition.ToDate.Month != DateTime.Now.Month ||
+        //            orderPosition.ToDate.Year != DateTime.Now.Year))
+        //        {
+        //            var temp = new DateTime(DateTime.Now.Year, DateTime.Now.Month,
+        //                DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
+
+        //            if (temp < fromDate)
+        //            {
+        //                toDate = new DateTime(fromDate.Year, fromDate.Month,
+        //                    DateTime.DaysInMonth(fromDate.Year, fromDate.Month));
+        //            }
+        //            else
+        //            {
+        //                toDate = temp;
+        //            }
+        //        }
+        //    }
+        //}
     }
 }

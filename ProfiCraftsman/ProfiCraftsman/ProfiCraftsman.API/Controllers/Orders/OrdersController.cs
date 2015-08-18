@@ -122,19 +122,18 @@ namespace ProfiCraftsman.API.Controllers
                 entity.Status = (int)OrderStatusTypes.Open;
                 entity.Positions = new List<Positions>();
 
-                foreach (var additionalCost in additionalCostsManager.GetEntities(o => o.Automatic).ToList())
-                {
-                    entity.Positions.Add(new Positions()
-                    {
-                        Orders = entity,
-                        Amount = 1,
-                        Price = additionalCost.Price,
-                        AdditionalCosts = additionalCost,
-                        FromDate = DateTime.Now.Date,
-                        ToDate = DateTime.Now.Date,
-                        IsSellOrder = false,
-                    });
-                }
+                //TODO replace with template positions
+                //foreach (var additionalCost in additionalCostsManager.GetEntities(o => o.Automatic).ToList())
+                //{
+                //    entity.Positions.Add(new Positions()
+                //    {
+                //        Orders = entity,
+                //        Amount = 1,
+                //        Price = additionalCost.Price,
+                //        AdditionalCosts = additionalCost,
+                //        IsSellOrder = false,
+                //    });
+                //}
             }
         }
 

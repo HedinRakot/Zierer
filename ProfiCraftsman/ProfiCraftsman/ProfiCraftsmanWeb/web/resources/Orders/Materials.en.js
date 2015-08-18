@@ -6,7 +6,7 @@ define(function () {
 	    add: 'Add Equipments',
 	    edit: 'Edit Equipments',
 	    pleaseSelect: 'Please select',
-	    equipmentId: 'Equipment',
+	    materialId: 'Equipment',
 	    amount: 'Amount',
 	};
 

@@ -4,8 +4,8 @@
     'use strict';
     
     var view = BaseView.extend({
-
-        isSellOrder: true,
+        
+        isMaterialPosition: false,
 
         render: function () {
 

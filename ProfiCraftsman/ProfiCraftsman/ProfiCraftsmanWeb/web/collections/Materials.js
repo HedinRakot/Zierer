@@ -1,11 +1,11 @@
 define([
 	'base/base-collection',
-	'models/Equipments'
+	'models/Material'
 ], function (BaseCollection, Model) {
 	'use strict';
 
 	var collection = BaseCollection.extend({
-	    url: 'api/OrderProductEquipments',
+	    url: 'api/OrderProductMaterials',
 		model: Model
 	});
 

@@ -1,12 +1,13 @@
 define(function () {
-	'use strict';
+    'use strict';
 
-	var resources = {
-	     title: 'Relationships',
-	     dataLoading: 'Data is loading. Please wait...',
-	     rentPositions: 'Rent',
-	     salePositions: 'Sell'
-	};
+    var resources = {
+        title: 'Relationships',
+        dataLoading: 'Data is loading. Please wait...',
+        products: 'Products',
+        materials: 'Materials',
+        terms: 'Terms',
+    };
 
-	return resources;
+    return resources;
 });

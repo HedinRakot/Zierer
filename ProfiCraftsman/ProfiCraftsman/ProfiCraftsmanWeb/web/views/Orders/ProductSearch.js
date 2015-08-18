@@ -1,7 +1,8 @@
 define([
 'base/base-object-grid-view',
-'collections/ProductSearch'
-], function (BaseView, Collection) {
+'collections/Settings/Products',
+'l!t!Settings/FilterProducts'
+], function (BaseView, Collection, FilterView) {
     'use strict';
 
     var saveFunction = function (e, self) {
@@ -12,8 +13,6 @@ define([
             model = dataItem ? self.collection.get(dataItem.id) : null;
             
             if (model) {
-                model.fromDate = dataItem.fromDate;
-                model.toDate = dataItem.toDate;
                 self.options.success(model);
             } else
                 self.$('.select-message').show();
@@ -23,7 +22,7 @@ define([
     view = BaseView.extend({
 
 	    collectionType: Collection,
-	    //filterView: FilterView,
+	    filterView: FilterView,
 	    filterSelector: '.filter',
 
 	    showDeleteButton: false,
@@ -46,38 +45,17 @@ define([
 
 	        view.__super__.render.apply(self, arguments);            
 
-	        var path = 'l!t!Orders/FilterProductSmart';
-	        if (self.options.isOffer) {
-	            path = 'l!t!Orders/FilterOffersProductSmart';
-	        }
-
-	        require([path], function (View) {
-
-	            self.showView(new View(
-                        {
-                            grid: self.grid,
-                            productTypes: self.options.productTypes,
-                            equipments: self.options.equipments
-                        }
-                    ),
-                    self.filterSelector);
-	        });
-
 	        return self;
 	    },
 
 		columns: function () {
 			
 		    return [
-				{ field: 'number', title: this.resources.number, filterable: false },
+				{ field: 'number', title: this.resources.number },
 				{ field: 'productTypeId', title: this.resources.productTypeId, collection: this.options.productTypes, defaultText: this.resources.pleaseSelect },
-				{ field: 'length', title: this.resources.length, filterable: false },
-				{ field: 'width', title: this.resources.width, filterable: false },
-				{ field: 'height', title: this.resources.height, filterable: false },
-				{ field: 'color', title: this.resources.color, filterable: false },
-				{ field: 'price', title: this.resources.price, filterable: false },
-				{ field: 'isVirtual', title: this.resources.isVirtual, headerTitle: this.resources.isVirtual, checkbox: true, filterable: false },
-				{ field: 'sellPrice', title: this.resources.sellPrice, filterable: false },
+				{ field: 'price', title: this.resources.price },
+				{ field: 'name', title: this.resources.name },
+				{ field: 'productAmountType', title: this.resources.productAmountType, collection: this.options.productAmountTypes },
 		    ];
 		},
 

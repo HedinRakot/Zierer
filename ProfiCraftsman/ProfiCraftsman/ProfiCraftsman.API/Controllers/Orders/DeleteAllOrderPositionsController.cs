@@ -21,7 +21,7 @@ namespace ProfiCraftsman.API.Controllers
         public int id { get; set; }
 
         [DataMember]
-        public bool isSellOrder { get; set; }
+        public bool isMaterialPosition { get; set; }
     }
 
     /// <summary>
@@ -43,7 +43,7 @@ namespace ProfiCraftsman.API.Controllers
         {
             var order = manager.GetById(model.id);
             
-            foreach(var position in order.Positions.Where(o => o.IsSellOrder == model.isSellOrder && !o.DeleteDate.HasValue).ToList())
+            foreach(var position in order.Positions.Where(o => o.IsMaterialPosition == model.isMaterialPosition && !o.DeleteDate.HasValue).ToList())
             {
                 positionManager.RemoveEntity(position);
             }

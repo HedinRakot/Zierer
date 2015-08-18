@@ -1,7 +1,7 @@
 define([
 'base/base-object-grid-view',
-'collections/Settings/AdditionalCosts',
-'l!t!Settings/FilterAdditionalCosts'
+'collections/Settings/Materials',
+'l!t!Settings/FilterMaterials'
 ], function (BaseView, Collection, FilterView) {
     'use strict';
 
@@ -54,11 +54,14 @@ define([
 			
 		    return [
 				{ field: 'name', title: this.resources.name },
-				{ field: 'description', title: this.resources.description },
+				{ field: 'number', title: this.resources.number },
+				{ field: 'length', title: this.resources.length },
+				{ field: 'width', title: this.resources.width },
+				{ field: 'height', title: this.resources.height },
+				{ field: 'color', title: this.resources.color },
 				{ field: 'price', title: this.resources.price },
-				{ field: 'automatic', title: this.resources.automatic, headerTitle: this.resources.automatic, checkbox: true },
-				{ field: 'includeInFirstBill', title: this.resources.includeInFirstBill, headerTitle: this.resources.includeInFirstBill, checkbox: true },
-				{ field: 'proceedsAccount', title: this.resources.proceedsAccount },
+				{ field: 'isVirtual', title: this.resources.isVirtual, headerTitle: this.resources.isVirtual, checkbox: true },
+				{ field: 'materialAmountType', title: this.resources.materialAmountType, collection: this.options.materialAmountTypes },
 		    ];
 		},
 
@@ -66,7 +69,7 @@ define([
 		    'dblclick .k-grid tbody tr': function (e) {
 		        saveFunction(e, this);
 		    },
-		    'click .selectAdditionalCosts': function (e) {
+		    'click .selectMaterial': function (e) {
 		        saveFunction(e, this);
 		    },
 		    'click .closeWindow': function (e) {
@@ -81,7 +84,7 @@ define([
 		    return [
 				{
 				    template: function () {
-				        return '<a class="k-button k-primary selectAdditionalCosts" href="#">' +
+				        return '<a class="k-button k-primary selectMaterial" href="#">' +
                             self.resources.select + '</a>'
 				    }
 				},

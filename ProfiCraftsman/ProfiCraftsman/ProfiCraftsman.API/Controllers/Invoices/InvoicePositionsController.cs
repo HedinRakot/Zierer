@@ -35,33 +35,19 @@ namespace ProfiCraftsman.API.Controllers.Invoices
                 model.isCointainerPosition = true;
                 model.price = entity.Price;
 
-                model.totalPrice = CalculationHelper.CalculatePositionPrice(entity.Positions.IsSellOrder, entity.Price, entity.Amount, 
-                    entity.FromDate, entity.ToDate, entity.Payment);
-
-                if (!entity.Positions.IsSellOrder)
-                {                    
-                    model.fromDate = entity.FromDate;
-                    model.toDate = entity.ToDate;
-                }
+                model.totalPrice = CalculationHelper.CalculatePositionPrice(entity.Price, entity.Amount, entity.Payment);
             }
 
-            if (entity.Positions.AdditionalCostId.HasValue)
+            if (entity.Positions.MaterialId.HasValue)
             {
                 model.totalPrice = model.price * model.amount;
-                model.description = entity.Positions.AdditionalCosts.Name;
+                model.description = entity.Positions.Materials.Name;
                 model.isCointainerPosition = false;
             }
         }
         protected override void ModelToEntity(InvoicePositionsModel model, InvoicePositions entity, ActionTypes actionType)
         {
             entity.Price = model.price;
-
-            if(model.fromDate.HasValue)
-                entity.FromDate = model.fromDate.Value;
-
-            if (model.toDate.HasValue)
-                entity.ToDate = model.toDate.Value;
-
             entity.PaymentType = model.paymentType;
         }
     }

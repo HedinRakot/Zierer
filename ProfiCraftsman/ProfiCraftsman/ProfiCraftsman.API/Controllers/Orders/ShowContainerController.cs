@@ -97,8 +97,8 @@ namespace ProfiCraftsman.API.Controllers
                         DateTime? endDate = null;
                         for (var date = model.StartDate; date <= model.EndDate; date = date.AddDays(1))
                         {
-                            if (positions.Where(o => o.ProductId == product.Id).All(p => p.FromDate > date || p.ToDate < date))
-                            {
+                            //if (positions.Where(o => o.ProductId == product.Id).ToList())
+                            //{
                                 if (startDate.HasValue)
                                 {
                                     endDate = date;
@@ -108,8 +108,9 @@ namespace ProfiCraftsman.API.Controllers
                                     startDate = date;
                                     endDate = date;
                                 }
-                            }
-                            else if (startDate.HasValue)
+                            //}
+                            //else 
+                            if (startDate.HasValue)
                             {
                                 result.Add(new ProductViewModel()
                                 {
@@ -184,8 +185,8 @@ namespace ProfiCraftsman.API.Controllers
             {
                 result.Add(new ProductViewModel()
                 {
-                    start = position.FromDate.ToString("yyyy-MM-dd"),
-                    end = position.ToDate.AddDays(1).ToString("yyyy-MM-dd"), //Add 1 days because calender end date is not included
+                    start = DateTime.Now.ToString("yyyy-MM-dd"),
+                    end = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"), //Add 1 days because calender end date is not included
                     url = String.Format("#Orders/{0}", position.OrderId),
                     title = String.Format("{0} {1} ({2})", position.Products.Number,
                         position.Products.ProductTypes.Name, position.Orders.OrderNumber)

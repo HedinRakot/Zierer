@@ -14,10 +14,10 @@ using CoreBase.Controllers;
 
 namespace ProfiCraftsman.API.Controllers
 {
-    public partial class OrderProductEquipmentsController : ClientApiController<OrderProductMaterialModel, OrderProductMaterialRsp, int, IOrderProductMaterialRspManager>
+    public partial class OrderProductMaterialsController : ClientApiController<OrderProductMaterialModel, OrderProductMaterialRsp, int, IOrderProductMaterialRspManager>
     {
 
-        public OrderProductEquipmentsController(IOrderProductMaterialRspManager manager) : base(manager) { }
+        public OrderProductMaterialsController(IOrderProductMaterialRspManager manager) : base(manager) { }
 
         protected override void EntityToModel(OrderProductMaterialRsp entity, OrderProductMaterialModel model)
         {

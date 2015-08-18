@@ -6,7 +6,6 @@ using System.Collections.Generic;
 namespace ProfiCraftsman.Contracts.Entities
 {
     public partial class Positions: IHasId<int>
-        ,IIntervalFields
         ,IRemovable
         ,ISystemFields
     {
@@ -29,29 +28,21 @@ namespace ProfiCraftsman.Contracts.Entities
             /// </summary>
             public static readonly string OrderId = "OrderId";
             /// <summary>
-            /// Column name 'IsSellOrder' for property <see cref="Positions.IsSellOrder"/>
+            /// Column name 'IsMaterialPosition' for property <see cref="Positions.IsMaterialPosition"/>
             /// </summary>
-            public static readonly string IsSellOrder = "IsSellOrder";
+            public static readonly string IsMaterialPosition = "IsMaterialPosition";
             /// <summary>
             /// Column name 'ProductId' for property <see cref="Positions.ProductId"/>
             /// </summary>
             public static readonly string ProductId = "ProductId";
             /// <summary>
-            /// Column name 'AdditionalCostId' for property <see cref="Positions.AdditionalCostId"/>
+            /// Column name 'MaterialId' for property <see cref="Positions.MaterialId"/>
             /// </summary>
-            public static readonly string AdditionalCostId = "AdditionalCostId";
+            public static readonly string MaterialId = "MaterialId";
             /// <summary>
             /// Column name 'Price' for property <see cref="Positions.Price"/>
             /// </summary>
             public static readonly string Price = "Price";
-            /// <summary>
-            /// Column name 'FromDate' for property <see cref="Positions.FromDate"/>
-            /// </summary>
-            public static readonly string FromDate = "FromDate";
-            /// <summary>
-            /// Column name 'ToDate' for property <see cref="Positions.ToDate"/>
-            /// </summary>
-            public static readonly string ToDate = "ToDate";
             /// <summary>
             /// Column name 'CreateDate' for property <see cref="Positions.CreateDate"/>
             /// </summary>
@@ -69,9 +60,9 @@ namespace ProfiCraftsman.Contracts.Entities
             /// </summary>
             public static readonly string Amount = "Amount";
             /// <summary>
-            /// Column name 'IsMain' for property <see cref="Positions.IsMain"/>
+            /// Column name 'IsAlternative' for property <see cref="Positions.IsAlternative"/>
             /// </summary>
-            public static readonly string IsMain = "IsMain";
+            public static readonly string IsAlternative = "IsAlternative";
             /// <summary>
             /// Column name 'PaymentType' for property <see cref="Positions.PaymentType"/>
             /// </summary>
@@ -81,43 +72,31 @@ namespace ProfiCraftsman.Contracts.Entities
         #endregion
         public int Id{ get; set; }
         public int OrderId{ get; set; }
-        public bool IsSellOrder{ get; set; }
+        public bool IsMaterialPosition{ get; set; }
         public int? ProductId{ get; set; }
-        public int? AdditionalCostId{ get; set; }
+        public int? MaterialId{ get; set; }
         public double Price{ get; set; }
-        public DateTime FromDate{ get; set; }
-        public DateTime ToDate{ get; set; }
         public DateTime CreateDate{ get; set; }
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
         public int Amount{ get; set; }
-        public bool IsMain{ get; set; }
+        public bool IsAlternative{ get; set; }
         public int PaymentType{ get; set; }
         public virtual Orders Orders{ get; set; }
-        public virtual AdditionalCosts AdditionalCosts{ get; set; }
         public virtual Products Products{ get; set; }
+        public virtual Materials Materials{ get; set; }
         public virtual ICollection<InvoicePositions> InvoicePositions{ get; set; }
         public bool HasOrders
         {
             get { return !ReferenceEquals(Orders, null); }
         }
-        public bool HasAdditionalCosts
-        {
-            get { return !ReferenceEquals(AdditionalCosts, null); }
-        }
         public bool HasProducts
         {
             get { return !ReferenceEquals(Products, null); }
         }
-        DateTime? IIntervalFields.FromDate
+        public bool HasMaterials
         {
-            get { return FromDate; }
-            set { if(value.HasValue)FromDate = value.Value; else throw new ArgumentNullException("value"); }
-        }
-        DateTime? IIntervalFields.ToDate
-        {
-            get { return ToDate; }
-            set { if(value.HasValue)ToDate = value.Value; else throw new ArgumentNullException("value"); }
+            get { return !ReferenceEquals(Materials, null); }
         }
         DateTime ISystemFields.CreateDate
         {
@@ -138,17 +117,15 @@ namespace ProfiCraftsman.Contracts.Entities
         {
             return new Positions {
                        OrderId = OrderId,
-                       IsSellOrder = IsSellOrder,
+                       IsMaterialPosition = IsMaterialPosition,
                        ProductId = ProductId,
-                       AdditionalCostId = AdditionalCostId,
+                       MaterialId = MaterialId,
                        Price = Price,
-                       FromDate = FromDate,
-                       ToDate = ToDate,
                        CreateDate = CreateDate,
                        ChangeDate = ChangeDate,
                        DeleteDate = DeleteDate,
                        Amount = Amount,
-                       IsMain = IsMain,
+                       IsAlternative = IsAlternative,
                        PaymentType = PaymentType,
         	           };
         }

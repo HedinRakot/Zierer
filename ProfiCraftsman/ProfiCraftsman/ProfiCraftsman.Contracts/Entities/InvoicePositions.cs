@@ -5,7 +5,6 @@ using System;
 namespace ProfiCraftsman.Contracts.Entities
 {
     public partial class InvoicePositions: IHasId<int>
-        ,IIntervalFields
         ,IRemovable
         ,ISystemFields
     {
@@ -36,14 +35,6 @@ namespace ProfiCraftsman.Contracts.Entities
             /// </summary>
             public static readonly string Price = "Price";
             /// <summary>
-            /// Column name 'FromDate' for property <see cref="InvoicePositions.FromDate"/>
-            /// </summary>
-            public static readonly string FromDate = "FromDate";
-            /// <summary>
-            /// Column name 'ToDate' for property <see cref="InvoicePositions.ToDate"/>
-            /// </summary>
-            public static readonly string ToDate = "ToDate";
-            /// <summary>
             /// Column name 'CreateDate' for property <see cref="InvoicePositions.CreateDate"/>
             /// </summary>
             public static readonly string CreateDate = "CreateDate";
@@ -70,8 +61,6 @@ namespace ProfiCraftsman.Contracts.Entities
         public int InvoiceId{ get; set; }
         public int PositionId{ get; set; }
         public double Price{ get; set; }
-        public DateTime FromDate{ get; set; }
-        public DateTime ToDate{ get; set; }
         public DateTime CreateDate{ get; set; }
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
@@ -86,16 +75,6 @@ namespace ProfiCraftsman.Contracts.Entities
         public bool HasPositions
         {
             get { return !ReferenceEquals(Positions, null); }
-        }
-        DateTime? IIntervalFields.FromDate
-        {
-            get { return FromDate; }
-            set { if(value.HasValue)FromDate = value.Value; else throw new ArgumentNullException("value"); }
-        }
-        DateTime? IIntervalFields.ToDate
-        {
-            get { return ToDate; }
-            set { if(value.HasValue)ToDate = value.Value; else throw new ArgumentNullException("value"); }
         }
         DateTime ISystemFields.CreateDate
         {
@@ -118,8 +97,6 @@ namespace ProfiCraftsman.Contracts.Entities
                        InvoiceId = InvoiceId,
                        PositionId = PositionId,
                        Price = Price,
-                       FromDate = FromDate,
-                       ToDate = ToDate,
                        CreateDate = CreateDate,
                        ChangeDate = ChangeDate,
                        DeleteDate = DeleteDate,

@@ -232,7 +232,7 @@
     <Content Include="web\collections\Invoices\AddInvoicePositions.js" />
     <Content Include="web\collections\Invoices\InvoicePositions.js" />
     <Content Include="web\collections\Invoices\Invoices.js" />
-    <Content Include="web\collections\Equipments.js" />
+    <Content Include="web\collections\Materials.js" />
     <Content Include="web\collections\Settings\Materials.js">
       <DependentUpon>web.collections.tt</DependentUpon>
     </Content>
@@ -285,7 +285,7 @@
     <Content Include="web\models\FilterOffersProductSmart.js" />
     <Content Include="web\models\InvoiceStornos\AddInvoicePositions.js" />
     <Content Include="web\models\InvoiceStornos\InvoiceStornos.js" />
-    <Content Include="web\models\Equipments.js" />
+    <Content Include="web\models\Material.js" />
     <Content Include="web\models\Settings\FilterCustomers.js" />
     <Content Include="web\models\Settings\FilterMaterials.js">
       <DependentUpon>web.models.tt</DependentUpon>
@@ -391,8 +391,8 @@
     <Content Include="web\resources\Invoices\InvoicesRelationships.en.js" />
     <Content Include="web\resources\Invoices\AddInvoicePositions.de.js" />
     <Content Include="web\resources\Invoices\AddInvoicePositions.en.js" />
-    <Content Include="web\resources\Orders\Equipments.de.js" />
-    <Content Include="web\resources\Orders\Equipments.en.js" />
+    <Content Include="web\resources\Orders\Materials.de.js" />
+    <Content Include="web\resources\Orders\Materials.en.js" />
     <Content Include="web\resources\Orders\FilterOffersProductSmart.de.js" />
     <Content Include="web\resources\Orders\FilterOffersProductSmart.en.js" />
     <Content Include="web\resources\Settings\AddMaterials.de.js">
@@ -511,9 +511,9 @@
     <Content Include="web\resources\Orders\AddOrders.en.js" />
     <Content Include="web\resources\Errors\Forbidden.de.js" />
     <Content Include="web\resources\Errors\Forbidden.en.js" />
-    <Content Include="web\resources\Orders\AdditionalCostsSearch.de.js" />
+    <Content Include="web\resources\Orders\MaterialSearch.de.js" />
     <Content Include="web\resources\Orders\ProductSearch.de.js" />
-    <Content Include="web\resources\Orders\AdditionalCostsSearch.en.js" />
+    <Content Include="web\resources\Orders\MaterialSearch.en.js" />
     <Content Include="web\resources\Orders\ProductSearch.en.js" />
     <Content Include="web\resources\Orders\FilterOffers.de.js" />
     <Content Include="web\resources\Orders\FilterOrders.de.js" />
@@ -527,19 +527,19 @@
     <Content Include="web\resources\master.en.js" />
     <Content Include="web\resources\Orders\Offers.de.js" />
     <Content Include="web\resources\Orders\Offers.en.js" />
-    <Content Include="web\resources\Orders\RentPositions.de.js" />
+    <Content Include="web\resources\Orders\ProductPositions.de.js" />
     <Content Include="web\resources\Orders\Positions.de.js" />
     <Content Include="web\resources\Orders\Orders.de.js" />
-    <Content Include="web\resources\Orders\RentPositions.en.js" />
+    <Content Include="web\resources\Orders\ProductPositions.en.js" />
     <Content Include="web\resources\Orders\Positions.en.js" />
     <Content Include="web\resources\Orders\Orders.en.js" />
     <Content Include="web\resources\Orders\OrdersRelationships.de.js" />
     <Content Include="web\resources\Orders\OrdersRelationships.en.js" />
-    <Content Include="web\resources\Orders\SalePositions.de.js" />
-    <Content Include="web\resources\Orders\SalePositions.en.js" />
-    <Content Include="web\resources\Orders\SelectAdditionalCosts.de.js" />
+    <Content Include="web\resources\Orders\MaterialPositions.de.js" />
+    <Content Include="web\resources\Orders\MaterialPositions.en.js" />
+    <Content Include="web\resources\Orders\SelectMaterial.de.js" />
     <Content Include="web\resources\Orders\SelectProduct.de.js" />
-    <Content Include="web\resources\Orders\SelectAdditionalCosts.en.js" />
+    <Content Include="web\resources\Orders\SelectMaterial.en.js" />
     <Content Include="web\resources\Orders\SelectCustomer.de.js" />
     <Content Include="web\resources\Orders\SelectProduct.en.js" />
     <Content Include="web\resources\Orders\SelectCustomer.en.js" />
@@ -777,7 +777,7 @@
     <Content Include="web\templates\Invoices\Invoices.html" />
     <Content Include="web\templates\Invoices\InvoicesRelationships.html" />
     <Content Include="web\templates\Invoices\AddInvoicePositions.html" />
-    <Content Include="web\templates\Orders\Equipments.html" />
+    <Content Include="web\templates\Orders\Materials.html" />
     <Content Include="web\templates\Orders\FilterOffersProductSmart.html" />
     <Content Include="web\templates\Settings\AddMaterials.html">
       <DependentUpon>web.add.templates.tt</DependentUpon>
@@ -835,7 +835,7 @@
     <Content Include="web\templates\Orders\AddPositions.html" />
     <Content Include="web\templates\Orders\AddOrders.html" />
     <Content Include="web\templates\Errors\Forbidden.html" />
-    <Content Include="web\templates\Orders\AdditionalCostsSearch.html" />
+    <Content Include="web\templates\Orders\MaterialSearch.html" />
     <Content Include="web\templates\Orders\CreateInvoiceConfirmation.html" />
     <Content Include="web\templates\Orders\ProductSearch.html" />
     <Content Include="web\templates\Orders\FilterOffers.html" />
@@ -845,12 +845,12 @@
     <Content Include="web\templates\master-footer.html" />
     <Content Include="web\templates\master.html" />
     <Content Include="web\templates\Orders\Offers.html" />
-    <Content Include="web\templates\Orders\SalePositions.html" />
-    <Content Include="web\templates\Orders\RentPositions.html" />
+    <Content Include="web\templates\Orders\MaterialPositions.html" />
+    <Content Include="web\templates\Orders\ProductPositions.html" />
     <Content Include="web\templates\Orders\Positions.html" />
     <Content Include="web\templates\Orders\Orders.html" />
     <Content Include="web\templates\Orders\OrdersRelationships.html" />
-    <Content Include="web\templates\Orders\SelectAdditionalCosts.html" />
+    <Content Include="web\templates\Orders\SelectMaterial.html" />
     <Content Include="web\templates\Orders\SelectProduct.html" />
     <Content Include="web\templates\Orders\SelectCustomer.html" />
     <Content Include="web\templates\Settings\AddAdditionalCosts.html">
@@ -981,7 +981,7 @@
     <Content Include="web\views\Invoices\Invoices.js" />
     <Content Include="web\views\Invoices\InvoicesRelationships.js" />
     <Content Include="web\views\Invoices\AddInvoicePositions.js" />
-    <Content Include="web\views\Orders\Equipments.js" />
+    <Content Include="web\views\Orders\Materials.js" />
     <Content Include="web\views\Orders\FilterOffersProductSmart.js" />
     <Content Include="web\views\Settings\AddMaterials.js">
       <DependentUpon>web.add.views.tt</DependentUpon>
@@ -1038,7 +1038,7 @@
     <Content Include="web\views\TransportOrders\TransportOrders.js" />
     <Content Include="web\views\TransportOrders\TransportOrdersRelationships.js" />
     <Content Include="web\views\TransportOrders\TransportPositions.js" />
-    <Content Include="web\views\Orders\AdditionalCostsSearch.js" />
+    <Content Include="web\views\Orders\MaterialSearch.js" />
     <Content Include="web\views\Orders\CreateInvoiceConfirmation.js" />
     <Content Include="web\views\Orders\ProductSearch.js" />
     <Content Include="web\views\Orders\FilterProductSmart.js" />
@@ -1052,12 +1052,12 @@
     <Content Include="web\views\Home\Login.js" />
     <Content Include="web\master-footer.js" />
     <Content Include="web\master.js" />
-    <Content Include="web\views\Orders\RentPositions.js" />
+    <Content Include="web\views\Orders\ProductPositions.js" />
     <Content Include="web\views\Orders\Positions.js" />
     <Content Include="web\views\Orders\Orders.js" />
     <Content Include="web\views\Orders\OrdersRelationships.js" />
-    <Content Include="web\views\Orders\SalePositions.js" />
-    <Content Include="web\views\Orders\SelectAdditionalCosts.js" />
+    <Content Include="web\views\Orders\MaterialPositions.js" />
+    <Content Include="web\views\Orders\SelectMaterial.js" />
     <Content Include="web\views\Orders\SelectProduct.js" />
     <Content Include="web\views\Orders\SelectCustomer.js" />
     <Content Include="web\views\Settings\AddAdditionalCosts.js">

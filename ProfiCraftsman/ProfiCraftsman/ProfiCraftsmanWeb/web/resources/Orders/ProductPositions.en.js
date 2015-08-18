@@ -3,8 +3,6 @@ define(function () {
 
 	var resources = {
 
-		add: 'Add Position',
-	    edit: 'Edit Position',
 		pleaseSelect: 'Please select',
 		orderId: 'Order',
 		isSellOrder: 'is sell position',
@@ -14,8 +12,8 @@ define(function () {
 		price: 'Price',
 		fromDate: 'From date',
 		toDate: 'To date',
-		rentProduct: 'Product rent',
-		saleProduct: 'Product sale',
+		addProduct: 'Add product',
+		addMaterial: 'Add material',
 		selectAdditionalCosts: 'additional costs',
 		amount: 'Amount',
 		isMain: 'Main',

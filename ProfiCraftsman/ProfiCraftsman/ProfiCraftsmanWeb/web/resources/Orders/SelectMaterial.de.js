@@ -2,7 +2,7 @@
 	'use strict';
 
 	var resources = {
-	    title: 'Nebenkosten',
+	    title: 'Materialien',
 
 	};
 

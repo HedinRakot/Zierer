@@ -2,7 +2,7 @@
 	'use strict';
 
 	var resources = {
-	    title: 'Select additional costs',
+	    title: 'Select material',
 
 	};
 

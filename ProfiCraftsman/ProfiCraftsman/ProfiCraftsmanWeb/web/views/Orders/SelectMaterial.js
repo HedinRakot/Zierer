@@ -1,7 +1,7 @@
 ﻿define([
 	'base/base-window-view',
-    'l!t!Orders/AdditionalCostsSearch',
-], function (BaseView, AdditionalCostsSearchView) {
+    'l!t!Orders/MaterialSearch',
+], function (BaseView, MaterialSearchView) {
     'use strict';
 
     var view = BaseView.extend({
@@ -15,7 +15,7 @@
             var options = {
                 success: function (model) {
  
-                    self.trigger('selectAdditionalCosts', model);
+                    self.trigger('selectMaterial', model);
                     self.close();
                 },
                 closeWindow: function () {
@@ -23,8 +23,8 @@
                 }
             };
 
-            var additionalCostsSearchView = new AdditionalCostsSearchView(options);
-            self.showView(additionalCostsSearchView, '.additionalCosts');
+            var materialSearchView = new MaterialSearchView(options);
+            self.showView(materialSearchView, '.materials');
 
             return this;
         },

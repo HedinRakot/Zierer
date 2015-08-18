@@ -159,7 +159,7 @@
     <Compile Include="Controllers\Invoices\InvoicesController.cs" />
     <Compile Include="Controllers\Orders\DeleteAllOrderPositionsController.cs" />
     <Compile Include="Controllers\Orders\CopyOrderController.cs" />
-    <Compile Include="Controllers\Orders\OrderContainerEquipmentsController.cs" />
+    <Compile Include="Controllers\Orders\OrderProductMaterialsController.cs" />
     <Compile Include="Controllers\Settings\CopyContainerController.cs" />
     <Compile Include="Controllers\Settings\MaterialsController.cs">
       <DependentUpon>Controllers.tt</DependentUpon>

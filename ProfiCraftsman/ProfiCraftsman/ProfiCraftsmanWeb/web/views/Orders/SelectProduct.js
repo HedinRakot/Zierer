@@ -32,8 +32,6 @@
                     self.close();
                 },
                 productTypes: self.options.productTypes,
-                equipments: self.options.equipments,
-                isOffer: self.options.isOffer,
             };
             
 
