@@ -25,15 +25,14 @@ define([
 			'#color': 'color',
 			'#price': 'price',
 			'#proceedsAccount': 'proceedsAccount',
-			'#isVirtual': 'isVirtual',
-			'#manufactureDate': 'manufactureDate',
 			'#boughtFrom': 'boughtFrom',
 			'#boughtPrice': 'boughtPrice',
 			'#comment': 'comment',
-			'#sellPrice': 'sellPrice',
-			'#isSold': 'isSold',
-			'#minPrice': 'minPrice',
-			'#newPrice': 'newPrice',
+			'#name': 'name',
+			'#productAmountType': { observe: 'productAmountType',
+				selectOptions: { labelPath: 'name', valuePath: 'id',
+				collection: self.options.productAmountTypes
+				,defaultOption: {label: self.resources.pleaseSelect,value: null}},},
 			};
 
             return result;
@@ -52,15 +51,11 @@ define([
 			this.disableInput(this, 'color');
 			this.disableInput(this, 'price', 'numeric');
 			this.disableInput(this, 'proceedsAccount', 'numeric');
-			this.disableInput(this, 'isVirtual');
-			this.disableInput(this, 'manufactureDate', 'date');
 			this.disableInput(this, 'boughtFrom');
 			this.disableInput(this, 'boughtPrice', 'numeric');
 			this.disableInput(this, 'comment');
-			this.disableInput(this, 'sellPrice', 'numeric');
-			this.disableInput(this, 'isSold');
-			this.disableInput(this, 'minPrice', 'numeric');
-			this.disableInput(this, 'newPrice', 'numeric');
+			this.disableInput(this, 'name');
+			this.disableInput(this, 'productAmountType', 'select');
 
             return this;
         }

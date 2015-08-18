@@ -23,31 +23,26 @@ namespace ProfiCraftsman.API.Models.Settings
         /// <summary>
         ///     Model property for <see cref="Products.ProductTypeId"/> entity
         /// </summary>
-        [Required]
         [DataMember]
-        public int productTypeId{ get; set; }
+        public int? productTypeId{ get; set; }
         /// <summary>
         ///     Model property for <see cref="Products.Length"/> entity
         /// </summary>
-        [Required]
         [DataMember]
-        public int length{ get; set; }
+        public int? length{ get; set; }
         /// <summary>
         ///     Model property for <see cref="Products.Width"/> entity
         /// </summary>
-        [Required]
         [DataMember]
-        public int width{ get; set; }
+        public int? width{ get; set; }
         /// <summary>
         ///     Model property for <see cref="Products.Height"/> entity
         /// </summary>
-        [Required]
         [DataMember]
-        public int height{ get; set; }
+        public int? height{ get; set; }
         /// <summary>
         ///     Model property for <see cref="Products.Color"/> entity
         /// </summary>
-        [Required]
         [DataMember]
         public string color{ get; set; }
         /// <summary>
@@ -63,16 +58,6 @@ namespace ProfiCraftsman.API.Models.Settings
         [DataMember]
         public int proceedsAccount{ get; set; }
         /// <summary>
-        ///     Model property for <see cref="Products.IsVirtual"/> entity
-        /// </summary>
-        [DataMember]
-        public bool isVirtual{ get; set; }
-        /// <summary>
-        ///     Model property for <see cref="Products.ManufactureDate"/> entity
-        /// </summary>
-        [DataMember]
-        public DateTime? manufactureDate{ get; set; }
-        /// <summary>
         ///     Model property for <see cref="Products.BoughtFrom"/> entity
         /// </summary>
         [DataMember]
@@ -80,36 +65,26 @@ namespace ProfiCraftsman.API.Models.Settings
         /// <summary>
         ///     Model property for <see cref="Products.BoughtPrice"/> entity
         /// </summary>
+        [Required]
         [DataMember]
-        public double? boughtPrice{ get; set; }
+        public double boughtPrice{ get; set; }
         /// <summary>
         ///     Model property for <see cref="Products.Comment"/> entity
         /// </summary>
         [DataMember]
         public string comment{ get; set; }
         /// <summary>
-        ///     Model property for <see cref="Products.SellPrice"/> entity
+        ///     Model property for <see cref="Products.Name"/> entity
         /// </summary>
         [Required]
         [DataMember]
-        public double sellPrice{ get; set; }
+        public string name{ get; set; }
         /// <summary>
-        ///     Model property for <see cref="Products.IsSold"/> entity
-        /// </summary>
-        [DataMember]
-        public bool isSold{ get; set; }
-        /// <summary>
-        ///     Model property for <see cref="Products.MinPrice"/> entity
+        ///     Model property for <see cref="Products.ProductAmountType"/> entity
         /// </summary>
         [Required]
         [DataMember]
-        public double minPrice{ get; set; }
-        /// <summary>
-        ///     Model property for <see cref="Products.NewPrice"/> entity
-        /// </summary>
-        [Required]
-        [DataMember]
-        public double newPrice{ get; set; }
+        public int productAmountType{ get; set; }
 
     }
 }

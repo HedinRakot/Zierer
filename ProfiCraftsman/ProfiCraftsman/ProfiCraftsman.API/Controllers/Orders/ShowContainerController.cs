@@ -85,13 +85,13 @@ namespace ProfiCraftsman.API.Controllers
                     if (model.Equipments != null && model.Equipments.Count() != 0)
                     {
                         positionsQuery = positionsQuery.ToList()
-                            .Where(r => model.Equipments.All(o => r.Products.ProductEquipmentRsps.Select(t => t.EquipmentId).Contains(o))).AsQueryable();
+                            .Where(r => model.Equipments.All(o => r.Products.ProductMaterialRsps.Select(t => t.MaterialId).Contains(o))).AsQueryable();
                     }
 
                     var positions = positionsQuery.ToList();
 
                     //process rented Products in case if they are available at some days
-                    foreach (var product in positions.Select(o => o.Products).Where(o => !o.IsSold).Distinct())
+                    foreach (var product in positions.Select(o => o.Products).Distinct())
                     {
                         DateTime? startDate = null;
                         DateTime? endDate = null;
@@ -151,16 +151,16 @@ namespace ProfiCraftsman.API.Controllers
             List<int> productTypeIds)
         {
             var ids = positions.Select(o => o.ProductId.Value).Distinct();
-            var freeProducts = manager.GetEntities(o => !o.IsSold && !ids.Contains(o.Id) &&
+            var freeProducts = manager.GetEntities(o => !ids.Contains(o.Id) &&
                 (model.ProductTypeId == 0 || o.ProductTypeId == model.ProductTypeId) &&
                 (String.IsNullOrEmpty(model.Name) || o.Number.ToLower().Contains(model.Name.ToLower())));
 
-            freeProducts = freeProducts.Where(o => productTypeIds.Contains(o.ProductTypeId));
+            freeProducts = freeProducts.Where(o => o.ProductTypeId.HasValue && productTypeIds.Contains(o.ProductTypeId.Value));
 
             if (model.Equipments != null && model.Equipments.Count() != 0)
             {
                 freeProducts = freeProducts.ToList()
-                    .Where(r => model.Equipments.All(o => r.ProductEquipmentRsps.Select(t => t.EquipmentId).Contains(o)));
+                    .Where(r => model.Equipments.All(o => r.ProductMaterialRsps.Select(t => t.MaterialId).Contains(o)));
             }
 
             foreach (var product in freeProducts.ToList())

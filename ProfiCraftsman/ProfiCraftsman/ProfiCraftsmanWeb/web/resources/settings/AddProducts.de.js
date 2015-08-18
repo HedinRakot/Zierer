@@ -3,10 +3,10 @@ define(function () {
 
 	var resources = {
 
-		add: 'Produkt anlegen',
-	    edit: 'Produkt editieren',
+		add: 'Leistung anlegen',
+	    edit: 'Leistung editieren',
 	    masterData: 'Einstellungen',
-	    pageTitle: 'Produkt',
+	    pageTitle: 'Leistung',
 		pleaseSelect: 'Bitte auswählen',
 		number: 'Nummer',	
 		productTypeId: 'Leistungsart',	
@@ -16,15 +16,11 @@ define(function () {
 		color: 'Farbe',	
 		price: 'Preis',	
 		proceedsAccount: 'Erlös-Konto',	
-		isVirtual: 'virtuell',	
-		manufactureDate: 'Baujahr',	
 		boughtFrom: 'Gekauft von',	
 		boughtPrice: 'Kaufpreis',	
 		comment: 'Bemerkung',	
-		sellPrice: 'Verkaufpreis',	
-		isSold: 'verkauft',	
-		minPrice: 'Min Preis',	
-		newPrice: 'Neupreis',	
+		name: 'Leistungsname',	
+		productAmountType: 'Einheit',	
 	};
 
 	return resources;

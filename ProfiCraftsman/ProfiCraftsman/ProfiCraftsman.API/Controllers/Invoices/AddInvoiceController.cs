@@ -104,11 +104,11 @@ namespace ProfiCraftsman.API.Controllers.Invoices
 
                 if (amount != 0)
                 {
-                    if (isSell && orderPosition.Products != null && 
-                        !orderPosition.Products.IsVirtual)
-                    {
-                        orderPosition.Products.IsSold = true;
-                    }
+                    //if (isSell && orderPosition.Products != null && 
+                    //    !orderPosition.Products.IsVirtual)
+                    //{
+                    //    orderPosition.Products.IsSold = true;
+                    //}
 
                     var newPosition = new InvoicePositions()
                     {

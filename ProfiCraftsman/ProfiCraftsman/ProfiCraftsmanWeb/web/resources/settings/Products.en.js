@@ -17,15 +17,11 @@ define(function () {
 		color: 'Color',	
 		price: 'Price',	
 		proceedsAccount: 'Account',	
-		isVirtual: 'virtual',	
-		manufactureDate: 'Manufacture date',	
 		boughtFrom: 'Bought from',	
 		boughtPrice: 'Bought price',	
 		comment: 'Comment',	
-		sellPrice: 'Sell price',	
-		isSold: 'sold',	
-		minPrice: 'Min Price',	
-		newPrice: 'New Price',	
+		name: 'Name',	
+		productAmountType: 'Amount type',	
 	};
 
 	return resources;

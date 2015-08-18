@@ -20,14 +20,14 @@ namespace ProfiCraftsman.API.Controllers
     [AuthorizeByPermissions(PermissionTypes = new[] { Permissions.Orders })]
     public partial class PositionsController: ClientApiController<PositionsModel, Positions, int, IPositionsManager>
     {
-        public IOrderProductEquipmentRspManager OrderProductEquipmentRspManager { get; set; }
+        public IOrderProductMaterialRspManager OrderProductMaterialRspManager { get; set; }
         public IProductsManager ProductManager { get; set; }
 
-        public PositionsController(IPositionsManager manager, IOrderProductEquipmentRspManager orderProductEquipmentRspManager,
+        public PositionsController(IPositionsManager manager, IOrderProductMaterialRspManager orderProductMaterialRspManager,
             IProductsManager productsManager) : 
             base(manager)
         {
-            this.OrderProductEquipmentRspManager = orderProductEquipmentRspManager;
+            this.OrderProductMaterialRspManager = orderProductMaterialRspManager;
             this.ProductManager = productsManager;
         }
 
@@ -86,14 +86,14 @@ namespace ProfiCraftsman.API.Controllers
                 entity.ToDate = model.toDate.HasValue ? model.toDate.Value.Date : DateTime.Now.Date;
 
                 var product = ProductManager.GetById(model.productId.Value);
-                foreach (var equipment in product.ProductEquipmentRsps)
+                foreach (var material in product.ProductMaterialRsps)
                 {
-                    OrderProductEquipmentRspManager.AddEntity(new OrderProductEquipmentRsp()
+                    OrderProductMaterialRspManager.AddEntity(new OrderProductMaterialRsp()
                     {
-                        Amount = equipment.Amount,
+                        Amount = material.Amount,
                         ProductId = model.productId.Value,
                         OrderId = model.orderId,
-                        EquipmentId = equipment.EquipmentId
+                        MaterialId = material.MaterialId
                     });
                 }
             }

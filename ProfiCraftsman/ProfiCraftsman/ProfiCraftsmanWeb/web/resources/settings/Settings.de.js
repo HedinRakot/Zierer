@@ -2,20 +2,19 @@ define(function () {
 	'use strict';
 
 	var resources = {
+        Materials: 'Material',
+        ProductMaterialRsps: 'Materialien',
         Permissions: 'Berechtigung',
         Roles: 'Rolle',
         RolePermissionRsps: 'Berechtigung',
         Users: 'Benutzer',
-        Equipments: 'Ausstattung',
         AdditionalCosts: 'Nebenkosten',
         Taxes: 'Umsatzsteuer',
         TransportProducts: 'Transport-Leistung',
         Customers: 'Kunde',
         CommunicationPartners: 'Ansprechpartner',
         ProductTypes: 'Leistungsart',
-        ProductTypeEquipmentRsps: 'Standard Ausstattungen',
-        Products: 'Produkt',
-        ProductEquipmentRsps: 'Ausstattungen',
+        Products: 'Leistung',
 	};
 
 	return resources;

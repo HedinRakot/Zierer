@@ -9,7 +9,7 @@ namespace ProfiCraftsman.API.Models
     ///     Model for <see cref="OrderProductEquipment"/> entity
     /// </summary>
     [DataContract]
-    public partial class OrderProductEquipmentModel : BaseModel
+    public partial class OrderProductMaterialModel : BaseModel
     { 
         [Required]
         [DataMember]
@@ -21,7 +21,7 @@ namespace ProfiCraftsman.API.Models
 
         [Required]
         [DataMember]
-        public int equipmentId { get; set; }
+        public int materialId { get; set; }
 
         [Required]
         [DataMember]

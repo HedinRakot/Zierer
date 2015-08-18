@@ -2,14 +2,15 @@ define([
 'base/base-object-grid-view',
 'collections/Settings/Products',
 'l!t!Settings/FilterProducts',
+'l!t!Settings/ProductsRelationships',
 'Settings/Custom.Events.Products',
 'Settings/Custom.Toolbar.Products'
-], function (BaseView, Collection, FilterView, CustomEvents, CustomToolbar) {
+], function (BaseView, Collection, FilterView, DetailView, CustomEvents, CustomToolbar) {
 	'use strict';		
 	var view = BaseView.extend({
 
         collectionType: Collection,
-        
+        detailView: DetailView,
         filterView: FilterView,
         tableName: 'Products',
         editUrl: '#Products',
@@ -26,15 +27,9 @@ define([
 			return [
 				{ field: 'number', title: this.resources.number },
 				{ field: 'productTypeId', title: this.resources.productTypeId , collection: this.options.productTypes, defaultText: this.resources.pleaseSelect},
-				{ field: 'length', title: this.resources.length },
-				{ field: 'width', title: this.resources.width },
-				{ field: 'height', title: this.resources.height },
-				{ field: 'color', title: this.resources.color },
 				{ field: 'price', title: this.resources.price },
-				{ field: 'isVirtual', title: this.resources.isVirtual , headerTitle: this.resources.isVirtual, checkbox: true},
-				{ field: 'sellPrice', title: this.resources.sellPrice },
-				{ field: 'isSold', title: this.resources.isSold , headerTitle: this.resources.isSold, checkbox: true},
-				{ field: 'minPrice', title: this.resources.minPrice },
+				{ field: 'name', title: this.resources.name },
+				{ field: 'productAmountType', title: this.resources.productAmountType , collection: this.options.productAmountTypes, defaultText: this.resources.pleaseSelect},
 			];
 		}
 

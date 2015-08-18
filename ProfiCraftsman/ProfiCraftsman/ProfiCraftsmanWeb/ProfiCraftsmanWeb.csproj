@@ -233,13 +233,13 @@
     <Content Include="web\collections\Invoices\InvoicePositions.js" />
     <Content Include="web\collections\Invoices\Invoices.js" />
     <Content Include="web\collections\Equipments.js" />
-    <Content Include="web\collections\Settings\ProductEquipmentRsps.js">
+    <Content Include="web\collections\Settings\Materials.js">
+      <DependentUpon>web.collections.tt</DependentUpon>
+    </Content>
+    <Content Include="web\collections\Settings\ProductMaterialRsps.js">
       <DependentUpon>web.collections.tt</DependentUpon>
     </Content>
     <Content Include="web\collections\Settings\Products.js">
-      <DependentUpon>web.collections.tt</DependentUpon>
-    </Content>
-    <Content Include="web\collections\Settings\ProductTypeEquipmentRsps.js">
       <DependentUpon>web.collections.tt</DependentUpon>
     </Content>
     <Content Include="web\collections\Settings\ProductTypes.js">
@@ -256,9 +256,6 @@
       <DependentUpon>web.collections.tt</DependentUpon>
     </Content>
     <Content Include="web\collections\Settings\Customers.js">
-      <DependentUpon>web.collections.tt</DependentUpon>
-    </Content>
-    <Content Include="web\collections\Settings\Equipments.js">
       <DependentUpon>web.collections.tt</DependentUpon>
     </Content>
     <Content Include="web\collections\Settings\Permissions.js">
@@ -290,19 +287,22 @@
     <Content Include="web\models\InvoiceStornos\InvoiceStornos.js" />
     <Content Include="web\models\Equipments.js" />
     <Content Include="web\models\Settings\FilterCustomers.js" />
+    <Content Include="web\models\Settings\FilterMaterials.js">
+      <DependentUpon>web.models.tt</DependentUpon>
+    </Content>
     <Content Include="web\models\Settings\FilterProducts.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
     <Content Include="web\models\Settings\FilterProductTypes.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
-    <Content Include="web\models\Settings\ProductEquipmentRsp.js">
+    <Content Include="web\models\Settings\Materials.js">
+      <DependentUpon>web.models.tt</DependentUpon>
+    </Content>
+    <Content Include="web\models\Settings\ProductMaterialRsp.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
     <Content Include="web\models\Settings\Products.js">
-      <DependentUpon>web.models.tt</DependentUpon>
-    </Content>
-    <Content Include="web\models\Settings\ProductTypeEquipmentRsp.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
     <Content Include="web\models\Settings\ProductTypes.js">
@@ -327,13 +327,7 @@
     <Content Include="web\models\Settings\Customers.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
-    <Content Include="web\models\Settings\Equipments.js">
-      <DependentUpon>web.models.tt</DependentUpon>
-    </Content>
     <Content Include="web\models\Settings\FilterAdditionalCosts.js">
-      <DependentUpon>web.models.tt</DependentUpon>
-    </Content>
-    <Content Include="web\models\Settings\FilterEquipments.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
     <Content Include="web\models\Settings\FilterPermission.js">
@@ -401,22 +395,22 @@
     <Content Include="web\resources\Orders\Equipments.en.js" />
     <Content Include="web\resources\Orders\FilterOffersProductSmart.de.js" />
     <Content Include="web\resources\Orders\FilterOffersProductSmart.en.js" />
-    <Content Include="web\resources\Settings\AddProductEquipmentRsp.de.js">
+    <Content Include="web\resources\Settings\AddMaterials.de.js">
       <DependentUpon>web.add.resources.tt</DependentUpon>
     </Content>
-    <Content Include="web\resources\Settings\AddProductEquipmentRsp.en.js">
+    <Content Include="web\resources\Settings\AddMaterials.en.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\AddProductMaterialRsp.de.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\AddProductMaterialRsp.en.js">
       <DependentUpon>web.add.resources.tt</DependentUpon>
     </Content>
     <Content Include="web\resources\Settings\AddProducts.de.js">
       <DependentUpon>web.add.resources.tt</DependentUpon>
     </Content>
     <Content Include="web\resources\Settings\AddProducts.en.js">
-      <DependentUpon>web.add.resources.tt</DependentUpon>
-    </Content>
-    <Content Include="web\resources\Settings\AddProductTypeEquipmentRsp.de.js">
-      <DependentUpon>web.add.resources.tt</DependentUpon>
-    </Content>
-    <Content Include="web\resources\Settings\AddProductTypeEquipmentRsp.en.js">
       <DependentUpon>web.add.resources.tt</DependentUpon>
     </Content>
     <Content Include="web\resources\Settings\AddProductTypes.de.js">
@@ -427,6 +421,12 @@
     </Content>
     <Content Include="web\resources\Settings\FilterCustomers.de.js" />
     <Content Include="web\resources\Settings\FilterCustomers.en.js" />
+    <Content Include="web\resources\Settings\FilterMaterials.de.js">
+      <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\FilterMaterials.en.js">
+      <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
     <Content Include="web\resources\Settings\FilterProducts.de.js">
       <DependentUpon>web.filter.resources.tt</DependentUpon>
     </Content>
@@ -439,10 +439,22 @@
     <Content Include="web\resources\Settings\FilterProductTypes.en.js">
       <DependentUpon>web.filter.resources.tt</DependentUpon>
     </Content>
-    <Content Include="web\resources\Settings\ProductEquipmentRsps.de.js">
+    <Content Include="web\resources\Settings\Materials.de.js">
       <DependentUpon>web.resources.tt</DependentUpon>
     </Content>
-    <Content Include="web\resources\Settings\ProductEquipmentRsps.en.js">
+    <Content Include="web\resources\Settings\Materials.en.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\MaterialsRelationships.de.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\MaterialsRelationships.en.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\ProductMaterialRsps.de.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\ProductMaterialRsps.en.js">
       <DependentUpon>web.resources.tt</DependentUpon>
     </Content>
     <Content Include="web\resources\Settings\Products.de.js">
@@ -456,12 +468,6 @@
     </Content>
     <Content Include="web\resources\Settings\ProductsRelationships.en.js">
       <DependentUpon>web.relationships.resources.tt</DependentUpon>
-    </Content>
-    <Content Include="web\resources\Settings\ProductTypeEquipmentRsps.de.js">
-      <DependentUpon>web.resources.tt</DependentUpon>
-    </Content>
-    <Content Include="web\resources\Settings\ProductTypeEquipmentRsps.en.js">
-      <DependentUpon>web.resources.tt</DependentUpon>
     </Content>
     <Content Include="web\resources\Settings\ProductTypes.de.js">
       <DependentUpon>web.resources.tt</DependentUpon>
@@ -555,12 +561,6 @@
     <Content Include="web\resources\Settings\AddCustomers.en.js">
       <DependentUpon>web.add.resources.tt</DependentUpon>
     </Content>
-    <Content Include="web\resources\Settings\AddEquipments.de.js">
-      <DependentUpon>web.add.resources.tt</DependentUpon>
-    </Content>
-    <Content Include="web\resources\Settings\AddEquipments.en.js">
-      <DependentUpon>web.add.resources.tt</DependentUpon>
-    </Content>
     <Content Include="web\resources\Settings\AdditionalCosts.de.js">
       <DependentUpon>web.resources.tt</DependentUpon>
     </Content>
@@ -633,28 +633,10 @@
     <Content Include="web\resources\Settings\CustomersRelationships.en.js">
       <DependentUpon>web.relationships.resources.tt</DependentUpon>
     </Content>
-    <Content Include="web\resources\Settings\Equipments.de.js">
-      <DependentUpon>web.resources.tt</DependentUpon>
-    </Content>
-    <Content Include="web\resources\Settings\Equipments.en.js">
-      <DependentUpon>web.resources.tt</DependentUpon>
-    </Content>
-    <Content Include="web\resources\Settings\EquipmentsRelationships.de.js">
-      <DependentUpon>web.relationships.resources.tt</DependentUpon>
-    </Content>
-    <Content Include="web\resources\Settings\EquipmentsRelationships.en.js">
-      <DependentUpon>web.relationships.resources.tt</DependentUpon>
-    </Content>
     <Content Include="web\resources\Settings\FilterAdditionalCosts.de.js">
       <DependentUpon>web.filter.resources.tt</DependentUpon>
     </Content>
     <Content Include="web\resources\Settings\FilterAdditionalCosts.en.js">
-      <DependentUpon>web.filter.resources.tt</DependentUpon>
-    </Content>
-    <Content Include="web\resources\Settings\FilterEquipments.de.js">
-      <DependentUpon>web.filter.resources.tt</DependentUpon>
-    </Content>
-    <Content Include="web\resources\Settings\FilterEquipments.en.js">
       <DependentUpon>web.filter.resources.tt</DependentUpon>
     </Content>
     <Content Include="web\resources\Settings\FilterPermission.de.js">
@@ -797,26 +779,35 @@
     <Content Include="web\templates\Invoices\AddInvoicePositions.html" />
     <Content Include="web\templates\Orders\Equipments.html" />
     <Content Include="web\templates\Orders\FilterOffersProductSmart.html" />
-    <Content Include="web\templates\Settings\AddProductEquipmentRsp.html">
+    <Content Include="web\templates\Settings\AddMaterials.html">
+      <DependentUpon>web.add.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\AddProductMaterialRsp.html">
       <DependentUpon>web.add.templates.tt</DependentUpon>
     </Content>
     <Content Include="web\templates\Settings\AddProducts.html">
-      <DependentUpon>web.add.templates.tt</DependentUpon>
-    </Content>
-    <Content Include="web\templates\Settings\AddProductTypeEquipmentRsp.html">
       <DependentUpon>web.add.templates.tt</DependentUpon>
     </Content>
     <Content Include="web\templates\Settings\AddProductTypes.html">
       <DependentUpon>web.add.templates.tt</DependentUpon>
     </Content>
     <Content Include="web\templates\Settings\FilterCustomers.html" />
+    <Content Include="web\templates\Settings\FilterMaterials.html">
+      <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
     <Content Include="web\templates\Settings\FilterProducts.html">
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
     <Content Include="web\templates\Settings\FilterProductTypes.html">
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
-    <Content Include="web\templates\Settings\ProductEquipmentRsps.html">
+    <Content Include="web\templates\Settings\Materials.html">
+      <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\MaterialsRelationships.html">
+      <DependentUpon>web.relationships.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\ProductMaterialRsps.html">
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
     <Content Include="web\templates\Settings\Products.html">
@@ -824,9 +815,6 @@
     </Content>
     <Content Include="web\templates\Settings\ProductsRelationships.html">
       <DependentUpon>web.relationships.templates.tt</DependentUpon>
-    </Content>
-    <Content Include="web\templates\Settings\ProductTypeEquipmentRsps.html">
-      <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
     <Content Include="web\templates\Settings\ProductTypes.html">
       <DependentUpon>web.templates.tt</DependentUpon>
@@ -874,9 +862,6 @@
     <Content Include="web\templates\Settings\AddCustomers.html">
       <DependentUpon>web.add.templates.tt</DependentUpon>
     </Content>
-    <Content Include="web\templates\Settings\AddEquipments.html">
-      <DependentUpon>web.add.templates.tt</DependentUpon>
-    </Content>
     <Content Include="web\templates\Settings\AdditionalCosts.html">
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
@@ -911,16 +896,7 @@
     <Content Include="web\templates\Settings\CustomersRelationships.html">
       <DependentUpon>web.relationships.templates.tt</DependentUpon>
     </Content>
-    <Content Include="web\templates\Settings\Equipments.html">
-      <DependentUpon>web.templates.tt</DependentUpon>
-    </Content>
-    <Content Include="web\templates\Settings\EquipmentsRelationships.html">
-      <DependentUpon>web.relationships.templates.tt</DependentUpon>
-    </Content>
     <Content Include="web\templates\Settings\FilterAdditionalCosts.html">
-      <DependentUpon>web.templates.tt</DependentUpon>
-    </Content>
-    <Content Include="web\templates\Settings\FilterEquipments.html">
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
     <Content Include="web\templates\Settings\FilterPermission.html">
@@ -1007,13 +983,13 @@
     <Content Include="web\views\Invoices\AddInvoicePositions.js" />
     <Content Include="web\views\Orders\Equipments.js" />
     <Content Include="web\views\Orders\FilterOffersProductSmart.js" />
-    <Content Include="web\views\Settings\AddProductEquipmentRsp.js">
+    <Content Include="web\views\Settings\AddMaterials.js">
+      <DependentUpon>web.add.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\AddProductMaterialRsp.js">
       <DependentUpon>web.add.views.tt</DependentUpon>
     </Content>
     <Content Include="web\views\Settings\AddProducts.js">
-      <DependentUpon>web.add.views.tt</DependentUpon>
-    </Content>
-    <Content Include="web\views\Settings\AddProductTypeEquipmentRsp.js">
       <DependentUpon>web.add.views.tt</DependentUpon>
     </Content>
     <Content Include="web\views\Settings\AddProductTypes.js">
@@ -1022,13 +998,22 @@
     <Content Include="web\views\Settings\Custom.Toolbar.Products.js" />
     <Content Include="web\views\Settings\Custom.Events.Products.js" />
     <Content Include="web\views\Settings\FilterCustomers.js" />
+    <Content Include="web\views\Settings\FilterMaterials.js">
+      <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
     <Content Include="web\views\Settings\FilterProducts.js">
       <DependentUpon>web.views.tt</DependentUpon>
     </Content>
     <Content Include="web\views\Settings\FilterProductTypes.js">
       <DependentUpon>web.views.tt</DependentUpon>
     </Content>
-    <Content Include="web\views\Settings\ProductEquipmentRsps.js">
+    <Content Include="web\views\Settings\Materials.js">
+      <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\MaterialsRelationships.js">
+      <DependentUpon>web.relationships.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\ProductMaterialRsps.js">
       <DependentUpon>web.related.views.tt</DependentUpon>
     </Content>
     <Content Include="web\views\Settings\Products.js">
@@ -1036,9 +1021,6 @@
     </Content>
     <Content Include="web\views\Settings\ProductsRelationships.js">
       <DependentUpon>web.relationships.views.tt</DependentUpon>
-    </Content>
-    <Content Include="web\views\Settings\ProductTypeEquipmentRsps.js">
-      <DependentUpon>web.related.views.tt</DependentUpon>
     </Content>
     <Content Include="web\views\Settings\ProductTypes.js">
       <DependentUpon>web.views.tt</DependentUpon>
@@ -1087,9 +1069,6 @@
     <Content Include="web\views\Settings\AddCustomers.js">
       <DependentUpon>web.add.views.tt</DependentUpon>
     </Content>
-    <Content Include="web\views\Settings\AddEquipments.js">
-      <DependentUpon>web.add.views.tt</DependentUpon>
-    </Content>
     <Content Include="web\views\Settings\AdditionalCosts.js">
       <DependentUpon>web.views.tt</DependentUpon>
     </Content>
@@ -1124,16 +1103,7 @@
     <Content Include="web\views\Settings\CustomersRelationships.js">
       <DependentUpon>web.relationships.views.tt</DependentUpon>
     </Content>
-    <Content Include="web\views\Settings\Equipments.js">
-      <DependentUpon>web.views.tt</DependentUpon>
-    </Content>
-    <Content Include="web\views\Settings\EquipmentsRelationships.js">
-      <DependentUpon>web.relationships.views.tt</DependentUpon>
-    </Content>
     <Content Include="web\views\Settings\FilterAdditionalCosts.js">
-      <DependentUpon>web.views.tt</DependentUpon>
-    </Content>
-    <Content Include="web\views\Settings\FilterEquipments.js">
       <DependentUpon>web.views.tt</DependentUpon>
     </Content>
     <Content Include="web\views\Settings\FilterPermission.js">

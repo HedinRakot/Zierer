@@ -9,7 +9,8 @@ define([
         tabs: function () {
             
             var result = [
-				                
+				{ view: 'l!t!Settings/ProductMaterialRsps', selector: '.materials'},
+                
             ];
             
             return result;

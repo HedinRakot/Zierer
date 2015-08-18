@@ -161,13 +161,13 @@
     <Compile Include="Controllers\Orders\CopyOrderController.cs" />
     <Compile Include="Controllers\Orders\OrderContainerEquipmentsController.cs" />
     <Compile Include="Controllers\Settings\CopyContainerController.cs" />
-    <Compile Include="Controllers\Settings\ProductEquipmentRspsController.cs">
+    <Compile Include="Controllers\Settings\MaterialsController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Settings\ProductMaterialRspsController.cs">
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Settings\ProductsController.cs">
-      <DependentUpon>Controllers.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\Settings\ProductTypeEquipmentRspsController.cs">
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Settings\ProductTypesController.cs">
@@ -200,13 +200,10 @@
     <Compile Include="Controllers\Settings\Custom.CustomersController.cs" />
     <Compile Include="Controllers\Settings\Custom.TransportProductsController.cs" />
     <Compile Include="Controllers\Settings\Custom.TaxesController.cs" />
-    <Compile Include="Controllers\Settings\Custom.EquipmentsController.cs" />
+    <Compile Include="Controllers\Settings\Custom.MaterialsController.cs" />
     <Compile Include="Controllers\Settings\Custom.AdditionalCostsController.cs" />
     <Compile Include="Controllers\Settings\Custom.UserController.cs" />
     <Compile Include="Controllers\Settings\CustomersController.cs">
-      <DependentUpon>Controllers.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\Settings\EquipmentsController.cs">
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Settings\MasterDataViewCollectionControllerFactory.cs">
@@ -241,13 +238,13 @@
     <Compile Include="Models\Invoices\AddInvoiceModel.cs" />
     <Compile Include="Models\Invoices\InvoicesModel.cs" />
     <Compile Include="Models\Orders\OrderProductEquipmentModel.cs" />
-    <Compile Include="Models\Settings\ProductEquipmentRspModel.cs">
+    <Compile Include="Models\Settings\MaterialsModel.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Settings\ProductMaterialRspModel.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Settings\ProductsModel.cs">
-      <DependentUpon>Models.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Settings\ProductTypeEquipmentRspModel.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Settings\ProductTypesModel.cs">
@@ -270,9 +267,6 @@
     <Compile Include="Models\Settings\Custom.MasterDataMonitorableInfoMasterDataNotificationsRspModel.cs" />
     <Compile Include="Models\Settings\Custom.UserModel.cs" />
     <Compile Include="Models\Settings\CustomersModel.cs">
-      <DependentUpon>Models.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Settings\EquipmentsModel.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Settings\PermissionModel.cs">

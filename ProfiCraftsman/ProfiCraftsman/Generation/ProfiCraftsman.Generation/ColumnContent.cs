@@ -24,5 +24,6 @@ namespace ProfiCraftsman.Generation
         public int ColumnNumber { get; set; }
         public int GridColumnWidth { get; set; }
         public int AddViewColumnWidth { get; set; }
+        public int? Rows { get; set; }
     }
 }

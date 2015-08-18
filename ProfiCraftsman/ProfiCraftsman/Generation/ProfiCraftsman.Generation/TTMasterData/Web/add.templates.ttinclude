@@ -18,6 +18,7 @@
     <table style="width: 100%; vertical-align: top; padding: 0px; margin: 0px; white-space: nowrap;" cellpadding="0" cellspacing="0">
 <#
 		var rowCount = model.ModelProperties.Max(o => o.Column.Content.RowNumber);
+		var columnCount = model.ModelProperties.Max(o => o.Column.Content.ColumnNumber);
 
 		if(rowCount <= 0)
 			rowCount = 1;
@@ -33,7 +34,7 @@
 #>
 		<tr>
 <#
-			var columnCount = rowProperties.Max(o => o.Column.Content.ColumnNumber);
+			//var columnCount = rowProperties.Max(o => o.Column.Content.ColumnNumber);
 
 			if(columnCount <= 0)
 				columnCount = 1;
@@ -46,7 +47,10 @@
 					columnProperties.AddRange(rowProperties.Where(o => o.Column.Content.ColumnNumber == 0).ToList());
 				}
 
-				var maxColumnWidth = columnProperties.Max(o => o.Column.Content.AddViewColumnWidth);
+				var maxColumnWidth = 370;
+				
+				if(columnProperties.Count() != 0 )
+					maxColumnWidth = columnProperties.Max(o => o.Column.Content.AddViewColumnWidth);
 
 #>
 			<td style="padding-right: 25px; vertical-align: top; <#= maxColumnWidth > 0 ? "width: " + maxColumnWidth + "px;" : "" #>">
@@ -60,14 +64,13 @@
 
 					var type = GetPropertyType(context, property);
 #>
-				<div class="editor-label">
-					<label for="<#=property.Name#>" data-localized="<#=property.Name#>"></label>
+				<div class="editor-label" style="float: left; padding-right: 10px;">
+					<label for="<#=property.Name#>" data-localized="<#=property.Name#>"></label><br />
 <#
 					if(property.Type.ShortName != "bool")
 					{		
 #>
-				</div>
-				<div class="editor-field">
+				
 <#
 					}
 
@@ -166,10 +169,10 @@
             case "datetime":
                 return "<input type=\"text\" data-role=\"datepicker\"";
             default:
-				if (property.Property.Length.HasValue && property.Property.Length > 50)
+				if (property.Property.Length.HasValue && property.Property.Length > 50 && property.Column.Content.Rows.HasValue)
                 {
-					return String.Format("<textarea type=\"text\" class=\"k-textbox\" rows=\"5\" style=\"width: {0}px\"",
-						property.Column.Content.AddViewColumnWidth > 0 ? property.Column.Content.AddViewColumnWidth : 362);
+					return String.Format("<textarea type=\"text\" class=\"k-textbox\" rows=\"{1}\" style=\"width: {0}px\"",
+						property.Column.Content.AddViewColumnWidth > 0 ? property.Column.Content.AddViewColumnWidth : 362, property.Column.Content.Rows.Value);
                 }
                 else
 				{

@@ -30,15 +30,11 @@ namespace ProfiCraftsman.API.Controllers.Settings
             model.color = entity.Color;
             model.price = entity.Price;
             model.proceedsAccount = entity.ProceedsAccount;
-            model.isVirtual = entity.IsVirtual;
-            model.manufactureDate = entity.ManufactureDate;
             model.boughtFrom = entity.BoughtFrom;
             model.boughtPrice = entity.BoughtPrice;
             model.comment = entity.Comment;
-            model.sellPrice = entity.SellPrice;
-            model.isSold = entity.IsSold;
-            model.minPrice = entity.MinPrice;
-            model.newPrice = entity.NewPrice;
+            model.name = entity.Name;
+            model.productAmountType = entity.ProductAmountType;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
         }
@@ -52,15 +48,11 @@ namespace ProfiCraftsman.API.Controllers.Settings
             entity.Color = model.color;
             entity.Price = model.price;
             entity.ProceedsAccount = model.proceedsAccount;
-            entity.IsVirtual = model.isVirtual;
-            entity.ManufactureDate = model.manufactureDate;
             entity.BoughtFrom = model.boughtFrom;
             entity.BoughtPrice = model.boughtPrice;
             entity.Comment = model.comment;
-            entity.SellPrice = model.sellPrice;
-            entity.IsSold = model.isSold;
-            entity.MinPrice = model.minPrice;
-            entity.NewPrice = model.newPrice;
+            entity.Name = model.name;
+            entity.ProductAmountType = model.productAmountType;
         }
     }
 }

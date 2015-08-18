@@ -10,51 +10,39 @@ define(function () {
 				                    validation: { required: true, maxLength: 20 } }			
 			,productTypeId: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Products', 'productTypeId'), 
-				                    validation: { required: true } }			
+				                    validation: { required: false } }			
 			,length: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Products', 'length'), 
-				                    validation: { required: true } }			
+				                    validation: { required: false } }			
 			,width: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Products', 'width'), 
-				                    validation: { required: true } }			
+				                    validation: { required: false } }			
 			,height: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Products', 'height'), 
-				                    validation: { required: true } }			
+				                    validation: { required: false } }			
 			,color: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('Products', 'color'), 
-				                    validation: { required: true, maxLength: 50 } }			
+				                    validation: { required: false, maxLength: 50 } }			
 			,price: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Products', 'price'), 
 				                    validation: { required: true } }			
 			,proceedsAccount: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Products', 'proceedsAccount'), 
 				                    validation: { required: true } }			
-			,isVirtual: { type: "boolean", 
-			                        editable: Application.canTableItemBeEdit('Products', 'isVirtual'), 
-				                    validation: { required: false } }			
-			,manufactureDate: { type: "date", 
-			                        editable: Application.canTableItemBeEdit('Products', 'manufactureDate'), 
-				                    validation: { required: false, date: true } }			
 			,boughtFrom: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('Products', 'boughtFrom'), 
 				                    validation: { required: false, maxLength: 128 } }			
 			,boughtPrice: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Products', 'boughtPrice'), 
-				                    validation: { required: false } }			
+				                    validation: { required: true } }			
 			,comment: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('Products', 'comment'), 
 				                    validation: { required: false, maxLength: 128 } }			
-			,sellPrice: { type: "number", 
-			                        editable: Application.canTableItemBeEdit('Products', 'sellPrice'), 
-				                    validation: { required: true } }			
-			,isSold: { type: "boolean", 
-			                        editable: Application.canTableItemBeEdit('Products', 'isSold'), 
-				                    validation: { required: false } }			
-			,minPrice: { type: "number", 
-			                        editable: Application.canTableItemBeEdit('Products', 'minPrice'), 
-				                    validation: { required: true } }			
-			,newPrice: { type: "number", 
-			                        editable: Application.canTableItemBeEdit('Products', 'newPrice'), 
+			,name: { type: "string", 
+			                        editable: Application.canTableItemBeEdit('Products', 'name'), 
+				                    validation: { required: true, maxLength: 250 } }			
+			,productAmountType: { type: "number", 
+			                        editable: Application.canTableItemBeEdit('Products', 'productAmountType'), 
 				                    validation: { required: true } }			
 		},
 		defaults: function () {

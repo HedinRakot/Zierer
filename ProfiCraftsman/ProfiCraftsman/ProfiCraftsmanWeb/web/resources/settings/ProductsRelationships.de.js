@@ -4,6 +4,7 @@ define(function () {
 	var resources = {
 	    title: 'Zuordnungen',
 		dataLoading: 'Daten werden geladen. Bitte warten...',
+	    materials: 'Materialien',
 	};
 
 	return resources;

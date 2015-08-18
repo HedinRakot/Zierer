@@ -1,0 +1,45 @@
+<% var title = typeof id !== 'undefined' ? '<label data-localized="edit"></label>' : '<label data-localized="add"></label>'; %>
+
+<span class="breadcrumbs"><a href="#Settings" data-localized="masterData"></a> / 
+	<a href="#ProductMaterialRsps" data-localized="pageTitle"></a> / <%= title %></span>
+
+<form method="post" class="add-model">
+    <table style="width: 100%; vertical-align: top; padding: 0px; margin: 0px; white-space: nowrap;" cellpadding="0" cellspacing="0">
+		<tr>
+			<td style="padding-right: 25px; vertical-align: top; ">
+				<div class="editor-label" style="float: left; padding-right: 10px;">
+					<label for="productId" data-localized="productId"></label><br />
+				
+					<input type="text" data-role="numerictextbox" id="productId" name="productId" />
+				</div> 
+				<div class="editor-label" style="float: left; padding-right: 10px;">
+					<label for="materialId" data-localized="materialId"></label><br />
+				
+					<select style="width: 362px" id="materialId" name="materialId" />
+				</div> 
+				<div class="editor-label" style="float: left; padding-right: 10px;">
+					<label for="amount" data-localized="amount"></label><br />
+				
+					<input type="text" data-role="numerictextbox" id="amount" name="amount" />
+				</div> 
+			</td>
+			<td style="width: 100%;">&nbsp;</td>
+		</tr>
+	</table>
+	<div class="inline-block">        
+    </div>      
+
+    <br />
+    <br />
+
+    <div class="relations-container">
+    </div>
+
+    <br />
+
+    <div>
+        <button class="k-primary k-button save" data-localized="save"></button>
+        <button class="k-button remove" data-localized="delete"></button>
+        <button class="k-button cancel" data-localized="cancel"></button>
+    </div>
+</form>

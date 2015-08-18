@@ -56,14 +56,6 @@ namespace ProfiCraftsman.Contracts.Entities
             /// </summary>
             public static readonly string ProceedsAccount = "ProceedsAccount";
             /// <summary>
-            /// Column name 'IsVirtual' for property <see cref="Products.IsVirtual"/>
-            /// </summary>
-            public static readonly string IsVirtual = "IsVirtual";
-            /// <summary>
-            /// Column name 'ManufactureDate' for property <see cref="Products.ManufactureDate"/>
-            /// </summary>
-            public static readonly string ManufactureDate = "ManufactureDate";
-            /// <summary>
             /// Column name 'BoughtFrom' for property <see cref="Products.BoughtFrom"/>
             /// </summary>
             public static readonly string BoughtFrom = "BoughtFrom";
@@ -88,49 +80,37 @@ namespace ProfiCraftsman.Contracts.Entities
             /// </summary>
             public static readonly string DeleteDate = "DeleteDate";
             /// <summary>
-            /// Column name 'SellPrice' for property <see cref="Products.SellPrice"/>
+            /// Column name 'Name' for property <see cref="Products.Name"/>
             /// </summary>
-            public static readonly string SellPrice = "SellPrice";
+            public static readonly string Name = "Name";
             /// <summary>
-            /// Column name 'IsSold' for property <see cref="Products.IsSold"/>
+            /// Column name 'ProductAmountType' for property <see cref="Products.ProductAmountType"/>
             /// </summary>
-            public static readonly string IsSold = "IsSold";
-            /// <summary>
-            /// Column name 'MinPrice' for property <see cref="Products.MinPrice"/>
-            /// </summary>
-            public static readonly string MinPrice = "MinPrice";
-            /// <summary>
-            /// Column name 'NewPrice' for property <see cref="Products.NewPrice"/>
-            /// </summary>
-            public static readonly string NewPrice = "NewPrice";
+            public static readonly string ProductAmountType = "ProductAmountType";
           
         }
         #endregion
         public int Id{ get; set; }
         public string Number{ get; set; }
-        public int ProductTypeId{ get; set; }
-        public int Length{ get; set; }
-        public int Width{ get; set; }
-        public int Height{ get; set; }
+        public int? ProductTypeId{ get; set; }
+        public int? Length{ get; set; }
+        public int? Width{ get; set; }
+        public int? Height{ get; set; }
         public string Color{ get; set; }
         public double Price{ get; set; }
         public int ProceedsAccount{ get; set; }
-        public bool IsVirtual{ get; set; }
-        public DateTime? ManufactureDate{ get; set; }
         public string BoughtFrom{ get; set; }
-        public double? BoughtPrice{ get; set; }
+        public double BoughtPrice{ get; set; }
         public string Comment{ get; set; }
         public DateTime CreateDate{ get; set; }
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
-        public double SellPrice{ get; set; }
-        public bool IsSold{ get; set; }
-        public double MinPrice{ get; set; }
-        public double NewPrice{ get; set; }
+        public string Name{ get; set; }
+        public int ProductAmountType{ get; set; }
         public virtual ICollection<Positions> Positions{ get; set; }
-        public virtual ICollection<OrderProductEquipmentRsp> OrderProductEquipmentRsps{ get; set; }
+        public virtual ICollection<OrderProductMaterialRsp> OrderProductMaterialRsps{ get; set; }
+        public virtual ICollection<ProductMaterialRsp> ProductMaterialRsps{ get; set; }
         public virtual ProductTypes ProductTypes{ get; set; }
-        public virtual ICollection<ProductEquipmentRsp> ProductEquipmentRsps{ get; set; }
         public bool HasProductTypes
         {
             get { return !ReferenceEquals(ProductTypes, null); }
@@ -161,18 +141,14 @@ namespace ProfiCraftsman.Contracts.Entities
                        Color = Color,
                        Price = Price,
                        ProceedsAccount = ProceedsAccount,
-                       IsVirtual = IsVirtual,
-                       ManufactureDate = ManufactureDate,
                        BoughtFrom = BoughtFrom,
                        BoughtPrice = BoughtPrice,
                        Comment = Comment,
                        CreateDate = CreateDate,
                        ChangeDate = ChangeDate,
                        DeleteDate = DeleteDate,
-                       SellPrice = SellPrice,
-                       IsSold = IsSold,
-                       MinPrice = MinPrice,
-                       NewPrice = NewPrice,
+                       Name = Name,
+                       ProductAmountType = ProductAmountType,
         	           };
         }
     }

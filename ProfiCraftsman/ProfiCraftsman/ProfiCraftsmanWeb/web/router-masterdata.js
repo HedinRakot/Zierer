@@ -8,6 +8,12 @@ define([
 	    getAllMasterDataRoutes: function(baseRouter)
 	    {
 	        var routes = {
+				'Materials': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/Materials', { MaterialAmountTypes: true, }, false),
+	            'Materials/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddMaterials', 'models/Settings/Materials', { MaterialAmountTypes: true, }, false),
+	            'Materials/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddMaterials', 'models/Settings/Materials', { MaterialAmountTypes: true, }, false),
+				'ProductMaterialRsps': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/ProductMaterialRsps', { Materials: true, }, false),
+	            'ProductMaterialRsps/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProductMaterialRsp', 'models/Settings/ProductMaterialRsp', { Materials: true, }, false),
+	            'ProductMaterialRsps/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProductMaterialRsp', 'models/Settings/ProductMaterialRsp', { Materials: true, }, false),
 				'Permissions': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/Permissions', false, false),
 	            'Permissions/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddPermission', 'models/Settings/Permission', false, false),
 	            'Permissions/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddPermission', 'models/Settings/Permission', false, false),
@@ -20,9 +26,6 @@ define([
 				'Users': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/Users', { Role: true, }, false),
 	            'Users/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddUser', 'models/Settings/User', { Role: true, }, false),
 	            'Users/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddUser', 'models/Settings/User', { Role: true, }, false),
-				'Equipments': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/Equipments', false, false),
-	            'Equipments/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddEquipments', 'models/Settings/Equipments', false, false),
-	            'Equipments/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddEquipments', 'models/Settings/Equipments', false, false),
 				'AdditionalCosts': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/AdditionalCosts', false, false),
 	            'AdditionalCosts/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddAdditionalCosts', 'models/Settings/AdditionalCosts', false, false),
 	            'AdditionalCosts/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddAdditionalCosts', 'models/Settings/AdditionalCosts', false, false),
@@ -38,18 +41,12 @@ define([
 				'CommunicationPartners': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/CommunicationPartners', false, false),
 	            'CommunicationPartners/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddCommunicationPartners', 'models/Settings/CommunicationPartners', false, false),
 	            'CommunicationPartners/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddCommunicationPartners', 'models/Settings/CommunicationPartners', false, false),
-				'ProductTypes': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/ProductTypes', { Equipments: true, }, false),
-	            'ProductTypes/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProductTypes', 'models/Settings/ProductTypes', { Equipments: true, }, false),
-	            'ProductTypes/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProductTypes', 'models/Settings/ProductTypes', { Equipments: true, }, false),
-				'ProductTypeEquipmentRsps': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/ProductTypeEquipmentRsps', { Equipments: true, }, false),
-	            'ProductTypeEquipmentRsps/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProductTypeEquipmentRsp', 'models/Settings/ProductTypeEquipmentRsp', { Equipments: true, }, false),
-	            'ProductTypeEquipmentRsps/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProductTypeEquipmentRsp', 'models/Settings/ProductTypeEquipmentRsp', { Equipments: true, }, false),
-				'Products': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/Products', { Equipments: true, ProductTypes: true, }, false),
-	            'Products/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProducts', 'models/Settings/Products', { Equipments: true, ProductTypes: true, }, false),
-	            'Products/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProducts', 'models/Settings/Products', { Equipments: true, ProductTypes: true, }, false),
-				'ProductEquipmentRsps': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/ProductEquipmentRsps', { Equipments: true, }, false),
-	            'ProductEquipmentRsps/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProductEquipmentRsp', 'models/Settings/ProductEquipmentRsp', { Equipments: true, }, false),
-	            'ProductEquipmentRsps/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProductEquipmentRsp', 'models/Settings/ProductEquipmentRsp', { Equipments: true, }, false),
+				'ProductTypes': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/ProductTypes', false, false),
+	            'ProductTypes/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProductTypes', 'models/Settings/ProductTypes', false, false),
+	            'ProductTypes/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProductTypes', 'models/Settings/ProductTypes', false, false),
+				'Products': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/Products', { Materials: true, ProductTypes: true, ProductAmountTypes: true, }, false),
+	            'Products/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProducts', 'models/Settings/Products', { Materials: true, ProductTypes: true, ProductAmountTypes: true, }, false),
+	            'Products/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProducts', 'models/Settings/Products', { Materials: true, ProductTypes: true, ProductAmountTypes: true, }, false),
 			}
         
 	        return routes;

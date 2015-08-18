@@ -14,26 +14,26 @@ using CoreBase.Controllers;
 
 namespace ProfiCraftsman.API.Controllers
 {
-    public partial class OrderProductEquipmentsController : ClientApiController<OrderProductEquipmentModel, OrderProductEquipmentRsp, int, IOrderProductEquipmentRspManager>
+    public partial class OrderProductEquipmentsController : ClientApiController<OrderProductMaterialModel, OrderProductMaterialRsp, int, IOrderProductMaterialRspManager>
     {
 
-        public OrderProductEquipmentsController(IOrderProductEquipmentRspManager manager) : base(manager) { }
+        public OrderProductEquipmentsController(IOrderProductMaterialRspManager manager) : base(manager) { }
 
-        protected override void EntityToModel(OrderProductEquipmentRsp entity, OrderProductEquipmentModel model)
+        protected override void EntityToModel(OrderProductMaterialRsp entity, OrderProductMaterialModel model)
         {
             model.orderId = entity.OrderId;
             model.productId = entity.ProductId;
-            model.equipmentId = entity.EquipmentId;
+            model.materialId = entity.MaterialId;
             model.amount = entity.Amount;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
         }
 
-        protected override void ModelToEntity(OrderProductEquipmentModel model, OrderProductEquipmentRsp entity, ActionTypes actionType)
+        protected override void ModelToEntity(OrderProductMaterialModel model, OrderProductMaterialRsp entity, ActionTypes actionType)
         {
             entity.OrderId = model.orderId;
             entity.ProductId = model.productId;
-            entity.EquipmentId = model.equipmentId;
+            entity.MaterialId = model.materialId;
             entity.Amount = model.amount;
         }
     }

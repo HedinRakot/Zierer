@@ -26,10 +26,6 @@ namespace ProfiCraftsman.Contracts
         /// </summary>
         IQueryable<Positions> Positions{get;}
         /// <summary>
-        ///     Set of <see cref="OrderProductEquipmentRsp"/> entities from table dbo.OrderProduct_Equipment_Rsp
-        /// </summary>
-        IQueryable<OrderProductEquipmentRsp> OrderProductEquipmentRsp{get;}
-        /// <summary>
         ///     Set of <see cref="Invoices"/> entities from table dbo.Invoices
         /// </summary>
         IQueryable<Invoices> Invoices{get;}
@@ -37,6 +33,18 @@ namespace ProfiCraftsman.Contracts
         ///     Set of <see cref="InvoicePositions"/> entities from table dbo.InvoicePositions
         /// </summary>
         IQueryable<InvoicePositions> InvoicePositions{get;}
+        /// <summary>
+        ///     Set of <see cref="Materials"/> entities from table dbo.Materials
+        /// </summary>
+        IQueryable<Materials> Materials{get;}
+        /// <summary>
+        ///     Set of <see cref="OrderProductMaterialRsp"/> entities from table dbo.OrderProduct_Material_Rsp
+        /// </summary>
+        IQueryable<OrderProductMaterialRsp> OrderProductMaterialRsp{get;}
+        /// <summary>
+        ///     Set of <see cref="ProductMaterialRsp"/> entities from table dbo.Product_Material_Rsp
+        /// </summary>
+        IQueryable<ProductMaterialRsp> ProductMaterialRsp{get;}
         /// <summary>
         ///     Set of <see cref="Permission"/> entities from table dbo.Permission
         /// </summary>
@@ -57,10 +65,6 @@ namespace ProfiCraftsman.Contracts
         ///     Set of <see cref="User"/> entities from table dbo.User
         /// </summary>
         IQueryable<User> User{get;}
-        /// <summary>
-        ///     Set of <see cref="Equipments"/> entities from table dbo.Equipments
-        /// </summary>
-        IQueryable<Equipments> Equipments{get;}
         /// <summary>
         ///     Set of <see cref="AdditionalCosts"/> entities from table dbo.AdditionalCosts
         /// </summary>
@@ -94,16 +98,8 @@ namespace ProfiCraftsman.Contracts
         /// </summary>
         IQueryable<TransportPositions> TransportPositions{get;}
         /// <summary>
-        ///     Set of <see cref="ProductTypeEquipmentRsp"/> entities from table dbo.ProductType_Equipment_Rsp
-        /// </summary>
-        IQueryable<ProductTypeEquipmentRsp> ProductTypeEquipmentRsp{get;}
-        /// <summary>
         ///     Set of <see cref="Products"/> entities from table dbo.Products
         /// </summary>
         IQueryable<Products> Products{get;}
-        /// <summary>
-        ///     Set of <see cref="ProductEquipmentRsp"/> entities from table dbo.Product_Equipment_Rsp
-        /// </summary>
-        IQueryable<ProductEquipmentRsp> ProductEquipmentRsp{get;}
     }
 }

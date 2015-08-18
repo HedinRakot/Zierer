@@ -40,35 +40,29 @@ namespace ProfiCraftsman.API.Controllers
                 Comment = product.Comment,
                 ProductTypeId = product.ProductTypeId,
                 Height = product.Height,
-                IsSold = false, //Product.IsSold,
-                IsVirtual = product.IsVirtual,
                 Length = product.Length,
-                ManufactureDate = product.ManufactureDate,
-                MinPrice = product.MinPrice,
-                NewPrice = product.NewPrice,
                 Price = product.Price,
                 ProceedsAccount = product.ProceedsAccount,
-                SellPrice = product.SellPrice,
                 Width = product.Width,
                 Number = String.Empty,
-                ProductEquipmentRsps = new List<ProductEquipmentRsp>(),
+                ProductMaterialRsps = new List<ProductMaterialRsp>(),
                 CreateDate = DateTime.Now,
                 ChangeDate = DateTime.Now,
             };
             
             manager.AddEntity(newProduct);
 
-            foreach(var equipment in product.ProductEquipmentRsps.Where(o => !o.DeleteDate.HasValue).ToList())
+            foreach(var material in product.ProductMaterialRsps.Where(o => !o.DeleteDate.HasValue).ToList())
             {
-                var newPosition = new ProductEquipmentRsp()
+                var newPosition = new ProductMaterialRsp()
                 {
-                    Amount = equipment.Amount,
-                    EquipmentId = equipment.EquipmentId,
+                    Amount = material.Amount,
+                    MaterialId = material.MaterialId,
                     Products = newProduct
                 };
 
                 //positionManager.AddEntity(newPosition);
-                newProduct.ProductEquipmentRsps.Add(newPosition);
+                newProduct.ProductMaterialRsps.Add(newPosition);
             }
 
             manager.SaveChanges();

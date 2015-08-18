@@ -15,6 +15,10 @@ namespace ProfiCraftsman.API.Controllers
     {
         public void GetViewCollections(IDependencyResolver resolver, CollectionTypesModel model, Dictionary<string, IEnumerable<object>> result)
         {
+            if (model.Materials)
+            	result.Add("Materials", GetViewCollection<Materials, int, IMaterialsManager>(
+            		(IMaterialsManager)resolver.GetService(typeof(IMaterialsManager))));
+
             if (model.Permission)
             	result.Add("Permission", GetViewCollection<Permission, int, IPermissionManager>(
             		(IPermissionManager)resolver.GetService(typeof(IPermissionManager))));
@@ -22,10 +26,6 @@ namespace ProfiCraftsman.API.Controllers
             if (model.Role)
             	result.Add("Role", GetViewCollection<Role, int, IRoleManager>(
             		(IRoleManager)resolver.GetService(typeof(IRoleManager))));
-
-            if (model.Equipments)
-            	result.Add("Equipments", GetViewCollection<Equipments, int, IEquipmentsManager>(
-            		(IEquipmentsManager)resolver.GetService(typeof(IEquipmentsManager))));
 
             if (model.TransportProducts)
             	result.Add("TransportProducts", GetViewCollection<TransportProducts, int, ITransportProductsManager>(

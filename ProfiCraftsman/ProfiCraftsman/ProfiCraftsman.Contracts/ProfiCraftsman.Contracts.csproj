@@ -89,9 +89,6 @@
     <Compile Include="Entities\Customers.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Equipments.cs">
-      <DependentUpon>Entities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Entities\InvoicePositions.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
@@ -101,7 +98,10 @@
     <Compile Include="Entities\InvoiceStornos.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\OrderProductEquipmentRsp.cs">
+    <Compile Include="Entities\Materials.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\OrderProductMaterialRsp.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Orders.cs">
@@ -113,13 +113,10 @@
     <Compile Include="Entities\Positions.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\ProductEquipmentRsp.cs">
+    <Compile Include="Entities\ProductMaterialRsp.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Products.cs">
-      <DependentUpon>Entities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\ProductTypeEquipmentRsp.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\ProductTypes.cs">
@@ -163,17 +160,17 @@
     <Compile Include="Managers\ICommunicationPartnersManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Managers\IOrderProductEquipmentRspManager.cs">
+    <Compile Include="Managers\IMaterialsManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Managers\IProductEquipmentRspManager.cs">
+    <Compile Include="Managers\IOrderProductMaterialRspManager.cs">
+      <DependentUpon>IManagers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\IProductMaterialRspManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\IProductsManager.Custom.cs" />
     <Compile Include="Managers\ICustomersManager.cs">
-      <DependentUpon>IManagers.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Managers\IEquipmentsManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\IInvoicePositionsManager.cs">
@@ -195,9 +192,6 @@
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\IProductsManager.cs">
-      <DependentUpon>IManagers.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Managers\IProductTypeEquipmentRspManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\IProductTypesManager.cs">

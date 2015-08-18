@@ -16,6 +16,30 @@ namespace ProfiCraftsman.API
     {
         private static void ProfiCraftsmanTableMappings(IDictionary<string, TableMapping> tables)
         {
+            tables.Add("Materials", new TableMapping("Materials", "Materials", 13)
+            {
+                {"Name", "name"},
+                {"Number", "number"},
+                {"Length", "length"},
+                {"Width", "width"},
+                {"Height", "height"},
+                {"Color", "color"},
+                {"Price", "price"},
+                {"ProceedsAccount", "proceedsAccount"},
+                {"IsVirtual", "isVirtual"},
+                {"BoughtFrom", "boughtFrom"},
+                {"BoughtPrice", "boughtPrice"},
+                {"Comment", "comment"},
+                {"MaterialAmountType", "materialAmountType"},
+            });
+
+            tables.Add("Product_Material_Rsp", new TableMapping("Product_Material_Rsp", "ProductMaterialRsp", 3)
+            {
+                {"ProductId", "productId"},
+                {"MaterialId", "materialId"},
+                {"Amount", "amount"},
+            });
+
             tables.Add("Permission", new TableMapping("Permission", "Permission", 2)
             {
                 {"Name", "name"},
@@ -39,11 +63,6 @@ namespace ProfiCraftsman.API
                 {"Login", "login"},
                 {"Name", "name"},
                 {"Password", "password"},
-            });
-
-            tables.Add("Equipments", new TableMapping("Equipments", "Equipments", 1)
-            {
-                {"Description", "description"},
             });
 
             tables.Add("AdditionalCosts", new TableMapping("AdditionalCosts", "AdditionalCosts", 6)
@@ -114,14 +133,7 @@ namespace ProfiCraftsman.API
                 {"Comment", "comment"},
             });
 
-            tables.Add("ProductType_Equipment_Rsp", new TableMapping("ProductType_Equipment_Rsp", "ProductTypeEquipmentRsp", 3)
-            {
-                {"ProductTypeId", "productTypeId"},
-                {"EquipmentId", "equipmentId"},
-                {"Amount", "amount"},
-            });
-
-            tables.Add("Products", new TableMapping("Products", "Products", 17)
+            tables.Add("Products", new TableMapping("Products", "Products", 13)
             {
                 {"Number", "number"},
                 {"ProductTypeId", "productTypeId"},
@@ -131,22 +143,11 @@ namespace ProfiCraftsman.API
                 {"Color", "color"},
                 {"Price", "price"},
                 {"ProceedsAccount", "proceedsAccount"},
-                {"IsVirtual", "isVirtual"},
-                {"ManufactureDate", "manufactureDate"},
                 {"BoughtFrom", "boughtFrom"},
                 {"BoughtPrice", "boughtPrice"},
                 {"Comment", "comment"},
-                {"SellPrice", "sellPrice"},
-                {"IsSold", "isSold"},
-                {"MinPrice", "minPrice"},
-                {"NewPrice", "newPrice"},
-            });
-
-            tables.Add("Product_Equipment_Rsp", new TableMapping("Product_Equipment_Rsp", "ProductEquipmentRsp", 3)
-            {
-                {"ProductId", "productId"},
-                {"EquipmentId", "equipmentId"},
-                {"Amount", "amount"},
+                {"Name", "name"},
+                {"ProductAmountType", "productAmountType"},
             });
 
         }

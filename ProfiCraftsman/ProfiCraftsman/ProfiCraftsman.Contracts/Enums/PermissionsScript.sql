@@ -37,6 +37,20 @@
 		WHERE ID = 12
 	END
 	
+	IF NOT EXISTS (SELECT ID FROM [ProfiCraftsman].[dbo].[PERMISSION] WHERE ID = 4 )
+	BEGIN
+		INSERT INTO [ProfiCraftsman].[dbo].[PERMISSION] ([Id], [Name], [Description], [CreateDate], [ChangeDate], [DeleteDate])
+		VALUES(4, 'Materials', 'Material' ,GETDATE() ,GETDATE() ,NULL);
+		INSERT INTO [ProfiCraftsman].dbo.ROLE_PERMISSION_RSP(RoleId ,PermissionId ,CreateDate ,ChangeDate) 
+		VALUES (1 ,4 ,getdate() ,getdate());
+	END
+	ELSE
+	BEGIN
+		UPDATE [ProfiCraftsman].[dbo].[PERMISSION]
+		SET [DESCRIPTION] = 'Material'
+		WHERE ID = 4
+	END
+	
 	IF NOT EXISTS (SELECT ID FROM [ProfiCraftsman].[dbo].[PERMISSION] WHERE ID = 1 )
 	BEGIN
 		INSERT INTO [ProfiCraftsman].[dbo].[PERMISSION] ([Id], [Name], [Description], [CreateDate], [ChangeDate], [DeleteDate])
@@ -91,20 +105,6 @@
 		UPDATE [ProfiCraftsman].[dbo].[PERMISSION]
 		SET [DESCRIPTION] = 'Benutzer'
 		WHERE ID = 3
-	END
-	
-	IF NOT EXISTS (SELECT ID FROM [ProfiCraftsman].[dbo].[PERMISSION] WHERE ID = 4 )
-	BEGIN
-		INSERT INTO [ProfiCraftsman].[dbo].[PERMISSION] ([Id], [Name], [Description], [CreateDate], [ChangeDate], [DeleteDate])
-		VALUES(4, 'Equipments', 'Ausstattung' ,GETDATE() ,GETDATE() ,NULL);
-		INSERT INTO [ProfiCraftsman].dbo.ROLE_PERMISSION_RSP(RoleId ,PermissionId ,CreateDate ,ChangeDate) 
-		VALUES (1 ,4 ,getdate() ,getdate());
-	END
-	ELSE
-	BEGIN
-		UPDATE [ProfiCraftsman].[dbo].[PERMISSION]
-		SET [DESCRIPTION] = 'Ausstattung'
-		WHERE ID = 4
 	END
 	
 	IF NOT EXISTS (SELECT ID FROM [ProfiCraftsman].[dbo].[PERMISSION] WHERE ID = 5 )
@@ -194,14 +194,14 @@
 	IF NOT EXISTS (SELECT ID FROM [ProfiCraftsman].[dbo].[PERMISSION] WHERE ID = 10 )
 	BEGIN
 		INSERT INTO [ProfiCraftsman].[dbo].[PERMISSION] ([Id], [Name], [Description], [CreateDate], [ChangeDate], [DeleteDate])
-		VALUES(10, 'Products', 'Produkt' ,GETDATE() ,GETDATE() ,NULL);
+		VALUES(10, 'Products', 'Leistung' ,GETDATE() ,GETDATE() ,NULL);
 		INSERT INTO [ProfiCraftsman].dbo.ROLE_PERMISSION_RSP(RoleId ,PermissionId ,CreateDate ,ChangeDate) 
 		VALUES (1 ,10 ,getdate() ,getdate());
 	END
 	ELSE
 	BEGIN
 		UPDATE [ProfiCraftsman].[dbo].[PERMISSION]
-		SET [DESCRIPTION] = 'Produkt'
+		SET [DESCRIPTION] = 'Leistung'
 		WHERE ID = 10
 	END
 	SET IDENTITY_INSERT [ProfiCraftsman].[dbo].[PERMISSION] OFF;
