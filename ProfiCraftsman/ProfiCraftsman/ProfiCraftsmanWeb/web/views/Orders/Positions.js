@@ -8,31 +8,29 @@
 ], function (BaseView, Collection, SelectProductView, SelectMaterialView, MaterialsDetailView, InnerItemsDetailView) {
     'use strict';
 
-    var descriptionEditor = function (container, options) {
-        if (options.model.get('containerId') == null) {
-            $('<input type="text" class="k-textbox" required data-text-field="' + options.field + '" data-value-field="' + options.field + '" data-bind="value:' + options.field + '"/>')
+    var floatEditor = function (container, options) {
+        if (options.model.get('productId') != null || options.model.get('materialId') != null) {
+            $('<input data-role="numerictextbox" required data-text-field="' + options.field + '" data-value-field="' + options.field + '" data-bind="value:' + options.field + '"/>')
                 .appendTo(container);
-
-            //$('<span class="k-widget k-numerictextbox">' +
-            //    '<span class="k-numeric-wrap k-state-default">' +
-            //        '<input tabindex="0" class="k-formatted-value k-input" aria-disabled="false" aria-readonly="false" style="display: inline-block;" type="text">' +
-            //        '<input class="k-input" role="spinbutton" aria-disabled="false" aria-readonly="false" aria-valuenow="-1" style="display: none;" required="required" type="text" data-role="numerictextbox" data-bind="value:amount" data-value-field="amount" data-text-field="amount">' +
-            //        '<span class="k-select"><span class="k-link" style="-ms-touch-action: double-tap-zoom pinch-zoom;" unselectable="on">' +
-            //            '<span title="Wert erhöhen" class="k-icon k-i-arrow-n" unselectable="on">Wert erhöhen</span>' +
-            //        '</span>' +
-            //        '<div class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" style="margin: 0.5em; display: none;" data-for="_amount_"><span class="k-icon k-warning"> </span>Das Feld muss befüllt werden<div class="k-callout k-callout-n"></div></div>' +
-            //        '<span class="k-link" style="-ms-touch-action: double-tap-zoom pinch-zoom;" unselectable="on">' +
-            //            '<span title="Wert verkleinern" class="k-icon k-i-arrow-s" unselectable="on">Wert verkleinern</span>' +
-            //        '</span>' +
-            //    '</span>' +
-            //'</span></span>' +
-            //'<div class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" style="margin: 0.5em; display: none;" data-for="' +
-            //    options.field + '" role="alert"><span class="k-icon k-warning"> </span>Das Feld muss befüllt werden<div class="k-callout k-callout-n"></div></div>').appendTo(container);
-            ////$('<div class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" style="margin: 0.5em; display: none;" data-for="' +
-            ////    options.field + '" role="alert"><span class="k-icon k-warning"> </span>Das Feld muss befüllt werden<div class="k-callout k-callout-n"></div></div>').appendTo(container);
         }
         else {
-            $('<span>' + options.model.get(options.field) + '</span>').appendTo(container);
+            $('<span></span>').appendTo(container);
+        }
+    },
+
+    priceTypeEditor = function (container, options) {
+        if (options.model.get('productId') != null || options.model.get('materialId') != null) {
+
+            $('<span tabindex="0" class="k-widget k-dropdown k-header" role="listbox" aria-busy="false" aria-disabled="false" aria-expanded="false" aria-haspopup="true" aria-readonly="false" aria-owns="" unselectable="on"><span class="k-dropdown-wrap k-state-default" unselectable="on">' + 
+              '<span class="k-input" unselectable="on">Standard</span><span class="k-select" unselectable="on"><span class="k-icon k-i-arrow-s" unselectable="on">select</span></span></span>' +
+              '<select name="paymentType" style="display: none;" required="required" data-role="dropdownlist" data-bind="value:paymentType">' + 
+              '<option selected="selected" value="0">Standard</option><option value="1">Pauschal</option></select></span>' +
+              '<div class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" style="margin: 0.5em; display: none;" data-for="paymentType">' + 
+              '<span class="k-icon k-warning"> </span>Das Feld muss befüllt werden<div class="k-callout k-callout-n"></div></div>')
+                .appendTo(container);
+        }
+        else {
+            $('<span></span>').appendTo(container);
         }
     },
 
@@ -134,19 +132,35 @@
                 { field: 'positionNumber', title: this.resources.positionNumber, filterable: false, sortable: false, width: '40px', attributes: { "class": "detail-view-grid-cell" } },
                 { field: 'isAlternative', title: this.resources.isAlternative, headerTitle: this.resources.isAlternativeTitle, checkbox: true, width: '45px', attributes: { "class": "detail-view-grid-cell" } },
                 { field: 'number', title: this.resources.number, width: '100px', filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
-                //{ field: 'description', title: this.resources.description, filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
+                { field: 'description', title: this.resources.description, filterable: false, sortable: false, width: '300px', attributes: { "class": "detail-view-grid-cell" } },
                 {
-                    field: 'description',
-                    editor: descriptionEditor, template: "#=description#",
-                    title: this.resources.description,
+                    field: 'amount',
+                    editor: floatEditor, template: "#=amountString#",
+                    title: this.resources.amount,
                     attributes: { "class": "detail-view-grid-cell" },
-                    width: '300px',
+                    width: '70px',
                     filterable: false, sortable: false
                 },
-                { field: 'amount', title: this.resources.amount, width: '70px', filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
+                //{ field: 'amount', title: this.resources.amount, width: '70px', filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
                 { field: 'amountType', title: this.resources.amountType, width: '70px', filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
-                { field: 'price', title: this.resources.price, width: '80px', filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
-                { field: 'paymentType', title: this.resources.paymentType, filterable: false, sortable: false, collection: this.options.paymentTypes, width: '60px', attributes: { "class": "detail-view-grid-cell" } },
+                //{ field: 'price', title: this.resources.price, width: '80px', filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
+                {
+                    field: 'price',
+                    editor: floatEditor, template: "#=priceString#",
+                    title: this.resources.price,
+                    attributes: { "class": "detail-view-grid-cell" },
+                    width: '80px',
+                    filterable: false, sortable: false
+                },
+                //{ field: 'paymentType', title: this.resources.paymentType, filterable: false, sortable: false, collection: this.options.paymentTypes, width: '60px', attributes: { "class": "detail-view-grid-cell" } },
+                {
+                    field: 'paymentType',
+                    editor: priceTypeEditor, template: "#=paymentTypeString#",
+                    title: this.resources.paymentType,
+                    attributes: { "class": "detail-view-grid-cell" },
+                    width: '80px',
+                    filterable: false, sortable: false
+                },
                 { field: 'totalPrice', title: this.resources.totalPrice, width: '80px', filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
             ];
 

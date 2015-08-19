@@ -1,0 +1,140 @@
+<% var title = typeof id !== 'undefined' ? '<label data-localized="edit"></label>' : '<label data-localized="add"></label>'; %>
+
+<span class="breadcrumbs"><a href="#Settings" data-localized="masterData"></a> / 
+	<a href="#Employees" data-localized="pageTitle"></a> / <%= title %></span>
+
+<form method="post" class="add-model">
+    <table style="width: 100%; vertical-align: top; padding: 0px; margin: 0px; white-space: nowrap;" cellpadding="0" cellspacing="0">
+		<tr>
+			<td style="padding-right: 25px; vertical-align: top; ">
+				<div class="editor-label" style="float: left; padding-right: 10px;">
+					<label for="name" data-localized="name"></label><br />
+				
+					<input type="text" class="k-textbox" style="width: 362px" id="name" name="name" />
+				</div> 
+			</td>
+			<td style="padding-right: 25px; vertical-align: top; ">
+				<div class="editor-label" style="float: left; padding-right: 10px;">
+					<label for="firstName" data-localized="firstName"></label><br />
+				
+					<input type="text" class="k-textbox" style="width: 362px" id="firstName" name="firstName" />
+				</div> 
+			</td>
+			<td style="padding-right: 25px; vertical-align: top; width: 370px;">
+			</td>
+			<td style="width: 100%;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="padding-right: 25px; vertical-align: top; ">
+				<div class="editor-label" style="float: left; padding-right: 10px;">
+					<label for="number" data-localized="number"></label><br />
+				
+					<input type="text" data-role="numerictextbox" id="number" name="number" />
+				</div> 
+			</td>
+			<td style="padding-right: 25px; vertical-align: top; ">
+				<div class="editor-label" style="float: left; padding-right: 10px;">
+					<label for="jobPositionId" data-localized="jobPositionId"></label><br />
+				
+					<select style="width: 362px" id="jobPositionId" name="jobPositionId" />
+				</div> 
+			</td>
+			<td style="padding-right: 25px; vertical-align: top; ">
+				<div class="editor-label" style="float: left; padding-right: 10px;">
+					<label for="autoId" data-localized="autoId"></label><br />
+				
+					<select style="width: 362px" id="autoId" name="autoId" />
+				</div> 
+			</td>
+			<td style="width: 100%;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="padding-right: 25px; vertical-align: top; ">
+				<div class="editor-label" style="float: left; padding-right: 10px;">
+					<label for="street" data-localized="street"></label><br />
+				
+					<input type="text" class="k-textbox" style="width: 362px" id="street" name="street" />
+				</div> 
+			</td>
+			<td style="padding-right: 25px; vertical-align: top; ">
+				<div class="editor-label" style="float: left; padding-right: 10px;">
+					<label for="zip" data-localized="zip"></label><br />
+				
+					<input type="text" class="k-textbox" style="width: 362px" id="zip" name="zip" />
+				</div> 
+			</td>
+			<td style="padding-right: 25px; vertical-align: top; ">
+				<div class="editor-label" style="float: left; padding-right: 10px;">
+					<label for="city" data-localized="city"></label><br />
+				
+					<input type="text" class="k-textbox" style="width: 362px" id="city" name="city" />
+				</div> 
+			</td>
+			<td style="width: 100%;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="padding-right: 25px; vertical-align: top; ">
+				<div class="editor-label" style="float: left; padding-right: 10px;">
+					<label for="comment" data-localized="comment"></label><br />
+				
+					<input type="text" class="k-textbox" style="width: 362px" id="comment" name="comment" />
+				</div> 
+			</td>
+			<td style="padding-right: 25px; vertical-align: top; ">
+				<div class="editor-label" style="float: left; padding-right: 10px;">
+					<label for="country" data-localized="country"></label><br />
+				
+					<input type="text" class="k-textbox" style="width: 362px" id="country" name="country" />
+				</div> 
+			</td>
+			<td style="padding-right: 25px; vertical-align: top; ">
+				<div class="editor-label" style="float: left; padding-right: 10px;">
+					<label for="fax" data-localized="fax"></label><br />
+				
+					<input type="text" class="k-textbox" style="width: 362px" id="fax" name="fax" />
+				</div> 
+			</td>
+			<td style="width: 100%;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="padding-right: 25px; vertical-align: top; ">
+				<div class="editor-label" style="float: left; padding-right: 10px;">
+					<label for="phone" data-localized="phone"></label><br />
+				
+					<input type="text" class="k-textbox" style="width: 362px" id="phone" name="phone" />
+				</div> 
+			</td>
+			<td style="padding-right: 25px; vertical-align: top; ">
+				<div class="editor-label" style="float: left; padding-right: 10px;">
+					<label for="mobile" data-localized="mobile"></label><br />
+				
+					<input type="text" class="k-textbox" style="width: 362px" id="mobile" name="mobile" />
+				</div> 
+			</td>
+			<td style="padding-right: 25px; vertical-align: top; ">
+				<div class="editor-label" style="float: left; padding-right: 10px;">
+					<label for="email" data-localized="email"></label><br />
+				
+					<input type="text" class="k-textbox" style="width: 362px" id="email" name="email" />
+				</div> 
+			</td>
+			<td style="width: 100%;">&nbsp;</td>
+		</tr>
+	</table>
+	<div class="inline-block">        
+    </div>      
+
+    <br />
+    <br />
+
+    <div class="relations-container">
+    </div>
+
+    <br />
+
+    <div>
+        <button class="k-primary k-button save" data-localized="save"></button>
+        <button class="k-button remove" data-localized="delete"></button>
+        <button class="k-button cancel" data-localized="cancel"></button>
+    </div>
+</form>

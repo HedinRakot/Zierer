@@ -31,17 +31,23 @@ namespace ProfiCraftsman.API.Models
         [DataMember]
         public int? materialId { get; set; }
         
-        [Required]
         [DataMember]
         public double price { get; set; }
+        
+        [DataMember]
+        public string priceString { get; set; }
 
-        [Required]
         [DataMember]
         public int amount { get; set; }
+        
+        [DataMember]
+        public string amountString { get; set; }
 
-        [Required]
         [DataMember]
         public int paymentType { get; set; }
+
+        [DataMember]
+        public string paymentTypeString { get; set; }
 
         [Required]
         [DataMember]

@@ -25,13 +25,25 @@ namespace ProfiCraftsman.Contracts.Enums
     		///</summary>
     		public const int Materials = 4;
     		///<summary>
+    		/// Grant for edit Autos table
+    		///</summary>
+    		public const int Autos = 16;
+    		///<summary>
     		/// Grant for edit Permission table
     		///</summary>
     		public const int Permission = 1;
     		///<summary>
+    		/// Grant for edit JobPositions table
+    		///</summary>
+    		public const int JobPositions = 15;
+    		///<summary>
     		/// Grant for edit Role table
     		///</summary>
     		public const int Role = 2;
+    		///<summary>
+    		/// Grant for edit Employees table
+    		///</summary>
+    		public const int Employees = 17;
     		///<summary>
     		/// Grant for edit InvoiceStornos table
     		///</summary>

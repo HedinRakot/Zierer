@@ -233,6 +233,15 @@
     <Content Include="web\collections\Invoices\InvoicePositions.js" />
     <Content Include="web\collections\Invoices\Invoices.js" />
     <Content Include="web\collections\Materials.js" />
+    <Content Include="web\collections\Settings\Autos.js">
+      <DependentUpon>web.collections.tt</DependentUpon>
+    </Content>
+    <Content Include="web\collections\Settings\Employees.js">
+      <DependentUpon>web.collections.tt</DependentUpon>
+    </Content>
+    <Content Include="web\collections\Settings\JobPositions.js">
+      <DependentUpon>web.collections.tt</DependentUpon>
+    </Content>
     <Content Include="web\collections\Settings\Materials.js">
       <DependentUpon>web.collections.tt</DependentUpon>
     </Content>
@@ -286,7 +295,22 @@
     <Content Include="web\models\InvoiceStornos\AddInvoicePositions.js" />
     <Content Include="web\models\InvoiceStornos\InvoiceStornos.js" />
     <Content Include="web\models\Material.js" />
+    <Content Include="web\models\Settings\Autos.js">
+      <DependentUpon>web.models.tt</DependentUpon>
+    </Content>
+    <Content Include="web\models\Settings\Employees.js">
+      <DependentUpon>web.models.tt</DependentUpon>
+    </Content>
+    <Content Include="web\models\Settings\FilterAutos.js">
+      <DependentUpon>web.models.tt</DependentUpon>
+    </Content>
     <Content Include="web\models\Settings\FilterCustomers.js" />
+    <Content Include="web\models\Settings\FilterEmployees.js">
+      <DependentUpon>web.models.tt</DependentUpon>
+    </Content>
+    <Content Include="web\models\Settings\FilterJobPositions.js">
+      <DependentUpon>web.models.tt</DependentUpon>
+    </Content>
     <Content Include="web\models\Settings\FilterMaterials.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
@@ -294,6 +318,9 @@
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
     <Content Include="web\models\Settings\FilterProductTypes.js">
+      <DependentUpon>web.models.tt</DependentUpon>
+    </Content>
+    <Content Include="web\models\Settings\JobPositions.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
     <Content Include="web\models\Settings\Materials.js">
@@ -397,6 +424,24 @@
     <Content Include="web\resources\Orders\Materials.en.js" />
     <Content Include="web\resources\Orders\FilterOffersProductSmart.de.js" />
     <Content Include="web\resources\Orders\FilterOffersProductSmart.en.js" />
+    <Content Include="web\resources\Settings\AddAutos.de.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\AddAutos.en.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\AddEmployees.de.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\AddEmployees.en.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\AddJobPositions.de.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\AddJobPositions.en.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
     <Content Include="web\resources\Settings\AddMaterials.de.js">
       <DependentUpon>web.add.resources.tt</DependentUpon>
     </Content>
@@ -421,8 +466,50 @@
     <Content Include="web\resources\Settings\AddProductTypes.en.js">
       <DependentUpon>web.add.resources.tt</DependentUpon>
     </Content>
+    <Content Include="web\resources\Settings\Autos.de.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\Autos.en.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\AutosRelationships.de.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\AutosRelationships.en.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\Employees.de.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\Employees.en.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\EmployeesRelationships.de.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\EmployeesRelationships.en.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\FilterAutos.de.js">
+      <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\FilterAutos.en.js">
+      <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
     <Content Include="web\resources\Settings\FilterCustomers.de.js" />
     <Content Include="web\resources\Settings\FilterCustomers.en.js" />
+    <Content Include="web\resources\Settings\FilterEmployees.de.js">
+      <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\FilterEmployees.en.js">
+      <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\FilterJobPositions.de.js">
+      <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\FilterJobPositions.en.js">
+      <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
     <Content Include="web\resources\Settings\FilterMaterials.de.js">
       <DependentUpon>web.filter.resources.tt</DependentUpon>
     </Content>
@@ -440,6 +527,18 @@
     </Content>
     <Content Include="web\resources\Settings\FilterProductTypes.en.js">
       <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\JobPositions.de.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\JobPositions.en.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\JobPositionsRelationships.de.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\JobPositionsRelationships.en.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
     </Content>
     <Content Include="web\resources\Settings\Materials.de.js">
       <DependentUpon>web.resources.tt</DependentUpon>
@@ -782,6 +881,15 @@
     <Content Include="web\templates\Orders\InnerPositions.html" />
     <Content Include="web\templates\Orders\Materials.html" />
     <Content Include="web\templates\Orders\FilterOffersProductSmart.html" />
+    <Content Include="web\templates\Settings\AddAutos.html">
+      <DependentUpon>web.add.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\AddEmployees.html">
+      <DependentUpon>web.add.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\AddJobPositions.html">
+      <DependentUpon>web.add.templates.tt</DependentUpon>
+    </Content>
     <Content Include="web\templates\Settings\AddMaterials.html">
       <DependentUpon>web.add.templates.tt</DependentUpon>
     </Content>
@@ -794,7 +902,28 @@
     <Content Include="web\templates\Settings\AddProductTypes.html">
       <DependentUpon>web.add.templates.tt</DependentUpon>
     </Content>
+    <Content Include="web\templates\Settings\Autos.html">
+      <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\AutosRelationships.html">
+      <DependentUpon>web.relationships.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\Employees.html">
+      <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\EmployeesRelationships.html">
+      <DependentUpon>web.relationships.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\FilterAutos.html">
+      <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
     <Content Include="web\templates\Settings\FilterCustomers.html" />
+    <Content Include="web\templates\Settings\FilterEmployees.html">
+      <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\FilterJobPositions.html">
+      <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
     <Content Include="web\templates\Settings\FilterMaterials.html">
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
@@ -803,6 +932,12 @@
     </Content>
     <Content Include="web\templates\Settings\FilterProductTypes.html">
       <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\JobPositions.html">
+      <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\JobPositionsRelationships.html">
+      <DependentUpon>web.relationships.templates.tt</DependentUpon>
     </Content>
     <Content Include="web\templates\Settings\Materials.html">
       <DependentUpon>web.templates.tt</DependentUpon>
@@ -988,6 +1123,15 @@
     <Content Include="web\views\Orders\_InnerPositions.js" />
     <Content Include="web\views\Orders\Materials.js" />
     <Content Include="web\views\Orders\FilterOffersProductSmart.js" />
+    <Content Include="web\views\Settings\AddAutos.js">
+      <DependentUpon>web.add.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\AddEmployees.js">
+      <DependentUpon>web.add.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\AddJobPositions.js">
+      <DependentUpon>web.add.views.tt</DependentUpon>
+    </Content>
     <Content Include="web\views\Settings\AddMaterials.js">
       <DependentUpon>web.add.views.tt</DependentUpon>
     </Content>
@@ -1000,9 +1144,30 @@
     <Content Include="web\views\Settings\AddProductTypes.js">
       <DependentUpon>web.add.views.tt</DependentUpon>
     </Content>
+    <Content Include="web\views\Settings\Autos.js">
+      <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\AutosRelationships.js">
+      <DependentUpon>web.relationships.views.tt</DependentUpon>
+    </Content>
     <Content Include="web\views\Settings\Custom.Toolbar.Products.js" />
     <Content Include="web\views\Settings\Custom.Events.Products.js" />
+    <Content Include="web\views\Settings\Employees.js">
+      <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\EmployeesRelationships.js">
+      <DependentUpon>web.relationships.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\FilterAutos.js">
+      <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
     <Content Include="web\views\Settings\FilterCustomers.js" />
+    <Content Include="web\views\Settings\FilterEmployees.js">
+      <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\FilterJobPositions.js">
+      <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
     <Content Include="web\views\Settings\FilterMaterials.js">
       <DependentUpon>web.views.tt</DependentUpon>
     </Content>
@@ -1011,6 +1176,12 @@
     </Content>
     <Content Include="web\views\Settings\FilterProductTypes.js">
       <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\JobPositions.js">
+      <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\JobPositionsRelationships.js">
+      <DependentUpon>web.relationships.views.tt</DependentUpon>
     </Content>
     <Content Include="web\views\Settings\Materials.js">
       <DependentUpon>web.views.tt</DependentUpon>

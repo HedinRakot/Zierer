@@ -49,7 +49,15 @@ namespace ProfiCraftsman.API.Controllers
             model.materialId = entity.MaterialId;
             model.isAlternative = entity.IsAlternative;
             model.paymentType = entity.PaymentType;
+            model.paymentTypeString = entity.PaymentTypeString;
             model.parentId = entity.ParentId;
+            model.amount = entity.Amount;
+            model.amountString = entity.Amount.ToString();
+            model.price = entity.Price;
+            model.priceString = entity.Price.ToString();
+            model.description = entity.Description;
+            model.createDate = ((ISystemFields)entity).CreateDate;
+            model.changeDate = ((ISystemFields)entity).ChangeDate;
 
             if (entity.ProductId.HasValue)
             {
@@ -66,14 +74,10 @@ namespace ProfiCraftsman.API.Controllers
             else
             {
                 model.number = "Gruppe";
+                model.paymentTypeString = String.Empty;
+                model.priceString = String.Empty;
+                model.amountString = String.Empty;
             }
-
-            model.description = entity.Description;            
-
-            model.amount = entity.Amount;
-            model.price = entity.Price;
-            model.createDate = ((ISystemFields)entity).CreateDate;
-            model.changeDate = ((ISystemFields)entity).ChangeDate;
         }
 
         protected override void ModelToEntity(PositionsModel model, Positions entity, ActionTypes actionType)
@@ -129,91 +133,6 @@ namespace ProfiCraftsman.API.Controllers
             }
 
             return base.BuildWhereClause<T>(filter);
-        }
-
-        //public override IHttpActionResult Put([FromBody] PositionsModel model)
-        //{
-        //    var entity = Manager.GetById(model.Id);
-        //    if (entity == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    if (HasConcurrency(entity, model))
-        //    {
-        //        //TODO: put proper processor for concurrency
-        //        return Conflict();
-        //    }
-
-        //    Validate(model, entity, ActionTypes.Update);
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    ModelToEntity(model, entity, ActionTypes.Update);
-        //    SetChangeDate(entity);
-
-        //    // TODO we should save FROM_DATE as "FROM_DATE 00:00:00"
-        //    // TO_DATE as "TO_DATE 23:59:59"
-        //    var sysModel = ((object)model) as IModelIntervalFields;
-        //    var sysEntity = entity as IIntervalFields;
-        //    if (sysEntity != null && sysModel != null)
-        //    {
-        //        sysEntity.ToDate = sysModel.toDate.Value.Date.AddHours(23).AddMinutes(59).AddSeconds(59);
-        //    }
-
-        //    try
-        //    {
-        //        Manager.SaveChanges();
-        //    }
-        //    catch (DuplicateEntityException ex)
-        //    {
-        //        SetDuplicateErrorsToModelState(ModelState, ex);
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    OnActionSuccess(entity, ActionTypes.Update);
-
-        //    EntityToModel(entity, model);
-
-        //    return Ok(model);
-        //}
-
-
-
-        //public override IHttpActionResult Post([FromBody] PositionsModel model)
-        //{
-        //    var entity = Manager.DataContext.CreateObject<Positions>();
-        //    Validate(model, entity, ActionTypes.Add);
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    ModelToEntity(model, entity, ActionTypes.Add);
-        //    SetChangeDate(entity);
-        //    Manager.AddEntity(entity);
-
-        //    try
-        //    {
-        //        Manager.SaveChanges();
-        //    }
-        //    catch (DuplicateEntityException ex)
-        //    {
-        //        SetDuplicateErrorsToModelState(ModelState, ex);
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    model = new PositionsModel
-        //    {
-        //        Id = entity.Id
-        //    };
-
-        //    OnActionSuccess(entity, ActionTypes.Add);
-
-        //    EntityToModel(entity, model);
-
-        //    return Ok(model);
-        //}
+        }        
     }
 }

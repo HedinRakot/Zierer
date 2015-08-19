@@ -160,7 +160,16 @@
     <Compile Include="Controllers\Orders\DeleteAllOrderPositionsController.cs" />
     <Compile Include="Controllers\Orders\CopyOrderController.cs" />
     <Compile Include="Controllers\Orders\PositionMaterialsController.cs" />
+    <Compile Include="Controllers\Settings\AutosController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\Settings\CopyContainerController.cs" />
+    <Compile Include="Controllers\Settings\EmployeesController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Settings\JobPositionsController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\Settings\MaterialsController.cs">
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
@@ -238,6 +247,15 @@
     <Compile Include="Models\Invoices\AddInvoiceModel.cs" />
     <Compile Include="Models\Invoices\InvoicesModel.cs" />
     <Compile Include="Models\Orders\OrderProductEquipmentModel.cs" />
+    <Compile Include="Models\Settings\AutosModel.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Settings\EmployeesModel.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Settings\JobPositionsModel.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Settings\MaterialsModel.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>

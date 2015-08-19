@@ -46,13 +46,25 @@ namespace ProfiCraftsman.Contracts
         /// </summary>
         IQueryable<ProductMaterialRsp> ProductMaterialRsp{get;}
         /// <summary>
+        ///     Set of <see cref="Autos"/> entities from table dbo.Autos
+        /// </summary>
+        IQueryable<Autos> Autos{get;}
+        /// <summary>
         ///     Set of <see cref="Permission"/> entities from table dbo.Permission
         /// </summary>
         IQueryable<Permission> Permission{get;}
         /// <summary>
+        ///     Set of <see cref="JobPositions"/> entities from table dbo.JobPositions
+        /// </summary>
+        IQueryable<JobPositions> JobPositions{get;}
+        /// <summary>
         ///     Set of <see cref="Role"/> entities from table dbo.Role
         /// </summary>
         IQueryable<Role> Role{get;}
+        /// <summary>
+        ///     Set of <see cref="Employees"/> entities from table dbo.Employees
+        /// </summary>
+        IQueryable<Employees> Employees{get;}
         /// <summary>
         ///     Set of <see cref="RolePermissionRsp"/> entities from table dbo.Role_Permission_Rsp
         /// </summary>

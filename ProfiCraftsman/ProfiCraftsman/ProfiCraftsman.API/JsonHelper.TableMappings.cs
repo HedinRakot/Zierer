@@ -40,15 +40,46 @@ namespace ProfiCraftsman.API
                 {"Amount", "amount"},
             });
 
+            tables.Add("Autos", new TableMapping("Autos", "Autos", 3)
+            {
+                {"Number", "number"},
+                {"Comment", "comment"},
+                {"LastInspectionDate", "lastInspectionDate"},
+            });
+
             tables.Add("Permission", new TableMapping("Permission", "Permission", 2)
             {
                 {"Name", "name"},
                 {"Description", "description"},
             });
 
+            tables.Add("JobPositions", new TableMapping("JobPositions", "JobPositions", 2)
+            {
+                {"Name", "name"},
+                {"Comment", "comment"},
+            });
+
             tables.Add("Role", new TableMapping("Role", "Role", 1)
             {
                 {"Name", "name"},
+            });
+
+            tables.Add("Employees", new TableMapping("Employees", "Employees", 14)
+            {
+                {"Number", "number"},
+                {"JobPositionId", "jobPositionId"},
+                {"AutoId", "autoId"},
+                {"Name", "name"},
+                {"FirstName", "firstName"},
+                {"Street", "street"},
+                {"ZIP", "zip"},
+                {"City", "city"},
+                {"Country", "country"},
+                {"Phone", "phone"},
+                {"Mobile", "mobile"},
+                {"Fax", "fax"},
+                {"Email", "email"},
+                {"Comment", "comment"},
             });
 
             tables.Add("Role_Permission_Rsp", new TableMapping("Role_Permission_Rsp", "RolePermissionRsp", 2)

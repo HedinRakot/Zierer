@@ -4,8 +4,11 @@ define(function () {
 	var resources = {
         Materials: 'Material',
         ProductMaterialRsps: 'Materialien',
+        Autos: 'Auto',
         Permissions: 'Berechtigung',
+        JobPositions: 'Dienststelle',
         Roles: 'Rolle',
+        Employees: 'Mitarbeiter',
         RolePermissionRsps: 'Berechtigung',
         Users: 'Benutzer',
         AdditionalCosts: 'Nebenkosten',

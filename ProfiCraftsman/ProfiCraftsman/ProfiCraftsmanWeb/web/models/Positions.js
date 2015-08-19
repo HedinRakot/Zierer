@@ -26,10 +26,12 @@ define(function () {
 			,price: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Positions', 'price'), 
 			                        validation: { required: true } }
+            ,priceString: { type: "string", validation: { required: false } }
             ,paymentType: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Positions', 'paymentType'), 
 				                    validation: { required: true } }
             ,amount: { type: "number", validation: { required: true } }
+            ,amountString: { type: "string", validation: { required: false } }
             ,amountType: { type: "string", 
                                     editable: false,
                                     validation: { required: true } }
