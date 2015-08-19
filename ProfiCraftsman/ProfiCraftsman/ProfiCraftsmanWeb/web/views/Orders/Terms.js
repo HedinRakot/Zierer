@@ -23,7 +23,7 @@
 		columns: function () {
 		   
 		   return [
-				{ field: 'date', title: this.resources.date, format: '{0:d}' },
+				{ field: 'date', title: this.resources.date, format: "{0:g}", dateTime: true },
 				{ field: 'employeeId', title: this.resources.employee, collection: this.options.employees, defaultText: this.resources.pleaseSelect },
 				{ field: 'autoId', title: this.resources.auto, collection: this.options.autos, defaultText: this.resources.pleaseSelect },
 				{ field: 'status', title: this.resources.status },
