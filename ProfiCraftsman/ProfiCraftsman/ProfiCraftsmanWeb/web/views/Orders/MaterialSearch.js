@@ -21,38 +21,38 @@ define([
 
     view = BaseView.extend({
 
-	    collectionType: Collection,
-	    filterView: FilterView,
-	    filterSelector: '.filter',
+        collectionType: Collection,
+        filterView: FilterView,
+        filterSelector: '.filter',
 
-	    showDeleteButton: false,
-	    showEditButton: false,
-	    showAddButton: false,
+        showDeleteButton: false,
+        showEditButton: false,
+        showAddButton: false,
 
-	    selectable: true,
-	    pageSizes: null,
-	    gridSelector: '.grid',
+        selectable: true,
+        pageSizes: null,
+        gridSelector: '.grid',
 
-	    initialize: function () {
-	        view.__super__.initialize.apply(this, arguments);
+        initialize: function () {
+            view.__super__.initialize.apply(this, arguments);
 
-	        this.collection = new Collection();
-	    },
+            this.collection = new Collection();
+        },
 
-	    render: function () {
+        render: function () {
 
-	        var self = this;
-	        view.__super__.render.apply(self, arguments);
+            var self = this;
+            view.__super__.render.apply(self, arguments);
 
-	        self.showView(new self.filterView({ grid: self.grid }),
+            self.showView(new self.filterView({ grid: self.grid }),
                 self.filterSelector);
 
-	        return self;
-	    },
+            return self;
+        },
 
-		columns: function () {
-			
-		    return [
+        columns: function () {
+
+            return [
 				{ field: 'name', title: this.resources.name },
 				{ field: 'number', title: this.resources.number },
 				{ field: 'length', title: this.resources.length },
@@ -62,26 +62,26 @@ define([
 				{ field: 'price', title: this.resources.price },
 				{ field: 'isVirtual', title: this.resources.isVirtual, headerTitle: this.resources.isVirtual, checkbox: true },
 				{ field: 'materialAmountType', title: this.resources.materialAmountType, collection: this.options.materialAmountTypes },
-		    ];
-		},
+            ];
+        },
 
-		events: {
-		    'dblclick .k-grid tbody tr': function (e) {
-		        saveFunction(e, this);
-		    },
-		    'click .selectMaterial': function (e) {
-		        saveFunction(e, this);
-		    },
-		    'click .closeWindow': function (e) {
-		        e.preventDefault();
+        events: {
+            'dblclick .k-grid tbody tr': function (e) {
+                saveFunction(e, this);
+            },
+            'click .selectMaterial': function (e) {
+                saveFunction(e, this);
+            },
+            'click .closeWindow': function (e) {
+                e.preventDefault();
 
-		        this.options.closeWindow();
-		    }
-		},
+                this.options.closeWindow();
+            }
+        },
 
-		toolbar: function () {
-		    var self = this;
-		    return [
+        toolbar: function () {
+            var self = this;
+            return [
 				{
 				    template: function () {
 				        return '<a class="k-button k-primary selectMaterial" href="#">' +
@@ -90,10 +90,10 @@ define([
 				},
         		{ template: function () { return '<a class="k-button closeWindow" href="#">' + self.resources.cancel + '</a>' } },
         		{ template: function () { return '<span class="select-message k-widget k-tooltip k-tooltip-validation k-invalid-msg"><span class="k-icon k-warning"></span>' + self.resources.noSelectionMessage + '</span>' } }
-		    ];
-		}
+            ];
+        }
 
-	});
+    });
 
-	return view;
+    return view;
 });

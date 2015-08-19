@@ -17,6 +17,7 @@ define(function () {
 		deleteAllPositions: 'Alle löschen',
 		amountType: 'Einheit',
 		totalPrice: 'Gesamtpreis',
+        addGroup: 'Gruppe hinzufügen',
 	};
 
 	return resources;

@@ -67,6 +67,14 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'PaymentType' for property <see cref="Positions.PaymentType"/>
             /// </summary>
             public static readonly string PaymentType = "PaymentType";
+            /// <summary>
+            /// Column name 'Description' for property <see cref="Positions.Description"/>
+            /// </summary>
+            public static readonly string Description = "Description";
+            /// <summary>
+            /// Column name 'ParentId' for property <see cref="Positions.ParentId"/>
+            /// </summary>
+            public static readonly string ParentId = "ParentId";
           
         }
         #endregion
@@ -82,6 +90,8 @@ namespace ProfiCraftsman.Contracts.Entities
         public int Amount{ get; set; }
         public bool IsAlternative{ get; set; }
         public int PaymentType{ get; set; }
+        public string Description{ get; set; }
+        public int? ParentId{ get; set; }
         public virtual Orders Orders{ get; set; }
         public virtual Products Products{ get; set; }
         public virtual Materials Materials{ get; set; }
@@ -127,6 +137,8 @@ namespace ProfiCraftsman.Contracts.Entities
                        Amount = Amount,
                        IsAlternative = IsAlternative,
                        PaymentType = PaymentType,
+                       Description = Description,
+                       ParentId = ParentId,
         	           };
         }
     }

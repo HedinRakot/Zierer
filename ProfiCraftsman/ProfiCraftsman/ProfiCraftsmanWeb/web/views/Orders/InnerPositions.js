@@ -4,8 +4,7 @@
     'l!t!Orders/SelectProduct',
     'l!t!Orders/SelectMaterial',
     'l!t!Orders/Materials',
-    'l!t!Orders/InnerPositions'
-], function (BaseView, Collection, SelectProductView, SelectMaterialView, MaterialsDetailView, InnerItemsDetailView) {
+], function (BaseView, Collection, SelectProductView, SelectMaterialView, DetailView) {
     'use strict';
 
     var descriptionEditor = function (container, options) {
@@ -76,23 +75,6 @@
 
             e.masterRow.data('detail-view', view);
         }
-
-        if((e.data.productId == null || e.data.productId == undefined) &&
-           (e.data.materialId == null || e.data.materialId == undefined))
-        {
-            var options = _.extend({}, self.options,
-                {
-                    model: e.data,
-                    isMaterialPosition: self.isMaterialPosition,
-                    parentId: e.data.id
-                }),
-                view = new self.innerItemsDetailView(options);
-
-            self.addView(view);
-            e.detailRow.find('.detailsContainer').append(view.render().$el);
-
-            e.masterRow.data('detail-view', view);
-        }
     },
 
 
@@ -109,9 +91,7 @@
         addingInPopup: false,
 
         initDetailView: initDetailView,
-        detailView: MaterialsDetailView,
-        materialsDetailView: MaterialsDetailView,
-        innerItemsDetailView: InnerItemsDetailView,
+        detailView: DetailView,
 
 
         initialize: function () {
@@ -120,9 +100,9 @@
             var self = this;
 
             this.defaultFiltering = [
-                { field: 'orderId', operator: 'eq', value: this.model.id },
-                { field: 'isMaterialPosition', operator: 'eq', value: self.isMaterialPosition },
-                { field: 'hasParent', operator: 'eq', value: false },
+                { field: 'orderId', operator: 'eq', value: this.model.orderId },
+                { field: 'isMaterialPosition', operator: 'eq', value: self.options.isMaterialPosition },
+                { field: 'parentId', operator: 'eq', value: self.options.parentId },
             ];
 
             this.collection = new Collection();
@@ -163,38 +143,39 @@
                 if (e.model.id == 0)
                     e.model.isNew = function () { return true; }
 
-                e.model.orderId = self.model.id;
+                e.model.orderId = self.model.orderId;
             });
 
             return self;
         },
 
         events: {
-            'click .selectProducts': function (e) {
+            'click .selectInnerProducts': function (e) {
                 e.preventDefault();
 
                 var self = this,
-                options = _.extend({}, self.options);
+                    options = _.extend({ selectInnerProduct: true }, self.options),
+                    view = new SelectProductView(options);
 
-                var view = new SelectProductView(options);
-
-                self.listenTo(view, 'selectProduct', function (item) {
+                self.listenTo(view, 'selectInnerProduct', function (item) {
 
                     var model = new Backbone.Model();
                     model.isNew = function () { return true; }
                     model.url = Application.apiUrl + '/positions';
-                    model.set('orderId', self.model.id);
+                    model.set('orderId', self.model.orderId);
                     model.set('productId', item.id);
                     model.set('price', item.get('price'));
                     model.set('amount', 1);
-                    model.set('isMaterialPosition', self.isMaterialPosition);
+                    model.set('isMaterialPosition', self.options.isMaterialPosition);
                     model.set('isAlternarive', false);
+                    model.set('parentId', self.options.parentId);
 
                     model.save({}, {
                         data: kendo.stringify(model),
                         method: 'post',
                         contentType: 'application/json',
                         success: function (response) {
+
                             self.grid.dataSource.read();
                             self.grid.refresh();
                         },
@@ -207,23 +188,25 @@
                 self.addView(view);
                 self.$el.append(view.render().$el);
             },
-            'click .selectMaterials': function (e) {
+            'click .selectInnerMaterials': function (e) {
                 e.preventDefault();
 
                 var self = this,
+                    options = _.extend({ selectInnerMaterial: true }, self.options),
                     view = new SelectMaterialView(self.options);
 
-                self.listenTo(view, 'selectMaterial', function (item) {
+                self.listenTo(view, 'selectInnerMaterial', function (item) {
 
                     var model = new Backbone.Model();
                     model.isNew = function () { return true; }
                     model.url = Application.apiUrl + '/positions';
-                    model.set('orderId', self.model.id);
+                    model.set('orderId', self.model.orderId);
                     model.set('materialId', item.id);
                     model.set('price', item.get('price'));
                     model.set('amount', 1);
-                    model.set('isMaterialPosition', self.isMaterialPosition);
+                    model.set('isMaterialPosition', self.options.isMaterialPosition);
                     model.set('isAlternarive', false);
+                    model.set('parentId', self.options.parentId);
 
                     model.save({}, {
                         data: kendo.stringify(model),
@@ -242,7 +225,7 @@
                 self.addView(view);
                 self.$el.append(view.render().$el);
             },
-            'click .deleteAllPositions': function (e) {
+            'click .deleteAllInnerPositions': function (e) {
                 e.preventDefault();
 
                 var self = this;
@@ -267,10 +250,9 @@
 		    [{
 		        template: function () {
 		            return '<a class="k-button k-button-icontext ' +
-                        (self.isMaterialPosition ? 'selectMaterials' : 'selectProducts') + '" style="min-width: 180px;" href="#" data-localized="' +
+                        (self.isMaterialPosition ? 'selectInnerMaterials' : 'selectInnerProducts') + '" style="min-width: 180px;" href="#" data-localized="' +
                         (self.isMaterialPosition ? 'addMaterial' : 'addProduct') + '"></a>' +
-                    '<a class="k-button k-button-icontext k-grid-create-inline" href="#" data-localized="addGroup"></a>' +
-		            '<a class="k-button k-button-icontext deleteAllPositions"  style="min-width: 120px;"href="#" data-localized="deleteAllPositions"></a>';
+		            '<a class="k-button k-button-icontext deleteAllInnerPositions"  style="min-width: 120px;"href="#" data-localized="deleteAllPositions"></a>';
 		        }
 		    }];
 

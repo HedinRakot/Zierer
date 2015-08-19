@@ -391,6 +391,8 @@
     <Content Include="web\resources\Invoices\InvoicesRelationships.en.js" />
     <Content Include="web\resources\Invoices\AddInvoicePositions.de.js" />
     <Content Include="web\resources\Invoices\AddInvoicePositions.en.js" />
+    <Content Include="web\resources\Orders\InnerPositions.de.js" />
+    <Content Include="web\resources\Orders\InnerPositions.en.js" />
     <Content Include="web\resources\Orders\Materials.de.js" />
     <Content Include="web\resources\Orders\Materials.en.js" />
     <Content Include="web\resources\Orders\FilterOffersProductSmart.de.js" />
@@ -777,6 +779,7 @@
     <Content Include="web\templates\Invoices\Invoices.html" />
     <Content Include="web\templates\Invoices\InvoicesRelationships.html" />
     <Content Include="web\templates\Invoices\AddInvoicePositions.html" />
+    <Content Include="web\templates\Orders\InnerPositions.html" />
     <Content Include="web\templates\Orders\Materials.html" />
     <Content Include="web\templates\Orders\FilterOffersProductSmart.html" />
     <Content Include="web\templates\Settings\AddMaterials.html">
@@ -981,6 +984,8 @@
     <Content Include="web\views\Invoices\Invoices.js" />
     <Content Include="web\views\Invoices\InvoicesRelationships.js" />
     <Content Include="web\views\Invoices\AddInvoicePositions.js" />
+    <Content Include="web\views\Orders\InnerPositions.js" />
+    <Content Include="web\views\Orders\_InnerPositions.js" />
     <Content Include="web\views\Orders\Materials.js" />
     <Content Include="web\views\Orders\FilterOffersProductSmart.js" />
     <Content Include="web\views\Settings\AddMaterials.js">

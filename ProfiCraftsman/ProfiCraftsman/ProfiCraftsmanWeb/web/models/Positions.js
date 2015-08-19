@@ -6,6 +6,8 @@ define(function () {
 		fields: {
 		    id: { type: "number", editable: false }
 		    ,positionNumber: { type: "number", editable: false }
+		    ,parentId: { type: "number", editable: false }
+		    ,hasParent: { type: "boolean", editable: false }
 			,orderId: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Positions', 'orderId'), 
 				                    validation: { required: true } }		

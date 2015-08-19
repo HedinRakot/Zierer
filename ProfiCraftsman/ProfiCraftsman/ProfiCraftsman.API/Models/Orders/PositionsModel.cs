@@ -55,5 +55,8 @@ namespace ProfiCraftsman.API.Models
 
         [DataMember]
         public string totalPrice { get; set; }
+
+        [DataMember]
+        public int? parentId { get; set; }
     }
 }

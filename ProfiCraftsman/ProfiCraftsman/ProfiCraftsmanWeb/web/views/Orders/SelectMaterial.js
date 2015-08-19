@@ -15,7 +15,11 @@
             var options = {
                 success: function (model) {
  
-                    self.trigger('selectMaterial', model);
+                    if (self.selectInnerMaterial)
+                        self.trigger('selectInnerMaterial', model);
+                    else
+                        self.trigger('selectMaterial', model);
+
                     self.close();
                 },
                 closeWindow: function () {

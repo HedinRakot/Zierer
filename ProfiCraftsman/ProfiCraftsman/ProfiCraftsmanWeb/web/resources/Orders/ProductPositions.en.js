@@ -16,7 +16,8 @@ define(function () {
 		paymentType: 'Payment type',
 		deleteAllPositions: 'Delete all positions',
 		amountType: 'Amount type',
-        totalPrice: 'Total price',
+		totalPrice: 'Total price',
+		addGroup: 'Add group',
 	};
 
 	return resources;

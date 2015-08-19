@@ -20,12 +20,17 @@
 
             this.stickit();
 
-            var self = this;
+            var self = this,
+                selectInnerProduct = self.options.selectInnerProduct;
 
             var options = {
                 success: function (model) {
 
-                    self.trigger('selectProduct', model);
+                    if(selectInnerProduct)
+                        self.trigger('selectInnerProduct', model);
+                    else
+                        self.trigger('selectProduct', model);
+
                     self.close();
                 },
                 closeWindow: function () {
