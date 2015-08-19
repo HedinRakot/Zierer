@@ -30,6 +30,7 @@ namespace ProfiCraftsman.Configuration
             container.RegisterType<IRoleManager, RoleManager>(new PerRequestLifetimeManager());
             container.RegisterType<IEmployeesManager, EmployeesManager>(new PerRequestLifetimeManager());
             container.RegisterType<IRolePermissionRspManager, RolePermissionRspManager>(new PerRequestLifetimeManager());
+            container.RegisterType<ITermsManager, TermsManager>(new PerRequestLifetimeManager());
             container.RegisterType<IInvoiceStornosManager, InvoiceStornosManager>(new PerRequestLifetimeManager());
             container.RegisterType<IUserManager, UserManager>(new PerRequestLifetimeManager());
             container.RegisterType<IAdditionalCostsManager, AdditionalCostsManager>(new PerRequestLifetimeManager());

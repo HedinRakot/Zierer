@@ -11,7 +11,7 @@ define([
             var result = [
                 { view: 'l!t!Orders/ProductPositions', selector: '.products' },
                 { view: 'l!t!Orders/MaterialPositions', selector: '.materials' },
-				                
+                { view: 'l!t!Orders/Terms', selector: '.terms' },			                
             ];
             
             return result;

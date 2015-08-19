@@ -70,6 +70,10 @@ namespace ProfiCraftsman.Contracts
         /// </summary>
         IQueryable<RolePermissionRsp> RolePermissionRsp{get;}
         /// <summary>
+        ///     Set of <see cref="Terms"/> entities from table dbo.Terms
+        /// </summary>
+        IQueryable<Terms> Terms{get;}
+        /// <summary>
         ///     Set of <see cref="InvoiceStornos"/> entities from table dbo.InvoiceStornos
         /// </summary>
         IQueryable<InvoiceStornos> InvoiceStornos{get;}

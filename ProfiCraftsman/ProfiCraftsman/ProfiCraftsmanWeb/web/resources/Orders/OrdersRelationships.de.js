@@ -6,7 +6,7 @@ define(function () {
 	    dataLoading: 'Daten werden geladen. Bitte warten...',
 	    products: 'Leistungen',
 	    materials: 'Materialien',
-	    terms: 'Arbeit',
+	    terms: 'Termine',
 	};
 
 	return resources;

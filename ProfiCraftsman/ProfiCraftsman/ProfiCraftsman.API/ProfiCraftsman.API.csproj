@@ -160,6 +160,7 @@
     <Compile Include="Controllers\Orders\DeleteAllOrderPositionsController.cs" />
     <Compile Include="Controllers\Orders\CopyOrderController.cs" />
     <Compile Include="Controllers\Orders\PositionMaterialsController.cs" />
+    <Compile Include="Controllers\Orders\TermsController.cs" />
     <Compile Include="Controllers\Settings\AutosController.cs">
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
@@ -247,6 +248,7 @@
     <Compile Include="Models\Invoices\AddInvoiceModel.cs" />
     <Compile Include="Models\Invoices\InvoicesModel.cs" />
     <Compile Include="Models\Orders\OrderProductEquipmentModel.cs" />
+    <Compile Include="Models\Orders\TermsModel.cs" />
     <Compile Include="Models\Settings\AutosModel.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>

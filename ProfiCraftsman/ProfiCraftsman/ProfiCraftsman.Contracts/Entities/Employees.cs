@@ -1,6 +1,7 @@
 using CoreBase.Entities;
 using ProfiCraftsman.Contracts;
 using System;
+using System.Collections.Generic;
 
 namespace ProfiCraftsman.Contracts.Entities
 {
@@ -114,6 +115,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime? DeleteDate{ get; set; }
         public virtual JobPositions JobPositions{ get; set; }
         public virtual Autos Autos{ get; set; }
+        public virtual ICollection<Terms> Terms{ get; set; }
         public bool HasJobPositions
         {
             get { return !ReferenceEquals(JobPositions, null); }

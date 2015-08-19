@@ -227,6 +227,7 @@
     <Content Include="css\kendo\images\wp8_inverseicons.png" />
     <Content Include="css\site.css" />
     <Content Include="Global.asax" />
+    <Content Include="web\collections\Terms.js" />
     <Content Include="web\collections\ProductSearch.js" />
     <Content Include="web\collections\InvoiceStornos\InvoiceStornos.js" />
     <Content Include="web\collections\Invoices\AddInvoicePositions.js" />
@@ -290,6 +291,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>web.collections.tt</DependentUpon>
     </Content>
+    <Content Include="web\models\Term.js" />
     <Content Include="web\models\ProductSearch.js" />
     <Content Include="web\models\FilterOffersProductSmart.js" />
     <Content Include="web\models\InvoiceStornos\AddInvoicePositions.js" />
@@ -424,6 +426,8 @@
     <Content Include="web\resources\Orders\Materials.en.js" />
     <Content Include="web\resources\Orders\FilterOffersProductSmart.de.js" />
     <Content Include="web\resources\Orders\FilterOffersProductSmart.en.js" />
+    <Content Include="web\resources\Orders\Terms.de.js" />
+    <Content Include="web\resources\Orders\Terms.en.js" />
     <Content Include="web\resources\Settings\AddAutos.de.js">
       <DependentUpon>web.add.resources.tt</DependentUpon>
     </Content>
@@ -881,6 +885,7 @@
     <Content Include="web\templates\Orders\InnerPositions.html" />
     <Content Include="web\templates\Orders\Materials.html" />
     <Content Include="web\templates\Orders\FilterOffersProductSmart.html" />
+    <Content Include="web\templates\Orders\Terms.html" />
     <Content Include="web\templates\Settings\AddAutos.html">
       <DependentUpon>web.add.templates.tt</DependentUpon>
     </Content>
@@ -1120,6 +1125,7 @@
     <Content Include="web\views\Invoices\InvoicesRelationships.js" />
     <Content Include="web\views\Invoices\AddInvoicePositions.js" />
     <Content Include="web\views\Orders\InnerPositions.js" />
+    <Content Include="web\views\Orders\Terms.js" />
     <Content Include="web\views\Orders\_InnerPositions.js" />
     <Content Include="web\views\Orders\Materials.js" />
     <Content Include="web\views\Orders\FilterOffersProductSmart.js" />
