@@ -7,6 +7,7 @@ using ProfiCraftsman.Contracts;
 using ProfiCraftsman.Contracts.Entities;
 using ProfiCraftsman.Contracts.Enums;
 using ProfiCraftsman.Contracts.Managers;
+using ProfiCraftsman.Lib.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,8 +32,12 @@ namespace ProfiCraftsman.API.Controllers
             this.ProductManager = productsManager;
         }
 
+        private int positionNumber = 0;
+
         protected override void EntityToModel(Positions entity, PositionsModel model)
         {
+            positionNumber++;
+            model.positionNumber = positionNumber;
             model.orderId = entity.OrderId;
             model.isMaterialPosition = entity.IsMaterialPosition;
             model.productId = entity.ProductId;
@@ -44,12 +49,16 @@ namespace ProfiCraftsman.API.Controllers
             {
                 model.description = entity.Products.Name;
                 model.number = entity.Products.Number;
+                model.amountType = entity.Products.ProductAmountTypeString;
             }
             else if (entity.MaterialId.HasValue)
             {
                 model.description = entity.Materials.Name;
                 model.number = entity.Materials.Number;
+                model.amountType = entity.Materials.MaterialAmountTypeString;
             }
+
+            model.totalPrice = CalculationHelper.CalculatePositionPrice(entity.Price, entity.Amount, entity.Payment).ToString("N2") + " EUR";
 
             model.amount = entity.Amount;
             model.price = entity.Price;
@@ -66,6 +75,7 @@ namespace ProfiCraftsman.API.Controllers
             entity.Price = model.price;
             entity.IsAlternative = model.isAlternative;
             entity.PaymentType = model.paymentType;
+            entity.Amount = model.amount;
 
             if(actionType == ActionTypes.Add && model.productId.HasValue)
             {

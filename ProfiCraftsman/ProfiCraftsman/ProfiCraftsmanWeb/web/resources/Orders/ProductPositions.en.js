@@ -3,7 +3,8 @@ define(function () {
 
 	var resources = {
 
-		pleaseSelect: 'Please select',
+	    pleaseSelect: 'Please select',
+	    positionNumber: 'Pos-Nr.',
 		description: 'Description',
 		number: 'Number',
 		price: 'Price',
@@ -13,7 +14,9 @@ define(function () {
 		isAlternative: 'N/A',
 		isAlternativeTitle: 'Normal/Alternative',
 		paymentType: 'Payment type',
-		deleteAllPositions: 'Delete all positions'
+		deleteAllPositions: 'Delete all positions',
+		amountType: 'Amount type',
+        totalPrice: 'Total price',
 	};
 
 	return resources;

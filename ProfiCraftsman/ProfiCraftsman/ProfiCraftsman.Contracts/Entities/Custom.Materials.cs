@@ -7,31 +7,31 @@ using System.Web.Http;
 namespace ProfiCraftsman.Contracts.Entities
 {
     /// <summary>
-    ///  Position
+    ///  Material
     /// </summary>
-    public partial class InvoicePositions
+    public partial class Materials
     {
-        public PaymentTypes Payment
+        public MaterialAmountTypes MaterialAmountTypes
         {
             get
             {
-                return (PaymentTypes)PaymentType;
+                return (MaterialAmountTypes)MaterialAmountType;
             }
         }
 
-        public string PaymentTypeString
+        public string MaterialAmountTypeString
         {
             get
             {
                 var result = String.Empty;
 
-                switch(Payment)
+                switch(MaterialAmountTypes)
                 {
-                    case PaymentTypes.Standard:
-                        result = "Standard";
+                    case MaterialAmountTypes.Item:
+                        result = "Stück";
                         break;
-                    case PaymentTypes.Total:
-                        result = "Pauschal";
+                    case MaterialAmountTypes.Meter:
+                        result = "Meter";
                         break;
                 }
 

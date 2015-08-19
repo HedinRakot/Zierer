@@ -1,18 +1,18 @@
 ﻿namespace ProfiCraftsman.Contracts.Enums
 {
     /// <summary>
-    /// Payment Type
+    /// Product Amount Types
     /// </summary>
-    public enum PaymentTypes
+    public enum ProductAmountTypes
     {
         /// <summary>
-        /// Standard
+        /// Stunde
         /// </summary>
-        Standard = 0,
+        Hour = 0,
         
         /// <summary>
-        /// Total (Pauschal)
+        /// Stück
         /// </summary>
-        Total = 1,
+        Item = 1,
     }
 }

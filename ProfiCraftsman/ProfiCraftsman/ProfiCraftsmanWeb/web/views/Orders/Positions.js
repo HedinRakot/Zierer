@@ -109,18 +109,23 @@
         columns: function () {
 
             var columns = [
-                { field: 'isAlternative', title: this.resources.isAlternative, headerTitle: this.resources.isAlternativeTitle, checkbox: true, attributes: { "class": "detail-view-grid-cell" } },
-                { field: 'number', title: this.resources.number, filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
+                { field: 'positionNumber', title: this.resources.positionNumber, filterable: false, sortable: false, width: '40px', attributes: { "class": "detail-view-grid-cell" } },
+                { field: 'isAlternative', title: this.resources.isAlternative, headerTitle: this.resources.isAlternativeTitle, checkbox: true, width: '45px', attributes: { "class": "detail-view-grid-cell" } },
+                { field: 'number', title: this.resources.number, width: '100px', filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
                 //{ field: 'description', title: this.resources.description, filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
                 {
                     field: 'description',
                     editor: descriptionEditor, template: "#=description#",
                     title: this.resources.description,
-                    attributes: { "class": "detail-view-grid-cell" }
+                    attributes: { "class": "detail-view-grid-cell" },
+                    width: '300px',
+                    filterable: false, sortable: false
                 },
-                { field: 'amount', title: this.resources.amount, filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
-                { field: 'price', title: this.resources.price, attributes: { "class": "detail-view-grid-cell" } },
-                { field: 'paymentType', title: this.resources.paymentType, collection: this.options.paymentTypes, attributes: { "class": "detail-view-grid-cell" } }
+                { field: 'amount', title: this.resources.amount, width: '70px', filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
+                { field: 'amountType', title: this.resources.amountType, width: '70px', filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
+                { field: 'price', title: this.resources.price, width: '80px', filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
+                { field: 'paymentType', title: this.resources.paymentType, filterable: false, sortable: false, collection: this.options.paymentTypes, width: '60px', attributes: { "class": "detail-view-grid-cell" } },
+                { field: 'totalPrice', title: this.resources.totalPrice, width: '80px', filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
             ];
 
             return columns;

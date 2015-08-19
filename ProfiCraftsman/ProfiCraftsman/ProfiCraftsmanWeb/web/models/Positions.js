@@ -4,7 +4,8 @@ define(function () {
 	var model = Backbone.Model.extend({
 	    urlRoot: 'api/Positions',
 		fields: {
-			id: { type: "number", editable: false }
+		    id: { type: "number", editable: false }
+		    ,positionNumber: { type: "number", editable: false }
 			,orderId: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Positions', 'orderId'), 
 				                    validation: { required: true } }		
@@ -27,7 +28,13 @@ define(function () {
 			                        editable: Application.canTableItemBeEdit('Positions', 'paymentType'), 
 				                    validation: { required: true } }
             ,amount: { type: "number", validation: { required: true } }
-            ,description: { type: "string", 
+            ,amountType: { type: "string", 
+                                    editable: false,
+                                    validation: { required: true } }
+            ,totalPrice: { type: "string", 
+                                    editable: false,
+                                    validation: { required: true } }
+            ,description: {type: "string",
                                     validation: { required: true } }
             ,number: { type: "string", 
                                     editable: false, 

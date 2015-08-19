@@ -83,6 +83,8 @@
     </Compile>
     <Compile Include="Entities\Custom.CommunicationPartners.cs" />
     <Compile Include="Entities\Custom.InvoicePositions.cs" />
+    <Compile Include="Entities\Custom.Materials.cs" />
+    <Compile Include="Entities\Custom.Products.cs" />
     <Compile Include="Entities\Custom.Positions.cs" />
     <Compile Include="Entities\Custom.TransportOrders.cs" />
     <Compile Include="Entities\Custom.Orders.cs" />
@@ -143,6 +145,8 @@
     <Compile Include="Entities\User.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Enums\MaterialAmountTypes.cs" />
+    <Compile Include="Enums\ProductAmountTypes.cs" />
     <Compile Include="Enums\PaymentTypes.cs" />
     <Compile Include="Enums\OrderStatusTypes.cs" />
     <Compile Include="Enums\PrintTypes.cs" />

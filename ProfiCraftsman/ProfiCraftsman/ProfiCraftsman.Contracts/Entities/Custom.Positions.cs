@@ -27,11 +27,8 @@ namespace ProfiCraftsman.Contracts.Entities
 
                 switch(Payment)
                 {
-                    case PaymentTypes.Monthly:
-                        result = "Monat";
-                        break;
-                    case PaymentTypes.Daily:
-                        result = "Tag";
+                    case PaymentTypes.Standard:
+                        result = "Standard";
                         break;
                     case PaymentTypes.Total:
                         result = "Pauschal";

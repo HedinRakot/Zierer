@@ -3,7 +3,8 @@ define(function () {
 
 	var resources = {
 
-		pleaseSelect: 'Bitte auswählen',
+	    pleaseSelect: 'Bitte auswählen',
+	    positionNumber: 'Pos-Nr.',
 		description: 'Bezeichnung',
 		number: 'Artikelnummer',
 		price: 'Preis',
@@ -13,7 +14,9 @@ define(function () {
 		isAlternative: 'N/A',
 		isAlternativeTitle: 'Normal/Alternativ',
 		paymentType: 'Preiseinheit',
-		deleteAllPositions: 'Alle löschen'
+		deleteAllPositions: 'Alle löschen',
+		amountType: 'Einheit',
+		totalPrice: 'Gesamtpreis',
 	};
 
 	return resources;

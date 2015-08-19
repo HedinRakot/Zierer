@@ -46,5 +46,14 @@ namespace ProfiCraftsman.API.Models
         [Required]
         [DataMember]
         public bool isAlternative { get; set; }
+        
+        [DataMember]
+        public int positionNumber { get; set; }
+
+        [DataMember]
+        public string amountType { get; set; }
+
+        [DataMember]
+        public string totalPrice { get; set; }
     }
 }
