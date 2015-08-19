@@ -63,7 +63,10 @@ namespace ProfiCraftsman.API.Controllers
                 model.amountType = entity.Materials.MaterialAmountTypeString;
                 model.totalPrice = CalculationHelper.CalculatePositionPrice(entity.Price, entity.Amount, entity.Payment).ToString("N2") + " EUR";
             }
-
+            else
+            {
+                model.number = "Gruppe";
+            }
 
             model.description = entity.Description;            
 

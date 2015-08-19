@@ -8,14 +8,18 @@
         width: '1060px',
         title: function () { return this.resources.title; },
         render: function () {
-            var self = this;
 
             view.__super__.render.apply(this, arguments);
+
+            this.stickit();
+
+            var self = this,
+                selectInnerMaterial = self.options.selectInnerMaterial;
 
             var options = {
                 success: function (model) {
  
-                    if (self.selectInnerMaterial)
+                    if (selectInnerMaterial)
                         self.trigger('selectInnerMaterial', model);
                     else
                         self.trigger('selectMaterial', model);

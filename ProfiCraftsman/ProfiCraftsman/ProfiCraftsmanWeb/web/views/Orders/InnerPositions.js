@@ -41,7 +41,7 @@
         var model = new Backbone.Model();
         model.url = Application.apiUrl + 'deleteAllOrderPositions';
 
-        model.set('id', self.model.id);
+        model.set('id', self.model.orderId);
         model.set('parentId', self.model.id);
         model.set('isMaterialPosition', self.model.isMaterialPosition);
 
@@ -144,8 +144,9 @@
 
                 if (e.model.id == 0)
                     e.model.isNew = function () { return true; }
-
+                debugger;
                 e.model.orderId = self.model.orderId;
+                e.model.isMaterialPosition = self.options.isMaterialPosition;
             });
 
             return self;
@@ -195,7 +196,7 @@
 
                 var self = this,
                     options = _.extend({ selectInnerMaterial: true }, self.options),
-                    view = new SelectMaterialView(self.options);
+                    view = new SelectMaterialView(options);
 
                 self.listenTo(view, 'selectInnerMaterial', function (item) {
 
@@ -252,8 +253,8 @@
 		    [{
 		        template: function () {
 		            return '<a class="k-button k-button-icontext ' +
-                        (self.isMaterialPosition ? 'selectInnerMaterials' : 'selectInnerProducts') + '" style="min-width: 180px;" href="#" data-localized="' +
-                        (self.isMaterialPosition ? 'addMaterial' : 'addProduct') + '"></a>' +
+                        (self.options.isMaterialPosition ? 'selectInnerMaterials' : 'selectInnerProducts') + '" style="min-width: 180px;" href="#" data-localized="' +
+                        (self.options.isMaterialPosition ? 'addMaterial' : 'addProduct') + '"></a>' +
 		            '<a class="k-button k-button-icontext deleteAllInnerPositions"  style="min-width: 120px;"href="#" data-localized="deleteAllPositions"></a>';
 		        }
 		    }];

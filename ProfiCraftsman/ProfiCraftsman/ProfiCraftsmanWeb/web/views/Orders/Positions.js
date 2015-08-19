@@ -157,13 +157,14 @@
             var self = this;
 
             view.__super__.render.apply(self, arguments);
-
+            
             self.grid.bind('edit', function (e) {
 
                 if (e.model.id == 0)
                     e.model.isNew = function () { return true; }
 
                 e.model.orderId = self.model.id;
+                e.model.isMaterialPosition = self.isMaterialPosition;
             });
 
             return self;

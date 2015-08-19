@@ -14,8 +14,7 @@
         },
 
         render: function () {
-
-
+            
             view.__super__.render.apply(this, arguments);
 
             this.stickit();
