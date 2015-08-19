@@ -109,7 +109,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime? DeleteDate{ get; set; }
         public int MaterialAmountType{ get; set; }
         public virtual ICollection<Positions> Positions{ get; set; }
-        public virtual ICollection<OrderProductMaterialRsp> OrderProductMaterialRsps{ get; set; }
+        public virtual ICollection<PositionMaterialRsp> PositionMaterialRsps{ get; set; }
         public virtual ICollection<ProductMaterialRsp> ProductMaterialRsps{ get; set; }
         string IHasTitle<int>.EntityTitle
         {

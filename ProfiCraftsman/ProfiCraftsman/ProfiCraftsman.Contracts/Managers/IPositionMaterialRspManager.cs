@@ -5,7 +5,7 @@ using System;
 
 namespace ProfiCraftsman.Contracts.Managers
 {
-    public partial interface IOrderProductMaterialRspManager: IEntityManager<OrderProductMaterialRsp, int>
+    public partial interface IPositionMaterialRspManager: IEntityManager<PositionMaterialRsp, int>
     {
     }
 }

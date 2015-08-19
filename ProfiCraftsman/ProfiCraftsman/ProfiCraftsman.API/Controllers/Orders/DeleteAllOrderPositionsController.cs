@@ -21,6 +21,9 @@ namespace ProfiCraftsman.API.Controllers
         public int id { get; set; }
 
         [DataMember]
+        public int? parentId { get; set; }
+
+        [DataMember]
         public bool isMaterialPosition { get; set; }
     }
 
@@ -43,7 +46,8 @@ namespace ProfiCraftsman.API.Controllers
         {
             var order = manager.GetById(model.id);
             
-            foreach(var position in order.Positions.Where(o => o.IsMaterialPosition == model.isMaterialPosition && !o.DeleteDate.HasValue).ToList())
+            foreach(var position in order.Positions.Where(o => (!model.parentId.HasValue || (o.ParentId.HasValue && o.ParentId == model.parentId.Value)) &&
+                o.IsMaterialPosition == model.isMaterialPosition && !o.DeleteDate.HasValue).ToList())
             {
                 positionManager.RemoveEntity(position);
             }

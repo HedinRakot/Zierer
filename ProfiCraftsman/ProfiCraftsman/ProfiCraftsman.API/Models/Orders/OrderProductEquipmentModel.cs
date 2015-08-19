@@ -13,7 +13,7 @@ namespace ProfiCraftsman.API.Models
     { 
         [Required]
         [DataMember]
-        public int orderId{ get; set; }
+        public int positionId{ get; set; }
 
         [Required]
         [DataMember]

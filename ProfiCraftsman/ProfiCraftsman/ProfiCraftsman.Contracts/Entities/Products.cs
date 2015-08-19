@@ -108,7 +108,6 @@ namespace ProfiCraftsman.Contracts.Entities
         public string Name{ get; set; }
         public int ProductAmountType{ get; set; }
         public virtual ICollection<Positions> Positions{ get; set; }
-        public virtual ICollection<OrderProductMaterialRsp> OrderProductMaterialRsps{ get; set; }
         public virtual ICollection<ProductMaterialRsp> ProductMaterialRsps{ get; set; }
         public virtual ProductTypes ProductTypes{ get; set; }
         public bool HasProductTypes

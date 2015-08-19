@@ -103,13 +103,13 @@
     <Compile Include="Entities\Materials.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\OrderProductMaterialRsp.cs">
-      <DependentUpon>Entities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Entities\Orders.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Permission.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PositionMaterialRsp.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Positions.cs">
@@ -167,7 +167,7 @@
     <Compile Include="Managers\IMaterialsManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Managers\IOrderProductMaterialRspManager.cs">
+    <Compile Include="Managers\IPositionMaterialRspManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\IProductMaterialRspManager.cs">

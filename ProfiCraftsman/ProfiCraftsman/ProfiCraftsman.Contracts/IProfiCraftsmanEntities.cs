@@ -38,9 +38,9 @@ namespace ProfiCraftsman.Contracts
         /// </summary>
         IQueryable<Materials> Materials{get;}
         /// <summary>
-        ///     Set of <see cref="OrderProductMaterialRsp"/> entities from table dbo.OrderProduct_Material_Rsp
+        ///     Set of <see cref="PositionMaterialRsp"/> entities from table dbo.Position_Material_Rsp
         /// </summary>
-        IQueryable<OrderProductMaterialRsp> OrderProductMaterialRsp{get;}
+        IQueryable<PositionMaterialRsp> PositionMaterialRsp{get;}
         /// <summary>
         ///     Set of <see cref="ProductMaterialRsp"/> entities from table dbo.Product_Material_Rsp
         /// </summary>

@@ -96,6 +96,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public virtual Products Products{ get; set; }
         public virtual Materials Materials{ get; set; }
         public virtual ICollection<InvoicePositions> InvoicePositions{ get; set; }
+        public virtual ICollection<PositionMaterialRsp> PositionMaterialRsps{ get; set; }
         public bool HasOrders
         {
             get { return !ReferenceEquals(Orders, null); }

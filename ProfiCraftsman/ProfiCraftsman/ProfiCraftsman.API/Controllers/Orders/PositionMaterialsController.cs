@@ -14,25 +14,23 @@ using CoreBase.Controllers;
 
 namespace ProfiCraftsman.API.Controllers
 {
-    public partial class OrderProductMaterialsController : ClientApiController<OrderProductMaterialModel, OrderProductMaterialRsp, int, IOrderProductMaterialRspManager>
+    public partial class PositionMaterialsController : ClientApiController<OrderProductMaterialModel, PositionMaterialRsp, int, IPositionMaterialRspManager>
     {
 
-        public OrderProductMaterialsController(IOrderProductMaterialRspManager manager) : base(manager) { }
+        public PositionMaterialsController(IPositionMaterialRspManager manager) : base(manager) { }
 
-        protected override void EntityToModel(OrderProductMaterialRsp entity, OrderProductMaterialModel model)
+        protected override void EntityToModel(PositionMaterialRsp entity, OrderProductMaterialModel model)
         {
-            model.orderId = entity.OrderId;
-            model.productId = entity.ProductId;
+            model.positionId = entity.PositionId;
             model.materialId = entity.MaterialId;
             model.amount = entity.Amount;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
         }
 
-        protected override void ModelToEntity(OrderProductMaterialModel model, OrderProductMaterialRsp entity, ActionTypes actionType)
+        protected override void ModelToEntity(OrderProductMaterialModel model, PositionMaterialRsp entity, ActionTypes actionType)
         {
-            entity.OrderId = model.orderId;
-            entity.ProductId = model.productId;
+            entity.PositionId = model.positionId;
             entity.MaterialId = model.materialId;
             entity.Amount = model.amount;
         }

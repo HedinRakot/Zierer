@@ -40,8 +40,10 @@
 
         var model = new Backbone.Model();
         model.url = Application.apiUrl + 'deleteAllOrderPositions';
+
         model.set('id', self.model.id);
-        model.set('isMaterialPosition', self.isMaterialPosition);
+        model.set('parentId', self.model.id);
+        model.set('isMaterialPosition', self.model.isMaterialPosition);
 
         model.save({}, {
             success: function (model, response) {
@@ -68,7 +70,7 @@
 
         if (e.data.productId != null && e.data.productId != undefined) {
             var options = _.extend({}, self.options, { model: e.data }),
-                view = new self.materialsDetailView(options);
+                view = new self.detailView(options);
 
             self.addView(view);
             e.detailRow.find('.detailsContainer').append(view.render().$el);

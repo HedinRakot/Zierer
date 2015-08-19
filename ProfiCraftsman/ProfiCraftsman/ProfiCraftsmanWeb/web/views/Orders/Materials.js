@@ -8,7 +8,7 @@
 
         collectionType: Collection,
         gridSelector: '.grid',
-        tableName: 'OrderProductMaterialRsps',
+        tableName: 'PositionMaterialRsps',
 
         addingInPopup: false,
 
@@ -16,8 +16,7 @@
             view.__super__.initialize.apply(this, arguments);
 
             this.defaultFiltering = [
-                { field: 'orderId', operator: 'eq', value: this.model.get('orderId') },
-                { field: 'productId', operator: 'eq', value: this.model.get('productId') }];
+                { field: 'positionId', operator: 'eq', value: this.model.id }];
 
             this.collection = new Collection();
         },
@@ -37,8 +36,7 @@
 
             self.grid.bind('edit', function (e) {
 
-                e.model.orderId = self.model.get('orderId');
-                e.model.productId = self.model.get('productId');
+                e.model.positionId = self.model.id;
             });
 
             return self;

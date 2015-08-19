@@ -2,20 +2,17 @@ define(function () {
 	'use strict';
 
 	var model = Backbone.Model.extend({
-	    urlRoot: 'api/OrderProductMaterials',
+	    urlRoot: 'api/PositionMaterials',
 		fields: {
 		    id: { type: "number", editable: false }
-            ,orderId: { type: "number", 
-			                        editable: Application.canTableItemBeEdit('OrderProductMaterialRsp', 'orderId'), 
-				                    validation: { required: true } }			
-			,productId: { type: "number", 
-			                        editable: Application.canTableItemBeEdit('OrderProductMaterialRsp', 'productId'), 
-				                    validation: { required: true } }			
+            ,positionId: { type: "number", 
+			                        editable: Application.canTableItemBeEdit('PositionMaterialRsp', 'positionId'), 
+				                    validation: { required: true } }				
 			,materialId: { type: "number", 
-			                        editable: Application.canTableItemBeEdit('OrderProductMaterialRsp', 'materialId'), 
+			                        editable: Application.canTableItemBeEdit('PositionMaterialRsp', 'materialId'), 
 				                    validation: { required: true } }			
 			,amount: { type: "number", 
-			                        editable: Application.canTableItemBeEdit('OrderProductMaterialRsp', 'amount'), 
+			                        editable: Application.canTableItemBeEdit('PositionMaterialRsp', 'amount'), 
 				                    validation: { required: true } }	
 		},
 		defaults: function () {
