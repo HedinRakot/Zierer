@@ -48,6 +48,7 @@ namespace ProfiCraftsman.API.Controllers
         public string end { get; set; }
         public string color { get; set; }
         public bool agendaEvent { get; set; }
+        public int columnIndex { get; set; }
     }
 
     /// <summary>
@@ -78,8 +79,9 @@ namespace ProfiCraftsman.API.Controllers
 
                 var terms = termsQuery.ToList();
                 var color = "";
+                var columnIndex = 0;
 
-                foreach (var termGroup in terms.GroupBy(o => o.Employees))
+                foreach (var termGroup in terms.GroupBy(o => o.Employees).OrderBy(o => o.Key.Id))
                 {
                     var date = DateTime.Now;
 
@@ -95,7 +97,8 @@ namespace ProfiCraftsman.API.Controllers
                             title = String.Format("{0} {1} {2}\n{3}", 
                                 term.Orders.Street, term.Orders.City, term.Orders.Zip, term.Orders.CustomerName),
                             color = color,
-                            agendaEvent = false
+                            agendaEvent = false,
+                            columnIndex = columnIndex
                         });
                     }
 
@@ -110,6 +113,7 @@ namespace ProfiCraftsman.API.Controllers
                     });
 
                     color = GetNextColor(color);
+                    columnIndex++;
                 }
             }
 
@@ -123,10 +127,28 @@ namespace ProfiCraftsman.API.Controllers
             switch (color)
             {
                 case "green":
-                    result = "magenta";
+                    result = "gray";
                     break;
-                case "magenta":
-                    result = "yellow";
+                case "gray":
+                    result = "orange";
+                    break;
+                case "orange":
+                    result = "violet";
+                    break;
+                case "violet":
+                    result = "blue";
+                    break;
+                case "blue":
+                    result = "DarkRed";
+                    break;
+                case "DarkRed":
+                    result = "LightSalmon";
+                    break;
+                case "LightSalmon":
+                    result = "GoldenRod";
+                    break;
+                case "GoldenRod":
+                    result = "Teal";
                     break;
             }
 

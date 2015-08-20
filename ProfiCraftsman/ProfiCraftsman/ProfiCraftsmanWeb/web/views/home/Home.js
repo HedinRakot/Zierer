@@ -49,6 +49,7 @@
 	                                    url: this.url,
 	                                    color: this.color,
 	                                    allDay: this.agendaEvent,
+	                                    columnIndex: this.columnIndex,
 	                                    overlap: false,
 	                                });
 	                            });
