@@ -284,7 +284,7 @@
 		            return '<a class="k-button k-button-icontext ' +
                         (self.isMaterialPosition ? 'selectMaterials' : 'selectProducts') + '" style="min-width: 180px;" href="#" data-localized="' +
                         (self.isMaterialPosition ? 'addMaterial' : 'addProduct') + '"></a>' +
-                    '<a class="k-button k-button-icontext k-grid-create-inline" href="#" data-localized="addGroup"></a>' +
+                    '<a class="k-button k-button-icontext k-grid-create-inline" href="#" data-localized="addGroup" style="min-width: 180px;"></a>' +
 		            '<a class="k-button k-button-icontext deleteAllPositions"  style="min-width: 120px;"href="#" data-localized="deleteAllPositions"></a>';
 		        }
 		    }];

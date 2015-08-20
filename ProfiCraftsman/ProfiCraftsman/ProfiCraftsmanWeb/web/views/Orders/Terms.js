@@ -73,7 +73,7 @@
 		        result =
 		    [{
 		        template: function () {
-		            return '<a class="k-button k-button-icontext k-grid-create-inline" href="#" data-localized="add"></a>';
+		            return '<a class="k-button k-button-icontext k-grid-create-inline" href="#" data-localized="add" style="min-width: 160px;"></a>';
 		        }
 		    }];
 

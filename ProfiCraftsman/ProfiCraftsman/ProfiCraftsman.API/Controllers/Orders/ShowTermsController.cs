@@ -1,0 +1,136 @@
+using ProfiCraftsman.API.Models;
+using ProfiCraftsman.API.Security;
+using ProfiCraftsman.Contracts.Enums;
+using ProfiCraftsman.Contracts.Managers;
+using ProfiCraftsman.Contracts.Services;
+using CoreBase;
+using System;
+using System.Collections.Generic;
+using System.Web.Http;
+using System.Linq;
+
+namespace ProfiCraftsman.API.Controllers
+{
+    public class TermSearchModel
+    {
+        //TODO public string Name { get; set; }
+        //public IEnumerable<int> Equipments { get; set; }
+
+        public string StartDateStr { get; set; }
+        public string EndDateStr { get; set; }
+
+        public DateTime StartDate
+        {
+            get
+            {
+                var result = DateTime.Now;
+                DateTime.TryParse(StartDateStr, out result);
+                return result;
+            }
+        }
+
+        public DateTime EndDate
+        {
+            get
+            {
+                var result = DateTime.Now;
+                DateTime.TryParse(EndDateStr, out result);
+                return result;
+            }
+        }
+    }
+
+    public class TermViewModel
+    {
+        public string title { get; set; }
+        public string url { get; set; }
+        public string start { get; set; }
+        public string end { get; set; }
+        public string color { get; set; }
+        public bool agendaEvent { get; set; }
+    }
+
+    /// <summary>
+    ///     Controller for Disposition
+    /// </summary>
+    [AuthorizeByPermissions(PermissionTypes = new[] { Permissions.Orders })]
+    public partial class ShowTermsController : ApiController
+    {
+        private readonly ITermsManager manager;
+        private readonly IProductTypesManager productTypesManager;
+        private readonly IUniqueNumberProvider numberProvider;
+
+        public ShowTermsController(ITermsManager manager, IProductTypesManager productTypesManager, IUniqueNumberProvider numberProvider)
+        {
+            this.manager = manager;
+            this.productTypesManager = productTypesManager;
+            this.numberProvider = numberProvider;
+        }
+
+        public IHttpActionResult Post(TermSearchModel model)
+        {
+            var result = new List<TermViewModel>();
+
+            if (!String.IsNullOrEmpty(model.StartDateStr) && !String.IsNullOrEmpty(model.EndDateStr))
+            {
+                var termsQuery = manager.GetActualTerms(model.StartDate, model.EndDate);
+                //TODO Where(r => String.IsNullOrEmpty(model.Name) || r.Employees.Name.ToLower().Contains(model.Name.ToLower()));
+
+                var terms = termsQuery.ToList();
+                var color = "";
+
+                foreach (var termGroup in terms.GroupBy(o => o.Employees))
+                {
+                    var date = DateTime.Now;
+
+                    foreach (var term in termGroup)
+                    {
+                        date = term.Date;
+
+                        result.Add(new TermViewModel()
+                        {
+                            start = term.Date.ToString("yyyy-MM-ddTHH:mm"),
+                            end = term.Date.AddHours(2).ToString("yyyy-MM-ddTHH:mm"), //TODO change
+                            url = String.Format("#Orders/{0}", term.OrderId),
+                            title = String.Format("{0} {1} {2}\n{3}", 
+                                term.Orders.Street, term.Orders.City, term.Orders.Zip, term.Orders.CustomerName),
+                            color = color,
+                            agendaEvent = false
+                        });
+                    }
+
+                    result.Add(new TermViewModel()
+                    {
+                        start = date.ToString("yyyy-MM-ddTHH:mm"),
+                        end = date.ToString("yyyy-MM-ddTHH:mm"),
+                        url = String.Empty,
+                        title = String.Format("{0} {1}", termGroup.Key.Name, termGroup.Key.FirstName),
+                        color = color,
+                        agendaEvent = true
+                    });
+
+                    color = GetNextColor(color);
+                }
+            }
+
+            return Ok(result);
+        }
+
+        private string GetNextColor(string color)
+        {
+            var result = "green";
+
+            switch (color)
+            {
+                case "green":
+                    result = "magenta";
+                    break;
+                case "magenta":
+                    result = "yellow";
+                    break;
+            }
+
+            return result;
+        }
+    }
+}

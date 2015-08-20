@@ -23,20 +23,19 @@
 	            editable: false,
 	            lang: "de",
 	            eventLimit: true, // allow "more" link when too many events,
-                	            
+               
+	            defaultView: 'agendaDay',
+
 	            events: function (start, end, timezone, callback) {
     
 	                if (needLoadData) {
 	                    $.ajax({
-	                        url: Application.apiUrl + 'showProduct',
+	                        url: Application.apiUrl + 'showTerms',
 	                        type: 'POST',
 	                        data: {
-	                            productTypeId: model.get('productTypeId'),
-	                            name: model.get('name'),
-	                            equipments: model.get('equipments'),
+	                            //TODO name: model.get('name'),
 	                            startDateStr: start.date() + '.' + (start.month() + 1) + '.' + start.year(),
 	                            endDateStr: end.date() + '.' + (end.month() + 1) + '.' + end.year(),
-	                            searchFreeProduct: model.get('searchFreeProduct')
 	                        },
 	                        success: function (doc) {
 
@@ -48,7 +47,9 @@
 	                                    start: this.start,
 	                                    end: this.end,
 	                                    url: this.url,
-	                                    color: model.get('searchFreeProduct') == true ? '#009D59' : ''
+	                                    color: this.color,
+	                                    allDay: this.agendaEvent,
+	                                    overlap: false,
 	                                });
 	                            });
 	                            callback(events);
@@ -69,22 +70,7 @@
 
 	        var self = this;
 	        var result = {
-	            '#name': 'name',
-	            '#productTypeId': {
-	                observe: 'productTypeId',
-	                selectOptions: {
-	                    labelPath: 'name', valuePath: 'id',
-	                    collection: self.options.productTypesForDisposition,
-	                    defaultOption: { label: self.resources.pleaseSelect, value: null }
-	                },
-	            },
-	            '#equipments': {
-	                observe: 'equipments',
-	                selectOptions: {
-	                    labelPath: 'name', valuePath: 'id',
-	                    collection: self.options.equipments
-	                },
-	            }	            
+	            //TODO'#name': 'name',      
 	        };
 
 	        return result;
@@ -96,7 +82,6 @@
 	        
 	        var self = this;
 	        self.model = new Model();
-	        self.model.set('searchFreeProduct', self.options.searchFreeProduct);
 	    },
 
 		render: function () {
@@ -104,10 +89,6 @@
 
 		    var self = this,
                 needLoadData = true;
-
-		    if (self.options.searchFreeProduct) {
-		        needLoadData = false;
-		    }
 
 		    setTimeout(function () { bindCalendar(self, needLoadData); }, 0);
 
@@ -123,12 +104,9 @@
 		    },
 		    'click .cancel': function (e) {
 
-		        var self = this,
-                    searchFreeProduct = self.options.searchFreeProduct;
+		        var self = this;
 
 		        self.model.clear().set(self.model.defaults);
-
-		        self.model.set('searchFreeProduct', searchFreeProduct);
 
 		        self.$el.find('#calendar').fullCalendar('destroy');
 		        bindCalendar(self, true);		        

@@ -196,7 +196,7 @@
     <Compile Include="Managers\IProductMaterialRspManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Managers\IProductsManager.Custom.cs" />
+    <Compile Include="Managers\TermsManager.Custom.cs" />
     <Compile Include="Managers\ICustomersManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>

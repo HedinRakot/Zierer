@@ -60,30 +60,31 @@ namespace ProfiCraftsman.API.Controllers
             entity.Comment = model.comment;
         }
 
-        protected override IQueryable<Products> Filter(IQueryable<Products> entities, Filtering filtering)
-        {
-            //Filter is performed by parameters : 
-            //1. Product type
-            //2. available from, 3. available to
-            //4. name (freetext)
-            //5. equipments
+        //TODO
+        //protected override IQueryable<Products> Filter(IQueryable<Products> entities, Filtering filtering)
+        //{
+        //    //Filter is performed by parameters : 
+        //    //1. Product type
+        //    //2. available from, 3. available to
+        //    //4. name (freetext)
+        //    //5. equipments
 
-            int? typeId;
-            string name;
-            List<int> equpmentIds;
+        //    int? typeId;
+        //    string name;
+        //    List<int> equpmentIds;
 
-            GetFilters(filtering, out typeId, out name, out equpmentIds);
+        //    GetFilters(filtering, out typeId, out name, out equpmentIds);
 
-            if (fromDate == DateTime.MinValue || toDate == DateTime.MinValue)
-            {
-                return Manager.GetFreeProducts(new List<int>(), typeId, name, equpmentIds); //for offers we return Products independs from booking
-            }
+        //    if (fromDate == DateTime.MinValue || toDate == DateTime.MinValue)
+        //    {
+        //        return Manager.GetFreeProducts(new List<int>(), typeId, name, equpmentIds); //for offers we return Products independs from booking
+        //    }
 
-            var positions = Manager.GetActualPositions(fromDate, toDate);
-            var ids = positions.Select(o => o.ProductId.Value).Distinct().ToList();
+        //    var positions = Manager.GetActualPositions(fromDate, toDate);
+        //    var ids = positions.Select(o => o.ProductId.Value).Distinct().ToList();
 
-            return Manager.GetFreeProducts(ids, typeId, name, equpmentIds);
-        }
+        //    return Manager.GetFreeProducts(ids, typeId, name, equpmentIds);
+        //}
         
         private void GetFilters(Filtering filtering, out int? typeId, out string name, out List<int> equipmentIds)
         {

@@ -1015,6 +1015,9 @@ be a descendant of the grid when it is being dragged.
 
 .fc-time-grid-event {
 	overflow: hidden; /* don't let the bg flow over rounded corners */
+    /*todo*/
+    min-width: 150px;
+    max-width: 150px;
 }
 
 .fc-time-grid-event .fc-time,
