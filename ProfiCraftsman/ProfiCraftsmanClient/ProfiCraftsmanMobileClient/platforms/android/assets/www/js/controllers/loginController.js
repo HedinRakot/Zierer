@@ -20,7 +20,7 @@
 
             if (response.isAuthenticated) {
 
-                window.localStorage['userLogin'] = response.login;
+                window.localStorage.setItem("userLogin", response.login);
 
                 if (toState) {
                     self.closeLogin();

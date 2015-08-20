@@ -23,6 +23,7 @@
     <script src="js/index.js"></script>
 
     <script src="js/controllers/loginController.js"></script>
+    <script src="js/controllers/logoutController.js"></script>
     <script src="js/controllers/termsController.js"></script>
     <script src="js/controllers/languageController.js"></script>
     <script src="js/services/modalWindowService.js"></script>
@@ -30,7 +31,7 @@
     <script src="js/services/translateProviderStorageService.js"></script>
 </head>
 <body ng-app="app">
-    <ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menus enable-menu-with-back-views="false" ng-controller="LogoutController as logoutCtrl">
         <ion-side-menu-content>
             <ion-nav-bar class="bar-stable">
                 <ion-nav-back-button>
@@ -71,6 +72,9 @@
                     </ion-item>
                     <ion-item nav-clear menu-close href="#/terms">
                         {{"terms_title" | translate}}
+                    </ion-item>
+                    <ion-item nav-clear menu-close ng-click="logoutCtrl.doLogout()">
+                        {{"logout_title" | translate}}
                     </ion-item>
                 </ion-list>
             </ion-content>
