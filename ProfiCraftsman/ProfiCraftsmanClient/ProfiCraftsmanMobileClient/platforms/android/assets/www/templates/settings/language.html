@@ -1,0 +1,9 @@
+﻿<ion-view>
+    <ion-nav-title>
+        {{"language_title" | translate}}
+    </ion-nav-title>
+    <ion-content ng-controller="LanguageController as langCtrl">
+        <ion-radio ng-model="locale" value="en-gb" ng-change="langCtrl.setLocale()">English (UK)</ion-radio>
+        <ion-radio ng-model="locale" value="de" ng-change="langCtrl.setLocale()">Deutsch</ion-radio>
+    </ion-content>
+</ion-view>

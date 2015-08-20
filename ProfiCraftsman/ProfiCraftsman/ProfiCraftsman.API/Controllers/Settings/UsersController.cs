@@ -26,6 +26,7 @@ namespace ProfiCraftsman.API.Controllers.Settings
             model.login = entity.Login;
             model.name = entity.Name;
             model.password = entity.Password;
+            model.employeeId = entity.EmployeeId;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
         }
@@ -35,6 +36,7 @@ namespace ProfiCraftsman.API.Controllers.Settings
             entity.Login = model.login;
             entity.Name = model.name;
             entity.Password = model.password;
+            entity.EmployeeId = model.employeeId;
         }
     }
 }

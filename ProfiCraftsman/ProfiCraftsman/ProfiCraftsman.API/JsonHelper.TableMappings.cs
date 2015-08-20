@@ -88,12 +88,13 @@ namespace ProfiCraftsman.API
                 {"PermissionId", "permissionId"},
             });
 
-            tables.Add("User", new TableMapping("User", "User", 4)
+            tables.Add("User", new TableMapping("User", "User", 5)
             {
                 {"RoleId", "roleId"},
                 {"Login", "login"},
                 {"Name", "name"},
                 {"Password", "password"},
+                {"EmployeeId", "employeeId"},
             });
 
             tables.Add("AdditionalCosts", new TableMapping("AdditionalCosts", "AdditionalCosts", 6)

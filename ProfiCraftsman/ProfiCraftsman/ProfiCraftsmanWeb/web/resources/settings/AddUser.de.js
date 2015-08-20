@@ -12,6 +12,7 @@ define(function () {
 		login: 'Login',	
 		name: 'Name',	
 		password: 'Passwort',	
+		employeeId: 'Mitarbeiter',	
 	};
 
 	return resources;

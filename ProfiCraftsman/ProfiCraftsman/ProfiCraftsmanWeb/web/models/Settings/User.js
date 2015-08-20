@@ -7,7 +7,7 @@ define(function () {
 			id: { type: "number", editable: false }
 			,roleId: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('User', 'roleId'), 
-				                    validation: { required: true } }			
+				                    validation: { required: false } }			
 			,login: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('User', 'login'), 
 				                    validation: { required: true, maxLength: 128 } }			
@@ -17,6 +17,9 @@ define(function () {
 			,password: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('User', 'password'), 
 				                    validation: { required: true, maxLength: 128 } }			
+			,employeeId: { type: "number", 
+			                        editable: Application.canTableItemBeEdit('User', 'employeeId'), 
+				                    validation: { required: true } }			
 		},
 		defaults: function () {
 			var dnf = new Date();

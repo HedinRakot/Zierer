@@ -21,6 +21,10 @@ define([
 			'#login': 'login',
 			'#name': 'name',
 			'#password': 'password',
+			'#employeeId': { observe: 'employeeId',
+				selectOptions: { labelPath: 'name', valuePath: 'id',
+				collection: self.options.employees
+				,defaultOption: {label: self.resources.pleaseSelect,value: null}},},
 			};
 
             return result;
@@ -35,6 +39,7 @@ define([
 			this.disableInput(this, 'login');
 			this.disableInput(this, 'name');
 			this.disableInput(this, 'password');
+			this.disableInput(this, 'employeeId', 'select');
 
             return this;
         }

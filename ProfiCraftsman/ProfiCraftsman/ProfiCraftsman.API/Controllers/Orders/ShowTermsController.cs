@@ -94,8 +94,9 @@ namespace ProfiCraftsman.API.Controllers
                             start = term.Date.ToString("yyyy-MM-ddTHH:mm"),
                             end = term.Date.AddHours(2).ToString("yyyy-MM-ddTHH:mm"), //TODO change
                             url = String.Format("#Orders/{0}", term.OrderId),
-                            title = String.Format("{0} {1} {2}\n{3}", 
-                                term.Orders.Street, term.Orders.City, term.Orders.Zip, term.Orders.CustomerName),
+                            title = String.Format("{0}\n{1}\n{2} {3}\n{4}",
+                                 String.Format("{0} {1}", termGroup.Key.Name, termGroup.Key.FirstName),
+                                 term.Orders.Street, term.Orders.Zip, term.Orders.City, term.Orders.CustomerName),
                             color = color,
                             agendaEvent = false,
                             columnIndex = columnIndex

@@ -28,6 +28,7 @@ define([
 				{ field: 'roleId', title: this.resources.roleId , collection: this.options.role, defaultText: this.resources.pleaseSelect},
 				{ field: 'login', title: this.resources.login },
 				{ field: 'name', title: this.resources.name },
+				{ field: 'employeeId', title: this.resources.employeeId , collection: this.options.employees, defaultText: this.resources.pleaseSelect},
 			]);
 		}
 

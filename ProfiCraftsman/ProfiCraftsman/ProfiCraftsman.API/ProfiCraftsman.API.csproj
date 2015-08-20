@@ -152,6 +152,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientControllers\ClientTermsController.cs" />
+    <Compile Include="ClientControllers\ClientLoginController.cs" />
     <Compile Include="Controllers\InvoiceStornos\InvoiceStornosController.cs" />
     <Compile Include="Controllers\Invoices\GenerateMonthInvoicesController.cs" />
     <Compile Include="Controllers\Invoices\InvoicePositionsController.cs" />

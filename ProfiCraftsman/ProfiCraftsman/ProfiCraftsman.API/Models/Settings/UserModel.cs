@@ -17,7 +17,6 @@ namespace ProfiCraftsman.API.Models.Settings
         /// <summary>
         ///     Model property for <see cref="User.RoleId"/> entity
         /// </summary>
-        [Required]
         [DataMember]
         public int? roleId{ get; set; }
         /// <summary>
@@ -38,6 +37,12 @@ namespace ProfiCraftsman.API.Models.Settings
         [Required]
         [DataMember]
         public string password{ get; set; }
+        /// <summary>
+        ///     Model property for <see cref="User.EmployeeId"/> entity
+        /// </summary>
+        [Required]
+        [DataMember]
+        public int? employeeId{ get; set; }
 
     }
 }
