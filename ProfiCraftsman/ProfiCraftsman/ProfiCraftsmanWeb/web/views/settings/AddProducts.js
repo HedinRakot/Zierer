@@ -19,14 +19,8 @@ define([
 				selectOptions: { labelPath: 'name', valuePath: 'id',
 				collection: self.options.productTypes
 				,defaultOption: {label: self.resources.pleaseSelect,value: null}},},
-			'#length': 'length',
-			'#width': 'width',
-			'#height': 'height',
-			'#color': 'color',
 			'#price': 'price',
 			'#proceedsAccount': 'proceedsAccount',
-			'#boughtFrom': 'boughtFrom',
-			'#boughtPrice': 'boughtPrice',
 			'#comment': 'comment',
 			'#name': 'name',
 			'#productAmountType': { observe: 'productAmountType',
@@ -45,14 +39,8 @@ define([
 			//TODO foreach model field
 			this.disableInput(this, 'number');
 			this.disableInput(this, 'productTypeId', 'select');
-			this.disableInput(this, 'length', 'numeric');
-			this.disableInput(this, 'width', 'numeric');
-			this.disableInput(this, 'height', 'numeric');
-			this.disableInput(this, 'color');
 			this.disableInput(this, 'price', 'numeric');
 			this.disableInput(this, 'proceedsAccount', 'numeric');
-			this.disableInput(this, 'boughtFrom');
-			this.disableInput(this, 'boughtPrice', 'numeric');
 			this.disableInput(this, 'comment');
 			this.disableInput(this, 'name');
 			this.disableInput(this, 'productAmountType', 'select');

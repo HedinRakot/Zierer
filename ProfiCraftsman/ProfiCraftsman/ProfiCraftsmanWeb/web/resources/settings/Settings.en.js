@@ -17,6 +17,7 @@ define(function () {
         Customers: 'Customer',
         CommunicationPartners: 'Communication partner',
         ProductTypes: 'Product type',
+        Instruments: 'Instrument',
         Products: 'Product',
 	};
 

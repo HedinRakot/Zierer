@@ -33,19 +33,7 @@ namespace ProfiCraftsman.API.Controllers.Settings
         {
             if (actionType == ActionTypes.Add)
             {
-                //TODO delete
-                //entity.ProductEquipmentRsps = new List<ProductEquipmentRsp>();
-                //var productTypeManager = GlobalConfiguration.Configuration.DependencyResolver.GetService<IProductTypesManager>();
-                //var productType = productTypeManager.GetById(model.productTypeId);
-                //foreach (var equipment in productType.ProductTypeEquipmentRsps)
-                //{
-                //    entity.ProductEquipmentRsps.Add(new ProductEquipmentRsp()
-                //    {
-                //        Amount = equipment.Amount,
-                //        Products = entity,
-                //        EquipmentId = equipment.EquipmentId
-                //    });
-                //}
+
             }
         }
     }

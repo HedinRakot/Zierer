@@ -163,11 +163,17 @@
     <Compile Include="Controllers\Orders\CopyOrderController.cs" />
     <Compile Include="Controllers\Orders\PositionMaterialsController.cs" />
     <Compile Include="Controllers\Orders\TermsController.cs" />
+    <Compile Include="Controllers\Settings\AutoInstrumentRspsController.cs" />
     <Compile Include="Controllers\Settings\AutosController.cs">
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Settings\CopyProductController.cs" />
+    <Compile Include="Controllers\Settings\AutoMaterialRspsController.cs" />
+    <Compile Include="Controllers\Settings\Custom.AutosController.cs" />
     <Compile Include="Controllers\Settings\EmployeesController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Settings\InstrumentsController.cs">
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Settings\JobPositionsController.cs">
@@ -251,10 +257,15 @@
     <Compile Include="Models\Invoices\InvoicesModel.cs" />
     <Compile Include="Models\Orders\PositionMaterialModel.cs" />
     <Compile Include="Models\Orders\TermsModel.cs" />
+    <Compile Include="Models\Settings\AutoInstrumentRspModel.cs" />
     <Compile Include="Models\Settings\AutosModel.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Settings\AutoMaterialRspModel.cs" />
     <Compile Include="Models\Settings\EmployeesModel.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Settings\InstrumentsModel.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Settings\JobPositionsModel.cs">

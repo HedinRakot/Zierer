@@ -88,6 +88,14 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'MaterialAmountType' for property <see cref="Materials.MaterialAmountType"/>
             /// </summary>
             public static readonly string MaterialAmountType = "MaterialAmountType";
+            /// <summary>
+            /// Column name 'IsForAuto' for property <see cref="Materials.IsForAuto"/>
+            /// </summary>
+            public static readonly string IsForAuto = "IsForAuto";
+            /// <summary>
+            /// Column name 'MustCount' for property <see cref="Materials.MustCount"/>
+            /// </summary>
+            public static readonly string MustCount = "MustCount";
           
         }
         #endregion
@@ -108,9 +116,12 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
         public int MaterialAmountType{ get; set; }
+        public bool IsForAuto{ get; set; }
+        public int MustCount{ get; set; }
         public virtual ICollection<Positions> Positions{ get; set; }
         public virtual ICollection<PositionMaterialRsp> PositionMaterialRsps{ get; set; }
         public virtual ICollection<ProductMaterialRsp> ProductMaterialRsps{ get; set; }
+        public virtual ICollection<AutoMaterialRsp> AutoMaterialRsps{ get; set; }
         string IHasTitle<int>.EntityTitle
         {
             get { return Name; }
@@ -149,6 +160,8 @@ namespace ProfiCraftsman.Contracts.Entities
                        ChangeDate = ChangeDate,
                        DeleteDate = DeleteDate,
                        MaterialAmountType = MaterialAmountType,
+                       IsForAuto = IsForAuto,
+                       MustCount = MustCount,
         	           };
         }
     }

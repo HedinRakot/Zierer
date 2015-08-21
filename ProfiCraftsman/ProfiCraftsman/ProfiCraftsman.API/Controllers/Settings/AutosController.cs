@@ -33,6 +33,8 @@ namespace ProfiCraftsman.API.Controllers.Settings
             entity.Number = model.number;
             entity.Comment = model.comment;
             entity.LastInspectionDate = model.lastInspectionDate;
+
+            ExtraModelToEntity(entity, model, actionType);
         }
     }
 }

@@ -78,6 +78,12 @@
     <Compile Include="Entities\AdditionalCosts.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\AutoInstrumentRsp.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AutoMaterialRsp.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Autos.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
@@ -96,6 +102,9 @@
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Employees.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Instruments.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\InvoicePositions.cs">
@@ -175,6 +184,12 @@
     <Compile Include="Managers\IAdditionalCostsManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Managers\IAutoInstrumentRspManager.cs">
+      <DependentUpon>IManagers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\IAutoMaterialRspManager.cs">
+      <DependentUpon>IManagers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Managers\IAutosManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
@@ -182,6 +197,9 @@
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\IEmployeesManager.cs">
+      <DependentUpon>IManagers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\IInstrumentsManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\IJobPositionsManager.cs">

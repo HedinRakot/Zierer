@@ -35,6 +35,8 @@ namespace ProfiCraftsman.API.Controllers.Settings
             model.boughtPrice = entity.BoughtPrice;
             model.comment = entity.Comment;
             model.materialAmountType = entity.MaterialAmountType;
+            model.isForAuto = entity.IsForAuto;
+            model.mustCount = entity.MustCount;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
         }
@@ -53,6 +55,8 @@ namespace ProfiCraftsman.API.Controllers.Settings
             entity.BoughtPrice = model.boughtPrice;
             entity.Comment = model.comment;
             entity.MaterialAmountType = model.materialAmountType;
+            entity.IsForAuto = model.isForAuto;
+            entity.MustCount = model.mustCount;
         }
     }
 }

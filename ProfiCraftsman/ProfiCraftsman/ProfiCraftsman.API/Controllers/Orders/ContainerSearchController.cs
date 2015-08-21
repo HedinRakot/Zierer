@@ -28,14 +28,8 @@ namespace ProfiCraftsman.API.Controllers
         {
             model.number = entity.Number;
             model.productTypeId = entity.ProductTypeId;
-            model.length = entity.Length;
-            model.width = entity.Width;
-            model.height = entity.Height;
-            model.color = entity.Color;
             model.price = entity.Price;
             model.proceedsAccount = entity.ProceedsAccount;
-            model.boughtFrom = entity.BoughtFrom;
-            model.boughtPrice = entity.BoughtPrice;
             model.comment = entity.Comment;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
@@ -49,14 +43,8 @@ namespace ProfiCraftsman.API.Controllers
         {
             entity.Number = model.number;
             entity.ProductTypeId = model.productTypeId;
-            entity.Length = model.length;
-            entity.Width = model.width;
-            entity.Height = model.height;
-            entity.Color = model.color;
             entity.Price = model.price;
             entity.ProceedsAccount = model.proceedsAccount;
-            entity.BoughtFrom = model.boughtFrom;
-            entity.BoughtPrice = model.boughtPrice;
             entity.Comment = model.comment;
         }
 

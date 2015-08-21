@@ -13,7 +13,7 @@ define(function () {
 				                    validation: { required: true } }			
 			,autoId: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Employees', 'autoId'), 
-				                    validation: { required: true } }			
+				                    validation: { required: false } }			
 			,name: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('Employees', 'name'), 
 				                    validation: { required: true, maxLength: 128 } }			

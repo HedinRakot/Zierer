@@ -114,8 +114,20 @@ namespace ProfiCraftsman.Contracts
         /// </summary>
         IQueryable<TransportPositions> TransportPositions{get;}
         /// <summary>
+        ///     Set of <see cref="Instruments"/> entities from table dbo.Instruments
+        /// </summary>
+        IQueryable<Instruments> Instruments{get;}
+        /// <summary>
         ///     Set of <see cref="Products"/> entities from table dbo.Products
         /// </summary>
         IQueryable<Products> Products{get;}
+        /// <summary>
+        ///     Set of <see cref="AutoMaterialRsp"/> entities from table dbo.Auto_Material_Rsp
+        /// </summary>
+        IQueryable<AutoMaterialRsp> AutoMaterialRsp{get;}
+        /// <summary>
+        ///     Set of <see cref="AutoInstrumentRsp"/> entities from table dbo.Auto_Instrument_Rsp
+        /// </summary>
+        IQueryable<AutoInstrumentRsp> AutoInstrumentRsp{get;}
     }
 }

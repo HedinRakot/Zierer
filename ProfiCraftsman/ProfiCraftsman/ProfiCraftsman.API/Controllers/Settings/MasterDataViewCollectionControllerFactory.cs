@@ -47,6 +47,10 @@ namespace ProfiCraftsman.API.Controllers
             	result.Add("ProductTypes", GetViewCollection<ProductTypes, int, IProductTypesManager>(
             		(IProductTypesManager)resolver.GetService(typeof(IProductTypesManager))));
 
+            if (model.Instruments)
+            	result.Add("Instruments", GetViewCollection<Instruments, int, IInstrumentsManager>(
+            		(IInstrumentsManager)resolver.GetService(typeof(IInstrumentsManager))));
+
         }
     }
 }

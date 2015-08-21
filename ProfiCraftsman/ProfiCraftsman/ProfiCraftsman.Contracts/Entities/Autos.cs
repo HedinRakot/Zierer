@@ -60,6 +60,8 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime? DeleteDate{ get; set; }
         public virtual ICollection<Employees> Employees{ get; set; }
         public virtual ICollection<Terms> Terms{ get; set; }
+        public virtual ICollection<AutoMaterialRsp> AutoMaterialRsps{ get; set; }
+        public virtual ICollection<AutoInstrumentRsp> AutoInstrumentRsps{ get; set; }
         string IHasTitle<int>.EntityTitle
         {
             get { return Number; }

@@ -29,7 +29,6 @@ namespace ProfiCraftsman.API.Models.Settings
         /// <summary>
         ///     Model property for <see cref="Employees.AutoId"/> entity
         /// </summary>
-        [Required]
         [DataMember]
         public int autoId{ get; set; }
         /// <summary>

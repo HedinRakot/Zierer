@@ -26,26 +26,6 @@ namespace ProfiCraftsman.API.Models.Settings
         [DataMember]
         public int? productTypeId{ get; set; }
         /// <summary>
-        ///     Model property for <see cref="Products.Length"/> entity
-        /// </summary>
-        [DataMember]
-        public int? length{ get; set; }
-        /// <summary>
-        ///     Model property for <see cref="Products.Width"/> entity
-        /// </summary>
-        [DataMember]
-        public int? width{ get; set; }
-        /// <summary>
-        ///     Model property for <see cref="Products.Height"/> entity
-        /// </summary>
-        [DataMember]
-        public int? height{ get; set; }
-        /// <summary>
-        ///     Model property for <see cref="Products.Color"/> entity
-        /// </summary>
-        [DataMember]
-        public string color{ get; set; }
-        /// <summary>
         ///     Model property for <see cref="Products.Price"/> entity
         /// </summary>
         [Required]
@@ -57,17 +37,6 @@ namespace ProfiCraftsman.API.Models.Settings
         [Required]
         [DataMember]
         public int proceedsAccount{ get; set; }
-        /// <summary>
-        ///     Model property for <see cref="Products.BoughtFrom"/> entity
-        /// </summary>
-        [DataMember]
-        public string boughtFrom{ get; set; }
-        /// <summary>
-        ///     Model property for <see cref="Products.BoughtPrice"/> entity
-        /// </summary>
-        [Required]
-        [DataMember]
-        public double boughtPrice{ get; set; }
         /// <summary>
         ///     Model property for <see cref="Products.Comment"/> entity
         /// </summary>

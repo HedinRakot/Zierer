@@ -16,7 +16,7 @@ namespace ProfiCraftsman.API
     {
         private static void ProfiCraftsmanTableMappings(IDictionary<string, TableMapping> tables)
         {
-            tables.Add("Materials", new TableMapping("Materials", "Materials", 13)
+            tables.Add("Materials", new TableMapping("Materials", "Materials", 15)
             {
                 {"Name", "name"},
                 {"Number", "number"},
@@ -31,6 +31,8 @@ namespace ProfiCraftsman.API
                 {"BoughtPrice", "boughtPrice"},
                 {"Comment", "comment"},
                 {"MaterialAmountType", "materialAmountType"},
+                {"IsForAuto", "isForAuto"},
+                {"MustCount", "mustCount"},
             });
 
             tables.Add("Product_Material_Rsp", new TableMapping("Product_Material_Rsp", "ProductMaterialRsp", 3)
@@ -165,18 +167,22 @@ namespace ProfiCraftsman.API
                 {"Comment", "comment"},
             });
 
-            tables.Add("Products", new TableMapping("Products", "Products", 13)
+            tables.Add("Instruments", new TableMapping("Instruments", "Instruments", 6)
+            {
+                {"Name", "name"},
+                {"Number", "number"},
+                {"ProceedsAccount", "proceedsAccount"},
+                {"IsForAuto", "isForAuto"},
+                {"BoughtPrice", "boughtPrice"},
+                {"Comment", "comment"},
+            });
+
+            tables.Add("Products", new TableMapping("Products", "Products", 7)
             {
                 {"Number", "number"},
                 {"ProductTypeId", "productTypeId"},
-                {"Length", "length"},
-                {"Width", "width"},
-                {"Height", "height"},
-                {"Color", "color"},
                 {"Price", "price"},
                 {"ProceedsAccount", "proceedsAccount"},
-                {"BoughtFrom", "boughtFrom"},
-                {"BoughtPrice", "boughtPrice"},
                 {"Comment", "comment"},
                 {"Name", "name"},
                 {"ProductAmountType", "productAmountType"},

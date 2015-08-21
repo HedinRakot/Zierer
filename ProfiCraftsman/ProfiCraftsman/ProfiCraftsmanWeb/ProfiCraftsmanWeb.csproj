@@ -227,6 +227,11 @@
     <Content Include="css\kendo\images\wp8_inverseicons.png" />
     <Content Include="css\site.css" />
     <Content Include="Global.asax" />
+    <Content Include="web\collections\Settings\AutoInstrumentRsps.js" />
+    <Content Include="web\collections\Settings\AutoMaterialRsps.js" />
+    <Content Include="web\collections\Settings\Instruments.js">
+      <DependentUpon>web.collections.tt</DependentUpon>
+    </Content>
     <Content Include="web\collections\Terms.js" />
     <Content Include="web\collections\ProductSearch.js" />
     <Content Include="web\collections\InvoiceStornos\InvoiceStornos.js" />
@@ -290,6 +295,14 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>web.collections.tt</DependentUpon>
+    </Content>
+    <Content Include="web\models\Settings\AutoInstrumentRsp.js" />
+    <Content Include="web\models\Settings\FilterInstruments.js">
+      <DependentUpon>web.models.tt</DependentUpon>
+    </Content>
+    <Content Include="web\models\Settings\AutoMaterialRsp.js" />
+    <Content Include="web\models\Settings\Instruments.js">
+      <DependentUpon>web.models.tt</DependentUpon>
     </Content>
     <Content Include="web\models\Term.js" />
     <Content Include="web\models\ProductSearch.js" />
@@ -440,6 +453,12 @@
     <Content Include="web\resources\Settings\AddEmployees.en.js">
       <DependentUpon>web.add.resources.tt</DependentUpon>
     </Content>
+    <Content Include="web\resources\Settings\AddInstruments.de.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\AddInstruments.en.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
     <Content Include="web\resources\Settings\AddJobPositions.de.js">
       <DependentUpon>web.add.resources.tt</DependentUpon>
     </Content>
@@ -470,6 +489,8 @@
     <Content Include="web\resources\Settings\AddProductTypes.en.js">
       <DependentUpon>web.add.resources.tt</DependentUpon>
     </Content>
+    <Content Include="web\resources\Settings\AutoInstrumentRsps.de.js" />
+    <Content Include="web\resources\Settings\AutoInstrumentRsps.en.js" />
     <Content Include="web\resources\Settings\Autos.de.js">
       <DependentUpon>web.resources.tt</DependentUpon>
     </Content>
@@ -508,6 +529,12 @@
     <Content Include="web\resources\Settings\FilterEmployees.en.js">
       <DependentUpon>web.filter.resources.tt</DependentUpon>
     </Content>
+    <Content Include="web\resources\Settings\FilterInstruments.de.js">
+      <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\FilterInstruments.en.js">
+      <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
     <Content Include="web\resources\Settings\FilterJobPositions.de.js">
       <DependentUpon>web.filter.resources.tt</DependentUpon>
     </Content>
@@ -531,6 +558,20 @@
     </Content>
     <Content Include="web\resources\Settings\FilterProductTypes.en.js">
       <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\AutoMaterialRsps.de.js" />
+    <Content Include="web\resources\Settings\AutoMaterialRsps.en.js" />
+    <Content Include="web\resources\Settings\Instruments.de.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\Instruments.en.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\InstrumentsRelationships.de.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\InstrumentsRelationships.en.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
     </Content>
     <Content Include="web\resources\Settings\JobPositions.de.js">
       <DependentUpon>web.resources.tt</DependentUpon>
@@ -892,6 +933,9 @@
     <Content Include="web\templates\Settings\AddEmployees.html">
       <DependentUpon>web.add.templates.tt</DependentUpon>
     </Content>
+    <Content Include="web\templates\Settings\AddInstruments.html">
+      <DependentUpon>web.add.templates.tt</DependentUpon>
+    </Content>
     <Content Include="web\templates\Settings\AddJobPositions.html">
       <DependentUpon>web.add.templates.tt</DependentUpon>
     </Content>
@@ -907,6 +951,7 @@
     <Content Include="web\templates\Settings\AddProductTypes.html">
       <DependentUpon>web.add.templates.tt</DependentUpon>
     </Content>
+    <Content Include="web\templates\Settings\AutoInstrumentRsps.html" />
     <Content Include="web\templates\Settings\Autos.html">
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
@@ -926,6 +971,9 @@
     <Content Include="web\templates\Settings\FilterEmployees.html">
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
+    <Content Include="web\templates\Settings\FilterInstruments.html">
+      <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
     <Content Include="web\templates\Settings\FilterJobPositions.html">
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
@@ -937,6 +985,13 @@
     </Content>
     <Content Include="web\templates\Settings\FilterProductTypes.html">
       <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\AutoMaterialRsps.html" />
+    <Content Include="web\templates\Settings\Instruments.html">
+      <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\InstrumentsRelationships.html">
+      <DependentUpon>web.relationships.templates.tt</DependentUpon>
     </Content>
     <Content Include="web\templates\Settings\JobPositions.html">
       <DependentUpon>web.templates.tt</DependentUpon>
@@ -1126,13 +1181,15 @@
     <Content Include="web\views\Invoices\AddInvoicePositions.js" />
     <Content Include="web\views\Orders\InnerPositions.js" />
     <Content Include="web\views\Orders\Terms.js" />
-    <Content Include="web\views\Orders\_InnerPositions.js" />
     <Content Include="web\views\Orders\Materials.js" />
     <Content Include="web\views\Orders\FilterOffersProductSmart.js" />
     <Content Include="web\views\Settings\AddAutos.js">
       <DependentUpon>web.add.views.tt</DependentUpon>
     </Content>
     <Content Include="web\views\Settings\AddEmployees.js">
+      <DependentUpon>web.add.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\AddInstruments.js">
       <DependentUpon>web.add.views.tt</DependentUpon>
     </Content>
     <Content Include="web\views\Settings\AddJobPositions.js">
@@ -1150,6 +1207,7 @@
     <Content Include="web\views\Settings\AddProductTypes.js">
       <DependentUpon>web.add.views.tt</DependentUpon>
     </Content>
+    <Content Include="web\views\Settings\AutoInstrumentRsps.js" />
     <Content Include="web\views\Settings\Autos.js">
       <DependentUpon>web.views.tt</DependentUpon>
     </Content>
@@ -1171,6 +1229,9 @@
     <Content Include="web\views\Settings\FilterEmployees.js">
       <DependentUpon>web.views.tt</DependentUpon>
     </Content>
+    <Content Include="web\views\Settings\FilterInstruments.js">
+      <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
     <Content Include="web\views\Settings\FilterJobPositions.js">
       <DependentUpon>web.views.tt</DependentUpon>
     </Content>
@@ -1182,6 +1243,12 @@
     </Content>
     <Content Include="web\views\Settings\FilterProductTypes.js">
       <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\Instruments.js">
+      <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\InstrumentsRelationships.js">
+      <DependentUpon>web.relationships.views.tt</DependentUpon>
     </Content>
     <Content Include="web\views\Settings\JobPositions.js">
       <DependentUpon>web.views.tt</DependentUpon>
@@ -1210,6 +1277,7 @@
     <Content Include="web\views\Settings\ProductTypesRelationships.js">
       <DependentUpon>web.relationships.views.tt</DependentUpon>
     </Content>
+    <Content Include="web\views\Settings\AutoMaterialRsps.js" />
     <Content Include="web\views\TransportOrders\TransportProductSearch.js" />
     <Content Include="web\views\TransportOrders\AddTransportOrders.js" />
     <Content Include="web\views\TransportOrders\AddTransportPositions.js" />

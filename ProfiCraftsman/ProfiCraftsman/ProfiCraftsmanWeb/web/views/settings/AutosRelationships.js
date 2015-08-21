@@ -9,7 +9,9 @@ define([
         tabs: function () {
             
             var result = [
-				                
+				{ view: 'l!t!Settings/AutoMaterialRsps', selector: '.materials'},
+{ view: 'l!t!Settings/AutoInstrumentRsps', selector: '.instruments'},
+                
             ];
             
             return result;

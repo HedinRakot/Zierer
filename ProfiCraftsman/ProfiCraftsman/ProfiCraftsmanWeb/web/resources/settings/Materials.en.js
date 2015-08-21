@@ -22,6 +22,8 @@ define(function () {
 		boughtPrice: 'Bought price',	
 		comment: 'Comment',	
 		materialAmountType: 'Amount type',	
+		isForAuto: 'For auto',	
+		mustCount: 'Must count',	
 	};
 
 	return resources;

@@ -85,6 +85,16 @@ namespace ProfiCraftsman.API.Models.Settings
         [Required]
         [DataMember]
         public int materialAmountType{ get; set; }
+        /// <summary>
+        ///     Model property for <see cref="Materials.IsForAuto"/> entity
+        /// </summary>
+        [DataMember]
+        public bool isForAuto{ get; set; }
+        /// <summary>
+        ///     Model property for <see cref="Materials.MustCount"/> entity
+        /// </summary>
+        [DataMember]
+        public int mustCount{ get; set; }
 
     }
 }

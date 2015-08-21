@@ -15,5 +15,6 @@ namespace ProfiCraftsman.API.Controllers
         public bool Employees { get; set;}
         public bool TransportProducts { get; set;}
         public bool ProductTypes { get; set;}
+        public bool Instruments { get; set;}
     }
 }

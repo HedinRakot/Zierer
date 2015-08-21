@@ -30,6 +30,8 @@ define([
 				selectOptions: { labelPath: 'name', valuePath: 'id',
 				collection: self.options.materialAmountTypes
 				,defaultOption: {label: self.resources.pleaseSelect,value: null}},},
+			'#isForAuto': 'isForAuto',
+			'#mustCount': 'mustCount',
 			};
 
             return result;
@@ -53,6 +55,8 @@ define([
 			this.disableInput(this, 'boughtPrice', 'numeric');
 			this.disableInput(this, 'comment');
 			this.disableInput(this, 'materialAmountType', 'select');
+			this.disableInput(this, 'isForAuto');
+			this.disableInput(this, 'mustCount', 'numeric');
 
             return this;
         }

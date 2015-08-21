@@ -9,7 +9,7 @@ define(function () {
 	    pageTitle: 'Material',
 		pleaseSelect: 'Bitte auswählen',
 		name: 'Artikelbezeichnung',	
-		number: 'Nummer',	
+		number: 'Artikelnummer',	
 		length: 'Länge',	
 		width: 'Breite',	
 		height: 'Höhe',	
@@ -21,6 +21,8 @@ define(function () {
 		boughtPrice: 'Kaufpreis',	
 		comment: 'Bemerkung',	
 		materialAmountType: 'Einheit',	
+		isForAuto: 'Autobestand',	
+		mustCount: 'Soll-Menge',	
 	};
 
 	return resources;

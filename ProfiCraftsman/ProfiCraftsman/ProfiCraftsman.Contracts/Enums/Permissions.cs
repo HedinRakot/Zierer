@@ -77,6 +77,10 @@ namespace ProfiCraftsman.Contracts.Enums
     		///</summary>
     		public const int ProductTypes = 9;
     		///<summary>
+    		/// Grant for edit Instruments table
+    		///</summary>
+    		public const int Instruments = 18;
+    		///<summary>
     		/// Grant for edit Products table
     		///</summary>
     		public const int Products = 10;

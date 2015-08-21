@@ -44,6 +44,12 @@ define(function () {
 			,materialAmountType: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Materials', 'materialAmountType'), 
 				                    validation: { required: true } }			
+			,isForAuto: { type: "boolean", 
+			                        editable: Application.canTableItemBeEdit('Materials', 'isForAuto'), 
+				                    validation: { required: false } }			
+			,mustCount: { type: "number", 
+			                        editable: Application.canTableItemBeEdit('Materials', 'mustCount'), 
+				                    validation: { required: false } }			
 		},
 		defaults: function () {
 			var dnf = new Date();

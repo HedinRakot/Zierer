@@ -41,7 +41,10 @@ namespace ProfiCraftsman.Configuration
             container.RegisterType<ITransportOrdersManager, TransportOrdersManager>(new PerRequestLifetimeManager());
             container.RegisterType<IProductTypesManager, ProductTypesManager>(new PerRequestLifetimeManager());
             container.RegisterType<ITransportPositionsManager, TransportPositionsManager>(new PerRequestLifetimeManager());
+            container.RegisterType<IInstrumentsManager, InstrumentsManager>(new PerRequestLifetimeManager());
             container.RegisterType<IProductsManager, ProductsManager>(new PerRequestLifetimeManager());
+            container.RegisterType<IAutoMaterialRspManager, AutoMaterialRspManager>(new PerRequestLifetimeManager());
+            container.RegisterType<IAutoInstrumentRspManager, AutoInstrumentRspManager>(new PerRequestLifetimeManager());
         }
 
     }

@@ -1,13 +1,14 @@
 define([
 'base/base-object-grid-view',
 'collections/Settings/Autos',
-'l!t!Settings/FilterAutos'
-], function (BaseView, Collection, FilterView) {
+'l!t!Settings/FilterAutos',
+'l!t!Settings/AutosRelationships'
+], function (BaseView, Collection, FilterView, DetailView) {
 	'use strict';		
 	var view = BaseView.extend({
 
         collectionType: Collection,
-        
+        detailView: DetailView,
         filterView: FilterView,
         tableName: 'Autos',
         editUrl: '#Autos',

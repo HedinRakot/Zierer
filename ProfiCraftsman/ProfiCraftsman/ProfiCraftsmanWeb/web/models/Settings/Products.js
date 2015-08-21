@@ -11,29 +11,11 @@ define(function () {
 			,productTypeId: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Products', 'productTypeId'), 
 				                    validation: { required: false } }			
-			,length: { type: "number", 
-			                        editable: Application.canTableItemBeEdit('Products', 'length'), 
-				                    validation: { required: false } }			
-			,width: { type: "number", 
-			                        editable: Application.canTableItemBeEdit('Products', 'width'), 
-				                    validation: { required: false } }			
-			,height: { type: "number", 
-			                        editable: Application.canTableItemBeEdit('Products', 'height'), 
-				                    validation: { required: false } }			
-			,color: { type: "string", 
-			                        editable: Application.canTableItemBeEdit('Products', 'color'), 
-				                    validation: { required: false, maxLength: 50 } }			
 			,price: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Products', 'price'), 
 				                    validation: { required: true } }			
 			,proceedsAccount: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Products', 'proceedsAccount'), 
-				                    validation: { required: true } }			
-			,boughtFrom: { type: "string", 
-			                        editable: Application.canTableItemBeEdit('Products', 'boughtFrom'), 
-				                    validation: { required: false, maxLength: 128 } }			
-			,boughtPrice: { type: "number", 
-			                        editable: Application.canTableItemBeEdit('Products', 'boughtPrice'), 
 				                    validation: { required: true } }			
 			,comment: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('Products', 'comment'), 

@@ -31,6 +31,8 @@ define([
 				{ field: 'price', title: this.resources.price },
 				{ field: 'isVirtual', title: this.resources.isVirtual , headerTitle: this.resources.isVirtual, checkbox: true},
 				{ field: 'materialAmountType', title: this.resources.materialAmountType , collection: this.options.materialAmountTypes, defaultText: this.resources.pleaseSelect},
+				{ field: 'isForAuto', title: this.resources.isForAuto , headerTitle: this.resources.isForAuto, checkbox: true},
+				{ field: 'mustCount', title: this.resources.mustCount },
 			];
 		}
 
