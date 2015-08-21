@@ -166,7 +166,7 @@
     <Compile Include="Controllers\Settings\AutosController.cs">
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\Settings\CopyContainerController.cs" />
+    <Compile Include="Controllers\Settings\CopyProductController.cs" />
     <Compile Include="Controllers\Settings\EmployeesController.cs">
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>

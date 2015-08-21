@@ -44,7 +44,8 @@ namespace ProfiCraftsman.API.ClientControllers
                 result = terms.Select(o => new ClientTermViewModel()
                 {
                     Id = o.Id,
-                    Description = String.Format("{0}    {1} {2} {3}", o.Date.ToString("dd.MM.yyyy HH:mm"),
+                    Description = String.Format("Von {0} bis {1} {2} {3} {4}", o.Date.ToString("dd.MM.yyyy HH:mm"),
+                        o.Date.AddMinutes(o.Duration).ToString("dd.MM.yyyy HH:mm"),
                         o.Orders.Street, o.Orders.Zip, o.Orders.City)
                 }).ToList();
             }

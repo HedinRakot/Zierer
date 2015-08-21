@@ -36,6 +36,7 @@ namespace ProfiCraftsman.API.Controllers
             model.employeeId = entity.EmployeeId;
             model.autoId = entity.AutoId;
             model.date = entity.Date;
+            model.duration = entity.Duration;
             model.status = entity.TermStatusString;
             model.comment = entity.Comment;
             model.createDate = ((ISystemFields)entity).CreateDate;
@@ -48,6 +49,7 @@ namespace ProfiCraftsman.API.Controllers
             entity.EmployeeId = model.employeeId;
             entity.AutoId = model.autoId;
             entity.Date = model.date;
+            entity.Duration = model.duration;
             entity.Comment = model.comment;
 
             if(actionType == ActionTypes.Add)

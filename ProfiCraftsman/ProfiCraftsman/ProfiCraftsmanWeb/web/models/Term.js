@@ -19,7 +19,10 @@ define(function () {
 				                    validation: { required: false, maxLength: 128 } }						
             ,date: { type: "date", 
 			                        editable: true,
-			                        validation: { required: true, date: true } }			
+			                        validation: { required: true, date: true } }		
+            ,duration: { type: "number", 
+			                        editable: Application.canTableItemBeEdit('Terms', 'duration'), 
+				                    validation: { required: true } }		
             ,status: { type: "string", 
                                     editable: false,
                                     validation: { required: false } }

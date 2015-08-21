@@ -30,6 +30,7 @@ define(function () {
             ,paymentType: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Positions', 'paymentType'), 
 				                    validation: { required: true } }
+            ,paymentTypeString: { type: "string", validation: { required: false } }
             ,amount: { type: "number", validation: { required: true } }
             ,amountString: { type: "string", validation: { required: false } }
             ,amountType: { type: "string", 

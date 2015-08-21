@@ -92,7 +92,7 @@ namespace ProfiCraftsman.API.Controllers
                         result.Add(new TermViewModel()
                         {
                             start = term.Date.ToString("yyyy-MM-ddTHH:mm"),
-                            end = term.Date.AddHours(2).ToString("yyyy-MM-ddTHH:mm"), //TODO change
+                            end = term.Date.AddMinutes(term.Duration).ToString("yyyy-MM-ddTHH:mm"),
                             url = String.Format("#Orders/{0}", term.OrderId),
                             title = String.Format("{0}\n{1}\n{2} {3}\n{4}",
                                  String.Format("{0} {1}", termGroup.Key.Name, termGroup.Key.FirstName),

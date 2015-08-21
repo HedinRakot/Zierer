@@ -27,6 +27,10 @@ namespace ProfiCraftsman.API.Models
         [DataMember]
         public DateTime date { get; set; }
 
+        [Required]
+        [DataMember]
+        public int duration { get; set; }
+
         [DataMember]
         public string comment{ get; set; }
         

@@ -11,6 +11,7 @@ define(function () {
 		comment: 'Bemerkung',
 		status: 'Status',
 		pleaseSelect: 'Bitte auswählen',
+	    duration: 'Dauer',
 	};
 
 	return resources;

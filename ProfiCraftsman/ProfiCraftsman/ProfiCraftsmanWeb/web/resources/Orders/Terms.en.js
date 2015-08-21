@@ -11,6 +11,7 @@ define(function () {
 	    comment: 'Comment',
 	    status: 'Status',
 	    pleaseSelect: 'Please select',
+	    duration: 'Duration',
 	};
 
 	return resources;

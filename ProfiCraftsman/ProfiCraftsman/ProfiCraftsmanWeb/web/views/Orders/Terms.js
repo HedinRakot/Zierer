@@ -17,13 +17,47 @@
 
 			this.defaultFiltering = { field: 'orderId', operator: 'eq', value: this.model.id };
 
+			this.options.durations = new Backbone.Collection([
+				{ name: this.resources.pleaseSelect, id: '' },
+				//{ name: '0:10', id: 10 },
+				//{ name: '0:20', id: 20 },
+				{ name: '0:30', id: 30 },
+				//{ name: '0:40', id: 40 },
+				//{ name: '0:50', id: 50 },
+                { name: '1:00', id: 60 },
+				{ name: '1:30', id: 90 },
+				{ name: '2:00', id: 120 },
+                { name: '2:30', id: 150 },
+				{ name: '3:00', id: 180 },
+                { name: '3:30', id: 210 },
+				{ name: '4:00', id: 240 },
+                { name: '4:30', id: 270 },
+				{ name: '5:00', id: 300 },
+                { name: '5:30', id: 330 },
+				{ name: '6:00', id: 360 },
+                { name: '6:30', id: 390 },
+				{ name: '7:00', id: 420 },
+                { name: '7:30', id: 450 },
+				{ name: '8:00', id: 480 }
+			]);
+
 			this.collection = new Collection();
 		},
 
 		columns: function () {
-		   
+
 		   return [
 				{ field: 'date', title: this.resources.date, format: "{0:g}", dateTime: true },
+                {
+                    field: 'duration',
+                    title: this.resources.duration,
+                    collection: this.options.durations,
+                    width: '40px',
+                    sortable: false,
+                    headerAttributes: {
+                        title: this.resources.duration
+                    }
+                },
 				{ field: 'employeeId', title: this.resources.employee, collection: this.options.employees, defaultText: this.resources.pleaseSelect },
 				{ field: 'autoId', title: this.resources.auto, collection: this.options.autos, defaultText: this.resources.pleaseSelect },
 				{ field: 'status', title: this.resources.status },

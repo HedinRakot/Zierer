@@ -58,6 +58,34 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'OrderId' for property <see cref="Terms.OrderId"/>
             /// </summary>
             public static readonly string OrderId = "OrderId";
+            /// <summary>
+            /// Column name 'BeginTrip' for property <see cref="Terms.BeginTrip"/>
+            /// </summary>
+            public static readonly string BeginTrip = "BeginTrip";
+            /// <summary>
+            /// Column name 'EndTrip' for property <see cref="Terms.EndTrip"/>
+            /// </summary>
+            public static readonly string EndTrip = "EndTrip";
+            /// <summary>
+            /// Column name 'BeginWork' for property <see cref="Terms.BeginWork"/>
+            /// </summary>
+            public static readonly string BeginWork = "BeginWork";
+            /// <summary>
+            /// Column name 'EndWork' for property <see cref="Terms.EndWork"/>
+            /// </summary>
+            public static readonly string EndWork = "EndWork";
+            /// <summary>
+            /// Column name 'BeginReturnTrip' for property <see cref="Terms.BeginReturnTrip"/>
+            /// </summary>
+            public static readonly string BeginReturnTrip = "BeginReturnTrip";
+            /// <summary>
+            /// Column name 'EndReturnTrip' for property <see cref="Terms.EndReturnTrip"/>
+            /// </summary>
+            public static readonly string EndReturnTrip = "EndReturnTrip";
+            /// <summary>
+            /// Column name 'Duration' for property <see cref="Terms.Duration"/>
+            /// </summary>
+            public static readonly string Duration = "Duration";
           
         }
         #endregion
@@ -71,6 +99,13 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime? DeleteDate{ get; set; }
         public int Status{ get; set; }
         public int OrderId{ get; set; }
+        public DateTime? BeginTrip{ get; set; }
+        public DateTime? EndTrip{ get; set; }
+        public DateTime? BeginWork{ get; set; }
+        public DateTime? EndWork{ get; set; }
+        public DateTime? BeginReturnTrip{ get; set; }
+        public DateTime? EndReturnTrip{ get; set; }
+        public int Duration{ get; set; }
         public virtual Autos Autos{ get; set; }
         public virtual Employees Employees{ get; set; }
         public virtual Orders Orders{ get; set; }
@@ -113,6 +148,13 @@ namespace ProfiCraftsman.Contracts.Entities
                        DeleteDate = DeleteDate,
                        Status = Status,
                        OrderId = OrderId,
+                       BeginTrip = BeginTrip,
+                       EndTrip = EndTrip,
+                       BeginWork = BeginWork,
+                       EndWork = EndWork,
+                       BeginReturnTrip = BeginReturnTrip,
+                       EndReturnTrip = EndReturnTrip,
+                       Duration = Duration,
         	           };
         }
     }
