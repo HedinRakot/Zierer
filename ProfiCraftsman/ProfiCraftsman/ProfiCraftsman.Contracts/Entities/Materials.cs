@@ -122,6 +122,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public virtual ICollection<PositionMaterialRsp> PositionMaterialRsps{ get; set; }
         public virtual ICollection<ProductMaterialRsp> ProductMaterialRsps{ get; set; }
         public virtual ICollection<AutoMaterialRsp> AutoMaterialRsps{ get; set; }
+        public virtual ICollection<WarehouseMaterials> WarehouseMaterials{ get; set; }
         string IHasTitle<int>.EntityTitle
         {
             get { return Name; }

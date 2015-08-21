@@ -167,6 +167,9 @@
     <Compile Include="Entities\User.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\WarehouseMaterials.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Enums\MaterialAmountTypes.cs" />
     <Compile Include="Enums\TermStatusTypes.cs" />
     <Compile Include="Enums\ProductAmountTypes.cs" />
@@ -212,6 +215,9 @@
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\IProductMaterialRspManager.cs">
+      <DependentUpon>IManagers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\IWarehouseMaterialsManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\TermsManager.Custom.cs" />

@@ -10,6 +10,7 @@
 		Offers: 'Offers',
 		Invoices: 'Invoices',
 		InvoiceStornos: 'Invoice storno',
+		Warehouse: 'Warehouse',
 	};
 
 	return resource;

@@ -129,5 +129,9 @@ namespace ProfiCraftsman.Contracts
         ///     Set of <see cref="AutoInstrumentRsp"/> entities from table dbo.Auto_Instrument_Rsp
         /// </summary>
         IQueryable<AutoInstrumentRsp> AutoInstrumentRsp{get;}
+        /// <summary>
+        ///     Set of <see cref="WarehouseMaterials"/> entities from table dbo.WarehouseMaterials
+        /// </summary>
+        IQueryable<WarehouseMaterials> WarehouseMaterials{get;}
     }
 }

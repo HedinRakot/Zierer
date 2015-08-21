@@ -10,8 +10,8 @@
         render: function () {
 
             view.__super__.render.apply(this, arguments);
-
-            this.stickit();
+            
+            //todo delete this.stickit();
 
             var self = this,
                 selectInnerMaterial = self.options.selectInnerMaterial;
@@ -19,6 +19,8 @@
             var options = {
                 success: function (model) {
  
+                    debugger;
+
                     if (selectInnerMaterial)
                         self.trigger('selectInnerMaterial', model);
                     else

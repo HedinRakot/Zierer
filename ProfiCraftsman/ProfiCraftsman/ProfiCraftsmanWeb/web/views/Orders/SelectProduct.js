@@ -17,7 +17,7 @@
             
             view.__super__.render.apply(this, arguments);
 
-            this.stickit();
+            //todo delete this.stickit();
 
             var self = this,
                 selectInnerProduct = self.options.selectInnerProduct;
