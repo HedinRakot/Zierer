@@ -296,6 +296,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>web.collections.tt</DependentUpon>
     </Content>
+    <Content Include="web\collections\Warehouse\WarehouseMaterials.js" />
     <Content Include="web\models\Settings\AutoInstrumentRsp.js" />
     <Content Include="web\models\Settings\FilterInstruments.js">
       <DependentUpon>web.models.tt</DependentUpon>
@@ -412,6 +413,7 @@
     <Content Include="web\models\TransportOrders\TransportOrders.js" />
     <Content Include="web\models\TransportOrders\TransportPositions.js" />
     <Content Include="web\models\view-collection.js" />
+    <Content Include="web\models\Warehouse\WarehouseMaterial.js" />
     <Content Include="web\moment.js" />
     <Content Include="web\resources\InvoiceStornos\FilterInvoices.de.js" />
     <Content Include="web\resources\InvoiceStornos\FilterInvoices.en.js" />
@@ -909,6 +911,10 @@
       <DependentUpon>web.resources.tt</DependentUpon>
     </Content>
     <Content Include="web\base-router.js" />
+    <Content Include="web\resources\Warehouse\WarehouseMaterials.de.js" />
+    <Content Include="web\resources\Warehouse\WarehouseMaterials.en.js" />
+    <Content Include="web\resources\Warehouse\Warehouse.de.js" />
+    <Content Include="web\resources\Warehouse\Warehouse.en.js" />
     <Content Include="web\router-masterdata.js">
       <DependentUpon>web.router.template.tt</DependentUpon>
     </Content>
@@ -1169,6 +1175,8 @@
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
     <Content Include="web\application-start.js" />
+    <Content Include="web\templates\Warehouse\WarehouseMaterials.html" />
+    <Content Include="web\templates\Warehouse\Warehouse.html" />
     <Content Include="web\views\InvoiceStornos\FilterInvoices.js" />
     <Content Include="web\views\InvoiceStornos\InvoiceStornos.js" />
     <Content Include="web\views\InvoiceStornos\Invoices.js" />
@@ -1433,6 +1441,8 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="web\views\Warehouse\WarehouseMaterials.js" />
+    <Content Include="web\views\Warehouse\Warehouse.js" />
     <Content Include="web\web.router.template.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>web.router.template.txt</LastGenOutput>

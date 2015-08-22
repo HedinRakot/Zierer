@@ -19,8 +19,6 @@
             var options = {
                 success: function (model) {
  
-                    debugger;
-
                     if (selectInnerMaterial)
                         self.trigger('selectInnerMaterial', model);
                     else

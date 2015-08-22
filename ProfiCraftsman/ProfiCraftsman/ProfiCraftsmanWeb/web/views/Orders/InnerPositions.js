@@ -8,7 +8,8 @@
     'use strict';
 
     var floatEditor = function (container, options) {
-        if (options.model.get('productId') != null || options.model.get('materialId') != null) {
+        if ((options.model.get('productId') != null && options.model.get('productId') != 0) ||
+            (options.model.get('materialId') != null && options.model.get('materialId') != 0)) {
             $('<input data-role="numerictextbox" required data-text-field="' + options.field + '" data-value-field="' + options.field + '" data-bind="value:' + options.field + '"/>')
                 .appendTo(container);
         }
@@ -18,7 +19,8 @@
     },
 
     priceTypeEditor = function (container, options) {
-        if (options.model.get('productId') != null || options.model.get('materialId') != null) {
+        if ((options.model.get('productId') != null && options.model.get('productId') != 0) ||
+            (options.model.get('materialId') != null && options.model.get('materialId') != 0)) {
 
             $('<span tabindex="0" class="k-widget k-dropdown k-header" role="listbox" aria-busy="false" aria-disabled="false" aria-expanded="false" aria-haspopup="true" aria-readonly="false" aria-owns="" unselectable="on"><span class="k-dropdown-wrap k-state-default" unselectable="on">' +
               '<span class="k-input" unselectable="on">Standard</span><span class="k-select" unselectable="on"><span class="k-icon k-i-arrow-s" unselectable="on">select</span></span></span>' +
@@ -158,6 +160,8 @@
 
                 if (e.model.id == 0)
                     e.model.isNew = function () { return true; }
+                else
+                    e.model.isNew = function () { return false; }
 
                 e.model.orderId = self.model.orderId;
                 e.model.isMaterialPosition = self.options.isMaterialPosition;

@@ -50,7 +50,7 @@
 
                 self.listenTo(view, 'selectMaterial', function (item) {
 
-                    debugger;
+
                     var model = new Backbone.Model();
                     model.isNew = function () { return true; }
                     model.url = Application.apiUrl + '/WarehouseMaterials';

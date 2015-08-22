@@ -9,7 +9,8 @@
     'use strict';
 
     var floatEditor = function (container, options) {
-        if (options.model.get('productId') != null || options.model.get('materialId') != null) {
+        if ((options.model.get('productId') != null && options.model.get('productId') != 0) ||
+            (options.model.get('materialId') != null && options.model.get('materialId') != 0)) {
             $('<input data-role="numerictextbox" required data-text-field="' + options.field + '" data-value-field="' + options.field + '" data-bind="value:' + options.field + '"/>')
                 .appendTo(container);
         }
@@ -19,7 +20,9 @@
     },
 
     priceTypeEditor = function (container, options) {
-        if (options.model.get('productId') != null || options.model.get('materialId') != null) {
+
+        if ((options.model.get('productId') != null && options.model.get('productId') != 0) ||
+            (options.model.get('materialId') != null && options.model.get('materialId') != 0)) {
 
             $('<span tabindex="0" class="k-widget k-dropdown k-header" role="listbox" aria-busy="false" aria-disabled="false" aria-expanded="false" aria-haspopup="true" aria-readonly="false" aria-owns="" unselectable="on"><span class="k-dropdown-wrap k-state-default" unselectable="on">' + 
               '<span class="k-input" unselectable="on">Standard</span><span class="k-select" unselectable="on"><span class="k-icon k-i-arrow-s" unselectable="on">select</span></span></span>' +
@@ -31,6 +34,19 @@
         }
         else {
             $('<span></span>').appendTo(container);
+        }
+    },
+
+    booleanEditor = function (container, options) {
+
+        if ((options.model.get('productId') != null && options.model.get('productId') != 0) ||
+            (options.model.get('materialId') != null && options.model.get('materialId') != 0)) {
+            $('<input name="' + options.field + '" type="checkbox" data-type="boolean" data-bind="checked:' + options.field + '">')
+                .appendTo(container);
+        }
+        else {
+            $('<input name="' + options.field + '" type="checkbox" data-type="boolean" disabled="disabled" data-bind="checked:' + options.field + '">')
+                .appendTo(container);
         }
     },
 
@@ -130,7 +146,16 @@
 
             var columns = [
                 { field: 'positionNumber', title: this.resources.positionNumber, filterable: false, sortable: false, width: '40px', attributes: { "class": "detail-view-grid-cell" } },
-                { field: 'isAlternative', title: this.resources.isAlternative, headerTitle: this.resources.isAlternativeTitle, checkbox: true, width: '45px', attributes: { "class": "detail-view-grid-cell" } },
+                //{ field: 'isAlternative', title: this.resources.isAlternative, headerTitle: this.resources.isAlternativeTitle, checkbox: true, width: '45px', attributes: { "class": "detail-view-grid-cell" } },
+                {
+                    field: 'isAlternative',
+                    editor: booleanEditor,
+                    template: '<input name="isAlternative" type="checkbox" disabled="disabled" #= isAlternative ? "checked" : "" #>',
+                    title: this.resources.isAlternative,
+                    attributes: { "class": "detail-view-grid-cell" },
+                    width: '45px',
+                    filterable: false, sortable: false
+                },
                 { field: 'number', title: this.resources.number, width: '100px', filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
                 { field: 'description', title: this.resources.description, filterable: false, sortable: false, width: '300px', attributes: { "class": "detail-view-grid-cell" } },
                 {
@@ -176,6 +201,8 @@
 
                 if (e.model.id == 0)
                     e.model.isNew = function () { return true; }
+                else
+                    e.model.isNew = function () { return false; }
 
                 e.model.orderId = self.model.id;
                 e.model.isMaterialPosition = self.isMaterialPosition;
