@@ -5,7 +5,7 @@ define(function () {
 	    urlRoot: 'api/Positions',
 		fields: {
 		    id: { type: "number", editable: false }
-		    ,positionNumber: { type: "number", editable: false }
+		    ,positionNumber: { type: "string", editable: false }
 		    ,parentId: { type: "number", editable: false }
 		    ,hasParent: { type: "boolean", editable: false }
 			,orderId: { type: "number", 

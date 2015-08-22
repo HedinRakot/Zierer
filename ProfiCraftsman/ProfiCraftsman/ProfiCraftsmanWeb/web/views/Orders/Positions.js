@@ -208,6 +208,15 @@
                 e.model.isMaterialPosition = self.isMaterialPosition;
             });
 
+            self.grid.bind('dataBinding', function (e) {
+
+                if (e.items) {
+                    for (var i = 0; i < e.items.length; i++) {
+                        e.items[i].positionNumber = i + 1;
+                    }
+                }
+            });
+
             return self;
         },
 

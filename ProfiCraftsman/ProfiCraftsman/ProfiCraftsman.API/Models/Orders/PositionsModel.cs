@@ -54,9 +54,6 @@ namespace ProfiCraftsman.API.Models
         public bool isAlternative { get; set; }
         
         [DataMember]
-        public int positionNumber { get; set; }
-
-        [DataMember]
         public string amountType { get; set; }
 
         [DataMember]

@@ -167,6 +167,15 @@
                 e.model.isMaterialPosition = self.options.isMaterialPosition;
             });
 
+            self.grid.bind('dataBinding', function (e) {
+
+                if (e.items) {
+                    for (var i = 0; i < e.items.length; i++) {
+                        e.items[i].positionNumber = self.model.positionNumber + '.' + (i + 1);
+                    }
+                }
+            });
+
             return self;
         },
 

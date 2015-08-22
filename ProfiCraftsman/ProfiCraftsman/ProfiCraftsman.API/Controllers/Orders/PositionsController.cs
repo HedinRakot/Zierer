@@ -37,12 +37,8 @@ namespace ProfiCraftsman.API.Controllers
             this.MaterialManager = materialManager;
         }
 
-        private int positionNumber = 0;
-
         protected override void EntityToModel(Positions entity, PositionsModel model)
         {
-            positionNumber++;
-            model.positionNumber = positionNumber;
             model.orderId = entity.OrderId;
             model.isMaterialPosition = entity.IsMaterialPosition;
             model.productId = entity.ProductId;
