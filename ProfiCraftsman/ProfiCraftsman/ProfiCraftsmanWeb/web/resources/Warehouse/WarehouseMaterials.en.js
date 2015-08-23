@@ -4,7 +4,8 @@ define(function () {
     var resources = {
 
         pleaseSelect: 'Please select',
-        materialId: 'Material',
+        materialName: 'Material name',
+        materialNumber: 'Material number',
         isAmount: 'Is Amount',
         mustAmount: 'Must amount',
         addMaterial: 'Add',

@@ -9,6 +9,14 @@ define(function () {
 			    type: "number",
 			    editable: Application.canTableItemBeEdit('WarehouseMaterial', 'materialId'),
 			    validation: { required: true }
+			}, materialName: {
+			    type: "string",
+			    editable: false,
+			    validation: { required: false }
+			}, materialNumber: {
+			    type: "string",
+			    editable: false,
+			    validation: { required: false }
 			}
 			,isAmount: {
 			    type: "number",

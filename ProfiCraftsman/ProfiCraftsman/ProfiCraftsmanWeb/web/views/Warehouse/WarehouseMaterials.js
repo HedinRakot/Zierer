@@ -2,17 +2,20 @@
     'base/base-object-grid-view',
     'collections/Warehouse/WarehouseMaterials',
     'l!t!Orders/SelectMaterial',
-], function (BaseView, Collection, SelectMaterialView) {
+    'l!t!Warehouse/FilterWarehouseMaterials',
+], function (BaseView, Collection, SelectMaterialView, FilterView) {
     'use strict';
 
     var view = BaseView.extend({
 
+        filterView: FilterView,
         collectionType: Collection,
         gridSelector: '.grid',
         tableName: 'WarehouseMaterials',
 
         addingInPopup: false,
-        
+        showEditButton: true,
+        showDeleteButton: true,
 
         initialize: function () {
 
@@ -26,7 +29,8 @@
         columns: function () {
 
             return [
-                 { field: 'materialId', title: this.resources.materialId, collection: this.options.materials },
+                 { field: 'materialNumber', title: this.resources.materialNumber },
+                 { field: 'materialName', title: this.resources.materialName },
                  { field: 'mustAmount', title: this.resources.mustAmount },
                  { field: 'isAmount', title: this.resources.isAmount },
             ];

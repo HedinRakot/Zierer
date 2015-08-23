@@ -1,4 +1,4 @@
-define([
+﻿define([
 	'base/base-object-add-view',
     'l!t!Orders/OrdersRelationships',
     'l!t!Orders/SelectCustomer'
@@ -9,46 +9,19 @@ define([
 
         var self = this,
             deferred = new $.Deferred(),
-            isNew = self.model.isNew(),
-			attributesToSave = _.pick(
-				self.model.toJSON(),
-                'id',
-                'changeDate',
-                'zip',
-                'city',
-                'street',
-                'comment',
-                'orderNumber',
-                'autoBill',
-                'discount',
-                'customerNumber',
-                'newCustomerName',
-                'customerStreet',
-                'customerCity',
-                'customerZip',
-                'customerPhone',
-                'customerFax',
-                'customerEmail',
-                'customerSelectType',
-                'customerId',
-                'communicationPartnerId',
-                'customerSelectType',
-                'isOffer',
-                'customerNumber');
-
-        attributesToSave["newCustomerName"] = $('#newCustomerName').val();
-        attributesToSave["customerStreet"] = $('#customerStreet').val();
-        attributesToSave["customerCity"] = $('#customerCity').val();
-        attributesToSave["customerZip"] = $('#customerZip').val();
-
-        attributesToSave["autoBill"] = self.$el.find('#autoBill')[0].checked;
+            isNew = self.model.isNew();
 
 
         if (self.validate()) {
-            self.model.save({}, {
-                data: kendo.stringify(attributesToSave),
+            
+            self.model.attributes.newCustomerName = $('#newCustomerName').val();
+            self.model.attributes.customerStreet = $('#customerStreet').val();
+            self.model.attributes.customerCity = $('#customerCity').val();
+            self.model.attributes.customerZip = $('#customerZip').val();
+            self.model.attributes.autoBill = self.$el.find('#autoBill')[0].checked;
+
+            self.model.save(self.model.toJSON(), {
                 method: isNew ? 'post' : 'put',
-                contentType: 'application/json',
                 success: function (response) {
 
                     if (response.get('isOffer'))

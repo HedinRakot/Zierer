@@ -27,7 +27,7 @@
                 'Home': _.partial(BaseRouter.showView, this, 'l!t!home/home', {  }, { }),
                 'Settings': _.partial(BaseRouter.showView, this, 'l!t!Settings/Settings'),
                 'Warehouse': _.partial(BaseRouter.showView, this, 'l!t!Warehouse/Warehouse'),
-                'WarehouseMaterials': _.partial(BaseRouter.showView, this, 'l!t!Warehouse/WarehouseMaterials', { Materials: true, MaterialAmountTypes: true }),
+                'WarehouseMaterials': _.partial(BaseRouter.showView, this, 'l!t!Warehouse/WarehouseMaterials', { MaterialAmountTypes: true }),
                 'Offers': _.partial(BaseRouter.showView, this, 'l!t!Orders/Offers', { ProductTypes: true, ProductAmountTypes: true, MaterialAmountTypes: true, Materials: true, PaymentTypes: true, Employees: true, Autos: true }, { isOffer: true }),
                 'Offers/create': _.partial(BaseRouter.showViewWithModel, this, 'l!t!Orders/AddOrders', 'models/Orders', { ProductTypes: true, ProductAmountTypes: true, MaterialAmountTypes: true, CommunicationPartners: true, Materials: true, Employees: true, Autos: true }, { isOffer: true }),
                 'Offers/:id': _.partial(BaseRouter.showViewWithModel, this, 'l!t!Orders/AddOrders', 'models/Orders', { ProductTypes: true, ProductAmountTypes: true, MaterialAmountTypes: true, CommunicationPartners: true, Materials: true, Employees: true, Autos: true }, { isOffer: true }),

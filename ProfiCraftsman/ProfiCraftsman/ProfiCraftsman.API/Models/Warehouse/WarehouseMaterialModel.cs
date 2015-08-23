@@ -16,6 +16,12 @@ namespace ProfiCraftsman.API.Models.Warehouse
         [DataMember]
         public int materialId { get; set; }
 
+        [DataMember]
+        public string materialName { get; set; }
+
+        [DataMember]
+        public string materialNumber { get; set; }
+
         [Required]
         [DataMember]
         public int isAmount { get; set; }

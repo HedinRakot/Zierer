@@ -4,7 +4,8 @@
     var resources = {
 
         pleaseSelect: 'Bitte auswählen',
-        materialId: 'Material',
+        materialName: 'Artitelbezeichnung',
+        materialNumber: 'Artitelnummer',
         isAmount: 'Ist-Menge',
         mustAmount: 'Soll-Menge',
         addMaterial: 'Hinzufügen',

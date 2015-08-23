@@ -413,6 +413,7 @@
     <Content Include="web\models\TransportOrders\TransportOrders.js" />
     <Content Include="web\models\TransportOrders\TransportPositions.js" />
     <Content Include="web\models\view-collection.js" />
+    <Content Include="web\models\Warehouse\FilterWarehouseMaterials.js" />
     <Content Include="web\models\Warehouse\WarehouseMaterial.js" />
     <Content Include="web\moment.js" />
     <Content Include="web\resources\InvoiceStornos\FilterInvoices.de.js" />
@@ -911,6 +912,8 @@
       <DependentUpon>web.resources.tt</DependentUpon>
     </Content>
     <Content Include="web\base-router.js" />
+    <Content Include="web\resources\Warehouse\FilterWarehouseMaterials.de.js" />
+    <Content Include="web\resources\Warehouse\FilterWarehouseMaterials.en.js" />
     <Content Include="web\resources\Warehouse\WarehouseMaterials.de.js" />
     <Content Include="web\resources\Warehouse\WarehouseMaterials.en.js" />
     <Content Include="web\resources\Warehouse\Warehouse.de.js" />
@@ -1175,6 +1178,7 @@
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
     <Content Include="web\application-start.js" />
+    <Content Include="web\templates\Warehouse\FilterWarehouseMaterials.html" />
     <Content Include="web\templates\Warehouse\WarehouseMaterials.html" />
     <Content Include="web\templates\Warehouse\Warehouse.html" />
     <Content Include="web\views\InvoiceStornos\FilterInvoices.js" />
@@ -1441,6 +1445,7 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="web\views\Warehouse\FilterWarehouseMaterials.js" />
     <Content Include="web\views\Warehouse\WarehouseMaterials.js" />
     <Content Include="web\views\Warehouse\Warehouse.js" />
     <Content Include="web\web.router.template.tt">
