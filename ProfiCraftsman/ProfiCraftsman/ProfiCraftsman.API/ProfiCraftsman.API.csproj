@@ -163,6 +163,7 @@
     <Compile Include="Controllers\Orders\CopyOrderController.cs" />
     <Compile Include="Controllers\Orders\PositionMaterialsController.cs" />
     <Compile Include="Controllers\Terms\DeleteAllTermPositionsController.cs" />
+    <Compile Include="Controllers\Terms\TermInstrumentsController.cs" />
     <Compile Include="Controllers\Terms\TermPositionsController.cs" />
     <Compile Include="Controllers\Terms\TermsController.cs" />
     <Compile Include="Controllers\Settings\AutoInstrumentRspsController.cs" />
@@ -259,6 +260,7 @@
     <Compile Include="Models\Invoices\AddInvoiceModel.cs" />
     <Compile Include="Models\Invoices\InvoicesModel.cs" />
     <Compile Include="Models\Orders\PositionMaterialModel.cs" />
+    <Compile Include="Models\Terms\TermInstrumentModel.cs" />
     <Compile Include="Models\Terms\TermPositionModel.cs" />
     <Compile Include="Models\Terms\TermsModel.cs" />
     <Compile Include="Models\Settings\AutoInstrumentRspModel.cs" />

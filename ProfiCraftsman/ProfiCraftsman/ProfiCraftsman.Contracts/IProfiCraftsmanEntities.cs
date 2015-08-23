@@ -137,5 +137,9 @@ namespace ProfiCraftsman.Contracts
         ///     Set of <see cref="TermPositions"/> entities from table dbo.TermPositions
         /// </summary>
         IQueryable<TermPositions> TermPositions{get;}
+        /// <summary>
+        ///     Set of <see cref="TermInstruments"/> entities from table dbo.TermInstruments
+        /// </summary>
+        IQueryable<TermInstruments> TermInstruments{get;}
     }
 }

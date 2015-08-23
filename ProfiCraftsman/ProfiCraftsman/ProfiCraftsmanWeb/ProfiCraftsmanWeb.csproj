@@ -232,6 +232,7 @@
     <Content Include="web\collections\Settings\Instruments.js">
       <DependentUpon>web.collections.tt</DependentUpon>
     </Content>
+    <Content Include="web\collections\Terms\TermInstruments.js" />
     <Content Include="web\collections\Terms\TermPositions.js" />
     <Content Include="web\collections\Terms\Terms.js" />
     <Content Include="web\collections\ProductSearch.js" />
@@ -306,6 +307,7 @@
     <Content Include="web\models\Settings\Instruments.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
+    <Content Include="web\models\Terms\TermInstrument.js" />
     <Content Include="web\models\Terms\TermPosition.js" />
     <Content Include="web\models\Terms\Term.js" />
     <Content Include="web\models\ProductSearch.js" />
@@ -444,9 +446,13 @@
     <Content Include="web\resources\Orders\Materials.en.js" />
     <Content Include="web\resources\Orders\FilterOffersProductSmart.de.js" />
     <Content Include="web\resources\Orders\FilterOffersProductSmart.en.js" />
+    <Content Include="web\resources\Terms\PositionSearch.de - Copy.js" />
     <Content Include="web\resources\Terms\PositionSearch.de.js" />
+    <Content Include="web\resources\Terms\PositionSearch.en - Copy.js" />
     <Content Include="web\resources\Terms\PositionSearch.en.js" />
+    <Content Include="web\resources\Terms\SelectPosition.de - Copy.js" />
     <Content Include="web\resources\Terms\SelectPosition.de.js" />
+    <Content Include="web\resources\Terms\SelectPosition.en - Copy.js" />
     <Content Include="web\resources\Terms\SelectPosition.en.js" />
     <Content Include="web\resources\Terms\TermPositions.de.js" />
     <Content Include="web\resources\Terms\TermPositions.en.js" />
@@ -945,8 +951,11 @@
     <Content Include="web\templates\Orders\InnerPositions.html" />
     <Content Include="web\templates\Orders\Materials.html" />
     <Content Include="web\templates\Orders\FilterOffersProductSmart.html" />
+    <Content Include="web\templates\Terms\PositionSearch - Copy.html" />
     <Content Include="web\templates\Terms\PositionSearch.html" />
+    <Content Include="web\templates\Terms\SelectPosition - Copy.html" />
     <Content Include="web\templates\Terms\SelectPosition.html" />
+    <Content Include="web\templates\Terms\TermPositions - Copy.html" />
     <Content Include="web\templates\Terms\TermPositions.html" />
     <Content Include="web\templates\Terms\TermsRelationships.html" />
     <Content Include="web\templates\Terms\Terms.html" />
@@ -1206,8 +1215,11 @@
     <Content Include="web\views\Invoices\InvoicesRelationships.js" />
     <Content Include="web\views\Invoices\AddInvoicePositions.js" />
     <Content Include="web\views\Orders\InnerPositions.js" />
+    <Content Include="web\views\Terms\PositionSearch - Copy.js" />
     <Content Include="web\views\Terms\PositionSearch.js" />
+    <Content Include="web\views\Terms\SelectPosition - Copy.js" />
     <Content Include="web\views\Terms\SelectPosition.js" />
+    <Content Include="web\views\Terms\TermInstruments.js" />
     <Content Include="web\views\Terms\TermPositions.js" />
     <Content Include="web\views\Terms\TermsRelationships.js" />
     <Content Include="web\views\Terms\Terms.js" />

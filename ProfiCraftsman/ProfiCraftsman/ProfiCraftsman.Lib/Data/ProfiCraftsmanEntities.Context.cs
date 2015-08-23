@@ -53,6 +53,7 @@ namespace ProfiCraftsman.Lib.Data
             modelBuilder.Configurations.Add(AutoInstrumentRspMapping.Instance);
             modelBuilder.Configurations.Add(WarehouseMaterialsMapping.Instance);
             modelBuilder.Configurations.Add(TermPositionsMapping.Instance);
+            modelBuilder.Configurations.Add(TermInstrumentsMapping.Instance);
         }
 
         /// <summary>
@@ -175,5 +176,9 @@ namespace ProfiCraftsman.Lib.Data
         ///     Set of <see cref="TermPositions"/> entities from table dbo.TermPositions
         /// </summary>
         public IQueryable<TermPositions> TermPositions{ get; set; }
+        /// <summary>
+        ///     Set of <see cref="TermInstruments"/> entities from table dbo.TermInstruments
+        /// </summary>
+        public IQueryable<TermInstruments> TermInstruments{ get; set; }
     }
 }

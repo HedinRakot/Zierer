@@ -111,6 +111,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public virtual Employees Employees{ get; set; }
         public virtual Orders Orders{ get; set; }
         public virtual ICollection<TermPositions> TermPositions{ get; set; }
+        public virtual ICollection<TermInstruments> TermInstruments{ get; set; }
         public bool HasAutos
         {
             get { return !ReferenceEquals(Autos, null); }

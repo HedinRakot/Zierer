@@ -79,6 +79,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
         public virtual ICollection<AutoInstrumentRsp> AutoInstrumentRsps{ get; set; }
+        public virtual ICollection<TermInstruments> TermInstruments{ get; set; }
         string IHasTitle<int>.EntityTitle
         {
             get { return Name; }

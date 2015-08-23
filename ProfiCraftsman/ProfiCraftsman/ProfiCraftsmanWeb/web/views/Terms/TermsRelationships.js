@@ -10,7 +10,7 @@ define([
             
             var result = [
                 { view: 'l!t!Terms/TermPositions', selector: '.products' },
-                { view: 'l!t!Terms/TermPositions', selector: '.instruments' },
+                { view: 'l!t!Terms/TermInstruments', selector: '.instruments' },
             ];
             
             return result;
