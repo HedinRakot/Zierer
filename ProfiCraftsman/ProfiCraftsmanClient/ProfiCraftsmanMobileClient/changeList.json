@@ -58,7 +58,6 @@
     "www\\libs\\ionic\\js\\ionic-angular.js",
     "res\\icons\\ios\\icon-small.png",
     "www\\js\\services\\translateProviderStorageService.js",
-    "www\\templates\\terms.html",
     "www\\languages\\de.json",
     "res\\icons\\windows\\Square30x30Logo.scale-100.png",
     "www\\libs\\ionic\\version.json",
@@ -74,7 +73,6 @@
     "www\\templates\\hotOffers.html",
     "res\\native\\android\\ant.properties",
     "res\\icons\\windows\\Square310x310Logo.scale-100.png",
-    "taco.json",
     "res\\icons\\windows\\Square150x150Logo.scale-240.png",
     "res\\icons\\android\\icon-36-ldpi.png",
     "merges\\windows\\scripts\\platformOverrides.js",
@@ -114,13 +112,40 @@
     "res\\icons\\windows\\Square44x44Logo.scale-240.png",
     "res\\screens\\android\\screen-mdpi-portrait.png",
     "www\\js\\services\\modalWindowService.js",
-    "www\\js\\controllers\\termsController.js"
+    "www\\js\\controllers\\termsController.js",
+    "www\\js\\controllers\\termDetailsController.js",
+    "www\\templates\\terms\\terms.html",
+    "www\\templates\\terms\\termDetails.html",
+    "taco.json",
+    "www\\js\\controllers\\termPositionsController.js"
   ],
-  "deletedFilesIos": [],
+  "deletedFilesIos": [
+    "www\\templates\\login - Copy.html",
+    "www\\templates\\terms\\login - Copy.html",
+    "www\\js\\controllers\\termDetailssController.js",
+    "www\\templates\\terms.html",
+    "www\\templates\\termDetails.html",
+    "www\\templates\\terms\\terms - Copy.html",
+    "www\\templates\\terms\\test.html",
+    "www\\templates\\taco.json",
+    "www\\taco.json",
+    "www\\js\\controllers\\termsController - Copy.js"
+  ],
   "addedPluginsIos": [],
   "deletedPluginsIos": [],
-  "changedFiles": [],
-  "deletedFiles": [],
+  "changedFiles": [
+    "www\\js\\app.js",
+    "www\\css\\index.css",
+    "www\\templates\\terms\\termDetails.html",
+    "www\\templates\\terms\\terms.html",
+    "www\\js\\controllers\\termPositionsController.js",
+    "www\\index.html",
+    "www\\js\\controllers\\termsController.js",
+    "www\\js\\controllers\\loginController.js"
+  ],
+  "deletedFiles": [
+    "www\\js\\controllers\\termsController - Copy.js"
+  ],
   "addedPlugins": [],
   "deletedPlugins": []
 }

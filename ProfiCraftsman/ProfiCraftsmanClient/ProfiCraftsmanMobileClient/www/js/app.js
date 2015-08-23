@@ -141,7 +141,18 @@
                     url: "/terms",
                     views: {
                         'menuContent': {
-                            templateUrl: "templates/terms.html"
+                            templateUrl: "templates/terms/terms.html"
+                        }
+                    },
+                    data: {
+                        requireLogin: true
+                    }
+                })
+                .state('/termDetails', {
+                    url: "/terms/termDetails",
+                    views: {
+                        'menuContent': {
+                            templateUrl: "templates/terms/termDetails.html"
                         }
                     },
                     data: {
@@ -150,7 +161,7 @@
                 });
 
             // if none of the above states are matched, use this as the fallback
-            $urlRouterProvider.otherwise('/findMaster');
+            $urlRouterProvider.otherwise('/terms');
 
             $translateProvider.useStaticFilesLoader({
                 prefix: 'languages/',

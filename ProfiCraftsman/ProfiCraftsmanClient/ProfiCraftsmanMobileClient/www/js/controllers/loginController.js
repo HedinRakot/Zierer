@@ -13,9 +13,7 @@
     LoginController.prototype.doLogin = function () {
         var self = this,
             toState = self.modalWindowService.toState;
-
-        //console.log('Doing login', this.loginData);
-
+        
         self.http.post(window.localStorage['baseAppPath'] + 'ClientLogin', self.loginData).success(function (response) {
 
             if (response.isAuthenticated) {
@@ -32,13 +30,9 @@
                 }
             }
             else {
-                //todo 
+
             }
         });
-
-        //this.timeout(function () {
-        //    self.closeLogin();
-        //}, 1000);
     };
 
     LoginController.prototype.closeLogin = function () {

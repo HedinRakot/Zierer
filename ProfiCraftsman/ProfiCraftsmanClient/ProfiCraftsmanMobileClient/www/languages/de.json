@@ -7,7 +7,7 @@
     "main_menu_selection_master": "Подбор мастера",
     "main_menu_help": "Hilfe",
     "main_menu_settings": "Einstellungen",
-    "terms_title":  "Termine",
+    "terms_today_title":  "Termine heute",
     "logout_title":  "Abmelden",
     "=====================": "My services",
     "my_services_title": "Мои услуги",
@@ -29,5 +29,7 @@
     "=====================": "Selection master",
     "selection_master_title": "Подбор мастера",
     "=====================": "Language",
-    "language_title": "Sprache"
+    "language_title": "Sprache",
+    "=====================": "TermDetails",
+    "term_details_title": "Sprache"
 }

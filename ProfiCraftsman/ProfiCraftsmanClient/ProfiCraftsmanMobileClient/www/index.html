@@ -25,6 +25,8 @@
     <script src="js/controllers/loginController.js"></script>
     <script src="js/controllers/logoutController.js"></script>
     <script src="js/controllers/termsController.js"></script>
+    <script src="js/controllers/termDetailsController.js"></script>
+    <script src="js/controllers/termPositionsController.js"></script>
     <script src="js/controllers/languageController.js"></script>
     <script src="js/services/modalWindowService.js"></script>
     <script src="js/services/globalizationService.js"></script>
@@ -71,7 +73,7 @@
                         {{"main_menu_help" | translate}}
                     </ion-item>
                     <ion-item nav-clear menu-close href="#/terms">
-                        {{"terms_title" | translate}}
+                        {{"terms_today_title" | translate}}
                     </ion-item>
                     <ion-item nav-clear menu-close ng-click="logoutCtrl.doLogout()">
                         {{"logout_title" | translate}}

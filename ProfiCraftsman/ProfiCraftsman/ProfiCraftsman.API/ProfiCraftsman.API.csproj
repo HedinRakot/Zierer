@@ -152,8 +152,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientControllers\ClientTermPositionsController.cs" />
+    <Compile Include="ClientControllers\Models\ClientTermPositionViewModel.cs" />
+    <Compile Include="ClientControllers\Models\ClientTermViewModel.cs" />
+    <Compile Include="ClientControllers\Models\ClientTermSearchModel.cs" />
+    <Compile Include="ClientControllers\GetTermController.cs" />
     <Compile Include="ClientControllers\ClientTermsController.cs" />
     <Compile Include="ClientControllers\ClientLoginController.cs" />
+    <Compile Include="ClientControllers\Models\GetTermModel.cs" />
     <Compile Include="Controllers\InvoiceStornos\InvoiceStornosController.cs" />
     <Compile Include="Controllers\Invoices\GenerateMonthInvoicesController.cs" />
     <Compile Include="Controllers\Invoices\InvoicePositionsController.cs" />

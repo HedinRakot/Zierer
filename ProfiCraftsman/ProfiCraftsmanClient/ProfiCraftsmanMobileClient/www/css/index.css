@@ -1,2 +1,27 @@
 ﻿body {
 }
+
+.term-item.item
+{
+    padding: 0px;
+}
+
+.term-item-column
+{
+    border-right: 1px solid #ddd; 
+    padding: 16px; 
+    float: left;
+}
+
+.term-item-column
+{
+    border-right: 1px solid #ddd; 
+    padding: 16px; 
+    float: left;
+}
+
+.term-description
+{
+    font-weight: bold;
+    padding-left: 20px;
+}

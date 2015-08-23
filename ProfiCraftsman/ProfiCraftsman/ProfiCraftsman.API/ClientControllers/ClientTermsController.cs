@@ -10,18 +10,6 @@ using System.Collections.Generic;
 
 namespace ProfiCraftsman.API.ClientControllers
 {
-    public class ClientTermViewModel
-    {
-        public int Id { get; set; }
-        public string Description { get; set; }
-    }
-
-    public class ClientTermSearchModel
-    {
-        public string userLogin { get; set; }
-    }
-
-
     public class ClientTermsController : ApiController
 	{
 	    private readonly IUserManager userManager;
@@ -44,10 +32,11 @@ namespace ProfiCraftsman.API.ClientControllers
                 result = terms.Select(o => new ClientTermViewModel()
                 {
                     Id = o.Id,
-                    Description = String.Format("Von {0} bis {1} {2} {3} {4}", o.Date.ToString("dd.MM.yyyy HH:mm"),
-                        o.Date.AddMinutes(o.Duration).ToString("dd.MM.yyyy HH:mm"),
-                        o.Orders.Street, o.Orders.Zip, o.Orders.City)
-                }).ToList();
+                    FromDate = String.Format("{0}", o.Date.ToString("HH:mm")),
+                    ToDate = String.Format("{0}", o.Date.AddMinutes(o.Duration).ToString("HH:mm")),
+                    Address = String.Format("{0} {1} {2}", o.Orders.Street, o.Orders.Zip, o.Orders.City),
+                    Status = o.Status,
+                }).OrderBy(o => o.FromDate).ToList();
             }
 
             return Ok(result);

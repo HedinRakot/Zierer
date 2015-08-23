@@ -29,5 +29,7 @@
     "=====================": "Selection master",
     "selection_master_title": "Select master",
     "=====================": "Language",
-    "language_title": "Language"
+    "language_title": "Language",
+    "=====================": "TermDetails",
+    "term_details_title": "Sprache"
 }
