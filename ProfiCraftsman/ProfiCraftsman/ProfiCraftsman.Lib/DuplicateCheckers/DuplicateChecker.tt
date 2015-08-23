@@ -1,0 +1,15 @@
+﻿<#@ template language="C#" debug="true" hostspecific="true" linePragmas="true"#>
+<#@ output extension=".txt"#>
+<#@ include file="..\..\Generation\ProfiCraftsman.Generation\TTMasterData\ProfiCraftsman.Settings.ttinclude" once="true"#>
+<# 
+    const string filesDir = @"..\..\Generation\ProfiCraftsman.Generation\Declarations\";
+    extraUsages = new string[] {"ProfiCraftsman.Contracts.Managers", 
+	"CoreBase.DuplicateCheckers",
+	"ProfiCraftsman.Contracts.Entities", 
+	"System.Linq", 
+	"System"};
+
+    defaultNamespace = "ProfiCraftsman.Lib.DuplicateCheckers";
+#>
+<#@ include file="..\..\Generation\ProfiCraftsman.Generation\TTMasterData\ProfiCraftsman.GenerationContext.ttinclude" once="true"#>
+<#@ include file="..\..\Generation\ProfiCraftsman.Generation\TTMasterData\DuplicateChecker.ttinclude"  once="true"#>
