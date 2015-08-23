@@ -162,6 +162,7 @@
     <Compile Include="Controllers\Orders\DeleteAllOrderPositionsController.cs" />
     <Compile Include="Controllers\Orders\CopyOrderController.cs" />
     <Compile Include="Controllers\Orders\PositionMaterialsController.cs" />
+    <Compile Include="Controllers\Terms\DeleteAllTermPositionsController.cs" />
     <Compile Include="Controllers\Terms\TermPositionsController.cs" />
     <Compile Include="Controllers\Terms\TermsController.cs" />
     <Compile Include="Controllers\Settings\AutoInstrumentRspsController.cs" />
