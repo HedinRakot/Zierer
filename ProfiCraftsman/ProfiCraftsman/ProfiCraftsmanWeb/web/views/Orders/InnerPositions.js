@@ -55,7 +55,7 @@
                 require(['base/information-view'], function (View) {
                     var view = new View({
                         title: 'Alle Positionen löschen',
-                        message: 'Alle Positionen in dem ausgewählte Auftrag konnten nicht gelöscht werden.'
+                        message: 'Alle Positionen in dem ausgewählten Auftrag konnten nicht gelöscht werden.'
                     });
                     self.addView(view);
                     self.$el.append(view.render().$el);

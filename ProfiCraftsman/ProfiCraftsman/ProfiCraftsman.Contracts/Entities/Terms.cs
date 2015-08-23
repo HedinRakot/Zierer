@@ -1,6 +1,7 @@
 using CoreBase.Entities;
 using ProfiCraftsman.Contracts;
 using System;
+using System.Collections.Generic;
 
 namespace ProfiCraftsman.Contracts.Entities
 {
@@ -109,6 +110,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public virtual Autos Autos{ get; set; }
         public virtual Employees Employees{ get; set; }
         public virtual Orders Orders{ get; set; }
+        public virtual ICollection<TermPositions> TermPositions{ get; set; }
         public bool HasAutos
         {
             get { return !ReferenceEquals(Autos, null); }

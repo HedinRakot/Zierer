@@ -1,7 +1,8 @@
 ﻿define([	
     'base/related-object-grid-view',
-    'collections/Terms',
-], function (BaseView, Collection) {
+    'collections/Terms/Terms',
+    'l!t!Terms/TermsRelationships'
+], function (BaseView, Collection, DetailView) {
 	'use strict';
 
     var view = BaseView.extend({
@@ -10,6 +11,8 @@
 		gridSelector: '.grid',
 		tableName: 'Terms',
         
+		detailView: DetailView,
+
         selectable: true,
 
 		initialize: function() {

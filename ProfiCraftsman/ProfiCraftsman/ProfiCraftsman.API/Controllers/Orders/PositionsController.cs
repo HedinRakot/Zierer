@@ -128,6 +128,13 @@ namespace ProfiCraftsman.API.Controllers
                 return String.Format("ParentId.HasValue == {0}", hasParent);
             }
 
+            if (filter.Field == "onlyProducts")
+            {
+                //var isGroup = Boolean.Parse(filter.Value);
+
+                return String.Format("ProductId.HasValue");
+            }
+
             return base.BuildWhereClause<T>(filter);
         }        
     }

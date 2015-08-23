@@ -232,7 +232,8 @@
     <Content Include="web\collections\Settings\Instruments.js">
       <DependentUpon>web.collections.tt</DependentUpon>
     </Content>
-    <Content Include="web\collections\Terms.js" />
+    <Content Include="web\collections\Terms\TermPositions.js" />
+    <Content Include="web\collections\Terms\Terms.js" />
     <Content Include="web\collections\ProductSearch.js" />
     <Content Include="web\collections\InvoiceStornos\InvoiceStornos.js" />
     <Content Include="web\collections\Invoices\AddInvoicePositions.js" />
@@ -305,7 +306,8 @@
     <Content Include="web\models\Settings\Instruments.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
-    <Content Include="web\models\Term.js" />
+    <Content Include="web\models\Terms\TermPosition.js" />
+    <Content Include="web\models\Terms\Term.js" />
     <Content Include="web\models\ProductSearch.js" />
     <Content Include="web\models\FilterOffersProductSmart.js" />
     <Content Include="web\models\InvoiceStornos\AddInvoicePositions.js" />
@@ -442,8 +444,16 @@
     <Content Include="web\resources\Orders\Materials.en.js" />
     <Content Include="web\resources\Orders\FilterOffersProductSmart.de.js" />
     <Content Include="web\resources\Orders\FilterOffersProductSmart.en.js" />
-    <Content Include="web\resources\Orders\Terms.de.js" />
-    <Content Include="web\resources\Orders\Terms.en.js" />
+    <Content Include="web\resources\Terms\PositionSearch.de.js" />
+    <Content Include="web\resources\Terms\PositionSearch.en.js" />
+    <Content Include="web\resources\Terms\SelectPosition.de.js" />
+    <Content Include="web\resources\Terms\SelectPosition.en.js" />
+    <Content Include="web\resources\Terms\TermPositions.de.js" />
+    <Content Include="web\resources\Terms\TermPositions.en.js" />
+    <Content Include="web\resources\Terms\TermsRelationships.de.js" />
+    <Content Include="web\resources\Terms\TermsRelationships.en.js" />
+    <Content Include="web\resources\Terms\Terms.de.js" />
+    <Content Include="web\resources\Terms\Terms.en.js" />
     <Content Include="web\resources\Settings\AddAutos.de.js">
       <DependentUpon>web.add.resources.tt</DependentUpon>
     </Content>
@@ -935,7 +945,11 @@
     <Content Include="web\templates\Orders\InnerPositions.html" />
     <Content Include="web\templates\Orders\Materials.html" />
     <Content Include="web\templates\Orders\FilterOffersProductSmart.html" />
-    <Content Include="web\templates\Orders\Terms.html" />
+    <Content Include="web\templates\Terms\PositionSearch.html" />
+    <Content Include="web\templates\Terms\SelectPosition.html" />
+    <Content Include="web\templates\Terms\TermPositions.html" />
+    <Content Include="web\templates\Terms\TermsRelationships.html" />
+    <Content Include="web\templates\Terms\Terms.html" />
     <Content Include="web\templates\Settings\AddAutos.html">
       <DependentUpon>web.add.templates.tt</DependentUpon>
     </Content>
@@ -1192,7 +1206,11 @@
     <Content Include="web\views\Invoices\InvoicesRelationships.js" />
     <Content Include="web\views\Invoices\AddInvoicePositions.js" />
     <Content Include="web\views\Orders\InnerPositions.js" />
-    <Content Include="web\views\Orders\Terms.js" />
+    <Content Include="web\views\Terms\PositionSearch.js" />
+    <Content Include="web\views\Terms\SelectPosition.js" />
+    <Content Include="web\views\Terms\TermPositions.js" />
+    <Content Include="web\views\Terms\TermsRelationships.js" />
+    <Content Include="web\views\Terms\Terms.js" />
     <Content Include="web\views\Orders\Materials.js" />
     <Content Include="web\views\Orders\FilterOffersProductSmart.js" />
     <Content Include="web\views\Settings\AddAutos.js">

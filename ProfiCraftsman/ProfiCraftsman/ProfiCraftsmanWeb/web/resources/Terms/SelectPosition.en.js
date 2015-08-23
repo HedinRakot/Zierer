@@ -2,7 +2,7 @@
 	'use strict';
 
 	var resources = {
-	    title: 'Verfügbare Leistungen',
+	    title: 'Available products',
 
 	};
 

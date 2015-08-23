@@ -1,6 +1,6 @@
 define([
 	'base/base-collection',
-	'models/Term'
+	'models/Terms/Term'
 ], function (BaseCollection, Model) {
 	'use strict';
 
