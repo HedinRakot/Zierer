@@ -72,6 +72,8 @@
 
 		    self.grid.bind('edit', function (e) {
 		        e.model.orderId = self.model.id;
+
+		        e.model.date = kendo.format("{0:yyyy'-'MM'-'dd'T'HH':'mm':'ss}", new Date());
 		    });
 
 		    return self;

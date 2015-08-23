@@ -1,1 +1,106 @@
-﻿define(["backbone.stickit"], function () { "use strict"; var e = Backbone.Stickit.getConfiguration($("<select />")); Backbone.Stickit.addHandler([{ selector: "select[multiple]", getVal: function (e) { var t = e.find("option:selected"); return _.map(t, function (e) { return Number($(e).val()) }) }, update: function (t, a) { e.update.apply(this, arguments); var n = t.data("custom-selectBox"); n && n.restore(); var o = t.data("kendoMultiSelect"); o && (o.setDataSource(), o.value(a)) } }, { selector: "select:not([multiple])", getVal: function (e) { return Number(e.find("option:selected").val()) }, update: function (t, a) { e.update.apply(this, arguments); var n = t.data("kendoDropDownList"); n && (n.setDataSource(), n.value(a)) } }, { selector: "[data-role=datepicker]", getVal: function (e) { var t = e.val(); return t ? kendo.format("{0:yyyy'-'MM'-'dd'T'HH':'mm':'ss}", kendo.parseDate(t)) : null }, update: function (e, t) { e.val(t ? kendo.format("{0:d}", kendo.parseDate(t)) : "") } }, { selector: "[data-role=datetimepicker]", getVal: function (e) { var t = e.val(); return kendo.format("{0:yyyy'-'MM'-'dd'T'HH':'mm':'ss}", kendo.parseDate(t)) }, update: function (e, t) { e.val(t ? kendo.format("{0:g}", kendo.parseDate(t)) : "") } }, { selector: "[data-role=numerictextbox]", getVal: function (e) { var t = e.val(); return kendo.parseFloat(t) }, update: function (e, t) { e.val(t) } }, { selector: "[data-role=floattextbox]", getVal: function (e) { var t = e.val(); return kendo.parseFloat(t) }, update: function (e, t) { e.val(t) } }]); var t = { render: function () { this.stickit() }, close: function () { this.unstickit() } }; return t });
+﻿define([
+	'backbone.stickit'
+], function () {
+	'use strict';
+	
+	var selectConfig = Backbone.Stickit.getConfiguration($('<select />'));
+
+	Backbone.Stickit.addHandler([{
+		selector: 'select[multiple]',
+		getVal: function ($el, event, options) {
+			var selected = $el.find('option:selected');
+			return _.map(selected, function (el) {
+				return Number($(el).val());
+			});
+		},
+		update: function ($el, values) {
+			selectConfig.update.apply(this, arguments);
+			
+			var selectBox = $el.data('custom-selectBox');
+			if (selectBox)
+				selectBox.restore();
+
+			var multiSelect = $el.data('kendoMultiSelect');
+			if (multiSelect) {
+				multiSelect.setDataSource();
+				multiSelect.value(values);
+			}
+			
+		}
+	}, {
+		selector: 'select:not([multiple])',
+		getVal: function ($el, event, options) {
+			return Number($el.find('option:selected').val());
+		},
+		update: function ($el, value) {
+			selectConfig.update.apply(this, arguments);
+
+			var dropdownlist = $el.data('kendoDropDownList');
+			if (dropdownlist) {
+			    dropdownlist.setDataSource();
+			    dropdownlist.value(value);
+			}
+		}
+	}, {
+	    selector: '[data-role=datepicker]',
+	    getVal: function ($el) {
+	    	var value = $el.val();
+	    	
+	    	if (!value)
+	    	    return null;
+
+	    	return kendo.format("{0:yyyy'-'MM'-'dd'T'HH':'mm':'ss}", kendo.parseDate(value));
+	    },
+	    update: function ($el, value) {
+	    	if (!value)
+	    		$el.val('');
+			else
+				$el.val(kendo.format('{0:d}', kendo.parseDate(value)));
+	    }
+	}, {
+	    selector: '[data-role=datetimepicker]',
+	    getVal: function ($el) {
+	        var value = $el.val();
+	        return kendo.format("{0:yyyy'-'MM'-'dd'T'HH':'mm':'ss}", kendo.parseDate(value));
+	    },
+	    update: function ($el, value) {
+	        if (!value)
+	            $el.val('');
+	        else
+	            $el.val(kendo.format('{0:g}', kendo.parseDate(value)));
+	    }
+	}, {
+	    selector: '[data-role=numerictextbox]',
+	    getVal: function ($el) {
+	        var value = $el.val();
+
+	        return kendo.parseFloat(value);
+	    },
+	    update: function ($el, value) {
+	        $el.val(value);
+	    }
+	}, {
+	    selector: '[data-role=floattextbox]',
+	    getVal: function ($el) {
+	        var value = $el.val();
+
+	        return kendo.format('{0:n2}', kendo.parseFloat(value));
+	    },
+	    update: function ($el, value) {
+	        $el.val(value);
+	    }
+	}
+	]);
+
+	var mixin = {
+		render: function () {
+			this.stickit();
+		},
+
+		close: function () {
+			this.unstickit();
+		}
+	};
+
+	return mixin;
+});

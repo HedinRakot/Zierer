@@ -272,7 +272,7 @@
     <Compile Include="Managers\IUserManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Managers\IOrdersManager.Custom.cs" />
+    <Compile Include="Managers\IPrinterManager.cs" />
     <Compile Include="Managers\IUserManager.Custom.cs" />
     <Compile Include="IProfiCraftsmanEntities.Custom.cs" />
     <Compile Include="IProfiCraftsmanEntities.cs">

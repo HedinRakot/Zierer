@@ -7,6 +7,8 @@ using Microsoft.Practices.Unity;
 using ProfiCraftsman.Contracts.SaveActors;
 using ProfiCraftsman.Lib.Data.SaveActors;
 using ProfiCraftsman.Lib.DuplicateCheckers;
+using ProfiCraftsman.Contracts.Managers;
+using ProfiCraftsman.Lib.Managers;
 
 namespace ProfiCraftsman.Configuration
 {
@@ -18,6 +20,7 @@ namespace ProfiCraftsman.Configuration
                 new InjectionConstructor(new ResolvedParameter<IProfiCraftsmanSaveActorManager>(), ConfigurationManager.ConnectionStrings["ProfiCraftsmanEntities"].ConnectionString));
 
              container.RegisterType<IProfiCraftsmanSaveActorManager, ProfiCraftsmanSaveActorManager>(new PerRequestLifetimeManager());
+             container.RegisterType<IPrinterManager, PrinterManager>(new PerRequestLifetimeManager());
 
             RegisterDuplicateCheckers(container);
             RegisterManagers(container);
