@@ -10,32 +10,60 @@
         /// </summary>
         Open = 0,
         /// <summary>
+        /// Begin Trip Departure Selection
+        /// </summary>
+        BeginTripDepartureSelection = 1,
+        /// <summary>
         /// Begin Trip
         /// </summary>
-        BeginTrip = 1,
+        BeginTrip = 2,
         /// <summary>
         /// End Trip
         /// </summary>
-        EndTrip = 2,
+        EndTrip = 3,
         /// <summary>
         /// Begin Work
         /// </summary>
-        BeginWork = 3,
+        BeginWork = 4,
+        /// <summary>
+        /// Enter positions
+        /// </summary>
+        EnterPositions = 5,
+        /// <summary>
+        /// Check positions
+        /// </summary>
+        CheckPositions = 6,
+        /// <summary>
+        /// Enter materials
+        /// </summary>
+        EnterMaterials = 7,
+        /// <summary>
+        /// Check materials
+        /// </summary>
+        CheckMaterials = 8,
+        /// <summary>
+        /// Show Delivery Note
+        /// </summary>
+        ShowDeliveryNote = 9,
+        /// <summary>
+        /// Sign Delivery Note
+        /// </summary>
+        SignDeliveryNote = 10,
         /// <summary>
         /// End Work
         /// </summary>
-        EndWork = 4,
+        EndWork = 11,
         /// <summary>
         /// Begin Return Trip
         /// </summary>
-        BeginReturnTrip = 5,
+        BeginReturnTrip = 12,
         /// <summary>
         /// End Return Trip
         /// </summary>
-        EndReturnTrip = 6,
+        EndReturnTrip = 13,
         /// <summary>
         /// Canceled
         /// </summary>
-        Canceled = 7,
+        Canceled = 14,
     }
 }

@@ -37,8 +37,8 @@ namespace ProfiCraftsman.API.ClientControllers
                 switch ((TermStatusTypes)model.status)
                 {
                     case TermStatusTypes.BeginTrip:
-                        term.BeginTrip = DateTime.Now;
                         term.BeginTripFromOffice = model.BeginTripFromOffice;
+                        term.BeginTrip = DateTime.Now;
                         break;
                     case TermStatusTypes.EndTrip:
                         term.EndTrip = DateTime.Now;

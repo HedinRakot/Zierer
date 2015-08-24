@@ -25,15 +25,38 @@
         </ion-list>
 
         <br />
+
+        <!-- First buttons -->
+
         <button ng-if="termDetailsController.term.status == 0" class="button button-block button-positive" 
-                ng-click="termDetailsController.beginTrip()">Anfahrt beginnen</button>
+                ng-click="termDetailsController.beginTripDepartureSelection()">Anfahrt beginnen</button>
         
-        <button ng-if="termDetailsController.term.status == 1" class="button button-block button-positive" 
-                ng-click="termDetailsController.beginTrip()">Anfahrt beenden</button>
+        <button ng-if="termDetailsController.term.status == 1" class="button button-block button-positive"
+                ng-click="termDetailsController.beginTrip(true)">
+            Von Büro
+        </button>
+
+        <button ng-if="termDetailsController.term.status == 2" class="button button-block button-positive"
+                ng-click="termDetailsController.endTrip()">
+            Anfahrt beenden
+        </button>
+
+        <button ng-if="termDetailsController.term.status == 4" class="button button-block button-positive" 
+                ng-click="termDetailsController.enterPositions()">Auftrag beenden</button>
         
         <br />
 
-        <button ng-if="termDetailsController.term.status == 0 || termDetailsController.term.status == 2" class="button button-block" 
+        <!-- Second buttons -->
+        <button ng-if="termDetailsController.term.status == 0" class="button button-block" 
                 ng-click="termDetailsController.beginWork()">Auftrag beginnen</button>
+        <button ng-if="termDetailsController.term.status == 3" class="button button-block button-positive"
+                ng-click="termDetailsController.beginWork()">
+            Auftrag beginnen
+        </button>
+
+        <button ng-if="termDetailsController.term.status == 1" class="button button-block"
+                ng-click="termDetailsController.beginTrip(false)">
+            Von Zuhause
+        </button>
     </ion-content>
 </ion-view>
