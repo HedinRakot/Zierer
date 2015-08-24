@@ -51,6 +51,9 @@ namespace ProfiCraftsman.Lib.Data
             Property(t => t.DeleteDate)
                 .HasColumnName(TermPositions.Fields.DeleteDate);
 
+            Property(t => t.ProccessedAmount)
+                .HasColumnName(TermPositions.Fields.ProccessedAmount);
+
 
             //Relationships
             HasRequired(t => t.Terms)

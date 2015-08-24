@@ -8,6 +8,7 @@ using CoreBase.Models;
 using System;
 using System.Collections.Generic;
 using ProfiCraftsman.Contracts.Enums;
+using System.Linq;
 
 namespace ProfiCraftsman.API.ClientControllers
 {
@@ -46,6 +47,17 @@ namespace ProfiCraftsman.API.ClientControllers
                     case TermStatusTypes.BeginWork:
                         term.BeginWork = DateTime.Now;
                         break;
+                    case TermStatusTypes.CheckPositions:
+
+                        var termPositions = term.TermPositions.Where(o => !o.DeleteDate.HasValue).ToList();
+                        foreach(var position in model.Positions)
+                        {
+                            var termPosition = termPositions.FirstOrDefault(o => o.Id == position.Id);
+                            termPosition.ProccessedAmount = position.ProccessedAmount;
+                        }
+
+                        termManager.SaveChanges();
+                        break;
                     case TermStatusTypes.EndWork:
                         term.EndWork = DateTime.Now;
                         break;
@@ -61,7 +73,7 @@ namespace ProfiCraftsman.API.ClientControllers
 
                 if (term != null)
                 {
-                    result = TermViewModelHelper.ToModel(term);
+                    result = TermViewModelHelper.ToModel(term, false);
                 }
 
                 return Ok(result);

@@ -46,6 +46,10 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'DeleteDate' for property <see cref="TermPositions.DeleteDate"/>
             /// </summary>
             public static readonly string DeleteDate = "DeleteDate";
+            /// <summary>
+            /// Column name 'ProccessedAmount' for property <see cref="TermPositions.ProccessedAmount"/>
+            /// </summary>
+            public static readonly string ProccessedAmount = "ProccessedAmount";
           
         }
         #endregion
@@ -56,6 +60,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime CreateDate{ get; set; }
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
+        public int? ProccessedAmount{ get; set; }
         public virtual Terms Terms{ get; set; }
         public virtual Positions Positions{ get; set; }
         public bool HasTerms
@@ -90,6 +95,7 @@ namespace ProfiCraftsman.Contracts.Entities
                        CreateDate = CreateDate,
                        ChangeDate = ChangeDate,
                        DeleteDate = DeleteDate,
+                       ProccessedAmount = ProccessedAmount,
         	           };
         }
     }

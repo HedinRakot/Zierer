@@ -13,5 +13,7 @@ namespace ProfiCraftsman.API.ClientControllers
     public class GetTermModel
     {
         public int termId { get; set; }
+
+        public bool withPositions { get; set; }
     }
 }

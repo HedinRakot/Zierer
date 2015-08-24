@@ -74,10 +74,20 @@
         this.state = $state;
 
         var self = this;
+        this.http.post(window.localStorage['baseAppPath'] + 'GetTerm', { 
+            termId: window.localStorage['termId'],
+            withPositions: true
+        }).
+        success(function (result) {
+            self.term = result;
+        }).
+        error(function (result) {
+
+        });
     }
 
 
-    EnterTermPositionsController.prototype.beginTripDepartureSelection = function () {
+    EnterTermPositionsController.prototype.checkPositions = function () {
         var self = this;
 
         var self = this;
@@ -85,7 +95,8 @@
             {
                 login: window.localStorage['userLogin'],
                 termId: window.localStorage['termId'],
-                status: termStatusTypes.BeginTripDepartureSelection,
+                status: termStatusTypes.CheckPositions,
+                positions: self.term.positions,
             }).
             success(function (result) {
                 self.term = result;
@@ -98,7 +109,7 @@
     };
 
         
-    TermDetailsController.prototype.setLocale = function () {
+    EnterTermPositionsController.prototype.setLocale = function () {
         this.globalizationService.setLocale(this.$scope.locale);
         this.moment.locale(this.$scope.locale);
     }

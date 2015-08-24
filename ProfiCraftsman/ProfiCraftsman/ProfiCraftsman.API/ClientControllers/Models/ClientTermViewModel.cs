@@ -18,5 +18,7 @@ namespace ProfiCraftsman.API.ClientControllers
         public string Address { get; set; }
         public int Status { get; set; }
         public bool IsFirstTerm { get; set; }
+
+        public List<ClientTermPositionViewModel> Positions { get; set; }
     }
 }

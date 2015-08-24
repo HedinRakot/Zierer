@@ -1,14 +1,14 @@
-﻿<ion-view ng-controller="TermDetailsController as termDetailsController">
+﻿<ion-view ng-controller="EnterTermPositionsController as enterTermPositionsController">
     <ion-nav-title>
         {{"terms_today_title" | translate}}
     </ion-nav-title>
     <ion-content>
         <br />
-        <p class="term-description">{{termDetailsController.term.fromDate}} - {{termDetailsController.term.toDate}}</p>
-        <p class="term-description">{{termDetailsController.term.address}}</p>
+        <p class="term-description">{{enterTermPositionsController.term.fromDate}} - {{enterTermPositionsController.term.toDate}}</p>
+        <p class="term-description">{{enterTermPositionsController.term.address}}</p>
         <br />
 
-        <ion-list ng-controller="TermPositionsController as termPositionsController">
+        <ion-list>
 
             <ion-item class="term-item">
                 <div class="term-item-column item" style="width: 15%; font-weight: bold;">Pos-Nr.</div>
@@ -17,12 +17,14 @@
                 <div class="term-item-column item" style="width: 15%; border-right: 0px; font-weight: bold;">Erledigt</div>
             </ion-item>
 
-            <ion-item ng-repeat="position in termPositionsController.positions" class="term-item">
+            <ion-item ng-repeat="position in enterTermPositionsController.term.positions" class="term-item">
 
                 <div class="term-item-column item" style="width: 15%;">{{position.number}}</div>
                 <div class="term-item-column item" style="width: 55%;">{{position.description}}</div>
                 <div class="term-item-column item" style="width: 15%; background-color: grey;">{{position.plannedAmount}}</div>
-                <div class="term-input-item-column input" style="width: 15%; border-right: 0px;"><input type="text" style="padding: 0px; font-size: 16px;"></div>
+                <div class="term-input-item-column input" style="width: 15%; border-right: 0px;">
+                    <input type="text" style="padding: 0px; font-size: 16px;" ng-model="enterTermPositionsController.term.positions[$index].proccessedAmount">
+                </div>
             </ion-item>
         </ion-list>
 
@@ -30,19 +32,19 @@
 
         <!-- First buttons -->
 
-        <button ng-if="termDetailsController.term.status == 5" class="button button-block button-positive" 
-                ng-click="termDetailsController.beginTripDepartureSelection()">Prüfen und bestätigen
+        <button ng-if="enterTermPositionsController.term.status == 5" class="button button-block button-positive" 
+                ng-click="enterTermPositionsController.checkPositions()">Prüfen und bestätigen
         </button>
 
-        <button ng-if="termDetailsController.term.status == 6" class="button button-block button-positive"
-                ng-click="termDetailsController.beginTripDepartureSelection()">
+        <button ng-if="enterTermPositionsController.term.status == 6" class="button button-block button-positive"
+                ng-click="enterTermPositionsController.beginTripDepartureSelection()">
             Prüfen und bestätigen
         </button>
                 
         <br />
 
         <!-- Second buttons -->
-        <button ng-if="termDetailsController.term.status == 5" class="button button-block" 
+        <button ng-if="enterTermPositionsController.term.status == 5" class="button button-block" 
                 ng-click="">Leistung hinzufügen</button>
 
     </ion-content>

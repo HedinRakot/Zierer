@@ -26,19 +26,7 @@ namespace ProfiCraftsman.API.ClientControllers
 
             if (term != null)
             {
-                var positions = term.TermPositions.Where(o => o.Positions.ProductId.HasValue).ToList();
-                for (int i = 0; i < positions.Count; i++)
-                {
-                    var position = positions[i];
-                    result.Add(new ClientTermPositionViewModel()
-                    {
-                        Id = position.Id,
-                        Number = (i + 1).ToString(),
-                        Description = position.Positions.Products.Name,
-                        PlannedAmount = position.Amount.ToString(),
-                        TermId = position.TermId,
-                    });
-                }
+                result = TermViewModelHelper.PositionModels(term);
             }
 
             return Ok(result);

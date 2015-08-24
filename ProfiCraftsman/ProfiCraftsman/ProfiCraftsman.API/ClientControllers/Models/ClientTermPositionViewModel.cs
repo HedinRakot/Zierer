@@ -17,6 +17,6 @@ namespace ProfiCraftsman.API.ClientControllers
         public string Number { get; set; }
         public string Description { get; set; }
         public string PlannedAmount { get; set; }
-        public int ProccessedAmount { get; set; }
+        public int? ProccessedAmount { get; set; }
     }
 }

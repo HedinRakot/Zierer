@@ -120,7 +120,8 @@
     "res\\screens\\android\\screen-mdpi-portrait.png",
     "www\\js\\services\\modalWindowService.js",
     "www\\js\\controllers\\termsController.js",
-    "www\\templates\\terms\\entertermpositions.html"
+    "www\\templates\\terms\\entertermpositions.html",
+    "www\\js\\controllers\\entertermpositionscontroller.js"
   ],
   "deletedFilesIos": [],
   "addedPluginsIos": [],
