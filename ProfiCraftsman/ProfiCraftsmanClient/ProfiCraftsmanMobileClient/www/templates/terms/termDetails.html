@@ -8,22 +8,32 @@
         <p class="term-description">{{termDetailsController.term.address}}</p>
         <br />
 
-        <ion-list ng-controller="TermPositionsController as termPositionsController">
+        <ion-list ng-if="termDetailsController.term.status == 0" ng-controller="TermPositionsController as termPositionsController">
+
+            <ion-item class="term-item">
+                <div class="term-item-column item" style="width: 15%; font-weight: bold;">Pos-Nr.</div>
+                <div class="term-item-column item" style="width: 70%; font-weight: bold;">Bezeichnung</div>
+                <div class="term-item-column item" style="width: 15%; border-right: 0px; font-weight: bold;">Geplannte Menge</div>
+            </ion-item>
+
             <ion-item ng-repeat="position in termPositionsController.positions" class="term-item">
 
-                <ion-item ng-if="$index==0" class="term-item">
-                    <div class="term-item-column item" style="width: 102px; font-weight: bold; border-left: 0px;">Pos-Nr.</div>
-                    <div class="term-item-column item" style="font-weight: bold; width: 70%;">Bezeichnung</div>
-                    <div class="term-item-column item" style="border-right: 0px; font-weight: bold; clear: right;">Geplannte Menge</div>
-                </ion-item>
-
-                <div class="term-item-column" style="width: 100px;">{{position.number}}</div>
-                <div class="term-item-column" style="width: 70%;">{{position.description}}</div>
-                <div class="term-item-column" style="border-right: 0px;">{{position.plannedAmount}}</div>
+                <div class="term-item-column item" style="width: 15%;">{{position.number}}</div>
+                <div class="term-item-column item" style="width: 70%;">{{position.description}}</div>
+                <div class="term-item-column item" style="width: 15%; border-right: 0px;">{{position.plannedAmount}}</div>
             </ion-item>
         </ion-list>
 
-        <button class="button button-block button-positive" type="submit">Anfahrt beginnen</button>
-        <button class="button button-block" type="submit">Auftrag beginnen</button>
+        <br />
+        <button ng-if="termDetailsController.term.status == 0" class="button button-block button-positive" 
+                ng-click="termDetailsController.beginTrip()">Anfahrt beginnen</button>
+        
+        <button ng-if="termDetailsController.term.status == 1" class="button button-block button-positive" 
+                ng-click="termDetailsController.beginTrip()">Anfahrt beenden</button>
+        
+        <br />
+
+        <button ng-if="termDetailsController.term.status == 0 || termDetailsController.term.status == 2" class="button button-block" 
+                ng-click="termDetailsController.beginWork()">Auftrag beginnen</button>
     </ion-content>
 </ion-view>

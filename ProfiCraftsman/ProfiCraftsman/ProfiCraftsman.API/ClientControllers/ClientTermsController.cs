@@ -29,14 +29,7 @@ namespace ProfiCraftsman.API.ClientControllers
             if(user != null && user.EmployeeId.HasValue)
             {
                 var terms = termManager.GetEntities(o => o.EmployeeId == user.EmployeeId.Value && o.Date.Date == DateTime.Now.Date);
-                result = terms.Select(o => new ClientTermViewModel()
-                {
-                    Id = o.Id,
-                    FromDate = String.Format("{0}", o.Date.ToString("HH:mm")),
-                    ToDate = String.Format("{0}", o.Date.AddMinutes(o.Duration).ToString("HH:mm")),
-                    Address = String.Format("{0} {1} {2}", o.Orders.Street, o.Orders.Zip, o.Orders.City),
-                    Status = o.Status,
-                }).OrderBy(o => o.FromDate).ToList();
+                result = terms.Select(term => TermViewModelHelper.ToModel(term)).OrderBy(o => o.FromDate).ToList();
             }
 
             return Ok(result);

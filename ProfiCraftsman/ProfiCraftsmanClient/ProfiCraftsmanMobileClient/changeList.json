@@ -129,23 +129,15 @@
     "www\\templates\\terms\\test.html",
     "www\\templates\\taco.json",
     "www\\taco.json",
-    "www\\js\\controllers\\termsController - Copy.js"
+    "www\\js\\controllers\\termsController - Copy.js",
+    "www\\templates\\terms\\ocoe4zje.oey~"
   ],
   "addedPluginsIos": [],
   "deletedPluginsIos": [],
   "changedFiles": [
-    "www\\js\\app.js",
-    "www\\css\\index.css",
-    "www\\templates\\terms\\termDetails.html",
-    "www\\templates\\terms\\terms.html",
-    "www\\js\\controllers\\termPositionsController.js",
-    "www\\index.html",
-    "www\\js\\controllers\\termsController.js",
-    "www\\js\\controllers\\loginController.js"
+    "www\\templates\\terms\\terms.html"
   ],
-  "deletedFiles": [
-    "www\\js\\controllers\\termsController - Copy.js"
-  ],
+  "deletedFiles": [],
   "addedPlugins": [],
   "deletedPlugins": []
 }

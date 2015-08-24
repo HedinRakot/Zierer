@@ -86,8 +86,17 @@ namespace ProfiCraftsman.Lib.Data
                 .HasColumnName(Terms.Fields.Duration)
                 .IsRequired();
 
+            Property(t => t.UserId)
+                .HasColumnName(Terms.Fields.UserId);
+
+            Property(t => t.BeginTripFromOffice)
+                .HasColumnName(Terms.Fields.BeginTripFromOffice);
+
 
             //Relationships
+            HasOptional(t => t.User)
+                .WithMany(u => u.Terms)
+                .HasForeignKey(t => t.UserId);
             HasRequired(t => t.Autos)
                 .WithMany(a => a.Terms)
                 .HasForeignKey(t => t.AutoId);

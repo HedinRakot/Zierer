@@ -87,6 +87,14 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'Duration' for property <see cref="Terms.Duration"/>
             /// </summary>
             public static readonly string Duration = "Duration";
+            /// <summary>
+            /// Column name 'UserId' for property <see cref="Terms.UserId"/>
+            /// </summary>
+            public static readonly string UserId = "UserId";
+            /// <summary>
+            /// Column name 'BeginTripFromOffice' for property <see cref="Terms.BeginTripFromOffice"/>
+            /// </summary>
+            public static readonly string BeginTripFromOffice = "BeginTripFromOffice";
           
         }
         #endregion
@@ -107,11 +115,18 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime? BeginReturnTrip{ get; set; }
         public DateTime? EndReturnTrip{ get; set; }
         public int Duration{ get; set; }
+        public int? UserId{ get; set; }
+        public bool? BeginTripFromOffice{ get; set; }
+        public virtual User User{ get; set; }
         public virtual Autos Autos{ get; set; }
         public virtual Employees Employees{ get; set; }
         public virtual Orders Orders{ get; set; }
         public virtual ICollection<TermPositions> TermPositions{ get; set; }
         public virtual ICollection<TermInstruments> TermInstruments{ get; set; }
+        public bool HasUser
+        {
+            get { return !ReferenceEquals(User, null); }
+        }
         public bool HasAutos
         {
             get { return !ReferenceEquals(Autos, null); }
@@ -158,6 +173,8 @@ namespace ProfiCraftsman.Contracts.Entities
                        BeginReturnTrip = BeginReturnTrip,
                        EndReturnTrip = EndReturnTrip,
                        Duration = Duration,
+                       UserId = UserId,
+                       BeginTripFromOffice = BeginTripFromOffice,
         	           };
         }
     }

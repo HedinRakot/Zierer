@@ -26,14 +26,7 @@ namespace ProfiCraftsman.API.ClientControllers
 
             if(term != null)
             {
-                result = new ClientTermViewModel()
-                {
-                    Id = term.Id,
-                    FromDate = String.Format("{0}", term.Date.ToString("HH:mm")),
-                    ToDate = String.Format("{0}", term.Date.AddMinutes(term.Duration).ToString("HH:mm")),
-                    Address = String.Format("{0} {1} {2}", term.Orders.Street, term.Orders.Zip, term.Orders.City),
-                    Status = term.Status,
-                };
+                result = TermViewModelHelper.ToModel(term);
             }
 
             return Ok(result);

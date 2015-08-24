@@ -10,13 +10,11 @@ using System.Collections.Generic;
 
 namespace ProfiCraftsman.API.ClientControllers
 {
-    public class ClientTermViewModel
+    public class ChangeStateTermModel
     {
-        public int Id { get; set; }
-        public string FromDate { get; set; }
-        public string ToDate { get; set; }
-        public string Address { get; set; }
-        public int Status { get; set; }
-        public bool IsFirstTerm { get; set; }
+        public int termId { get; set; }
+        public int status { get; set; }
+        public string Login { get; set; }
+        public bool BeginTripFromOffice { get; set; }
     }
 }
