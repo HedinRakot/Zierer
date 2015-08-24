@@ -1,0 +1,47 @@
+﻿<ion-view ng-controller="TermDetailsController as termDetailsController">
+    <ion-nav-title>
+        {{"terms_today_title" | translate}}
+    </ion-nav-title>
+    <ion-content>
+        <br />
+        <p class="term-description">{{termDetailsController.term.fromDate}} - {{termDetailsController.term.toDate}}</p>
+        <p class="term-description">{{termDetailsController.term.address}}</p>
+        <br />
+
+        <ion-list ng-controller="TermPositionsController as termPositionsController">
+
+            <ion-item class="term-item">
+                <div class="term-item-column item" style="width: 15%; font-weight: bold;">Pos-Nr.</div>
+                <div class="term-item-column item" style="width: 70%; font-weight: bold;">Bezeichnung</div>
+                <div class="term-item-column item" style="width: 15%; border-right: 0px; font-weight: bold;">Geplannte Menge</div>
+            </ion-item>
+
+            <ion-item ng-repeat="position in termPositionsController.positions" class="term-item">
+
+                <div class="term-item-column item" style="width: 15%;">{{position.number}}</div>
+                <div class="term-item-column item" style="width: 70%;">{{position.description}}</div>
+                <div class="term-item-column item" style="width: 15%; border-right: 0px;">{{position.plannedAmount}}</div>
+            </ion-item>
+        </ion-list>
+
+        <br />
+
+        <!-- First buttons -->
+
+        <button ng-if="termDetailsController.term.status == 5" class="button button-block button-positive" 
+                ng-click="termDetailsController.beginTripDepartureSelection()">Prüfen und bestätigen
+        </button>
+
+        <button ng-if="termDetailsController.term.status == 6" class="button button-block button-positive"
+                ng-click="termDetailsController.beginTripDepartureSelection()">
+            Prüfen und bestätigen
+        </button>
+                
+        <br />
+
+        <!-- Second buttons -->
+        <button ng-if="termDetailsController.term.status == 5" class="button button-block" 
+                ng-click="">Leistung hinzufügen</button>
+
+    </ion-content>
+</ion-view>
