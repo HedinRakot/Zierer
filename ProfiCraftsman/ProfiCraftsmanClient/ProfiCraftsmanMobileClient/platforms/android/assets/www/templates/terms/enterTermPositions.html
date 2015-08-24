@@ -12,15 +12,17 @@
 
             <ion-item class="term-item">
                 <div class="term-item-column item" style="width: 15%; font-weight: bold;">Pos-Nr.</div>
-                <div class="term-item-column item" style="width: 70%; font-weight: bold;">Bezeichnung</div>
-                <div class="term-item-column item" style="width: 15%; border-right: 0px; font-weight: bold;">Geplannte Menge</div>
+                <div class="term-item-column item" style="width: 55%; font-weight: bold;">Bezeichnung</div>
+                <div class="term-item-column item" style="width: 15%; font-weight: bold;">Geplannte Menge</div>
+                <div class="term-item-column item" style="width: 15%; border-right: 0px; font-weight: bold;">Erledigt</div>
             </ion-item>
 
             <ion-item ng-repeat="position in termPositionsController.positions" class="term-item">
 
                 <div class="term-item-column item" style="width: 15%;">{{position.number}}</div>
-                <div class="term-item-column item" style="width: 70%;">{{position.description}}</div>
-                <div class="term-item-column item" style="width: 15%; border-right: 0px;">{{position.plannedAmount}}</div>
+                <div class="term-item-column item" style="width: 55%;">{{position.description}}</div>
+                <div class="term-item-column item" style="width: 15%; background-color: grey;">{{position.plannedAmount}}</div>
+                <div class="term-input-item-column input" style="width: 15%; border-right: 0px;"><input type="text" style="padding: 0px; font-size: 16px;"></div>
             </ion-item>
         </ion-list>
 

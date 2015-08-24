@@ -20,6 +20,13 @@
     float: left;
 }
 
+.term-input-item-column
+{
+    border-right: 1px solid #ddd; 
+    padding: 8px 20px 0px 20px; 
+    float: left;
+}
+
 .term-description
 {
     font-weight: bold;
