@@ -197,10 +197,10 @@
 		        result =
 		    [{
 		        template: function () {
-		            return '<a class="k-button k-button-icontext printInvoice" href="#" data-localized="printInvoice"></a>' +
-                    '<a class="k-button k-button-icontext printRemainder" href="#" data-localized="printRemainder"></a>' +
-                    '<a class="k-button k-button-icontext generateMonthInvoices" href="#" data-localized="generateMonthInvoices"></a>' +
-		            '<a class="k-button k-button-icontext pay" href="#" data-localized="pay"></a>';
+		            //return '<a class="k-button k-button-icontext printInvoice" href="#" data-localized="printInvoice"></a>' +
+                    //'<a class="k-button k-button-icontext printRemainder" href="#" data-localized="printRemainder"></a>' +
+                    //'<a class="k-button k-button-icontext generateMonthInvoices" href="#" data-localized="generateMonthInvoices"></a>' +
+		            return '<a class="k-button k-button-icontext pay" href="#" data-localized="pay"></a>';
 		        }
 		    }];
 
