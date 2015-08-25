@@ -75,7 +75,7 @@
 
         var self = this;
 
-        $scope.clearVal = 0;
+        $scope.clearVal = 2;
         $scope.saveVal = 0;
 
         $scope.clear = function () {
@@ -83,40 +83,18 @@
         }
 
         $scope.saveToImage = function () {
-            $scope.saveVal = 1; //On this value change directive saves the signature
+            //$scope.saveVal = 1; //On this value change directive saves the signature
+            $scope.clearVal = 1; //On this value change directive saves the signature
         }
     }
-
-
-    SignDeliveryNoteController.prototype.saveDeliveryNote = function () {
-
-        var self = this;
-
-        this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
-            {
-                login: window.localStorage['userLogin'],
-                termId: window.localStorage['termId'],
-                status: termStatusTypes.EndWork,
-                //signature: 
-            }).
-            success(function (result) {
-                self.term = result;
-
-                self.state.go('/termDetails');
-            }).
-            error(function (result) {
-
-            });
-    };
-            
+                
     SignDeliveryNoteController.prototype.setLocale = function () {
         this.globalizationService.setLocale(this.$scope.locale);
         this.moment.locale(this.$scope.locale);
     }
 
-
-
-    angular.module('app.controllers').directive("signatureDir", ['$document', '$log', '$rootScope', function ($document, $log, $rootScope) {
+    
+    angular.module('app.controllers').directive("signatureDir", ['$document', '$log', '$rootScope', '$http', '$state', function ($document, $log, $rootScope, $http, $state) {
         return {
             restrict: "A",
             link: function (scope, element, attrs) {
@@ -132,15 +110,55 @@
                 }
 
                 attrs.$observe("value", function (newValue) {
-                    var imagedata = ctx.canvas.toDataURL();
 
-                    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+                    if (newValue == 1) {
 
+                        var signatureData = ctx.canvas.toDataURL();
+
+                        $http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
+                            {
+                                login: window.localStorage['userLogin'],
+                                termId: window.localStorage['termId'],
+                                status: termStatusTypes.EndWork,
+                                signature: signatureData
+                            }).
+                            success(function (result) {
+
+                                //var term = result;
+
+                                $state.go('/termDetails');
+                            }).
+                            error(function (result) {
+
+                            });
+                    }
+                    else {
+                        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+                    }
                 });
 
                 attrs.$observe("saveVal", function (newValue) {
-                    var imagedata = ctx.canvas.toDataURL();
-                    $rootScope.signatureTemp.push({'dnid':dnid, 'signature':imagedata});
+
+                    var signatureData = ctx.canvas.toDataURL();
+
+                    var self = this;
+
+                    self.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
+                        {
+                            login: window.localStorage['userLogin'],
+                            termId: window.localStorage['termId'],
+                            status: termStatusTypes.EndWork,
+                            signature: signatureData
+                        }).
+                        success(function (result) {
+                            self.term = result;
+
+                            self.state.go('/termDetails');
+                        }).
+                        error(function (result) {
+
+                        });
+
                 });
 
                 element.on('touchstart', function (e) {
