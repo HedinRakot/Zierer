@@ -28,7 +28,7 @@ namespace ProfiCraftsman.Contracts.Entities
                 switch (TermStatus)
                 {
                     case TermStatusTypes.Open:
-                        result = "offen";
+                        result = "Offen";
                         break;
                     case TermStatusTypes.BeginTrip:
                     case TermStatusTypes.BeginTripDepartureSelection:
@@ -56,7 +56,7 @@ namespace ProfiCraftsman.Contracts.Entities
                         result = "Rückfahrt beendet";
                         break;
                     case TermStatusTypes.Canceled:
-                        result = "storniert";
+                        result = "Storniert";
                         break;
                 }
 
