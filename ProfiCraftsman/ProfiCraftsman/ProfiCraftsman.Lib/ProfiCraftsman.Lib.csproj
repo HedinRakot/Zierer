@@ -100,6 +100,9 @@
     <Compile Include="Data\CommunicationPartnersMapping.cs">
       <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\DeliveryNoteSignaturesMapping.cs">
+      <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\EmployeesMapping.cs">
       <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
     </Compile>
@@ -206,6 +209,9 @@
     </Compile>
     <Compile Include="Managers\Custom.TermsManager.cs" />
     <Compile Include="Managers\CalculationHelper.cs" />
+    <Compile Include="Managers\DeliveryNoteSignaturesManager.cs">
+      <DependentUpon>Managers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Managers\PrinterManager.cs" />
     <Compile Include="Managers\CustomersManager.cs">
       <DependentUpon>Managers.tt</DependentUpon>

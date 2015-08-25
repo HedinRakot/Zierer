@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using ProfiCraftsman.Contracts.Enums;
 using System.Linq;
+using ProfiCraftsman.Contracts.Entities;
 
 namespace ProfiCraftsman.API.ClientControllers
 {
@@ -16,11 +17,13 @@ namespace ProfiCraftsman.API.ClientControllers
 	{
 	    private readonly ITermsManager termManager;
         private readonly IUserManager userManager;
+        private readonly IDeliveryNoteSignaturesManager deliveryNoteSignaturesManager;
 
-        public ChangeTermStateController(ITermsManager termManager, IUserManager userManager)
+        public ChangeTermStateController(ITermsManager termManager, IUserManager userManager, IDeliveryNoteSignaturesManager deliveryNoteSignaturesManager)
 	    {
 	        this.termManager = termManager;
 	        this.userManager = userManager;
+	        this.deliveryNoteSignaturesManager = deliveryNoteSignaturesManager;
         }
 
 	    public IHttpActionResult Post([FromBody]ChangeStateTermModel model)
@@ -78,7 +81,21 @@ namespace ProfiCraftsman.API.ClientControllers
                         }
                         else
                         {
+                            var signature = deliveryNoteSignaturesManager.GetEntities(o => o.TermId == model.termId).FirstOrDefault();
+                            if (signature != null)
+                            {
+                                signature.Signature = model.signature;
+                            }
+                            else
+                            {
+                                deliveryNoteSignaturesManager.AddEntity(new DeliveryNoteSignatures()
+                                {
+                                    TermId = model.termId,
+                                    Signature = model.signature,
+                                });
+                            }
 
+                            deliveryNoteSignaturesManager.SaveChanges();
                         }
 
                         break;

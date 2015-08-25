@@ -43,6 +43,20 @@
 
         <button ng-if="termDetailsController.term.status == 4" class="button button-block button-positive" 
                 ng-click="termDetailsController.enterPositions()">Auftrag beenden</button>
+
+        <button ng-if="termDetailsController.term.status == 11" class="button button-block button-positive"
+                ng-click="termDetailsController.beginReturnTrip()">
+            Rückfahrt beginnen
+        </button>
+
+        <button ng-if="termDetailsController.term.status == 12" class="button button-block button-positive"
+                ng-click="termDetailsController.endReturnTrip()">
+            Rückfahrt beenden
+        </button>
+
+        <p ng-if="termDetailsController.term.status == 13" class="term-description">
+            Termin abgeschlossen
+        </p>
         
         <br ng-if="termDetailsController.term.status == 0 || termDetailsController.term.status == 1" />
 

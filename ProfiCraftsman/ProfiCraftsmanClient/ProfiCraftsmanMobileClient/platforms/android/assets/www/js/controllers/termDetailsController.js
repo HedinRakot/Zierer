@@ -179,6 +179,44 @@
 
             });
     };
+
+    TermDetailsController.prototype.beginReturnTrip = function () {
+
+        var self = this;
+        this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
+            {
+                login: window.localStorage['userLogin'],
+                termId: window.localStorage['termId'],
+                status: termStatusTypes.BeginReturnTrip,
+            }).
+            success(function (result) {
+                self.term = result;
+
+                self.state.go('/termDetails');
+            }).
+            error(function (result) {
+
+            });
+    };
+
+    TermDetailsController.prototype.endReturnTrip = function () {
+
+        var self = this;
+        this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
+            {
+                login: window.localStorage['userLogin'],
+                termId: window.localStorage['termId'],
+                status: termStatusTypes.EndReturnTrip,
+            }).
+            success(function (result) {
+                self.term = result;
+
+                self.state.go('/termDetails');
+            }).
+            error(function (result) {
+
+            });
+    };
     
     TermDetailsController.prototype.setLocale = function () {
         this.globalizationService.setLocale(this.$scope.locale);

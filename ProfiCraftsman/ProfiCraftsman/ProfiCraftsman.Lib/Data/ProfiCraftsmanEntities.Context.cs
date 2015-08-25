@@ -23,6 +23,7 @@ namespace ProfiCraftsman.Lib.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Configurations.Add(DeliveryNoteSignaturesMapping.Instance);
             modelBuilder.Configurations.Add(OrdersMapping.Instance);
             modelBuilder.Configurations.Add(PositionsMapping.Instance);
             modelBuilder.Configurations.Add(InvoicesMapping.Instance);
@@ -56,6 +57,10 @@ namespace ProfiCraftsman.Lib.Data
             modelBuilder.Configurations.Add(TermInstrumentsMapping.Instance);
         }
 
+        /// <summary>
+        ///     Set of <see cref="DeliveryNoteSignatures"/> entities from table dbo.DeliveryNoteSignatures
+        /// </summary>
+        public IQueryable<DeliveryNoteSignatures> DeliveryNoteSignatures{ get; set; }
         /// <summary>
         ///     Set of <see cref="Orders"/> entities from table dbo.Orders
         /// </summary>

@@ -18,6 +18,10 @@ namespace ProfiCraftsman.Contracts
     public partial interface IProfiCraftsmanEntities
     {
         /// <summary>
+        ///     Set of <see cref="DeliveryNoteSignatures"/> entities from table dbo.DeliveryNoteSignatures
+        /// </summary>
+        IQueryable<DeliveryNoteSignatures> DeliveryNoteSignatures{get;}
+        /// <summary>
         ///     Set of <see cref="Orders"/> entities from table dbo.Orders
         /// </summary>
         IQueryable<Orders> Orders{get;}

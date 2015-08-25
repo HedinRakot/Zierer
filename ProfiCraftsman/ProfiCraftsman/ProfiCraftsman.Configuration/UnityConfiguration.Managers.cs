@@ -17,6 +17,7 @@ namespace ProfiCraftsman.Configuration
     {
         private static void InitializeProfiCraftsman(IUnityContainer container)
         {
+            container.RegisterType<IDeliveryNoteSignaturesManager, DeliveryNoteSignaturesManager>(new PerRequestLifetimeManager());
             container.RegisterType<IOrdersManager, OrdersManager>(new PerRequestLifetimeManager());
             container.RegisterType<IPositionsManager, PositionsManager>(new PerRequestLifetimeManager());
             container.RegisterType<IInvoicesManager, InvoicesManager>(new PerRequestLifetimeManager());
