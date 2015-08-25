@@ -244,6 +244,28 @@
                     data: {
                         requireLogin: true
                     }
+                })
+                .state('/showDeliveryNote', {
+                    url: "/terms/showDeliveryNote",
+                    views: {
+                        'menuContent': {
+                            templateUrl: "templates/terms/showDeliveryNote.html"
+                        }
+                    },
+                    data: {
+                        requireLogin: true
+                    }
+                })
+                .state('/signDeliveryNote', {
+                    url: "/terms/signDeliveryNote",
+                    views: {
+                        'menuContent': {
+                            templateUrl: "templates/terms/signDeliveryNote.html"
+                        }
+                    },
+                    data: {
+                        requireLogin: true
+                    }
                 });
 
             // if none of the above states are matched, use this as the fallback

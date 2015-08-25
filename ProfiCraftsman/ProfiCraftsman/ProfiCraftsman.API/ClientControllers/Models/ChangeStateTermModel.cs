@@ -20,5 +20,7 @@ namespace ProfiCraftsman.API.ClientControllers
         public List<ClientTermMaterialViewModel> Materials { get; set; }
         public bool withPositions { get; set; }
         public bool withMaterials { get; set; }
+        public bool sendDeliveryNotePerEmail { get; set; }
+        public string signature { get; set; }
     }
 }

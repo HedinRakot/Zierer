@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-     var termStatusTypes =
+    var termStatusTypes =
     {
         /// <summary>
         /// Open
@@ -65,7 +65,7 @@
         Canceled: 14,
     };
 
-    function TermsController($scope, globalizationService, moment, $http, $state) {
+    function ShowDeliveryNoteController($scope, globalizationService, moment, $http, $state) {
         this.$scope = $scope;
         this.$scope.locale = globalizationService.getDefaultLocale();
         this.globalizationService = globalizationService;
@@ -74,36 +74,66 @@
         this.state = $state;
 
         var self = this;
-        this.http.post(window.localStorage['baseAppPath'] + 'ClientTerms', { userLogin: window.localStorage['userLogin'] }).
-            success(function (result) {
-                self.terms = result;
-            }).
-            error(function (result) {
- 
-            });
+        this.http.post(window.localStorage['baseAppPath'] + 'GetTerm', { 
+            termId: window.localStorage['termId'],
+            withMaterials: true,
+            withPositions: true,
+        }).
+        success(function (result) {
+            self.term = result;
+        }).
+        error(function (result) {
+
+        });
     }
 
-    TermsController.prototype.showTerm = function (term) {
+
+    ShowDeliveryNoteController.prototype.signDeliveryNote = function () {
+
         var self = this;
 
-        window.localStorage.setItem("termId", term.id);
-        
-        if (term.status == termStatusTypes.EnterPositions || term.status == termStatusTypes.CheckPositions)
-            self.state.go('/enterTermPositions');
-        else if (term.status == termStatusTypes.EnterMaterials || term.status == termStatusTypes.CheckMaterials)
-            self.state.go('/enterTermMaterials');
-        else if (term.status == termStatusTypes.ShowDeliveryNote)
-            self.state.go('/showDeliveryNote');
-        else if (term.status == termStatusTypes.SignDeliveryNote)
-            self.state.go('/signDeliveryNote');
-        else
-            self.state.go('/termDetails');
+        this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
+            {
+                login: window.localStorage['userLogin'],
+                termId: window.localStorage['termId'],
+                status: termStatusTypes.SignDeliveryNote,
+            }).
+            success(function (result) {
+                self.term = result;
+
+                self.state.go('/signDeliveryNote');
+            }).
+            error(function (result) {
+
+            });
     };
 
-    TermsController.prototype.setLocale = function () {
+    ShowDeliveryNoteController.prototype.sendDeliveryNote = function () {
+
+        var self = this;
+
+        this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
+            {
+                login: window.localStorage['userLogin'],
+                termId: window.localStorage['termId'],
+                status: termStatusTypes.EndWork,
+                sendDeliveryNotePerEmail: true,
+            }).
+            success(function (result) {
+                self.term = result;
+
+                self.state.go('/termDetails');
+            }).
+            error(function (result) {
+
+            });
+    };
+
+        
+    ShowDeliveryNoteController.prototype.setLocale = function () {
         this.globalizationService.setLocale(this.$scope.locale);
         this.moment.locale(this.$scope.locale);
     }
 
-    angular.module('app.controllers').controller('TermsController', ['$scope', 'globalizationService', 'moment', '$http', '$state', TermsController]);
+    angular.module('app.controllers').controller('ShowDeliveryNoteController', ['$scope', 'globalizationService', 'moment', '$http', '$state', ShowDeliveryNoteController]);
 }())

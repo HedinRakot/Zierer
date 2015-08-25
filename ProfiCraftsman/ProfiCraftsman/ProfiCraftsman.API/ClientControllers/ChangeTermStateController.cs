@@ -71,6 +71,16 @@ namespace ProfiCraftsman.API.ClientControllers
                         break;
                     case TermStatusTypes.EndWork:
                         term.EndWork = DateTime.Now;
+
+                        if(model.sendDeliveryNotePerEmail)
+                        {
+                            //TODO send
+                        }
+                        else
+                        {
+
+                        }
+
                         break;
                     case TermStatusTypes.BeginReturnTrip:
                         term.BeginReturnTrip = DateTime.Now;

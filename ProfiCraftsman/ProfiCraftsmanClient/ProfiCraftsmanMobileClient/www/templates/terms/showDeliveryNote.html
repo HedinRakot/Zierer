@@ -1,0 +1,51 @@
+﻿<ion-view ng-controller="ShowDeliveryNoteController as showDeliveryNoteController">
+    <ion-nav-title>
+        {{"terms_today_title" | translate}}
+    </ion-nav-title>
+    <ion-content>
+        <br />
+        <p class="term-description">{{showDeliveryNoteController.term.fromDate}} - {{showDeliveryNoteController.term.toDate}}</p>
+        <p class="term-description">{{showDeliveryNoteController.term.address}}</p>
+        <br />
+
+        <ion-list>
+
+            <ion-item class="term-item">
+                <div class="term-item-column item" style="width: 15%; font-weight: bold;">Pos-Nr.</div>
+                <div class="term-item-column item" style="width: 70%; font-weight: bold;">Bezeichnung</div>
+                <div class="term-item-column item" style="width: 15%; border-right: 0px; font-weight: bold;">Menge</div>
+            </ion-item>
+
+            <ion-item ng-repeat="position in showDeliveryNoteController.term.positions" class="term-item">
+
+                <div class="term-item-column item" style="width: 15%;">{{position.number}}</div>
+                <div class="term-item-column item" style="width: 70%;">{{position.description}}</div>
+                <div class="term-item-column item" style="width: 15%;">{{position.proccessedAmount}}</div>
+            </ion-item>
+        </ion-list>
+
+        <br />
+        <ion-list>
+
+            <ion-item class="term-item">
+                <div class="term-item-column item" style="width: 15%; font-weight: bold;">Artikelnummer</div>
+                <div class="term-item-column item" style="width: 70%; font-weight: bold;">Bezeichnung</div>
+                <div class="term-item-column item" style="width: 15%; font-weight: bold;">Menge</div>
+            </ion-item>
+
+            <ion-item ng-repeat="material in showDeliveryNoteController.term.materials" class="term-item">
+
+                <div class="term-item-column item" style="width: 15%;">{{material.number}}</div>
+                <div class="term-item-column item" style="width: 70%;">{{material.description}}</div>
+                <div class="term-item-column item" style="width: 15%;">{{material.amount}}</div>
+            </ion-item>
+        </ion-list>
+
+        <br />
+        
+        <button class="button button-block button-positive" ng-click="showDeliveryNoteController.signDeliveryNote()">Unterschreiben</button>
+
+        <button class="button button-block" ng-click="showDeliveryNoteController.sendDeliveryNote()">Email Senden</button>
+
+    </ion-content>
+</ion-view>
