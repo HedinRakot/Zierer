@@ -94,7 +94,8 @@
     }
 
     
-    angular.module('app.controllers').directive("signatureDir", ['$document', '$log', '$rootScope', '$http', '$state', function ($document, $log, $rootScope, $http, $state) {
+    angular.module('app.controllers').directive("signatureDir", ['$document', '$log', '$rootScope', '$http', '$state',
+        function ($document, $log, $rootScope, $http, $state) {
         return {
             restrict: "A",
             link: function (scope, element, attrs) {
@@ -123,10 +124,8 @@
                                 signature: signatureData
                             }).
                             success(function (result) {
-
-                                //var term = result;
-
-                                $state.go('/termDetails');
+                                
+                                $state.go('termDetails');
                             }).
                             error(function (result) {
 
@@ -137,29 +136,29 @@
                     }
                 });
 
-                attrs.$observe("saveVal", function (newValue) {
+                //attrs.$observe("saveVal", function (newValue) {
 
-                    var signatureData = ctx.canvas.toDataURL();
+                //    var signatureData = ctx.canvas.toDataURL();
 
-                    var self = this;
+                //    var self = this;
 
-                    self.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
-                        {
-                            login: window.localStorage['userLogin'],
-                            termId: window.localStorage['termId'],
-                            status: termStatusTypes.EndWork,
-                            signature: signatureData
-                        }).
-                        success(function (result) {
-                            self.term = result;
+                //    self.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
+                //        {
+                //            login: window.localStorage['userLogin'],
+                //            termId: window.localStorage['termId'],
+                //            status: termStatusTypes.EndWork,
+                //            signature: signatureData
+                //        }).
+                //        success(function (result) {
+                //            self.term = result;
 
-                            self.state.go('/termDetails');
-                        }).
-                        error(function (result) {
+                //            self.state.go('/termDetails');
+                //        }).
+                //        error(function (result) {
 
-                        });
+                //        });
 
-                });
+                //});
 
                 element.on('touchstart', function (e) {
                     e.preventDefault();

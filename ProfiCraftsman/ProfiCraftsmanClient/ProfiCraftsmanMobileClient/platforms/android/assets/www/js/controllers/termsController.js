@@ -97,7 +97,7 @@
         else if (term.status == termStatusTypes.SignDeliveryNote)
             self.state.go('/signDeliveryNote');
         else
-            self.state.go('/termDetails');
+            self.state.go('termDetails');
     };
 
     TermsController.prototype.setLocale = function () {

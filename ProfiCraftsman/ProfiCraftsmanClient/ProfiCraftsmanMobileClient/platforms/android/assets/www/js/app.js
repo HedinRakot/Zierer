@@ -212,8 +212,8 @@
                         requireLogin: true
                     }
                 })
-                .state('/termDetails', {
-                    url: "/terms/termDetails",
+                .state('termDetails', {
+                    url: "/termDetails",
                     views: {
                         'menuContent': {
                             templateUrl: "templates/terms/termDetails.html"

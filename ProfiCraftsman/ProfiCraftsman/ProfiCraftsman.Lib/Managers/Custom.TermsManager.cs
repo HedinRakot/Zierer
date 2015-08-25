@@ -14,7 +14,7 @@ namespace ProfiCraftsman.Lib.Managers
             return DataContext.GetSet<Terms>()
                 .Where(r =>
                     !r.DeleteDate.HasValue &&
-                    r.Status == (int)TermStatusTypes.Open
+                    r.Status != (int)TermStatusTypes.Canceled
                 );
         }
 

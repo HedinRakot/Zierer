@@ -97,7 +97,7 @@
 		    //    else {
 		    //        require(['base/information-view'], function (View) {
 		    //            var view = new View({
-		    //                title: ' auswählen',
+		    //                title: 'Termin auswählen',
 		    //                message: 'Wählen Sie bitte ein Termin aus!'
 		    //            });
 		    //            self.addView(view);
@@ -154,7 +154,7 @@
 		    [{
 		        template: function () {
 		            return '<a class="k-button k-button-icontext k-grid-create-inline" href="#" data-localized="add" style="min-width: 160px;"></a>' +
-		            '<a class="k-button k-button-icontext showDeliveryNote" href="#" data-localized="showDeliveryNote" style="min-width: 160px;"></a>';
+		            '<a class="k-button k-button-icontext showDeliveryNote" href="#" data-localized="showDeliveryNote" style="min-width: 180px;"></a>';
 		        }
 		    }];
 
