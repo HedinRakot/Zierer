@@ -25,7 +25,7 @@ namespace ProfiCraftsman.Contracts.Managers
         MemoryStream PrepareTransportInvoicePrintData(int id, string path, ITransportOrdersManager transportOrdersManager, 
             ITaxesManager taxesManager, IOrdersManager ordersManager);
 
-        MemoryStream PrepareDeliveryNotePrintData(int id, string path, IOrdersManager ordersManager);
+        MemoryStream PrepareDeliveryNotePrintData(int id, string path, ITermsManager termsManager);
 
         MemoryStream PrepareBackDeliveryNotePrintData(int id, string path, IOrdersManager ordersManager);
     }

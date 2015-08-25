@@ -83,28 +83,28 @@
 		},
 
 		events: {
-		    //'click .print': function (e) {
+		    'click .printDeliveryNote': function (e) {
 
-		    //    e.preventDefault();
-		    //    var self = this,
-            //        grid = self.grid,
-			//		dataItem = grid.dataItem(grid.select());
+		        e.preventDefault();
+		        var self = this,
+                    grid = self.grid,
+					dataItem = grid.dataItem(grid.select());
 
-		    //    if (dataItem != undefined) {
+		        if (dataItem != undefined) {
 
-		    //        location.href = Application.apiUrl + 'print/?printTypeId=XXX&id=' + dataItem.id;
-		    //    }
-		    //    else {
-		    //        require(['base/information-view'], function (View) {
-		    //            var view = new View({
-		    //                title: 'Termin auswählen',
-		    //                message: 'Wählen Sie bitte ein Termin aus!'
-		    //            });
-		    //            self.addView(view);
-		    //            self.$el.append(view.render().$el);
-		    //        });
-		    //    }
-		    //},
+		            location.href = Application.apiUrl + 'print/?printTypeId=6&id=' + dataItem.id;
+		        }
+		        else {
+		            require(['base/information-view'], function (View) {
+		                var view = new View({
+		                    title: 'Termin auswählen',
+		                    message: 'Wählen Sie bitte ein Termin aus!'
+		                });
+		                self.addView(view);
+		                self.$el.append(view.render().$el);
+		            });
+		        }
+		    },
 		    'click .showDeliveryNote': function (e) {
 
 		        e.preventDefault();
@@ -154,6 +154,7 @@
 		    [{
 		        template: function () {
 		            return '<a class="k-button k-button-icontext k-grid-create-inline" href="#" data-localized="add" style="min-width: 160px;"></a>' +
+                    '<a class="k-button k-button-icontext printDeliveryNote" href="#" data-localized="printDeliveryNote"></a>' +
 		            '<a class="k-button k-button-icontext showDeliveryNote" href="#" data-localized="showDeliveryNote" style="min-width: 180px;"></a>';
 		        }
 		    }];

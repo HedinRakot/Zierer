@@ -43,9 +43,9 @@ namespace ProfiCraftsman.Lib.Managers
             return PrepareCommonOrderPrintData(ordersManager, id, path, PrintTypes.TransportInvoice, null, taxesManager, null, transportOrdersManager);
         }
 
-        public MemoryStream PrepareDeliveryNotePrintData(int id, string path, IOrdersManager ordersManager)
+        public MemoryStream PrepareDeliveryNotePrintData(int id, string path, ITermsManager termsManager)
         {
-            return PrepareCommonOrderPrintData(ordersManager, id, path, PrintTypes.DeliveryNote, null, null);
+            return PrepareCommonOrderPrintData(null, id, path, PrintTypes.DeliveryNote, null, null, null, null, termsManager);
         }
 
         public MemoryStream PrepareBackDeliveryNotePrintData(int id, string path, IOrdersManager ordersManager)
@@ -156,7 +156,8 @@ namespace ProfiCraftsman.Lib.Managers
 
         private MemoryStream PrepareCommonOrderPrintData(IOrdersManager ordersManager, int id, string path, PrintTypes type,
             IInvoicesManager invoicesManager, ITaxesManager taxesManager, IInvoiceStornosManager invoiceStornosManager = null,
-            ITransportOrdersManager transportOrdersManager = null)
+            ITransportOrdersManager transportOrdersManager = null,
+            ITermsManager termsManager = null)
         {
             var result = new MemoryStream();
             try
@@ -169,7 +170,7 @@ namespace ProfiCraftsman.Lib.Managers
 
                 //replace fields
                 var templateBody = ReplaceFields(ordersManager, id, type, xmlMainXMLDoc.Root.ToString(),
-                    invoicesManager, taxesManager, null, invoiceStornosManager, transportOrdersManager);
+                    invoicesManager, taxesManager, null, invoiceStornosManager, transportOrdersManager, termsManager);
 
                 xmlMainXMLDoc = SaveDoc(result, pkg, part, xmlReader, xmlMainXMLDoc, templateBody);
             }
@@ -188,7 +189,8 @@ namespace ProfiCraftsman.Lib.Managers
         private string ReplaceFields(IOrdersManager ordersManager, int id, PrintTypes printType, string xmlMainXMLDoc,
             IInvoicesManager invoicesManager, ITaxesManager taxesManager, Invoices invoice = null,
             IInvoiceStornosManager invoiceStornosManager = null,
-            ITransportOrdersManager transportOrdersManager = null)
+            ITransportOrdersManager transportOrdersManager = null,
+            ITermsManager termsManager = null)
         {
             string result = xmlMainXMLDoc;
 
@@ -268,58 +270,36 @@ namespace ProfiCraftsman.Lib.Managers
                     break;
                 case PrintTypes.DeliveryNote:
 
-                    order = ordersManager.GetById(id);
-                    result = ReplaceCommonFields(order, result);
-                    result = ReplaceBaseOrderFields(order, result);
+                    var term = termsManager.GetById(id);
+                    result = ReplaceCommonFields(term.Orders, result);
+                    result = ReplaceBaseOrderFields(term.Orders, result);
 
                     result = result.Replace("#DeliveryNoteType", "Lieferschein");
                     result = result.Replace("#DateType", "Liefertermin");
                     result = result.Replace("#AdressType", "Lieferanschrift");
-                    result = result.Replace("#OrderNumber", order.OrderNumber);
+                    result = result.Replace("#OrderNumber", term.Orders.OrderNumber);
                     
-                    result = ReplaceOrderedFromInfo(result, order);
-                    result = ReplaceCustomerOrderNumber(result, order);
-
-                    var positions = order.Positions != null ? order.Positions.Where(o => !o.DeleteDate.HasValue && o.ProductId.HasValue).ToList() :
+                    var positions = term.Orders.Positions != null ? term.Orders.Positions.Where(o => !o.DeleteDate.HasValue).ToList() :
                         new List<Positions>();
-                    if (positions.Count != 0)
-                    {
-                        var minDate = DateTime.Now;
-                        result = result.Replace("#DeliveryDate", minDate.ToShortDateString());
-                    }
-                    else
-                    {
-                    }
 
                     result = ReplacePositionWithDescription(positions, result);
                     break;
-                case PrintTypes.BackDeliveryNote:
+                //case PrintTypes.BackDeliveryNote:
 
-                    order = ordersManager.GetById(id);
-                    result = ReplaceCommonFields(order, result);
-                    result = ReplaceBaseOrderFields(order, result);
+                //    order = ordersManager.GetById(id);
+                //    result = ReplaceCommonFields(order, result);
+                //    result = ReplaceBaseOrderFields(order, result);
 
-                    result = result.Replace("#DeliveryNoteType", "Rücklieferschein");
-                    result = result.Replace("#DateType", "Abholtermin");
-                    result = result.Replace("#AdressType", "Abholanschrift");
-                    result = result.Replace("#OrderNumber", order.OrderNumber);
+                //    result = result.Replace("#DeliveryNoteType", "Rücklieferschein");
+                //    result = result.Replace("#DateType", "Abholtermin");
+                //    result = result.Replace("#AdressType", "Abholanschrift");
+                //    result = result.Replace("#OrderNumber", order.OrderNumber);
+                    
+                //    positions = order.Positions != null ? order.Positions.Where(o => !o.DeleteDate.HasValue).ToList() :
+                //        new List<Positions>();
 
-                    result = ReplaceOrderedFromInfo(result, order);
-                    result = ReplaceCustomerOrderNumber(result, order);
-
-                    positions = order.Positions != null ? order.Positions.Where(o => !o.DeleteDate.HasValue && o.ProductId.HasValue).ToList() :
-                        new List<Positions>();
-                    if (positions.Count != 0)
-                    {
-                        var maxDate = DateTime.Now;
-                        result = result.Replace("#DeliveryDate", maxDate.ToShortDateString());
-                    }
-                    else
-                    {
-                    }
-
-                    result = ReplacePositionWithDescription(positions, result);
-                    break;
+                //    result = ReplacePositionWithDescription(positions, result);
+                //    break;
                 default:
                     throw new NotImplementedException();
             }
@@ -339,6 +319,7 @@ namespace ProfiCraftsman.Lib.Managers
             xmlMainXMLDoc = ReplaceFieldValue(xmlMainXMLDoc, "#CustomerZip", customer.Zip.ToString());
             xmlMainXMLDoc = ReplaceFieldValue(xmlMainXMLDoc, "#CustomerCity", customer.City);
             xmlMainXMLDoc = ReplaceFieldValue(xmlMainXMLDoc, "#CustomerNumber", customer.Number.ToString());
+            xmlMainXMLDoc = ReplaceFieldValue(xmlMainXMLDoc, "#CustomerPhone", customer.Phone.ToString());
             xmlMainXMLDoc = ReplaceFieldValue(xmlMainXMLDoc, "#IBAN", customer.Iban);
             xmlMainXMLDoc = ReplaceFieldValue(xmlMainXMLDoc, "#BIC", customer.Bic);
             xmlMainXMLDoc = xmlMainXMLDoc.Replace("#Today", DateTime.Now.ToShortDateString());
@@ -553,7 +534,7 @@ namespace ProfiCraftsman.Lib.Managers
         private string ReplacePositionWithDescription(List<Positions> positions, string xmlMainXMLDoc)
         {
             var xmlDoc = XDocument.Parse(xmlMainXMLDoc);
-            var temp = xmlDoc.Descendants().LastOrDefault(o => o.Value.Contains("#ProductDescription"));
+            var temp = xmlDoc.Descendants().LastOrDefault(o => o.Value.Contains("#PositionDescription"));
             var parentTableElement = GetParentElementByName(temp, "<w:tr ");
 
             if (parentTableElement != null)
@@ -562,47 +543,29 @@ namespace ProfiCraftsman.Lib.Managers
 
                 foreach (var position in positions)
                 {
-                    var rowElem = XElement.Parse(parentTableElement.ToString());
-                    prevTableElem.AddAfterSelf(rowElem);
-                    prevTableElem = rowElem;
+                    var elem = XElement.Parse(ReplaceFieldValue(parentTableElement.ToString(), "#PositionDescription",
+                        position.ProductId.HasValue ? position.Products.Name :
+                            position.MaterialId.HasValue ? position.Materials.Name : String.Empty).
+                        Replace("#Amount", position.ProductId.HasValue ? position.TermPositions.Sum(o => o.Amount).ToString() :
+                            position.MaterialId.HasValue ? position.PositionMaterialRsps.Where(o => o.Amount.HasValue).Sum(o => o.Amount.Value).ToString() : String.Empty).
+                        Replace("#PositionNumber", position.ProductId.HasValue ? position.Products.Number :
+                            position.MaterialId.HasValue ? position.Materials.Number : String.Empty));
 
-                    var temp2 = prevTableElem.Descendants().LastOrDefault(o => o.Value.Contains("#ProductDescription"));
-                    var textElem = GetParentElementByName(temp2, "<w:p ");
-                    var prevTextElem = textElem;
+                    prevTableElem.AddAfterSelf(elem);
+                    prevTableElem = elem;
 
-                    var elem = XElement.Parse(ReplaceFieldValue(
-                        textElem.ToString(), "#ProductDescription",
-                        String.Format("*\t 1 Stück {0}", position.Products.ProductTypes.Name)));
-
-                    prevTextElem.AddAfterSelf(elem);
-                    prevTextElem = elem;
-
-                    elem = XElement.Parse(textElem.ToString().
-                        Replace("#ProductDescription", String.Format("Maße {0}x{1}x{2} mm",
-                        position.Products.Length,
-                        position.Products.Width,
-                        position.Products.Height)));
-
-                    prevTextElem.AddAfterSelf(elem);
-                    prevTextElem = elem;
-
-                    elem = XElement.Parse(textElem.ToString().
-                        Replace("#ProductDescription", "mit folgender Ausstattung / Einrichtung:"));
-
-                    prevTextElem.AddAfterSelf(elem);
-                    prevTextElem = elem;
-
-                    foreach (var material in position.PositionMaterialRsps)
+                    if (position.PositionMaterialRsps != null && position.PositionMaterialRsps.Count != 0)
                     {
-                        elem = XElement.Parse(ReplaceFieldValue(
-                            textElem.ToString(), "#ProductDescription",
-                            String.Format("{0} x {1}", material.Amount, material.Materials.Name)));
+                        foreach (var material in position.PositionMaterialRsps)
+                        {
+                            elem = XElement.Parse(ReplaceFieldValue(parentTableElement.ToString(), "#PositionDescription", material.Materials.Name).
+                            Replace("#Amount", material.Amount.HasValue ? material.Amount.Value.ToString() : String.Empty).
+                            Replace("#PositionNumber", material.Materials.Number));
 
-                        prevTextElem.AddAfterSelf(elem);
-                        prevTextElem = elem;
+                            prevTableElem.AddAfterSelf(elem);
+                            prevTableElem = elem;
+                        }
                     }
-
-                    textElem.Remove();
                 }
 
                 parentTableElement.Remove();
@@ -631,9 +594,9 @@ namespace ProfiCraftsman.Lib.Managers
             xmlMainXMLDoc = xmlMainXMLDoc.Replace("#InvoiceNumber", invoice.InvoiceNumber);
             xmlMainXMLDoc = xmlMainXMLDoc.Replace("#InvoiceDate", invoice.CreateDate.ToShortDateString());
 
-            xmlMainXMLDoc = ReplaceOrderedFromInfo(xmlMainXMLDoc, order);
+            //xmlMainXMLDoc = ReplaceOrderedFromInfo(xmlMainXMLDoc, order);
 
-            xmlMainXMLDoc = ReplaceCustomerOrderNumber(xmlMainXMLDoc, order);
+            //xmlMainXMLDoc = ReplaceCustomerOrderNumber(xmlMainXMLDoc, order);
 
             xmlMainXMLDoc = ReplaceRentOrderInfo(xmlMainXMLDoc, order, invoice);
 
@@ -647,52 +610,7 @@ namespace ProfiCraftsman.Lib.Managers
 
             return xmlMainXMLDoc;
         }
-
-        private string ReplaceOrderedFromInfo(string xmlMainXMLDoc, Orders order)
-        {
-            var xmlDoc = XDocument.Parse(xmlMainXMLDoc);
-            var temp = xmlDoc.Descendants().LastOrDefault(o => o.Value.Contains("#OrderedFromInfo"));
-            var parentElement = GetParentElementByName(temp, "<w:tr ");
-
-            if (parentElement != null)
-            {
-                //if (!String.IsNullOrEmpty(order.OrderedFrom) || order.OrderDate.HasValue)
-                //{
-                //    xmlMainXMLDoc = ReplaceFieldValue(xmlMainXMLDoc, "#OrderedFromInfo", String.Format("{0}{1}{2}",
-                //        order.OrderDate.HasValue ? order.OrderDate.Value.ToShortDateString() : String.Empty,
-                //        !String.IsNullOrEmpty(order.OrderedFrom) ? " durch " : String.Empty,
-                //        !String.IsNullOrEmpty(order.OrderedFrom) ? order.OrderedFrom : String.Empty));
-                //}
-                //else
-                //{
-                //    parentElement.Remove();
-                //    xmlMainXMLDoc = xmlDoc.Root.ToString();
-                //}
-            }
-            return xmlMainXMLDoc;
-        }
-
-        private string ReplaceCustomerOrderNumber(string xmlMainXMLDoc, Orders order)
-        {
-            var xmlDoc = XDocument.Parse(xmlMainXMLDoc);
-            var temp = xmlDoc.Descendants().LastOrDefault(o => o.Value.Contains("#CustomerOrderNumber"));
-            var parentElement = GetParentElementByName(temp, "<w:tr ");
-
-            if (parentElement != null)
-            {
-                //if (!String.IsNullOrEmpty(order.CustomerOrderNumber))
-                //{
-                //    xmlMainXMLDoc = ReplaceFieldValue(xmlMainXMLDoc, "#CustomerOrderNumber", order.CustomerOrderNumber);
-                //}
-                //else
-                //{
-                //    parentElement.Remove();
-                //    xmlMainXMLDoc = xmlDoc.Root.ToString();
-                //}
-            }
-            return xmlMainXMLDoc;
-        }
-
+        
         private string ReplaceRentOrderInfo(string xmlMainXMLDoc, Orders order, Invoices invoice)
         {
             var xmlDoc = XDocument.Parse(xmlMainXMLDoc);

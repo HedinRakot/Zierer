@@ -27,10 +27,12 @@ namespace ProfiCraftsman.API.Controllers
         private IInvoiceStornosManager invoiceStornosManager;
         private ITransportOrdersManager transportOrdersManager;
         private IPrinterManager printerManager;
+        private ITermsManager termsManager;
 
         public PrintController(IOrdersManager manager, IInvoicesManager invoicesManager, 
             IInvoiceStornosManager invoiceStornosManager, ITaxesManager taxesManager,
-            ITransportOrdersManager transportOrdersManager, IPrinterManager printerManager) :
+            ITransportOrdersManager transportOrdersManager, IPrinterManager printerManager,
+            ITermsManager termsManager) :
             base()
         {
             this.taxesManager = taxesManager;
@@ -38,6 +40,7 @@ namespace ProfiCraftsman.API.Controllers
             this.invoiceStornosManager = invoiceStornosManager;
             this.transportOrdersManager = transportOrdersManager;
             this.printerManager = printerManager;
+            this.termsManager = termsManager;
             Manager = manager;
             FilterExpressionCreator = new FilterExpressionCreator();
         }
@@ -100,7 +103,7 @@ namespace ProfiCraftsman.API.Controllers
                     break;
                 case PrintTypes.DeliveryNote:
                     path = Path.Combine(dataDirectory, Contracts.Configuration.DeliveryNoteFileName);
-                    stream = printerManager.PrepareDeliveryNotePrintData(id, path, Manager);
+                    stream = printerManager.PrepareDeliveryNotePrintData(id, path, termsManager);
                     break;
                 case PrintTypes.BackDeliveryNote:
                     path = Path.Combine(dataDirectory, Contracts.Configuration.BackDeliveryNoteFileName);

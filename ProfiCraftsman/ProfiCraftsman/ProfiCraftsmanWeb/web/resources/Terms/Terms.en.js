@@ -13,6 +13,7 @@ define(function () {
 	    pleaseSelect: 'Please select',
 	    duration: 'Duration',
 	    showDeliveryNote: 'Show signature',
+	    printDeliveryNote: 'Delivery note',
 	};
 
 	return resources;

@@ -12,7 +12,8 @@ define(function () {
 		status: 'Status',
 		pleaseSelect: 'Bitte auswählen',
 		duration: 'Dauer',
-	    showDeliveryNote: 'Unterschrift anzeigen',
+		showDeliveryNote: 'Unterschrift anzeigen',
+		printDeliveryNote: 'Lieferschein',
 	};
 
 	return resources;
