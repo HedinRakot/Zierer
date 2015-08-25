@@ -114,7 +114,17 @@ namespace ProfiCraftsman.API.Controllers
             }
 
             var result = new StreamActionResult(new MemoryStream(stream.ToArray()));
-            result.ContentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+
+            if (report == PrintTypes.DeliveryNote)
+            {
+                result.ContentType = "application/pdf";
+                path = "DeliveryNote.pdf";
+            }
+            else
+            {
+                result.ContentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+            }
+
             result.ContentDisposition = new ContentDispositionHeaderValue("attachment") { FileName = Path.GetFileName(path) };
 
             return result;

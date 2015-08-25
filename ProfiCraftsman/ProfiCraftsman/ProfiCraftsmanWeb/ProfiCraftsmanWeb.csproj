@@ -227,6 +227,9 @@
     <Content Include="css\kendo\images\wp8_inverseicons.png" />
     <Content Include="css\site.css" />
     <Content Include="Global.asax" />
+    <Content Include="license.elic.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="web\collections\Settings\AutoInstrumentRsps.js" />
     <Content Include="web\collections\Settings\AutoMaterialRsps.js" />
     <Content Include="web\collections\Settings\Instruments.js">

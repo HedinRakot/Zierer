@@ -173,6 +173,13 @@ namespace ProfiCraftsman.Lib.Managers
                     invoicesManager, taxesManager, null, invoiceStornosManager, transportOrdersManager, termsManager);
 
                 xmlMainXMLDoc = SaveDoc(result, pkg, part, xmlReader, xmlMainXMLDoc, templateBody);
+
+                var doc = new Spire.Doc.Document();
+                doc.LoadFromStream(result, Spire.Doc.FileFormat.Docx);
+                doc.JPEGQuality = 100;
+
+                result = new MemoryStream();
+                doc.SaveToStream(result, Spire.Doc.FileFormat.PDF);
             }
             catch
             {
@@ -181,7 +188,6 @@ namespace ProfiCraftsman.Lib.Managers
             return result;
         }
         
-
         #endregion
 
         #region Replace Fields Info
