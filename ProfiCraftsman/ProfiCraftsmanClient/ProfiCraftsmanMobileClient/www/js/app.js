@@ -233,6 +233,17 @@
                     data: {
                         requireLogin: true
                     }
+                })
+                .state('/enterTermMaterials', {
+                    url: "/terms/enterTermMaterials",
+                    views: {
+                        'menuContent': {
+                            templateUrl: "templates/terms/enterTermMaterials.html"
+                        }
+                    },
+                    data: {
+                        requireLogin: true
+                    }
                 });
 
             // if none of the above states are matched, use this as the fallback

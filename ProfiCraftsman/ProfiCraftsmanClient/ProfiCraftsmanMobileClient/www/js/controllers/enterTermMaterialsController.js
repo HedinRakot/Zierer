@@ -65,7 +65,7 @@
         Canceled: 14,
     };
 
-    function TermDetailsController($scope, globalizationService, moment, $http, $state) {
+    function EnterTermMaterialsController($scope, globalizationService, moment, $http, $state) {
         this.$scope = $scope;
         this.$scope.locale = globalizationService.getDefaultLocale();
         this.globalizationService = globalizationService;
@@ -74,116 +74,77 @@
         this.state = $state;
 
         var self = this;
-        this.http.post(window.localStorage['baseAppPath'] + 'GetTerm', { termId: window.localStorage['termId'] }).
-            success(function (result) {
-                self.term = result;
-            }).
-            error(function (result) {
+        this.http.post(window.localStorage['baseAppPath'] + 'GetTerm', { 
+            termId: window.localStorage['termId'],
+            withMaterials: true
+        }).
+        success(function (result) {
+            self.term = result;
+        }).
+        error(function (result) {
 
-            });
+        });
     }
 
 
-    TermDetailsController.prototype.beginTripDepartureSelection = function () {
+    EnterTermMaterialsController.prototype.checkMaterials = function () {
 
         var self = this;
+
         this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
             {
                 login: window.localStorage['userLogin'],
                 termId: window.localStorage['termId'],
-                status: termStatusTypes.BeginTripDepartureSelection,
+                status: termStatusTypes.CheckMaterials,
+                materials: self.term.materials,
+                withMaterials: true,
             }).
             success(function (result) {
                 self.term = result;
 
-                self.state.go('/termDetails');
+                self.state.go('/enterTermMaterials');
             }).
             error(function (result) {
 
             });
     };
 
-    TermDetailsController.prototype.beginTrip = function (beginTripFromOffice) {
+    EnterTermMaterialsController.prototype.goToEnterMaterials = function () {
 
         var self = this;
+
+        self.term.status = termStatusTypes.EnterMaterials;
+
+        self.state.go('/enterTermMaterials');
+    };
+
+    EnterTermMaterialsController.prototype.showDeliveryNote = function () {
+
+        var self = this;
+
         this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
             {
                 login: window.localStorage['userLogin'],
                 termId: window.localStorage['termId'],
-                status: termStatusTypes.BeginTrip,
-                beginTripFromOffice: beginTripFromOffice
+                status: termStatusTypes.ShowDeliveryNote,
+                withPositions: true,
+                withMaterials: true,
             }).
             success(function (result) {
                 self.term = result;
-                
-                self.state.go('/termDetails');
+
+                self.state.go('/showDeliveryNote');
             }).
             error(function (result) {
 
             });
     };
 
-    TermDetailsController.prototype.endTrip = function () {
-
-        var self = this;
-        this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
-            {
-                login: window.localStorage['userLogin'],
-                termId: window.localStorage['termId'],
-                status: termStatusTypes.EndTrip,
-            }).
-            success(function (result) {
-                self.term = result;
-
-                self.state.go('/termDetails');
-            }).
-            error(function (result) {
-
-            });
-    };
-
-    TermDetailsController.prototype.beginWork = function () {
-
-        var self = this;
-        this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
-            {
-                login: window.localStorage['userLogin'],
-                termId: window.localStorage['termId'],
-                status: termStatusTypes.BeginWork,
-            }).
-            success(function (result) {
-                self.term = result;
-
-                self.state.go('/termDetails');
-            }).
-            error(function (result) {
-
-            });
-    };
-
-    TermDetailsController.prototype.enterPositions = function () {
-
-        var self = this;
-        this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
-            {
-                login: window.localStorage['userLogin'],
-                termId: window.localStorage['termId'],
-                status: termStatusTypes.EnterPositions,
-            }).
-            success(function (result) {
-                self.term = result;
-
-                self.state.go('/enterTermPositions');
-            }).
-            error(function (result) {
-
-            });
-    };
-    
-    TermDetailsController.prototype.setLocale = function () {
+        
+    EnterTermMaterialsController.prototype.setLocale = function () {
         this.globalizationService.setLocale(this.$scope.locale);
         this.moment.locale(this.$scope.locale);
     }
 
-    angular.module('app.controllers').controller('TermDetailsController', ['$scope', 'globalizationService', 'moment', '$http', '$state', TermDetailsController]);
+    angular.module('app.controllers').controller('EnterTermMaterialsController', ['$scope', 'globalizationService', 'moment', '$http', '$state', EnterTermMaterialsController]);
 }())

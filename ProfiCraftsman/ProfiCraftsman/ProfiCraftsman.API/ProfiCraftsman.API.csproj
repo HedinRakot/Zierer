@@ -154,6 +154,7 @@
   <ItemGroup>
     <Compile Include="ClientControllers\ClientTermPositionsController.cs" />
     <Compile Include="ClientControllers\ChangeTermStateController.cs" />
+    <Compile Include="ClientControllers\Models\ClientTermMaterialViewModel.cs" />
     <Compile Include="ClientControllers\Models\ClientTermPositionViewModel.cs" />
     <Compile Include="ClientControllers\Models\ClientTermViewModel.cs" />
     <Compile Include="ClientControllers\Models\ClientTermSearchModel.cs" />

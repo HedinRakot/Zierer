@@ -1,0 +1,56 @@
+﻿<ion-view ng-controller="EnterTermMaterialsController as enterTermMaterialsController">
+    <ion-nav-title>
+        {{"terms_today_title" | translate}}
+    </ion-nav-title>
+    <ion-content>
+        <br />
+        <p class="term-description">{{enterTermMaterialsController.term.fromDate}} - {{enterTermMaterialsController.term.toDate}}</p>
+        <p class="term-description">{{enterTermMaterialsController.term.address}}</p>
+        <br />
+
+        <ion-list>
+
+            <ion-item class="term-item">
+                <div class="term-item-column item" style="width: 15%; font-weight: bold;">Artikelnummer</div>
+                <div class="term-item-column item" style="width: 70%; font-weight: bold;">Bezeichnung</div>
+                <div class="term-item-column item" style="width: 15%; font-weight: bold;">Menge</div>
+            </ion-item>
+
+            <ion-item ng-repeat="material in enterTermMaterialsController.term.materials" class="term-item">
+
+                <div class="term-item-column item" style="width: 15%;">{{material.number}}</div>
+                <div class="term-item-column item" style="width: 70%;">{{material.description}}</div>
+
+                <div ng-if="enterTermMaterialsController.term.status == 8" class="term-item-column item" style="width: 15%;">{{material.amount}}</div>
+                <div ng-if="enterTermMaterialsController.term.status == 7" class="term-input-item-column input" style="width: 15%; border-right: 0px;">
+                    <input type="text" style="padding: 0px; font-size: 16px;" ng-model="enterTermMaterialsController.term.materials[$index].amount">
+                </div>
+            </ion-item>
+        </ion-list>
+
+        <br />
+
+        <!-- First buttons -->
+
+        <button ng-if="enterTermMaterialsController.term.status == 7" class="button button-block button-positive" 
+                ng-click="enterTermMaterialsController.checkMaterials()">Prüfen und bestätigen
+        </button>
+
+        <button ng-if="enterTermMaterialsController.term.status == 8" class="button button-block button-positive"
+                ng-click="enterTermMaterialsController.showDeliveryNote()">
+            Lieferschein
+        </button>
+                
+        <br />
+
+        <!-- Second buttons -->
+        <button ng-if="enterTermMaterialsController.term.status == 7" class="button button-block" 
+                ng-click="">Material hinzufügen</button>
+
+        <button ng-if="enterTermMaterialsController.term.status == 8" class="button button-block"
+                ng-click="enterTermPositionsController.goToEnterMaterials()">
+            Zurück
+        </button>
+
+    </ion-content>
+</ion-view>

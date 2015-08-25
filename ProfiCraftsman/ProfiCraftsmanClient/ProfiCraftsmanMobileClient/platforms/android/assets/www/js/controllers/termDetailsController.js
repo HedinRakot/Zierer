@@ -85,7 +85,6 @@
 
 
     TermDetailsController.prototype.beginTripDepartureSelection = function () {
-        var self = this;
 
         var self = this;
         this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
@@ -105,7 +104,6 @@
     };
 
     TermDetailsController.prototype.beginTrip = function (beginTripFromOffice) {
-        var self = this;
 
         var self = this;
         this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
@@ -126,7 +124,6 @@
     };
 
     TermDetailsController.prototype.endTrip = function () {
-        var self = this;
 
         var self = this;
         this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
@@ -146,7 +143,6 @@
     };
 
     TermDetailsController.prototype.beginWork = function () {
-        var self = this;
 
         var self = this;
         this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
@@ -166,7 +162,6 @@
     };
 
     TermDetailsController.prototype.enterPositions = function () {
-        var self = this;
 
         var self = this;
         this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',

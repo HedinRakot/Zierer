@@ -29,7 +29,7 @@ namespace ProfiCraftsman.API.ClientControllers
             if(user != null && user.EmployeeId.HasValue)
             {
                 var terms = termManager.GetEntities(o => o.EmployeeId == user.EmployeeId.Value && o.Date.Date == DateTime.Now.Date);
-                result = terms.Select(term => TermViewModelHelper.ToModel(term, false)).OrderBy(o => o.FromDate).ToList();
+                result = terms.Select(term => TermViewModelHelper.ToModel(term, false, false)).OrderBy(o => o.FromDate).ToList();
             }
 
             return Ok(result);

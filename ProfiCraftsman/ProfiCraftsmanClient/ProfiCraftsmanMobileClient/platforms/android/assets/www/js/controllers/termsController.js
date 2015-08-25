@@ -88,7 +88,7 @@
 
         window.localStorage.setItem("termId", term.id);
         
-        if (term.status == termStatusTypes.EnterPositions)
+        if (term.status == termStatusTypes.EnterPositions || term.status == termStatusTypes.CheckPositions)
             self.state.go('/enterTermPositions');
         else
             self.state.go('/termDetails');

@@ -22,7 +22,9 @@
                 <div class="term-item-column item" style="width: 15%;">{{position.number}}</div>
                 <div class="term-item-column item" style="width: 55%;">{{position.description}}</div>
                 <div class="term-item-column item" style="width: 15%; background-color: grey;">{{position.plannedAmount}}</div>
-                <div class="term-input-item-column input" style="width: 15%; border-right: 0px;">
+
+                <div ng-if="enterTermPositionsController.term.status == 6" class="term-item-column item" style="width: 15%;">{{position.proccessedAmount}}</div>
+                <div ng-if="enterTermPositionsController.term.status == 5" class="term-input-item-column input" style="width: 15%; border-right: 0px;">
                     <input type="text" style="padding: 0px; font-size: 16px;" ng-model="enterTermPositionsController.term.positions[$index].proccessedAmount">
                 </div>
             </ion-item>
@@ -37,8 +39,8 @@
         </button>
 
         <button ng-if="enterTermPositionsController.term.status == 6" class="button button-block button-positive"
-                ng-click="enterTermPositionsController.beginTripDepartureSelection()">
-            Prüfen und bestätigen
+                ng-click="enterTermPositionsController.enterMaterials()">
+            Weiter
         </button>
                 
         <br />
@@ -46,6 +48,11 @@
         <!-- Second buttons -->
         <button ng-if="enterTermPositionsController.term.status == 5" class="button button-block" 
                 ng-click="">Leistung hinzufügen</button>
+
+        <button ng-if="enterTermPositionsController.term.status == 6" class="button button-block"
+                ng-click="enterTermPositionsController.goToEnterPositions()">
+            Zurück
+        </button>
 
     </ion-content>
 </ion-view>

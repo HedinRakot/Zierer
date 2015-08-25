@@ -9,13 +9,18 @@ namespace ProfiCraftsman.API.ClientControllers
 {
     public static class TermViewModelHelper
     {
-        public static ClientTermViewModel ToModel(Terms term, bool withPositions)
+        public static ClientTermViewModel ToModel(Terms term, bool withPositions, bool withMaterials)
         {
             var positions = new List<ClientTermPositionViewModel>();
 
             if(withPositions)
             {
                 positions = PositionModels(term);
+            }
+
+            if(withMaterials)
+            {
+
             }
 
             return new ClientTermViewModel()

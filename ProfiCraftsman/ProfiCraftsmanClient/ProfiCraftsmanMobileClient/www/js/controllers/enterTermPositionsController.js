@@ -88,20 +88,51 @@
 
 
     EnterTermPositionsController.prototype.checkPositions = function () {
-        var self = this;
 
         var self = this;
+
         this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
             {
                 login: window.localStorage['userLogin'],
                 termId: window.localStorage['termId'],
                 status: termStatusTypes.CheckPositions,
                 positions: self.term.positions,
+                withPositions: true,
             }).
             success(function (result) {
                 self.term = result;
 
-                self.state.go('/termDetails');
+                self.state.go('/enterTermPositions');
+            }).
+            error(function (result) {
+
+            });
+    };
+
+    EnterTermPositionsController.prototype.goToEnterPositions = function () {
+
+        var self = this;
+
+        self.term.status = termStatusTypes.EnterPositions;
+
+        self.state.go('/enterTermPositions');
+    };
+
+    EnterTermPositionsController.prototype.enterMaterials = function () {
+
+        var self = this;
+
+        this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
+            {
+                login: window.localStorage['userLogin'],
+                termId: window.localStorage['termId'],
+                status: termStatusTypes.EnterMaterials,
+                withMaterials: true,
+            }).
+            success(function (result) {
+                self.term = result;
+
+                self.state.go('/enterMaterials');
             }).
             error(function (result) {
 

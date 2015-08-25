@@ -121,13 +121,30 @@
     "www\\js\\services\\modalWindowService.js",
     "www\\js\\controllers\\termsController.js",
     "www\\templates\\terms\\entertermpositions.html",
-    "www\\js\\controllers\\entertermpositionscontroller.js"
+    "www\\js\\controllers\\entertermpositionscontroller.js",
+    "www\\js\\controllers\\termdetailscontroller.js",
+    "www\\js\\controllers\\enterTermMaterialsController.js",
+    "www\\templates\\terms\\enterTermMaterials.html"
   ],
-  "deletedFilesIos": [],
+  "deletedFilesIos": [
+    "www\\js\\controllers\\enterTermPositionsController - Copy.js",
+    "www\\templates\\terms\\enterTermPositions - Copy.html"
+  ],
   "addedPluginsIos": [],
   "deletedPluginsIos": [],
-  "changedFiles": [],
-  "deletedFiles": [],
+  "changedFiles": [
+    "www\\templates\\terms\\entertermpositions.html",
+    "www\\js\\controllers\\entertermpositionscontroller.js",
+    "www\\js\\controllers\\termdetailscontroller.js",
+    "www\\js\\controllers\\enterTermMaterialsController.js",
+    "www\\templates\\terms\\enterTermMaterials.html",
+    "www\\index.html",
+    "www\\js\\app.js"
+  ],
+  "deletedFiles": [
+    "www\\js\\controllers\\enterTermPositionsController - Copy.js",
+    "www\\templates\\terms\\enterTermPositions - Copy.html"
+  ],
   "addedPlugins": [],
   "deletedPlugins": []
 }
