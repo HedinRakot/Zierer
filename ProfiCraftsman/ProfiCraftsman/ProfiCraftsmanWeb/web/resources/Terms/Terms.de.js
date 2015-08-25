@@ -11,7 +11,8 @@ define(function () {
 		comment: 'Bemerkung',
 		status: 'Status',
 		pleaseSelect: 'Bitte auswählen',
-	    duration: 'Dauer',
+		duration: 'Dauer',
+	    showDeliveryNote: 'Unterschrift anzeigen',
 	};
 
 	return resources;

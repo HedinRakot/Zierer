@@ -12,6 +12,7 @@ define(function () {
 	    status: 'Status',
 	    pleaseSelect: 'Please select',
 	    duration: 'Duration',
+	    showDeliveryNote: 'Show signature',
 	};
 
 	return resources;

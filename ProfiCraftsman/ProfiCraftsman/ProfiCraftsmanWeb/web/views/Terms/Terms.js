@@ -98,13 +98,54 @@
 		    //        require(['base/information-view'], function (View) {
 		    //            var view = new View({
 		    //                title: ' auswählen',
-		    //                message: 'Wählen Sie bitte eine  aus!'
+		    //                message: 'Wählen Sie bitte ein Termin aus!'
 		    //            });
 		    //            self.addView(view);
 		    //            self.$el.append(view.render().$el);
 		    //        });
 		    //    }
 		    //},
+		    'click .showDeliveryNote': function (e) {
+
+		        e.preventDefault();
+		        var self = this,
+                    grid = self.grid,
+					dataItem = grid.dataItem(grid.select());
+
+		        if (dataItem != undefined) {
+
+		            var model = new Backbone.Model();
+		            model.url = Application.apiUrl + 'getTermSignature';
+		            model.set('id', dataItem.id);
+
+		            model.save({}, {
+		                success: function (model, response) {
+		                                             
+		                    require(['Terms/ShowSignatureView'], function (View) {
+		                        var view = new View({
+		                            title: 'Unterschrift anzeigen',
+		                            signatureData: response.signatureData
+		                        });
+		                        self.addView(view);
+		                        self.$el.append(view.render().$el);
+		                    });
+		                },
+		                error: function (model, response) {
+
+		                }
+		            });
+		        }
+		        else {
+		            require(['base/information-view'], function (View) {
+		                var view = new View({
+		                    title: 'Unterschrift anzeigen',
+		                    message: 'Wählen Sie bitte ein Termin aus!'
+		                });
+		                self.addView(view);
+		                self.$el.append(view.render().$el);
+		            });
+		        }
+		    },
 		},
 
 		toolbar: function () {
@@ -112,7 +153,8 @@
 		        result =
 		    [{
 		        template: function () {
-		            return '<a class="k-button k-button-icontext k-grid-create-inline" href="#" data-localized="add" style="min-width: 160px;"></a>';
+		            return '<a class="k-button k-button-icontext k-grid-create-inline" href="#" data-localized="add" style="min-width: 160px;"></a>' +
+		            '<a class="k-button k-button-icontext showDeliveryNote" href="#" data-localized="showDeliveryNote" style="min-width: 160px;"></a>';
 		        }
 		    }];
 
