@@ -15,5 +15,6 @@ namespace ProfiCraftsman.API.ClientControllers
         public int termId { get; set; }
 
         public bool withPositions { get; set; }
+        public bool withMaterials { get; set; }
     }
 }

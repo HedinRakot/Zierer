@@ -90,6 +90,8 @@
         
         if (term.status == termStatusTypes.EnterPositions || term.status == termStatusTypes.CheckPositions)
             self.state.go('/enterTermPositions');
+        else if (term.status == termStatusTypes.EnterMaterials || term.status == termStatusTypes.CheckMaterials)
+            self.state.go('/enterTermMaterials');
         else
             self.state.go('/termDetails');
     };

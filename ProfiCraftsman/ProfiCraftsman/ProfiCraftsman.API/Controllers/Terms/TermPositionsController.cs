@@ -36,6 +36,7 @@ namespace ProfiCraftsman.API.Controllers
             model.positionId = entity.PositionId;
             model.paymentType = entity.Positions.PaymentType;
             model.amount = entity.Amount;
+            model.proccessedAmount = entity.ProccessedAmount;
             model.price = entity.Positions.Price;
             model.description = entity.Positions.Description;
             model.createDate = ((ISystemFields)entity).CreateDate;
@@ -51,7 +52,8 @@ namespace ProfiCraftsman.API.Controllers
         {
             entity.TermId = model.termId;
             entity.PositionId = model.positionId;
-            entity.Amount = model.amount;        
+            entity.Amount = model.amount;
+            entity.ProccessedAmount = model.proccessedAmount;
         }      
     }
 }

@@ -19,8 +19,7 @@ namespace ProfiCraftsman.API.Models
         [DataMember]
         public int materialId { get; set; }
 
-        [Required]
         [DataMember]
-        public int amount { get; set; }
+        public double? amount { get; set; }
     }
 }

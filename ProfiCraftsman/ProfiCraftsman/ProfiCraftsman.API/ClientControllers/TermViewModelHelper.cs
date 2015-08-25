@@ -12,15 +12,24 @@ namespace ProfiCraftsman.API.ClientControllers
         public static ClientTermViewModel ToModel(Terms term, bool withPositions, bool withMaterials)
         {
             var positions = new List<ClientTermPositionViewModel>();
+            var materials = new List<ClientTermMaterialViewModel>();
 
-            if(withPositions)
+            if (withPositions)
             {
                 positions = PositionModels(term);
             }
 
             if(withMaterials)
             {
-
+                materials = term.TermPositions.Where(o => !o.DeleteDate.HasValue).SelectMany(o => o.Positions.PositionMaterialRsps).ToList().
+                    Select(positionMaterialRsp => new ClientTermMaterialViewModel()
+                    {
+                        Id = positionMaterialRsp.Id,
+                        Description = positionMaterialRsp.Materials.Name,
+                        Number = positionMaterialRsp.Materials.Number,
+                        Amount = positionMaterialRsp.Amount,
+                        TermId = term.Id
+                    }).ToList();
             }
 
             return new ClientTermViewModel()
@@ -31,6 +40,7 @@ namespace ProfiCraftsman.API.ClientControllers
                 Address = String.Format("{0} {1} {2}", term.Orders.Street, term.Orders.Zip, term.Orders.City),
                 Status = term.Status,
                 Positions = positions,
+                Materials = materials,
                 //IsFirstTerm 
             };
         }
@@ -39,7 +49,7 @@ namespace ProfiCraftsman.API.ClientControllers
         {
             var result = new List<ClientTermPositionViewModel>();
 
-            var positions = term.TermPositions.Where(o => o.Positions.ProductId.HasValue).ToList();
+            var positions = term.TermPositions.Where(o => !o.DeleteDate.HasValue && o.Positions.ProductId.HasValue).ToList();
             for (int i = 0; i < positions.Count; i++)
             {
                 var position = positions[i];

@@ -132,7 +132,7 @@
             success(function (result) {
                 self.term = result;
 
-                self.state.go('/enterMaterials');
+                self.state.go('/enterTermMaterials');
             }).
             error(function (result) {
 

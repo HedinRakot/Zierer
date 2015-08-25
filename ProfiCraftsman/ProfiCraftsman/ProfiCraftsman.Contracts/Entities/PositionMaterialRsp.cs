@@ -52,7 +52,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public int Id{ get; set; }
         public int PositionId{ get; set; }
         public int MaterialId{ get; set; }
-        public int Amount{ get; set; }
+        public double? Amount{ get; set; }
         public DateTime CreateDate{ get; set; }
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }

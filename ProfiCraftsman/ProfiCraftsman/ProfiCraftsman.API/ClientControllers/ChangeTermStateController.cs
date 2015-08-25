@@ -58,6 +58,17 @@ namespace ProfiCraftsman.API.ClientControllers
 
                         termManager.SaveChanges();
                         break;
+                    case TermStatusTypes.CheckMaterials:
+
+                        var termMaterials = term.TermPositions.Where(o => !o.DeleteDate.HasValue).SelectMany(o => o.Positions.PositionMaterialRsps).ToList();
+                        foreach (var material in model.Materials)
+                        {
+                            var termMaterial = termMaterials.FirstOrDefault(o => o.Id == material.Id);
+                            termMaterial.Amount = material.Amount;
+                        }
+
+                        termManager.SaveChanges();
+                        break;
                     case TermStatusTypes.EndWork:
                         term.EndWork = DateTime.Now;
                         break;

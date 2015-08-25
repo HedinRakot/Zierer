@@ -26,7 +26,7 @@ namespace ProfiCraftsman.API.ClientControllers
 
             if(term != null)
             {
-                result = TermViewModelHelper.ToModel(term, model.withPositions, false);
+                result = TermViewModelHelper.ToModel(term, model.withPositions, model.withMaterials);
             }
 
             return Ok(result);

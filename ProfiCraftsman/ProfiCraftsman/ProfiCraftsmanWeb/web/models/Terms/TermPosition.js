@@ -22,6 +22,7 @@ define(function () {
 			                        editable: false, 
 				                    validation: { required: true } }
             ,amount: { type: "number", editable: true, validation: { required: true } }
+            ,proccessedAmount: { type: "number", editable: true, validation: { required: false } }
             ,amountType: { type: "string", 
                                     editable: false,
                                     validation: { required: true } }

@@ -20,5 +20,6 @@ namespace ProfiCraftsman.API.ClientControllers
         public bool IsFirstTerm { get; set; }
 
         public List<ClientTermPositionViewModel> Positions { get; set; }
+        public List<ClientTermMaterialViewModel> Materials { get; set; }
     }
 }

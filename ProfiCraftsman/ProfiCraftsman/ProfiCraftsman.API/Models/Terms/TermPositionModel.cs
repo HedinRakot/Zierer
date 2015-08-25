@@ -29,7 +29,10 @@ namespace ProfiCraftsman.API.Models
         
         [DataMember]
         public int amount { get; set; }
-        
+
+        [DataMember]
+        public int? proccessedAmount { get; set; }
+
         [DataMember]
         public int paymentType { get; set; }
         

@@ -13,7 +13,7 @@ define(function () {
 				                    validation: { required: true } }			
 			,amount: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('PositionMaterialRsp', 'amount'), 
-				                    validation: { required: true } }	
+			                        validation: { required: false } }	
 		},
 		defaults: function () {
 			var dnf = new Date();

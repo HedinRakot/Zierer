@@ -29,9 +29,8 @@ namespace ProfiCraftsman.API.Models.Settings
         /// <summary>
         ///     Model property for <see cref="ProductMaterialRsp.Amount"/> entity
         /// </summary>
-        [Required]
         [DataMember]
-        public int amount{ get; set; }
+        public double? amount{ get; set; }
 
     }
 }

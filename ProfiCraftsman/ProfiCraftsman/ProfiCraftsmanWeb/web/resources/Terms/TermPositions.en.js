@@ -10,6 +10,7 @@ define(function () {
 		price: 'Price',
 		addPosition: 'Add position',
 		amount: 'Amount',
+	    proccessedAmount: 'Done',
 		isAlternative: 'N/A',
 		isAlternativeTitle: 'Normal/Alternative',
 		paymentType: 'Payment type',

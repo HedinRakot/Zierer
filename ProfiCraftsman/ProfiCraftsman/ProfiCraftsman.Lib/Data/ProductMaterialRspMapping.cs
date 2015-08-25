@@ -37,8 +37,7 @@ namespace ProfiCraftsman.Lib.Data
                 .IsRequired();
 
             Property(t => t.Amount)
-                .HasColumnName(ProductMaterialRsp.Fields.Amount)
-                .IsRequired();
+                .HasColumnName(ProductMaterialRsp.Fields.Amount);
 
             Property(t => t.CreateDate)
                 .HasColumnName(ProductMaterialRsp.Fields.CreateDate)

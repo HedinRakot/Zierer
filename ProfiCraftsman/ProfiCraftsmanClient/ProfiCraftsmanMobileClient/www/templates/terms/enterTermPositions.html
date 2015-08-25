@@ -24,9 +24,7 @@
                 <div class="term-item-column item" style="width: 15%; background-color: grey;">{{position.plannedAmount}}</div>
 
                 <div ng-if="enterTermPositionsController.term.status == 6" class="term-item-column item" style="width: 15%;">{{position.proccessedAmount}}</div>
-                <div ng-if="enterTermPositionsController.term.status == 5" class="term-input-item-column input" style="width: 15%; border-right: 0px;">
-                    <input type="text" style="padding: 0px; font-size: 16px;" ng-model="enterTermPositionsController.term.positions[$index].proccessedAmount">
-                </div>
+                <div ng-if="enterTermPositionsController.term.status == 5" class="term-input-item-column input" style="width: 15%; border-right: 0px;"><input type="text" style="padding: 0px; font-size: 16px;" ng-model="enterTermPositionsController.term.positions[$index].proccessedAmount"></div>
             </ion-item>
         </ion-list>
 

@@ -10,6 +10,7 @@ define(function () {
 		price: 'Preis',
 		addPosition: 'Leistung hinzufügen',
 		amount: 'Menge',
+	    proccessedAmount: 'Erledigt',
 		isAlternative: 'N/A',
 		isAlternativeTitle: 'Normal/Alternativ',
 		paymentType: 'Preiseinheit',

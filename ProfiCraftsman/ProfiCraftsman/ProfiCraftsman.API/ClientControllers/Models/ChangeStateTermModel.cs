@@ -17,6 +17,7 @@ namespace ProfiCraftsman.API.ClientControllers
         public string Login { get; set; }
         public bool BeginTripFromOffice { get; set; }
         public List<ClientTermPositionViewModel> Positions { get; set; }
+        public List<ClientTermMaterialViewModel> Materials { get; set; }
         public bool withPositions { get; set; }
         public bool withMaterials { get; set; }
     }
