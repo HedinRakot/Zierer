@@ -74,7 +74,7 @@ namespace ProfiCraftsman.API.Controllers.Invoices
 
             bool hasOpenPositions = false;
 
-            foreach (var orderPosition in orderPositions.Where(o => o.IsMaterialPosition == isSell))
+            foreach (var orderPosition in orderPositions)//todo.Where(o => o.IsMaterialPosition == isSell))
             {
                 var invoicePositions = allInvoicePositions.Where(o => o.PositionId == orderPosition.Id);
                 var amount = 0;

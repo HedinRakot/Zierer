@@ -3,10 +3,10 @@ define(function () {
 
 	var resources = {
 
-		add: 'Instrument anlegen',
-	    edit: 'Instrument editieren',
+		add: 'Werkzeug anlegen',
+	    edit: 'Werkzeug editieren',
 	    masterData: 'Einstellungen',
-	    pageTitle: 'Instrument',
+	    pageTitle: 'Werkzeug',
 		pleaseSelect: 'Bitte auswählen',
 		name: 'Bezeichnung',	
 		number: 'Nummer',	

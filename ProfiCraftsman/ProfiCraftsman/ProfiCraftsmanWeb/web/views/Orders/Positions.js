@@ -199,6 +199,7 @@
             
             self.grid.bind('edit', function (e) {
 
+                debugger;
                 if (e.model.id == 0)
                     e.model.isNew = function () { return true; }
                 else

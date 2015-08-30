@@ -17,7 +17,7 @@ define(function () {
         Customers: 'Kunde',
         CommunicationPartners: 'Ansprechpartner',
         ProductTypes: 'Leistungsart',
-        Instruments: 'Instrument',
+        Instruments: 'Werkzeug',
         Products: 'Leistung',
 	};
 

@@ -74,15 +74,15 @@ namespace ProfiCraftsman.API.Controllers
                 });
 
 
-            if (model.ProductTypesForDisposition)
-            {
-                var manager = (IProductTypesManager)GlobalConfiguration.Configuration.DependencyResolver.
-                    GetService(typeof(IProductTypesManager));
-                var productTypes = manager.GetEntities().Where(o => o.DispositionRelevant && !o.DeleteDate.HasValue).ToList();
+            //todo delete if (model.ProductTypesForDisposition)
+            //{
+            //    var manager = (IProductTypesManager)GlobalConfiguration.Configuration.DependencyResolver.
+            //        GetService(typeof(IProductTypesManager));
+            //    var productTypes = manager.GetEntities().Where(o => o.DispositionRelevant && !o.DeleteDate.HasValue).ToList();
 
-                result.Add("ProductTypesForDisposition", productTypes.Cast<IHasTitle<int>>().OrderBy(o => o.EntityTitle)
-                         .Select(o => new IdNameModel<int> { id = o.Id, name = o.EntityTitle }));
-            }
+            //    result.Add("ProductTypesForDisposition", productTypes.Cast<IHasTitle<int>>().OrderBy(o => o.EntityTitle)
+            //             .Select(o => new IdNameModel<int> { id = o.Id, name = o.EntityTitle }));
+            //}
 
             if (model.ProceedsAccounts)
             {

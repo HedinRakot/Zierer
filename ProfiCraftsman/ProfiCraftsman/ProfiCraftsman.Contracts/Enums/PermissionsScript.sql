@@ -236,14 +236,14 @@
 	IF NOT EXISTS (SELECT ID FROM [ProfiCraftsman].[dbo].[PERMISSION] WHERE ID = 18 )
 	BEGIN
 		INSERT INTO [ProfiCraftsman].[dbo].[PERMISSION] ([Id], [Name], [Description], [CreateDate], [ChangeDate], [DeleteDate])
-		VALUES(18, 'Instruments', 'Instrument' ,GETDATE() ,GETDATE() ,NULL);
+		VALUES(18, 'Instruments', 'Werkzeug' ,GETDATE() ,GETDATE() ,NULL);
 		INSERT INTO [ProfiCraftsman].dbo.ROLE_PERMISSION_RSP(RoleId ,PermissionId ,CreateDate ,ChangeDate) 
 		VALUES (1 ,18 ,getdate() ,getdate());
 	END
 	ELSE
 	BEGIN
 		UPDATE [ProfiCraftsman].[dbo].[PERMISSION]
-		SET [DESCRIPTION] = 'Instrument'
+		SET [DESCRIPTION] = 'Werkzeug'
 		WHERE ID = 18
 	END
 	

@@ -37,35 +37,12 @@ namespace ProfiCraftsman.Lib.Data
             Property(t => t.ProductTypeId)
                 .HasColumnName(Products.Fields.ProductTypeId);
 
-            Property(t => t.Length)
-                .HasColumnName(Products.Fields.Length);
-
-            Property(t => t.Width)
-                .HasColumnName(Products.Fields.Width);
-
-            Property(t => t.Height)
-                .HasColumnName(Products.Fields.Height);
-
-            Property(t => t.Color)
-                .HasColumnName(Products.Fields.Color)
-                .IsUnicode()
-                .HasMaxLength(50);
-
             Property(t => t.Price)
                 .HasColumnName(Products.Fields.Price)
                 .IsRequired();
 
             Property(t => t.ProceedsAccount)
                 .HasColumnName(Products.Fields.ProceedsAccount)
-                .IsRequired();
-
-            Property(t => t.BoughtFrom)
-                .HasColumnName(Products.Fields.BoughtFrom)
-                .IsUnicode()
-                .HasMaxLength(128);
-
-            Property(t => t.BoughtPrice)
-                .HasColumnName(Products.Fields.BoughtPrice)
                 .IsRequired();
 
             Property(t => t.Comment)

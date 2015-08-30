@@ -8,7 +8,7 @@ define(function () {
 	    masterData: 'Einstellungen',
 	    pageTitle: 'Leistungsart',
 		pleaseSelect: 'Bitte auswählen',
-		name: 'Bauart',	
+		name: 'Name',	
 		comment: 'Bemerkung',	
 	};
 

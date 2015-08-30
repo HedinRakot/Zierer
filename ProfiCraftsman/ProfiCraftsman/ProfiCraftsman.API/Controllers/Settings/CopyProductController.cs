@@ -34,16 +34,10 @@ namespace ProfiCraftsman.API.Controllers
 
             var newProduct = new Products()
             {
-                BoughtFrom = product.BoughtFrom,
-                BoughtPrice = product.BoughtPrice,
-                Color = product.Color,
                 Comment = product.Comment,
                 ProductTypeId = product.ProductTypeId,
-                Height = product.Height,
-                Length = product.Length,
                 Price = product.Price,
                 ProceedsAccount = product.ProceedsAccount,
-                Width = product.Width,
                 Number = String.Empty,
                 ProductMaterialRsps = new List<ProductMaterialRsp>(),
                 CreateDate = DateTime.Now,

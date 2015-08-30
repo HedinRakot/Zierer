@@ -32,22 +32,6 @@ namespace ProfiCraftsman.Contracts.Entities
             /// </summary>
             public static readonly string ProductTypeId = "ProductTypeId";
             /// <summary>
-            /// Column name 'Length' for property <see cref="Products.Length"/>
-            /// </summary>
-            public static readonly string Length = "Length";
-            /// <summary>
-            /// Column name 'Width' for property <see cref="Products.Width"/>
-            /// </summary>
-            public static readonly string Width = "Width";
-            /// <summary>
-            /// Column name 'Height' for property <see cref="Products.Height"/>
-            /// </summary>
-            public static readonly string Height = "Height";
-            /// <summary>
-            /// Column name 'Color' for property <see cref="Products.Color"/>
-            /// </summary>
-            public static readonly string Color = "Color";
-            /// <summary>
             /// Column name 'Price' for property <see cref="Products.Price"/>
             /// </summary>
             public static readonly string Price = "Price";
@@ -55,14 +39,6 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'ProceedsAccount' for property <see cref="Products.ProceedsAccount"/>
             /// </summary>
             public static readonly string ProceedsAccount = "ProceedsAccount";
-            /// <summary>
-            /// Column name 'BoughtFrom' for property <see cref="Products.BoughtFrom"/>
-            /// </summary>
-            public static readonly string BoughtFrom = "BoughtFrom";
-            /// <summary>
-            /// Column name 'BoughtPrice' for property <see cref="Products.BoughtPrice"/>
-            /// </summary>
-            public static readonly string BoughtPrice = "BoughtPrice";
             /// <summary>
             /// Column name 'Comment' for property <see cref="Products.Comment"/>
             /// </summary>
@@ -93,14 +69,8 @@ namespace ProfiCraftsman.Contracts.Entities
         public int Id{ get; set; }
         public string Number{ get; set; }
         public int? ProductTypeId{ get; set; }
-        public int? Length{ get; set; }
-        public int? Width{ get; set; }
-        public int? Height{ get; set; }
-        public string Color{ get; set; }
         public double Price{ get; set; }
         public int ProceedsAccount{ get; set; }
-        public string BoughtFrom{ get; set; }
-        public double BoughtPrice{ get; set; }
         public string Comment{ get; set; }
         public DateTime CreateDate{ get; set; }
         public DateTime ChangeDate{ get; set; }
@@ -134,14 +104,8 @@ namespace ProfiCraftsman.Contracts.Entities
             return new Products {
                        Number = Number,
                        ProductTypeId = ProductTypeId,
-                       Length = Length,
-                       Width = Width,
-                       Height = Height,
-                       Color = Color,
                        Price = Price,
                        ProceedsAccount = ProceedsAccount,
-                       BoughtFrom = BoughtFrom,
-                       BoughtPrice = BoughtPrice,
                        Comment = Comment,
                        CreateDate = CreateDate,
                        ChangeDate = ChangeDate,

@@ -50,10 +50,6 @@ namespace ProfiCraftsman.Lib.Data
             Property(t => t.DeleteDate)
                 .HasColumnName(ProductTypes.Fields.DeleteDate);
 
-            Property(t => t.DispositionRelevant)
-                .HasColumnName(ProductTypes.Fields.DispositionRelevant)
-                .IsRequired();
-
 
             //Relationships
         }

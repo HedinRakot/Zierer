@@ -44,10 +44,6 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'DeleteDate' for property <see cref="ProductTypes.DeleteDate"/>
             /// </summary>
             public static readonly string DeleteDate = "DeleteDate";
-            /// <summary>
-            /// Column name 'DispositionRelevant' for property <see cref="ProductTypes.DispositionRelevant"/>
-            /// </summary>
-            public static readonly string DispositionRelevant = "DispositionRelevant";
           
         }
         #endregion
@@ -57,7 +53,6 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime CreateDate{ get; set; }
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
-        public bool DispositionRelevant{ get; set; }
         public virtual ICollection<Products> Products{ get; set; }
         string IHasTitle<int>.EntityTitle
         {
@@ -86,7 +81,6 @@ namespace ProfiCraftsman.Contracts.Entities
                        CreateDate = CreateDate,
                        ChangeDate = ChangeDate,
                        DeleteDate = DeleteDate,
-                       DispositionRelevant = DispositionRelevant,
         	           };
         }
     }

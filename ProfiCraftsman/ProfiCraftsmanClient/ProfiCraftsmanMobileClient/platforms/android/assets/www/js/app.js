@@ -269,7 +269,7 @@
                 });
 
             // if none of the above states are matched, use this as the fallback
-            $urlRouterProvider.otherwise('/terms');
+            $urlRouterProvider.otherwise('/help');
 
             $translateProvider.useStaticFilesLoader({
                 prefix: 'languages/',
