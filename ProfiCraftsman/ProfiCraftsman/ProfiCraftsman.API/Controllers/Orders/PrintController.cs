@@ -53,7 +53,7 @@ namespace ProfiCraftsman.API.Controllers
             string path = String.Empty;
             var dataDirectory = Path.Combine(HttpRuntime.AppDomainAppPath, "App_Data");
             var report = (PrintTypes)printTypeId;
-            MemoryStream stream = null;
+            Stream stream = null;
 
             switch (report)
             {
@@ -102,8 +102,29 @@ namespace ProfiCraftsman.API.Controllers
                     stream = printerManager.PrepareTransportInvoicePrintData(id, path, transportOrdersManager, taxesManager, Manager);
                     break;
                 case PrintTypes.DeliveryNote:
-                    path = Path.Combine(dataDirectory, Contracts.Configuration.DeliveryNoteFileName);
-                    stream = printerManager.PrepareDeliveryNotePrintData(id, path, termsManager);
+
+                    var term = termsManager.GetById(id);
+
+                    if (!String.IsNullOrEmpty(term.DeliveryNoteFileName))
+                    {
+                        var directory = Path.Combine(HttpRuntime.AppDomainAppPath, "Lieferscheine");
+                        var filePath = Path.Combine(directory, term.DeliveryNoteFileName);
+
+                        if (File.Exists(filePath))
+                        {
+                            stream = File.OpenRead(filePath);
+                        }
+                        else
+                        {
+                            path = Path.Combine(dataDirectory, Contracts.Configuration.DeliveryNoteFileName);
+                            stream = printerManager.PrepareDeliveryNotePrintData(id, path, termsManager);
+                        }
+                    }
+                    else
+                    {
+                        path = Path.Combine(dataDirectory, Contracts.Configuration.DeliveryNoteFileName);
+                        stream = printerManager.PrepareDeliveryNotePrintData(id, path, termsManager);
+                    }
                     break;
                 case PrintTypes.BackDeliveryNote:
                     path = Path.Combine(dataDirectory, Contracts.Configuration.BackDeliveryNoteFileName);
@@ -113,7 +134,8 @@ namespace ProfiCraftsman.API.Controllers
                     throw new NotImplementedException();
             }
 
-            var result = new StreamActionResult(new MemoryStream(stream.ToArray()));
+            stream.Position = 0;
+            var result = new StreamActionResult(stream);
 
             if (report == PrintTypes.DeliveryNote)
             {

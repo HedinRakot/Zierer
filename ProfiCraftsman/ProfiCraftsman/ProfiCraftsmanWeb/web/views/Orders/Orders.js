@@ -203,58 +203,6 @@
 		            });
 		        }
 		    },
-		    'click .generateRentInvoice': function (e) {
-		        e.preventDefault();
-		        var self = this,
-                    grid = self.grid,
-					dataItem = grid.dataItem(grid.select());
-
-		        if (dataItem != undefined) {
-		            require(['l!t!Orders/CreateInvoiceConfirmation'], function (View) {
-
-		                var view = new View({
-		                    title: 'Rechnung erstellen',
-		                    message: 'Möchten Sie für den ausgewählten Auftrag eine Rechnung erstellen?'
-		                });
-		                self.listenTo(view, 'montlyInvoice', _.bind(generateMonthlyInvoice, self, dataItem, false));
-		                self.listenTo(view, 'completeInvoice', _.bind(generateCompleteInvoice, self, dataItem, false));
-		                self.addView(view);
-		                self.$el.append(view.render().$el);
-		            });
-		        }
-		        else {
-		            require(['base/information-view'], function (View) {
-		                var view = new View({
-		                    title: 'Rechnung erstellen',
-		                    message: 'Wählen Sie bitte ein Auftrag aus!'
-		                });
-		                self.addView(view);
-		                self.$el.append(view.render().$el);
-		            });
-		        }
-		    },
-            'click .printRentOrder': function (e) {
-
-                e.preventDefault();
-                var self = this,
-                    grid = self.grid,
-					dataItem = grid.dataItem(grid.select());
-
-                if (dataItem != undefined) {
-
-                    location.href = Application.apiUrl + 'print/?printTypeId=0&id=' + dataItem.id;
-                }
-                else {
-                    require(['base/information-view'], function (View) {
-                        var view = new View({
-                            title: 'Auftrag auswählen',
-                            message: 'Wählen Sie bitte ein Auftrag aus!'
-                        });
-                        self.addView(view);
-                        self.$el.append(view.render().$el);
-                    });
-                }
-            },
             'click .closeOrder': function (e) {
 
                 e.preventDefault();
@@ -335,51 +283,7 @@
                         self.$el.append(view.render().$el);
                     });
                 }
-            },
-            'click .printDeliveryNote': function (e) {
-
-                e.preventDefault();
-                var self = this,
-                    grid = self.grid,
-					dataItem = grid.dataItem(grid.select());
-
-                if (dataItem != undefined) {
-
-                    location.href = Application.apiUrl + 'print/?printTypeId=6&id=' + dataItem.id;
-                }
-                else {
-                    require(['base/information-view'], function (View) {
-                        var view = new View({
-                            title: 'Auftrag auswählen',
-                            message: 'Wählen Sie bitte ein Auftrag aus!'
-                        });
-                        self.addView(view);
-                        self.$el.append(view.render().$el);
-                    });
-                }
-            },
-            'click .printBackDeliveryNote': function (e) {
-
-                e.preventDefault();
-                var self = this,
-                    grid = self.grid,
-					dataItem = grid.dataItem(grid.select());
-
-                if (dataItem != undefined) {
-
-                    location.href = Application.apiUrl + 'print/?printTypeId=7&id=' + dataItem.id;
-                }
-                else {
-                    require(['base/information-view'], function (View) {
-                        var view = new View({
-                            title: 'Auftrag auswählen',
-                            message: 'Wählen Sie bitte ein Auftrag aus!'
-                        });
-                        self.addView(view);
-                        self.$el.append(view.render().$el);
-                    });
-                }
-            },
+            },            
 		},
 
 		toolbar: function () {
@@ -389,11 +293,7 @@
 		        template: function () {
 		            return '<a class="k-button k-button-icontext" href="' + self.editUrl +
 		            '/create" data-localized="' + self.createNewItemTitle + '"></a>' + 
-                    //'<a class="k-button k-button-icontext printRentOrder" href="#" data-localized="printRentOrder"></a>' +
-                    //'<a class="k-button k-button-icontext printDeliveryNote" href="#" data-localized="printDeliveryNote"></a>' +
-                    //'<a class="k-button k-button-icontext printBackDeliveryNote" href="#" data-localized="printBackDeliveryNote"></a>' +
                     '<a class="k-button k-button-icontext generateInvoice" href="#" data-localized="generateInvoice"></a>' +
-		            //'<a class="k-button k-button-icontext generateRentInvoice" href="#" data-localized="generateRentInvoice"></a>' + 
                     '<a class="k-button k-button-icontext closeOrder" href="#" data-localized="closeOrder"></a>' +
 		            '<a class="k-button k-button-icontext copyOrder" href="#" data-localized="copyOrder"></a>';
 		        }

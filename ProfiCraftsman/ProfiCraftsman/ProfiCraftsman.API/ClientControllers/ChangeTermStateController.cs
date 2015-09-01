@@ -61,7 +61,7 @@ namespace ProfiCraftsman.API.ClientControllers
                     case TermStatusTypes.CheckPositions:
 
                         var termPositions = term.TermPositions.Where(o => !o.DeleteDate.HasValue).ToList();
-                        foreach(var position in model.Positions)
+                        foreach (var position in model.Positions)
                         {
                             var termPosition = termPositions.FirstOrDefault(o => o.Id == position.Id);
                             termPosition.ProccessedAmount = position.ProccessedAmount;
@@ -94,47 +94,49 @@ namespace ProfiCraftsman.API.ClientControllers
                         if (!Directory.Exists(directory))
                             Directory.CreateDirectory(directory);
 
-                        var fileStream = new FileStream(filePath, FileMode.Create);
-                        stream.WriteTo(fileStream);
-
-                        term.DeliveryNoteFileName = fileName;
-                        termManager.SaveChanges();
-
-                        var attachments = new List<Attachment>();
-                        stream.Position = 0;
-                        attachments.Add(new Attachment(stream, fileName)); 
-
-                        if (model.sendDeliveryNotePerEmail)
+                        using (var fileStream = new FileStream(filePath, FileMode.Create))
                         {
-                            SendMail(NotificationServerConfigSection.Instance.SmtpServer,
-                                NotificationServerConfigSection.Instance.SmtpServerAccountName,
-                                NotificationServerConfigSection.Instance.SmtpServerAccountPassword,
-                                term.Orders.Customers.Email,
-                                String.Format("Lieferschein {0}", DateTime.Now.ToShortDateString()),
-                                String.Format("<p>Sehr geehrte {0},</p><p>anbei der Lieferschein vom {1}.</p><p>Mit freundlichen Grüßen,</p><p>{2}</p>",
-                                    term.Orders.Customers.Name, DateTime.Now.ToShortDateString(), "Firma Zierer Gebäude & Systemtechnik"),
-                                NotificationServerConfigSection.Instance.SmtpServerPort,
-                                NotificationServerConfigSection.Instance.EnableSsl,
-                                (SmtpDeliveryMethod)NotificationServerConfigSection.Instance.SmtpDeliveryMethod, true,
-                                attachments);
-                        }
-                        else
-                        {
-                            var signature = deliveryNoteSignaturesManager.GetEntities(o => o.TermId == model.termId).FirstOrDefault();
-                            if (signature != null)
+                            stream.WriteTo(fileStream);
+
+                            term.DeliveryNoteFileName = fileName;
+                            termManager.SaveChanges();
+
+                            var attachments = new List<Attachment>();
+                            stream.Position = 0;
+                            attachments.Add(new Attachment(stream, fileName));
+
+                            if (model.sendDeliveryNotePerEmail)
                             {
-                                signature.Signature = model.signature;
+                                SendMail(NotificationServerConfigSection.Instance.SmtpServer,
+                                    NotificationServerConfigSection.Instance.SmtpServerAccountName,
+                                    NotificationServerConfigSection.Instance.SmtpServerAccountPassword,
+                                    term.Orders.Customers.Email,
+                                    String.Format("Lieferschein {0}", DateTime.Now.ToShortDateString()),
+                                    String.Format("<p>Sehr geehrte {0},</p><p>anbei der Lieferschein vom {1}.</p><p>Mit freundlichen Grüßen,</p><p>{2}</p>",
+                                        term.Orders.Customers.Name, DateTime.Now.ToShortDateString(), "Firma Zierer Gebäude & Systemtechnik"),
+                                    NotificationServerConfigSection.Instance.SmtpServerPort,
+                                    NotificationServerConfigSection.Instance.EnableSsl,
+                                    (SmtpDeliveryMethod)NotificationServerConfigSection.Instance.SmtpDeliveryMethod, true,
+                                    attachments);
                             }
                             else
                             {
-                                deliveryNoteSignaturesManager.AddEntity(new DeliveryNoteSignatures()
+                                var signature = deliveryNoteSignaturesManager.GetEntities(o => o.TermId == model.termId).FirstOrDefault();
+                                if (signature != null)
                                 {
-                                    TermId = model.termId,
-                                    Signature = model.signature,
-                                });
-                            }
+                                    signature.Signature = model.signature;
+                                }
+                                else
+                                {
+                                    deliveryNoteSignaturesManager.AddEntity(new DeliveryNoteSignatures()
+                                    {
+                                        TermId = model.termId,
+                                        Signature = model.signature,
+                                    });
+                                }
 
-                            deliveryNoteSignaturesManager.SaveChanges();
+                                deliveryNoteSignaturesManager.SaveChanges();
+                            }
                         }
 
                         break;
