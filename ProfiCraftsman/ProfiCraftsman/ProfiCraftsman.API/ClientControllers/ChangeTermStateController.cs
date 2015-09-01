@@ -85,6 +85,27 @@ namespace ProfiCraftsman.API.ClientControllers
 
                         var dataDirectory = Path.Combine(HttpRuntime.AppDomainAppPath, "App_Data");
                         var path = Path.Combine(dataDirectory, Contracts.Configuration.DeliveryNoteFileName);
+                        
+                        if (!model.sendDeliveryNotePerEmail)
+                        {
+                            var signature = deliveryNoteSignaturesManager.GetEntities(o => o.TermId == model.termId).FirstOrDefault();
+                            if (signature != null)
+                            {
+                                signature.Signature = model.signature;
+                            }
+                            else
+                            {
+                                deliveryNoteSignaturesManager.AddEntity(new DeliveryNoteSignatures()
+                                {
+                                    TermId = model.termId,
+                                    Signature = model.signature,
+                                });
+                            }
+
+                            deliveryNoteSignaturesManager.SaveChanges();
+                        }
+
+
                         var stream = printerManager.PrepareDeliveryNotePrintData(term.Id, path, termManager);
 
                         var fileName = String.Format("Lieferscheine_{0}_{1}_{2}_{3}.pdf", term.Id, DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
@@ -118,24 +139,6 @@ namespace ProfiCraftsman.API.ClientControllers
                                     NotificationServerConfigSection.Instance.EnableSsl,
                                     (SmtpDeliveryMethod)NotificationServerConfigSection.Instance.SmtpDeliveryMethod, true,
                                     attachments);
-                            }
-                            else
-                            {
-                                var signature = deliveryNoteSignaturesManager.GetEntities(o => o.TermId == model.termId).FirstOrDefault();
-                                if (signature != null)
-                                {
-                                    signature.Signature = model.signature;
-                                }
-                                else
-                                {
-                                    deliveryNoteSignaturesManager.AddEntity(new DeliveryNoteSignatures()
-                                    {
-                                        TermId = model.termId,
-                                        Signature = model.signature,
-                                    });
-                                }
-
-                                deliveryNoteSignaturesManager.SaveChanges();
                             }
                         }
 

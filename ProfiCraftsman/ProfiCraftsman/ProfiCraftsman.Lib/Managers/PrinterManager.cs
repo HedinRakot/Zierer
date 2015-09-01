@@ -4,6 +4,7 @@ using ProfiCraftsman.Contracts.Enums;
 using ProfiCraftsman.Contracts.Managers;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.IO.Packaging;
 using System.Linq;
@@ -168,11 +169,40 @@ namespace ProfiCraftsman.Lib.Managers
                 XDocument xmlMainXMLDoc;
                 GetXmlDoc(path, result, out pkg, out part, out xmlReader, out xmlMainXMLDoc);
 
+
+                var images = new List<Image>();
+
+                if (type == PrintTypes.DeliveryNote)
+                {
+                    var term = termsManager.GetById(id);
+                    for (var i = 0; i < term.DeliveryNoteSignatures.Count; i++)
+                    {
+                        var deliveryNoteSignature = term.DeliveryNoteSignatures.ElementAt(term.DeliveryNoteSignatures.Count - i - 1);
+                        //TODO doesnt work ((
+                        //pkg.CreateRelationship(uri, TargetMode.Internal,
+                        //    "Http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                        //    "barcodeImageId");
+
+
+                        byte[] bytes = Convert.FromBase64String(deliveryNoteSignature.Signature.Replace("data:image/png;base64,", ""));
+
+                        Image image;
+                        using (MemoryStream ms = new MemoryStream(bytes))
+                        {
+                            image = Image.FromStream(ms);
+                        }
+
+                        images.Add(image);
+                    }
+                }
+
                 //replace fields
                 var templateBody = ReplaceFields(ordersManager, id, type, xmlMainXMLDoc.Root.ToString(),
-                    invoicesManager, taxesManager, null, invoiceStornosManager, transportOrdersManager, termsManager);
+                    invoicesManager, taxesManager, null, invoiceStornosManager, transportOrdersManager, termsManager, images);
 
                 xmlMainXMLDoc = SaveDoc(result, pkg, part, xmlReader, xmlMainXMLDoc, templateBody);
+
+                InsertImages(result, images);
 
                 var doc = new Spire.Doc.Document();
                 doc.LoadFromStream(result, Spire.Doc.FileFormat.Docx);
@@ -196,7 +226,8 @@ namespace ProfiCraftsman.Lib.Managers
             IInvoicesManager invoicesManager, ITaxesManager taxesManager, Invoices invoice = null,
             IInvoiceStornosManager invoiceStornosManager = null,
             ITransportOrdersManager transportOrdersManager = null,
-            ITermsManager termsManager = null)
+            ITermsManager termsManager = null, 
+            IEnumerable<Image> images = null)
         {
             string result = xmlMainXMLDoc;
 
@@ -289,6 +320,45 @@ namespace ProfiCraftsman.Lib.Managers
                         new List<Positions>();
 
                     result = ReplacePositionWithDescription(positions, result);
+
+
+                    if (term.DeliveryNoteSignatures.Count != 0)
+                    {
+                        var doc = XDocument.Parse(result);
+                        var signatureElement = doc.Descendants().FirstOrDefault(o => o.Value.Equals("#Signature",
+                            StringComparison.InvariantCultureIgnoreCase));
+
+                        if (signatureElement != null && images != null && images.Count() != 0)
+                        {
+                            var currentElement = signatureElement;
+                            for (var i = 0; i < images.Count(); i++)
+                            {
+                                var image = images.ElementAt(images.Count() - i - 1);
+                                //TODO doesnt work ((
+                                //pkg.CreateRelationship(uri, TargetMode.Internal,
+                                //    "Http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                //    "barcodeImageId");
+                                
+                                //insert image
+                                XmlElement tagDrawing = GetImageTag(image.Width, image.Height,
+                                    term.DeliveryNoteSignatures.Count - i);
+
+                                signatureElement.AddAfterSelf(XDocument.Parse(tagDrawing.InnerXml).Root);
+                            }
+
+                            signatureElement.Remove();
+                            result = doc.Root.ToString();
+                        }
+                        else
+                        {
+                            result = result.Replace("#Signature", String.Empty);
+                        }
+                    }
+                    else
+                    {
+                        result = result.Replace("#Signature", String.Empty);
+                    }
+
                     break;
                 //case PrintTypes.BackDeliveryNote:
 
@@ -1405,6 +1475,203 @@ namespace ProfiCraftsman.Lib.Managers
         #endregion
 
         #region Common Functions
+
+        private Stream InsertImages(Stream sourceStream, IEnumerable<Image> images)
+        {
+            try
+            {
+                if (images != null && images.Count() != 0)
+                {
+                    for (int i = 0; i < images.Count(); i++)
+                    {
+                        InsertImage(sourceStream, images.ElementAt(i), i + 1);
+                    }
+
+                    InsertImageIds(sourceStream, images.Count());
+                }
+            }
+            catch
+            {
+            }
+
+            return sourceStream;
+        }
+
+        private void InsertImage(Stream sourceStream, Image image, int index)
+        {
+            var pkg = Package.Open(sourceStream, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            var uri = new Uri(String.Format("/word/media/image_generated_for_export_to_pdf_{0}.png",
+                index), UriKind.Relative);
+            PackagePart partImage = pkg.CreatePart(uri, "image/png");
+            using (var targetStream = partImage.GetStream())
+            {
+                image.Save(targetStream, System.Drawing.Imaging.ImageFormat.Png);
+            }
+
+            pkg.Flush();
+            pkg.Close();
+
+            sourceStream.Position = 0;
+        }
+
+        private void InsertImageIds(Stream sourceStream, int count)
+        {
+            var pkg = Package.Open(sourceStream, FileMode.Open, FileAccess.ReadWrite);
+
+            var uri = new Uri("/word/_rels/document.xml.rels", UriKind.Relative);
+            var part = pkg.GetPart(uri);
+
+            var xmlReader = XmlReader.Create(part.GetStream(FileMode.Open, FileAccess.Read));
+            var xmlMainXMLDoc = XDocument.Load(xmlReader);
+
+            for (int i = 0; i < count; i++)
+            {
+                xmlMainXMLDoc.Root.Add(new XElement("Relationship",
+                    new XAttribute("Target", String.Format("media/image_generated_for_export_to_pdf_{0}.png",
+                        i + 1)),
+                    new XAttribute("Type", "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"),
+                    new XAttribute("Id", String.Format("ImageId_{0}", i + 1))));
+            }
+
+            xmlMainXMLDoc = XDocument.Parse(xmlMainXMLDoc.Root.ToString().Replace(@"xmlns=""""", ""));
+
+            var partWrt = new StreamWriter(part.GetStream(FileMode.Open, FileAccess.ReadWrite));
+            xmlMainXMLDoc.Save(partWrt);
+
+            partWrt.Flush();
+            partWrt.Close();
+            pkg.Close();
+
+            sourceStream.Position = 0;
+
+            xmlReader.Close();
+        }
+
+        private XmlElement GetImageTag(int imageWidth, int imageHeight, int index)
+        {
+            string WordprocessingML = "http://schemas.openxmlformats.org/wordprocessingml/2006/main";
+            string RelationShips = "http://schemas.openxmlformats.org/officeDocument/2006/relationships";
+            string Drawing = "http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing";
+            string DrawingML = "http://schemas.openxmlformats.org/drawingml/2006/main";
+            string Pic = "http://schemas.openxmlformats.org/drawingml/2006/picture";
+
+            var realWidth = imageWidth * 914400 / 96;
+            var realHeight = imageHeight * 914400 / 96;
+
+            // Create WordML
+            XmlDocument xmlStartPart = new XmlDocument();
+            XmlElement tagDrawing = xmlStartPart.CreateElement("w:drawing", WordprocessingML);
+            XmlElement tagInline = xmlStartPart.CreateElement("wp:inline", Drawing);
+            tagDrawing.AppendChild(tagInline);
+            //Element extent
+            XmlElement tagExtent = xmlStartPart.CreateElement("wp:extent", Drawing);
+            tagInline.AppendChild(tagExtent);
+            //attributes of extent
+            XmlAttribute attributcx = xmlStartPart.CreateAttribute("cx");
+            attributcx.InnerText = realWidth.ToString();
+            tagExtent.SetAttributeNode(attributcx);
+            XmlAttribute attributcy = xmlStartPart.CreateAttribute("cy");
+            attributcy.InnerText = realHeight.ToString();
+            tagExtent.SetAttributeNode(attributcy);
+            //Element docPr
+            XmlElement tagdocPr = xmlStartPart.CreateElement("wp:docPr", Drawing);
+            tagInline.AppendChild(tagdocPr);
+            //attributes of docPr
+            XmlAttribute attributname = xmlStartPart.CreateAttribute("name");
+            attributname.InnerText = String.Format("image_generated_for_export_to_pdf_{0}.png", index);
+            tagdocPr.SetAttributeNode(attributname);
+            XmlAttribute attributid = xmlStartPart.CreateAttribute("id");
+            attributid.InnerText = (index * 2 - 1).ToString();
+            tagdocPr.SetAttributeNode(attributid);
+            //Element graphic
+            XmlElement taggraphic = xmlStartPart.CreateElement("a:graphic", DrawingML);
+            tagInline.AppendChild(taggraphic);
+            //Element graphicData
+            XmlElement taggraphicData = xmlStartPart.CreateElement("a:graphicData", DrawingML);
+            taggraphic.AppendChild(taggraphicData);
+            //attributes pf graphicData
+            XmlAttribute attributuri = xmlStartPart.CreateAttribute("uri");
+            attributuri.InnerText = "http://schemas.openxmlformats.org/drawingml/2006/picture";
+            taggraphicData.SetAttributeNode(attributuri);
+            //Element pic
+            XmlElement tagpic = xmlStartPart.CreateElement("pic:pic", Pic);
+            taggraphicData.AppendChild(tagpic);
+            //Element nvPicPr
+            XmlElement tagnvPicPr = xmlStartPart.CreateElement("pic:nvPicPr", Pic);
+            tagpic.AppendChild(tagnvPicPr);
+            //Element cNvPr
+            XmlElement tagcNvPr = xmlStartPart.CreateElement("pic:cNvPr", Pic);
+            tagnvPicPr.AppendChild(tagcNvPr);
+            //attributes of cNvPr
+            XmlAttribute attributnamecNvPr = xmlStartPart.CreateAttribute("name");
+            attributnamecNvPr.InnerText = String.Format("image_generated_for_export_to_pdf_{0}.png", index);
+            tagcNvPr.SetAttributeNode(attributnamecNvPr);
+            XmlAttribute attributidcNvPr = xmlStartPart.CreateAttribute("id");
+            attributidcNvPr.InnerText = (index * 2).ToString();
+            tagcNvPr.SetAttributeNode(attributidcNvPr);
+            //Element cNvPicPr
+            XmlElement tagcNvPicPr = xmlStartPart.CreateElement("pic:cNvPicPr", Pic);
+            tagnvPicPr.AppendChild(tagcNvPicPr);
+            //Element blipFill
+            XmlElement tagblipFill = xmlStartPart.CreateElement("pic:blipFill", Pic);
+            tagpic.AppendChild(tagblipFill);
+            //Element blip
+            XmlElement tagblip = xmlStartPart.CreateElement("a:blip", DrawingML);
+            tagblipFill.AppendChild(tagblip);
+            //attributes of blip
+            XmlAttribute attributembed = xmlStartPart.CreateAttribute("r:embed", RelationShips);
+            attributembed.InnerText = String.Format("ImageId_{0}", index);
+            tagblip.SetAttributeNode(attributembed);
+            //Element stretch
+            XmlElement tagstretch = xmlStartPart.CreateElement("a:stretch", DrawingML);
+            tagblipFill.AppendChild(tagstretch);
+            //Element fillRect
+            XmlElement tagfillRect = xmlStartPart.CreateElement("a:fillRect", DrawingML);
+            tagstretch.AppendChild(tagfillRect);
+            //Element spPr
+            XmlElement tagspPr = xmlStartPart.CreateElement("pic:spPr", Pic);
+            tagpic.AppendChild(tagspPr);
+            //Element xfrm
+            XmlElement tagxfrm = xmlStartPart.CreateElement("a:xfrm", DrawingML);
+            tagspPr.AppendChild(tagxfrm);
+            //Element off
+            XmlElement tagoff = xmlStartPart.CreateElement("a:off", DrawingML);
+            tagxfrm.AppendChild(tagoff);
+            //attributes of off
+            XmlAttribute attributx = xmlStartPart.CreateAttribute("x");
+            attributx.InnerText = "0";
+            tagoff.SetAttributeNode(attributx);
+            XmlAttribute attributy = xmlStartPart.CreateAttribute("y");
+            attributy.InnerText = "0";
+            tagoff.SetAttributeNode(attributy);
+            //Element ext
+            XmlElement tagext = xmlStartPart.CreateElement("a:ext", DrawingML);
+            tagxfrm.AppendChild(tagext);
+            //attributes of ext
+            XmlAttribute attributcxext = xmlStartPart.CreateAttribute("cx");
+            attributcxext.InnerText = realWidth.ToString();
+            tagext.SetAttributeNode(attributcxext);
+            XmlAttribute attributcyext = xmlStartPart.CreateAttribute("cy");
+            attributcyext.InnerText = realHeight.ToString();
+            tagext.SetAttributeNode(attributcyext);
+            //Element prstGeom
+            XmlElement tagprstGeom = xmlStartPart.CreateElement("a:prstGeom", DrawingML);
+            tagspPr.AppendChild(tagprstGeom);
+            //attributs of prstGeom
+            XmlAttribute attributprst = xmlStartPart.CreateAttribute("prst");
+            attributprst.InnerText = "rect";
+            tagprstGeom.SetAttributeNode(attributprst);
+
+
+            XmlElement tagRun = xmlStartPart.CreateElement("w:p", Drawing);
+            XmlElement tagRun2 = xmlStartPart.CreateElement("w:p", Drawing);
+            XmlElement tagRun3 = xmlStartPart.CreateElement("w:r", Drawing);
+            tagRun.AppendChild(tagRun2);
+            tagRun2.AppendChild(tagRun3);
+            tagRun3.AppendChild(tagDrawing);
+
+            return tagRun;
+        }
 
         #endregion
 
