@@ -164,6 +164,7 @@
     <Compile Include="ClientControllers\Models\ChangeStateTermModel.cs" />
     <Compile Include="ClientControllers\Models\GetTermModel.cs" />
     <Compile Include="ClientControllers\TermViewModelHelper.cs" />
+    <Compile Include="Config\NotificationServerConfigSection.cs" />
     <Compile Include="Controllers\InvoiceStornos\InvoiceStornosController.cs" />
     <Compile Include="Controllers\Invoices\GenerateMonthInvoicesController.cs" />
     <Compile Include="Controllers\Invoices\InvoicePositionsController.cs" />

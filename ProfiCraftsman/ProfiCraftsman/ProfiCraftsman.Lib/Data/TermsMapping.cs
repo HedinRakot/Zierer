@@ -92,6 +92,11 @@ namespace ProfiCraftsman.Lib.Data
             Property(t => t.BeginTripFromOffice)
                 .HasColumnName(Terms.Fields.BeginTripFromOffice);
 
+            Property(t => t.DeliveryNoteFileName)
+                .HasColumnName(Terms.Fields.DeliveryNoteFileName)
+                .IsUnicode()
+                .HasMaxLength(256);
+
 
             //Relationships
             HasOptional(t => t.User)

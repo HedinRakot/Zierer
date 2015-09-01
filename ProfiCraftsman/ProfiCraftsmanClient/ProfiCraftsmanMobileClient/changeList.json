@@ -125,7 +125,8 @@
     "res\\icons\\windows\\Square44x44Logo.scale-240.png",
     "res\\screens\\android\\screen-mdpi-portrait.png",
     "www\\js\\services\\modalWindowService.js",
-    "www\\js\\controllers\\termsController.js"
+    "www\\js\\controllers\\termsController.js",
+    "www\\js\\controllers\\showdeliverynotecontroller.js"
   ],
   "deletedFilesIos": [],
   "addedPluginsIos": [],
@@ -256,7 +257,8 @@
     "res\\icons\\windows\\Square44x44Logo.scale-240.png",
     "res\\screens\\android\\screen-mdpi-portrait.png",
     "www\\js\\services\\modalWindowService.js",
-    "www\\js\\controllers\\termsController.js"
+    "www\\js\\controllers\\termsController.js",
+    "www\\js\\controllers\\showdeliverynotecontroller.js"
   ],
   "deletedFiles": [],
   "addedPlugins": [],

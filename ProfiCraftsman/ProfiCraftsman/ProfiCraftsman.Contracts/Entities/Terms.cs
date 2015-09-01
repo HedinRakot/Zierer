@@ -95,6 +95,10 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'BeginTripFromOffice' for property <see cref="Terms.BeginTripFromOffice"/>
             /// </summary>
             public static readonly string BeginTripFromOffice = "BeginTripFromOffice";
+            /// <summary>
+            /// Column name 'DeliveryNoteFileName' for property <see cref="Terms.DeliveryNoteFileName"/>
+            /// </summary>
+            public static readonly string DeliveryNoteFileName = "DeliveryNoteFileName";
           
         }
         #endregion
@@ -117,6 +121,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public int Duration{ get; set; }
         public int? UserId{ get; set; }
         public bool? BeginTripFromOffice{ get; set; }
+        public string DeliveryNoteFileName{ get; set; }
         public virtual ICollection<DeliveryNoteSignatures> DeliveryNoteSignatures{ get; set; }
         public virtual User User{ get; set; }
         public virtual Autos Autos{ get; set; }
@@ -176,6 +181,7 @@ namespace ProfiCraftsman.Contracts.Entities
                        Duration = Duration,
                        UserId = UserId,
                        BeginTripFromOffice = BeginTripFromOffice,
+                       DeliveryNoteFileName = DeliveryNoteFileName,
         	           };
         }
     }

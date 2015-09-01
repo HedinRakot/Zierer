@@ -122,7 +122,7 @@
             success(function (result) {
                 self.term = result;
 
-                self.state.go('/termDetails');
+                self.state.go('termDetails');
             }).
             error(function (result) {
 
