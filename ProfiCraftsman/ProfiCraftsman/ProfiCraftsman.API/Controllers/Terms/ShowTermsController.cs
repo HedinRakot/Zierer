@@ -42,13 +42,17 @@ namespace ProfiCraftsman.API.Controllers
 
     public class TermViewModel
     {
+        public int id { get; set; }
         public string title { get; set; }
         public string url { get; set; }
         public string start { get; set; }
+        public DateTime startDate { get; set; }
         public string end { get; set; }
+        public DateTime endDate { get; set; }
         public string color { get; set; }
         public bool agendaEvent { get; set; }
         public int columnIndex { get; set; }
+        public IEnumerable<int> employees { get; set; }
     }
 
     /// <summary>
@@ -91,15 +95,19 @@ namespace ProfiCraftsman.API.Controllers
 
                         result.Add(new TermViewModel()
                         {
+                            id = term.Id,
                             start = term.Date.ToString("yyyy-MM-ddTHH:mm"),
+                            startDate = term.Date,
                             end = term.Date.AddMinutes(term.Duration).ToString("yyyy-MM-ddTHH:mm"),
+                            endDate = term.Date.AddMinutes(term.Duration),
                             url = String.Format("#Orders/{0}", term.OrderId),
                             title = String.Format("{0}\n{1}\n{2} {3}\n{4}",
                                  String.Format("{0} {1}", termGroup.Key.Name, termGroup.Key.FirstName),
                                  term.Orders.Street, term.Orders.Zip, term.Orders.City, term.Orders.CustomerName),
                             color = color,
                             agendaEvent = false,
-                            columnIndex = columnIndex
+                            columnIndex = columnIndex,
+                            employees = new List<int>() { term.EmployeeId },
                         });
                     }
 
