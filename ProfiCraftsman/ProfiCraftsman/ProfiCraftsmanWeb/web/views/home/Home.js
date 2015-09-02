@@ -6,185 +6,112 @@
 	'mixins/bound-form',
     'models/ShowProduct'
 ], function (BaseView, Calendar, KendoWidgetFormMixin, KendoValidatorFormMixin, BoundForm, Model) {
-	'use strict';
-    
+    'use strict';
+
     var bindCalendar = function (self, needLoadData) {
 
-	    var model = self.model;
+        var model = self.model;
 
-	    require(['calendarLanguages'], function () {
+        require(['calendarLanguages'], function () {
 
-	        self.$el.find('#calendar').fullCalendar({
+            self.$el.find('#calendar').fullCalendar({
 
-	            customButtons: {
-	                weeklyViewButton: {
-	                    text: 'Wochenansicht',
-	                    click: function () {
-	                        self.$el.find('#calendar').hide();
-	                        
-	                        self.$el.find('#scheduler').show();
-	                        bindWeeklyScheduler(self, true);
-	                    }
-	                }
-	            },
-	            header: {
-	                left: 'prev,next today',
-	                center: 'title',
-	                right: 'weeklyViewButton'
-	            },
-	            minTime: "08:00:00",
-	            maxTime: "20:00:00",
-	            height: 735,
-	            editable: false,
-	            lang: "de",
-	            eventLimit: true, // allow "more" link when too many events,
-               
-	            defaultView: 'agendaDay',
+                customButtons: {
+                    weeklyViewButton: {
+                        text: 'Wochenansicht',
+                        click: function () {
+                            self.$el.find('#calendar').hide();
 
-	            events: function (start, end, timezone, callback) {
-    
-	                if (needLoadData) {
-	                    $.ajax({
-	                        url: Application.apiUrl + 'showTerms',
-	                        type: 'POST',
-	                        data: {
-	                            //TODO name: model.get('name'),
-	                            startDateStr: start.date() + '.' + (start.month() + 1) + '.' + start.year(),
-	                            endDateStr: end.date() + '.' + (end.month() + 1) + '.' + end.year(),
-	                        },
-	                        success: function (terms) {
+                            var scheduler = self.$el.find('#scheduler');
+                            scheduler.show();
+                            bindWeeklyScheduler(self, scheduler, true);
+                        }
+                    }
+                },
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'weeklyViewButton'
+                },
+                minTime: "07:00:00",
+                maxTime: "18:00:00",
+                height: 690,
+                editable: false,
+                lang: "de",
+                eventLimit: true, // allow "more" link when too many events,
 
-	                            var events = [];
-	                            $(terms).each(function () {
+                defaultView: 'agendaDay',
 
-	                                events.push({
-	                                    title: this.title,
-	                                    start: this.start,
-	                                    end: this.end,
-	                                    url: this.url,
-	                                    color: this.color,
-	                                    allDay: this.agendaEvent,
-	                                    columnIndex: this.columnIndex,
-	                                    overlap: false,
-	                                });
-	                            });
-	                            callback(events);
-	                        },
-	                        error: function (e) {
-	                            //alert('there was an error while fetching events!');
-	                        }
-	                    });
-	                }
-	            }
-	        });
-	    });
+                events: function (start, end, timezone, callback) {
+
+                    if (needLoadData) {
+                        $.ajax({
+                            url: Application.apiUrl + 'showTerms',
+                            type: 'POST',
+                            data: {
+                                //TODO name: model.get('name'),
+                                startDateStr: start.date() + '.' + (start.month() + 1) + '.' + start.year(),
+                                endDateStr: end.date() + '.' + (end.month() + 1) + '.' + end.year(),
+                            },
+                            success: function (terms) {
+
+                                var events = [];
+                                $(terms).each(function () {
+
+                                    events.push({
+                                        title: this.title,
+                                        start: this.start,
+                                        end: this.end,
+                                        url: this.url,
+                                        color: this.color,
+                                        allDay: this.agendaEvent,
+                                        columnIndex: this.columnIndex,
+                                        overlap: false,
+                                    });
+                                });
+                                callback(events);
+                            },
+                            error: function (e) {
+
+                            }
+                        });
+                    }
+                }
+            });
+        });
     },
 
-    bindWeeklyScheduler = function (self, needLoadData) {
+    bindWeeklyScheduler = function (self, scheduler, needLoadData) {
 
         var model = self.model;
 
         require(['kendo/kendo.scheduler', 'kendo/kendo.timezones'], function () {
-            
-            $.ajax({
-                url: Application.apiUrl + 'showTerms',
-                type: 'POST',
-                data: {
-                    //TODO name: model.get('name'),
-                    //startDateStr: start.date() + '.' + (start.month() + 1) + '.' + start.year(),
-                    //endDateStr: end.date() + '.' + (end.month() + 1) + '.' + end.year(),
-                    startDateStr: '02.09.2015',//new Date(),
-                    endDateStr: '03.09.2015',//new Date(new Date().setDate(new Date().getDate()+1)).toDateString(),
-                },
-                success: function (terms) {
-                    debugger;
 
-            self.$el.find('#scheduler').kendoScheduler({
-                date: new Date(),
-                startTime: new Date(),
+            scheduler.kendoScheduler({
+                //date: new Date(),
+                //startTime: new Date(),
                 eventHeight: 50,
                 majorTick: 60,
+
                 views: [
-                    //"timeline",
                     "timelineWeek",
-                    //"timelineWorkWeek",
-                    //{
-                    //    type: "timelineMonth",
-                    //    startTime: new Date("2013/6/13 00:00 AM"),
-                    //    majorTick: 1440
-                    //}
                 ],
+
                 timezone: "Europe/Berlin",
 
                 navigate: function (e) {
-                    alert(e.date);
+
+                    loadWeeklySchedulerData(scheduler, new Date(e.date));
                 },
 
                 showWorkHours: true,
                 editable: false,
 
-                dataSource: {
-                    batch: true,
-
-                    data: terms,// [{ "id": 2, "employees": [2], "title": "LoL", "Description": "", "start": "2015-09-02T10:00", "end": "2015-09-02T14:00" }],
-                    //transport: {
-                    //    read: {
-                    //        url: "//demos.telerik.com/kendo-ui/service/meetings",
-                    //        dataType: "jsonp"
-                    //    },
-                    //    //update: {
-                    //    //    url: "//demos.telerik.com/kendo-ui/service/meetings/update",
-                    //    //    dataType: "jsonp"
-                    //    //},
-                    //    //create: {
-                    //    //    url: "//demos.telerik.com/kendo-ui/service/meetings/create",
-                    //    //    dataType: "jsonp"
-                    //    //},
-                    //    //destroy: {
-                    //    //    url: "//demos.telerik.com/kendo-ui/service/meetings/destroy",
-                    //    //    dataType: "jsonp"
-                    //    //},
-                    //    parameterMap: function (options, operation) {
-                    //        if (operation !== "read" && options.models) {
-                    //            return { models: kendo.stringify(options.models) };
-                    //        }
-                    //    }
-                    //},
-                    schema: {
-                        model: {
-                            id: "id",
-                            fields: {
-                                id: { from: "id", type: "number" },
-                                title: { from: "title", defaultValue: "No title", validation: { required: true } },
-                                start: { type: "date", from: "startDate" },
-                                end: { type: "date", from: "endDate" },
-                                //startTimezone: { from: "StartTimezone" },
-                                //endTimezone: { from: "EndTimezone" },
-                                //description: { from: "Description" },
-                                //recurrenceId: { from: "RecurrenceID" },
-                                //recurrenceRule: { from: "RecurrenceRule" },
-                                //recurrenceException: { from: "RecurrenceException" },
-                                //roomId: { from: "RoomID", nullable: true },
-                                employees: { from: "employees", nullable: true },
-                                //isAllDay: { type: "boolean", from: "IsAllDay" }
-                            }
-                        }
-                    }
-                },
                 group: {
                     resources: ["Employees"],
                     orientation: "vertical"
                 },
                 resources: [
-                    //{
-                    //    field: "roomId",
-                    //    name: "Rooms",
-                    //    dataSource: [
-                    //        { text: "Meeting Room 101", value: 1, color: "#6eb3fa" },
-                    //        { text: "Meeting Room 201", value: 2, color: "#f58a8a" }
-                    //    ],
-                    //    title: "Room"
-                    //},
                     {
                         field: "employees",
                         name: "Employees",
@@ -203,19 +130,53 @@
             });
 
 
-
-                },
-                error: function (e) {
-                    //alert('there was an error while fetching events!');
-                }
-            });
+            loadWeeklySchedulerData(scheduler, new Date());
 
         });
 
     },
 
+    loadWeeklySchedulerData = function (scheduler, currentDate)
+    {
+        var firstday = new Date(currentDate.setDate(currentDate.getDate() - currentDate.getDay() + 1));
+        var lastday = new Date(currentDate.setDate(currentDate.getDate() - currentDate.getDay() + 8));
+
+        $.ajax({
+            url: Application.apiUrl + 'showTerms',
+            type: 'POST',
+            data: {
+                startDateStr: firstday.toDateString(),
+                endDateStr: lastday.toDateString()
+            },
+            success: function (terms) {
+
+                scheduler.data('kendoScheduler').setDataSource(new kendo.data.SchedulerDataSource({
+                    data: terms,
+
+                    schema: {
+                        model: {
+                            id: "id",
+                            fields: {
+                                id: { from: "id", type: "number" },
+                                title: { from: "title" },
+                                start: { type: "date", from: "start" },
+                                end: { type: "date", from: "end" },
+                                employees: { from: "employees" },
+                            }
+                        }
+                    }
+                }));
+
+                scheduler.data('kendoScheduler').dataSource.read();
+            },
+            error: function (e) {
+                
+            }
+        });
+    },
+
 	view = BaseView.extend({
-        
+
 	    bindings: function () {
 
 	        var self = this;
@@ -229,44 +190,44 @@
 	    initialize: function () {
 
 	        view.__super__.initialize.apply(this, arguments);
-	        
+
 	        var self = this;
 	        self.model = new Model();
 	    },
 
-		render: function () {
-		    view.__super__.render.apply(this, arguments);
+	    render: function () {
+	        view.__super__.render.apply(this, arguments);
 
-		    var self = this,
+	        var self = this,
                 needLoadData = true;
 
-		    setTimeout(function () { bindCalendar(self, needLoadData); }, 0);
+	        setTimeout(function () { bindCalendar(self, needLoadData); }, 0);
 
-			return this;
-		},
+	        return this;
+	    },
 
-		events: {
-		    'click .apply': function (e) {
+	    events: {
+	        'click .apply': function (e) {
 
-		        var self = this;
-		        self.$el.find('#calendar').fullCalendar('destroy');
-		        bindCalendar(self, true);		        
-		    },
-		    'click .cancel': function (e) {
+	            var self = this;
+	            self.$el.find('#calendar').fullCalendar('destroy');
+	            bindCalendar(self, true);
+	        },
+	        'click .cancel': function (e) {
 
-		        var self = this;
+	            var self = this;
 
-		        self.model.clear().set(self.model.defaults);
+	            self.model.clear().set(self.model.defaults);
 
-		        self.$el.find('#calendar').fullCalendar('destroy');
-		        bindCalendar(self, true);		        
-		    },
-		}
+	            self.$el.find('#calendar').fullCalendar('destroy');
+	            bindCalendar(self, true);
+	        },
+	    }
 	});
-    
-	view.mixin(BoundForm);
-	view.mixin(KendoValidatorFormMixin);
-	view.mixin(KendoWidgetFormMixin);
-    
-	return view;
+
+    view.mixin(BoundForm);
+    view.mixin(KendoValidatorFormMixin);
+    view.mixin(KendoWidgetFormMixin);
+
+    return view;
 });
