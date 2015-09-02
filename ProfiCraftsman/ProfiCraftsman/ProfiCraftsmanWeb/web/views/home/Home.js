@@ -8,9 +8,12 @@
 ], function (BaseView, Calendar, KendoWidgetFormMixin, KendoValidatorFormMixin, BoundForm, Model) {
     'use strict';
 
+
     var bindCalendar = function (self, needLoadData) {
 
         var model = self.model;
+
+        var schedulerCreated = false;
 
         require(['calendarLanguages'], function () {
 
@@ -24,7 +27,15 @@
 
                             var scheduler = self.$el.find('#scheduler');
                             scheduler.show();
-                            bindWeeklyScheduler(self, scheduler, true);
+
+                            if (!schedulerCreated) {
+                                schedulerCreated = true;
+
+                                bindWeeklyScheduler(self, scheduler, true);
+                            }
+                            else {
+                                scheduler.data('kendoScheduler').refresh();
+                            }
                         }
                     }
                 },
@@ -85,11 +96,17 @@
 
         var model = self.model;
 
-        require(['kendo/kendo.scheduler', 'kendo/kendo.timezones'], function () {
+        require(['kendo/kendo.scheduler', 'kendo/kendo.timezones', 'kendo/cultures/kendo.culture.de-DE'], function () {
 
             scheduler.kendoScheduler({
-                //date: new Date(),
-                //startTime: new Date(),
+
+               // workDayStart: new Date("01.01.2015 07:00"),
+               // workDayEnd: new Date("01.01.2015 18:00"),
+                startTime: new Date("2013/6/6 08:00"),
+                endTime: new Date("2013/6/6 18:00"),
+
+                eventTemplate: $("#event-template").html(),
+
                 eventHeight: 50,
                 majorTick: 60,
 
@@ -101,8 +118,24 @@
 
                 navigate: function (e) {
 
-                    loadWeeklySchedulerData(scheduler, new Date(e.date));
+                    if (e.action == "changeView") {
+                        scheduler.hide();
+                        self.$el.find('#calendar').show();
+                    }
+                    else {
+                        loadWeeklySchedulerData(scheduler, new Date(e.date));
+                    }
                 },
+
+                messages: {
+                    showWorkDay: "Arbeitszeit anzeigen",
+                    showFullDay: "Ganzen Tag anzeigen",
+                    today: "Heute",
+                    views: {
+                        timelineWeek: "Tagesansicht"
+                    }
+                },
+
 
                 showWorkHours: true,
                 editable: false,
@@ -136,8 +169,7 @@
 
     },
 
-    loadWeeklySchedulerData = function (scheduler, currentDate)
-    {
+    loadWeeklySchedulerData = function (scheduler, currentDate) {
         var firstday = new Date(currentDate.setDate(currentDate.getDate() - currentDate.getDay() + 1));
         var lastday = new Date(currentDate.setDate(currentDate.getDate() - currentDate.getDay() + 8));
 
@@ -161,6 +193,7 @@
                                 title: { from: "title" },
                                 start: { type: "date", from: "start" },
                                 end: { type: "date", from: "end" },
+                                url: { from: "url" },
                                 employees: { from: "employees" },
                             }
                         }
@@ -170,7 +203,7 @@
                 scheduler.data('kendoScheduler').dataSource.read();
             },
             error: function (e) {
-                
+
             }
         });
     },
