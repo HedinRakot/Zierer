@@ -1,8 +1,9 @@
 define([
 'base/base-object-grid-view',
 'collections/Settings/Employees',
-'l!t!Settings/FilterEmployees'
-], function (BaseView, Collection, FilterView) {
+'l!t!Settings/FilterEmployees',
+'Settings/Custom.Employees'
+], function (BaseView, Collection, FilterView, CustomColumns) {
 	'use strict';		
 	var view = BaseView.extend({
 
@@ -21,13 +22,14 @@ define([
 	    },
 		columns: function () {
 			
-			return [
+			return $.merge( CustomColumns(),
+[
 				{ field: 'number', title: this.resources.number },
 				{ field: 'jobPositionId', title: this.resources.jobPositionId , collection: this.options.jobPositions, defaultText: this.resources.pleaseSelect},
 				{ field: 'autoId', title: this.resources.autoId , collection: this.options.autos, defaultText: this.resources.pleaseSelect},
 				{ field: 'name', title: this.resources.name },
 				{ field: 'firstName', title: this.resources.firstName },
-			];
+			]);
 		}
 
 	});

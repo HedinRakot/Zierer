@@ -8,6 +8,7 @@
 ], function (BaseView, Calendar, KendoWidgetFormMixin, KendoValidatorFormMixin, BoundForm, Model) {
     'use strict';
 
+    var employees = [];
 
     var bindCalendar = function (self, needLoadData) {
 
@@ -60,7 +61,6 @@
                             url: Application.apiUrl + 'showTerms',
                             type: 'POST',
                             data: {
-                                //TODO name: model.get('name'),
                                 startDateStr: start.date() + '.' + (start.month() + 1) + '.' + start.year(),
                                 endDateStr: end.date() + '.' + (end.month() + 1) + '.' + end.year(),
                             },
@@ -148,14 +148,7 @@
                     {
                         field: "employees",
                         name: "Employees",
-                        dataSource: [
-                            { text: "Yury", value: 1, color: "#f8a398" },
-                            { text: "Thomas", value: 2, color: "#51a0ed" },
-                            { text: "Fechner Sasha", value: 3, color: "#56ca85" },
-                            { text: "Matthias", value: 4, color: "#56ca85" },
-                            { text: "Heinrich", value: 5, color: "#56ca85" },
-                            { text: "Peter", value: 6, color: "#56ca85" },
-                        ],
+                        dataSource : employees,
                         multiple: true,
                         title: "Employees"
                     }
@@ -233,6 +226,26 @@
 
 	        var self = this,
                 needLoadData = true;
+            
+	        employees = [];
+
+	        $.ajax({
+	            url: Application.apiUrl + 'employees',
+	            success: function (result) {
+
+	                $(result.data).each(function () {
+
+	                    employees.push({
+	                        text: this.name + ' ' + (this.firstName != null ? this.firstName : ''),
+	                        value: this.id,
+	                        color: this.color,
+	                    });
+	                });
+	            },
+	            error: function (e) {
+
+	            }
+	        });
 
 	        setTimeout(function () { bindCalendar(self, needLoadData); }, 0);
 

@@ -47,6 +47,9 @@ define(function () {
 			,comment: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('Employees', 'comment'), 
 				                    validation: { required: false, maxLength: 128 } }			
+			,color: { type: "string", 
+			                        editable: Application.canTableItemBeEdit('Employees', 'color'), 
+				                    validation: { required: true, maxLength: 10 } }			
 		},
 		defaults: function () {
 			var dnf = new Date();

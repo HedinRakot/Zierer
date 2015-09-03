@@ -169,15 +169,23 @@
             case "datetime":
                 return "<input type=\"text\" data-role=\"datepicker\"";
             default:
-				if (property.Property.Length.HasValue && property.Property.Length > 50 && property.Column.Content.Rows.HasValue)
-                {
-					return String.Format("<textarea type=\"text\" class=\"k-textbox\" rows=\"{1}\" style=\"width: {0}px\"",
-						property.Column.Content.AddViewColumnWidth > 0 ? property.Column.Content.AddViewColumnWidth : 362, property.Column.Content.Rows.Value);
-                }
-                else
+				
+				if(!property.Column.Content.IsColorElement)
 				{
-					return String.Format("<input type=\"text\" class=\"k-textbox\" style=\"width: {0}px\"",
-						property.Column.Content.AddViewColumnWidth > 0 ? property.Column.Content.AddViewColumnWidth : 362);
+					if (property.Property.Length.HasValue && property.Property.Length > 50 && property.Column.Content.Rows.HasValue)
+					{
+						return String.Format("<textarea type=\"text\" class=\"k-textbox\" rows=\"{1}\" style=\"width: {0}px\"",
+							property.Column.Content.AddViewColumnWidth > 0 ? property.Column.Content.AddViewColumnWidth : 362, property.Column.Content.Rows.Value);
+					}
+					else
+					{
+						return String.Format("<input type=\"text\" class=\"k-textbox\" style=\"width: {0}px\"",
+							property.Column.Content.AddViewColumnWidth > 0 ? property.Column.Content.AddViewColumnWidth : 362);
+					}
+				}
+				else
+				{
+					return "<input type=\"text\" data-role=\"colorpicker\"";
 				}
         }
     }

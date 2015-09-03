@@ -66,7 +66,7 @@ namespace ProfiCraftsman.API
                 {"Name", "name"},
             });
 
-            tables.Add("Employees", new TableMapping("Employees", "Employees", 14)
+            tables.Add("Employees", new TableMapping("Employees", "Employees", 15)
             {
                 {"Number", "number"},
                 {"JobPositionId", "jobPositionId"},
@@ -82,6 +82,7 @@ namespace ProfiCraftsman.API
                 {"Fax", "fax"},
                 {"Email", "email"},
                 {"Comment", "comment"},
+                {"Color", "color"},
             });
 
             tables.Add("Role_Permission_Rsp", new TableMapping("Role_Permission_Rsp", "RolePermissionRsp", 2)

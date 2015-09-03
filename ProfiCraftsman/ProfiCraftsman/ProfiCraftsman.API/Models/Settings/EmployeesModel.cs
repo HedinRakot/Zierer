@@ -87,6 +87,12 @@ namespace ProfiCraftsman.API.Models.Settings
         /// </summary>
         [DataMember]
         public string comment{ get; set; }
+        /// <summary>
+        ///     Model property for <see cref="Employees.Color"/> entity
+        /// </summary>
+        [Required]
+        [DataMember]
+        public string color{ get; set; }
 
     }
 }

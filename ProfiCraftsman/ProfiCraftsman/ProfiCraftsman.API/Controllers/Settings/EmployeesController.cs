@@ -36,6 +36,7 @@ namespace ProfiCraftsman.API.Controllers.Settings
             model.fax = entity.Fax;
             model.email = entity.Email;
             model.comment = entity.Comment;
+            model.color = entity.Color;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
         }
@@ -55,6 +56,7 @@ namespace ProfiCraftsman.API.Controllers.Settings
             entity.Fax = model.fax;
             entity.Email = model.email;
             entity.Comment = model.comment;
+            entity.Color = model.color;
         }
     }
 }

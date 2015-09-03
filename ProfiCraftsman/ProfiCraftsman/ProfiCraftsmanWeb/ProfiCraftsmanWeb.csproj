@@ -449,6 +449,8 @@
     <Content Include="web\resources\Orders\Materials.en.js" />
     <Content Include="web\resources\Orders\FilterOffersProductSmart.de.js" />
     <Content Include="web\resources\Orders\FilterOffersProductSmart.en.js" />
+    <Content Include="web\resources\Settings\Custom.Employee.de.js" />
+    <Content Include="web\resources\Settings\Custom.Employee.en.js" />
     <Content Include="web\resources\Terms\ShowSignatureView.de.js" />
     <Content Include="web\resources\Terms\ShowSignatureView.en.js" />
     <Content Include="web\resources\Terms\PositionSearch.de.js" />
@@ -1217,6 +1219,7 @@
     <Content Include="web\views\Invoices\InvoicesRelationships.js" />
     <Content Include="web\views\Invoices\AddInvoicePositions.js" />
     <Content Include="web\views\Orders\InnerPositions.js" />
+    <Content Include="web\views\Settings\Custom.Employees.js" />
     <Content Include="web\views\Terms\ShowSignatureView.js" />
     <Content Include="web\views\Terms\PositionSearch.js" />
     <Content Include="web\views\Terms\SelectPosition.js" />

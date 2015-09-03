@@ -22,6 +22,7 @@ define(function () {
 		fax: 'Fax',	
 		email: 'Email',	
 		comment: 'Comment',	
+		color: 'Color',	
 	};
 
 	return resources;

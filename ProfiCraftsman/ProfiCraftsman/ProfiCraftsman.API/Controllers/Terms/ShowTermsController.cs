@@ -77,10 +77,8 @@ namespace ProfiCraftsman.API.Controllers
             if (!String.IsNullOrEmpty(model.StartDateStr) && !String.IsNullOrEmpty(model.EndDateStr))
             {
                 var termsQuery = manager.GetActualTerms(model.StartDate, model.EndDate);
-                //TODO Where(r => String.IsNullOrEmpty(model.Name) || r.Employees.Name.ToLower().Contains(model.Name.ToLower()));
 
                 var terms = termsQuery.ToList();
-                var color = "";
                 var columnIndex = 0;
 
                 foreach (var termGroup in terms.GroupBy(o => o.Employees).OrderBy(o => o.Key.Id))
@@ -100,7 +98,7 @@ namespace ProfiCraftsman.API.Controllers
                             title = String.Format("{0}\n{1}\n{2} {3}\n{4}",
                                  String.Format("{0} {1}", termGroup.Key.Name, termGroup.Key.FirstName),
                                  term.Orders.Street, term.Orders.Zip, term.Orders.City, term.Orders.CustomerName),
-                            color = color,
+                            color = termGroup.Key.Color,
                             agendaEvent = false,
                             columnIndex = columnIndex,
                             employees = new List<int>() { term.EmployeeId },
@@ -113,51 +111,15 @@ namespace ProfiCraftsman.API.Controllers
                         end = date.ToString("yyyy-MM-ddTHH:mm"),
                         url = String.Empty,
                         title = String.Format("{0} {1}", termGroup.Key.Name, termGroup.Key.FirstName),
-                        color = color,
+                        color = termGroup.Key.Color,
                         agendaEvent = true
                     });
 
-                    color = GetNextColor(color);
                     columnIndex++;
                 }
             }
 
             return Ok(result);
-        }
-
-        private string GetNextColor(string color)
-        {
-            var result = "green";
-
-            switch (color)
-            {
-                case "green":
-                    result = "gray";
-                    break;
-                case "gray":
-                    result = "orange";
-                    break;
-                case "orange":
-                    result = "violet";
-                    break;
-                case "violet":
-                    result = "blue";
-                    break;
-                case "blue":
-                    result = "DarkRed";
-                    break;
-                case "DarkRed":
-                    result = "LightSalmon";
-                    break;
-                case "LightSalmon":
-                    result = "GoldenRod";
-                    break;
-                case "GoldenRod":
-                    result = "Teal";
-                    break;
-            }
-
-            return result;
         }
     }
 }

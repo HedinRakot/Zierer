@@ -107,6 +107,11 @@ namespace ProfiCraftsman.Lib.Data
             Property(t => t.DeleteDate)
                 .HasColumnName(Employees.Fields.DeleteDate);
 
+            Property(t => t.Color)
+                .HasColumnName(Employees.Fields.Color)
+                .IsUnicode()
+                .HasMaxLength(10);
+
 
             //Relationships
             HasRequired(e => e.JobPositions)

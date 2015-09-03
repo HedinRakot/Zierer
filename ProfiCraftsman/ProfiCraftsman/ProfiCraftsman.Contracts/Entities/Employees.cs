@@ -92,6 +92,10 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'DeleteDate' for property <see cref="Employees.DeleteDate"/>
             /// </summary>
             public static readonly string DeleteDate = "DeleteDate";
+            /// <summary>
+            /// Column name 'Color' for property <see cref="Employees.Color"/>
+            /// </summary>
+            public static readonly string Color = "Color";
           
         }
         #endregion
@@ -113,6 +117,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime CreateDate{ get; set; }
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
+        public string Color{ get; set; }
         public virtual JobPositions JobPositions{ get; set; }
         public virtual Autos Autos{ get; set; }
         public virtual ICollection<Terms> Terms{ get; set; }
@@ -164,6 +169,7 @@ namespace ProfiCraftsman.Contracts.Entities
                        CreateDate = CreateDate,
                        ChangeDate = ChangeDate,
                        DeleteDate = DeleteDate,
+                       Color = Color,
         	           };
         }
     }

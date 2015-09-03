@@ -34,6 +34,7 @@ define([
 			'#fax': 'fax',
 			'#email': 'email',
 			'#comment': 'comment',
+			'#color': 'color',
 			};
 
             return result;
@@ -58,6 +59,7 @@ define([
 			this.disableInput(this, 'fax');
 			this.disableInput(this, 'email');
 			this.disableInput(this, 'comment');
+			this.disableInput(this, 'color');
 
             return this;
         }
