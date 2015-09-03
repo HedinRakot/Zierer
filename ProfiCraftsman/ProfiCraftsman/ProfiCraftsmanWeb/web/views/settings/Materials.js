@@ -1,8 +1,10 @@
 define([
 'base/base-object-grid-view',
 'collections/Settings/Materials',
-'l!t!Settings/FilterMaterials'
-], function (BaseView, Collection, FilterView) {
+'l!t!Settings/FilterMaterials',
+'Settings/Custom.Events.Materials',
+'Settings/Custom.Toolbar.Materials'
+], function (BaseView, Collection, FilterView, CustomEvents, CustomToolbar) {
 	'use strict';		
 	var view = BaseView.extend({
 
@@ -36,6 +38,9 @@ define([
 			];
 		}
 
+		,events: CustomEvents
+		,toolbar: CustomToolbar
+		,selectable: true
 	});
 
 	return view;

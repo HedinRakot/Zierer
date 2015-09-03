@@ -451,6 +451,8 @@
     <Content Include="web\resources\Orders\FilterOffersProductSmart.en.js" />
     <Content Include="web\resources\Settings\Custom.Employee.de.js" />
     <Content Include="web\resources\Settings\Custom.Employee.en.js" />
+    <Content Include="web\resources\Settings\ImportMaterials.de.js" />
+    <Content Include="web\resources\Settings\ImportMaterials.en.js" />
     <Content Include="web\resources\Terms\ShowSignatureView.de.js" />
     <Content Include="web\resources\Terms\ShowSignatureView.en.js" />
     <Content Include="web\resources\Terms\PositionSearch.de.js" />
@@ -956,6 +958,8 @@
     <Content Include="web\templates\Orders\InnerPositions.html" />
     <Content Include="web\templates\Orders\Materials.html" />
     <Content Include="web\templates\Orders\FilterOffersProductSmart.html" />
+    <Content Include="web\templates\Settings\ImportMaterialResults.html" />
+    <Content Include="web\templates\Settings\ImportMaterials.html" />
     <Content Include="web\templates\Terms\ShowSignatureView.html" />
     <Content Include="web\templates\Terms\PositionSearch.html" />
     <Content Include="web\templates\Terms\SelectPosition.html" />
@@ -1220,6 +1224,10 @@
     <Content Include="web\views\Invoices\AddInvoicePositions.js" />
     <Content Include="web\views\Orders\InnerPositions.js" />
     <Content Include="web\views\Settings\Custom.Employees.js" />
+    <Content Include="web\views\Settings\Custom.Events.Materials.js" />
+    <Content Include="web\views\Settings\Custom.Toolbar.Materials.js" />
+    <Content Include="web\views\Settings\ImportMaterialResults.js" />
+    <Content Include="web\views\Settings\ImportMaterials.js" />
     <Content Include="web\views\Terms\ShowSignatureView.js" />
     <Content Include="web\views\Terms\PositionSearch.js" />
     <Content Include="web\views\Terms\SelectPosition.js" />

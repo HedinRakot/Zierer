@@ -202,6 +202,9 @@
     </Compile>
     <Compile Include="DuplicateCheckers\Interfaces\IProfiCraftsmanDuplicateChecker.cs" />
     <Compile Include="DuplicateCheckers\ProfiCraftsmanDuplicateCheckerSaveActor.cs" />
+    <Compile Include="Import\ImportResultError.cs" />
+    <Compile Include="Import\MaterialImporter.cs" />
+    <Compile Include="Import\MaterialImportResults.cs" />
     <Compile Include="Managers\AdditionalCostsManager.cs">
       <DependentUpon>Managers.tt</DependentUpon>
     </Compile>
