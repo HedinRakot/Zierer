@@ -49,7 +49,7 @@ define(function () {
 				                    validation: { required: false, maxLength: 128 } }			
 			,color: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('Employees', 'color'), 
-				                    validation: { required: true, maxLength: 10 } }			
+				                    validation: { required: true, maxLength: 20 } }			
 		},
 		defaults: function () {
 			var dnf = new Date();

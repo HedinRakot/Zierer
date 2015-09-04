@@ -3,43 +3,7 @@
 ], function () {
     'use strict';
 
-    var copyProduct = function (dataItem) {
-        var self = this;
-
-        var model = new Backbone.Model();
-        model.url = Application.apiUrl + 'copyProduct';
-        model.set('id', dataItem.id);
-        model.save({}, {
-            success: function (model, response) {
-
-                if (model.id != 0)
-                    location.href = '#Products/' + model.id;
-                else {
-                    require(['base/information-view'], function (View) {
-                        var view = new View({
-                            title: 'Produkt kopieren',
-                            message: "Das ausgewählte Produkt konnte nicht kopiert werden."
-                        });
-                        self.addView(view);
-                        self.$el.append(view.render().$el);
-                    });
-                }
-            },
-            error: function (model, response) {
-
-                require(['base/information-view'], function (View) {
-                    var view = new View({
-                        title: 'Produkt kopieren',
-                        message: 'Das ausgewählte Produkt konnte nicht kopiert werden.'
-                    });
-                    self.addView(view);
-                    self.$el.append(view.render().$el);
-                });
-            }
-        });
-    },
-
-    events = {        
+    var events = {        
         'click .import-materials': function () {
             var self = this;
 

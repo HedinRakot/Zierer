@@ -100,10 +100,10 @@
 
             scheduler.kendoScheduler({
 
-               // workDayStart: new Date("01.01.2015 07:00"),
-               // workDayEnd: new Date("01.01.2015 18:00"),
-                startTime: new Date("2013/6/6 08:00"),
-                endTime: new Date("2013/6/6 18:00"),
+                workDayStart: new Date("2015/1/1 07:00"),
+                workDayEnd: new Date("2015/1/1 18:00"),
+                startTime: new Date("2015/1/1 00:00"),
+                endTime: new Date("2015/1/1 23:59"),
 
                 eventTemplate: $("#event-template").html(),
 

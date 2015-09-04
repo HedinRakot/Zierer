@@ -65,9 +65,16 @@ namespace ProfiCraftsman.API
         //TODO Need to be removed
         public static string GetSystemTablesJson(IDependencyResolver resolver)
         {
+            var tableNames = new Dictionary<string, SysTableWithColumnsModel>();
+            tableNames.Add("ProductMaterialRsp", new SysTableWithColumnsModel()
+            {
+                ReadOnlyColumns = new List<string>() { "materialId" },
+                EditMode = 3
+            });
+
             var result = new GlobalSysTableModel
             {
-                TableNames = new Dictionary<string, SysTableWithColumnsModel>()
+                TableNames = tableNames
             };
 
             return JsonConvert.SerializeObject(result, new JsonSerializerSettings { });

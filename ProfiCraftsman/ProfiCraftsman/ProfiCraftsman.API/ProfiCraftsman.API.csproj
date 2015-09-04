@@ -191,6 +191,7 @@
     <Compile Include="Controllers\Orders\DeleteAllOrderPositionsController.cs" />
     <Compile Include="Controllers\Orders\CopyOrderController.cs" />
     <Compile Include="Controllers\Orders\PositionMaterialsController.cs" />
+    <Compile Include="Controllers\Settings\Custom.ProductMaterialRspsController.cs" />
     <Compile Include="Controllers\Settings\ImportMaterialsController.cs" />
     <Compile Include="Controllers\Terms\GetTermSignatureController.cs" />
     <Compile Include="Controllers\Terms\DeleteAllTermPositionsController.cs" />
@@ -291,6 +292,7 @@
     <Compile Include="Models\Invoices\AddInvoiceModel.cs" />
     <Compile Include="Models\Invoices\InvoicesModel.cs" />
     <Compile Include="Models\Orders\PositionMaterialModel.cs" />
+    <Compile Include="Models\Settings\Custom.MasterDataMonitorableInfoMasterDataNotificationsRspModel.cs" />
     <Compile Include="Models\Terms\TermInstrumentModel.cs" />
     <Compile Include="Models\Terms\TermPositionModel.cs" />
     <Compile Include="Models\Terms\TermsModel.cs" />
@@ -334,7 +336,7 @@
     <Compile Include="Models\Settings\Custom.RoleModel.cs" />
     <Compile Include="Models\Settings\Custom.SysColumnModel.cs" />
     <Compile Include="Models\Settings\Custom.SysTableModel.cs" />
-    <Compile Include="Models\Settings\Custom.MasterDataMonitorableInfoMasterDataNotificationsRspModel.cs" />
+    <Compile Include="Models\Settings\Custom.ProductMaterialRspModel.cs" />
     <Compile Include="Models\Settings\Custom.UserModel.cs" />
     <Compile Include="Models\Settings\CustomersModel.cs">
       <DependentUpon>Models.tt</DependentUpon>

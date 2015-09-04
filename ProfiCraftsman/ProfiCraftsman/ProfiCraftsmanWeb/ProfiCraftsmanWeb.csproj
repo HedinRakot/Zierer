@@ -1227,8 +1227,11 @@
     <Content Include="web\views\Invoices\InvoicesRelationships.js" />
     <Content Include="web\views\Invoices\AddInvoicePositions.js" />
     <Content Include="web\views\Orders\InnerPositions.js" />
+    <Content Include="web\views\Settings\Custom.ProductMaterialRsp.js" />
     <Content Include="web\views\Settings\Custom.Employees.js" />
+    <Content Include="web\views\Settings\Custom.Events.ProductMaterialRsp.js" />
     <Content Include="web\views\Settings\Custom.Events.Materials.js" />
+    <Content Include="web\views\Settings\Custom.Toolbar.ProductMaterialRsp.js" />
     <Content Include="web\views\Settings\Custom.Toolbar.Materials.js" />
     <Content Include="web\views\Settings\ImportMaterialResults.js" />
     <Content Include="web\views\Settings\ImportMaterials.js" />

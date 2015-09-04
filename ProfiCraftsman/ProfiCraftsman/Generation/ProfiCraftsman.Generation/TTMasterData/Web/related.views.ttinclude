@@ -15,18 +15,21 @@
 
         context.FileManager.StartNewFile(entityContent.CodeNamePlural + ".js");
 		//Model
-		var defines = String.Format("{0}\n{1}\n{2}{3}{4}",
+		var defines = String.Format("{0}\n{1}\n{2}{3}{4}{5}",
 			"'base/related-object-grid-view',",
 			"'collections/" + context.CurrentRelatedWebPath + "/" + entityContent.CodeNamePlural + "',",
 			"'l!t!" + context.CurrentRelatedWebPath + "/" + "Add" + entityContent.CodeName + "'",
 			entityContent.ShowExtraFields ? 
 				",\n'" + context.CurrentRelatedWebPath+ "/Custom." + entityContent.CodeName + "'" : "",
 			entityContent.CustomEvents ? 
-				",\n'" + context.CurrentRelatedWebPath+ "/Custom.Events." + entityContent.CodeName + "'" : "");
+				",\n'" + context.CurrentRelatedWebPath+ "/Custom.Events." + entityContent.CodeName + "'" : "",
+			entityContent.CustomToolbar ? 
+				",\n'" + context.CurrentRelatedWebPath+ "/Custom.Toolbar." + entityContent.CodeName + "'" : "");
 
-		var defineMembers = String.Format("{0}{1}", 
+		var defineMembers = String.Format("{0}{1}{2}", 
 				entityContent.ShowExtraFields ? ", CustomColumns" : "",
-				entityContent.CustomEvents ? ", CustomEvents" : "");
+				entityContent.CustomEvents ? ", CustomEvents" : "",
+				entityContent.CustomToolbar ? ", CustomToolbar" : "");
 
 		var columnsOpenText = entityContent.ShowExtraFields ? "return $.merge( CustomColumns(),\n[" : "return [";
 		var columnsCloseText = entityContent.ShowExtraFields ? "]);" : "];";
@@ -92,6 +95,24 @@ define([
 
 		    return self;
 		}
+
+		<#	
+		if(entityContent.CustomEvents)
+		{
+#>
+		,events: CustomEvents
+<#
+		}
+	
+		if(entityContent.CustomToolbar)
+		{
+#>
+		,toolbar: CustomToolbar
+		,selectable: true
+<#
+		}
+#>
+
 	});
 
 	return view;

@@ -110,7 +110,7 @@ namespace ProfiCraftsman.Lib.Data
             Property(t => t.Color)
                 .HasColumnName(Employees.Fields.Color)
                 .IsUnicode()
-                .HasMaxLength(10);
+                .HasMaxLength(20);
 
 
             //Relationships

@@ -54,6 +54,8 @@ define([
 
 		    return self;
 		}
+
+		
 	});
 
 	return view;

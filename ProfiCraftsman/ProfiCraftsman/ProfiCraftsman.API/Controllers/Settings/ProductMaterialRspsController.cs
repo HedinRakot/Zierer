@@ -26,6 +26,8 @@ namespace ProfiCraftsman.API.Controllers.Settings
             model.amount = entity.Amount;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
+
+            ExtraEntityToModel(entity, model);
         }
         protected override void ModelToEntity(ProductMaterialRspModel model, ProductMaterialRsp entity, ActionTypes actionType)
         {

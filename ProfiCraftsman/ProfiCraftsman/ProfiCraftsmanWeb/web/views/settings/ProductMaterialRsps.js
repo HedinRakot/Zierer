@@ -1,8 +1,11 @@
 define([	
     'base/related-object-grid-view',
 'collections/Settings/ProductMaterialRsps',
-'l!t!Settings/AddProductMaterialRsp'
-], function (BaseView, Collection, AddNewModelView) {
+'l!t!Settings/AddProductMaterialRsp',
+'Settings/Custom.ProductMaterialRsp',
+'Settings/Custom.Events.ProductMaterialRsp',
+'Settings/Custom.Toolbar.ProductMaterialRsp'
+], function (BaseView, Collection, AddNewModelView, CustomColumns, CustomEvents, CustomToolbar) {
 	'use strict';
 
 	var view = BaseView.extend({
@@ -24,10 +27,10 @@ define([
 
 		columns: function () {
 		   
-		   return [
-				{ field: 'materialId', title: this.resources.materialId , collection: this.options.materials, defaultText: this.resources.pleaseSelect, attributes: { "class": "detail-view-grid-cell" }},
+		   return $.merge( CustomColumns(),
+[
 				{ field: 'amount', title: this.resources.amount , attributes: { "class": "detail-view-grid-cell" }},
-			];
+			]);
 		},
 		
 		render: function () {
@@ -50,6 +53,11 @@ define([
 
 		    return self;
 		}
+
+				,events: CustomEvents
+		,toolbar: CustomToolbar
+		,selectable: true
+
 	});
 
 	return view;

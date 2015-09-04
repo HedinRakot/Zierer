@@ -56,9 +56,9 @@ define([
 				'Instruments': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/Instruments', false, false),
 	            'Instruments/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddInstruments', 'models/Settings/Instruments', false, false),
 	            'Instruments/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddInstruments', 'models/Settings/Instruments', false, false),
-				'Products': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/Products', { Materials: true, ProductTypes: true, ProductAmountTypes: true, }, false),
-	            'Products/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProducts', 'models/Settings/Products', { Materials: true, ProductTypes: true, ProductAmountTypes: true, }, false),
-	            'Products/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProducts', 'models/Settings/Products', { Materials: true, ProductTypes: true, ProductAmountTypes: true, }, false),
+				'Products': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/Products', { ProductTypes: true, ProductAmountTypes: true, }, false),
+	            'Products/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProducts', 'models/Settings/Products', { ProductTypes: true, ProductAmountTypes: true, }, false),
+	            'Products/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProducts', 'models/Settings/Products', { ProductTypes: true, ProductAmountTypes: true, }, false),
 			}
         
 	        return routes;

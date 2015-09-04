@@ -101,7 +101,7 @@
                 canTableItemBeCreated: function (tableName) {
 
                     var self = this,
-                        itemEditMode = new Backbone.Model(self.tables.get('TableNames')).get(tableName);
+                        itemEditMode = new Backbone.Model(self.tables.get('TableNames')).get(tableName),
                     result = !itemEditMode || itemEditMode.EditMode >= 2;
 
                     return result;
@@ -109,7 +109,7 @@
                 canTableItemBeDeleted: function (tableName) {
 
                     var self = this,
-                        itemEditMode = new Backbone.Model(self.tables.get('TableNames')).get(tableName);
+                        itemEditMode = new Backbone.Model(self.tables.get('TableNames')).get(tableName),
                     result = !itemEditMode || itemEditMode.EditMode == 3;
 
                     return result;
@@ -117,7 +117,7 @@
                 canTableItemBeEdit: function (tableName, columnName) {
 
                     var self = this,
-                        itemEditMode = new Backbone.Model(self.tables.get('TableNames')).get(tableName);
+                        itemEditMode = new Backbone.Model(self.tables.get('TableNames')).get(tableName),
                     result = !itemEditMode || itemEditMode.EditMode >= 1;
 
                     if (itemEditMode && result) {
