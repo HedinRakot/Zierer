@@ -9,8 +9,11 @@ define(function () {
 			                        editable: Application.canTableItemBeEdit('PositionMaterialRsp', 'positionId'), 
 				                    validation: { required: true } }				
 			,materialId: { type: "number", 
-			                        editable: Application.canTableItemBeEdit('PositionMaterialRsp', 'materialId'), 
-				                    validation: { required: true } }			
+			                        editable: true, 
+				                    validation: { required: true } }
+            ,materialName: { type: "string", 
+			                        editable: false, 
+				                    validation: { required: true } }
 			,amount: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('PositionMaterialRsp', 'amount'), 
 			                        validation: { required: false } }	

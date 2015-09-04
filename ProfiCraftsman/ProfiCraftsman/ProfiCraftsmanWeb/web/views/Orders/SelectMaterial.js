@@ -14,13 +14,16 @@
             //todo delete this.stickit();
 
             var self = this,
-                selectInnerMaterial = self.options.selectInnerMaterial;
+                selectInnerMaterial = self.options.selectInnerMaterial,
+                selectPositionMaterial = self.options.selectPositionMaterial;
 
             var options = {
                 success: function (model) {
  
                     if (selectInnerMaterial)
                         self.trigger('selectInnerMaterial', model);
+                    else if (selectPositionMaterial)
+                        self.trigger('selectPositionMaterial', model);
                     else
                         self.trigger('selectMaterial', model);
 

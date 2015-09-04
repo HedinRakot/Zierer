@@ -3,8 +3,7 @@
 
 	var resources = {
 
-	    add: 'Ausstattungen anlegen',
-	    edit: 'Ausstattungen editieren',
+	    add: 'Hinzufügen',
 	    pleaseSelect: 'Bitte auswählen',
 	    materialId: 'Material',
 	    amount: 'Menge',

@@ -23,6 +23,7 @@ namespace ProfiCraftsman.API.Controllers
         {
             model.positionId = entity.PositionId;
             model.materialId = entity.MaterialId;
+            model.materialName = entity.Materials.Name;
             model.amount = entity.Amount;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
