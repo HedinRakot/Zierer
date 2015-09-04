@@ -36,7 +36,11 @@
 			                self.kendoWindow.center();
 			            });
 			        }
-			    }
+			    },
+			    error: function(e){
+			        debugger;
+
+                }
 			};
 
             return result;
