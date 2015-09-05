@@ -1,9 +1,10 @@
-define(function () {
+define([
+], function () {
 	'use strict';
 
 	var model = Backbone.Model.extend({
 	    urlRoot: 'api/AdditionalCosts',
-		fields: {
+		fields:  {
 			id: { type: "number", editable: false }
 			,name: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('AdditionalCosts', 'name'), 

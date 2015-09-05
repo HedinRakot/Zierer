@@ -34,6 +34,7 @@ namespace ProfiCraftsman.Generation
         public bool ShowExtraFields { get; set; }
         public bool CustomEvents { get; set; }
         public bool CustomToolbar { get; set; }
+        public bool CustomViewModelPropeties { get; set; }        
         public bool AddNewItemInline { get; set; }
         public bool ShowAddButton { get; set; }
         public bool ShowEditButton { get; set; }
