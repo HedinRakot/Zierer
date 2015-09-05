@@ -3,6 +3,7 @@ define(function () {
 
     var resources = {
 
+        add: 'Add',
         pleaseSelect: 'Please select',
         autoId: 'Auto',
         materialId: 'Material',

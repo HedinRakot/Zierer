@@ -79,15 +79,32 @@ namespace ProfiCraftsman.API.Controllers
                 var termsQuery = manager.GetActualTerms(model.StartDate, model.EndDate);
 
                 var terms = termsQuery.ToList();
+                var columnIndexes = new Dictionary<int, int>();
                 var columnIndex = 0;
 
-                foreach (var termGroup in terms.GroupBy(o => o.Employees).OrderBy(o => o.Key.Id))
+                foreach (var employee in terms.SelectMany(o => o.TermEmployees).Select(o => o.Employees).Distinct().ToList())
                 {
-                    var date = DateTime.Now;
+                    columnIndexes[employee.Id] = columnIndex;
+                    columnIndex++;
 
-                    foreach (var term in termGroup)
+                    result.Add(new TermViewModel()
                     {
-                        date = term.Date;
+                        start = DateTime.Now.ToString("yyyy-MM-ddTHH:mm"),
+                        end = DateTime.Now.ToString("yyyy-MM-ddTHH:mm"),
+                        url = String.Empty,
+                        title = String.Format("{0} {1}", employee.Name, employee.FirstName),
+                        color = employee.Color,
+                        agendaEvent = true
+                    });
+                }
+
+                foreach (var term in terms.OrderBy(o => o.Id))
+                {
+                    //var date = DateTime.Now;
+
+                    foreach (var termEmployee in term.TermEmployees.ToList())
+                    {
+                        //date = term.Date;
 
                         result.Add(new TermViewModel()
                         {
@@ -96,24 +113,24 @@ namespace ProfiCraftsman.API.Controllers
                             end = term.Date.AddMinutes(term.Duration).ToString("yyyy-MM-ddTHH:mm"),
                             url = String.Format("#Orders/{0}", term.OrderId),
                             title = String.Format("{0}\n{1}\n{2} {3}\n{4}",
-                                 String.Format("{0} {1}", termGroup.Key.Name, termGroup.Key.FirstName),
+                                 String.Format("{0} {1}", termEmployee.Employees.Name, termEmployee.Employees.FirstName),
                                  term.Orders.Street, term.Orders.Zip, term.Orders.City, term.Orders.CustomerName),
-                            color = termGroup.Key.Color,
+                            color = termEmployee.Employees.Color,
                             agendaEvent = false,
-                            columnIndex = columnIndex,
-                            employees = new List<int>() { term.EmployeeId },
+                            columnIndex = columnIndexes[termEmployee.EmployeeId],
+                            employees = new List<int>() { termEmployee.EmployeeId },
                         });
                     }
 
-                    result.Add(new TermViewModel()
-                    {
-                        start = date.ToString("yyyy-MM-ddTHH:mm"),
-                        end = date.ToString("yyyy-MM-ddTHH:mm"),
-                        url = String.Empty,
-                        title = String.Format("{0} {1}", termGroup.Key.Name, termGroup.Key.FirstName),
-                        color = termGroup.Key.Color,
-                        agendaEvent = true
-                    });
+                    //result.Add(new TermViewModel()
+                    //{
+                    //    start = date.ToString("yyyy-MM-ddTHH:mm"),
+                    //    end = date.ToString("yyyy-MM-ddTHH:mm"),
+                    //    url = String.Empty,
+                    //    title = String.Format("{0} {1}", termGroup.Key.Name, termGroup.Key.FirstName),
+                    //    color = termGroup.Key.Color,
+                    //    agendaEvent = true
+                    //});
 
                     columnIndex++;
                 }

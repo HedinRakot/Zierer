@@ -8,9 +8,9 @@ define(function () {
             ,orderId: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Terms', 'orderId'), 
 				                    validation: { required: false } }			
-			,employeeId: { type: "number", 
-			                        editable: Application.canTableItemBeEdit('Terms', 'employeeId'), 
-				                    validation: { required: true } }			
+			,employees: { type: "string", 
+			                        editable: false, 
+				                    validation: { required: false } }			
 			,autoId: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Terms', 'autoId'), 
 				                    validation: { required: false } }								
@@ -24,6 +24,9 @@ define(function () {
 			                        editable: Application.canTableItemBeEdit('Terms', 'duration'), 
 				                    validation: { required: true } }		
             ,status: { type: "string", 
+                                    editable: false,
+                                    validation: { required: false } }
+            ,errorStatus: { type: "string", 
                                     editable: false,
                                     validation: { required: false } }
 		},

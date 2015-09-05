@@ -7,6 +7,7 @@ define(function () {
 	    searchTitle: 'erweiterte Suche',
 	    apply: 'Suchen',
 	    cancel: 'Abbruch',
+	    isLessAsMustAmount: 'Unter dem Soll-Bestand'
 	};
 
 	return resources;

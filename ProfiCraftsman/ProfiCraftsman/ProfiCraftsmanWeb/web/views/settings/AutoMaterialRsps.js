@@ -1,6 +1,6 @@
 ﻿define([
     'base/related-object-grid-view',
-'collections/Settings/AutoMaterialRsps',
+    'collections/Settings/AutoMaterialRsps',
 ], function (BaseView, Collection) {
     'use strict';
 
@@ -24,7 +24,7 @@
         columns: function () {
 
             return [
-                 { field: 'materialId', title: this.resources.materialId, collection: this.options.materials, defaultText: this.resources.pleaseSelect, attributes: { "class": "detail-view-grid-cell" } },
+                 { field: 'materialName', title: this.resources.materialId, attributes: { "class": "detail-view-grid-cell" } },
                  { field: 'mustCount', title: this.resources.mustCount, attributes: { "class": "detail-view-grid-cell" } },
                  { field: 'amount', title: this.resources.amount, attributes: { "class": "detail-view-grid-cell" } },
             ];
@@ -49,6 +49,60 @@
             });
 
             return self;
+        },
+
+        events: {
+            'click .selectMaterial': function (e) {
+                e.preventDefault();
+
+                var self = this;
+
+                require(['l!t!Orders/SelectMaterial'], function (View) {
+
+                    var options = _.extend({}, self.options),
+                    view = new View(options);
+
+                    self.listenTo(view, 'selectMaterial', function (item) {
+
+                        var model = new Backbone.Model();
+                        model.isNew = function () { return true; }
+                        model.url = Application.apiUrl + '/autoMaterialRsps';
+                        model.set('autoId', self.model.id);
+                        model.set('materialId', item.id);
+                        model.set('amount', 1);
+
+                        model.save({}, {
+                            data: kendo.stringify(model),
+                            method: 'post',
+                            contentType: 'application/json',
+                            success: function (response) {
+                                self.grid.dataSource.read();
+                                self.grid.refresh();
+                            },
+                            error: function (model, response) {
+                                //TODO
+                            }
+                        });
+                    });
+
+                    self.addView(view);
+                    self.$el.append(view.render().$el);
+                });
+            },
+        },
+
+        toolbar: function () {
+
+            var self = this,
+                result =
+            [{
+                template: function () {
+                    return '<a class="k-button k-button-icontext selectMaterial" href="javascript:void(0)" data-localized="add"></a>';
+                }
+            }];
+
+            return result;
+
         }
     });
 

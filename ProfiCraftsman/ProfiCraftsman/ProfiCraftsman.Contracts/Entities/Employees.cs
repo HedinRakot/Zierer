@@ -118,9 +118,9 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
         public string Color{ get; set; }
+        public virtual ICollection<TermEmployees> TermEmployees{ get; set; }
         public virtual JobPositions JobPositions{ get; set; }
         public virtual Autos Autos{ get; set; }
-        public virtual ICollection<Terms> Terms{ get; set; }
         public virtual ICollection<User> Users{ get; set; }
         public bool HasJobPositions
         {

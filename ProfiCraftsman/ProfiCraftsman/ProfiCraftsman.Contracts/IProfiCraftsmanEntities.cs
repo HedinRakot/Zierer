@@ -30,6 +30,10 @@ namespace ProfiCraftsman.Contracts
         /// </summary>
         IQueryable<Positions> Positions{get;}
         /// <summary>
+        ///     Set of <see cref="TermEmployees"/> entities from table dbo.TermEmployees
+        /// </summary>
+        IQueryable<TermEmployees> TermEmployees{get;}
+        /// <summary>
         ///     Set of <see cref="Invoices"/> entities from table dbo.Invoices
         /// </summary>
         IQueryable<Invoices> Invoices{get;}

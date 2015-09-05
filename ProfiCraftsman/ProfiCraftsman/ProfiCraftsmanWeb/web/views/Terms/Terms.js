@@ -50,7 +50,7 @@
 		columns: function () {
 
 		   return [
-				{ field: 'date', title: this.resources.date, format: "{0:g}", dateTime: true },
+				{ field: 'date', title: this.resources.date, format: "{0:g}", dateTime: true, attributes: { "class": "detail-view-grid-cell" } },
                 {
                     field: 'duration',
                     title: this.resources.duration,
@@ -59,12 +59,14 @@
                     sortable: false,
                     headerAttributes: {
                         title: this.resources.duration
-                    }
+                    },
+                    attributes: { "class": "detail-view-grid-cell" }
                 },
-				{ field: 'employeeId', title: this.resources.employee, collection: this.options.employees, defaultText: this.resources.pleaseSelect },
-				{ field: 'autoId', title: this.resources.auto, collection: this.options.autos, defaultText: this.resources.pleaseSelect },
-				{ field: 'status', title: this.resources.status },
-                { field: 'comment', title: this.resources.comment },
+				{ field: 'employees', title: this.resources.employee, attributes: { "class": "detail-view-grid-cell" } },
+				{ field: 'autoId', title: this.resources.auto, collection: this.options.autos, defaultText: this.resources.pleaseSelect, attributes: { "class": "detail-view-grid-cell" } },
+				{ field: 'status', title: this.resources.status, attributes: { "class": "detail-view-grid-cell" } },
+                { field: 'comment', title: this.resources.comment, attributes: { "class": "detail-view-grid-cell" } },
+                { field: 'errorStatus', title: this.resources.errorStatus, attributes: { "class": "detail-view-grid-cell" } },
 			];
 		},
 		

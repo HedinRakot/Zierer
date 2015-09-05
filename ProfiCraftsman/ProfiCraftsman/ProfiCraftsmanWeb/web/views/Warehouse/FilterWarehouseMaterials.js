@@ -11,7 +11,19 @@ define([
         getFilters: function () {
 
             var result = [],
-                name = this.model.get('name');            
+                isLessAsMustAmount = this.model.get('isLessAsMustAmount'),
+                name = this.model.get('name'),
+                isLessAsMustAmountStatus = 1;
+
+            if (isLessAsMustAmount == true) {
+                isLessAsMustAmountStatus = 2
+            }
+
+            result.push({
+                field: 'isLessAsMustAmountStatus',
+                operator: 'eq',
+                value: isLessAsMustAmountStatus
+            });
 
             result.push({
                 field: 'name',
@@ -28,7 +40,8 @@ define([
 
             var result = {
 
-                '#name': 'name',                
+                '#name': 'name',
+                '#isLessAsMustAmount': 'isLessAsMustAmount'
             };
 
             return result;

@@ -28,10 +28,6 @@ namespace ProfiCraftsman.Contracts.Entities
             /// </summary>
             public static readonly string Date = "Date";
             /// <summary>
-            /// Column name 'EmployeeId' for property <see cref="Terms.EmployeeId"/>
-            /// </summary>
-            public static readonly string EmployeeId = "EmployeeId";
-            /// <summary>
             /// Column name 'AutoId' for property <see cref="Terms.AutoId"/>
             /// </summary>
             public static readonly string AutoId = "AutoId";
@@ -104,7 +100,6 @@ namespace ProfiCraftsman.Contracts.Entities
         #endregion
         public int Id{ get; set; }
         public DateTime Date{ get; set; }
-        public int EmployeeId{ get; set; }
         public int AutoId{ get; set; }
         public string Comment{ get; set; }
         public DateTime CreateDate{ get; set; }
@@ -123,9 +118,9 @@ namespace ProfiCraftsman.Contracts.Entities
         public bool? BeginTripFromOffice{ get; set; }
         public string DeliveryNoteFileName{ get; set; }
         public virtual ICollection<DeliveryNoteSignatures> DeliveryNoteSignatures{ get; set; }
+        public virtual ICollection<TermEmployees> TermEmployees{ get; set; }
         public virtual User User{ get; set; }
         public virtual Autos Autos{ get; set; }
-        public virtual Employees Employees{ get; set; }
         public virtual Orders Orders{ get; set; }
         public virtual ICollection<TermPositions> TermPositions{ get; set; }
         public virtual ICollection<TermInstruments> TermInstruments{ get; set; }
@@ -136,10 +131,6 @@ namespace ProfiCraftsman.Contracts.Entities
         public bool HasAutos
         {
             get { return !ReferenceEquals(Autos, null); }
-        }
-        public bool HasEmployees
-        {
-            get { return !ReferenceEquals(Employees, null); }
         }
         public bool HasOrders
         {
@@ -164,7 +155,6 @@ namespace ProfiCraftsman.Contracts.Entities
         {
             return new Terms {
                        Date = Date,
-                       EmployeeId = EmployeeId,
                        AutoId = AutoId,
                        Comment = Comment,
                        CreateDate = CreateDate,

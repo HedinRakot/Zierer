@@ -20,6 +20,9 @@ namespace ProfiCraftsman.API.Models.Settings
         [DataMember]
         public int materialId { get; set; }
 
+        [DataMember]
+        public string materialName { get; set; }
+
         [Required]
         [DataMember]
         public int amount { get; set; }

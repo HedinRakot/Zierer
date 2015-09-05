@@ -26,6 +26,7 @@ namespace ProfiCraftsman.Lib.Data
             modelBuilder.Configurations.Add(DeliveryNoteSignaturesMapping.Instance);
             modelBuilder.Configurations.Add(OrdersMapping.Instance);
             modelBuilder.Configurations.Add(PositionsMapping.Instance);
+            modelBuilder.Configurations.Add(TermEmployeesMapping.Instance);
             modelBuilder.Configurations.Add(InvoicesMapping.Instance);
             modelBuilder.Configurations.Add(InvoicePositionsMapping.Instance);
             modelBuilder.Configurations.Add(MaterialsMapping.Instance);
@@ -69,6 +70,10 @@ namespace ProfiCraftsman.Lib.Data
         ///     Set of <see cref="Positions"/> entities from table dbo.Positions
         /// </summary>
         public IQueryable<Positions> Positions{ get; set; }
+        /// <summary>
+        ///     Set of <see cref="TermEmployees"/> entities from table dbo.TermEmployees
+        /// </summary>
+        public IQueryable<TermEmployees> TermEmployees{ get; set; }
         /// <summary>
         ///     Set of <see cref="Invoices"/> entities from table dbo.Invoices
         /// </summary>

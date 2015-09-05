@@ -53,6 +53,16 @@ namespace ProfiCraftsman.API.Controllers.Settings
 
                 return string.Join(" or ", clauses);
             }
+            else if (filter.Field == "isLessAsMustAmountStatus")
+            {
+                int isLessAsMustAmountStatus;
+                if (!String.IsNullOrEmpty(filter.Value))
+                {
+                    Int32.TryParse(filter.Value, out isLessAsMustAmountStatus);
+
+                    return String.Format("{0}", isLessAsMustAmountStatus == 1 ? " 1 == 1" : " IsAmount < MustAmount");
+                }
+            }
 
             return base.BuildWhereClause<T>(filter);
         }

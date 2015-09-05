@@ -14,6 +14,7 @@ define(function () {
 	    duration: 'Duration',
 	    showDeliveryNote: 'Show signature',
 	    printDeliveryNote: 'Delivery note',
+	    errorStatus: 'Errors'
 	};
 
 	return resources;

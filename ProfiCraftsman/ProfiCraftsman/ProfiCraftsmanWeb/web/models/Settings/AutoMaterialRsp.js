@@ -15,6 +15,11 @@ define(function () {
 			    editable: Application.canTableItemBeEdit('AutoMaterialRsp', 'materialId'),
 			    validation: { required: true }
 			}
+            , materialName: {
+                type: "string",
+                editable: false,
+                validation: { required: false }
+            }
 			, amount: {
 			    type: "number",
 			    editable: Application.canTableItemBeEdit('AutoMaterialRsp', 'amount'),

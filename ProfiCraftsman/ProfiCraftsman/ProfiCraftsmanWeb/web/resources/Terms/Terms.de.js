@@ -14,6 +14,7 @@ define(function () {
 		duration: 'Dauer',
 		showDeliveryNote: 'Unterschrift anzeigen',
 		printDeliveryNote: 'Lieferschein',
+	    errorStatus: 'Fehler'
 	};
 
 	return resources;

@@ -3,6 +3,7 @@
 
     var resources = {
 
+        add: 'Hinzufügen',
         pleaseSelect: 'Bitte auswählen',
         autoId: 'Auto',
         materialId: 'Material',

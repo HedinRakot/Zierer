@@ -195,6 +195,7 @@
     <Compile Include="Controllers\Settings\ImportMaterialsController.cs" />
     <Compile Include="Controllers\Terms\GetTermSignatureController.cs" />
     <Compile Include="Controllers\Terms\DeleteAllTermPositionsController.cs" />
+    <Compile Include="Controllers\Terms\TermEmployeesController.cs" />
     <Compile Include="Controllers\Terms\TermInstrumentsController.cs" />
     <Compile Include="Controllers\Terms\TermPositionsController.cs" />
     <Compile Include="Controllers\Terms\TermsController.cs" />
@@ -292,7 +293,7 @@
     <Compile Include="Models\Invoices\AddInvoiceModel.cs" />
     <Compile Include="Models\Invoices\InvoicesModel.cs" />
     <Compile Include="Models\Orders\PositionMaterialModel.cs" />
-    <Compile Include="Models\Settings\Custom.MasterDataMonitorableInfoMasterDataNotificationsRspModel.cs" />
+    <Compile Include="Models\Terms\TermEmployeeModel.cs" />
     <Compile Include="Models\Terms\TermInstrumentModel.cs" />
     <Compile Include="Models\Terms\TermPositionModel.cs" />
     <Compile Include="Models\Terms\TermsModel.cs" />

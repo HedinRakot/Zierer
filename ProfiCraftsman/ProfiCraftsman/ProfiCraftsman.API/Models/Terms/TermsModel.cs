@@ -15,9 +15,8 @@ namespace ProfiCraftsman.API.Models
         [DataMember]
         public int orderId { get; set; }
 
-        [Required]
         [DataMember]
-        public int employeeId{ get; set; }
+        public string employees { get; set; }
 
         [Required]
         [DataMember]
@@ -36,5 +35,8 @@ namespace ProfiCraftsman.API.Models
         
         [DataMember]
         public string status { get; set; }
+
+        [DataMember]
+        public string errorStatus { get; set; }
     }
 }
