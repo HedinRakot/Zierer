@@ -196,6 +196,7 @@
       <DependentUpon>Permissions.tt</DependentUpon>
     </Compile>
     <Compile Include="Enums\UniqueNumberType.cs" />
+    <Compile Include="Enums\Сustom.Permissions.cs" />
     <Compile Include="Managers\IAdditionalCostsManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>

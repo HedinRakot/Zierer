@@ -11,6 +11,7 @@
 		Invoices: 'Invoices',
 		InvoiceStornos: 'Invoice storno',
 		Warehouse: 'Warehouse',
+		Administration: 'Administration',
 	};
 
 	return resource;

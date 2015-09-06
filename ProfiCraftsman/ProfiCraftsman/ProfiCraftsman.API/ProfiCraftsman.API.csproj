@@ -183,6 +183,7 @@
     <Compile Include="ClientControllers\Models\GetTermModel.cs" />
     <Compile Include="ClientControllers\TermViewModelHelper.cs" />
     <Compile Include="Config\NotificationServerConfigSection.cs" />
+    <Compile Include="Controllers\Administration\TripsController.cs" />
     <Compile Include="Controllers\InvoiceStornos\InvoiceStornosController.cs" />
     <Compile Include="Controllers\Invoices\GenerateMonthInvoicesController.cs" />
     <Compile Include="Controllers\Invoices\InvoicePositionsController.cs" />
@@ -288,6 +289,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Models\Administration\TripsModel.cs" />
     <Compile Include="Models\InvoiceStornos\InvoiceStornosModel.cs" />
     <Compile Include="Models\Invoices\InvoicePositionsModel.cs" />
     <Compile Include="Models\Invoices\AddInvoiceModel.cs" />

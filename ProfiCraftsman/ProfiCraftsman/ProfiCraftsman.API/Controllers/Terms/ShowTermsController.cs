@@ -56,7 +56,7 @@ namespace ProfiCraftsman.API.Controllers
     /// <summary>
     ///     Controller for Disposition
     /// </summary>
-    [AuthorizeByPermissions(PermissionTypes = new[] { Permissions.Orders })]
+    [AuthorizeByPermissions(PermissionTypes = new[] { Permissions.Home })]
     public partial class ShowTermsController : ApiController
     {
         private readonly ITermsManager manager;

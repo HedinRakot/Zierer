@@ -17,6 +17,7 @@ namespace ProfiCraftsman.API.Controllers.Settings
     /// <summary>
     ///     Controller for <see cref="WarehouseMaterials"/> entity
     /// </summary>
+    [AuthorizeByPermissions(PermissionTypes = new[] { Permissions.WarehouseMaterials })]
     public partial class WarehouseMaterialsController : ClientApiController<WarehouseMaterialModel, WarehouseMaterials, int, IWarehouseMaterialsManager>
     {
 
