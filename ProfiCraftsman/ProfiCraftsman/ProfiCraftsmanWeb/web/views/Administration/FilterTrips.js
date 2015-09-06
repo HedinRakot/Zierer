@@ -11,17 +11,17 @@ define([
         getFilters: function () {
 
             var result = [],
-                isLessAsMustAmount = this.model.get('isLessAsMustAmount'),
-                isLessAsMustAmountStatus = 1;
+                isGreaterAsDefault = this.model.get('isGreaterAsDefault'),
+                isGreaterAsDefaultStatus = 1;
 
-            if (isLessAsMustAmount == true) {
-                isLessAsMustAmountStatus = 2
+            if (isGreaterAsDefault == true) {
+                isGreaterAsDefaultStatus = 2
             }
 
             result.push({
-                field: 'isLessAsMustAmountStatus',
+                field: 'isGreaterAsDefaultStatus',
                 operator: 'eq',
-                value: isLessAsMustAmountStatus
+                value: isGreaterAsDefaultStatus
             });
             
             return result;
@@ -33,7 +33,7 @@ define([
 
             var result = {
 
-                '#isLessAsMustAmount': 'isLessAsMustAmount'
+                '#isGreaterAsDefault': 'isGreaterAsDefault'
             };
 
             return result;

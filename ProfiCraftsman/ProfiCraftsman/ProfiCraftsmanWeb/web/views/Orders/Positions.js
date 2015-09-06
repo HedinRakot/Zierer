@@ -199,12 +199,6 @@
             
             self.grid.bind('edit', function (e) {
 
-                debugger;
-                if (e.model.id == 0)
-                    e.model.isNew = function () { return true; }
-                else
-                    e.model.isNew = function () { return false; }
-
                 e.model.orderId = self.model.id;
                 e.model.isMaterialPosition = self.isMaterialPosition;
             });

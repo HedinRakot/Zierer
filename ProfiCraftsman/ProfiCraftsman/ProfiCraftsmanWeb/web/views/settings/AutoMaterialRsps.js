@@ -24,8 +24,8 @@
         columns: function () {
 
             return [
-                 { field: 'materialName', title: this.resources.materialId, attributes: { "class": "detail-view-grid-cell" } },
-                 { field: 'mustCount', title: this.resources.mustCount, attributes: { "class": "detail-view-grid-cell" } },
+                 { field: 'materialName', title: this.resources.materialId, sortable: false, filterable: false, attributes: { "class": "detail-view-grid-cell" } },
+                 { field: 'mustCount', title: this.resources.mustCount, sortable: false, filterable: false, attributes: { "class": "detail-view-grid-cell" } },
                  { field: 'amount', title: this.resources.amount, attributes: { "class": "detail-view-grid-cell" } },
             ];
         },

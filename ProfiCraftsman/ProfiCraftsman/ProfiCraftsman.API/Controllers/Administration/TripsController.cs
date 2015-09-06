@@ -44,16 +44,16 @@ namespace ProfiCraftsman.API.Controllers
         
         protected override string BuildWhereClause<T>(Filter filter)
         {
-            if (filter.Field == "isLessAsMustAmountStatus")
+            if (filter.Field == "isGreaterAsDefaultStatus")
             {
-                int isLessAsMustAmountStatus;
+                int isGreaterAsDefaultStatus;
                 if (!String.IsNullOrEmpty(filter.Value))
                 {
-                    Int32.TryParse(filter.Value, out isLessAsMustAmountStatus);
+                    Int32.TryParse(filter.Value, out isGreaterAsDefaultStatus);
 
-                    return String.Format("{0}", isLessAsMustAmountStatus == 1 ? " 1 == 1" : 
-                        String.Format(" (EndTrip.HasValue && BeginTrip.HasValue && ((EndTrip.Value - BeginTrip.Value).Ticks > {0}))",
-                        new TimeSpan(0, 30, 0).Ticks));
+                    return String.Format("{0}", isGreaterAsDefaultStatus == 1 ? " 1 == 1" : 
+                        String.Format(" (EndTrip.HasValue && BeginTrip.HasValue && DbFunctions.DiffMinutes(BeginTrip, EndTrip) > {0})",
+                        30));
                 }
             }
 

@@ -158,11 +158,6 @@
 
             self.grid.bind('edit', function (e) {
 
-                if (e.model.id == 0)
-                    e.model.isNew = function () { return true; }
-                else
-                    e.model.isNew = function () { return false; }
-
                 e.model.orderId = self.model.orderId;
                 e.model.isMaterialPosition = self.options.isMaterialPosition;
             });

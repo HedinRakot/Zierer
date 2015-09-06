@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Formatting;
 using System.Web.Http;
+using System.Linq.Dynamic;
+using System.Data.Entity;
 
 namespace ProfiCraftsmanWeb
 {
@@ -19,6 +21,9 @@ namespace ProfiCraftsmanWeb
             
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
+            GlobalConfig.CustomTypeProvider.GetCustomTypes().Add(typeof(DbFunctions));
+            GlobalConfig.CustomTypeProvider.GetCustomTypes().Add(typeof(Enum));
         }
     }
 }

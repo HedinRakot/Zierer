@@ -1,4 +1,4 @@
-define(function () {
+﻿define(function () {
 	'use strict';
 
 	var resources = {
@@ -6,7 +6,7 @@ define(function () {
 	    searchTitle: 'erweiterte Suche',
 	    apply: 'Suchen',
 	    cancel: 'Abbruch',
-	    isLessAsMustAmount: 'Unter dem Soll-Bestand'
+	    isGreaterAsDefault: 'Länger als 30 Minuten'
 	};
 
 	return resources;

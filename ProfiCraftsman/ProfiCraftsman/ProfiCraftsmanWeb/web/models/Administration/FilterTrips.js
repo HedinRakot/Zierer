@@ -3,7 +3,7 @@ define(function () {
 
     var model = Backbone.Model.extend({
         fields: {
-            isLessAsMustAmount: { type: "boolean", editable: true },
+            isGreaterAsDefault: { type: "boolean", editable: true },
         }
     });
     return model;
