@@ -6,7 +6,8 @@ define(function () {
 		date: 'Datum',
 		employee: 'Mitarbeiter',
 		auto: 'Auto',
-		duration: 'Dauer',
+		duration: 'Anfahrtszeit',
+	    returnWayDuration: 'Rückfahrtszeit'
 	};
 
 	return resources;

@@ -22,5 +22,8 @@ namespace ProfiCraftsman.API.Models
 
         [DataMember]
         public TimeSpan duration { get; set; }
+
+        [DataMember]
+        public TimeSpan returnWayDuration { get; set; }
     }
 }

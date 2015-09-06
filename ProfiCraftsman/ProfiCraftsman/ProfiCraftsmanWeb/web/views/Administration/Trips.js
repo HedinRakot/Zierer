@@ -35,6 +35,7 @@
 		   return [
 				{ field: 'date', title: this.resources.date, format: "{0:d}", dateTime: true },
 				{ field: 'duration', title: this.resources.duration, format: "{0:HH:mm}", sortable: false, filterable: false },
+				{ field: 'returnWayDuration', title: this.resources.returnWayDuration, format: "{0:HH:mm}", sortable: false, filterable: false },
 				{ field: 'employees', title: this.resources.employee, sortable: false, filterable: false },
 				{ field: 'autoId', title: this.resources.auto, collection: this.options.autos },
 			];

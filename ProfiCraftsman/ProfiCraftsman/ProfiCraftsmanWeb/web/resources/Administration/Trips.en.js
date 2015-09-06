@@ -7,6 +7,7 @@ define(function () {
 	    employee: 'Employee',
 	    auto: 'Auto',
 	    duration: 'Duration',
+	    returnWayDuration: 'Return way duration'
 	};
 
 	return resources;

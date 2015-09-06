@@ -37,6 +37,8 @@ namespace ProfiCraftsman.API.Controllers
             model.autoId = entity.AutoId;
             model.date = entity.Date;
             model.duration = entity.BeginTrip.HasValue && entity.EndTrip.HasValue ? entity.EndTrip.Value - entity.BeginTrip.Value : TimeSpan.Zero;
+            model.returnWayDuration = entity.BeginReturnTrip.HasValue && entity.EndReturnTrip.HasValue ? 
+                entity.EndReturnTrip.Value - entity.BeginReturnTrip.Value : TimeSpan.Zero;
 
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;            
@@ -52,7 +54,7 @@ namespace ProfiCraftsman.API.Controllers
                     Int32.TryParse(filter.Value, out isGreaterAsDefaultStatus);
 
                     return String.Format("{0}", isGreaterAsDefaultStatus == 1 ? " 1 == 1" : 
-                        String.Format(" (EndTrip.HasValue && BeginTrip.HasValue && DbFunctions.DiffMinutes(BeginTrip, EndTrip) > {0})",
+                        String.Format(" (EndTrip.HasValue && BeginTrip.HasValue && (DbFunctions.DiffMinutes(BeginTrip, EndTrip) > {0} || DbFunctions.DiffMinutes(BeginReturnTrip, EndReturnTrip) > {0}))",
                         30));
                 }
             }

@@ -17,6 +17,9 @@ define(function () {
             ,duration: { type: "date", 
                                     editable: false,
                                     validation: { required: false } }
+            ,returnWayDuration: { type: "date", 
+                                    editable: false,
+                                    validation: { required: false } }
 		}
 	});
 	return model;
