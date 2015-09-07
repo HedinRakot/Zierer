@@ -9,6 +9,7 @@
         materialId: 'Material',
         amount: 'Ist-Menge',
         mustCount: 'Soll-Menge',
+        restAmount: 'Rest'
     };
 
     return resources;

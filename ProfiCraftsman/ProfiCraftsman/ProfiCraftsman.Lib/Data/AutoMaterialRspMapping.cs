@@ -51,6 +51,9 @@ namespace ProfiCraftsman.Lib.Data
             Property(t => t.DeleteDate)
                 .HasColumnName(AutoMaterialRsp.Fields.DeleteDate);
 
+            Property(t => t.RestAmount)
+                .HasColumnName(AutoMaterialRsp.Fields.RestAmount);
+
 
             //Relationships
             HasRequired(a => a.Materials)

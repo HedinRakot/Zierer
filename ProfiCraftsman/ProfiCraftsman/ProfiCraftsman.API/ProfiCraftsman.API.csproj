@@ -226,6 +226,7 @@
     <Compile Include="Controllers\Settings\ProductTypesController.cs">
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AutoMaterialHelper.cs" />
     <Compile Include="Controllers\TransportOrders\CloseTransportOrderController.cs" />
     <Compile Include="Controllers\TransportOrders\TransportOffersController.cs" />
     <Compile Include="Controllers\TransportOrders\TransportOrdersController.cs" />

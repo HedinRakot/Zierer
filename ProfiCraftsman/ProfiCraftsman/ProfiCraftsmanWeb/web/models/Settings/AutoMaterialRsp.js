@@ -25,6 +25,9 @@ define(function () {
 			    editable: Application.canTableItemBeEdit('AutoMaterialRsp', 'amount'),
 			    validation: { required: true }
 			},
+			restAmount: {
+			    type: "number", editable: true, validation: { required: false }
+			},
 			mustCount: {
 			    type: "number",
 			    editable: false,

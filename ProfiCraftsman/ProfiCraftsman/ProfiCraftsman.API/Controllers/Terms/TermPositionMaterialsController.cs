@@ -33,6 +33,12 @@ namespace ProfiCraftsman.API.Controllers
         {
             entity.TermPositionId = model.termPositionId;
             entity.MaterialId = model.materialId;
+
+            if (actionType == ActionTypes.Update && model.amount.HasValue)
+            {
+                AutoMaterialHelper.CalculateUsedMaterial(model.amount.Value, entity.Amount, entity);
+            }
+
             entity.Amount = model.amount;
         }
     }

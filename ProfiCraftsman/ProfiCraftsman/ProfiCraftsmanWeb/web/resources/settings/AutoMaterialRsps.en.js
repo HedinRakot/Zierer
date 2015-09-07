@@ -9,6 +9,7 @@ define(function () {
         materialId: 'Material',
         amount: 'Is Amount',
         mustCount: 'Must count',
+        restAmount: 'Rest'
     };
 
     return resources;

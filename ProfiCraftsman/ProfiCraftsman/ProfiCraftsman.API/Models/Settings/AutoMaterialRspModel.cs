@@ -29,5 +29,8 @@ namespace ProfiCraftsman.API.Models.Settings
         
         [DataMember]
         public int mustCount { get; set; }
+
+        [DataMember]
+        public double? restAmount { get; set; }
     }
 }

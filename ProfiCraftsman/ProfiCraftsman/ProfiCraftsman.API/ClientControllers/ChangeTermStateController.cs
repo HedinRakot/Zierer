@@ -15,6 +15,7 @@ using System.Net;
 using ProfiCraftsman.API.Config;
 using System.IO;
 using System.Web;
+using ProfiCraftsman.API.Controllers;
 
 namespace ProfiCraftsman.API.ClientControllers
 {
@@ -104,6 +105,16 @@ namespace ProfiCraftsman.API.ClientControllers
 
                             deliveryNoteSignaturesManager.SaveChanges();
                         }
+
+                        termMaterials = term.TermPositions.Where(o => !o.DeleteDate.HasValue).
+                            SelectMany(o => o.TermPositionMaterialRsps.Where(t => !t.DeleteDate.HasValue && t.Amount.HasValue)).ToList();
+
+                        foreach (var termMaterial in termMaterials)
+                        {
+                            AutoMaterialHelper.CalculateUsedMaterial(termMaterial.Amount.Value, null, termMaterial);
+                        }
+
+                        termManager.SaveChanges();
 
 
                         var stream = printerManager.PrepareDeliveryNotePrintData(term.Id, path, termManager);

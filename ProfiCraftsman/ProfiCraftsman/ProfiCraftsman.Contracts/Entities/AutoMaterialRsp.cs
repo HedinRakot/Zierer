@@ -46,6 +46,10 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'DeleteDate' for property <see cref="AutoMaterialRsp.DeleteDate"/>
             /// </summary>
             public static readonly string DeleteDate = "DeleteDate";
+            /// <summary>
+            /// Column name 'RestAmount' for property <see cref="AutoMaterialRsp.RestAmount"/>
+            /// </summary>
+            public static readonly string RestAmount = "RestAmount";
           
         }
         #endregion
@@ -56,6 +60,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime CreateDate{ get; set; }
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
+        public double? RestAmount{ get; set; }
         public virtual Materials Materials{ get; set; }
         public virtual Autos Autos{ get; set; }
         public bool HasMaterials
@@ -90,6 +95,7 @@ namespace ProfiCraftsman.Contracts.Entities
                        CreateDate = CreateDate,
                        ChangeDate = ChangeDate,
                        DeleteDate = DeleteDate,
+                       RestAmount = RestAmount,
         	           };
         }
     }

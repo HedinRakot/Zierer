@@ -46,6 +46,7 @@ namespace ProfiCraftsman.API.Controllers.Settings
             model.materialId = entity.MaterialId;
             model.materialName = entity.Materials.Name;
             model.amount = entity.Amount;
+            model.restAmount = entity.RestAmount;
             model.mustCount = entity.Materials.MustCount;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
@@ -55,6 +56,7 @@ namespace ProfiCraftsman.API.Controllers.Settings
         {
             entity.AutoId = model.autoId;
             entity.MaterialId = model.materialId;
+            entity.RestAmount = model.restAmount;
 
             if (entity.Amount != model.amount)
             {
