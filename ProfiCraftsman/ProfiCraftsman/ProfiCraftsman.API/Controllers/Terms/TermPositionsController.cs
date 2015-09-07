@@ -24,10 +24,15 @@ namespace ProfiCraftsman.API.Controllers
     [AuthorizeByPermissions(PermissionTypes = new[] { Permissions.Orders })]
     public partial class TermPositionsController: ClientApiController<TermPositionModel, TermPositions, int, ITermPositionsManager>
     {
+        public ITermPositionMaterialRspManager TermPositionMaterialRspManager { get; set; }
+        public IPositionsManager PositionsManager { get; set; }
 
-        public TermPositionsController(ITermPositionsManager manager) : 
+        public TermPositionsController(ITermPositionsManager manager, IPositionsManager positionsManager, 
+            ITermPositionMaterialRspManager termPositionMaterialRspManager) : 
             base(manager)
         {
+            this.PositionsManager = positionsManager;
+            this.TermPositionMaterialRspManager = termPositionMaterialRspManager;
         }
 
         protected override void EntityToModel(TermPositions entity, TermPositionModel model)
@@ -54,6 +59,29 @@ namespace ProfiCraftsman.API.Controllers
             entity.PositionId = model.positionId;
             entity.Amount = model.amount;
             entity.ProccessedAmount = model.proccessedAmount;
+
+            
+            if (actionType == ActionTypes.Add)
+            {
+                var position = PositionsManager.GetById(model.positionId);
+                foreach (var material in position.Products.ProductMaterialRsps.Where(o => !o.DeleteDate.HasValue))
+                {
+                    TermPositionMaterialRspManager.AddEntity(new TermPositionMaterialRsp()
+                    {
+                        Amount = material.Amount * model.amount,
+                        TermPositionId = model.Id,
+                        MaterialId = material.MaterialId
+                    });
+                }
+            }
+            else
+            {
+                var termPosition = Manager.GetById(model.Id);
+                foreach (var material in termPosition.TermPositionMaterialRsps.Where(o => !o.DeleteDate.HasValue))
+                {
+                    material.Amount = model.amount;
+                }
+            }
         }      
     }
 }

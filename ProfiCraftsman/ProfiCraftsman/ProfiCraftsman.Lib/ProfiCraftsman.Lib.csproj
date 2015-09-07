@@ -140,9 +140,6 @@
     <Compile Include="Data\MaterialsMapping.cs">
       <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\PositionMaterialRspMapping.cs">
-      <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\ProductMaterialRspMapping.cs">
       <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
     </Compile>
@@ -195,6 +192,9 @@
       <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\TermInstrumentsMapping.cs">
+      <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TermPositionMaterialRspMapping.cs">
       <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\TermPositionsMapping.cs">
@@ -274,9 +274,6 @@
     <Compile Include="Managers\PermissionManager.cs">
       <DependentUpon>Managers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Managers\PositionMaterialRspManager.cs">
-      <DependentUpon>Managers.tt</DependentUpon>
-    </Compile>
     <Compile Include="Managers\PositionsManager.cs">
       <DependentUpon>Managers.tt</DependentUpon>
     </Compile>
@@ -302,6 +299,9 @@
       <DependentUpon>Managers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\TermInstrumentsManager.cs">
+      <DependentUpon>Managers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\TermPositionMaterialRspManager.cs">
       <DependentUpon>Managers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\TermPositionsManager.cs">

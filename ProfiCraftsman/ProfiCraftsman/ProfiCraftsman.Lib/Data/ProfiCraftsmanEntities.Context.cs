@@ -27,10 +27,10 @@ namespace ProfiCraftsman.Lib.Data
             modelBuilder.Configurations.Add(OrdersMapping.Instance);
             modelBuilder.Configurations.Add(PositionsMapping.Instance);
             modelBuilder.Configurations.Add(TermEmployeesMapping.Instance);
+            modelBuilder.Configurations.Add(TermPositionMaterialRspMapping.Instance);
             modelBuilder.Configurations.Add(InvoicesMapping.Instance);
             modelBuilder.Configurations.Add(InvoicePositionsMapping.Instance);
             modelBuilder.Configurations.Add(MaterialsMapping.Instance);
-            modelBuilder.Configurations.Add(PositionMaterialRspMapping.Instance);
             modelBuilder.Configurations.Add(ProductMaterialRspMapping.Instance);
             modelBuilder.Configurations.Add(AutosMapping.Instance);
             modelBuilder.Configurations.Add(PermissionMapping.Instance);
@@ -75,6 +75,10 @@ namespace ProfiCraftsman.Lib.Data
         /// </summary>
         public IQueryable<TermEmployees> TermEmployees{ get; set; }
         /// <summary>
+        ///     Set of <see cref="TermPositionMaterialRsp"/> entities from table dbo.TermPosition_Material_Rsp
+        /// </summary>
+        public IQueryable<TermPositionMaterialRsp> TermPositionMaterialRsp{ get; set; }
+        /// <summary>
         ///     Set of <see cref="Invoices"/> entities from table dbo.Invoices
         /// </summary>
         public IQueryable<Invoices> Invoices{ get; set; }
@@ -86,10 +90,6 @@ namespace ProfiCraftsman.Lib.Data
         ///     Set of <see cref="Materials"/> entities from table dbo.Materials
         /// </summary>
         public IQueryable<Materials> Materials{ get; set; }
-        /// <summary>
-        ///     Set of <see cref="PositionMaterialRsp"/> entities from table dbo.Position_Material_Rsp
-        /// </summary>
-        public IQueryable<PositionMaterialRsp> PositionMaterialRsp{ get; set; }
         /// <summary>
         ///     Set of <see cref="ProductMaterialRsp"/> entities from table dbo.Product_Material_Rsp
         /// </summary>

@@ -24,15 +24,12 @@ namespace ProfiCraftsman.API.Controllers
     [AuthorizeByPermissions(PermissionTypes = new[] { Permissions.Orders })]
     public partial class PositionsController: ClientApiController<PositionsModel, Positions, int, IPositionsManager>
     {
-        public IPositionMaterialRspManager PositionMaterialRspManager { get; set; }
         public IProductsManager ProductManager { get; set; }
         public IMaterialsManager MaterialManager { get; set; }
 
-        public PositionsController(IPositionsManager manager, IPositionMaterialRspManager posiionMaterialRspManager,
-            IProductsManager productsManager, IMaterialsManager materialManager) : 
+        public PositionsController(IPositionsManager manager, IProductsManager productsManager, IMaterialsManager materialManager) : 
             base(manager)
         {
-            this.PositionMaterialRspManager = posiionMaterialRspManager;
             this.ProductManager = productsManager;
             this.MaterialManager = materialManager;
         }
@@ -96,16 +93,6 @@ namespace ProfiCraftsman.API.Controllers
                     var product = ProductManager.GetById(model.productId.Value);
 
                     entity.Description = product.Name;
-
-                    foreach (var material in product.ProductMaterialRsps)
-                    {
-                        PositionMaterialRspManager.AddEntity(new PositionMaterialRsp()
-                        {
-                            Amount = material.Amount,
-                            PositionId = model.Id,
-                            MaterialId = material.MaterialId
-                        });
-                    }
                 }
                 else if(model.materialId.HasValue && model.materialId != 0)
                 {

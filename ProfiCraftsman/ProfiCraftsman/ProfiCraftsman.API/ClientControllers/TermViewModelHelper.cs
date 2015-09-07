@@ -21,7 +21,7 @@ namespace ProfiCraftsman.API.ClientControllers
 
             if(withMaterials)
             {
-                materials = term.TermPositions.Where(o => !o.DeleteDate.HasValue).SelectMany(o => o.Positions.PositionMaterialRsps).ToList().
+                materials = term.TermPositions.Where(o => !o.DeleteDate.HasValue).SelectMany(o => o.TermPositionMaterialRsps).ToList().
                     Select(positionMaterialRsp => new ClientTermMaterialViewModel()
                     {
                         Id = positionMaterialRsp.Id,

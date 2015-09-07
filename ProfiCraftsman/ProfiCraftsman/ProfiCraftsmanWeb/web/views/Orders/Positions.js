@@ -3,9 +3,8 @@
     'collections/Positions',
     'l!t!Orders/SelectProduct',
     'l!t!Orders/SelectMaterial',
-    'l!t!Orders/Materials',
     'l!t!Orders/InnerPositions'
-], function (BaseView, Collection, SelectProductView, SelectMaterialView, MaterialsDetailView, InnerItemsDetailView) {
+], function (BaseView, Collection, SelectProductView, SelectMaterialView, DetailView) {
     'use strict';
 
     var floatEditor = function (container, options) {
@@ -81,16 +80,6 @@
 
         var self = this;
 
-        if (e.data.productId != null && e.data.productId != undefined) {
-            var options = _.extend({}, self.options, { model: e.data }),
-                view = new self.materialsDetailView(options);
-
-            self.addView(view);
-            e.detailRow.find('.detailsContainer').append(view.render().$el);
-
-            e.masterRow.data('detail-view', view);
-        }
-
         if((e.data.productId == null || e.data.productId == undefined) &&
            (e.data.materialId == null || e.data.materialId == undefined))
         {
@@ -100,7 +89,7 @@
                     isMaterialPosition: self.isMaterialPosition,
                     parentId: e.data.id
                 }),
-                view = new self.innerItemsDetailView(options);
+                view = new self.detailView(options);
 
             self.addView(view);
             e.detailRow.find('.detailsContainer').append(view.render().$el);
@@ -123,10 +112,7 @@
         addingInPopup: false,
 
         initDetailView: initDetailView,
-        detailView: MaterialsDetailView,
-        materialsDetailView: MaterialsDetailView,
-        innerItemsDetailView: InnerItemsDetailView,
-
+        detailView: DetailView,
 
         initialize: function () {
             view.__super__.initialize.apply(this, arguments);

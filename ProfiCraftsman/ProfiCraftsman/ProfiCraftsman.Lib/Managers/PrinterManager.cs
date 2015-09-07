@@ -316,8 +316,8 @@ namespace ProfiCraftsman.Lib.Managers
                     result = result.Replace("#AdressType", "Lieferanschrift");
                     result = result.Replace("#OrderNumber", term.Orders.OrderNumber);
                     
-                    var positions = term.Orders.Positions != null ? term.Orders.Positions.Where(o => !o.DeleteDate.HasValue).ToList() :
-                        new List<Positions>();
+                    var positions = term.TermPositions != null ? term.TermPositions.Where(o => !o.DeleteDate.HasValue).ToList() :
+                        new List<TermPositions>();
 
                     result = ReplacePositionWithDescription(positions, result);
 
@@ -492,7 +492,7 @@ namespace ProfiCraftsman.Lib.Managers
                 xmlMainXMLDoc = xmlMainXMLDoc.Replace("#LastPaymentDate", maxDate.AddDays(10).ToShortDateString());
                 xmlMainXMLDoc = xmlMainXMLDoc.Replace("#TotalSellPrice", totalSellPrice.ToString("N2"));
 
-                xmlMainXMLDoc = ReplacePositionWithDescription(positions, xmlMainXMLDoc);
+                //todo xmlMainXMLDoc = ReplacePositionWithDescription(positions, xmlMainXMLDoc);
                 xmlMainXMLDoc = xmlMainXMLDoc.Replace("#ProductDescription", String.Empty);
             }
             else
@@ -607,7 +607,7 @@ namespace ProfiCraftsman.Lib.Managers
             return xmlDoc.Root.ToString();
         }
 
-        private string ReplacePositionWithDescription(List<Positions> positions, string xmlMainXMLDoc)
+        private string ReplacePositionWithDescription(List<TermPositions> positions, string xmlMainXMLDoc)
         {
             var xmlDoc = XDocument.Parse(xmlMainXMLDoc);
             var temp = xmlDoc.Descendants().LastOrDefault(o => o.Value.Contains("#PositionDescription"));
@@ -617,22 +617,18 @@ namespace ProfiCraftsman.Lib.Managers
             {
                 var prevTableElem = parentTableElement;
 
-                foreach (var position in positions)
+                foreach (var position in positions.Where(o => o.ProccessedAmount.HasValue))
                 {
-                    var elem = XElement.Parse(ReplaceFieldValue(parentTableElement.ToString(), "#PositionDescription",
-                        position.ProductId.HasValue ? position.Products.Name :
-                            position.MaterialId.HasValue ? position.Materials.Name : String.Empty).
-                        Replace("#Amount", position.ProductId.HasValue ? position.TermPositions.Sum(o => o.Amount).ToString() :
-                            position.MaterialId.HasValue ? position.PositionMaterialRsps.Where(o => o.Amount.HasValue).Sum(o => o.Amount.Value).ToString() : String.Empty).
-                        Replace("#PositionNumber", position.ProductId.HasValue ? position.Products.Number :
-                            position.MaterialId.HasValue ? position.Materials.Number : String.Empty));
+                    var elem = XElement.Parse(ReplaceFieldValue(parentTableElement.ToString(), "#PositionDescription", position.Positions.Products.Name).
+                        Replace("#Amount", position.ProccessedAmount.Value.ToString()).
+                        Replace("#PositionNumber", position.Positions.Products.Number));
 
                     prevTableElem.AddAfterSelf(elem);
                     prevTableElem = elem;
 
-                    if (position.PositionMaterialRsps != null && position.PositionMaterialRsps.Count != 0)
+                    if (position.TermPositionMaterialRsps != null && position.TermPositionMaterialRsps.Count != 0)
                     {
-                        foreach (var material in position.PositionMaterialRsps)
+                        foreach (var material in position.TermPositionMaterialRsps)
                         {
                             elem = XElement.Parse(ReplaceFieldValue(parentTableElement.ToString(), "#PositionDescription", material.Materials.Name).
                             Replace("#Amount", material.Amount.HasValue ? material.Amount.Value.ToString() : String.Empty).

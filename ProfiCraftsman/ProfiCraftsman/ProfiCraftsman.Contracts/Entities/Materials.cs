@@ -119,7 +119,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public bool IsForAuto{ get; set; }
         public int MustCount{ get; set; }
         public virtual ICollection<Positions> Positions{ get; set; }
-        public virtual ICollection<PositionMaterialRsp> PositionMaterialRsps{ get; set; }
+        public virtual ICollection<TermPositionMaterialRsp> TermPositionMaterialRsps{ get; set; }
         public virtual ICollection<ProductMaterialRsp> ProductMaterialRsps{ get; set; }
         public virtual ICollection<AutoMaterialRsp> AutoMaterialRsps{ get; set; }
         public virtual ICollection<WarehouseMaterials> WarehouseMaterials{ get; set; }

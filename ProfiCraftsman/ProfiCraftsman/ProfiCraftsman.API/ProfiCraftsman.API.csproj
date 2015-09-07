@@ -188,7 +188,7 @@
     <Compile Include="Controllers\Invoices\InvoicesController.cs" />
     <Compile Include="Controllers\Orders\DeleteAllOrderPositionsController.cs" />
     <Compile Include="Controllers\Orders\CopyOrderController.cs" />
-    <Compile Include="Controllers\Orders\PositionMaterialsController.cs" />
+    <Compile Include="Controllers\Terms\TermPositionMaterialsController.cs" />
     <Compile Include="Controllers\Settings\Custom.ProductMaterialRspsController.cs" />
     <Compile Include="Controllers\Settings\ImportMaterialsController.cs" />
     <Compile Include="Controllers\Terms\GetTermSignatureController.cs" />
@@ -291,9 +291,9 @@
     <Compile Include="Models\Invoices\InvoicePositionsModel.cs" />
     <Compile Include="Models\Invoices\AddInvoiceModel.cs" />
     <Compile Include="Models\Invoices\InvoicesModel.cs" />
-    <Compile Include="Models\Orders\PositionMaterialModel.cs" />
     <Compile Include="Models\Terms\TermEmployeeModel.cs" />
     <Compile Include="Models\Terms\TermInstrumentModel.cs" />
+    <Compile Include="Models\Terms\TermPositionMaterialModel.cs" />
     <Compile Include="Models\Terms\TermPositionModel.cs" />
     <Compile Include="Models\Terms\TermsModel.cs" />
     <Compile Include="Models\Settings\AutoInstrumentRspModel.cs" />

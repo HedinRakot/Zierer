@@ -18,7 +18,7 @@ namespace ProfiCraftsman.API.Controllers.Settings
                 entity.AutoMaterialRsps = new List<AutoMaterialRsp>();
                 var materialManager = GlobalConfiguration.Configuration.DependencyResolver.GetService<IMaterialsManager>();
 
-                foreach (var material in materialManager.GetEntities().Where(o => o.IsForAuto).ToList())
+                foreach (var material in materialManager.GetEntities().Where(o => !o.DeleteDate.HasValue && o.IsForAuto).ToList())
                 {
                     entity.AutoMaterialRsps.Add(new AutoMaterialRsp()
                     {
@@ -31,7 +31,7 @@ namespace ProfiCraftsman.API.Controllers.Settings
                 entity.AutoInstrumentRsps = new List<AutoInstrumentRsp>();
                 var instrumentManager = GlobalConfiguration.Configuration.DependencyResolver.GetService<IInstrumentsManager>();
 
-                foreach (var instrument in instrumentManager.GetEntities().Where(o => o.IsForAuto).ToList())
+                foreach (var instrument in instrumentManager.GetEntities().Where(o => !o.DeleteDate.HasValue && o.IsForAuto).ToList())
                 {
                     entity.AutoInstrumentRsps.Add(new AutoInstrumentRsp()
                     {

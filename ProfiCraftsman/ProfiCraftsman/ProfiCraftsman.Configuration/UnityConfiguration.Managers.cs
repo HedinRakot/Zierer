@@ -21,10 +21,10 @@ namespace ProfiCraftsman.Configuration
             container.RegisterType<IOrdersManager, OrdersManager>(new PerRequestLifetimeManager());
             container.RegisterType<IPositionsManager, PositionsManager>(new PerRequestLifetimeManager());
             container.RegisterType<ITermEmployeesManager, TermEmployeesManager>(new PerRequestLifetimeManager());
+            container.RegisterType<ITermPositionMaterialRspManager, TermPositionMaterialRspManager>(new PerRequestLifetimeManager());
             container.RegisterType<IInvoicesManager, InvoicesManager>(new PerRequestLifetimeManager());
             container.RegisterType<IInvoicePositionsManager, InvoicePositionsManager>(new PerRequestLifetimeManager());
             container.RegisterType<IMaterialsManager, MaterialsManager>(new PerRequestLifetimeManager());
-            container.RegisterType<IPositionMaterialRspManager, PositionMaterialRspManager>(new PerRequestLifetimeManager());
             container.RegisterType<IProductMaterialRspManager, ProductMaterialRspManager>(new PerRequestLifetimeManager());
             container.RegisterType<IAutosManager, AutosManager>(new PerRequestLifetimeManager());
             container.RegisterType<IPermissionManager, PermissionManager>(new PerRequestLifetimeManager());

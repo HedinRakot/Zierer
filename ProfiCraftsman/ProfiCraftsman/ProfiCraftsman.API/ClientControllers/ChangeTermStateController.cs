@@ -71,7 +71,7 @@ namespace ProfiCraftsman.API.ClientControllers
                         break;
                     case TermStatusTypes.CheckMaterials:
 
-                        var termMaterials = term.TermPositions.Where(o => !o.DeleteDate.HasValue).SelectMany(o => o.Positions.PositionMaterialRsps).ToList();
+                        var termMaterials = term.TermPositions.Where(o => !o.DeleteDate.HasValue).SelectMany(o => o.TermPositionMaterialRsps).ToList();
                         foreach (var material in model.Materials)
                         {
                             var termMaterial = termMaterials.FirstOrDefault(o => o.Id == material.Id);

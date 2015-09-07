@@ -131,9 +131,6 @@
     <Compile Include="Entities\Permission.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\PositionMaterialRsp.cs">
-      <DependentUpon>Entities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Entities\Positions.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
@@ -159,6 +156,9 @@
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\TermInstruments.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TermPositionMaterialRsp.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\TermPositions.cs">
@@ -227,9 +227,6 @@
     <Compile Include="Managers\IMaterialsManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Managers\IPositionMaterialRspManager.cs">
-      <DependentUpon>IManagers.tt</DependentUpon>
-    </Compile>
     <Compile Include="Managers\IProductMaterialRspManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
@@ -237,6 +234,9 @@
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\ITermInstrumentsManager.cs">
+      <DependentUpon>IManagers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\ITermPositionMaterialRspManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\ITermPositionsManager.cs">

@@ -2,7 +2,8 @@
     'base/related-object-grid-view',
     'collections/Terms/TermPositions',
     'l!t!Terms/SelectPosition',
-], function (BaseView, Collection, SelectPositionView) {
+    'l!t!Terms/TermPositionMaterials',
+], function (BaseView, Collection, SelectPositionView, DetailView) {
     'use strict';
 
     var deleteAllTermPositions = function (dataItem) {
@@ -36,6 +37,8 @@
         collectionType: Collection,
         gridSelector: '.grid',
         tableName: 'TermPositions',
+
+        detailView: DetailView,
 
         addingInPopup: false,
         

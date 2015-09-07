@@ -3,8 +3,7 @@
     'collections/Positions',
     'l!t!Orders/SelectProduct',
     'l!t!Orders/SelectMaterial',
-    'l!t!Orders/Materials',
-], function (BaseView, Collection, SelectProductView, SelectMaterialView, DetailView) {
+], function (BaseView, Collection, SelectProductView, SelectMaterialView) {
     'use strict';
 
     var floatEditor = function (container, options) {
@@ -64,22 +63,6 @@
         });
     },
 
-    initDetailView = function (e) {
-
-        var self = this;
-
-        if (e.data.productId != null && e.data.productId != undefined) {
-            var options = _.extend({}, self.options, { model: e.data }),
-                view = new self.detailView(options);
-
-            self.addView(view);
-            e.detailRow.find('.detailsContainer').append(view.render().$el);
-
-            e.masterRow.data('detail-view', view);
-        }
-    },
-
-
     view = BaseView.extend({
 
         isMaterialPosition: null,
@@ -91,10 +74,6 @@
         tableName: 'Positions',
 
         addingInPopup: false,
-
-        initDetailView: initDetailView,
-        detailView: DetailView,
-
 
         initialize: function () {
             view.__super__.initialize.apply(this, arguments);
