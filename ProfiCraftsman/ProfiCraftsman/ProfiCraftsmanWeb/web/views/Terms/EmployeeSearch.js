@@ -1,8 +1,7 @@
 define([
 'base/base-object-grid-view',
 'collections/Terms/FreeEmployees',
-//'l!t!Settings/FilterPositions'
-], function (BaseView, Collection/*, FilterView*/) {
+], function (BaseView, Collection) {
     'use strict';
 
     var saveFunction = function (e, self) {
@@ -22,8 +21,7 @@ define([
     view = BaseView.extend({
 
         collectionType: Collection,
-       // filterView: FilterView,
-       // filterSelector: '.filter',
+        filterSelector: '.filter',
 
         showDeleteButton: false,
         showEditButton: false,
@@ -38,9 +36,22 @@ define([
 
             var self = this;
 
-            //this.defaultFiltering = [
-            //    { field: 'orderId', operator: 'eq', value: self.model.orderId },
-            //];
+            this.defaultFiltering = [
+                { field: 'termId', operator: 'eq', value: self.model.id },
+            ];
+
+            //require(['t!Terms/FilterFreeEmployees'], function (View) {
+
+            //    debugger;
+
+            //    self.showView(new View(
+            //            {
+            //                grid: self.grid,
+            //                termId: self.model.id
+            //            }
+            //        ),
+            //        self.filterSelector);
+            //});
 
             this.collection = new Collection();
         },

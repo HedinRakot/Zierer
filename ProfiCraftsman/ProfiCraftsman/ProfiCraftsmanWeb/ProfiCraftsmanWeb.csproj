@@ -321,6 +321,7 @@
     <Content Include="web\models\Settings\Instruments.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
+    <Content Include="web\models\Terms\FilterFreeEmployees.js" />
     <Content Include="web\models\Terms\NotProccessedPosition.js" />
     <Content Include="web\models\Terms\FreeEmployee.js" />
     <Content Include="web\models\Terms\TermEmployee.js" />
@@ -986,6 +987,7 @@
     <Content Include="web\templates\Invoices\AddInvoicePositions.html" />
     <Content Include="web\templates\Orders\InnerPositions.html" />
     <Content Include="web\templates\Terms\EmployeeSearch.html" />
+    <Content Include="web\templates\Terms\FilterFreeEmployees.html" />
     <Content Include="web\templates\Terms\SelectEmployee.html" />
     <Content Include="web\templates\Terms\TermPositionMaterials.html" />
     <Content Include="web\templates\Orders\FilterOffersProductSmart.html" />
@@ -1267,6 +1269,7 @@
     <Content Include="web\views\Settings\ImportMaterialResults.js" />
     <Content Include="web\views\Settings\ImportMaterials.js" />
     <Content Include="web\views\Terms\EmployeeSearch.js" />
+    <Content Include="web\views\Terms\FilterFreeEmployees.js" />
     <Content Include="web\views\Terms\SelectEmployee.js" />
     <Content Include="web\views\Terms\ShowSignatureView.js" />
     <Content Include="web\views\Terms\PositionSearch.js" />
