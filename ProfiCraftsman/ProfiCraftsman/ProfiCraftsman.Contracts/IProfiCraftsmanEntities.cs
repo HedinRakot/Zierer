@@ -38,6 +38,10 @@ namespace ProfiCraftsman.Contracts
         /// </summary>
         IQueryable<TermPositionMaterialRsp> TermPositionMaterialRsp{get;}
         /// <summary>
+        ///     Set of <see cref="SearchPositionView"/> entities from table dbo.SearchPositionView
+        /// </summary>
+        IQueryable<SearchPositionView> SearchPositionView{get;}
+        /// <summary>
         ///     Set of <see cref="Invoices"/> entities from table dbo.Invoices
         /// </summary>
         IQueryable<Invoices> Invoices{get;}

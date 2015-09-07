@@ -93,6 +93,7 @@
     <Compile Include="Entities\Custom.CommunicationPartners.cs" />
     <Compile Include="Entities\Custom.InvoicePositions.cs" />
     <Compile Include="Entities\Custom.Materials.cs" />
+    <Compile Include="Entities\Custom.SearchPositionView.cs" />
     <Compile Include="Entities\Custom.Terms.cs" />
     <Compile Include="Entities\Custom.Products.cs" />
     <Compile Include="Entities\Custom.Positions.cs" />
@@ -147,6 +148,9 @@
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\RolePermissionRsp.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SearchPositionView.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Taxes.cs">
@@ -228,6 +232,9 @@
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\IProductMaterialRspManager.cs">
+      <DependentUpon>IManagers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\ISearchPositionViewManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\ITermEmployeesManager.cs">

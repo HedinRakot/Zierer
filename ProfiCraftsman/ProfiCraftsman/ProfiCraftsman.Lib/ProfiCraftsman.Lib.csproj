@@ -185,6 +185,9 @@
       <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\SaveActors\ProfiCraftsmanSaveActorManager.cs" />
+    <Compile Include="Data\SearchPositionViewMapping.cs">
+      <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\TaxesMapping.cs">
       <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
     </Compile>
@@ -290,6 +293,9 @@
       <DependentUpon>Managers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\RolePermissionRspManager.cs">
+      <DependentUpon>Managers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\SearchPositionViewManager.cs">
       <DependentUpon>Managers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\TaxesManager.cs">

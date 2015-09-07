@@ -68,7 +68,7 @@ namespace ProfiCraftsman.API.Controllers
                 {
                     TermPositionMaterialRspManager.AddEntity(new TermPositionMaterialRsp()
                     {
-                        Amount = material.Amount * model.amount,
+                        Amount = material.Amount.HasValue ? material.Amount.Value * model.amount : (double?)null,
                         TermPositionId = model.Id,
                         MaterialId = material.MaterialId
                     });
@@ -79,7 +79,7 @@ namespace ProfiCraftsman.API.Controllers
                 var termPosition = Manager.GetById(model.Id);
                 foreach (var material in termPosition.TermPositionMaterialRsps.Where(o => !o.DeleteDate.HasValue))
                 {
-                    material.Amount = model.amount;
+                    material.Amount = material.Amount.HasValue ? model.proccessedAmount : (double?)null;
                 }
             }
         }      

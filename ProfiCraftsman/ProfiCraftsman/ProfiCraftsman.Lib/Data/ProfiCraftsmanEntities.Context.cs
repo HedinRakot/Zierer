@@ -28,6 +28,7 @@ namespace ProfiCraftsman.Lib.Data
             modelBuilder.Configurations.Add(PositionsMapping.Instance);
             modelBuilder.Configurations.Add(TermEmployeesMapping.Instance);
             modelBuilder.Configurations.Add(TermPositionMaterialRspMapping.Instance);
+            modelBuilder.Configurations.Add(SearchPositionViewMapping.Instance);
             modelBuilder.Configurations.Add(InvoicesMapping.Instance);
             modelBuilder.Configurations.Add(InvoicePositionsMapping.Instance);
             modelBuilder.Configurations.Add(MaterialsMapping.Instance);
@@ -78,6 +79,10 @@ namespace ProfiCraftsman.Lib.Data
         ///     Set of <see cref="TermPositionMaterialRsp"/> entities from table dbo.TermPosition_Material_Rsp
         /// </summary>
         public IQueryable<TermPositionMaterialRsp> TermPositionMaterialRsp{ get; set; }
+        /// <summary>
+        ///     Set of <see cref="SearchPositionView"/> entities from table dbo.SearchPositionView
+        /// </summary>
+        public IQueryable<SearchPositionView> SearchPositionView{ get; set; }
         /// <summary>
         ///     Set of <see cref="Invoices"/> entities from table dbo.Invoices
         /// </summary>

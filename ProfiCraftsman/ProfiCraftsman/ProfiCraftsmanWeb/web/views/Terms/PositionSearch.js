@@ -1,6 +1,6 @@
 define([
 'base/base-object-grid-view',
-'collections/Positions',
+'collections/Terms/NotProccessedPositions',
 //'l!t!Settings/FilterPositions'
 ], function (BaseView, Collection/*, FilterView*/) {
     'use strict';
@@ -40,7 +40,6 @@ define([
 
             this.defaultFiltering = [
                 { field: 'orderId', operator: 'eq', value: self.model.orderId },
-                { field: 'onlyProducts', operator: 'eq', value: true },
             ];
 
             this.collection = new Collection();

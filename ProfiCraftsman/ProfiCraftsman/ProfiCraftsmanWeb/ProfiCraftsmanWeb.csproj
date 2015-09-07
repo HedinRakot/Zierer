@@ -240,6 +240,7 @@
     <Content Include="web\collections\Settings\Instruments.js">
       <DependentUpon>web.collections.tt</DependentUpon>
     </Content>
+    <Content Include="web\collections\Terms\NotProccessedPositions.js" />
     <Content Include="web\collections\Terms\TermEmployees.js" />
     <Content Include="web\collections\Terms\TermInstruments.js" />
     <Content Include="web\collections\Terms\TermPositions.js" />
@@ -319,6 +320,7 @@
     <Content Include="web\models\Settings\Instruments.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
+    <Content Include="web\models\Terms\NotProccessedPosition.js" />
     <Content Include="web\models\Terms\TermEmployee.js" />
     <Content Include="web\models\Terms\TermInstrument.js" />
     <Content Include="web\models\Terms\TermPosition.js" />
