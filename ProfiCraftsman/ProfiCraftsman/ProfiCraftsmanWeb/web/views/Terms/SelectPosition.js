@@ -19,8 +19,7 @@
 
             //todo delete this.stickit();
 
-            var self = this,
-                selectInnerProduct = self.options.selectInnerProduct;
+            var self = this;
 
             var options = {
                 success: function (model) {

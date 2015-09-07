@@ -1,7 +1,8 @@
 ﻿define([
     'base/related-object-grid-view',
     'collections/Terms/TermEmployees',
-], function (BaseView, Collection) {
+    'l!t!Terms/SelectEmployee',
+], function (BaseView, Collection, SelectEmployeeView) {
     'use strict';
 
     var view = BaseView.extend({
@@ -11,6 +12,7 @@
         tableName: 'TermEmployees',
 
         addingInPopup: false,
+        showEditButton: false,
         
         initialize: function () {
             view.__super__.initialize.apply(this, arguments);
@@ -45,6 +47,54 @@
 
             return self;
         },
+
+        events: {
+            'click .selectEmployees': function (e) {
+                e.preventDefault();
+
+                var self = this,
+                options = _.extend({}, self.options);
+
+                var view = new SelectEmployeeView(options);
+
+                self.listenTo(view, 'selectEmployee', function (item) {
+
+                    var model = new Backbone.Model();
+                    model.isNew = function () { return true; }
+                    model.url = Application.apiUrl + '/termEmployees';
+                    model.set('termId', self.model.id);
+                    model.set('employeeId', item.id);
+
+                    model.save({}, {
+                        data: kendo.stringify(model),
+                        method: 'post',
+                        contentType: 'application/json',
+                        success: function (response) {
+                            self.grid.dataSource.read();
+                            self.grid.refresh();
+                        },
+                        error: function (model, response) {
+                            //TODO
+                        }
+                    });
+                });
+
+                self.addView(view);
+                self.$el.append(view.render().$el);
+            },
+        },
+
+        toolbar: function () {
+            var self = this,
+		        result =
+		    [{
+		        template: function () {
+		            return '<a class="k-button k-button-icontext selectEmployees" style="min-width: 180px;" href="#" data-localized="add"></a>';
+		        }
+		    }];
+
+            return result;
+        }
     });
 
     return view;

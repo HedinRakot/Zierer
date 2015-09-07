@@ -189,6 +189,7 @@
     <Compile Include="Controllers\Orders\DeleteAllOrderPositionsController.cs" />
     <Compile Include="Controllers\Orders\CopyOrderController.cs" />
     <Compile Include="Controllers\Terms\PositionSearchController.cs" />
+    <Compile Include="Controllers\Terms\FreeEmployeesController.cs" />
     <Compile Include="Controllers\Terms\TermPositionMaterialsController.cs" />
     <Compile Include="Controllers\Settings\Custom.ProductMaterialRspsController.cs" />
     <Compile Include="Controllers\Settings\ImportMaterialsController.cs" />

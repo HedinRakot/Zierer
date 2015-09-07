@@ -5,6 +5,7 @@ define(function () {
 
 	    pleaseSelect: 'Please select',
 	    employee: 'Employee',
+	    add: 'Add'
 	};
 
 	return resources;

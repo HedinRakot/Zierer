@@ -22,26 +22,21 @@ namespace ProfiCraftsman.API.Controllers
     ///     Controller for <see cref="TermInstruments"/> entity
     /// </summary>
     [AuthorizeByPermissions(PermissionTypes = new[] { Permissions.Orders })]
-    public partial class TermEmployeesController : ClientApiController<TermEmployeeModel, TermEmployees, int, ITermEmployeesManager>
+    public partial class FreeEmployeesController : ReadOnlyClientApiController<EmployeesModel, Employees, int, IEmployeesManager>
     {
 
-        public TermEmployeesController(ITermEmployeesManager manager) : 
+        public FreeEmployeesController(IEmployeesManager manager) :
             base(manager)
         {
         }
 
-        protected override void EntityToModel(TermEmployees entity, TermEmployeeModel model)
+        protected override void EntityToModel(Employees entity, EmployeesModel model)
         {
-            model.termId = entity.TermId;
-            model.employeeId = entity.EmployeeId;
+            model.number = entity.Number;
+            model.name = entity.Name;
+            model.firstName = entity.FirstName;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
         }
-        
-        protected override void ModelToEntity(TermEmployeeModel model, TermEmployees entity, ActionTypes actionType)
-        {
-            entity.TermId = model.termId;
-            entity.EmployeeId = model.employeeId;
-        }      
     }
 }
