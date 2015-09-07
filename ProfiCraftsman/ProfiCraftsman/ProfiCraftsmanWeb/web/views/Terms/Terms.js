@@ -62,11 +62,11 @@
                     },
                     attributes: { "class": "detail-view-grid-cell" }
                 },
-				{ field: 'employees', title: this.resources.employee, attributes: { "class": "detail-view-grid-cell" } },
+				{ field: 'employees', title: this.resources.employee, sortable: false, filterable: false, attributes: { "class": "detail-view-grid-cell" } },
 				{ field: 'autoId', title: this.resources.auto, collection: this.options.autos, defaultText: this.resources.pleaseSelect, attributes: { "class": "detail-view-grid-cell" } },
 				{ field: 'status', title: this.resources.status, attributes: { "class": "detail-view-grid-cell" } },
                 { field: 'comment', title: this.resources.comment, attributes: { "class": "detail-view-grid-cell" } },
-                { field: 'errorStatus', title: this.resources.errorStatus, attributes: { "class": "detail-view-grid-cell" } },
+                { field: 'errorStatus', title: this.resources.errorStatus, sortable: false, filterable: false, attributes: { "class": "detail-view-grid-cell" } },
 			];
 		},
 		
