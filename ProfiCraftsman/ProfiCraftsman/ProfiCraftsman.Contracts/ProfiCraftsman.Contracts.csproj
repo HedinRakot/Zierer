@@ -105,6 +105,9 @@
     <Compile Include="Entities\Customers.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\CustomProducts.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\DeliveryNoteSignatures.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
@@ -163,6 +166,9 @@
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Taxes.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TermCosts.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\TermEmployees.cs">
@@ -228,6 +234,9 @@
     <Compile Include="Managers\ICommunicationPartnersManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Managers\ICustomProductsManager.cs">
+      <DependentUpon>IManagers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Managers\IDeliveryNoteSignaturesManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
@@ -253,6 +262,9 @@
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\ISearchPositionViewManager.cs">
+      <DependentUpon>IManagers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\ITermCostsManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\ITermEmployeesManager.cs">

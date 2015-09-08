@@ -5,6 +5,7 @@ define(function () {
         AdditionalCostTypes: 'Additional cost type',
         Rates: 'Rates',
         EmployeeRateRsps: 'Employee rate',
+        CustomProducts: 'Custom product',
         Materials: 'Material',
         ProductMaterialRsps: 'Materials',
         Autos: 'Auto',

@@ -120,6 +120,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public virtual ICollection<DeliveryNoteSignatures> DeliveryNoteSignatures{ get; set; }
         public virtual ICollection<Positions> Positions{ get; set; }
         public virtual ICollection<TermEmployees> TermEmployees{ get; set; }
+        public virtual ICollection<TermCosts> TermCosts{ get; set; }
         public virtual User User{ get; set; }
         public virtual Autos Autos{ get; set; }
         public virtual Orders Orders{ get; set; }

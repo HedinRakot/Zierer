@@ -50,17 +50,16 @@
 		columns: function () {
 
 		   return [
-				{ field: 'date', title: this.resources.date, format: "{0:g}", dateTime: true, attributes: { "class": "detail-view-grid-cell" } },
+				{ field: 'date', headerAttributes: { width: '140px' }, title: this.resources.date, format: "{0:g}", dateTime: true, attributes: { "class": "detail-view-grid-cell" } },
                 {
                     field: 'duration',
                     title: this.resources.duration,
                     collection: this.options.durations,
-                    width: '40px',
                     sortable: false,
                     headerAttributes: {
                         title: this.resources.duration
                     },
-                    attributes: { "class": "detail-view-grid-cell" }
+                    attributes: { "class": "detail-view-grid-cell", width: '55px' }
                 },
 				{ field: 'employees', title: this.resources.employee, sortable: false, filterable: false, attributes: { "class": "detail-view-grid-cell" } },
 				{ field: 'autoId', title: this.resources.auto, collection: this.options.autos, defaultText: this.resources.pleaseSelect, attributes: { "class": "detail-view-grid-cell" } },

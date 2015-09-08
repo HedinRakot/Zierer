@@ -38,6 +38,12 @@ namespace ProfiCraftsman.API
                 {"ToDate", "toDate"},
             });
 
+            tables.Add("CustomProducts", new TableMapping("CustomProducts", "CustomProducts", 2)
+            {
+                {"Price", "price"},
+                {"Name", "name"},
+            });
+
             tables.Add("Materials", new TableMapping("Materials", "Materials", 15)
             {
                 {"Name", "name"},

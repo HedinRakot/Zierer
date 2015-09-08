@@ -24,10 +24,12 @@ namespace ProfiCraftsman.API.Controllers
     [AuthorizeByPermissions(PermissionTypes = new[] { Permissions.Orders })]
     public partial class TermsController : ClientApiController<TermsModel, Terms, int, ITermsManager>
     {
-        public TermsController(ITermsManager manager) : 
+        protected ICustomProductsManager customProductManager { get; set; }
+
+        public TermsController(ITermsManager manager, ICustomProductsManager customProductManager) : 
             base(manager)
         {
-
+            this.customProductManager = customProductManager;
         }
         
         protected override void EntityToModel(Terms entity, TermsModel model)
@@ -69,7 +71,16 @@ namespace ProfiCraftsman.API.Controllers
 
             if(actionType == ActionTypes.Add)
             {
-
+                entity.TermCosts = new List<TermCosts>();
+                foreach(var customProduct in customProductManager.GetEntities().Where(o => o.Auto).ToList())
+                {
+                    entity.TermCosts.Add(new TermCosts()
+                    {
+                        Terms = entity,
+                        Name = customProduct.Name,
+                        Price = customProduct.Price
+                    });
+                }
             }            
         }      
     }

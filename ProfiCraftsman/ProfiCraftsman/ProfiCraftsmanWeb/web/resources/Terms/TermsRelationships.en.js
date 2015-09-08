@@ -6,7 +6,8 @@ define(function () {
         dataLoading: 'Data is loading. Please wait...',
         products: 'Products',
         instruments: 'Instruments',
-        employees: 'Employees'
+        employees: 'Employees',
+        costs: 'Costs',
     };
 
     return resources;

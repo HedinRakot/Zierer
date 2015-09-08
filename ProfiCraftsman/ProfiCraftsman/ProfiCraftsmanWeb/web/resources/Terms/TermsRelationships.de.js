@@ -6,7 +6,8 @@ define(function () {
 	    dataLoading: 'Daten werden geladen. Bitte warten...',
 	    products: 'Leistungen',
 	    instruments: 'Werkzeuge',
-        employees: 'Mitarbeiter'
+	    employees: 'Mitarbeiter',
+        costs: 'Kosten',
 	};
 
 	return resources;

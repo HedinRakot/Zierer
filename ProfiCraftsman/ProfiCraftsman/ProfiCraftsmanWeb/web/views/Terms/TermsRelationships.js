@@ -12,6 +12,7 @@ define([
                 { view: 'l!t!Terms/TermEmployees', selector: '.employees' },
                 { view: 'l!t!Terms/TermPositions', selector: '.products' },
                 { view: 'l!t!Terms/TermInstruments', selector: '.instruments' },
+                { view: 'l!t!Terms/TermCosts', selector: '.costs' },
             ];
             
             return result;

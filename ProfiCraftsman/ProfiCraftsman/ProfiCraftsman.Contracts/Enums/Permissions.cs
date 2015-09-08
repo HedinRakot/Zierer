@@ -25,6 +25,10 @@ namespace ProfiCraftsman.Contracts.Enums
     		///</summary>
     		public const int Rates = 20;
     		///<summary>
+    		/// Grant for edit CustomProducts table
+    		///</summary>
+    		public const int CustomProducts = 21;
+    		///<summary>
     		/// Grant for edit Invoices table
     		///</summary>
     		public const int Invoices = 12;

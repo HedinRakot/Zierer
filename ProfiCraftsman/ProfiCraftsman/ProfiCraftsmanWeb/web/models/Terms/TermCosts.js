@@ -1,0 +1,20 @@
+define(function () {
+	'use strict';
+
+	var model = Backbone.Model.extend({
+	    urlRoot: 'api/TermCosts',
+		fields: {
+		    id: { type: "number", editable: false }
+			,termId: { type: "number", 
+
+				                    validation: { required: true } }		
+			,price: { type: "number", 
+			                        editable: true, 
+				                    validation: { required: true } }	
+            ,name: { type: "string", 
+                                    editable: true, 
+                                    validation: { required: true } }
+		}
+	});
+	return model;
+});

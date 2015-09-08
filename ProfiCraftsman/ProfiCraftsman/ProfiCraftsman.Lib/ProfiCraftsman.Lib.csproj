@@ -128,6 +128,9 @@
     <Compile Include="Data\CommunicationPartnersMapping.cs">
       <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\CustomProductsMapping.cs">
+      <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\DeliveryNoteSignaturesMapping.cs">
       <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
     </Compile>
@@ -200,6 +203,9 @@
     <Compile Include="Data\TaxesMapping.cs">
       <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\TermCostsMapping.cs">
+      <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\TermEmployeesMapping.cs">
       <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
     </Compile>
@@ -255,6 +261,9 @@
     </Compile>
     <Compile Include="Managers\Custom.TermsManager.cs" />
     <Compile Include="Managers\CalculationHelper.cs" />
+    <Compile Include="Managers\CustomProductsManager.cs">
+      <DependentUpon>Managers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Managers\DeliveryNoteSignaturesManager.cs">
       <DependentUpon>Managers.tt</DependentUpon>
     </Compile>
@@ -317,6 +326,9 @@
       <DependentUpon>Managers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\TaxesManager.cs">
+      <DependentUpon>Managers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\TermCostsManager.cs">
       <DependentUpon>Managers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\TermEmployeesManager.cs">

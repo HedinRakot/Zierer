@@ -5,6 +5,7 @@ define(function () {
         AdditionalCostTypes: 'Nebenkostenarten',
         Rates: 'Stundensätze',
         EmployeeRateRsps: 'Mitarbeiterlohn',
+        CustomProducts: 'Sonderleistungen',
         Materials: 'Material',
         ProductMaterialRsps: 'Materialien',
         Autos: 'Auto',
