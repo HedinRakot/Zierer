@@ -5,7 +5,8 @@ define(function () {
 
 	    pleaseSelect: 'Bitte auswählen',
 	    number: 'Nummer',
-		description: 'Bezeichnung',
+	    description: 'Bezeichnung',
+	    employeeId: 'Mitarbeiter'
 	};
 
 	return resources;

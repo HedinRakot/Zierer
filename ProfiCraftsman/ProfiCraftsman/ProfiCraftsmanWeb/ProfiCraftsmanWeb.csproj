@@ -1560,7 +1560,9 @@
     <Content Include="App_Data\OfferFile.docx" />
     <Content Include="App_Data\InvoiceFile.docx" />
     <Content Include="App_Data\ReminderFile.docx" />
-    <Content Include="App_Data\RentOrderFile.docx" />
+    <Content Include="App_Data\OrderFile.docx" />
+    <Content Include="App_Data\DeliveryNoteFile.docx" />
+    <Content Include="App_Data\InvoiceStornoFile.docx" />
     <None Include="Properties\PublishProfiles\ContainerStar.pubxml" />
     <None Include="Properties\PublishProfiles\MasterData.pubxml" />
     <None Include="Properties\PublishProfiles\RTNU.deploy.pubxml" />
@@ -1628,7 +1630,9 @@
       <LastGenOutput>web.menu.resources.txt</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\MaterialImport\" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

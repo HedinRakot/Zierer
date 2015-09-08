@@ -33,7 +33,7 @@ namespace ProfiCraftsman.API.Controllers
         protected override void EntityToModel(Terms entity, TermsModel model)
         {
             model.orderId = entity.OrderId;
-            model.employees = String.Join(", ", entity.TermEmployees.ToList().Select(o => o.Employees.Name + 
+            model.employees = String.Join(", ", entity.TermEmployees.Where(e => !e.DeleteDate.HasValue).ToList().Select(o => o.Employees.Name + 
                 (!String.IsNullOrEmpty(o.Employees.FirstName) ? " " + o.Employees.FirstName : String.Empty)));
             model.autoId = entity.AutoId;
             model.date = entity.Date;
@@ -43,12 +43,12 @@ namespace ProfiCraftsman.API.Controllers
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
 
-            if(entity.TermEmployees.Count == 0)
+            if(entity.TermEmployees.Where(e => !e.DeleteDate.HasValue).Count() == 0)
             {
                 model.errorStatus += "Kein Mitarbeiter zugeordnet";
             }
 
-            if (entity.TermPositions.Count == 0)
+            if (entity.TermPositions.Where(e => !e.DeleteDate.HasValue).Count() == 0)
             {
                 if (!String.IsNullOrEmpty(model.errorStatus))
                 {

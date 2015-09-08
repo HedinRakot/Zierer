@@ -6,11 +6,11 @@ namespace ProfiCraftsman.Contracts
 {
     public static class Configuration
     {
-        public static string RentOrderFileName
+        public static string OrderFileName
         {
             get
             {
-                return ConfigurationManager.AppSettings["RentOrderFileName"];
+                return ConfigurationManager.AppSettings["OrderFileName"];
             }
         }
 
@@ -38,14 +38,6 @@ namespace ProfiCraftsman.Contracts
             }
         }
 
-        public static string TransportInvoiceFileName
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["TransportInvoiceFileName"];
-            }
-        }
-
         public static string ReminderFileName
         {
             get
@@ -61,17 +53,10 @@ namespace ProfiCraftsman.Contracts
                 return ConfigurationManager.AppSettings["DeliveryNoteFileName"];
             }
         }
-        public static string BackDeliveryNoteFileName
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["BackDeliveryNoteFileName"];
-            }
-        }
 
-        public static string RentOrderPreffix
+        public static string OrderPreffix
         {
-            get { return ConfigurationManager.AppSettings["RentOrderNumberPreffix"]; }
+            get { return ConfigurationManager.AppSettings["OrderNumberPreffix"]; }
         }
 
         public static string CombineUrl(params string[] parts)

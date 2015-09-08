@@ -93,7 +93,7 @@
 
 		        if (dataItem != undefined) {
 
-		            location.href = Application.apiUrl + 'print/?printTypeId=6&id=' + dataItem.id;
+		            location.href = Application.apiUrl + 'print/?printTypeId=5&id=' + dataItem.id;
 		        }
 		        else {
 		            require(['base/information-view'], function (View) {

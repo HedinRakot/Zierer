@@ -14,9 +14,14 @@ namespace ProfiCraftsman.API.Models
         [Required]
         [DataMember]
         public int termId{ get; set; }
-        
+
+        [Required]
         [DataMember]
         public int instrumentId { get; set; }
+
+        [Required]
+        [DataMember]
+        public int employeeId { get; set; }
 
         [DataMember]
         public string description { get; set; }

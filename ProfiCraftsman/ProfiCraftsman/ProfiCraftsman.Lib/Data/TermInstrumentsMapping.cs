@@ -47,8 +47,15 @@ namespace ProfiCraftsman.Lib.Data
             Property(t => t.DeleteDate)
                 .HasColumnName(TermInstruments.Fields.DeleteDate);
 
+            Property(t => t.EmployeeId)
+                .HasColumnName(TermInstruments.Fields.EmployeeId)
+                .IsRequired();
+
 
             //Relationships
+            HasRequired(t => t.Employees)
+                .WithMany(e => e.TermInstruments)
+                .HasForeignKey(t => t.EmployeeId);
             HasRequired(t => t.Terms)
                 .WithMany(t => t.TermInstruments)
                 .HasForeignKey(t => t.TermId);

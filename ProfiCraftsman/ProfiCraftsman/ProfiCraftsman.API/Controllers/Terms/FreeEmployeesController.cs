@@ -76,7 +76,7 @@ namespace ProfiCraftsman.API.Controllers
 
         private IEnumerable<int> GetBusyEmployees(IEnumerable<Employees> entities, DateTime dateFrom, DateTime dateTo)
         {
-            return entities.SelectMany(o => o.TermEmployees).
+            return entities.SelectMany(o => o.TermEmployees.Where(t => !t.DeleteDate.HasValue)).
                 Where(r =>
                     (r.Terms.Date >= dateFrom && r.Terms.Date <= dateTo) || //from date inside period
                     (r.Terms.Date.AddMinutes(r.Terms.Duration) >= dateFrom && r.Terms.Date.AddMinutes(r.Terms.Duration) <= dateTo) || // to date inside period

@@ -42,6 +42,10 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'DeleteDate' for property <see cref="TermInstruments.DeleteDate"/>
             /// </summary>
             public static readonly string DeleteDate = "DeleteDate";
+            /// <summary>
+            /// Column name 'EmployeeId' for property <see cref="TermInstruments.EmployeeId"/>
+            /// </summary>
+            public static readonly string EmployeeId = "EmployeeId";
           
         }
         #endregion
@@ -51,8 +55,14 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime CreateDate{ get; set; }
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
+        public int EmployeeId{ get; set; }
+        public virtual Employees Employees{ get; set; }
         public virtual Terms Terms{ get; set; }
         public virtual Instruments Instruments{ get; set; }
+        public bool HasEmployees
+        {
+            get { return !ReferenceEquals(Employees, null); }
+        }
         public bool HasTerms
         {
             get { return !ReferenceEquals(Terms, null); }
@@ -84,6 +94,7 @@ namespace ProfiCraftsman.Contracts.Entities
                        CreateDate = CreateDate,
                        ChangeDate = ChangeDate,
                        DeleteDate = DeleteDate,
+                       EmployeeId = EmployeeId,
         	           };
         }
     }

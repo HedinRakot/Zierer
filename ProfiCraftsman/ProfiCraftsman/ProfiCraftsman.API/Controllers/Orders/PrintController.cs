@@ -57,9 +57,9 @@ namespace ProfiCraftsman.API.Controllers
 
             switch (report)
             {
-                case PrintTypes.RentOrder:
-                    path = Path.Combine(dataDirectory, Contracts.Configuration.RentOrderFileName);
-                    stream = printerManager.PrepareRentOrderPrintData(id, path, taxesManager, Manager);
+                case PrintTypes.Order:
+                    path = Path.Combine(dataDirectory, Contracts.Configuration.OrderFileName);
+                    stream = printerManager.PrepareOrderPrintData(id, path, taxesManager, Manager);
                     break;
                 case PrintTypes.Offer:
                     path = Path.Combine(dataDirectory, Contracts.Configuration.OfferFileName);
@@ -97,10 +97,6 @@ namespace ProfiCraftsman.API.Controllers
                     path = Path.Combine(dataDirectory, Contracts.Configuration.InvoiceStornoFileName);
                     stream = printerManager.PrepareInvoiceStornoPrintData(id, path, invoiceStornosManager, Manager);
                     break;
-                case PrintTypes.TransportInvoice:
-                    path = Path.Combine(dataDirectory, Contracts.Configuration.TransportInvoiceFileName);
-                    stream = printerManager.PrepareTransportInvoicePrintData(id, path, transportOrdersManager, taxesManager, Manager);
-                    break;
                 case PrintTypes.DeliveryNote:
 
                     var term = termsManager.GetById(id);
@@ -125,10 +121,6 @@ namespace ProfiCraftsman.API.Controllers
                         path = Path.Combine(dataDirectory, Contracts.Configuration.DeliveryNoteFileName);
                         stream = printerManager.PrepareDeliveryNotePrintData(id, path, termsManager);
                     }
-                    break;
-                case PrintTypes.BackDeliveryNote:
-                    path = Path.Combine(dataDirectory, Contracts.Configuration.BackDeliveryNoteFileName);
-                    stream = printerManager.PrepareBackDeliveryNotePrintData(id, path, Manager);
                     break;
                 default:
                     throw new NotImplementedException();

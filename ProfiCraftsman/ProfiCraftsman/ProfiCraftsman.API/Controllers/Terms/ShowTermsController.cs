@@ -82,7 +82,8 @@ namespace ProfiCraftsman.API.Controllers
                 var columnIndexes = new Dictionary<int, int>();
                 var columnIndex = 0;
 
-                foreach (var employee in terms.SelectMany(o => o.TermEmployees).Select(o => o.Employees).Distinct().ToList())
+                foreach (var employee in terms.SelectMany(o => o.TermEmployees.Where(e => !e.DeleteDate.HasValue)).
+                    Select(o => o.Employees).Distinct().ToList())
                 {
                     columnIndexes[employee.Id] = columnIndex;
                     columnIndex++;
@@ -102,7 +103,7 @@ namespace ProfiCraftsman.API.Controllers
                 {
                     //var date = DateTime.Now;
 
-                    foreach (var termEmployee in term.TermEmployees.ToList())
+                    foreach (var termEmployee in term.TermEmployees.Where(e => !e.DeleteDate.HasValue).ToList())
                     {
                         //date = term.Date;
 

@@ -8,7 +8,7 @@ namespace ProfiCraftsman.Contracts.Managers
     /// </summary>
     public partial interface IPrinterManager
     {
-        MemoryStream PrepareRentOrderPrintData(int id, string path, ITaxesManager taxesManager, IOrdersManager ordersManager);
+        MemoryStream PrepareOrderPrintData(int id, string path, ITaxesManager taxesManager, IOrdersManager ordersManager);
 
         MemoryStream PrepareOfferPrintData(int id, string path, ITaxesManager taxesManager, IOrdersManager ordersManager);
 
@@ -22,11 +22,6 @@ namespace ProfiCraftsman.Contracts.Managers
         MemoryStream PrepareMonthInvoicePrintData(IEnumerable<Invoices> invoices, string path, IInvoicesManager invoicesManager, 
             ITaxesManager taxesManager, IOrdersManager ordersManager);
 
-        MemoryStream PrepareTransportInvoicePrintData(int id, string path, ITransportOrdersManager transportOrdersManager, 
-            ITaxesManager taxesManager, IOrdersManager ordersManager);
-
         MemoryStream PrepareDeliveryNotePrintData(int id, string path, ITermsManager termsManager);
-
-        MemoryStream PrepareBackDeliveryNotePrintData(int id, string path, IOrdersManager ordersManager);
     }
 }

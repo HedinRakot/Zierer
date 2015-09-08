@@ -28,6 +28,7 @@
 
             var columns = [
                 { field: 'instrumentId', title: this.resources.description, collection: this.options.instruments, defaultText: this.resources.pleaseSelect, attributes: { "class": "detail-view-grid-cell" } },
+                { field: 'employeeId', title: this.resources.employeeId, collection: this.options.employees, defaultText: this.resources.pleaseSelect, attributes: { "class": "detail-view-grid-cell" } },
             ];
 
             return columns;

@@ -11,7 +11,10 @@ define(function () {
 				                    validation: { required: true } }		
 			,instrumentId: { type: "number", 
 			                        editable: true, 
-				                    validation: { required: false } }				
+				                    validation: { required: true } }	
+            ,employeeId: { type: "number", 
+			                        editable: true, 
+				                    validation: { required: true } }	
             ,description: {type: "string",
                                     editable: false,
                                     validation: { required: true } }

@@ -50,6 +50,7 @@
                 height: 690,
                 editable: false,
                 lang: "de",
+
                 eventLimit: true, // allow "more" link when too many events,
 
                 defaultView: 'agendaDay',

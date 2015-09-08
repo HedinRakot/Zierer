@@ -34,8 +34,9 @@ namespace ProfiCraftsman.API.Controllers
         {
             model.termId = entity.TermId;
             model.instrumentId = entity.InstrumentId;
-            model.description = entity.Instruments.Name;
-            model.number = entity.Instruments.Number;
+            model.employeeId = entity.EmployeeId;
+            //model.description = entity.Instruments.Name;
+            //model.number = entity.Instruments.Number;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
         }
@@ -44,6 +45,7 @@ namespace ProfiCraftsman.API.Controllers
         {
             entity.TermId = model.termId;
             entity.InstrumentId = model.instrumentId;
+            entity.EmployeeId = model.employeeId;
         }      
     }
 }

@@ -18,9 +18,9 @@ namespace ProfiCraftsman.Lib.Managers
     {
         #region Prepare Print
 
-        public MemoryStream PrepareRentOrderPrintData(int id, string path, ITaxesManager taxesManager, IOrdersManager ordersManager)
+        public MemoryStream PrepareOrderPrintData(int id, string path, ITaxesManager taxesManager, IOrdersManager ordersManager)
         {
-            return PrepareCommonOrderPrintData(ordersManager, id, path, PrintTypes.RentOrder, null, taxesManager);
+            return PrepareCommonOrderPrintData(ordersManager, id, path, PrintTypes.Order, null, taxesManager);
         }
 
         public MemoryStream PrepareOfferPrintData(int id, string path, ITaxesManager taxesManager, IOrdersManager ordersManager)
@@ -38,20 +38,9 @@ namespace ProfiCraftsman.Lib.Managers
             return PrepareCommonOrderPrintData(ordersManager, id, path, PrintTypes.InvoiceStorno, null, null, invoiceStornosManager);
         }
 
-        public MemoryStream PrepareTransportInvoicePrintData(int id, string path, ITransportOrdersManager transportOrdersManager, 
-            ITaxesManager taxesManager, IOrdersManager ordersManager)
-        {
-            return PrepareCommonOrderPrintData(ordersManager, id, path, PrintTypes.TransportInvoice, null, taxesManager, null, transportOrdersManager);
-        }
-
         public MemoryStream PrepareDeliveryNotePrintData(int id, string path, ITermsManager termsManager)
         {
             return PrepareCommonOrderPrintData(null, id, path, PrintTypes.DeliveryNote, null, null, null, null, termsManager);
-        }
-
-        public MemoryStream PrepareBackDeliveryNotePrintData(int id, string path, IOrdersManager ordersManager)
-        {
-            return PrepareCommonOrderPrintData(ordersManager, id, path, PrintTypes.BackDeliveryNote, null, null);
         }
 
         public MemoryStream PrepareMonthInvoicePrintData(IEnumerable<Invoices> invoices, string path, IInvoicesManager invoicesManager, 
@@ -233,7 +222,7 @@ namespace ProfiCraftsman.Lib.Managers
 
             switch (printType)
             {
-                case PrintTypes.RentOrder:
+                case PrintTypes.Order:
                     var order = ordersManager.GetById(id);
                     result = ReplaceCommonFields(order, result);
                     result = ReplaceBaseOrderFields(order, result);
@@ -296,15 +285,6 @@ namespace ProfiCraftsman.Lib.Managers
                     result = ReplaceReminderTotalPrice(invoice, result, taxesManager);
 
                     break;
-                case PrintTypes.TransportInvoice:
-
-                    var transportOrder = transportOrdersManager.GetById(id);
-
-                    result = ReplaceTransportOrderCommonFields(transportOrder, result);
-                    result = ReplaceBaseTransportInvoiceFields(transportOrder, result, printType);
-                    result = ReplaceTransportPositions(transportOrder.TransportPositions.Where(o => !o.DeleteDate.HasValue).ToList(), result);
-                    result = ReplaceTransportInvoicePrices(transportOrder, result, taxesManager);
-                    break;
                 case PrintTypes.DeliveryNote:
 
                     var term = termsManager.GetById(id);
@@ -357,22 +337,6 @@ namespace ProfiCraftsman.Lib.Managers
                     }
 
                     break;
-                //case PrintTypes.BackDeliveryNote:
-
-                //    order = ordersManager.GetById(id);
-                //    result = ReplaceCommonFields(order, result);
-                //    result = ReplaceBaseOrderFields(order, result);
-
-                //    result = result.Replace("#DeliveryNoteType", "Rücklieferschein");
-                //    result = result.Replace("#DateType", "Abholtermin");
-                //    result = result.Replace("#AdressType", "Abholanschrift");
-                //    result = result.Replace("#OrderNumber", order.OrderNumber);
-                    
-                //    positions = order.Positions != null ? order.Positions.Where(o => !o.DeleteDate.HasValue).ToList() :
-                //        new List<Positions>();
-
-                //    result = ReplacePositionWithDescription(positions, result);
-                //    break;
                 default:
                     throw new NotImplementedException();
             }
@@ -1217,272 +1181,7 @@ namespace ProfiCraftsman.Lib.Managers
         }
 
         #endregion
-
-        #region Transport Invoice
-
-        private string ReplaceTransportOrderCommonFields(TransportOrders transportOrder, string xmlMainXMLDoc)
-        {
-            xmlMainXMLDoc = ReplaceFieldValue(xmlMainXMLDoc, "#CustomerName", transportOrder.CustomerName);
-            xmlMainXMLDoc = ReplaceFieldValue(xmlMainXMLDoc, "#CustomerStreet", transportOrder.Customers.Street);
-            xmlMainXMLDoc = ReplaceFieldValue(xmlMainXMLDoc, "#CustomerZip", transportOrder.Customers.Zip.ToString());
-            xmlMainXMLDoc = ReplaceFieldValue(xmlMainXMLDoc, "#CustomerCity", transportOrder.Customers.City);
-            xmlMainXMLDoc = xmlMainXMLDoc.Replace("#Today", DateTime.Now.ToShortDateString());
-            xmlMainXMLDoc = ReplaceFieldValue(xmlMainXMLDoc, "#DeliveryPlace", transportOrder.DeliveryPlace);
-            xmlMainXMLDoc = ReplaceFieldValue(xmlMainXMLDoc, "#Street", transportOrder.Street);
-            xmlMainXMLDoc = ReplaceFieldValue(xmlMainXMLDoc, "#ZIP", transportOrder.Zip.ToString());
-            xmlMainXMLDoc = ReplaceFieldValue(xmlMainXMLDoc, "#City", transportOrder.City);
-
-            return xmlMainXMLDoc;
-        }
-
-        private string ReplaceBaseTransportInvoiceFields(TransportOrders transportOrder, string xmlMainXMLDoc, PrintTypes printType)
-        {
-            if (printType == PrintTypes.InvoiceStorno)
-            {
-                xmlMainXMLDoc = xmlMainXMLDoc.Replace("#InvoiceType", "Gutschrift");
-            }
-            else
-            {
-                xmlMainXMLDoc = xmlMainXMLDoc.Replace("#InvoiceType", "Rechnung");
-            }
-
-            xmlMainXMLDoc = xmlMainXMLDoc.Replace("#InvoiceNumber", transportOrder.OrderNumber);
-            xmlMainXMLDoc = xmlMainXMLDoc.Replace("#InvoiceDate", transportOrder.CreateDate.ToShortDateString());
-            xmlMainXMLDoc = ReplaceFieldValue(xmlMainXMLDoc, "#CustomerNumber", transportOrder.Customers.Number.ToString());
-
-            xmlMainXMLDoc = ReplaceTransportOrderedFromInfo(xmlMainXMLDoc, transportOrder);
-
-            xmlMainXMLDoc = ReplaceTransportCustomerOrderNumber(xmlMainXMLDoc, transportOrder);
-
-            xmlMainXMLDoc = xmlMainXMLDoc.Replace("#OrderNumber", transportOrder.OrderNumber);
-
-            xmlMainXMLDoc = ReplaceTransportUstId(xmlMainXMLDoc, transportOrder);
-
-            xmlMainXMLDoc = ReplaceTransportFooterTexts(xmlMainXMLDoc, transportOrder);
-
-            return xmlMainXMLDoc;
-        }
-
-        private string ReplaceTransportOrderedFromInfo(string xmlMainXMLDoc, TransportOrders transportOrder)
-        {
-            var xmlDoc = XDocument.Parse(xmlMainXMLDoc);
-            var temp = xmlDoc.Descendants().LastOrDefault(o => o.Value.Contains("#OrderedFromInfo"));
-            var parentElement = GetParentElementByName(temp, "<w:tr ");
-
-            if (parentElement != null)
-            {
-                if (!String.IsNullOrEmpty(transportOrder.OrderedFrom) || transportOrder.OrderDate.HasValue)
-                {
-                    xmlMainXMLDoc = ReplaceFieldValue(xmlMainXMLDoc, "#OrderedFromInfo", String.Format("{0}{1}{2}",
-                        transportOrder.OrderDate.HasValue ? transportOrder.OrderDate.Value.ToShortDateString() : String.Empty,
-                        !String.IsNullOrEmpty(transportOrder.OrderedFrom) ? " durch " : String.Empty,
-                        !String.IsNullOrEmpty(transportOrder.OrderedFrom) ? transportOrder.OrderedFrom : String.Empty));
-                }
-                else
-                {
-                    parentElement.Remove();
-                    xmlMainXMLDoc = xmlDoc.Root.ToString();
-                }
-            }
-            return xmlMainXMLDoc;
-        }
-
-        private string ReplaceTransportCustomerOrderNumber(string xmlMainXMLDoc, TransportOrders transportOrder)
-        {
-            var xmlDoc = XDocument.Parse(xmlMainXMLDoc);
-            var temp = xmlDoc.Descendants().LastOrDefault(o => o.Value.Contains("#CustomerOrderNumber"));
-            var parentElement = GetParentElementByName(temp, "<w:tr ");
-
-            if (parentElement != null)
-            {
-                if (!String.IsNullOrEmpty(transportOrder.CustomerOrderNumber))
-                {
-                    xmlMainXMLDoc = ReplaceFieldValue(xmlMainXMLDoc, "#CustomerOrderNumber", transportOrder.CustomerOrderNumber);
-                }
-                else
-                {
-                    parentElement.Remove();
-                    xmlMainXMLDoc = xmlDoc.Root.ToString();
-                }
-            }
-            return xmlMainXMLDoc;
-        }
-
-        private string ReplaceTransportUstId(string xmlMainXMLDoc, TransportOrders transportOrder)
-        {
-            var xmlDoc = XDocument.Parse(xmlMainXMLDoc);
-            var temp = xmlDoc.Descendants().LastOrDefault(o => o.Value.Contains("#CustomerUstId"));
-            var parentElement = GetParentElementByName(temp, "<w:tr ");
-
-            if (parentElement != null)
-            {
-                if (!String.IsNullOrEmpty(transportOrder.Customers.UstId))
-                {
-                    xmlMainXMLDoc = ReplaceFieldValue(xmlMainXMLDoc, "#CustomerUstId", transportOrder.Customers.UstId);
-                }
-                else
-                {
-                    parentElement.Remove();
-                    xmlMainXMLDoc = xmlDoc.Root.ToString();
-                }
-            }
-            return xmlMainXMLDoc;
-        }
-
-        private string ReplaceTransportPositions(List<TransportPositions> positions, string xmlMainXMLDoc)
-        {
-            var xmlDoc = XDocument.Parse(xmlMainXMLDoc);
-            var temp = xmlDoc.Descendants().LastOrDefault(o => o.Value.Contains("#Description"));
-            var parentTableElement = GetParentElementByName(temp, "<w:tr ");
-
-            if (parentTableElement != null)
-            {
-                var prevTableElem = parentTableElement;
-
-                bool firstElem = true;
-                foreach (var position in positions)
-                {
-                    var rowElem = XElement.Parse(ReplaceFieldValue(
-                        parentTableElement.ToString(), "#Description",
-                            String.Format("{0}{1} {2}", firstElem ? "Leistungen: " : "",
-                                position.Amount,
-                                position.TransportProducts.Name)).
-                        Replace("#Price", position.Price.ToString("N2")));
-                    prevTableElem.AddAfterSelf(rowElem);
-                    prevTableElem = rowElem;
-
-                    if (firstElem)
-                    {
-                        firstElem = false;
-                    }
-                }
-
-                parentTableElement.Remove();
-            }
-
-            return xmlDoc.Root.ToString();
-        }
-
-        private string ReplaceTransportInvoicePrices(TransportOrders transportOrder, string xmlMainXMLDoc, ITaxesManager taxesManager)
-        {
-            if (transportOrder.TransportPositions != null && transportOrder.TransportPositions.Count != 0)
-            {
-                double totalPriceWithoutDiscountWithoutTax = 0;
-                double totalPriceWithoutTax = 0;
-                double totalPrice = 0;
-                double summaryPrice = 0;
-                var withTaxes = true; //TODO 
-                double? manualPrice = null;
-                var taxValue = CalculationHelper.CalculateTaxes(taxesManager);
-
-                CalculationHelper.CalculateTransportInvoicePrices(transportOrder, taxValue, withTaxes, manualPrice,
-                    out totalPriceWithoutDiscountWithoutTax, out totalPriceWithoutTax, out totalPrice, out summaryPrice);
-
-                //Discount
-                var xmlDoc = XDocument.Parse(xmlMainXMLDoc);
-                var temp = xmlDoc.Descendants().LastOrDefault(o => o.Value.Contains("#DiscountText"));
-                var parentTableElement = GetParentElementByName(temp, "<w:tr ");
-
-                if (transportOrder.Discount > 0 && parentTableElement != null)
-                {
-                    xmlMainXMLDoc = xmlMainXMLDoc.Replace("#DiscountText",
-                        String.Format("Abzüglich {0}% Rabatt", transportOrder.Discount));
-
-                    xmlMainXMLDoc = xmlMainXMLDoc.Replace("#DiscountValue",
-                        String.Format("-{0}", Math.Round(totalPriceWithoutDiscountWithoutTax - totalPriceWithoutTax, 2).
-                            ToString("N2")));
-
-                    xmlMainXMLDoc = xmlMainXMLDoc.Replace("#PriceWithoutTax", totalPriceWithoutTax.ToString("N2"));
-                }
-                else
-                {
-                    parentTableElement.Remove();
-                    temp = xmlDoc.Descendants().LastOrDefault(o => o.Value.Contains("#PriceWithoutTax"));
-                    parentTableElement = GetParentElementByName(temp, "<w:tr ");
-                    parentTableElement.Remove();
-                    xmlMainXMLDoc = xmlDoc.Root.ToString();
-                }
-
-                //Taxes
-                xmlDoc = XDocument.Parse(xmlMainXMLDoc);
-                temp = xmlDoc.Descendants().LastOrDefault(o => o.Value.Contains("#TaxText"));
-                parentTableElement = GetParentElementByName(temp, "<w:tr ");
-
-                if (withTaxes && taxValue > 0 && parentTableElement != null)
-                {
-                    xmlMainXMLDoc = xmlMainXMLDoc.Replace("#TaxText",
-                        String.Format("Zuzüglich {0}% MwSt.", taxValue));
-
-                    xmlMainXMLDoc = xmlMainXMLDoc.Replace("#TaxValue",
-                        String.Format("{0}", Math.Round(totalPrice - totalPriceWithoutTax, 2).ToString("N2")));
-                }
-                else
-                {
-                    parentTableElement.Remove();
-                    xmlMainXMLDoc = xmlDoc.Root.ToString();
-                }
-
-                //total price
-                xmlMainXMLDoc = xmlMainXMLDoc.Replace("#TotalPriceText", "Zu zahlender Betrag");
-                xmlMainXMLDoc = xmlMainXMLDoc.Replace("#TotalPrice", totalPrice.ToString("N2"));
-            }
-
-            return xmlMainXMLDoc;
-        }
-
-        private string ReplaceTransportFooterTexts(string xmlMainXMLDoc, TransportOrders transportOrder)
-        {
-            var xmlDoc = XDocument.Parse(xmlMainXMLDoc);
-            var temp = xmlDoc.Descendants().LastOrDefault(o => o.Value.Contains("#PlanedPayDate"));
-            var parentElement = GetParentElementByName(temp, "<w:tr ");
-
-            //pay due information
-            if (parentElement != null)
-            {
-                if (!String.IsNullOrEmpty(transportOrder.Customers.Iban) && !String.IsNullOrEmpty(transportOrder.Customers.Bic))
-                {
-
-                    temp = xmlDoc.Descendants().LastOrDefault(o => o.Value.Contains("#PayCash"));
-                    parentElement = GetParentElementByName(temp, "<w:tr ");
-                    parentElement.Remove();
-                    xmlMainXMLDoc = xmlDoc.Root.ToString();
-
-
-                    xmlMainXMLDoc = xmlMainXMLDoc.Replace("#PlanedPayDate", transportOrder.CreateDate.AddDays(10).ToShortDateString());
-                    xmlMainXMLDoc = ReplaceFieldValue(xmlMainXMLDoc, "#IBAN", transportOrder.Customers.Iban);
-                    xmlMainXMLDoc = ReplaceFieldValue(xmlMainXMLDoc, "#BIC", transportOrder.Customers.Bic);
-                }
-                else
-                {
-                    parentElement.Remove();
-                    xmlMainXMLDoc = xmlDoc.Root.ToString();
-                    xmlMainXMLDoc = xmlMainXMLDoc.Replace("#PayCash", String.Empty);
-                }
-            }
-
-            //Invoice without taxes
-            //xmlDoc = XDocument.Parse(xmlMainXMLDoc);
-            //temp = xmlDoc.Descendants().LastOrDefault(o => o.Value.Contains("#InvoiceWithoutTaxes"));
-            //parentElement = GetParentElementByName(temp, "<w:tr ");
-
-            //if (parentElement != null)
-            //{
-            //    if (!invoice.WithTaxes)
-            //    {
-            //        xmlMainXMLDoc = xmlMainXMLDoc.Replace("#InvoiceWithoutTaxes", String.Empty);
-            //    }
-            //    else
-            //    {
-            //        parentElement.Remove();
-            //        xmlMainXMLDoc = xmlDoc.Root.ToString();
-            //    }
-            //}
-
-            return xmlMainXMLDoc;
-        }
-
-        #endregion
-
+        
         #region Common Functions
 
         private Stream InsertImages(Stream sourceStream, IEnumerable<Image> images)
