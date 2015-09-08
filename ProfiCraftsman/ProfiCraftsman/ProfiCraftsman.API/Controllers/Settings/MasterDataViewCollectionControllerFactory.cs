@@ -15,6 +15,10 @@ namespace ProfiCraftsman.API.Controllers
     {
         public void GetViewCollections(IDependencyResolver resolver, CollectionTypesModel model, Dictionary<string, IEnumerable<object>> result)
         {
+            if (model.AdditionalCostTypes)
+            	result.Add("AdditionalCostTypes", GetViewCollection<AdditionalCostTypes, int, IAdditionalCostTypesManager>(
+            		(IAdditionalCostTypesManager)resolver.GetService(typeof(IAdditionalCostTypesManager))));
+
             if (model.Materials)
             	result.Add("Materials", GetViewCollection<Materials, int, IMaterialsManager>(
             		(IMaterialsManager)resolver.GetService(typeof(IMaterialsManager))));

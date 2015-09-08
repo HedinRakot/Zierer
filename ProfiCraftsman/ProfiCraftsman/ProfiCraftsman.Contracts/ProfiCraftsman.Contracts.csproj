@@ -78,6 +78,9 @@
     <Compile Include="Entities\AdditionalCosts.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\AdditionalCostTypes.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\AutoInstrumentRsp.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
@@ -202,6 +205,9 @@
     <Compile Include="Enums\UniqueNumberType.cs" />
     <Compile Include="Enums\Сustom.Permissions.cs" />
     <Compile Include="Managers\IAdditionalCostsManager.cs">
+      <DependentUpon>IManagers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\IAdditionalCostTypesManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\IAutoInstrumentRspManager.cs">

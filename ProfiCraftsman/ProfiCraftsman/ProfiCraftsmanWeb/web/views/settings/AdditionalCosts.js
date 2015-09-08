@@ -22,12 +22,12 @@ define([
 		columns: function () {
 			
 			return [
-				{ field: 'name', title: this.resources.name },
 				{ field: 'description', title: this.resources.description },
 				{ field: 'price', title: this.resources.price },
-				{ field: 'automatic', title: this.resources.automatic , headerTitle: this.resources.automatic, checkbox: true},
-				{ field: 'includeInFirstBill', title: this.resources.includeInFirstBill , headerTitle: this.resources.includeInFirstBill, checkbox: true},
 				{ field: 'proceedsAccount', title: this.resources.proceedsAccount },
+				{ field: 'fromDate', title: this.resources.fromDate , format: '{0:d}'},
+				{ field: 'toDate', title: this.resources.toDate , format: '{0:d}'},
+				{ field: 'additionalCostTypeId', title: this.resources.additionalCostTypeId , collection: this.options.additionalCostTypes, defaultText: this.resources.pleaseSelect},
 			];
 		}
 

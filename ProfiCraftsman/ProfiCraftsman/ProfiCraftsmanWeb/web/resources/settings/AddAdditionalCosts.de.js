@@ -12,8 +12,10 @@ define(function () {
 		description: 'Beschreibung',	
 		price: 'Preis',	
 		automatic: 'Auto',	
-		includeInFirstBill: 'auf erster Rechnung',	
 		proceedsAccount: 'Erlös-Konto',	
+		fromDate: 'Von Datum',	
+		toDate: 'Bis Datum',	
+		additionalCostTypeId: 'Nebenkostenart',	
 	};
 
 	return resources;

@@ -5,6 +5,7 @@ using System;
 namespace ProfiCraftsman.Contracts.Entities
 {
     public partial class AdditionalCosts: IHasId<int>
+        ,IIntervalFields
         ,IRemovable
         ,ISystemFields
     {
@@ -23,10 +24,6 @@ namespace ProfiCraftsman.Contracts.Entities
             /// </summary>
             public static readonly string Id = "Id";
             /// <summary>
-            /// Column name 'Name' for property <see cref="AdditionalCosts.Name"/>
-            /// </summary>
-            public static readonly string Name = "Name";
-            /// <summary>
             /// Column name 'Description' for property <see cref="AdditionalCosts.Description"/>
             /// </summary>
             public static readonly string Description = "Description";
@@ -38,10 +35,6 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'Automatic' for property <see cref="AdditionalCosts.Automatic"/>
             /// </summary>
             public static readonly string Automatic = "Automatic";
-            /// <summary>
-            /// Column name 'IncludeInFirstBill' for property <see cref="AdditionalCosts.IncludeInFirstBill"/>
-            /// </summary>
-            public static readonly string IncludeInFirstBill = "IncludeInFirstBill";
             /// <summary>
             /// Column name 'ProceedsAccount' for property <see cref="AdditionalCosts.ProceedsAccount"/>
             /// </summary>
@@ -58,19 +51,47 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'DeleteDate' for property <see cref="AdditionalCosts.DeleteDate"/>
             /// </summary>
             public static readonly string DeleteDate = "DeleteDate";
+            /// <summary>
+            /// Column name 'FromDate' for property <see cref="AdditionalCosts.FromDate"/>
+            /// </summary>
+            public static readonly string FromDate = "FromDate";
+            /// <summary>
+            /// Column name 'ToDate' for property <see cref="AdditionalCosts.ToDate"/>
+            /// </summary>
+            public static readonly string ToDate = "ToDate";
+            /// <summary>
+            /// Column name 'AdditionalCostTypeId' for property <see cref="AdditionalCosts.AdditionalCostTypeId"/>
+            /// </summary>
+            public static readonly string AdditionalCostTypeId = "AdditionalCostTypeId";
           
         }
         #endregion
         public int Id{ get; set; }
-        public string Name{ get; set; }
         public string Description{ get; set; }
         public double Price{ get; set; }
         public bool Automatic{ get; set; }
-        public bool IncludeInFirstBill{ get; set; }
         public int ProceedsAccount{ get; set; }
         public DateTime CreateDate{ get; set; }
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
+        public DateTime FromDate{ get; set; }
+        public DateTime ToDate{ get; set; }
+        public int AdditionalCostTypeId{ get; set; }
+        public virtual AdditionalCostTypes AdditionalCostTypes{ get; set; }
+        public bool HasAdditionalCostTypes
+        {
+            get { return !ReferenceEquals(AdditionalCostTypes, null); }
+        }
+        DateTime? IIntervalFields.FromDate
+        {
+            get { return FromDate; }
+            set { if(value.HasValue)FromDate = value.Value; else throw new ArgumentNullException("value"); }
+        }
+        DateTime? IIntervalFields.ToDate
+        {
+            get { return ToDate; }
+            set { if(value.HasValue)ToDate = value.Value; else throw new ArgumentNullException("value"); }
+        }
         DateTime ISystemFields.CreateDate
         {
             get { return CreateDate; }
@@ -89,15 +110,16 @@ namespace ProfiCraftsman.Contracts.Entities
         public AdditionalCosts ShallowCopy()
         {
             return new AdditionalCosts {
-                       Name = Name,
                        Description = Description,
                        Price = Price,
                        Automatic = Automatic,
-                       IncludeInFirstBill = IncludeInFirstBill,
                        ProceedsAccount = ProceedsAccount,
                        CreateDate = CreateDate,
                        ChangeDate = ChangeDate,
                        DeleteDate = DeleteDate,
+                       FromDate = FromDate,
+                       ToDate = ToDate,
+                       AdditionalCostTypeId = AdditionalCostTypeId,
         	           };
         }
     }

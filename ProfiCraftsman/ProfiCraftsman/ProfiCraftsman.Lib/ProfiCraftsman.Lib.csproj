@@ -113,6 +113,9 @@
     <Compile Include="Data\AdditionalCostsMapping.cs">
       <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\AdditionalCostTypesMapping.cs">
+      <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\AutoInstrumentRspMapping.cs">
       <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
     </Compile>
@@ -227,6 +230,9 @@
     <Compile Include="Import\MaterialImporter.cs" />
     <Compile Include="Import\MaterialImportResults.cs" />
     <Compile Include="Managers\AdditionalCostsManager.cs">
+      <DependentUpon>Managers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\AdditionalCostTypesManager.cs">
       <DependentUpon>Managers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\AutoInstrumentRspManager.cs">

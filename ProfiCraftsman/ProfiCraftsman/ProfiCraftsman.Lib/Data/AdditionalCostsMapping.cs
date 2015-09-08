@@ -28,15 +28,8 @@ namespace ProfiCraftsman.Lib.Data
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
                 .IsRequired();
 
-            Property(t => t.Name)
-                .HasColumnName(AdditionalCosts.Fields.Name)
-                .IsRequired()
-                .IsUnicode()
-                .HasMaxLength(128);
-
             Property(t => t.Description)
                 .HasColumnName(AdditionalCosts.Fields.Description)
-                .IsRequired()
                 .IsUnicode()
                 .HasMaxLength(128);
 
@@ -46,10 +39,6 @@ namespace ProfiCraftsman.Lib.Data
 
             Property(t => t.Automatic)
                 .HasColumnName(AdditionalCosts.Fields.Automatic)
-                .IsRequired();
-
-            Property(t => t.IncludeInFirstBill)
-                .HasColumnName(AdditionalCosts.Fields.IncludeInFirstBill)
                 .IsRequired();
 
             Property(t => t.ProceedsAccount)
@@ -67,8 +56,23 @@ namespace ProfiCraftsman.Lib.Data
             Property(t => t.DeleteDate)
                 .HasColumnName(AdditionalCosts.Fields.DeleteDate);
 
+            Property(t => t.FromDate)
+                .HasColumnName(AdditionalCosts.Fields.FromDate)
+                .IsRequired();
+
+            Property(t => t.ToDate)
+                .HasColumnName(AdditionalCosts.Fields.ToDate)
+                .IsRequired();
+
+            Property(t => t.AdditionalCostTypeId)
+                .HasColumnName(AdditionalCosts.Fields.AdditionalCostTypeId)
+                .IsRequired();
+
 
             //Relationships
+            HasRequired(a => a.AdditionalCostTypes)
+                .WithMany(a => a.AdditionalCosts)
+                .HasForeignKey(t => t.AdditionalCostTypeId);
         }
     }
 }

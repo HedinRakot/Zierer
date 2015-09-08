@@ -42,6 +42,10 @@ namespace ProfiCraftsman.Contracts
         /// </summary>
         IQueryable<SearchPositionView> SearchPositionView{get;}
         /// <summary>
+        ///     Set of <see cref="AdditionalCostTypes"/> entities from table dbo.AdditionalCostTypes
+        /// </summary>
+        IQueryable<AdditionalCostTypes> AdditionalCostTypes{get;}
+        /// <summary>
         ///     Set of <see cref="Invoices"/> entities from table dbo.Invoices
         /// </summary>
         IQueryable<Invoices> Invoices{get;}

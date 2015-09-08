@@ -15,15 +15,8 @@ namespace ProfiCraftsman.API.Models.Settings
     {
 
         /// <summary>
-        ///     Model property for <see cref="AdditionalCosts.Name"/> entity
-        /// </summary>
-        [Required]
-        [DataMember]
-        public string name{ get; set; }
-        /// <summary>
         ///     Model property for <see cref="AdditionalCosts.Description"/> entity
         /// </summary>
-        [Required]
         [DataMember]
         public string description{ get; set; }
         /// <summary>
@@ -38,16 +31,29 @@ namespace ProfiCraftsman.API.Models.Settings
         [DataMember]
         public bool automatic{ get; set; }
         /// <summary>
-        ///     Model property for <see cref="AdditionalCosts.IncludeInFirstBill"/> entity
-        /// </summary>
-        [DataMember]
-        public bool includeInFirstBill{ get; set; }
-        /// <summary>
         ///     Model property for <see cref="AdditionalCosts.ProceedsAccount"/> entity
         /// </summary>
         [Required]
         [DataMember]
         public int proceedsAccount{ get; set; }
+        /// <summary>
+        ///     Model property for <see cref="AdditionalCosts.FromDate"/> entity
+        /// </summary>
+        [Required]
+        [DataMember]
+        public DateTime fromDate{ get; set; }
+        /// <summary>
+        ///     Model property for <see cref="AdditionalCosts.ToDate"/> entity
+        /// </summary>
+        [Required]
+        [DataMember]
+        public DateTime toDate{ get; set; }
+        /// <summary>
+        ///     Model property for <see cref="AdditionalCosts.AdditionalCostTypeId"/> entity
+        /// </summary>
+        [Required]
+        [DataMember]
+        public int additionalCostTypeId{ get; set; }
 
     }
 }

@@ -16,6 +16,11 @@ namespace ProfiCraftsman.API
     {
         private static void ProfiCraftsmanTableMappings(IDictionary<string, TableMapping> tables)
         {
+            tables.Add("AdditionalCostTypes", new TableMapping("AdditionalCostTypes", "AdditionalCostTypes", 1)
+            {
+                {"Name", "name"},
+            });
+
             tables.Add("Materials", new TableMapping("Materials", "Materials", 15)
             {
                 {"Name", "name"},
@@ -100,14 +105,16 @@ namespace ProfiCraftsman.API
                 {"EmployeeId", "employeeId"},
             });
 
-            tables.Add("AdditionalCosts", new TableMapping("AdditionalCosts", "AdditionalCosts", 6)
+            tables.Add("AdditionalCosts", new TableMapping("AdditionalCosts", "AdditionalCosts", 8)
             {
                 {"Name", "name"},
                 {"Description", "description"},
                 {"Price", "price"},
                 {"Automatic", "automatic"},
-                {"IncludeInFirstBill", "includeInFirstBill"},
                 {"ProceedsAccount", "proceedsAccount"},
+                {"FromDate", "fromDate"},
+                {"ToDate", "toDate"},
+                {"AdditionalCostTypeId", "additionalCostTypeId"},
             });
 
             tables.Add("Taxes", new TableMapping("Taxes", "Taxes", 3)

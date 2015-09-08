@@ -7,6 +7,7 @@ namespace ProfiCraftsman.API.Controllers
     /// </summary>
     public partial class CollectionTypesModel
     {
+        public bool AdditionalCostTypes { get; set;}
         public bool Materials { get; set;}
         public bool Autos { get; set;}
         public bool Permission { get; set;}

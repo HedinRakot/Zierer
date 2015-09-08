@@ -8,6 +8,9 @@ define([
 	    getAllMasterDataRoutes: function(baseRouter)
 	    {
 	        var routes = {
+				'AdditionalCostTypes': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/AdditionalCostTypes', false, false),
+	            'AdditionalCostTypes/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddAdditionalCostTypes', 'models/Settings/AdditionalCostTypes', false, false),
+	            'AdditionalCostTypes/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddAdditionalCostTypes', 'models/Settings/AdditionalCostTypes', false, false),
 				'Materials': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/Materials', { MaterialAmountTypes: true, }, false),
 	            'Materials/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddMaterials', 'models/Settings/Materials', { MaterialAmountTypes: true, }, false),
 	            'Materials/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddMaterials', 'models/Settings/Materials', { MaterialAmountTypes: true, }, false),
@@ -35,9 +38,9 @@ define([
 				'Users': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/Users', { Role: true, Employees: true, }, false),
 	            'Users/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddUser', 'models/Settings/User', { Role: true, Employees: true, }, false),
 	            'Users/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddUser', 'models/Settings/User', { Role: true, Employees: true, }, false),
-				'AdditionalCosts': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/AdditionalCosts', false, false),
-	            'AdditionalCosts/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddAdditionalCosts', 'models/Settings/AdditionalCosts', false, false),
-	            'AdditionalCosts/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddAdditionalCosts', 'models/Settings/AdditionalCosts', false, false),
+				'AdditionalCosts': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/AdditionalCosts', { AdditionalCostTypes: true, }, false),
+	            'AdditionalCosts/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddAdditionalCosts', 'models/Settings/AdditionalCosts', { AdditionalCostTypes: true, }, false),
+	            'AdditionalCosts/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddAdditionalCosts', 'models/Settings/AdditionalCosts', { AdditionalCostTypes: true, }, false),
 				'Taxes': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/Taxes', false, false),
 	            'Taxes/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddTaxes', 'models/Settings/Taxes', false, false),
 	            'Taxes/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddTaxes', 'models/Settings/Taxes', false, false),

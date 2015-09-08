@@ -18,8 +18,13 @@ define([
 			'#description': 'description',
 			'#price': 'price',
 			'#automatic': 'automatic',
-			'#includeInFirstBill': 'includeInFirstBill',
 			'#proceedsAccount': 'proceedsAccount',
+			'#fromDate': 'fromDate',
+			'#toDate': 'toDate',
+			'#additionalCostTypeId': { observe: 'additionalCostTypeId',
+				selectOptions: { labelPath: 'name', valuePath: 'id',
+				collection: self.options.additionalCostTypes
+				,defaultOption: {label: self.resources.pleaseSelect,value: null}},},
 			};
 
             return result;
@@ -34,8 +39,10 @@ define([
 			this.disableInput(this, 'description');
 			this.disableInput(this, 'price', 'numeric');
 			this.disableInput(this, 'automatic');
-			this.disableInput(this, 'includeInFirstBill');
 			this.disableInput(this, 'proceedsAccount', 'numeric');
+			this.disableInput(this, 'fromDate', 'date');
+			this.disableInput(this, 'toDate', 'date');
+			this.disableInput(this, 'additionalCostTypeId', 'select');
 
             return this;
         }

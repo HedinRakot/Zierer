@@ -235,6 +235,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="web\collections\Administration\Trips.js" />
+    <Content Include="web\collections\Settings\AdditionalCostTypes.js">
+      <DependentUpon>web.collections.tt</DependentUpon>
+    </Content>
     <Content Include="web\collections\Settings\AutoInstrumentRsps.js" />
     <Content Include="web\collections\Settings\AutoMaterialRsps.js" />
     <Content Include="web\collections\Settings\Instruments.js">
@@ -312,7 +315,14 @@
     <Content Include="web\collections\Warehouse\WarehouseMaterials.js" />
     <Content Include="web\models\Administration\FilterTrips.js" />
     <Content Include="web\models\Administration\Trip.js" />
+    <Content Include="web\models\Settings\AdditionalCostTypes.js">
+      <DependentUpon>web.models.tt</DependentUpon>
+    </Content>
     <Content Include="web\models\Settings\AutoInstrumentRsp.js" />
+    <Content Include="web\models\Settings\Custom.Instruments.js" />
+    <Content Include="web\models\Settings\FilterAdditionalCostTypes.js">
+      <DependentUpon>web.models.tt</DependentUpon>
+    </Content>
     <Content Include="web\models\Settings\FilterInstruments.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
@@ -466,6 +476,30 @@
     <Content Include="web\resources\Invoices\AddInvoicePositions.en.js" />
     <Content Include="web\resources\Orders\InnerPositions.de.js" />
     <Content Include="web\resources\Orders\InnerPositions.en.js" />
+    <Content Include="web\resources\Settings\AddAdditionalCostTypes.de.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\AddAdditionalCostTypes.en.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\AdditionalCostTypes.de.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\AdditionalCostTypes.en.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\AdditionalCostTypesRelationships.de.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\AdditionalCostTypesRelationships.en.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\FilterAdditionalCostTypes.de.js">
+      <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\FilterAdditionalCostTypes.en.js">
+      <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
     <Content Include="web\resources\Terms\EmployeeSearch.de.js" />
     <Content Include="web\resources\Terms\EmployeeSearch.en.js" />
     <Content Include="web\resources\Terms\SelectEmployee.de.js" />
@@ -986,6 +1020,18 @@
     <Content Include="web\templates\Invoices\InvoicesRelationships.html" />
     <Content Include="web\templates\Invoices\AddInvoicePositions.html" />
     <Content Include="web\templates\Orders\InnerPositions.html" />
+    <Content Include="web\templates\Settings\AddAdditionalCostTypes.html">
+      <DependentUpon>web.add.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\AdditionalCostTypes.html">
+      <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\AdditionalCostTypesRelationships.html">
+      <DependentUpon>web.relationships.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\FilterAdditionalCostTypes.html">
+      <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
     <Content Include="web\templates\Terms\EmployeeSearch.html" />
     <Content Include="web\templates\Terms\FilterFreeEmployees.html" />
     <Content Include="web\templates\Terms\SelectEmployee.html" />
@@ -1260,12 +1306,25 @@
     <Content Include="web\views\Invoices\InvoicesRelationships.js" />
     <Content Include="web\views\Invoices\AddInvoicePositions.js" />
     <Content Include="web\views\Orders\InnerPositions.js" />
+    <Content Include="web\views\Settings\AddAdditionalCostTypes.js">
+      <DependentUpon>web.add.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\AdditionalCostTypes.js">
+      <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\AdditionalCostTypesRelationships.js">
+      <DependentUpon>web.relationships.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\Custom.Instruments.js" />
     <Content Include="web\views\Settings\Custom.ProductMaterialRsp.js" />
     <Content Include="web\views\Settings\Custom.Employees.js" />
     <Content Include="web\views\Settings\Custom.Events.ProductMaterialRsp.js" />
     <Content Include="web\views\Settings\Custom.Events.Materials.js" />
     <Content Include="web\views\Settings\Custom.Toolbar.ProductMaterialRsp.js" />
     <Content Include="web\views\Settings\Custom.Toolbar.Materials.js" />
+    <Content Include="web\views\Settings\FilterAdditionalCostTypes.js">
+      <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
     <Content Include="web\views\Settings\ImportMaterialResults.js" />
     <Content Include="web\views\Settings\ImportMaterials.js" />
     <Content Include="web\views\Terms\EmployeeSearch.js" />

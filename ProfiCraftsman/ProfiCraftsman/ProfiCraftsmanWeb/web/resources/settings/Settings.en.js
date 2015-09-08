@@ -2,6 +2,7 @@ define(function () {
 	'use strict';
 
 	var resources = {
+        AdditionalCostTypes: 'Additional cost type',
         Materials: 'Material',
         ProductMaterialRsps: 'Materials',
         Autos: 'Auto',

@@ -197,6 +197,9 @@
     <Compile Include="Controllers\Invoices\InvoicesController.cs" />
     <Compile Include="Controllers\Orders\DeleteAllOrderPositionsController.cs" />
     <Compile Include="Controllers\Orders\CopyOrderController.cs" />
+    <Compile Include="Controllers\Settings\AdditionalCostTypesController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\Settings\Custom.InstrumentsController.cs" />
     <Compile Include="Controllers\Terms\PositionSearchController.cs" />
     <Compile Include="Controllers\Terms\FreeEmployeesController.cs" />
@@ -304,6 +307,9 @@
     <Compile Include="Models\Invoices\InvoicePositionsModel.cs" />
     <Compile Include="Models\Invoices\AddInvoiceModel.cs" />
     <Compile Include="Models\Invoices\InvoicesModel.cs" />
+    <Compile Include="Models\Settings\AdditionalCostTypesModel.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Settings\Custom.InstrumentsModel.cs" />
     <Compile Include="Models\Terms\TermEmployeeModel.cs" />
     <Compile Include="Models\Terms\TermInstrumentModel.cs" />
