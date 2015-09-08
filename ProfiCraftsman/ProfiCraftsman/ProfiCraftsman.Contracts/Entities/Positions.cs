@@ -75,6 +75,10 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'ParentId' for property <see cref="Positions.ParentId"/>
             /// </summary>
             public static readonly string ParentId = "ParentId";
+            /// <summary>
+            /// Column name 'TermId' for property <see cref="Positions.TermId"/>
+            /// </summary>
+            public static readonly string TermId = "TermId";
           
         }
         #endregion
@@ -92,7 +96,9 @@ namespace ProfiCraftsman.Contracts.Entities
         public int PaymentType{ get; set; }
         public string Description{ get; set; }
         public int? ParentId{ get; set; }
+        public int? TermId{ get; set; }
         public virtual Orders Orders{ get; set; }
+        public virtual Terms Terms{ get; set; }
         public virtual Products Products{ get; set; }
         public virtual Materials Materials{ get; set; }
         public virtual ICollection<InvoicePositions> InvoicePositions{ get; set; }
@@ -100,6 +106,10 @@ namespace ProfiCraftsman.Contracts.Entities
         public bool HasOrders
         {
             get { return !ReferenceEquals(Orders, null); }
+        }
+        public bool HasTerms
+        {
+            get { return !ReferenceEquals(Terms, null); }
         }
         public bool HasProducts
         {
@@ -140,6 +150,7 @@ namespace ProfiCraftsman.Contracts.Entities
                        PaymentType = PaymentType,
                        Description = Description,
                        ParentId = ParentId,
+                       TermId = TermId,
         	           };
         }
     }

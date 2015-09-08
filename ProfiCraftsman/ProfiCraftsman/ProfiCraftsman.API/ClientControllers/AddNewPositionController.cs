@@ -51,17 +51,33 @@ namespace ProfiCraftsman.API.ClientControllers
                 };
 
                 positionsManager.AddEntity(newPosition);
+                
 
-                positionsManager.SaveChanges();
-
-                term.TermPositions.Add(new TermPositions()
+                var newTermPosition = new TermPositions()
                 {
                     TermId = term.Id,
                     Amount = 1, //TODO
                     Positions = newPosition,
-                });
+                    TermPositionMaterialRsps = new List<TermPositionMaterialRsp>()
+                };
+
+                term.TermPositions.Add(newTermPosition);
+
+
+                //add linked material to position
+                foreach (var material in product.ProductMaterialRsps.Where(o => !o.DeleteDate.HasValue))
+                {
+                    newTermPosition.TermPositionMaterialRsps.Add(new TermPositionMaterialRsp()
+                    {
+                        Amount = material.Amount,
+                        MaterialId = material.MaterialId,
+                        TermPositions = newTermPosition 
+                    });
+                }
 
                 positionsManager.SaveChanges();
+
+
 
                 if (term != null)
                 {
@@ -73,40 +89,5 @@ namespace ProfiCraftsman.API.ClientControllers
 
             return BadRequest();
 		}
-
-        private void SendMail(string smtpServer, string @from, string password, string mailto, string caption, string message, int port, bool enableSsl, 
-            SmtpDeliveryMethod smtpDeliveryMethod, bool isBodyHtml,
-            IEnumerable<Attachment> attachments)
-        {
-            try
-            {
-                MailMessage mail = new MailMessage();
-                mail.From = new MailAddress(from);
-                mail.To.Add(new MailAddress(mailto));
-                mail.Subject = caption;
-                mail.Body = message;
-                mail.IsBodyHtml = isBodyHtml;
-
-                foreach (var attachment in attachments)
-                {
-                    mail.Attachments.Add(attachment);
-                }
-
-                SmtpClient client = new SmtpClient
-                {
-                    Host = smtpServer,
-                    Port = port,
-                    EnableSsl = enableSsl,
-                    Credentials = new NetworkCredential(@from.Split('@')[0], password),
-                    DeliveryMethod = smtpDeliveryMethod
-                };
-                client.Send(mail);
-                mail.Dispose();
-            }
-            catch (Exception e)
-            {
-                //throw new Exception("Mail.Send: " + e.Message);
-            }
-        }
     }
 }

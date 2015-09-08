@@ -77,11 +77,17 @@ namespace ProfiCraftsman.Lib.Data
             Property(t => t.ParentId)
                 .HasColumnName(Positions.Fields.ParentId);
 
+            Property(t => t.TermId)
+                .HasColumnName(Positions.Fields.TermId);
+
 
             //Relationships
             HasRequired(p => p.Orders)
                 .WithMany(o => o.Positions)
                 .HasForeignKey(t => t.OrderId);
+            HasOptional(p => p.Terms)
+                .WithMany(t => t.Positions)
+                .HasForeignKey(t => t.TermId);
             HasOptional(p => p.Products)
                 .WithMany(p => p.Positions)
                 .HasForeignKey(t => t.ProductId);

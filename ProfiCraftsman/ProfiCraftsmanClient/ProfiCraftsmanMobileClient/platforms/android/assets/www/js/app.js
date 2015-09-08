@@ -217,6 +217,17 @@
                     data: {
                         requireLogin: true
                     }
+                })
+                .state('/addNewMaterial', {
+                    url: "/terms/addNewMaterial",
+                    views: {
+                        'menuContent': {
+                            templateUrl: "templates/terms/addNewMaterial.html"
+                        }
+                    },
+                    data: {
+                        requireLogin: true
+                    }
                 });
 
             // if none of the above states are matched, use this as the fallback

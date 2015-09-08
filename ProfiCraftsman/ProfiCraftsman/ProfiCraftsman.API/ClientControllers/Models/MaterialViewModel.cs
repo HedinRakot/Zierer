@@ -10,8 +10,10 @@ using System.Collections.Generic;
 
 namespace ProfiCraftsman.API.ClientControllers
 {
-    public class SearchModel
+    public class MaterialViewModel
     {
-        public string searchWord { get; set; }
+        public int Id { get; set; }
+        public string Number { get; set; }
+        public string Name { get; set; }
     }
 }

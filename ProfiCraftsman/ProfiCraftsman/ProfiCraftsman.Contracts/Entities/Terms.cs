@@ -118,6 +118,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public bool? BeginTripFromOffice{ get; set; }
         public string DeliveryNoteFileName{ get; set; }
         public virtual ICollection<DeliveryNoteSignatures> DeliveryNoteSignatures{ get; set; }
+        public virtual ICollection<Positions> Positions{ get; set; }
         public virtual ICollection<TermEmployees> TermEmployees{ get; set; }
         public virtual User User{ get; set; }
         public virtual Autos Autos{ get; set; }

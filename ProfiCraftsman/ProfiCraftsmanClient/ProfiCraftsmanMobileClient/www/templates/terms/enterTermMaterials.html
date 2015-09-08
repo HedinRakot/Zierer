@@ -45,7 +45,7 @@
 
         <!-- Second buttons -->
         <button ng-if="enterTermMaterialsController.term.status == 7" class="button button-block" 
-                ng-click="">Material hinzufügen</button>
+                ng-click="enterTermMaterialsController.addNewMaterial()">Material hinzufügen</button>
 
         <button ng-if="enterTermMaterialsController.term.status == 8" class="button button-block"
                 ng-click="enterTermMaterialsController.goToEnterMaterials()">

@@ -140,6 +140,13 @@
             });
     };
 
+    EnterTermMaterialsController.prototype.addNewMaterial = function () {
+
+        var self = this;
+
+        self.state.go('/addNewMaterial');
+    };
+
         
     EnterTermMaterialsController.prototype.setLocale = function () {
         this.globalizationService.setLocale(this.$scope.locale);

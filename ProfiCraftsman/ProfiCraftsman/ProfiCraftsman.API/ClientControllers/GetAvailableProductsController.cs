@@ -21,14 +21,14 @@ namespace ProfiCraftsman.API.ClientControllers
 	        this.productManager = productManager;
         }
 
-        public IHttpActionResult Post([FromBody]ProductSearchModel model)
+        public IHttpActionResult Post([FromBody]SearchModel model)
         {
             var result = new List<ProductViewModel>();
 
             var products = productManager.GetEntities();
-            if (model != null && !String.IsNullOrEmpty(model.name))
+            if (model != null && !String.IsNullOrEmpty(model.searchWord))
             {
-                products = products.Where(o => o.Number.ToLower().Contains(model.name) || o.Name.ToLower().Contains(model.name));
+                products = products.Where(o => o.Number.ToLower().Contains(model.searchWord) || o.Name.ToLower().Contains(model.searchWord));
             }
 
             result = products.ToList().Select(product => new ProductViewModel()

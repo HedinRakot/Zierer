@@ -316,10 +316,7 @@ namespace ProfiCraftsman.Lib.Managers
                     result = result.Replace("#AdressType", "Lieferanschrift");
                     result = result.Replace("#OrderNumber", term.Orders.OrderNumber);
                     
-                    var positions = term.TermPositions != null ? term.TermPositions.Where(o => !o.DeleteDate.HasValue).ToList() :
-                        new List<TermPositions>();
-
-                    result = ReplacePositionWithDescription(positions, result);
+                    result = ReplacePositionWithDescription(term, result);
 
 
                     if (term.DeliveryNoteSignatures.Count != 0)
@@ -607,7 +604,7 @@ namespace ProfiCraftsman.Lib.Managers
             return xmlDoc.Root.ToString();
         }
 
-        private string ReplacePositionWithDescription(List<TermPositions> positions, string xmlMainXMLDoc)
+        private string ReplacePositionWithDescription(Terms term, string xmlMainXMLDoc)
         {
             var xmlDoc = XDocument.Parse(xmlMainXMLDoc);
             var temp = xmlDoc.Descendants().LastOrDefault(o => o.Value.Contains("#PositionDescription"));
@@ -616,6 +613,9 @@ namespace ProfiCraftsman.Lib.Managers
             if (parentTableElement != null)
             {
                 var prevTableElem = parentTableElement;
+
+                var positions = term.TermPositions != null ? term.TermPositions.Where(o => !o.DeleteDate.HasValue).ToList() :
+                    new List<TermPositions>();
 
                 foreach (var position in positions.Where(o => o.ProccessedAmount.HasValue))
                 {
@@ -637,6 +637,19 @@ namespace ProfiCraftsman.Lib.Managers
                             prevTableElem.AddAfterSelf(elem);
                             prevTableElem = elem;
                         }
+                    }
+                }
+
+                if (term.Positions != null && term.Positions.Count != 0)
+                {
+                    foreach (var position in term.Positions.Where(o => !o.DeleteDate.HasValue && o.MaterialId.HasValue))
+                    {
+                        var elem = XElement.Parse(ReplaceFieldValue(parentTableElement.ToString(), "#PositionDescription", position.Materials.Name).
+                            Replace("#Amount", position.Amount.ToString()).
+                            Replace("#PositionNumber", position.Materials.Number));
+
+                        prevTableElem.AddAfterSelf(elem);
+                        prevTableElem = elem;
                     }
                 }
 

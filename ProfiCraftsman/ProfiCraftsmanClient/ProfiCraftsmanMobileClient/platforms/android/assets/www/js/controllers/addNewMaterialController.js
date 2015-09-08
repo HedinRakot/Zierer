@@ -65,7 +65,7 @@
        Canceled: 14,
    };
 
-    function AddNewPositionController($scope, globalizationService, moment, $http, $state) {
+    function AddNewMaterialController($scope, globalizationService, moment, $http, $state) {
         this.$scope = $scope;
         this.$scope.locale = globalizationService.getDefaultLocale();
         this.globalizationService = globalizationService;
@@ -73,19 +73,19 @@
         this.http = $http;
         this.state = $state;
 
-        $scope.showAvailableProducts = true;
+        $scope.showAvailableMaterials = true;
         $scope.showConfirmation = false;
 
         var self = this;
         
     }
 
-    AddNewPositionController.prototype.findProduct = function () {
+    AddNewMaterialController.prototype.findMaterial = function () {
         var self = this;
 
-        this.http.post(window.localStorage['baseAppPath'] + 'GetAvailableProducts', { searchWord: self.searchWord }).
+        this.http.post(window.localStorage['baseAppPath'] + 'GetAvailableMaterials', { searchWord: self.searchWord }).
             success(function (result) {
-                self.products = result;
+                self.materials = result;
             }).
             error(function (result) {
 
@@ -93,46 +93,46 @@
       
     };
 
-    AddNewPositionController.prototype.showConfirmation = function (product) {
+    AddNewMaterialController.prototype.showConfirmation = function (material) {
         var self = this;
 
-        self.product = product;
-        self.$scope.selectedProduct = product.name;
-        self.$scope.showAvailableProducts = false;
+        self.material = material;
+        self.$scope.selectedMaterial = material.name;
+        self.$scope.showAvailableMaterials = false;
         self.$scope.showConfirmation = true;
     };
 
-    AddNewPositionController.prototype.cancel = function () {
+    AddNewMaterialController.prototype.cancel = function () {
         var self = this;
 
-        self.$scope.selectedProduct = "";
-        self.$scope.showAvailableProducts = true;
+        self.$scope.selectedMaterial = "";
+        self.$scope.showAvailableMaterials = true;
         self.$scope.showConfirmation = false;
     };
 
-    AddNewPositionController.prototype.addNewPosition = function () {
+    AddNewMaterialController.prototype.addNewMaterial = function () {
         var self = this,
-            product = self.product;
+            material = self.material;
 
-        this.http.post(window.localStorage['baseAppPath'] + 'AddNewPosition',
+        this.http.post(window.localStorage['baseAppPath'] + 'AddNewMaterial',
             {
-                productId: product.id,
+                materialId: material.id,
                 termId: window.localStorage['termId'],
             }).
             success(function (result) {
                 self.term = result;
 
-                self.state.go('/enterTermPositions');
+                self.state.go('/enterTermMaterials');
             }).
             error(function (result) {
 
             });
     };
 
-    AddNewPositionController.prototype.setLocale = function () {
+    AddNewMaterialController.prototype.setLocale = function () {
         this.globalizationService.setLocale(this.$scope.locale);
         this.moment.locale(this.$scope.locale);
     }
 
-    angular.module('app.controllers').controller('AddNewPositionController', ['$scope', 'globalizationService', 'moment', '$http', '$state', AddNewPositionController]);
+    angular.module('app.controllers').controller('AddNewMaterialController', ['$scope', 'globalizationService', 'moment', '$http', '$state', AddNewMaterialController]);
 }())

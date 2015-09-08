@@ -30,6 +30,19 @@ namespace ProfiCraftsman.API.ClientControllers
                         Amount = positionMaterialRsp.Amount,
                         TermId = term.Id
                     }).ToList();
+
+                if (term.Positions != null && term.Positions.Count != 0)
+                {
+                    materials.AddRange(term.Positions.Where(o => !o.DeleteDate.HasValue && o.MaterialId.HasValue).ToList().
+                        Select(material => new ClientTermMaterialViewModel()
+                        {
+                            Id = material.MaterialId.Value,
+                            Description = material.Materials.Name,
+                            Number = material.Materials.Number,
+                            Amount = material.Amount,
+                            TermId = term.Id
+                        }).ToList());
+                }
             }
 
             return new ClientTermViewModel()

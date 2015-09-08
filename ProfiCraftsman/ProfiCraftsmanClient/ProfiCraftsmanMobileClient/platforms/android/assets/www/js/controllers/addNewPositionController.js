@@ -77,18 +77,19 @@
         $scope.showConfirmation = false;
 
         var self = this;
-        this.http.post(window.localStorage['baseAppPath'] + 'GetAvailableProducts', {  }).
-            success(function (result) {
-                self.products = result;
-            }).
-            error(function (result) {
- 
-            });
+        
     }
 
     AddNewPositionController.prototype.findProduct = function () {
         var self = this;
 
+        this.http.post(window.localStorage['baseAppPath'] + 'GetAvailableProducts', { searchWord: self.searchWord }).
+            success(function (result) {
+                self.products = result;
+            }).
+            error(function (result) {
+
+            });
       
     };
 
@@ -101,7 +102,7 @@
         self.$scope.showConfirmation = true;
     };
 
-    AddNewPositionController.prototype.cancel = function (product) {
+    AddNewPositionController.prototype.cancel = function () {
         var self = this;
 
         self.$scope.selectedProduct = "";

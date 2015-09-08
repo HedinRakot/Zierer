@@ -3,7 +3,20 @@
         {{"terms_today_title" | translate}}
     </ion-nav-title>
     <ion-content>
-        <ion-list ng-if="showAvailableProducts">
+
+        <form ng-if="showAvailableProducts" ng-submit="addNewPositionController.findProduct()">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">Suchwort:</span>
+                    <input type="text" ng-model="addNewPositionController.searchWord">
+                </label>
+                <label class="item">
+                    <button class="button button-block button-positive" type="submit">Suchen</button>
+                </label>
+            </div>
+        </form>
+
+        <ion-list ng-if="showAvailableProducts && addNewPositionController.products">
 
             <ion-item class="term-item" ng-click="">
                 <div class="term-item-column item" style="width: 180px; font-weight: bold;">Number</div>

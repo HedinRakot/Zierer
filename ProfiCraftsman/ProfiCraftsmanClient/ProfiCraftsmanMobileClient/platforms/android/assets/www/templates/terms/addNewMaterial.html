@@ -1,0 +1,52 @@
+﻿<ion-view ng-controller="AddNewMaterialController as addNewMaterialController" cache-view="false">
+    <ion-nav-title>
+        {{"terms_today_title" | translate}}
+    </ion-nav-title>
+    <ion-content>
+
+        <form ng-if="showAvailableMaterials" ng-submit="addNewMaterialController.findMaterial()">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">Suchwort:</span>
+                    <input type="text" ng-model="addNewMaterialController.searchWord">
+                </label>
+                <label class="item">
+                    <button class="button button-block button-positive" type="submit">Suchen</button>
+                </label>
+            </div>
+        </form>
+
+        <ion-list ng-if="showAvailableMaterials && addNewMaterialController.materials">
+
+            <ion-item class="term-item" ng-click="">
+                <div class="term-item-column item" style="width: 180px; font-weight: bold;">Number</div>
+                <div class="term-item-column item" style="border-right: 0px; font-weight: bold;">Name</div>
+            </ion-item>
+
+            <ion-item ng-repeat="material in addNewMaterialController.materials" class="term-item" 
+                      ng-click="addNewMaterialController.showConfirmation({{addNewMaterialController.materials[$index]}})">
+                <div class="term-item-column item" style="width: 180px;">{{material.number}}</div>
+                <div class="term-item-column item" style="border-right: 0px;">{{material.name}}</div>
+            </ion-item>
+        </ion-list>
+
+        
+        <br ng-if="showConfirmation" />
+        <p class="term-description" ng-if="showConfirmation">Ausgewähltes Material: {{selectedMaterial}}</p>
+        <br ng-if="showConfirmation" />
+
+        <!-- First buttons -->
+
+        <button ng-if="showConfirmation" class="button button-block button-positive" ng-click="addNewMaterialController.addNewMaterial()">
+            Hinzufügen
+        </button>
+
+        <br />
+
+        <!-- Second buttons -->
+        <button ng-if="showConfirmation" class="button button-block" ng-click="addNewMaterialController.cancel()">
+            Abbruch
+        </button>
+
+</ion-content>
+</ion-view>

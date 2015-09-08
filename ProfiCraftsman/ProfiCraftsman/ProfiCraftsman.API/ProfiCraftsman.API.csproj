@@ -167,13 +167,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientControllers\AddNewMaterialController.cs" />
     <Compile Include="ClientControllers\AddNewPositionController.cs" />
     <Compile Include="ClientControllers\ClientTermPositionsController.cs" />
     <Compile Include="ClientControllers\ChangeTermStateController.cs" />
+    <Compile Include="ClientControllers\GetAvailableMaterialsController.cs" />
     <Compile Include="ClientControllers\GetAvailableProductsController.cs" />
+    <Compile Include="ClientControllers\Models\AddNewMaterialModel.cs" />
     <Compile Include="ClientControllers\Models\AddNewPositionModel.cs" />
     <Compile Include="ClientControllers\Models\ClientTermMaterialViewModel.cs" />
     <Compile Include="ClientControllers\Models\ClientTermPositionViewModel.cs" />
+    <Compile Include="ClientControllers\Models\MaterialViewModel.cs" />
     <Compile Include="ClientControllers\Models\ProductViewModel.cs" />
     <Compile Include="ClientControllers\Models\ProductSearchModel.cs" />
     <Compile Include="ClientControllers\Models\ClientTermViewModel.cs" />
