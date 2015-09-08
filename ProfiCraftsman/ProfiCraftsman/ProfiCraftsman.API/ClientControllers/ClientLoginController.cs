@@ -36,11 +36,11 @@ namespace ProfiCraftsman.API.ClientControllers
                     }
                     else
                     {
-                        ModelState.AddModelError("employeeNotSet", "invalid");
+                        ModelState.AddModelError("login", "employeeNotSet");
                     }
 				}
 
-				ModelState.AddModelError("login", "invalid");
+				ModelState.AddModelError("login", "loginWrong");
 			}
 			
 			return BadRequest(ModelState);
