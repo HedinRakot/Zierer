@@ -139,6 +139,13 @@
             });
     };
 
+    EnterTermPositionsController.prototype.addNewPosition = function () {
+
+        var self = this;
+        
+        self.state.go('/addNewPosition');
+    };
+
         
     EnterTermPositionsController.prototype.setLocale = function () {
         this.globalizationService.setLocale(this.$scope.locale);

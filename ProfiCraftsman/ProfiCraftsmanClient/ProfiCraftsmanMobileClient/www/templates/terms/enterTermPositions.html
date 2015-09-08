@@ -45,7 +45,7 @@
 
         <!-- Second buttons -->
         <button ng-if="enterTermPositionsController.term.status == 5" class="button button-block" 
-                ng-click="">Leistung hinzufügen</button>
+                ng-click="enterTermPositionsController.addNewPosition()">Leistung hinzufügen</button>
 
         <button ng-if="enterTermPositionsController.term.status == 6" class="button button-block"
                 ng-click="enterTermPositionsController.goToEnterPositions()">

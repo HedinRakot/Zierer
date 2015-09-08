@@ -126,15 +126,19 @@
     "res\\screens\\android\\screen-mdpi-portrait.png",
     "www\\js\\services\\modalWindowService.js",
     "www\\js\\controllers\\termsController.js",
-    "www\\js\\controllers\\logincontroller.js"
+    "www\\js\\controllers\\logincontroller.js",
+    "www\\js\\controllers\\addNewPositionController.js",
+    "www\\templates\\terms\\addNewPosition.html",
+    "www\\templates\\terms\\entertermpositions.html",
+    "www\\js\\controllers\\entertermpositionscontroller.js"
   ],
-  "deletedFilesIos": [],
+  "deletedFilesIos": [
+    "www\\js\\controllers\\termsController - Copy.js",
+    "www\\templates\\terms\\terms - Copy.html"
+  ],
   "addedPluginsIos": [],
   "deletedPluginsIos": [],
-  "changedFiles": [
-    "www\\templates\\login.html",
-    "www\\js\\controllers\\logincontroller.js"
-  ],
+  "changedFiles": [],
   "deletedFiles": [],
   "addedPlugins": [],
   "deletedPlugins": []

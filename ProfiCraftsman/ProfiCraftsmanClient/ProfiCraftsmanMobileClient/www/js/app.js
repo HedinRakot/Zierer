@@ -107,59 +107,7 @@
             // // Use $compileProvider.urlSanitizationWhitelist(...) for Angular 1.2
             $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|ms-appx|x-wmapp0):|data:image\//);
 
-            $stateProvider
-                .state('myServices', {
-                    url: '/myServices',
-                    abstract: true,
-                    views: {
-                        'menuContent': {
-                            templateUrl: "templates/myServices/myServices.html"
-                        }
-                    },
-                    data: {
-                        requireLogin: true
-                    }
-                })
-                .state('myServices.myData', {
-                    url: '/myData',
-                    views: {
-                        'myData-tab': {
-                            templateUrl: "templates/myServices/myData.html"
-                        }
-                    }
-                })
-                .state('myServices.services', {
-                    url: '/services',
-                    views: {
-                        'services-tab': {
-                            templateUrl: "templates/myServices/services.html"
-                        }
-                    }
-                })
-                .state('myServices.jobOffers', {
-                    url: '/jobOffers',
-                    views: {
-                        'jobOffers-tab': {
-                            templateUrl: "templates/myServices/jobOffers.html"
-                        }
-                    }
-                })
-                .state('findMaster', {
-                    url: "/findMaster",
-                    views: {
-                        'menuContent': {
-                            templateUrl: "templates/findMaster.html"
-                        }
-                    }
-                })
-                .state('hotOffers', {
-                    url: "/hotOffers",
-                    views: {
-                        'menuContent': {
-                            templateUrl: "templates/hotOffers.html"
-                        }
-                    }
-                })
+            $stateProvider                
                 .state('settings', {
                     url: "/settings",
                     views: {
@@ -176,14 +124,6 @@
                         }
                     }
 
-                })
-                .state('selectionMaster', {
-                    url: "/selectionMaster",
-                    views: {
-                        'menuContent': {
-                            templateUrl: "templates/selectionMaster.html"
-                        }
-                    }
                 })
                 .state('help', {
                     url: "/help",
@@ -261,6 +201,17 @@
                     views: {
                         'menuContent': {
                             templateUrl: "templates/terms/signDeliveryNote.html"
+                        }
+                    },
+                    data: {
+                        requireLogin: true
+                    }
+                })
+                .state('/addNewPosition', {
+                    url: "/terms/addNewPosition",
+                    views: {
+                        'menuContent': {
+                            templateUrl: "templates/terms/addNewPosition.html"
                         }
                     },
                     data: {

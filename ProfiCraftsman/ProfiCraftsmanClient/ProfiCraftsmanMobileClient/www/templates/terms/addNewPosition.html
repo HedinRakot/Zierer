@@ -1,0 +1,39 @@
+﻿<ion-view ng-controller="AddNewPositionController as addNewPositionController" cache-view="false">
+    <ion-nav-title>
+        {{"terms_today_title" | translate}}
+    </ion-nav-title>
+    <ion-content>
+        <ion-list ng-if="showAvailableProducts">
+
+            <ion-item class="term-item" ng-click="">
+                <div class="term-item-column item" style="width: 180px; font-weight: bold;">Number</div>
+                <div class="term-item-column item" style="border-right: 0px; font-weight: bold;">Name</div>
+            </ion-item>
+
+            <ion-item ng-repeat="product in addNewPositionController.products" class="term-item" 
+                      ng-click="addNewPositionController.showConfirmation({{addNewPositionController.products[$index]}})">
+                <div class="term-item-column item" style="width: 180px;">{{product.number}}</div>
+                <div class="term-item-column item" style="border-right: 0px;">{{product.name}}</div>
+            </ion-item>
+        </ion-list>
+
+        
+        <br ng-if="showConfirmation" />
+        <p class="term-description" ng-if="showConfirmation">Ausgewähltes Produkt: {{selectedProduct}}</p>
+        <br ng-if="showConfirmation" />
+
+        <!-- First buttons -->
+
+        <button ng-if="showConfirmation" class="button button-block button-positive" ng-click="addNewPositionController.addNewPosition()">
+            Hinzufügen
+        </button>
+
+        <br />
+
+        <!-- Second buttons -->
+        <button ng-if="showConfirmation" class="button button-block" ng-click="addNewPositionController.cancel()">
+            Abbruch
+        </button>
+
+</ion-content>
+</ion-view>
