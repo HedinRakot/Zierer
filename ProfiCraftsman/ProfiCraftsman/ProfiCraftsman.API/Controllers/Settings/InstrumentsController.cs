@@ -30,6 +30,8 @@ namespace ProfiCraftsman.API.Controllers.Settings
             model.comment = entity.Comment;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
+
+            ExtraEntityToModel(entity, model);
         }
         protected override void ModelToEntity(InstrumentsModel model, Instruments entity, ActionTypes actionType)
         {

@@ -1,10 +1,10 @@
-define([
-], function () {
+define(['models/Settings/Custom.Instruments'
+], function (CustomProperties) {
 	'use strict';
 
 	var model = Backbone.Model.extend({
 	    urlRoot: 'api/Instruments',
-		fields:  {
+		fields: _.extend(CustomProperties(),  {
 			id: { type: "number", editable: false }
 			,name: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('Instruments', 'name'), 
@@ -24,7 +24,7 @@ define([
 			,comment: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('Instruments', 'comment'), 
 				                    validation: { required: false, maxLength: 128 } }			
-		},
+		}),
 		defaults: function () {
 			var dnf = new Date();
 			var dnt = new Date(2070,11,31);

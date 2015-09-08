@@ -1,8 +1,9 @@
 define([
 'base/base-object-grid-view',
 'collections/Settings/Instruments',
-'l!t!Settings/FilterInstruments'
-], function (BaseView, Collection, FilterView) {
+'l!t!Settings/FilterInstruments',
+'Settings/Custom.Instruments'
+], function (BaseView, Collection, FilterView, CustomColumns) {
 	'use strict';		
 	var view = BaseView.extend({
 
@@ -21,14 +22,15 @@ define([
 	    },
 		columns: function () {
 			
-			return [
+			return $.merge( CustomColumns(),
+[
 				{ field: 'name', title: this.resources.name },
 				{ field: 'number', title: this.resources.number },
 				{ field: 'proceedsAccount', title: this.resources.proceedsAccount },
 				{ field: 'isForAuto', title: this.resources.isForAuto , headerTitle: this.resources.isForAuto, checkbox: true},
 				{ field: 'boughtPrice', title: this.resources.boughtPrice },
 				{ field: 'comment', title: this.resources.comment },
-			];
+			]);
 		}
 
 	});
