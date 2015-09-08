@@ -108,6 +108,9 @@
     <Compile Include="Entities\DeliveryNoteSignatures.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\EmployeeRateRsp.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Employees.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
@@ -145,6 +148,9 @@
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\ProductTypes.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Rates.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Role.cs">
@@ -225,6 +231,9 @@
     <Compile Include="Managers\IDeliveryNoteSignaturesManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Managers\IEmployeeRateRspManager.cs">
+      <DependentUpon>IManagers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Managers\IEmployeesManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
@@ -238,6 +247,9 @@
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\IProductMaterialRspManager.cs">
+      <DependentUpon>IManagers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\IRatesManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\ISearchPositionViewManager.cs">

@@ -3,6 +3,8 @@ define(function () {
 
 	var resources = {
         AdditionalCostTypes: 'Additional cost type',
+        Rates: 'Rates',
+        EmployeeRateRsps: 'Employee rate',
         Materials: 'Material',
         ProductMaterialRsps: 'Materials',
         Autos: 'Auto',

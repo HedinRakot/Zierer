@@ -21,6 +21,23 @@ namespace ProfiCraftsman.API
                 {"Name", "name"},
             });
 
+            tables.Add("Rates", new TableMapping("Rates", "Rates", 4)
+            {
+                {"JobPositionId", "jobPositionId"},
+                {"Price", "price"},
+                {"FromDate", "fromDate"},
+                {"ToDate", "toDate"},
+            });
+
+            tables.Add("Employee_Rate_Rsp", new TableMapping("Employee_Rate_Rsp", "EmployeeRateRsp", 5)
+            {
+                {"EmployeeId", "employeeId"},
+                {"JobPositionId", "jobPositionId"},
+                {"CustomPrice", "customPrice"},
+                {"FromDate", "fromDate"},
+                {"ToDate", "toDate"},
+            });
+
             tables.Add("Materials", new TableMapping("Materials", "Materials", 15)
             {
                 {"Name", "name"},
@@ -105,9 +122,8 @@ namespace ProfiCraftsman.API
                 {"EmployeeId", "employeeId"},
             });
 
-            tables.Add("AdditionalCosts", new TableMapping("AdditionalCosts", "AdditionalCosts", 8)
+            tables.Add("AdditionalCosts", new TableMapping("AdditionalCosts", "AdditionalCosts", 7)
             {
-                {"Name", "name"},
                 {"Description", "description"},
                 {"Price", "price"},
                 {"Automatic", "automatic"},

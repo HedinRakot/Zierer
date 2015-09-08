@@ -2,13 +2,14 @@ define([
 'base/base-object-grid-view',
 'collections/Settings/Employees',
 'l!t!Settings/FilterEmployees',
+'l!t!Settings/EmployeesRelationships',
 'Settings/Custom.Employees'
-], function (BaseView, Collection, FilterView, CustomColumns) {
+], function (BaseView, Collection, FilterView, DetailView, CustomColumns) {
 	'use strict';		
 	var view = BaseView.extend({
 
         collectionType: Collection,
-        
+        detailView: DetailView,
         filterView: FilterView,
         tableName: 'Employees',
         editUrl: '#Employees',

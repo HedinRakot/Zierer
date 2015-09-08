@@ -8,7 +8,6 @@ define(function () {
 	    masterData: 'Einstellungen',
 	    pageTitle: 'Nebenkosten',
 		pleaseSelect: 'Bitte auswählen',
-		name: 'Name',	
 		description: 'Beschreibung',	
 		price: 'Preis',	
 		automatic: 'Auto',	

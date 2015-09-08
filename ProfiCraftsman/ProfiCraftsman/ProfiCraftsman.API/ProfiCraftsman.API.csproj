@@ -201,6 +201,12 @@
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Settings\Custom.InstrumentsController.cs" />
+    <Compile Include="Controllers\Settings\EmployeeRateRspsController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Settings\RatesController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\Terms\PositionSearchController.cs" />
     <Compile Include="Controllers\Terms\FreeEmployeesController.cs" />
     <Compile Include="Controllers\Terms\TermPositionMaterialsController.cs" />
@@ -311,6 +317,12 @@
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Settings\Custom.InstrumentsModel.cs" />
+    <Compile Include="Models\Settings\EmployeeRateRspModel.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Settings\RatesModel.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Terms\TermEmployeeModel.cs" />
     <Compile Include="Models\Terms\TermInstrumentModel.cs" />
     <Compile Include="Models\Terms\TermPositionMaterialModel.cs" />

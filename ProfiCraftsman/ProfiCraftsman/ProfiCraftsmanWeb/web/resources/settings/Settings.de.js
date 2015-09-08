@@ -3,6 +3,8 @@ define(function () {
 
 	var resources = {
         AdditionalCostTypes: 'Nebenkostenarten',
+        Rates: 'Stundensätze',
+        EmployeeRateRsps: 'Mitarbeiterlohn',
         Materials: 'Material',
         ProductMaterialRsps: 'Materialien',
         Autos: 'Auto',

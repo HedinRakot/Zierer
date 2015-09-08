@@ -48,7 +48,7 @@ define([
 		            var numeric = e.container.find("input[name=toDate]");
 					
 					if(numeric != undefined && numeric.length > 0)
-						numeric[0].value = dt.toLocaleDateString();
+						numeric[0].value = kendo.format("{0:d}", dt);
 		        }
 		    });
 

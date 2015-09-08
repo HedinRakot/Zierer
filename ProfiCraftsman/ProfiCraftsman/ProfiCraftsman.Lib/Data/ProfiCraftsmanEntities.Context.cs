@@ -30,6 +30,8 @@ namespace ProfiCraftsman.Lib.Data
             modelBuilder.Configurations.Add(TermPositionMaterialRspMapping.Instance);
             modelBuilder.Configurations.Add(SearchPositionViewMapping.Instance);
             modelBuilder.Configurations.Add(AdditionalCostTypesMapping.Instance);
+            modelBuilder.Configurations.Add(RatesMapping.Instance);
+            modelBuilder.Configurations.Add(EmployeeRateRspMapping.Instance);
             modelBuilder.Configurations.Add(InvoicesMapping.Instance);
             modelBuilder.Configurations.Add(InvoicePositionsMapping.Instance);
             modelBuilder.Configurations.Add(MaterialsMapping.Instance);
@@ -88,6 +90,14 @@ namespace ProfiCraftsman.Lib.Data
         ///     Set of <see cref="AdditionalCostTypes"/> entities from table dbo.AdditionalCostTypes
         /// </summary>
         public IQueryable<AdditionalCostTypes> AdditionalCostTypes{ get; set; }
+        /// <summary>
+        ///     Set of <see cref="Rates"/> entities from table dbo.Rates
+        /// </summary>
+        public IQueryable<Rates> Rates{ get; set; }
+        /// <summary>
+        ///     Set of <see cref="EmployeeRateRsp"/> entities from table dbo.Employee_Rate_Rsp
+        /// </summary>
+        public IQueryable<EmployeeRateRsp> EmployeeRateRsp{ get; set; }
         /// <summary>
         ///     Set of <see cref="Invoices"/> entities from table dbo.Invoices
         /// </summary>

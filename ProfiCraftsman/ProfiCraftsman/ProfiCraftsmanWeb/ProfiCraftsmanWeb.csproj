@@ -240,7 +240,13 @@
     </Content>
     <Content Include="web\collections\Settings\AutoInstrumentRsps.js" />
     <Content Include="web\collections\Settings\AutoMaterialRsps.js" />
+    <Content Include="web\collections\Settings\EmployeeRateRsps.js">
+      <DependentUpon>web.collections.tt</DependentUpon>
+    </Content>
     <Content Include="web\collections\Settings\Instruments.js">
+      <DependentUpon>web.collections.tt</DependentUpon>
+    </Content>
+    <Content Include="web\collections\Settings\Rates.js">
       <DependentUpon>web.collections.tt</DependentUpon>
     </Content>
     <Content Include="web\collections\Terms\NotProccessedPositions.js" />
@@ -320,6 +326,9 @@
     </Content>
     <Content Include="web\models\Settings\AutoInstrumentRsp.js" />
     <Content Include="web\models\Settings\Custom.Instruments.js" />
+    <Content Include="web\models\Settings\EmployeeRateRsp.js">
+      <DependentUpon>web.models.tt</DependentUpon>
+    </Content>
     <Content Include="web\models\Settings\FilterAdditionalCostTypes.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
@@ -328,7 +337,13 @@
     </Content>
     <Content Include="web\models\Settings\AutoMaterialRsp.js" />
     <Content Include="web\models\Settings\Custom.ProductMaterialRsp.js" />
+    <Content Include="web\models\Settings\FilterRates.js">
+      <DependentUpon>web.models.tt</DependentUpon>
+    </Content>
     <Content Include="web\models\Settings\Instruments.js">
+      <DependentUpon>web.models.tt</DependentUpon>
+    </Content>
+    <Content Include="web\models\Settings\Rates.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
     <Content Include="web\models\Terms\FilterFreeEmployees.js" />
@@ -482,6 +497,12 @@
     <Content Include="web\resources\Settings\AddAdditionalCostTypes.en.js">
       <DependentUpon>web.add.resources.tt</DependentUpon>
     </Content>
+    <Content Include="web\resources\Settings\AddEmployeeRateRsp.de.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\AddEmployeeRateRsp.en.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
     <Content Include="web\resources\Settings\AdditionalCostTypes.de.js">
       <DependentUpon>web.resources.tt</DependentUpon>
     </Content>
@@ -494,11 +515,47 @@
     <Content Include="web\resources\Settings\AdditionalCostTypesRelationships.en.js">
       <DependentUpon>web.relationships.resources.tt</DependentUpon>
     </Content>
+    <Content Include="web\resources\Settings\AddRates.de.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\AddRates.en.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\EmployeeRateRspRelationships.de.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\EmployeeRateRspRelationships.en.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\EmployeeRateRsps.de.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\EmployeeRateRsps.en.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
     <Content Include="web\resources\Settings\FilterAdditionalCostTypes.de.js">
       <DependentUpon>web.filter.resources.tt</DependentUpon>
     </Content>
     <Content Include="web\resources\Settings\FilterAdditionalCostTypes.en.js">
       <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\FilterRates.de.js">
+      <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\FilterRates.en.js">
+      <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\Rates.de.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\Rates.en.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\RatesRelationships.de.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\RatesRelationships.en.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
     </Content>
     <Content Include="web\resources\Terms\EmployeeSearch.de.js" />
     <Content Include="web\resources\Terms\EmployeeSearch.en.js" />
@@ -1023,14 +1080,35 @@
     <Content Include="web\templates\Settings\AddAdditionalCostTypes.html">
       <DependentUpon>web.add.templates.tt</DependentUpon>
     </Content>
+    <Content Include="web\templates\Settings\AddEmployeeRateRsp.html">
+      <DependentUpon>web.add.templates.tt</DependentUpon>
+    </Content>
     <Content Include="web\templates\Settings\AdditionalCostTypes.html">
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
     <Content Include="web\templates\Settings\AdditionalCostTypesRelationships.html">
       <DependentUpon>web.relationships.templates.tt</DependentUpon>
     </Content>
+    <Content Include="web\templates\Settings\AddRates.html">
+      <DependentUpon>web.add.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\EmployeeRateRspRelationships.html">
+      <DependentUpon>web.relationships.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\EmployeeRateRsps.html">
+      <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
     <Content Include="web\templates\Settings\FilterAdditionalCostTypes.html">
       <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\FilterRates.html">
+      <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\Rates.html">
+      <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\RatesRelationships.html">
+      <DependentUpon>web.relationships.templates.tt</DependentUpon>
     </Content>
     <Content Include="web\templates\Terms\EmployeeSearch.html" />
     <Content Include="web\templates\Terms\FilterFreeEmployees.html" />
@@ -1309,11 +1387,17 @@
     <Content Include="web\views\Settings\AddAdditionalCostTypes.js">
       <DependentUpon>web.add.views.tt</DependentUpon>
     </Content>
+    <Content Include="web\views\Settings\AddEmployeeRateRsp.js">
+      <DependentUpon>web.add.views.tt</DependentUpon>
+    </Content>
     <Content Include="web\views\Settings\AdditionalCostTypes.js">
       <DependentUpon>web.views.tt</DependentUpon>
     </Content>
     <Content Include="web\views\Settings\AdditionalCostTypesRelationships.js">
       <DependentUpon>web.relationships.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\AddRates.js">
+      <DependentUpon>web.add.views.tt</DependentUpon>
     </Content>
     <Content Include="web\views\Settings\Custom.Instruments.js" />
     <Content Include="web\views\Settings\Custom.ProductMaterialRsp.js" />
@@ -1322,11 +1406,26 @@
     <Content Include="web\views\Settings\Custom.Events.Materials.js" />
     <Content Include="web\views\Settings\Custom.Toolbar.ProductMaterialRsp.js" />
     <Content Include="web\views\Settings\Custom.Toolbar.Materials.js" />
+    <Content Include="web\views\Settings\EmployeeRateRspRelationships.js">
+      <DependentUpon>web.relationships.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\EmployeeRateRsps.js">
+      <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
     <Content Include="web\views\Settings\FilterAdditionalCostTypes.js">
+      <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\FilterRates.js">
       <DependentUpon>web.views.tt</DependentUpon>
     </Content>
     <Content Include="web\views\Settings\ImportMaterialResults.js" />
     <Content Include="web\views\Settings\ImportMaterials.js" />
+    <Content Include="web\views\Settings\Rates.js">
+      <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\RatesRelationships.js">
+      <DependentUpon>web.relationships.views.tt</DependentUpon>
+    </Content>
     <Content Include="web\views\Terms\EmployeeSearch.js" />
     <Content Include="web\views\Terms\FilterFreeEmployees.js" />
     <Content Include="web\views\Terms\SelectEmployee.js" />

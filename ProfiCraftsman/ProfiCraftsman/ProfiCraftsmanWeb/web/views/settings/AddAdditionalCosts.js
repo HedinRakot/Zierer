@@ -14,7 +14,6 @@ define([
 
             var self = this;
             var result = {
-			'#name': 'name',
 			'#description': 'description',
 			'#price': 'price',
 			'#automatic': 'automatic',
@@ -35,10 +34,8 @@ define([
             view.__super__.render.apply(this, arguments);
 
 			//TODO foreach model field
-			this.disableInput(this, 'name');
 			this.disableInput(this, 'description');
 			this.disableInput(this, 'price', 'numeric');
-			this.disableInput(this, 'automatic');
 			this.disableInput(this, 'proceedsAccount', 'numeric');
 			this.disableInput(this, 'fromDate', 'date');
 			this.disableInput(this, 'toDate', 'date');
