@@ -47,6 +47,7 @@ namespace ProfiCraftsman.API.Controllers
 
             model.customerName = entity.CustomerName;
             model.communicationPartnerTitle = entity.CommunicationPartnerTitle;
+
             model.totalPrice = CalculateTotalPrice(entity.Id).ToString("N2") + " EUR";
         }
 

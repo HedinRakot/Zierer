@@ -583,18 +583,21 @@ namespace ProfiCraftsman.Lib.Managers
 
                 foreach (var position in positions.Where(o => o.ProccessedAmount.HasValue))
                 {
-                    var elem = XElement.Parse(ReplaceFieldValue(parentTableElement.ToString(), "#PositionDescription", position.Positions.Products.Name).
-                        Replace("#Amount", position.ProccessedAmount.Value.ToString()).
-                        Replace("#PositionNumber", position.Positions.Products.Number));
+                    if (position.ProccessedAmount.Value > 0)
+                    {
+                        var elem = XElement.Parse(ReplaceFieldValue(parentTableElement.ToString(), "#PositionDescription", position.Positions.Products.Name).
+                            Replace("#Amount", position.ProccessedAmount.Value.ToString()).
+                            Replace("#PositionNumber", position.Positions.Products.Number));
 
-                    prevTableElem.AddAfterSelf(elem);
-                    prevTableElem = elem;
+                        prevTableElem.AddAfterSelf(elem);
+                        prevTableElem = elem;
+                    }
 
                     if (position.TermPositionMaterialRsps != null && position.TermPositionMaterialRsps.Count != 0)
                     {
                         foreach (var material in position.TermPositionMaterialRsps)
                         {
-                            elem = XElement.Parse(ReplaceFieldValue(parentTableElement.ToString(), "#PositionDescription", material.Materials.Name).
+                            var elem = XElement.Parse(ReplaceFieldValue(parentTableElement.ToString(), "#PositionDescription", material.Materials.Name).
                             Replace("#Amount", material.Amount.HasValue ? material.Amount.Value.ToString() : String.Empty).
                             Replace("#PositionNumber", material.Materials.Number));
 

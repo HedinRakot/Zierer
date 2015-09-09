@@ -22,17 +22,6 @@ namespace ProfiCraftsman.Lib.Services
             return GetNextNumber(UniqueNumberType.OrderNumber).ToString();
         }
 
-        public string GetNextTransportOrderNumber()
-        {
-            return GetNextNumber(UniqueNumberType.TransportOrderNumber).ToString();
-        }
-        
-        public string GetNextRentOrderNumber(string preffix)
-        {
-            var temp = GetNextNumber(UniqueNumberType.RentOrderNumber);
-            return string.Format("{0}{1}", preffix, temp);
-        }
-
         public string GetNextInvoiceNumber()
         {
             return GetNextNumber(UniqueNumberType.InvoiceNumber).ToString();

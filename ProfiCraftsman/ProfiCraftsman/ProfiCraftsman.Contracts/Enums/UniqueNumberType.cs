@@ -2,7 +2,7 @@
 namespace ProfiCraftsman.Contracts.Enums
 {
     /// <summary>
-    /// Numbers for increncement generation
+    /// Numbers for increment generation
     /// </summary>
     public enum UniqueNumberType : short
     {

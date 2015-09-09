@@ -90,8 +90,8 @@ namespace ProfiCraftsman.API.Controllers
 
                     result.Add(new TermViewModel()
                     {
-                        start = DateTime.Now.ToString("yyyy-MM-ddTHH:mm"),
-                        end = DateTime.Now.ToString("yyyy-MM-ddTHH:mm"),
+                        start = model.StartDate.ToString("yyyy-MM-ddTHH:mm"),
+                        end = model.StartDate.ToString("yyyy-MM-ddTHH:mm"),
                         url = String.Empty,
                         title = String.Format("{0} {1}", employee.Name, employee.FirstName),
                         color = employee.Color,

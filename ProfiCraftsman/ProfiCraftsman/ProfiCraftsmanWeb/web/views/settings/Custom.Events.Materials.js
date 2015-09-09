@@ -3,7 +3,17 @@
 ], function () {
     'use strict';
 
-    var events = {        
+    var events = {
+        'dblclick .k-grid tbody tr:not(k-detail-row) td:not(.k-hierarchy-cell,.k-detail-cell,.commands,.detail-view-grid-cell)': function (e) {
+
+            var self = this,
+                dataItem = self.grid.dataItem(e.currentTarget.parentElement);
+
+            if (dataItem != undefined && dataItem.id != undefined &&
+                dataItem.id != 0) {
+                location.href = self.editUrl + '/' + dataItem.id;
+            }
+        },
         'click .import-materials': function () {
             var self = this;
 

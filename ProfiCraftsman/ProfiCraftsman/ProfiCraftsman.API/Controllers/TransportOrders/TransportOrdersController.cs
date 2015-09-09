@@ -45,7 +45,7 @@ namespace ProfiCraftsman.API.Controllers
                 {
                     if (String.IsNullOrEmpty(order.OrderNumber))
                     {
-                        order.OrderNumber = numberProvider.GetNextTransportOrderNumber();
+                        //order.OrderNumber = numberProvider.GetNextTransportOrderNumber();
                     }
 
                     Manager.SaveChanges();
