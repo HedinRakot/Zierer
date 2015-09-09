@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CoreBase.Entities;
 using CoreBase.Controllers;
+using ProfiCraftsman.Lib.Managers;
 
 namespace ProfiCraftsman.API.Controllers
 {
@@ -19,14 +20,17 @@ namespace ProfiCraftsman.API.Controllers
     [AuthorizeByPermissions(PermissionTypes = new[] { Permissions.ReportOrders })]    
     public partial class ReportOrdersController: ReadOnlyClientApiController<ReportOrdersModel, Orders, int, IOrdersManager>
     {
-        private readonly IAdditionalCostsManager additionalCostsManager;
+        private ITermPositionsManager termPositionsManager { get; set; }
+        private IPositionsManager positionsManager { get; set; }
+        private ITermCostsManager termCostsManager { get; set; }
 
-        public ReportOrdersController(
-            IOrdersManager manager,
-            IAdditionalCostsManager additionalCostsManager)
+        public ReportOrdersController(IOrdersManager manager,
+            ITermPositionsManager termPositionsManager, IPositionsManager positionsManager, ITermCostsManager termCostsManager)
             : base(manager)
         {
-            this.additionalCostsManager = additionalCostsManager;
+            this.termPositionsManager = termPositionsManager;
+            this.positionsManager = positionsManager;
+            this.termCostsManager = termCostsManager;
         }
         
         protected override void EntityToModel(Orders entity, ReportOrdersModel model)
@@ -43,6 +47,61 @@ namespace ProfiCraftsman.API.Controllers
 
             model.customerName = entity.CustomerName;
             model.communicationPartnerTitle = entity.CommunicationPartnerTitle;
+            model.totalPrice = CalculateTotalPrice(entity.Id).ToString("N2") + " EUR";
+        }
+
+        protected double CalculateTotalPrice(int orderId)
+        {
+            double result = 0;
+
+            //TODO discuss with customer - take positions where proccessed amount not null (but take with 0)
+            var termPositions = termPositionsManager.GetEntities(o => !o.DeleteDate.HasValue && o.Terms.OrderId == orderId && o.ProccessedAmount.HasValue).ToList();
+
+            foreach (var termPosition in termPositions)
+            {
+                //positions
+                if (termPosition.ProccessedAmount.Value > 0)
+                {
+                    result += CalculationHelper.CalculatePositionPrice(termPosition.Positions.Price, termPosition.ProccessedAmount.Value,
+                        termPosition.Positions.Payment);
+                }
+
+                //materials
+                foreach (var material in termPosition.TermPositionMaterialRsps.Where(o => !o.DeleteDate.HasValue && o.Amount.HasValue))
+                {
+                    var amount = material.Amount.Value;
+                    if (material.Materials.MaterialAmountTypes == MaterialAmountTypes.Meter)
+                    {
+                        if (material.Materials.Length != 0)
+                        {
+                            amount = amount / (double)material.Materials.Length.Value;
+                        }
+                        else
+                        {
+                            //todo
+                        }
+                    }
+
+                    result += CalculationHelper.CalculatePositionPrice(material.Materials.Price, amount, PaymentTypes.Standard);
+                }
+            }
+
+            //material positions without terms
+            var materialPositionsWithoutTerms = positionsManager.GetEntities(o => o.OrderId == orderId && !o.DeleteDate.HasValue &&
+                !o.TermId.HasValue && o.MaterialId.HasValue && o.IsMaterialPosition).ToList();
+            foreach (var position in materialPositionsWithoutTerms)
+            {
+                result += CalculationHelper.CalculatePositionPrice(position.Price, position.Amount, position.Payment);
+            }
+
+            //extra costs
+            var termCosts = termCostsManager.GetEntities(o => !o.DeleteDate.HasValue && o.Terms.OrderId == orderId).ToList();
+            foreach (var termCost in termCosts)
+            {
+                result += CalculationHelper.CalculatePositionPrice(termCost.Price, 1, PaymentTypes.Standard);
+            }
+
+            return result;
         }
 
         protected override string BuildWhereClause<T>(Filter filter)

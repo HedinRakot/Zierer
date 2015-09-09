@@ -24,9 +24,9 @@ namespace ProfiCraftsman.API.Controllers
     [AuthorizeByPermissions(PermissionTypes = new[] { Permissions.ReportOrders })]
     public partial class ReportPositionsController: ApiController
     {
-        public ITermPositionsManager termPositionsManager { get; set; }
-        public IPositionsManager positionsManager { get; set; }
-        public ITermCostsManager termCostsManager { get; set; }
+        private ITermPositionsManager termPositionsManager { get; set; }
+        private IPositionsManager positionsManager { get; set; }
+        private ITermCostsManager termCostsManager { get; set; }
 
         public ReportPositionsController(ITermPositionsManager termPositionsManager, IPositionsManager positionsManager, ITermCostsManager termCostsManager) 
         {

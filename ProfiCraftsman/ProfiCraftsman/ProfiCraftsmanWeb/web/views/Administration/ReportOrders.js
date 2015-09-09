@@ -43,6 +43,7 @@
 				{ field: 'street', title: this.resources.street },
 				{ field: 'city', title: this.resources.city },
 				{ field: 'zip', title: this.resources.zip },
+				{ field: 'totalPrice', title: this.resources.totalPrice, sortable: false, filterable: false },
 			];
 		},		
 

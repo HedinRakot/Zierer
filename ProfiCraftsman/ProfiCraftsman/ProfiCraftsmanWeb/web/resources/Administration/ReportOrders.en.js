@@ -11,6 +11,7 @@ define(function () {
 		street: 'Street',
 		zip: 'ZIP',
 		city: 'City',
+		totalPrice: 'Total Price',
 	};
 
 	return resources;

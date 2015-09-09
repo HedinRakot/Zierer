@@ -29,6 +29,9 @@ define(function () {
             ,status: { type: "number", 
                                     editable: false,
                                     validation: { required: false } }
+            ,totalPrice: { type: "string", 
+			                        editable: false, 
+				                    validation: { required: false} }
 		},
 		defaults: function () {
 			var dnf = new Date();
