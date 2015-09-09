@@ -32,6 +32,7 @@
 
             var columns = [
                 //{ field: 'positionNumber', title: this.resources.positionNumber, filterable: false, sortable: false, width: '40px', attributes: { "class": "detail-view-grid-cell" } },
+                { field: 'createDate', title: this.resources.date, width: '50px', format: '{0:d}', filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
                 { field: 'number', title: this.resources.number, width: '100px', filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
                 { field: 'description', title: this.resources.description, filterable: false, sortable: false, width: '300px', attributes: { "class": "detail-view-grid-cell" } },
                 { field: 'amount', title: this.resources.amount, width: '70px', filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },

@@ -78,7 +78,9 @@ namespace ProfiCraftsman.API.Controllers
                     {
                         Terms = entity,
                         Name = customProduct.Name,
-                        Price = customProduct.Price
+                        Price = customProduct.Price,
+                        CreateDate = DateTime.Now,
+                        ChangeDate = DateTime.Now,
                     });
                 }
             }            

@@ -61,6 +61,13 @@ namespace ProfiCraftsman.API.Controllers
 
                 return string.Join(" or ", clauses);
             }
+            else if (filter.Field == "status")
+            {
+                var status = 1;
+                Int32.TryParse(filter.Value, out status);
+
+                return String.Format(" {0}",  status == 2 ? String.Format("status = {0}", status) : "1 = 1");
+            }
 
             return base.BuildWhereClause<T>(filter);
         }

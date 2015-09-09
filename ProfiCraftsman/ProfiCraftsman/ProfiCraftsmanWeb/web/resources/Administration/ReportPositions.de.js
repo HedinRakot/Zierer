@@ -12,6 +12,7 @@
 	    paymentType: 'Preiseinheit',
 	    amountType: 'Einheit',
 	    totalPrice: 'Gesamtpreis',
+	    date: 'Datum',
 	};
 
 	return resources;

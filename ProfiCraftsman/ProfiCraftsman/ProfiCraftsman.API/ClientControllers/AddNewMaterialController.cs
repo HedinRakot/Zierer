@@ -49,7 +49,9 @@ namespace ProfiCraftsman.API.ClientControllers
                     Price = material.Price,
                     OrderId = term.OrderId,
                     IsMaterialPosition = true,
-                    TermId = term.Id
+                    TermId = term.Id,
+                    CreateDate = DateTime.Now,
+                    ChangeDate = DateTime.Now,
                 };
 
                 positionsManager.AddEntity(newPosition);

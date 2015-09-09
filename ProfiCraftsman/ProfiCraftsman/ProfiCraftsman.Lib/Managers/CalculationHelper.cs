@@ -175,7 +175,7 @@ namespace ProfiCraftsman.Lib.Managers
             return Math.Round(summaryPrice, 2);
         }
 
-        public static double CalculatePositionPrice(double price, int amount, PaymentTypes payment)
+        public static double CalculatePositionPrice(double price, double amount, PaymentTypes payment)
         {
             double result = 0;
 
@@ -185,7 +185,7 @@ namespace ProfiCraftsman.Lib.Managers
             }
             else
             {
-                result = price * (double)amount;
+                result = price * amount;
             }
 
             return Math.Round(result, 2);

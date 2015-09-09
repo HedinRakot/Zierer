@@ -12,6 +12,7 @@ define(function () {
 	    paymentType: 'Payment type',
 	    amountType: 'Amount type',
 	    totalPrice: 'Total price',
+	    date: 'Datum',
 	};
 
 	return resources;

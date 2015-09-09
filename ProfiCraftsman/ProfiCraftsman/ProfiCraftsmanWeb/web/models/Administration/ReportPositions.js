@@ -30,6 +30,7 @@ define(function () {
             ,number: { type: "string", 
                                     editable: false, 
                                     validation: { required: true } }
+            ,createDate: { type: "date", validation: { required: false } }
 		}
 	});
 	return model;

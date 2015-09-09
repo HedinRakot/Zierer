@@ -32,7 +32,7 @@ namespace ProfiCraftsman.API.Controllers
                 {
                     if (autoMaterial.Materials.Length != 0)
                     {
-                        var count = (int)(usedMaterialAmount / autoMaterial.Materials.Length.Value);
+                        var count = (int)(usedMaterialAmount / (double)autoMaterial.Materials.Length.Value);
                         autoMaterial.Amount -= count;
 
                         var rest = usedMaterialAmount - count * autoMaterial.Materials.Length.Value;

@@ -44,6 +44,13 @@ namespace ProfiCraftsman.API.Controllers
             entity.TermId = model.termId;
             entity.Price = model.price;
             entity.Name = model.name;
+
+            entity.ChangeDate = DateTime.Now;
+
+            if(actionType == ActionTypes.Add)
+            {
+                entity.CreateDate = DateTime.Now;
+            }
         }      
     }
 }
