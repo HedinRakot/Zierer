@@ -16,7 +16,7 @@ namespace ProfiCraftsman.API.Controllers
     /// <summary>
     ///     Controller for <see cref="Orders"/> entity
     /// </summary>
-    //[AuthorizeByPermissions(PermissionTypes = new[] { Permissions.Orders })]    
+    [AuthorizeByPermissions(PermissionTypes = new[] { Permissions.Orders })]    
     public partial class OrdersController: ClientApiController<OrdersModel, Orders, int, IOrdersManager>
     {
         private readonly ICustomersManager customerManager;

@@ -44,6 +44,7 @@
                 'InvoiceStornos': _.partial(BaseRouter.showView, this, 'l!t!InvoiceStornos/Invoices', { ProceedsAccounts: true }, false),
 
                 'Trips': _.partial(BaseRouter.showView, this, 'l!t!Administration/Trips', { Autos: true }, { }),
+                'ReportOrders': _.partial(BaseRouter.showView, this, 'l!t!Administration/ReportOrders', {  }, { }),
             };
 		    
 		    var result = $.extend({}, commonRoutes, MasterDataRouter.getAllMasterDataRoutes(this));
