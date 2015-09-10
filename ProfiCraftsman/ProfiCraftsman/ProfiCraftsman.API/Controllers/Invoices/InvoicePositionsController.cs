@@ -28,22 +28,32 @@ namespace ProfiCraftsman.API.Controllers.Invoices
             model.changeDate = ((ISystemFields)entity).ChangeDate;
             model.amount = entity.Amount;
             model.paymentType = entity.PaymentType;
+            model.price = entity.Price;
 
-            if (entity.Positions.ProductId.HasValue)
+            if (entity.PositionId.HasValue)
             {
-                model.description = String.Format("{0} {1}", entity.Positions.Products.Number, entity.Positions.Products.ProductTypes.Name);
-                model.isCointainerPosition = true;
-                model.price = entity.Price;
+                model.description = entity.Positions.Description;
 
-                model.totalPrice = CalculationHelper.CalculatePositionPrice(entity.Price, entity.Amount, entity.Payment);
+                if (entity.Positions.ProductId.HasValue)
+                {
+                    model.number = entity.Positions.Products.Number;
+                }
+                else if (entity.Positions.MaterialId.HasValue)
+                {
+                    model.number = entity.Positions.Materials.Number;
+                }
+            }
+            else if(entity.TermPositionMaterialId.HasValue)
+            {
+                model.description = entity.TermPositionMaterialRsp.Materials.Name;
+                model.number = entity.TermPositionMaterialRsp.Materials.Number;
+            }
+            else if(entity.TermCostId.HasValue)
+            {
+                model.description = entity.TermCosts.Name;
             }
 
-            if (entity.Positions.MaterialId.HasValue)
-            {
-                model.totalPrice = model.price * model.amount;
-                model.description = entity.Positions.Materials.Name;
-                model.isCointainerPosition = false;
-            }
+            model.totalPrice = CalculationHelper.CalculatePositionPrice(entity.Price, entity.Amount, entity.Payment);
         }
         protected override void ModelToEntity(InvoicePositionsModel model, InvoicePositions entity, ActionTypes actionType)
         {

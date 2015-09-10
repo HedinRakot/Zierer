@@ -24,9 +24,12 @@ define([
 		columns: function () {
 		   
 		   return [
+				{ field: 'number', title: this.resources.number, filterable: false, sortable: false },
 				{ field: 'description', title: this.resources.description, filterable: false, sortable: false },
                 { field: 'paymentType', title: this.resources.paymentType, collection: this.options.paymentTypes },
-				{ field: 'totalPrice', title: this.resources.price },
+				{ field: 'price', title: this.resources.price },
+				{ field: 'amount', title: this.resources.amount },
+				{ field: 'totalPrice', title: this.resources.totalPrice, filterable: false, sortable: false },
 			];
 		},
 		

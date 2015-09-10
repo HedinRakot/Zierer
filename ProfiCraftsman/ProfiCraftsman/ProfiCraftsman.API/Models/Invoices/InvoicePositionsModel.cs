@@ -11,11 +11,9 @@ namespace ProfiCraftsman.API.Models.Invoices
     [DataContract]
     public partial class InvoicePositionsModel: BaseModel
     {
-        [Required]
         [DataMember]
         public double price{ get; set; }
 
-        [Required]
         [DataMember]
         public double totalPrice { get; set; }
 
@@ -23,18 +21,11 @@ namespace ProfiCraftsman.API.Models.Invoices
         public string description { get; set; }
 
         [DataMember]
-        public int amount { get; set; }
+        public double amount { get; set; }
 
         [DataMember]
-        public DateTime? fromDate { get; set; }
-
-        [DataMember]
-        public DateTime? toDate { get; set; }
-
-        [DataMember]
-        public bool isCointainerPosition { get; set; }
-
-        [Required]
+        public string number { get; set; }
+        
         [DataMember]
         public int paymentType { get; set; }
     }

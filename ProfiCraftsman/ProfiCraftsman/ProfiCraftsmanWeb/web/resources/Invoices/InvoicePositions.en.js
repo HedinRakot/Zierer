@@ -9,8 +9,9 @@ define(function () {
 		pleaseSelect: 'Please select',
 		price: 'Price',
 		description: 'Description',
-		fromDate: 'From date',
-		toDate: 'To date',
+		number: 'Number',
+		totalPrice: 'Total price',
+		amount: 'Amount',
 		paymentType: 'Payment type'
 	};
 

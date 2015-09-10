@@ -19,7 +19,8 @@ define(function () {
 	    generateMonthInvoices: 'Monatsrechnungen',
 	    pay: 'Bezahlen',
 	    orderNumber: 'Auftrags-Nummer',
-        reminderCount: 'Mahnstufe'
+	    reminderCount: 'Mahnstufe',
+	    totalPrice: 'Gesamtpreis',
 	};
 
 	return resources;

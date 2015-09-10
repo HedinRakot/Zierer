@@ -82,6 +82,7 @@
                     columns: [
                         { field: 'invoiceNumber', title: this.resources.invoiceNumber },
 				        { field: 'createDate', title: this.resources.createDate, format: '{0:d}' },
+				        { field: 'totalPrice', title: this.resources.totalPrice, filterable: false, sortable: false },
 				        { field: 'payDate', title: this.resources.payDate, format: '{0:d}' }, 
                         { field: 'reminderCount', title: this.resources.reminderCount },
                     ]

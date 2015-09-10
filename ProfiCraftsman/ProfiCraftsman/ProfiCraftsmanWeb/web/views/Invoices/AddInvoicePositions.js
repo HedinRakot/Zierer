@@ -40,24 +40,10 @@
         columns: function () {
             return [
                  { field: 'description', title: this.resources.description, filterable: false, sortable: false },
-                 { field: 'price', title: this.resources.price },
                  { field: 'paymentType', title: this.resources.paymentType, collection: this.options.paymentTypes },
-                 { field: 'totalPrice', title: this.resources.totalPrice },
-                 { field: 'amount', title: this.resources.amount, filterable: false, sortable: false },
-                 {
-                     field: 'fromDate',
-                     editor: dateEditor,
-                     template: '#= kendo.format("{0:d}", data.fromDate == null ? "" : data.fromDate) #',
-                     title: this.resources.fromDate,
-                     format: '{0:d}'
-                 },
-                 {
-                     field: 'toDate',
-                     editor: dateEditor,
-                     template: '#= kendo.format("{0:d}", data.toDate == null ? "" : data.toDate) #',
-                     title: this.resources.toDate,
-                     format: '{0:d}'
-                 }
+                 { field: 'price', title: this.resources.price },
+                 { field: 'amount', title: this.resources.amount },
+                 { field: 'totalPrice', title: this.resources.totalPrice, filterable: false, sortable: false },
             ];
         },
 

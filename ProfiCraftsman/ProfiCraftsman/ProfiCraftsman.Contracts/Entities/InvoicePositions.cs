@@ -54,23 +54,43 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'PaymentType' for property <see cref="InvoicePositions.PaymentType"/>
             /// </summary>
             public static readonly string PaymentType = "PaymentType";
+            /// <summary>
+            /// Column name 'TermCostId' for property <see cref="InvoicePositions.TermCostId"/>
+            /// </summary>
+            public static readonly string TermCostId = "TermCostId";
+            /// <summary>
+            /// Column name 'TermPositionMaterialId' for property <see cref="InvoicePositions.TermPositionMaterialId"/>
+            /// </summary>
+            public static readonly string TermPositionMaterialId = "TermPositionMaterialId";
           
         }
         #endregion
         public int Id{ get; set; }
         public int InvoiceId{ get; set; }
-        public int PositionId{ get; set; }
+        public int? PositionId{ get; set; }
         public double Price{ get; set; }
         public DateTime CreateDate{ get; set; }
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
-        public int Amount{ get; set; }
+        public double Amount{ get; set; }
         public int PaymentType{ get; set; }
+        public int? TermCostId{ get; set; }
+        public int? TermPositionMaterialId{ get; set; }
+        public virtual TermCosts TermCosts{ get; set; }
         public virtual Invoices Invoices{ get; set; }
+        public virtual TermPositionMaterialRsp TermPositionMaterialRsp{ get; set; }
         public virtual Positions Positions{ get; set; }
+        public bool HasTermCosts
+        {
+            get { return !ReferenceEquals(TermCosts, null); }
+        }
         public bool HasInvoices
         {
             get { return !ReferenceEquals(Invoices, null); }
+        }
+        public bool HasTermPositionMaterialRsp
+        {
+            get { return !ReferenceEquals(TermPositionMaterialRsp, null); }
         }
         public bool HasPositions
         {
@@ -102,6 +122,8 @@ namespace ProfiCraftsman.Contracts.Entities
                        DeleteDate = DeleteDate,
                        Amount = Amount,
                        PaymentType = PaymentType,
+                       TermCostId = TermCostId,
+                       TermPositionMaterialId = TermPositionMaterialId,
         	           };
         }
     }

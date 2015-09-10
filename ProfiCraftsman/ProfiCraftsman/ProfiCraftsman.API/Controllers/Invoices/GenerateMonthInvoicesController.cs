@@ -21,10 +21,15 @@ namespace ProfiCraftsman.API.Controllers.Invoices
 {
     public partial class GenerateMonthInvoicesController: AddInvoicesController
     {
+        protected IPrinterManager printerManager { get; set; }
+
         public GenerateMonthInvoicesController(IInvoicesManager invoicesManager, IOrdersManager ordersManager,
-            ITaxesManager taxesManager, IInvoicePositionsManager invoicePositionsManager, IUniqueNumberProvider numberProvider, IPrinterManager printerManager) : 
-            base(invoicesManager, ordersManager, taxesManager, invoicePositionsManager, numberProvider, printerManager)
+            ITaxesManager taxesManager, IInvoicePositionsManager invoicePositionsManager, IUniqueNumberProvider numberProvider,
+            ITermPositionsManager termPositionsManager, IPositionsManager positionsManager, ITermCostsManager termCostsManager,
+            IPrinterManager printerManager) : 
+            base(invoicesManager, ordersManager, taxesManager, invoicePositionsManager, numberProvider, termPositionsManager, positionsManager, termCostsManager)
         {
+            this.printerManager = printerManager;
         }
 
         [HttpGet]
@@ -55,7 +60,7 @@ namespace ProfiCraftsman.API.Controllers.Invoices
                     InvoicePositions = new List<InvoicePositions>()
                 };
                 
-                if (AddInvoicePositions(true, isSell, order, invoice))
+                if (AddInvoicePositions(/*todo true, isSell, */order, invoice))
                 {
                     invoice.InvoiceNumber = numberProvider.GetNextInvoiceNumber();
 

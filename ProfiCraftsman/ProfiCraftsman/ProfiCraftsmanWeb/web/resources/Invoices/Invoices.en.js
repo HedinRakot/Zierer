@@ -19,7 +19,8 @@ define(function () {
 	    generateMonthInvoices: 'Month invoices',
 		pay: 'Pay',
 		orderNumber: 'Order number',
-		reminderCount: 'Reminder count'
+		reminderCount: 'Reminder count',
+	    totalPrice: 'Total price',
 	};
 
 	return resources;

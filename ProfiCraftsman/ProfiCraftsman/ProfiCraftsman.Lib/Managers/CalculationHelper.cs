@@ -27,31 +27,42 @@ namespace ProfiCraftsman.Lib.Managers
 
             var allPositions = entity.InvoicePositions.Where(o => !o.DeleteDate.HasValue).ToList();
 
-            //total price for main positions
-            foreach (var position in allPositions.Where(o => !o.Positions.IsAlternative))
-            {
-                if (position.Positions.HasProducts)
-                {
-                    totalPriceForMainPositions += CalculatePositionPrice(position.Price, position.Amount, position.Payment);
-                }
-                else
-                {
-                    totalPriceForMainPositions += position.Price * (double)position.Amount;
-                }
-            }
+            //todo
+            ////total price for main positions
+            //foreach (var position in allPositions.Where(o => !o.Positions.IsAlternative))
+            //{
+            //    if (position.Positions.HasProducts)
+            //    {
+            //        totalPriceForMainPositions += CalculatePositionPrice(position.Price, position.Amount, position.Payment);
+            //    }
+            //    else
+            //    {
+            //        totalPriceForMainPositions += position.Price * (double)position.Amount;
+            //    }
+            //}
 
-            //Product prices
-            foreach (var position in allPositions.Where(o => o.Positions.ProductId.HasValue))
-            {
-                totalPriceWithoutDiscountWithoutTax += CalculatePositionPrice(position.Price, position.Amount, position.Payment);
-            }
+            ////Product prices
+            //foreach (var position in allPositions.Where(o => o.Positions.ProductId.HasValue))
+            //{
+            //    totalPriceWithoutDiscountWithoutTax += CalculatePositionPrice(position.Price, position.Amount, position.Payment);
+            //}
 
             double additionalCostPrices = 0;
-            //additional cost prices
-            foreach (var position in allPositions.Where(o => o.Positions.MaterialId.HasValue))
+            ////additional cost prices
+            //foreach (var position in allPositions.Where(o => o.Positions.MaterialId.HasValue))
+            //{
+            //    additionalCostPrices += position.Price * (double)position.Amount;
+            //}
+
+
+            //total price for positions
+            foreach (var position in allPositions)//TODO.Where(o => !o.Positions.IsAlternative))
             {
-                additionalCostPrices += position.Price * (double)position.Amount;
+                totalPriceForMainPositions += CalculatePositionPrice(position.Price, position.Amount, position.Payment);
             }
+
+
+            totalPriceWithoutDiscountWithoutTax = totalPriceForMainPositions;
 
             summaryPrice = CalculateTaxesAndDiscount(entity.Discount, entity.TaxValue, entity.WithTaxes, entity.ManualPrice, additionalCostPrices,
                 ref totalPriceWithoutDiscountWithoutTax, ref totalPriceWithoutTax, ref totalPrice);

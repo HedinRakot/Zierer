@@ -11,15 +11,8 @@ define(function () {
             ,totalPrice: { type: "number", 
 			                        editable: false, 
 			                        validation: { required: true }}
-            ,fromDate: { type: "date", 
-			                        editable: false, 
-				                    validation: { required: false, date: true } }						
-			,toDate: { type: "date", 
-			                        editable: false, 
-				                    validation: { required: false, date: true } }		
             ,description: { type: "string", editable: false }
             ,amount: { type: "number", editable: false, validation: { required: true } }
-            ,isCointainerPosition: { type: "boolean", editable: false, validation: { required: true } }
             ,paymentType: { type: "number", 
 			                        editable: true,
 				                    validation: { required: true } }

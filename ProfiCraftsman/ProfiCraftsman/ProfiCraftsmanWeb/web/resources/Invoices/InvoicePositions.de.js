@@ -9,8 +9,9 @@ define(function () {
 		pleaseSelect: 'Bitte auswählen',
 		price: 'Preis',
 		description: 'Beschreibung',
-		fromDate: 'Von Datum',
-		toDate: 'Bis Datum',
+		number: 'Nummer',
+		totalPrice: 'Gesamtpreis',
+        amount: 'Menge',
 		paymentType: 'Preiseinheit'
 	};
 

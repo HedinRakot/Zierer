@@ -33,8 +33,7 @@ namespace ProfiCraftsman.Lib.Data
                 .IsRequired();
 
             Property(t => t.PositionId)
-                .HasColumnName(InvoicePositions.Fields.PositionId)
-                .IsRequired();
+                .HasColumnName(InvoicePositions.Fields.PositionId);
 
             Property(t => t.Price)
                 .HasColumnName(InvoicePositions.Fields.Price)
@@ -59,12 +58,24 @@ namespace ProfiCraftsman.Lib.Data
                 .HasColumnName(InvoicePositions.Fields.PaymentType)
                 .IsRequired();
 
+            Property(t => t.TermCostId)
+                .HasColumnName(InvoicePositions.Fields.TermCostId);
+
+            Property(t => t.TermPositionMaterialId)
+                .HasColumnName(InvoicePositions.Fields.TermPositionMaterialId);
+
 
             //Relationships
+            HasOptional(i => i.TermCosts)
+                .WithMany(t => t.InvoicePositions)
+                .HasForeignKey(t => t.TermCostId);
             HasRequired(i => i.Invoices)
                 .WithMany(i => i.InvoicePositions)
                 .HasForeignKey(t => t.InvoiceId);
-            HasRequired(i => i.Positions)
+            HasOptional(i => i.TermPositionMaterialRsp)
+                .WithMany(t => t.InvoicePositions)
+                .HasForeignKey(t => t.TermPositionMaterialId);
+            HasOptional(i => i.Positions)
                 .WithMany(p => p.InvoicePositions)
                 .HasForeignKey(t => t.PositionId);
         }
