@@ -59,7 +59,7 @@ namespace ProfiCraftsman.API.Controllers.Invoices
             };
 
 
-            //if (AddInvoicePositions(model.isMonthlyInvoice, model.isSell, order, invoice))
+
             if (AddInvoicePositions(order, invoice))
             {
                 invoice.InvoiceNumber = numberProvider.GetNextInvoiceNumber();
@@ -72,101 +72,43 @@ namespace ProfiCraftsman.API.Controllers.Invoices
             return Ok(model);
         }
 
-        //protected bool AddInvoicePositions(bool isMonthlyInvoice, bool isSell, Orders order, Contracts.Entities.Invoices invoice)
-        //{
-        //    var orderPositions = order.Positions.Where(o => !o.DeleteDate.HasValue && (o.ProductId.HasValue || o.MaterialId.HasValue)).ToList();
-
-        //    var allInvoicePositions = invoicePositionsManager.GetEntities(o => o.Positions.OrderId == order.Id && !o.DeleteDate.HasValue).ToList();
-
-        //    bool hasOpenPositions = false;
-
-        //    foreach (var orderPosition in orderPositions)
-        //    {
-        //        var invoicePositions = allInvoicePositions.Where(o => o.PositionId == orderPosition.Id);
-        //        var amount = 0;
-
-        //        var oldAmount = invoicePositions.Sum(o => o.Amount);
-
-        //        if (oldAmount == 0)
-        //        {
-        //            if (!isMonthlyInvoice)
-        //            {
-        //                amount = orderPosition.Amount;
-        //            }
-        //        }
-        //        else if (orderPosition.Amount > oldAmount)
-        //        {
-        //            amount = orderPosition.Amount - oldAmount;
-        //        }
-
-        //        //if (orderPosition.Materials != null)
-        //        //{
-        //        //    var oldAmount = invoicePositions.Sum(o => o.Amount);
-
-        //        //    if (oldAmount == 0)
-        //        //    {
-        //        //        if (!isMonthlyInvoice)
-        //        //        {
-        //        //            amount = orderPosition.Amount;
-        //        //        }
-        //        //    }
-        //        //    else if (orderPosition.Amount > oldAmount)
-        //        //    {
-        //        //        amount = orderPosition.Amount - oldAmount;
-        //        //    }
-        //        //}
-        //        //else if (orderPosition.Products != null)
-        //        //{
-        //        //    amount = 1;
-
-        //        //    //GetPeriod(isMonthlyInvoice, order, orderPosition, invoicePositions, ref amount);
-        //        //}
-
-        //        if (amount != 0)
-        //        {
-        //            //if (isSell && orderPosition.Products != null && 
-        //            //    !orderPosition.Products.IsVirtual)
-        //            //{
-        //            //    orderPosition.Products.IsSold = true;
-        //            //}
-
-        //            var newPosition = new InvoicePositions()
-        //            {
-        //                Positions = orderPosition,
-        //                Invoices = invoice,
-        //                Price = orderPosition.Price,
-        //                Amount = amount,
-        //                CreateDate = DateTime.Now,
-        //                ChangeDate = DateTime.Now,
-        //                PaymentType = orderPosition.PaymentType
-        //            };
-        //            invoice.InvoicePositions.Add(newPosition);
-        //            hasOpenPositions = true;
-        //        }
-        //    }
-
-        //    return hasOpenPositions;
-        //}
-
         protected bool AddInvoicePositions(Orders order, Contracts.Entities.Invoices invoice)
         {
             var result = false;
-            //todo var allInvoicePositions = invoicePositionsManager.GetEntities(o => o.Positions.OrderId == order.Id && !o.DeleteDate.HasValue).ToList();
+
+            var allInvoicePositions = invoicePositionsManager.GetEntities(o => !o.DeleteDate.HasValue && 
+                ((o.PositionId.HasValue && o.Positions.OrderId == order.Id) || (o.TermCostId.HasValue && o.TermCosts.Terms.OrderId == order.Id) ||
+                 (o.TermPositionMaterialId.HasValue && o.TermPositionMaterialRsp.TermPositions.Terms.OrderId == order.Id))
+                ).ToList();
 
             //TODO discuss with customer - take positions where proccessed amount not null (but take with 0)
             var termPositions = termPositionsManager.GetEntities(o => !o.DeleteDate.HasValue && o.Terms.OrderId == order.Id && o.ProccessedAmount.HasValue).ToList();
 
             foreach (var termPosition in termPositions)
             {
+                var invoicePositions = allInvoicePositions.Where(o => o.PositionId.HasValue && o.PositionId.Value == termPosition.PositionId).ToList();
+
+                double amount = 0;
+                var oldAmount = invoicePositions.Sum(o => o.Amount);
+                double usedAmount = termPosition.ProccessedAmount.Value;
+                if (oldAmount == 0)
+                {
+                    amount = usedAmount;
+                }
+                else if (usedAmount > oldAmount)
+                {
+                    amount = usedAmount - oldAmount;
+                }
+
                 //positions
-                if (termPosition.ProccessedAmount.Value > 0)
+                if (amount > 0)
                 {
                     var newPosition = new InvoicePositions()
                     {
                         Positions = termPosition.Positions,
                         Invoices = invoice,
                         Price = termPosition.Positions.Price,
-                        Amount = termPosition.ProccessedAmount.Value,
+                        Amount = amount,
                         CreateDate = DateTime.Now,
                         ChangeDate = DateTime.Now,
                         PaymentType = termPosition.Positions.PaymentType
@@ -179,12 +121,20 @@ namespace ProfiCraftsman.API.Controllers.Invoices
                 //materials
                 foreach (var material in termPosition.TermPositionMaterialRsps.Where(o => !o.DeleteDate.HasValue && o.Amount.HasValue))
                 {
-                    var amount = material.Amount.Value;
+                    invoicePositions = allInvoicePositions.
+                        Where(o => o.TermPositionMaterialId.HasValue && o.TermPositionMaterialId.Value == material.Id).ToList();
+
+
+                    //old amount
+                    oldAmount = invoicePositions.Sum(o => o.Amount);
+                    //used amount
+                    usedAmount = material.Amount.Value;
+
                     if (material.Materials.MaterialAmountTypes == MaterialAmountTypes.Meter)
                     {
                         if (material.Materials.Length != 0)
                         {
-                            amount = amount / (double)material.Materials.Length.Value;
+                            usedAmount = usedAmount / (double)material.Materials.Length.Value;
                         }
                         else
                         {
@@ -192,11 +142,66 @@ namespace ProfiCraftsman.API.Controllers.Invoices
                         }
                     }
 
+
+                    amount = 0;
+                    if (oldAmount == 0)
+                    {
+                        amount = usedAmount;
+                    }
+                    else if (usedAmount > oldAmount)
+                    {
+                        amount = usedAmount - oldAmount;
+                    }
+
+
+                    if (amount > 0)
+                    {
+                        var newPosition = new InvoicePositions()
+                        {
+                            TermPositionMaterialId = material.Id,
+                            Invoices = invoice,
+                            Price = material.Materials.Price,
+                            Amount = amount,
+                            CreateDate = DateTime.Now,
+                            ChangeDate = DateTime.Now,
+                            PaymentType = (int)PaymentTypes.Standard
+                        };
+
+                        invoice.InvoicePositions.Add(newPosition);
+                        result = true;
+                    }
+                }
+            }
+
+            //material positions without terms
+            var materialPositionsWithoutTerms = positionsManager.GetEntities(o => o.OrderId == order.Id && !o.DeleteDate.HasValue &&
+                !o.TermId.HasValue && o.MaterialId.HasValue && o.IsMaterialPosition).ToList();
+            foreach (var position in materialPositionsWithoutTerms)
+            {
+                var invoicePositions = allInvoicePositions.
+                        Where(o => o.PositionId.HasValue && o.PositionId.Value == position.Id).ToList();
+
+                double amount = 0;
+                //old amount
+                var oldAmount = invoicePositions.Sum(o => o.Amount);
+                double usedAmount = position.Amount;
+
+                if (oldAmount == 0)
+                {
+                    amount = usedAmount;
+                }
+                else if (usedAmount > oldAmount)
+                {
+                    amount = usedAmount - oldAmount;
+                }
+
+                if (amount > 0)
+                {
                     var newPosition = new InvoicePositions()
                     {
-                        TermPositionMaterialId = material.Id,
+                        Positions = position,
                         Invoices = invoice,
-                        Price = material.Materials.Price,
+                        Price = position.Materials.Price,
                         Amount = amount,
                         CreateDate = DateTime.Now,
                         ChangeDate = DateTime.Now,
@@ -208,43 +213,38 @@ namespace ProfiCraftsman.API.Controllers.Invoices
                 }
             }
 
-            //material positions without terms
-            var materialPositionsWithoutTerms = positionsManager.GetEntities(o => o.OrderId == order.Id && !o.DeleteDate.HasValue &&
-                !o.TermId.HasValue && o.MaterialId.HasValue && o.IsMaterialPosition).ToList();
-            foreach (var position in materialPositionsWithoutTerms)
-            {
-                var newPosition = new InvoicePositions()
-                {
-                    Positions = position,
-                    Invoices = invoice,
-                    Price = position.Materials.Price,
-                    Amount = position.Amount,
-                    CreateDate = DateTime.Now,
-                    ChangeDate = DateTime.Now,
-                    PaymentType = (int)PaymentTypes.Standard
-                };
-
-                invoice.InvoicePositions.Add(newPosition);
-                result = true;
-            }
-
             //extra costs
             var termCosts = termCostsManager.GetEntities(o => !o.DeleteDate.HasValue && o.Terms.OrderId == order.Id).ToList();
             foreach (var termCost in termCosts)
             {
-                var newPosition = new InvoicePositions()
-                {
-                    TermCosts = termCost,
-                    Invoices = invoice,
-                    Price = termCost.Price,
-                    Amount = 1,
-                    CreateDate = DateTime.Now,
-                    ChangeDate = DateTime.Now,
-                    PaymentType = (int)PaymentTypes.Standard
-                };
+                var invoicePositions = allInvoicePositions.
+                        Where(o => o.TermCostId.HasValue && o.TermCostId.Value == termCost.Id).ToList();
 
-                invoice.InvoicePositions.Add(newPosition);
-                result = true;
+                double amount = 0;
+                //old amount
+                var oldAmount = invoicePositions.Sum(o => o.Amount);
+                if (oldAmount == 0)
+                {
+                    amount = 1;
+                }
+
+                if (amount > 0)
+                {
+                    var newPosition = new InvoicePositions()
+                    {
+                        TermCosts = termCost,
+                        Invoices = invoice,
+                        Price = termCost.Price,
+                        Amount = amount,
+                        CreateDate = DateTime.Now,
+                        ChangeDate = DateTime.Now,
+                        PaymentType = (int)PaymentTypes.Standard
+                    };
+
+                    invoice.InvoicePositions.Add(newPosition);
+                    result = true;
+                }
+
             }
 
             return result;
