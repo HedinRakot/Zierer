@@ -256,9 +256,8 @@ namespace ProfiCraftsman.Lib.Managers
 
                     bool manualPricePrinted = false;
                     result = ReplaceInvoicePositions(invoice, invoice.InvoicePositions.ToList(), result,
-                        "#ProductDescription", "#ProductPrice", "Mietgegenstand: ", true, ref manualPricePrinted);
-                    result = ReplaceInvoicePositions(invoice, invoice.InvoicePositions.ToList(), result,
-                        "#AdditionalCostDescription", "#AdditionalCostPrice", "Nebenkosten: ", false, ref manualPricePrinted);
+                        "#PositionDescription", "#PositionPrice", "Leistungen: ", ref manualPricePrinted);
+
                     result = ReplaceInvoicePrices(invoice, result);
                     break;
                 case PrintTypes.InvoiceStorno:
@@ -645,47 +644,15 @@ namespace ProfiCraftsman.Lib.Managers
 
             xmlMainXMLDoc = xmlMainXMLDoc.Replace("#InvoiceNumber", invoice.InvoiceNumber);
             xmlMainXMLDoc = xmlMainXMLDoc.Replace("#InvoiceDate", invoice.CreateDate.ToShortDateString());
-
-            //xmlMainXMLDoc = ReplaceOrderedFromInfo(xmlMainXMLDoc, order);
-
-            //xmlMainXMLDoc = ReplaceCustomerOrderNumber(xmlMainXMLDoc, order);
-
-            xmlMainXMLDoc = ReplaceRentOrderInfo(xmlMainXMLDoc, order, invoice);
-
+            
             xmlMainXMLDoc = xmlMainXMLDoc.Replace("#OrderNumber", order.OrderNumber);
 
             xmlMainXMLDoc = ReplaceUstId(xmlMainXMLDoc, order);
-
-            xmlMainXMLDoc = ReplaceRentInterval(xmlMainXMLDoc, order, invoice);
-
+            
             xmlMainXMLDoc = ReplaceFooterTexts(xmlMainXMLDoc, order, invoice);
 
             return xmlMainXMLDoc;
-        }
-        
-        private string ReplaceRentOrderInfo(string xmlMainXMLDoc, Orders order, Invoices invoice)
-        {
-            var xmlDoc = XDocument.Parse(xmlMainXMLDoc);
-            var temp = xmlDoc.Descendants().LastOrDefault(o => o.Value.Contains("#RentOrderInfo"));
-            var parentElement = GetParentElementByName(temp, "<w:tr ");
-
-            if (parentElement != null)
-            {
-                //if (!invoice.IsSellInvoice && !String.IsNullOrEmpty(order.RentOrderNumber))
-                //{
-                //    xmlMainXMLDoc = xmlMainXMLDoc.Replace("#RentOrderInfo", String.Format("{0}{1}{2}",
-                //        order.CreateDate.ToShortDateString(),
-                //        !String.IsNullOrEmpty(order.RentOrderNumber) ? " Nr. " : String.Empty,
-                //        !String.IsNullOrEmpty(order.RentOrderNumber) ? order.RentOrderNumber : String.Empty));
-                //}
-                //else
-                //{
-                //    parentElement.Remove();
-                //    xmlMainXMLDoc = xmlDoc.Root.ToString();
-                //}
-            }
-            return xmlMainXMLDoc;
-        }
+        }               
 
         private string ReplaceUstId(string xmlMainXMLDoc, Orders order)
         {
@@ -707,38 +674,9 @@ namespace ProfiCraftsman.Lib.Managers
             }
             return xmlMainXMLDoc;
         }
-
-        private string ReplaceRentInterval(string xmlMainXMLDoc, Orders order, Invoices invoice)
-        {
-            var xmlDoc = XDocument.Parse(xmlMainXMLDoc);
-            var temp = xmlDoc.Descendants().LastOrDefault(o => o.Value.Contains("#RentPeriod"));
-            var parentElement = GetParentElementByName(temp, "<w:tr ");
-
-            if (parentElement != null)
-            {
-                var positions = invoice.InvoicePositions != null ? invoice.InvoicePositions.Where(o => !o.DeleteDate.HasValue && o.Positions.ProductId.HasValue).ToList() :
-                    new List<InvoicePositions>();
-
-                if (!invoice.IsSellInvoice && positions.Count != 0)
-                {
-                    var minDate = DateTime.Now;
-                    var maxDate = DateTime.Now;
-
-                    xmlMainXMLDoc = xmlMainXMLDoc.Replace("#RentPeriod", String.Format("{0} bis {1}",
-                        minDate.ToShortDateString(),
-                        maxDate.ToShortDateString()));
-                }
-                else
-                {
-                    parentElement.Remove();
-                    xmlMainXMLDoc = xmlDoc.Root.ToString();
-                }
-            }
-            return xmlMainXMLDoc;
-        }
-
+        
         private string ReplaceInvoicePositions(Invoices invoice, List<InvoicePositions> positions, string xmlMainXMLDoc,
-            string parentTag, string priceTag, string titleText, bool isAlternative, ref bool manualPricePrinted)
+            string parentTag, string priceTag, string titleText, ref bool manualPricePrinted)
         {
             var xmlDoc = XDocument.Parse(xmlMainXMLDoc);
             var temp = xmlDoc.Descendants().LastOrDefault(o => o.Value.Contains(parentTag));
@@ -750,7 +688,7 @@ namespace ProfiCraftsman.Lib.Managers
 
                 bool firstElem = true;
 
-                foreach (var position in positions.Where(o => o.Positions.IsAlternative == isAlternative && o.Positions.Products != null))
+                foreach (var position in positions.Where(o => !o.DeleteDate.HasValue))
                 {
                     double price = 0;
                     if (!invoice.ManualPrice.HasValue)
@@ -763,39 +701,24 @@ namespace ProfiCraftsman.Lib.Managers
                         manualPricePrinted = true;
                     }
 
-                    var rowElem = XElement.Parse(ReplaceFieldValue(
-                        parentTableElement.ToString(), parentTag,
-                            String.Format("{0}{1} Nr. {2}", firstElem ? titleText : "",
-                                position.Positions.Products.ProductTypes.Name,
-                                position.Positions.Products.Number)).
-                        Replace(priceTag, price.ToString("N2")));
-                    prevTableElem.AddAfterSelf(rowElem);
-                    prevTableElem = rowElem;
+                    var description = String.Empty;
+                    if (position.PositionId.HasValue)
+                    {
+                        description = position.Positions.Description;
+                    }
+                    else if(position.TermPositionMaterialId.HasValue)
+                    {
+                        description = position.TermPositionMaterialRsp.Materials.Name;
+                    }
+                    else if(position.TermCostId.HasValue)
+                    {
+                        description = position.TermCosts.Name;
+                    }
 
-                    if (firstElem)
-                    {
-                        firstElem = false;
-                    }
-                }
-
-                foreach (var position in positions.Where(o => o.Positions.IsAlternative == isAlternative && o.Positions.Materials != null))
-                {
-                    double price = 0;
-                    if (!invoice.ManualPrice.HasValue)
-                    {
-                        price = CalculationHelper.CalculatePositionPrice(position.Price, position.Amount, position.Payment);
-                    }
-                    else if (!manualPricePrinted)
-                    {
-                        price = invoice.ManualPrice.Value;
-                        manualPricePrinted = true;
-                    }
 
                     var rowElem = XElement.Parse(ReplaceFieldValue(
                         parentTableElement.ToString(), parentTag,
-                            String.Format("{0}{1} {2}", firstElem ? titleText : "",
-                                position.Amount,
-                                position.Positions.Materials.Name)).
+                            String.Format("{0}{1}", firstElem ? titleText : "", description)).
                         Replace(priceTag, price.ToString("N2")));
                     prevTableElem.AddAfterSelf(rowElem);
                     prevTableElem = rowElem;

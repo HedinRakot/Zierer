@@ -151,6 +151,7 @@ namespace ProfiCraftsman.API.Controllers.Invoices
         protected bool AddInvoicePositions(Orders order, Contracts.Entities.Invoices invoice)
         {
             var result = false;
+            //todo var allInvoicePositions = invoicePositionsManager.GetEntities(o => o.Positions.OrderId == order.Id && !o.DeleteDate.HasValue).ToList();
 
             //TODO discuss with customer - take positions where proccessed amount not null (but take with 0)
             var termPositions = termPositionsManager.GetEntities(o => !o.DeleteDate.HasValue && o.Terms.OrderId == order.Id && o.ProccessedAmount.HasValue).ToList();

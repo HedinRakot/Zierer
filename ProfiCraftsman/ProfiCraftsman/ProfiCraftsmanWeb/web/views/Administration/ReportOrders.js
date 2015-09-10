@@ -41,8 +41,8 @@
 				{ field: 'customerName', title: this.resources.customerName },
 				{ field: 'communicationPartnerTitle', title: this.resources.communicationPartnerTitle },
 				{ field: 'street', title: this.resources.street },
-				{ field: 'city', title: this.resources.city },
 				{ field: 'zip', title: this.resources.zip },
+				{ field: 'city', title: this.resources.city },
 				{ field: 'totalPrice', title: this.resources.totalPrice, sortable: false, filterable: false },
 			];
 		},		

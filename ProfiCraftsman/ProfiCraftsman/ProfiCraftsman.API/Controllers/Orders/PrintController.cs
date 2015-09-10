@@ -134,6 +134,11 @@ namespace ProfiCraftsman.API.Controllers
                 result.ContentType = "application/pdf";
                 path = "DeliveryNote.pdf";
             }
+            else if (report == PrintTypes.Invoice)
+            {
+                result.ContentType = "application/pdf";
+                path = "Invoice.pdf";
+            }
             else
             {
                 result.ContentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";

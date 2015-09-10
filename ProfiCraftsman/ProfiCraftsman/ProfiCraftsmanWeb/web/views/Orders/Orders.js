@@ -158,8 +158,8 @@
 				{ field: 'customerName', title: this.resources.customerId },
 				{ field: 'communicationPartnerTitle', title: this.resources.communicationPartnerId },
 				{ field: 'street', title: this.resources.street },
-				{ field: 'city', title: this.resources.city },
 				{ field: 'zip', title: this.resources.zip },
+				{ field: 'city', title: this.resources.city },
 			];
 		},
 
