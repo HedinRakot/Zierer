@@ -7,6 +7,7 @@ define(function () {
 	    pleaseSelect: 'Please select',
 	    materialId: 'Material',
 	    amount: 'Amount',
+	    amountType: 'Amount type',
 	};
 
 	return resources;

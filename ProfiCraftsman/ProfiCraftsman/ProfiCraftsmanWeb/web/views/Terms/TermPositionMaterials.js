@@ -26,6 +26,7 @@
 
             return [
                  { field: 'materialName', title: this.resources.materialId, sortable: false, filterable: false, attributes: { "class": "detail-view-grid-cell" } },
+                 { field: 'amountType', title: this.resources.amountType, sortable: false, filterable: false, attributes: { "class": "detail-view-grid-cell" } },
                  { field: 'amount', title: this.resources.amount, attributes: { "class": "detail-view-grid-cell" } },
             ];
         },

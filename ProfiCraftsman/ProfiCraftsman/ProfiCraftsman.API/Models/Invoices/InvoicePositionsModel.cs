@@ -15,7 +15,10 @@ namespace ProfiCraftsman.API.Models.Invoices
         public double price{ get; set; }
 
         [DataMember]
-        public double totalPrice { get; set; }
+        public string priceString { get; set; }
+
+        [DataMember]
+        public string totalPrice { get; set; }
 
         [DataMember]
         public string description { get; set; }

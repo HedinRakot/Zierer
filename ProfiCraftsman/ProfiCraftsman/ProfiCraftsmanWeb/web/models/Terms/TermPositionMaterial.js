@@ -14,6 +14,9 @@ define(function () {
             ,materialName: { type: "string", 
 			                        editable: false, 
 				                    validation: { required: true } }
+            ,amountType: { type: "string", 
+			                        editable: false, 
+				                    validation: { required: true } }
 			,amount: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('TermPositionMaterialRsp', 'amount'), 
 			                        validation: { required: false } }	

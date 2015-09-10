@@ -7,6 +7,7 @@
 	    pleaseSelect: 'Bitte auswählen',
 	    materialId: 'Material',
 	    amount: 'Menge',
+	    amountType: 'Einheit',
 	};
 
 	return resources;

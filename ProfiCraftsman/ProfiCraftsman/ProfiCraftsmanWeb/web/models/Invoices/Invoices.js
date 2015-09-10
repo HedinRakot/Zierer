@@ -33,7 +33,7 @@ define(function () {
 			                        editable: true, 
 				                    validation: { required: false } }
             
-            ,totalPrice: { type: "number", 
+            ,totalPrice: { type: "string", 
 			                        editable: false, 
 				                    validation: { required: false } }
             ,payInDays: { type: "number", 

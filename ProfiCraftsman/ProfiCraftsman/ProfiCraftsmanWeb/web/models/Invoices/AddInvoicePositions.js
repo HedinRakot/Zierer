@@ -8,7 +8,7 @@ define(function () {
 			,price: { type: "number", 
 			                        editable: true, 
 			                        validation: { required: true }}
-            ,totalPrice: { type: "number", 
+            ,totalPrice: { type: "string", 
 			                        editable: false, 
 			                        validation: { required: true }}
             ,description: { type: "string", editable: false }

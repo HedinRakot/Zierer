@@ -23,12 +23,12 @@ namespace ProfiCraftsman.API.Controllers.Invoices
 
         protected override void EntityToModel(InvoicePositions entity, InvoicePositionsModel model)
         {
-            model.price = entity.Price;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
             model.amount = entity.Amount;
             model.paymentType = entity.PaymentType;
             model.price = entity.Price;
+            model.priceString = entity.Price.ToString("N2") + " EUR";
 
             if (entity.PositionId.HasValue)
             {
@@ -53,7 +53,7 @@ namespace ProfiCraftsman.API.Controllers.Invoices
                 model.description = entity.TermCosts.Name;
             }
 
-            model.totalPrice = CalculationHelper.CalculatePositionPrice(entity.Price, entity.Amount, entity.Payment);
+            model.totalPrice = CalculationHelper.CalculatePositionPrice(entity.Price, entity.Amount, entity.Payment).ToString("N2") + " EUR";
         }
         protected override void ModelToEntity(InvoicePositionsModel model, InvoicePositions entity, ActionTypes actionType)
         {

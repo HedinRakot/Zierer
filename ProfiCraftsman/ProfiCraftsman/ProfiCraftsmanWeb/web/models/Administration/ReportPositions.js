@@ -9,7 +9,7 @@ define(function () {
 			,orderId: { type: "number", 
 			                        editable: false, 
 				                    validation: { required: true } }					
-			,price: { type: "number", 
+			,price: { type: "string", 
 			                        editable: false, 
 			                        validation: { required: true } }
             ,priceString: { type: "string", validation: { required: false } }

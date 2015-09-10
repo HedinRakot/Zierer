@@ -8,6 +8,12 @@ define(function () {
 			,price: { type: "number", 
 			                        editable: false, 
 			                        validation: { required: true }}
+            ,priceString: { type: "string", 
+			                        editable: false, 
+			                        validation: { required: true }}
+            ,totalPrice: { type: "string", 
+			                        editable: false, 
+			                        validation: { required: true }}
             ,fromDate: { type: "date", 
 			                        editable: false, 
 				                    validation: { required: false, date: true } }						

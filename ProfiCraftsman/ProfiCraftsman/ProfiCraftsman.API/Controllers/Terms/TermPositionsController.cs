@@ -42,7 +42,7 @@ namespace ProfiCraftsman.API.Controllers
             model.paymentType = entity.Positions.PaymentType;
             model.amount = entity.Amount;
             model.proccessedAmount = entity.ProccessedAmount;
-            model.price = entity.Positions.Price;
+            model.price = entity.Positions.Price.ToString("N2") + " EUR";
             model.description = entity.Positions.Description;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;

@@ -63,6 +63,7 @@ namespace ProfiCraftsman.API.Controllers.Invoices
             model.totalPriceWithoutTax = totalPriceWithoutTax;
             model.totalPrice = totalPrice;
             model.summaryPrice = summaryPrice;
+            model.summaryPriceString = summaryPrice.ToString("N2") + " EUR";
         }
 
         protected override void ModelToEntity(InvoicesModel model, ProfiCraftsman.Contracts.Entities.Invoices entity, ActionTypes actionType)

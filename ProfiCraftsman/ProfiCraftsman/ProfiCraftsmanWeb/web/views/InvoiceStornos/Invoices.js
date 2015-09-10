@@ -47,7 +47,6 @@
                 {
                     title: this.resources.customer,
                     columns: [
-                        { field: 'rentOrderNumber', title: this.resources.rentOrderNumber },
                         { field: 'customerName', title: this.resources.customerName },
 				        { field: 'communicationPartnerName', title: this.resources.communicationPartnerName },
                     ]

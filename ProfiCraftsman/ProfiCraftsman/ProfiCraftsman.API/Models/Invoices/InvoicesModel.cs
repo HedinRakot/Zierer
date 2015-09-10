@@ -58,6 +58,9 @@ namespace ProfiCraftsman.API.Models.Invoices
         public double summaryPrice { get; set; }
         
         [DataMember]
+        public string summaryPriceString { get; set; }
+
+        [DataMember]
         public bool isPayed { get; set; }
 
         [Required]

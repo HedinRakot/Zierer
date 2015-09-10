@@ -21,7 +21,7 @@ namespace ProfiCraftsman.API.Models
         public string number { get; set; }
                 
         [DataMember]
-        public double price { get; set; }
+        public string price { get; set; }
         
         [DataMember]
         public string priceString { get; set; }

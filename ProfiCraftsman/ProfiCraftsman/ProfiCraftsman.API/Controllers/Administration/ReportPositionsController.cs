@@ -110,7 +110,7 @@ namespace ProfiCraftsman.API.Controllers
                             number = material.Materials.Number,
                             createDate = termPosition.Terms.Date,
                             amountType = material.Materials.MaterialAmountTypeString,
-                            price = material.Materials.Price,
+                            price = material.Materials.Price.ToString("N2") + " EUR",
                             totalPrice = CalculationHelper.CalculatePositionPrice(material.Materials.Price, amount, PaymentTypes.Standard).ToString("N2") + " EUR"
                         });
                     }
@@ -139,7 +139,7 @@ namespace ProfiCraftsman.API.Controllers
                         description = termCost.Name,
                         createDate = termCost.ChangeDate/*todo check*/,
                         amountType = "Pauschal",
-                        price = termCost.Price,
+                        price = termCost.Price.ToString("N2") + " EUR",
                         totalPrice = CalculationHelper.CalculatePositionPrice(termCost.Price, 1, PaymentTypes.Standard).ToString("N2") + " EUR"
                     });
                 }
@@ -191,8 +191,8 @@ namespace ProfiCraftsman.API.Controllers
             model.paymentTypeString = entity.PaymentTypeString;
             model.amount = amount;
             model.amountString = amount.ToString();
-            model.price = entity.Price;
-            model.priceString = entity.Price.ToString();
+            model.price = entity.Price.ToString("N2") + " EUR";
+            model.priceString = entity.Price.ToString("N2") + " EUR";
             model.description = entity.Description;
             model.createDate = date;
             model.changeDate = date;

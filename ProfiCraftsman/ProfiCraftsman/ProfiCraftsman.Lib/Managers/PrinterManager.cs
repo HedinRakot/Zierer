@@ -704,11 +704,14 @@ namespace ProfiCraftsman.Lib.Managers
                     var description = String.Empty;
                     if (position.PositionId.HasValue)
                     {
-                        description = position.Positions.Description;
+                        description = String.Format("{0} x {1}", position.Amount, position.Positions.Description);
                     }
                     else if(position.TermPositionMaterialId.HasValue)
                     {
-                        description = position.TermPositionMaterialRsp.Materials.Name;
+                        description = String.Format("{0} {1} {2}",
+                            position.TermPositionMaterialRsp.Amount.HasValue ? position.TermPositionMaterialRsp.Amount.Value : 1,
+                            position.TermPositionMaterialRsp.Materials.MaterialAmountTypes == MaterialAmountTypes.Item ? "x" : "Meter",
+                            position.TermPositionMaterialRsp.Materials.Name);
                     }
                     else if(position.TermCostId.HasValue)
                     {

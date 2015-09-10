@@ -15,7 +15,7 @@ define(function () {
 			,positionId: { type: "number", 
 			                        editable: false, 
 				                    validation: { required: false } }				
-			,price: { type: "number", 
+			,price: { type: "string", 
 			                        editable: false, 
 			                        validation: { required: true } }
             ,paymentType: { type: "number", 
