@@ -7,7 +7,9 @@ define(function () {
 	    employee: 'Employee',
 	    auto: 'Auto',
 	    duration: 'Duration',
-	    returnWayDuration: 'Return way duration'
+	    returnWayDuration: 'Return way duration',
+	    Administration: 'Administration',
+	    pageTitle: 'Trips',
 	};
 
 	return resources;

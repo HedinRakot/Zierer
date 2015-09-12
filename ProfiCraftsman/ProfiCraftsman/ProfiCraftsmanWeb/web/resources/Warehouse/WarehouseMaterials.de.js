@@ -9,6 +9,8 @@
         isAmount: 'Ist-Menge',
         mustAmount: 'Soll-Menge',
         addMaterial: 'Hinzufügen',
+        Warehouse: 'Lager',
+        pageTitle: 'Lager Materialien',
     };
 
     return resources;

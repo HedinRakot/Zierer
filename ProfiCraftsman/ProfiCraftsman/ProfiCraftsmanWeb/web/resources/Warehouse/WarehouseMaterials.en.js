@@ -9,6 +9,8 @@ define(function () {
         isAmount: 'Is Amount',
         mustAmount: 'Must amount',
         addMaterial: 'Add',
+        Warehouse: 'Warehouse',
+        pageTitle: 'Warehouse Materials',
     };
 
     return resources;

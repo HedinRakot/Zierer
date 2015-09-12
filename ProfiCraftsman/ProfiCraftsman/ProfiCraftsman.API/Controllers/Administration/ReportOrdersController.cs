@@ -97,7 +97,7 @@ namespace ProfiCraftsman.API.Controllers
                     result += positionProfit;
 
                     //todo calculate profit
-                    //profit += positionProfit;
+                    profit += positionProfit;
                 }
 
                 //materials

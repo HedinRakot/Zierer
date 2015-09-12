@@ -7,7 +7,9 @@ define(function () {
 		employee: 'Mitarbeiter',
 		auto: 'Auto',
 		duration: 'Anfahrtszeit',
-	    returnWayDuration: 'Rückfahrtszeit'
+		returnWayDuration: 'Rückfahrtszeit',
+		Administration: 'Administration',
+        pageTitle: 'Reisezeiten',
 	};
 
 	return resources;

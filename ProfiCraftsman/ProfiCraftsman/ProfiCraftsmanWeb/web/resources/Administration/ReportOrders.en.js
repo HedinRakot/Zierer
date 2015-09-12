@@ -14,7 +14,8 @@ define(function () {
 		totalPrice: 'Total Price',
 		totalInvoicesSum: 'Invoiced',
 		totalPayedSum: 'Payed',
-	    totalProfit: 'Profit',
+		totalProfit: 'Profit',
+		Administration: 'Administration',
 	};
 
 	return resources;
