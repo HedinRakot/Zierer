@@ -53,11 +53,18 @@ namespace ProfiCraftsman.Lib.Data
                 .IsUnicode()
                 .HasMaxLength(256);
 
+            Property(t => t.ProceedsAccountId)
+                .HasColumnName(TermCosts.Fields.ProceedsAccountId)
+                .IsRequired();
+
 
             //Relationships
             HasRequired(t => t.Terms)
                 .WithMany(t => t.TermCosts)
                 .HasForeignKey(t => t.TermId);
+            HasRequired(t => t.ProceedsAccounts)
+                .WithMany(p => p.TermCosts)
+                .HasForeignKey(t => t.ProceedsAccountId);
         }
     }
 }

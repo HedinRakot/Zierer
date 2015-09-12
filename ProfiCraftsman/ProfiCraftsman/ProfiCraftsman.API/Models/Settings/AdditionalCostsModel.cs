@@ -31,12 +31,6 @@ namespace ProfiCraftsman.API.Models.Settings
         [DataMember]
         public bool automatic{ get; set; }
         /// <summary>
-        ///     Model property for <see cref="AdditionalCosts.ProceedsAccount"/> entity
-        /// </summary>
-        [Required]
-        [DataMember]
-        public int proceedsAccount{ get; set; }
-        /// <summary>
         ///     Model property for <see cref="AdditionalCosts.FromDate"/> entity
         /// </summary>
         [Required]
@@ -45,15 +39,20 @@ namespace ProfiCraftsman.API.Models.Settings
         /// <summary>
         ///     Model property for <see cref="AdditionalCosts.ToDate"/> entity
         /// </summary>
-        [Required]
         [DataMember]
-        public DateTime toDate{ get; set; }
+        public DateTime? toDate{ get; set; }
         /// <summary>
         ///     Model property for <see cref="AdditionalCosts.AdditionalCostTypeId"/> entity
         /// </summary>
         [Required]
         [DataMember]
         public int additionalCostTypeId{ get; set; }
+        /// <summary>
+        ///     Model property for <see cref="AdditionalCosts.ProceedsAccountId"/> entity
+        /// </summary>
+        [Required]
+        [DataMember]
+        public int proceedsAccountId{ get; set; }
 
     }
 }

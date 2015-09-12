@@ -19,6 +19,10 @@ namespace ProfiCraftsman.API.Controllers
             	result.Add("AdditionalCostTypes", GetViewCollection<AdditionalCostTypes, int, IAdditionalCostTypesManager>(
             		(IAdditionalCostTypesManager)resolver.GetService(typeof(IAdditionalCostTypesManager))));
 
+            if (model.ProceedsAccounts)
+            	result.Add("ProceedsAccounts", GetViewCollection<ProceedsAccounts, int, IProceedsAccountsManager>(
+            		(IProceedsAccountsManager)resolver.GetService(typeof(IProceedsAccountsManager))));
+
             if (model.Materials)
             	result.Add("Materials", GetViewCollection<Materials, int, IMaterialsManager>(
             		(IMaterialsManager)resolver.GetService(typeof(IMaterialsManager))));

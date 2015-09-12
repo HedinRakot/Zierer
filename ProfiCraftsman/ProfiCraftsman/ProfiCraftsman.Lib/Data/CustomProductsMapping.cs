@@ -53,8 +53,14 @@ namespace ProfiCraftsman.Lib.Data
                 .HasColumnName(CustomProducts.Fields.Auto)
                 .IsRequired();
 
+            Property(t => t.ProceedsAccountId)
+                .HasColumnName(CustomProducts.Fields.ProceedsAccountId);
+
 
             //Relationships
+            HasOptional(c => c.ProceedsAccounts)
+                .WithMany(p => p.CustomProducts)
+                .HasForeignKey(t => t.ProceedsAccountId);
         }
     }
 }

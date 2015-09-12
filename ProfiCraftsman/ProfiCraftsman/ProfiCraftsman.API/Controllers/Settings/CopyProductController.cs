@@ -37,7 +37,7 @@ namespace ProfiCraftsman.API.Controllers
                 Comment = product.Comment,
                 ProductTypeId = product.ProductTypeId,
                 Price = product.Price,
-                ProceedsAccount = product.ProceedsAccount,
+                ProceedsAccountId = product.ProceedsAccountId,
                 Number = String.Empty,
                 ProductMaterialRsps = new List<ProductMaterialRsp>(),
                 CreateDate = DateTime.Now,

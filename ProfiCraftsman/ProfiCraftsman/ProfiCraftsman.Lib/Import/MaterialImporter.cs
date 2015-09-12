@@ -85,7 +85,7 @@ namespace ProfiCraftsman.Lib.Import
                                     //todo
                                     material.MaterialAmountType = (int)MaterialAmountTypes.Item;
                                     //todo default
-                                    material.ProceedsAccount = 0;
+                                    material.ProceedsAccountId = 1;
 
                                     result.CreatedMaterials.Add(material);
                                 }

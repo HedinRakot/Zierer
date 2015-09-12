@@ -8,8 +8,10 @@ define(function () {
 	    masterData: 'Einstellungen',
 	    pageTitle: 'Sonderleistungen',
 		pleaseSelect: 'Bitte auswählen',
-		price: 'Preis',	
 		name: 'Name',	
+		price: 'Preis',	
+		auto: 'Auto',	
+		proceedsAccountId: 'Erlös-Konto',	
 	};
 
 	return resources;

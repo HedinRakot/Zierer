@@ -25,6 +25,7 @@ define([
 				{ field: 'name', title: this.resources.name },
 				{ field: 'price', title: this.resources.price },
 				{ field: 'auto', title: this.resources.auto , headerTitle: this.resources.auto, checkbox: true},
+				{ field: 'proceedsAccountId', title: this.resources.proceedsAccountId , collection: this.options.proceedsAccounts, defaultText: this.resources.pleaseSelect},
 			];
 		}
 

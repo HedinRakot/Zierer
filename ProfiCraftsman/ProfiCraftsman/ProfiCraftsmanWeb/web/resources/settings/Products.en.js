@@ -12,10 +12,10 @@ define(function () {
 		number: 'Number',	
 		productTypeId: 'Product type',	
 		price: 'Price',	
-		proceedsAccount: 'Account',	
 		comment: 'Comment',	
 		name: 'Name',	
 		productAmountType: 'Amount type',	
+		proceedsAccountId: 'Account',	
 	};
 
 	return resources;

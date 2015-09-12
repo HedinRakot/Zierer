@@ -10,10 +10,10 @@ define(function () {
 		pleaseSelect: 'Bitte auswählen',
 		name: 'Bezeichnung',	
 		number: 'Nummer',	
-		proceedsAccount: 'Erlös-Konto',	
 		isForAuto: 'Autobestand',	
 		boughtPrice: 'Kaufpreis',	
 		comment: 'Bemerkung',	
+		proceedsAccountId: 'Erlös-Konto',	
 	};
 
 	return resources;

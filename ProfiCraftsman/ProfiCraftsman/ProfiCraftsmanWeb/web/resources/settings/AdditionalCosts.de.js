@@ -11,10 +11,10 @@ define(function () {
 		description: 'Beschreibung',	
 		price: 'Preis',	
 		automatic: 'Auto',	
-		proceedsAccount: 'Erlös-Konto',	
 		fromDate: 'Von Datum',	
 		toDate: 'Bis Datum',	
 		additionalCostTypeId: 'Nebenkostenart',	
+		proceedsAccountId: 'Erlös-Konto',	
 	};
 
 	return resources;

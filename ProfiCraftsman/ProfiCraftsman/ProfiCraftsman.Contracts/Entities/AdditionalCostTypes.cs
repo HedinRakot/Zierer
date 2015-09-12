@@ -51,7 +51,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public virtual ICollection<AdditionalCosts> AdditionalCosts{ get; set; }
         string IHasTitle<int>.EntityTitle
         {
-            get { return Name; }
+            get { return Name.ToString(); }
         }
         DateTime ISystemFields.CreateDate
         {

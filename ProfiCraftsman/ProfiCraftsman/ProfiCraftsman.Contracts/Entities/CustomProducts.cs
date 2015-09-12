@@ -46,6 +46,10 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'Auto' for property <see cref="CustomProducts.Auto"/>
             /// </summary>
             public static readonly string Auto = "Auto";
+            /// <summary>
+            /// Column name 'ProceedsAccountId' for property <see cref="CustomProducts.ProceedsAccountId"/>
+            /// </summary>
+            public static readonly string ProceedsAccountId = "ProceedsAccountId";
           
         }
         #endregion
@@ -56,6 +60,12 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
         public bool Auto{ get; set; }
+        public int? ProceedsAccountId{ get; set; }
+        public virtual ProceedsAccounts ProceedsAccounts{ get; set; }
+        public bool HasProceedsAccounts
+        {
+            get { return !ReferenceEquals(ProceedsAccounts, null); }
+        }
         DateTime ISystemFields.CreateDate
         {
             get { return CreateDate; }
@@ -80,6 +90,7 @@ namespace ProfiCraftsman.Contracts.Entities
                        ChangeDate = ChangeDate,
                        DeleteDate = DeleteDate,
                        Auto = Auto,
+                       ProceedsAccountId = ProceedsAccountId,
         	           };
         }
     }

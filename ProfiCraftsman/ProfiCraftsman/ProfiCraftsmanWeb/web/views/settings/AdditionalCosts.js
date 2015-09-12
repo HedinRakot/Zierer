@@ -24,10 +24,10 @@ define([
 			return [
 				{ field: 'description', title: this.resources.description },
 				{ field: 'price', title: this.resources.price },
-				{ field: 'proceedsAccount', title: this.resources.proceedsAccount },
 				{ field: 'fromDate', title: this.resources.fromDate , format: '{0:d}'},
 				{ field: 'toDate', title: this.resources.toDate , format: '{0:d}'},
 				{ field: 'additionalCostTypeId', title: this.resources.additionalCostTypeId , collection: this.options.additionalCostTypes, defaultText: this.resources.pleaseSelect},
+				{ field: 'proceedsAccountId', title: this.resources.proceedsAccountId , collection: this.options.proceedsAccounts, defaultText: this.resources.pleaseSelect},
 			];
 		}
 

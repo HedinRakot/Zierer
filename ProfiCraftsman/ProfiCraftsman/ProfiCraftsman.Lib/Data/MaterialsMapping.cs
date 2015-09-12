@@ -58,10 +58,6 @@ namespace ProfiCraftsman.Lib.Data
                 .HasColumnName(Materials.Fields.Price)
                 .IsRequired();
 
-            Property(t => t.ProceedsAccount)
-                .HasColumnName(Materials.Fields.ProceedsAccount)
-                .IsRequired();
-
             Property(t => t.IsVirtual)
                 .HasColumnName(Materials.Fields.IsVirtual)
                 .IsRequired();
@@ -103,8 +99,15 @@ namespace ProfiCraftsman.Lib.Data
                 .HasColumnName(Materials.Fields.MustCount)
                 .IsRequired();
 
+            Property(t => t.ProceedsAccountId)
+                .HasColumnName(Materials.Fields.ProceedsAccountId)
+                .IsRequired();
+
 
             //Relationships
+            HasRequired(m => m.ProceedsAccounts)
+                .WithMany(p => p.Materials)
+                .HasForeignKey(t => t.ProceedsAccountId);
         }
     }
 }

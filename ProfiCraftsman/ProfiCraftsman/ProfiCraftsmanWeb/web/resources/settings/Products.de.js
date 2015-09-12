@@ -11,10 +11,10 @@ define(function () {
 		number: 'Nummer',	
 		productTypeId: 'Leistungsart',	
 		price: 'Preis',	
-		proceedsAccount: 'Erlös-Konto',	
 		comment: 'Bemerkung',	
 		name: 'Leistungsname',	
 		productAmountType: 'Einheit',	
+		proceedsAccountId: 'Erlös-Konto',	
 	};
 
 	return resources;

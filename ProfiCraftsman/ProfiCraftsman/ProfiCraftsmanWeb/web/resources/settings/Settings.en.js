@@ -6,6 +6,7 @@ define(function () {
         Rates: 'Rates',
         EmployeeRateRsps: 'Employee rate',
         CustomProducts: 'Custom product',
+        ProceedsAccounts: 'Proceeds accounts',
         Materials: 'Material',
         ProductMaterialRsps: 'Materials',
         Autos: 'Auto',

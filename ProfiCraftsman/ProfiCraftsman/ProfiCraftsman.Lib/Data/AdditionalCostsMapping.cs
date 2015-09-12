@@ -41,10 +41,6 @@ namespace ProfiCraftsman.Lib.Data
                 .HasColumnName(AdditionalCosts.Fields.Automatic)
                 .IsRequired();
 
-            Property(t => t.ProceedsAccount)
-                .HasColumnName(AdditionalCosts.Fields.ProceedsAccount)
-                .IsRequired();
-
             Property(t => t.CreateDate)
                 .HasColumnName(AdditionalCosts.Fields.CreateDate)
                 .IsRequired();
@@ -61,11 +57,14 @@ namespace ProfiCraftsman.Lib.Data
                 .IsRequired();
 
             Property(t => t.ToDate)
-                .HasColumnName(AdditionalCosts.Fields.ToDate)
-                .IsRequired();
+                .HasColumnName(AdditionalCosts.Fields.ToDate);
 
             Property(t => t.AdditionalCostTypeId)
                 .HasColumnName(AdditionalCosts.Fields.AdditionalCostTypeId)
+                .IsRequired();
+
+            Property(t => t.ProceedsAccountId)
+                .HasColumnName(AdditionalCosts.Fields.ProceedsAccountId)
                 .IsRequired();
 
 
@@ -73,6 +72,9 @@ namespace ProfiCraftsman.Lib.Data
             HasRequired(a => a.AdditionalCostTypes)
                 .WithMany(a => a.AdditionalCosts)
                 .HasForeignKey(t => t.AdditionalCostTypeId);
+            HasRequired(a => a.ProceedsAccounts)
+                .WithMany(p => p.AdditionalCosts)
+                .HasForeignKey(t => t.ProceedsAccountId);
         }
     }
 }

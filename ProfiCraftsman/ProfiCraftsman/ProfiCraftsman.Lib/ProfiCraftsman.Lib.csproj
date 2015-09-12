@@ -149,6 +149,9 @@
     <Compile Include="Data\MaterialsMapping.cs">
       <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\ProceedsAccountsMapping.cs">
+      <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\ProductMaterialRspMapping.cs">
       <DependentUpon>ProfiCraftsman.EntityMapping.tt</DependentUpon>
     </Compile>
@@ -302,6 +305,9 @@
       <DependentUpon>Managers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\PositionsManager.cs">
+      <DependentUpon>Managers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\ProceedsAccountsManager.cs">
       <DependentUpon>Managers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\ProductMaterialRspManager.cs">

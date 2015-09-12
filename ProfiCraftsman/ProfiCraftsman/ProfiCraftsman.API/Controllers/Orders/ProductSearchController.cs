@@ -13,6 +13,7 @@ using CoreBase.Controllers;
 
 namespace ProfiCraftsman.API.Controllers
 {
+    //TODO delete
     [AuthorizeByPermissions(PermissionTypes = new[] { Permissions.Orders })]
     public class ProductSearchController : ClientApiController<ProductSmartModel, Products, int, IProductsManager>
     {
@@ -29,7 +30,7 @@ namespace ProfiCraftsman.API.Controllers
             model.number = entity.Number;
             model.productTypeId = entity.ProductTypeId;
             model.price = entity.Price;
-            model.proceedsAccount = entity.ProceedsAccount;
+            model.proceedsAccountId = entity.ProceedsAccountId;
             model.comment = entity.Comment;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
@@ -44,7 +45,7 @@ namespace ProfiCraftsman.API.Controllers
             entity.Number = model.number;
             entity.ProductTypeId = model.productTypeId;
             entity.Price = model.price;
-            entity.ProceedsAccount = model.proceedsAccount;
+            entity.ProceedsAccountId = model.proceedsAccountId;
             entity.Comment = model.comment;
         }
 

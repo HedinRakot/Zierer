@@ -14,8 +14,13 @@ define([
 
             var self = this;
             var result = {
-			'#price': 'price',
 			'#name': 'name',
+			'#price': 'price',
+			'#auto': 'auto',
+			'#proceedsAccountId': { observe: 'proceedsAccountId',
+				selectOptions: { labelPath: 'name', valuePath: 'id',
+				collection: self.options.proceedsAccounts
+				,defaultOption: {label: self.resources.pleaseSelect,value: null}},},
 			};
 
             return result;
@@ -26,8 +31,10 @@ define([
             view.__super__.render.apply(this, arguments);
 
 			//TODO foreach model field
-			this.disableInput(this, 'price', 'numeric');
 			this.disableInput(this, 'name');
+			this.disableInput(this, 'price', 'numeric');
+			this.disableInput(this, 'auto');
+			this.disableInput(this, 'proceedsAccountId', 'select');
 
             return this;
         }

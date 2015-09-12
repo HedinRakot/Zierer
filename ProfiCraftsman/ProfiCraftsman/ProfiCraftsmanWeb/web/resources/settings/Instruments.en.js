@@ -11,10 +11,10 @@ define(function () {
 		pleaseSelect: 'Please select',
 		name: 'Name',	
 		number: 'Number',	
-		proceedsAccount: 'Account',	
 		isForAuto: 'For auto',	
 		boughtPrice: 'Bought price',	
 		comment: 'Comment',	
+		proceedsAccountId: 'Account',	
 	};
 
 	return resources;

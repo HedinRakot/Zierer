@@ -25,10 +25,10 @@ namespace ProfiCraftsman.API.Controllers.Settings
             model.description = entity.Description;
             model.price = entity.Price;
             model.automatic = entity.Automatic;
-            model.proceedsAccount = entity.ProceedsAccount;
             model.fromDate = entity.FromDate;
             model.toDate = entity.ToDate;
             model.additionalCostTypeId = entity.AdditionalCostTypeId;
+            model.proceedsAccountId = entity.ProceedsAccountId;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
         }
@@ -37,10 +37,10 @@ namespace ProfiCraftsman.API.Controllers.Settings
             entity.Description = model.description;
             entity.Price = model.price;
             entity.Automatic = model.automatic;
-            entity.ProceedsAccount = model.proceedsAccount;
             entity.FromDate = model.fromDate;
             entity.ToDate = model.toDate;
             entity.AdditionalCostTypeId = model.additionalCostTypeId;
+            entity.ProceedsAccountId = model.proceedsAccountId;
         }
     }
 }

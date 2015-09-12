@@ -27,9 +27,6 @@ define([
 			,price: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Materials', 'price'), 
 				                    validation: { required: true } }			
-			,proceedsAccount: { type: "number", 
-			                        editable: Application.canTableItemBeEdit('Materials', 'proceedsAccount'), 
-				                    validation: { required: true } }			
 			,isVirtual: { type: "boolean", 
 			                        editable: Application.canTableItemBeEdit('Materials', 'isVirtual'), 
 				                    validation: { required: false } }			
@@ -51,6 +48,9 @@ define([
 			,mustCount: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Materials', 'mustCount'), 
 				                    validation: { required: false } }			
+			,proceedsAccountId: { type: "number", 
+			                        editable: Application.canTableItemBeEdit('Materials', 'proceedsAccountId'), 
+				                    validation: { required: true } }			
 		},
 		defaults: function () {
 			var dnf = new Date();

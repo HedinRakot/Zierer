@@ -21,7 +21,6 @@ define([
 			'#height': 'height',
 			'#color': 'color',
 			'#price': 'price',
-			'#proceedsAccount': 'proceedsAccount',
 			'#isVirtual': 'isVirtual',
 			'#boughtFrom': 'boughtFrom',
 			'#boughtPrice': 'boughtPrice',
@@ -32,6 +31,10 @@ define([
 				,defaultOption: {label: self.resources.pleaseSelect,value: null}},},
 			'#isForAuto': 'isForAuto',
 			'#mustCount': 'mustCount',
+			'#proceedsAccountId': { observe: 'proceedsAccountId',
+				selectOptions: { labelPath: 'name', valuePath: 'id',
+				collection: self.options.proceedsAccounts
+				,defaultOption: {label: self.resources.pleaseSelect,value: null}},},
 			};
 
             return result;
@@ -49,7 +52,6 @@ define([
 			this.disableInput(this, 'height', 'numeric');
 			this.disableInput(this, 'color');
 			this.disableInput(this, 'price', 'numeric');
-			this.disableInput(this, 'proceedsAccount', 'numeric');
 			this.disableInput(this, 'isVirtual');
 			this.disableInput(this, 'boughtFrom');
 			this.disableInput(this, 'boughtPrice', 'numeric');
@@ -57,6 +59,7 @@ define([
 			this.disableInput(this, 'materialAmountType', 'select');
 			this.disableInput(this, 'isForAuto');
 			this.disableInput(this, 'mustCount', 'numeric');
+			this.disableInput(this, 'proceedsAccountId', 'select');
 
             return this;
         }

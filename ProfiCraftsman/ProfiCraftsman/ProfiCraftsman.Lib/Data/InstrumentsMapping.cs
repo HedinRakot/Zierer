@@ -40,10 +40,6 @@ namespace ProfiCraftsman.Lib.Data
                 .IsUnicode()
                 .HasMaxLength(20);
 
-            Property(t => t.ProceedsAccount)
-                .HasColumnName(Instruments.Fields.ProceedsAccount)
-                .IsRequired();
-
             Property(t => t.IsForAuto)
                 .HasColumnName(Instruments.Fields.IsForAuto)
                 .IsRequired();
@@ -73,8 +69,15 @@ namespace ProfiCraftsman.Lib.Data
             Property(t => t.DeleteDate)
                 .HasColumnName(Instruments.Fields.DeleteDate);
 
+            Property(t => t.ProceedsAccountId)
+                .HasColumnName(Instruments.Fields.ProceedsAccountId)
+                .IsRequired();
+
 
             //Relationships
+            HasRequired(i => i.ProceedsAccounts)
+                .WithMany(p => p.Instruments)
+                .HasForeignKey(t => t.ProceedsAccountId);
         }
     }
 }

@@ -15,17 +15,17 @@ define([
 			,automatic: { type: "boolean", 
 			                        editable: Application.canTableItemBeEdit('AdditionalCosts', 'automatic'), 
 				                    validation: { required: false } }			
-			,proceedsAccount: { type: "number", 
-			                        editable: Application.canTableItemBeEdit('AdditionalCosts', 'proceedsAccount'), 
-				                    validation: { required: true } }			
 			,fromDate: { type: "date", 
 			                        editable: Application.canTableItemBeEdit('AdditionalCosts', 'fromDate'), 
 				                    validation: { required: true, date: true } }			
 			,toDate: { type: "date", 
 			                        editable: Application.canTableItemBeEdit('AdditionalCosts', 'toDate'), 
-				                    validation: { required: true, date: true } }			
+				                    validation: { required: false, date: true } }			
 			,additionalCostTypeId: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('AdditionalCosts', 'additionalCostTypeId'), 
+				                    validation: { required: true } }			
+			,proceedsAccountId: { type: "number", 
+			                        editable: Application.canTableItemBeEdit('AdditionalCosts', 'proceedsAccountId'), 
 				                    validation: { required: true } }			
 		},
 		defaults: function () {

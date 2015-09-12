@@ -12,9 +12,6 @@ define(['models/Settings/Custom.Instruments'
 			,number: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('Instruments', 'number'), 
 				                    validation: { required: true, maxLength: 20 } }			
-			,proceedsAccount: { type: "number", 
-			                        editable: Application.canTableItemBeEdit('Instruments', 'proceedsAccount'), 
-				                    validation: { required: true } }			
 			,isForAuto: { type: "boolean", 
 			                        editable: Application.canTableItemBeEdit('Instruments', 'isForAuto'), 
 				                    validation: { required: false } }			
@@ -24,6 +21,9 @@ define(['models/Settings/Custom.Instruments'
 			,comment: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('Instruments', 'comment'), 
 				                    validation: { required: false, maxLength: 128 } }			
+			,proceedsAccountId: { type: "number", 
+			                        editable: Application.canTableItemBeEdit('Instruments', 'proceedsAccountId'), 
+				                    validation: { required: true } }			
 		}),
 		defaults: function () {
 			var dnf = new Date();

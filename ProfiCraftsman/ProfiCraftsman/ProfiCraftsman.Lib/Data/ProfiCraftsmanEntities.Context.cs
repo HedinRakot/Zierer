@@ -32,10 +32,11 @@ namespace ProfiCraftsman.Lib.Data
             modelBuilder.Configurations.Add(AdditionalCostTypesMapping.Instance);
             modelBuilder.Configurations.Add(RatesMapping.Instance);
             modelBuilder.Configurations.Add(EmployeeRateRspMapping.Instance);
-            modelBuilder.Configurations.Add(CustomProductsMapping.Instance);
             modelBuilder.Configurations.Add(TermCostsMapping.Instance);
+            modelBuilder.Configurations.Add(CustomProductsMapping.Instance);
             modelBuilder.Configurations.Add(InvoicesMapping.Instance);
             modelBuilder.Configurations.Add(InvoicePositionsMapping.Instance);
+            modelBuilder.Configurations.Add(ProceedsAccountsMapping.Instance);
             modelBuilder.Configurations.Add(MaterialsMapping.Instance);
             modelBuilder.Configurations.Add(ProductMaterialRspMapping.Instance);
             modelBuilder.Configurations.Add(AutosMapping.Instance);
@@ -101,13 +102,13 @@ namespace ProfiCraftsman.Lib.Data
         /// </summary>
         public IQueryable<EmployeeRateRsp> EmployeeRateRsp{ get; set; }
         /// <summary>
-        ///     Set of <see cref="CustomProducts"/> entities from table dbo.CustomProducts
-        /// </summary>
-        public IQueryable<CustomProducts> CustomProducts{ get; set; }
-        /// <summary>
         ///     Set of <see cref="TermCosts"/> entities from table dbo.TermCosts
         /// </summary>
         public IQueryable<TermCosts> TermCosts{ get; set; }
+        /// <summary>
+        ///     Set of <see cref="CustomProducts"/> entities from table dbo.CustomProducts
+        /// </summary>
+        public IQueryable<CustomProducts> CustomProducts{ get; set; }
         /// <summary>
         ///     Set of <see cref="Invoices"/> entities from table dbo.Invoices
         /// </summary>
@@ -116,6 +117,10 @@ namespace ProfiCraftsman.Lib.Data
         ///     Set of <see cref="InvoicePositions"/> entities from table dbo.InvoicePositions
         /// </summary>
         public IQueryable<InvoicePositions> InvoicePositions{ get; set; }
+        /// <summary>
+        ///     Set of <see cref="ProceedsAccounts"/> entities from table dbo.ProceedsAccounts
+        /// </summary>
+        public IQueryable<ProceedsAccounts> ProceedsAccounts{ get; set; }
         /// <summary>
         ///     Set of <see cref="Materials"/> entities from table dbo.Materials
         /// </summary>

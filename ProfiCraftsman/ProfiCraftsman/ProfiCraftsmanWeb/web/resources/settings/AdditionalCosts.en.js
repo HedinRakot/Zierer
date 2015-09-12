@@ -12,10 +12,10 @@ define(function () {
 		description: 'Description',	
 		price: 'Price',	
 		automatic: 'Auto',	
-		proceedsAccount: 'Account',	
 		fromDate: 'From date',	
 		toDate: 'To date',	
 		additionalCostTypeId: 'Additional cost type',	
+		proceedsAccountId: 'Account',	
 	};
 
 	return resources;

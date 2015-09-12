@@ -33,10 +33,6 @@ namespace ProfiCraftsman.Contracts.Entities
             /// </summary>
             public static readonly string Number = "Number";
             /// <summary>
-            /// Column name 'ProceedsAccount' for property <see cref="Instruments.ProceedsAccount"/>
-            /// </summary>
-            public static readonly string ProceedsAccount = "ProceedsAccount";
-            /// <summary>
             /// Column name 'IsForAuto' for property <see cref="Instruments.IsForAuto"/>
             /// </summary>
             public static readonly string IsForAuto = "IsForAuto";
@@ -64,13 +60,16 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'DeleteDate' for property <see cref="Instruments.DeleteDate"/>
             /// </summary>
             public static readonly string DeleteDate = "DeleteDate";
+            /// <summary>
+            /// Column name 'ProceedsAccountId' for property <see cref="Instruments.ProceedsAccountId"/>
+            /// </summary>
+            public static readonly string ProceedsAccountId = "ProceedsAccountId";
           
         }
         #endregion
         public int Id{ get; set; }
         public string Name{ get; set; }
         public string Number{ get; set; }
-        public int ProceedsAccount{ get; set; }
         public bool IsForAuto{ get; set; }
         public string BoughtFrom{ get; set; }
         public double BoughtPrice{ get; set; }
@@ -78,11 +77,17 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime CreateDate{ get; set; }
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
+        public int ProceedsAccountId{ get; set; }
+        public virtual ProceedsAccounts ProceedsAccounts{ get; set; }
         public virtual ICollection<AutoInstrumentRsp> AutoInstrumentRsps{ get; set; }
         public virtual ICollection<TermInstruments> TermInstruments{ get; set; }
+        public bool HasProceedsAccounts
+        {
+            get { return !ReferenceEquals(ProceedsAccounts, null); }
+        }
         string IHasTitle<int>.EntityTitle
         {
-            get { return Name; }
+            get { return Name.ToString(); }
         }
         DateTime ISystemFields.CreateDate
         {
@@ -104,7 +109,6 @@ namespace ProfiCraftsman.Contracts.Entities
             return new Instruments {
                        Name = Name,
                        Number = Number,
-                       ProceedsAccount = ProceedsAccount,
                        IsForAuto = IsForAuto,
                        BoughtFrom = BoughtFrom,
                        BoughtPrice = BoughtPrice,
@@ -112,6 +116,7 @@ namespace ProfiCraftsman.Contracts.Entities
                        CreateDate = CreateDate,
                        ChangeDate = ChangeDate,
                        DeleteDate = DeleteDate,
+                       ProceedsAccountId = ProceedsAccountId,
         	           };
         }
     }

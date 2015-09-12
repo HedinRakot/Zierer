@@ -31,6 +31,12 @@ namespace ProfiCraftsman.API.Models.Settings
         /// </summary>
         [DataMember]
         public bool auto{ get; set; }
+        /// <summary>
+        ///     Model property for <see cref="CustomProducts.ProceedsAccountId"/> entity
+        /// </summary>
+        [Required]
+        [DataMember]
+        public int? proceedsAccountId{ get; set; }
 
     }
 }

@@ -62,7 +62,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public virtual ICollection<RolePermissionRsp> RolePermissionRsps{ get; set; }
         string IHasTitle<int>.EntityTitle
         {
-            get { return Description; }
+            get { return Description.ToString(); }
         }
         DateTime ISystemFields.CreateDate
         {

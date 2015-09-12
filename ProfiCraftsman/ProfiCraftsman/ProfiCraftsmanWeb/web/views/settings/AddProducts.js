@@ -20,12 +20,15 @@ define([
 				collection: self.options.productTypes
 				,defaultOption: {label: self.resources.pleaseSelect,value: null}},},
 			'#price': 'price',
-			'#proceedsAccount': 'proceedsAccount',
 			'#comment': 'comment',
 			'#name': 'name',
 			'#productAmountType': { observe: 'productAmountType',
 				selectOptions: { labelPath: 'name', valuePath: 'id',
 				collection: self.options.productAmountTypes
+				,defaultOption: {label: self.resources.pleaseSelect,value: null}},},
+			'#proceedsAccountId': { observe: 'proceedsAccountId',
+				selectOptions: { labelPath: 'name', valuePath: 'id',
+				collection: self.options.proceedsAccounts
 				,defaultOption: {label: self.resources.pleaseSelect,value: null}},},
 			};
 
@@ -40,10 +43,10 @@ define([
 			this.disableInput(this, 'number');
 			this.disableInput(this, 'productTypeId', 'select');
 			this.disableInput(this, 'price', 'numeric');
-			this.disableInput(this, 'proceedsAccount', 'numeric');
 			this.disableInput(this, 'comment');
 			this.disableInput(this, 'name');
 			this.disableInput(this, 'productAmountType', 'select');
+			this.disableInput(this, 'proceedsAccountId', 'select');
 
             return this;
         }

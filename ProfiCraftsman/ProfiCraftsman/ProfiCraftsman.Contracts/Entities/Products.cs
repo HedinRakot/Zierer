@@ -36,10 +36,6 @@ namespace ProfiCraftsman.Contracts.Entities
             /// </summary>
             public static readonly string Price = "Price";
             /// <summary>
-            /// Column name 'ProceedsAccount' for property <see cref="Products.ProceedsAccount"/>
-            /// </summary>
-            public static readonly string ProceedsAccount = "ProceedsAccount";
-            /// <summary>
             /// Column name 'Comment' for property <see cref="Products.Comment"/>
             /// </summary>
             public static readonly string Comment = "Comment";
@@ -63,6 +59,10 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'ProductAmountType' for property <see cref="Products.ProductAmountType"/>
             /// </summary>
             public static readonly string ProductAmountType = "ProductAmountType";
+            /// <summary>
+            /// Column name 'ProceedsAccountId' for property <see cref="Products.ProceedsAccountId"/>
+            /// </summary>
+            public static readonly string ProceedsAccountId = "ProceedsAccountId";
           
         }
         #endregion
@@ -70,19 +70,24 @@ namespace ProfiCraftsman.Contracts.Entities
         public string Number{ get; set; }
         public int? ProductTypeId{ get; set; }
         public double Price{ get; set; }
-        public int ProceedsAccount{ get; set; }
         public string Comment{ get; set; }
         public DateTime CreateDate{ get; set; }
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
         public string Name{ get; set; }
         public int ProductAmountType{ get; set; }
+        public int ProceedsAccountId{ get; set; }
         public virtual ICollection<Positions> Positions{ get; set; }
         public virtual ICollection<ProductMaterialRsp> ProductMaterialRsps{ get; set; }
         public virtual ProductTypes ProductTypes{ get; set; }
+        public virtual ProceedsAccounts ProceedsAccounts{ get; set; }
         public bool HasProductTypes
         {
             get { return !ReferenceEquals(ProductTypes, null); }
+        }
+        public bool HasProceedsAccounts
+        {
+            get { return !ReferenceEquals(ProceedsAccounts, null); }
         }
         DateTime ISystemFields.CreateDate
         {
@@ -105,13 +110,13 @@ namespace ProfiCraftsman.Contracts.Entities
                        Number = Number,
                        ProductTypeId = ProductTypeId,
                        Price = Price,
-                       ProceedsAccount = ProceedsAccount,
                        Comment = Comment,
                        CreateDate = CreateDate,
                        ChangeDate = ChangeDate,
                        DeleteDate = DeleteDate,
                        Name = Name,
                        ProductAmountType = ProductAmountType,
+                       ProceedsAccountId = ProceedsAccountId,
         	           };
         }
     }

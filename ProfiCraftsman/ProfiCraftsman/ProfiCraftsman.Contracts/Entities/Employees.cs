@@ -134,7 +134,7 @@ namespace ProfiCraftsman.Contracts.Entities
         }
         string IHasTitle<int>.EntityTitle
         {
-            get { return Name; }
+            get { return Name.ToString(); }
         }
         DateTime ISystemFields.CreateDate
         {

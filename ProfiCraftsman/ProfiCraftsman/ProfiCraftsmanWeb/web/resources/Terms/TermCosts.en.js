@@ -8,6 +8,7 @@ define(function () {
 		price: 'Price',
 		add: 'Add',
 		addCustomProduct: 'Custom product',
+		proceedsAccount: 'Proceeds Account',
 	};
 
 	return resources;

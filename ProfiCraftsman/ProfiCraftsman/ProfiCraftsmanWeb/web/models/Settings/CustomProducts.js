@@ -15,6 +15,9 @@ define([
 			,auto: { type: "boolean", 
 			                        editable: Application.canTableItemBeEdit('CustomProducts', 'auto'), 
 				                    validation: { required: false } }			
+			,proceedsAccountId: { type: "number", 
+			                        editable: Application.canTableItemBeEdit('CustomProducts', 'proceedsAccountId'), 
+				                    validation: { required: true } }			
 		},
 		defaults: function () {
 			var dnf = new Date();

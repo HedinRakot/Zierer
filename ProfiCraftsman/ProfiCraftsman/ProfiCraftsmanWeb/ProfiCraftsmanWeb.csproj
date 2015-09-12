@@ -251,6 +251,9 @@
     <Content Include="web\collections\Settings\Instruments.js">
       <DependentUpon>web.collections.tt</DependentUpon>
     </Content>
+    <Content Include="web\collections\Settings\ProceedsAccounts.js">
+      <DependentUpon>web.collections.tt</DependentUpon>
+    </Content>
     <Content Include="web\collections\Settings\Rates.js">
       <DependentUpon>web.collections.tt</DependentUpon>
     </Content>
@@ -355,7 +358,11 @@
     <Content Include="web\models\Settings\FilterRates.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
+    <Content Include="web\models\Settings\FilterProceedsAccounts.js" />
     <Content Include="web\models\Settings\Instruments.js">
+      <DependentUpon>web.models.tt</DependentUpon>
+    </Content>
+    <Content Include="web\models\Settings\ProceedsAccounts.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
     <Content Include="web\models\Settings\Rates.js">
@@ -545,6 +552,12 @@
     <Content Include="web\resources\Settings\AdditionalCostTypesRelationships.en.js">
       <DependentUpon>web.relationships.resources.tt</DependentUpon>
     </Content>
+    <Content Include="web\resources\Settings\AddProceedsAccounts.de.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\AddProceedsAccounts.en.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
     <Content Include="web\resources\Settings\AddRates.de.js">
       <DependentUpon>web.add.resources.tt</DependentUpon>
     </Content>
@@ -586,6 +599,20 @@
     </Content>
     <Content Include="web\resources\Settings\FilterRates.en.js">
       <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\FilterProceedsAccounts.de.js" />
+    <Content Include="web\resources\Settings\FilterProceedsAccounts.en.js" />
+    <Content Include="web\resources\Settings\ProceedsAccounts.de.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\ProceedsAccounts.en.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\ProceedsAccountsRelationships.de.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\ProceedsAccountsRelationships.en.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
     </Content>
     <Content Include="web\resources\Settings\Rates.de.js">
       <DependentUpon>web.resources.tt</DependentUpon>
@@ -1144,6 +1171,9 @@
     <Content Include="web\templates\Settings\AdditionalCostTypesRelationships.html">
       <DependentUpon>web.relationships.templates.tt</DependentUpon>
     </Content>
+    <Content Include="web\templates\Settings\AddProceedsAccounts.html">
+      <DependentUpon>web.add.templates.tt</DependentUpon>
+    </Content>
     <Content Include="web\templates\Settings\AddRates.html">
       <DependentUpon>web.add.templates.tt</DependentUpon>
     </Content>
@@ -1164,6 +1194,13 @@
     </Content>
     <Content Include="web\templates\Settings\FilterRates.html">
       <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\FilterProceedsAccounts.html" />
+    <Content Include="web\templates\Settings\ProceedsAccounts.html">
+      <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\ProceedsAccountsRelationships.html">
+      <DependentUpon>web.relationships.templates.tt</DependentUpon>
     </Content>
     <Content Include="web\templates\Settings\Rates.html">
       <DependentUpon>web.templates.tt</DependentUpon>
@@ -1467,6 +1504,9 @@
     <Content Include="web\views\Settings\AdditionalCostTypesRelationships.js">
       <DependentUpon>web.relationships.views.tt</DependentUpon>
     </Content>
+    <Content Include="web\views\Settings\AddProceedsAccounts.js">
+      <DependentUpon>web.add.views.tt</DependentUpon>
+    </Content>
     <Content Include="web\views\Settings\AddRates.js">
       <DependentUpon>web.add.views.tt</DependentUpon>
     </Content>
@@ -1495,8 +1535,15 @@
     <Content Include="web\views\Settings\FilterRates.js">
       <DependentUpon>web.views.tt</DependentUpon>
     </Content>
+    <Content Include="web\views\Settings\FilterProceedsAccounts.js" />
     <Content Include="web\views\Settings\ImportMaterialResults.js" />
     <Content Include="web\views\Settings\ImportMaterials.js" />
+    <Content Include="web\views\Settings\ProceedsAccounts.js">
+      <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\ProceedsAccountsRelationships.js">
+      <DependentUpon>web.relationships.views.tt</DependentUpon>
+    </Content>
     <Content Include="web\views\Settings\Rates.js">
       <DependentUpon>web.views.tt</DependentUpon>
     </Content>

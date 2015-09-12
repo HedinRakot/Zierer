@@ -16,10 +16,13 @@ define([
             var result = {
 			'#name': 'name',
 			'#number': 'number',
-			'#proceedsAccount': 'proceedsAccount',
 			'#isForAuto': 'isForAuto',
 			'#boughtPrice': 'boughtPrice',
 			'#comment': 'comment',
+			'#proceedsAccountId': { observe: 'proceedsAccountId',
+				selectOptions: { labelPath: 'name', valuePath: 'id',
+				collection: self.options.proceedsAccounts
+				,defaultOption: {label: self.resources.pleaseSelect,value: null}},},
 			};
 
             return result;
@@ -32,10 +35,10 @@ define([
 			//TODO foreach model field
 			this.disableInput(this, 'name');
 			this.disableInput(this, 'number');
-			this.disableInput(this, 'proceedsAccount', 'numeric');
 			this.disableInput(this, 'isForAuto');
 			this.disableInput(this, 'boughtPrice', 'numeric');
 			this.disableInput(this, 'comment');
+			this.disableInput(this, 'proceedsAccountId', 'select');
 
             return this;
         }

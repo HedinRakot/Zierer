@@ -66,7 +66,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public virtual ICollection<TransportPositions> TransportPositions{ get; set; }
         string IHasTitle<int>.EntityTitle
         {
-            get { return Name; }
+            get { return Name.ToString(); }
         }
         DateTime ISystemFields.CreateDate
         {

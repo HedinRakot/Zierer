@@ -36,10 +36,6 @@ namespace ProfiCraftsman.Contracts.Entities
             /// </summary>
             public static readonly string Automatic = "Automatic";
             /// <summary>
-            /// Column name 'ProceedsAccount' for property <see cref="AdditionalCosts.ProceedsAccount"/>
-            /// </summary>
-            public static readonly string ProceedsAccount = "ProceedsAccount";
-            /// <summary>
             /// Column name 'CreateDate' for property <see cref="AdditionalCosts.CreateDate"/>
             /// </summary>
             public static readonly string CreateDate = "CreateDate";
@@ -63,6 +59,10 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'AdditionalCostTypeId' for property <see cref="AdditionalCosts.AdditionalCostTypeId"/>
             /// </summary>
             public static readonly string AdditionalCostTypeId = "AdditionalCostTypeId";
+            /// <summary>
+            /// Column name 'ProceedsAccountId' for property <see cref="AdditionalCosts.ProceedsAccountId"/>
+            /// </summary>
+            public static readonly string ProceedsAccountId = "ProceedsAccountId";
           
         }
         #endregion
@@ -70,27 +70,27 @@ namespace ProfiCraftsman.Contracts.Entities
         public string Description{ get; set; }
         public double Price{ get; set; }
         public bool Automatic{ get; set; }
-        public int ProceedsAccount{ get; set; }
         public DateTime CreateDate{ get; set; }
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
         public DateTime FromDate{ get; set; }
-        public DateTime ToDate{ get; set; }
+        public DateTime? ToDate{ get; set; }
         public int AdditionalCostTypeId{ get; set; }
+        public int ProceedsAccountId{ get; set; }
         public virtual AdditionalCostTypes AdditionalCostTypes{ get; set; }
+        public virtual ProceedsAccounts ProceedsAccounts{ get; set; }
         public bool HasAdditionalCostTypes
         {
             get { return !ReferenceEquals(AdditionalCostTypes, null); }
+        }
+        public bool HasProceedsAccounts
+        {
+            get { return !ReferenceEquals(ProceedsAccounts, null); }
         }
         DateTime? IIntervalFields.FromDate
         {
             get { return FromDate; }
             set { if(value.HasValue)FromDate = value.Value; else throw new ArgumentNullException("value"); }
-        }
-        DateTime? IIntervalFields.ToDate
-        {
-            get { return ToDate; }
-            set { if(value.HasValue)ToDate = value.Value; else throw new ArgumentNullException("value"); }
         }
         DateTime ISystemFields.CreateDate
         {
@@ -113,13 +113,13 @@ namespace ProfiCraftsman.Contracts.Entities
                        Description = Description,
                        Price = Price,
                        Automatic = Automatic,
-                       ProceedsAccount = ProceedsAccount,
                        CreateDate = CreateDate,
                        ChangeDate = ChangeDate,
                        DeleteDate = DeleteDate,
                        FromDate = FromDate,
                        ToDate = ToDate,
                        AdditionalCostTypeId = AdditionalCostTypeId,
+                       ProceedsAccountId = ProceedsAccountId,
         	           };
         }
     }

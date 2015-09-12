@@ -24,10 +24,10 @@ namespace ProfiCraftsman.API.Controllers.Settings
         {
             model.name = entity.Name;
             model.number = entity.Number;
-            model.proceedsAccount = entity.ProceedsAccount;
             model.isForAuto = entity.IsForAuto;
             model.boughtPrice = entity.BoughtPrice;
             model.comment = entity.Comment;
+            model.proceedsAccountId = entity.ProceedsAccountId;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
 
@@ -37,10 +37,10 @@ namespace ProfiCraftsman.API.Controllers.Settings
         {
             entity.Name = model.name;
             entity.Number = model.number;
-            entity.ProceedsAccount = model.proceedsAccount;
             entity.IsForAuto = model.isForAuto;
             entity.BoughtPrice = model.boughtPrice;
             entity.Comment = model.comment;
+            entity.ProceedsAccountId = model.proceedsAccountId;
         }
     }
 }

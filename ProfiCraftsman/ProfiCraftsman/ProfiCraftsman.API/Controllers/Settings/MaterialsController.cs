@@ -29,7 +29,6 @@ namespace ProfiCraftsman.API.Controllers.Settings
             model.height = entity.Height;
             model.color = entity.Color;
             model.price = entity.Price;
-            model.proceedsAccount = entity.ProceedsAccount;
             model.isVirtual = entity.IsVirtual;
             model.boughtFrom = entity.BoughtFrom;
             model.boughtPrice = entity.BoughtPrice;
@@ -37,6 +36,7 @@ namespace ProfiCraftsman.API.Controllers.Settings
             model.materialAmountType = entity.MaterialAmountType;
             model.isForAuto = entity.IsForAuto;
             model.mustCount = entity.MustCount;
+            model.proceedsAccountId = entity.ProceedsAccountId;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
         }
@@ -49,7 +49,6 @@ namespace ProfiCraftsman.API.Controllers.Settings
             entity.Height = model.height;
             entity.Color = model.color;
             entity.Price = model.price;
-            entity.ProceedsAccount = model.proceedsAccount;
             entity.IsVirtual = model.isVirtual;
             entity.BoughtFrom = model.boughtFrom;
             entity.BoughtPrice = model.boughtPrice;
@@ -57,6 +56,7 @@ namespace ProfiCraftsman.API.Controllers.Settings
             entity.MaterialAmountType = model.materialAmountType;
             entity.IsForAuto = model.isForAuto;
             entity.MustCount = model.mustCount;
+            entity.ProceedsAccountId = model.proceedsAccountId;
         }
     }
 }

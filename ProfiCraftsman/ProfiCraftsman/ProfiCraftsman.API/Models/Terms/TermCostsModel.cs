@@ -18,7 +18,11 @@ namespace ProfiCraftsman.API.Models
         [Required]
         [DataMember]
         public double price { get; set; }
-        
+
+        [Required]
+        [DataMember]
+        public int proceedsAccountId { get; set; }
+
         [Required]
         [DataMember]
         public string name { get; set; }

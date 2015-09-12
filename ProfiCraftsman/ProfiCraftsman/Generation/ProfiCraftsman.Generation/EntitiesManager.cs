@@ -102,7 +102,7 @@ namespace ProfiCraftsman.Generation
         internal static void AddHasTitleProperty(TypeUsageInfo ihastitle, EntityInfo entity, TableContent tableContent)
         {
             var prop = new PropertyInfo("EntityTitle", new FieldInfo("EntityTitle", (typeof(string)).ToUsageInfo()),
-                new PropertyInvokerInfo(string.Format("return {0};", tableContent.TitleFieldName)),
+                new PropertyInvokerInfo(string.Format("return {0}.ToString();", tableContent.TitleFieldName)),
                 null);
             prop.ExplicitInterface = ihastitle;
             entity.AddProperty(prop);

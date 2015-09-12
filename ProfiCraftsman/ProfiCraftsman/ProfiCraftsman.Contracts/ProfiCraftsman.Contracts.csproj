@@ -144,6 +144,9 @@
     <Compile Include="Entities\Positions.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\ProceedsAccounts.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\ProductMaterialRsp.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
@@ -253,6 +256,9 @@
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\IMaterialsManager.cs">
+      <DependentUpon>IManagers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\IProceedsAccountsManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\IProductMaterialRspManager.cs">

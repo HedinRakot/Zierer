@@ -15,7 +15,6 @@ define(function () {
 		height: 'Höhe',	
 		color: 'Farbe',	
 		price: 'Preis',	
-		proceedsAccount: 'Erlös-Konto',	
 		isVirtual: 'virtuell',	
 		boughtFrom: 'Gekauft von',	
 		boughtPrice: 'Kaufpreis',	
@@ -23,6 +22,7 @@ define(function () {
 		materialAmountType: 'Einheit',	
 		isForAuto: 'Autobestand',	
 		mustCount: 'Soll-Menge',	
+		proceedsAccountId: 'Erlös-Konto',	
 	};
 
 	return resources;

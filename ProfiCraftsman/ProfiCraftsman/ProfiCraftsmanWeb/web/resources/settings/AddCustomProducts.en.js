@@ -8,8 +8,10 @@ define(function () {
 	    masterData: 'Settings',
 	    pageTitle: 'Custom product',
 		pleaseSelect: 'Please select',
-		price: 'Price',	
 		name: 'Name',	
+		price: 'Price',	
+		auto: 'Auto',	
+		proceedsAccountId: 'Account',	
 	};
 
 	return resources;

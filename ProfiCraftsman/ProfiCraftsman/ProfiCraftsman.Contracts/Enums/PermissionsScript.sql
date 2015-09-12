@@ -79,6 +79,20 @@
 		WHERE ID = 12
 	END
 	
+	IF NOT EXISTS (SELECT ID FROM [ProfiCraftsman].[dbo].[PERMISSION] WHERE ID = 22 )
+	BEGIN
+		INSERT INTO [ProfiCraftsman].[dbo].[PERMISSION] ([Id], [Name], [Description], [CreateDate], [ChangeDate], [DeleteDate])
+		VALUES(22, 'ProceedsAccounts', 'Erlöskonten' ,GETDATE() ,GETDATE() ,NULL);
+		INSERT INTO [ProfiCraftsman].dbo.ROLE_PERMISSION_RSP(RoleId ,PermissionId ,CreateDate ,ChangeDate) 
+		VALUES (1 ,22 ,getdate() ,getdate());
+	END
+	ELSE
+	BEGIN
+		UPDATE [ProfiCraftsman].[dbo].[PERMISSION]
+		SET [DESCRIPTION] = 'Erlöskonten'
+		WHERE ID = 22
+	END
+	
 	IF NOT EXISTS (SELECT ID FROM [ProfiCraftsman].[dbo].[PERMISSION] WHERE ID = 4 )
 	BEGIN
 		INSERT INTO [ProfiCraftsman].[dbo].[PERMISSION] ([Id], [Name], [Description], [CreateDate], [ChangeDate], [DeleteDate])

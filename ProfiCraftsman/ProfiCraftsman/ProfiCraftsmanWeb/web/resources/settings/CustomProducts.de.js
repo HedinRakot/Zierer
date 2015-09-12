@@ -11,6 +11,7 @@ define(function () {
 		name: 'Name',	
 		price: 'Preis',	
 		auto: 'Auto',	
+		proceedsAccountId: 'Erlös-Konto',	
 	};
 
 	return resources;

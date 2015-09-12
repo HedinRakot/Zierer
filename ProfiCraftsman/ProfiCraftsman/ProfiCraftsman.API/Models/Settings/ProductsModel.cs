@@ -32,12 +32,6 @@ namespace ProfiCraftsman.API.Models.Settings
         [DataMember]
         public double price{ get; set; }
         /// <summary>
-        ///     Model property for <see cref="Products.ProceedsAccount"/> entity
-        /// </summary>
-        [Required]
-        [DataMember]
-        public int proceedsAccount{ get; set; }
-        /// <summary>
         ///     Model property for <see cref="Products.Comment"/> entity
         /// </summary>
         [DataMember]
@@ -54,6 +48,12 @@ namespace ProfiCraftsman.API.Models.Settings
         [Required]
         [DataMember]
         public int productAmountType{ get; set; }
+        /// <summary>
+        ///     Model property for <see cref="Products.ProceedsAccountId"/> entity
+        /// </summary>
+        [Required]
+        [DataMember]
+        public int proceedsAccountId{ get; set; }
 
     }
 }

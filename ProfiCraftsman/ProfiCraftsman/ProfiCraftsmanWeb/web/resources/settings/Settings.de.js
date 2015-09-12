@@ -6,6 +6,7 @@ define(function () {
         Rates: 'Stundensätze',
         EmployeeRateRsps: 'Mitarbeiterlohn',
         CustomProducts: 'Sonderleistungen',
+        ProceedsAccounts: 'Erlöskonten',
         Materials: 'Material',
         ProductMaterialRsps: 'Materialien',
         Autos: 'Auto',

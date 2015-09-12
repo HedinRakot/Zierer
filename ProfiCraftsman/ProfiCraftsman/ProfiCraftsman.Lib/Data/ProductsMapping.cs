@@ -41,10 +41,6 @@ namespace ProfiCraftsman.Lib.Data
                 .HasColumnName(Products.Fields.Price)
                 .IsRequired();
 
-            Property(t => t.ProceedsAccount)
-                .HasColumnName(Products.Fields.ProceedsAccount)
-                .IsRequired();
-
             Property(t => t.Comment)
                 .HasColumnName(Products.Fields.Comment)
                 .IsUnicode()
@@ -71,11 +67,18 @@ namespace ProfiCraftsman.Lib.Data
                 .HasColumnName(Products.Fields.ProductAmountType)
                 .IsRequired();
 
+            Property(t => t.ProceedsAccountId)
+                .HasColumnName(Products.Fields.ProceedsAccountId)
+                .IsRequired();
+
 
             //Relationships
             HasOptional(p => p.ProductTypes)
                 .WithMany(p => p.Products)
                 .HasForeignKey(t => t.ProductTypeId);
+            HasRequired(p => p.ProceedsAccounts)
+                .WithMany(p => p.Products)
+                .HasForeignKey(t => t.ProceedsAccountId);
         }
     }
 }

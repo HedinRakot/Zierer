@@ -53,12 +53,6 @@ namespace ProfiCraftsman.API.Models.Settings
         [DataMember]
         public double price{ get; set; }
         /// <summary>
-        ///     Model property for <see cref="Materials.ProceedsAccount"/> entity
-        /// </summary>
-        [Required]
-        [DataMember]
-        public int proceedsAccount{ get; set; }
-        /// <summary>
         ///     Model property for <see cref="Materials.IsVirtual"/> entity
         /// </summary>
         [DataMember]
@@ -95,6 +89,12 @@ namespace ProfiCraftsman.API.Models.Settings
         /// </summary>
         [DataMember]
         public int mustCount{ get; set; }
+        /// <summary>
+        ///     Model property for <see cref="Materials.ProceedsAccountId"/> entity
+        /// </summary>
+        [Required]
+        [DataMember]
+        public int proceedsAccountId{ get; set; }
 
     }
 }

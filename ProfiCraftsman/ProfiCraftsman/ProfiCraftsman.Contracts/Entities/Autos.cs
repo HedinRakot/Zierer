@@ -64,7 +64,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public virtual ICollection<AutoInstrumentRsp> AutoInstrumentRsps{ get; set; }
         string IHasTitle<int>.EntityTitle
         {
-            get { return Number; }
+            get { return Number.ToString(); }
         }
         DateTime ISystemFields.CreateDate
         {

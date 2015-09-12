@@ -33,6 +33,10 @@ namespace ProfiCraftsman.Contracts.Enums
     		///</summary>
     		public const int Invoices = 12;
     		///<summary>
+    		/// Grant for edit ProceedsAccounts table
+    		///</summary>
+    		public const int ProceedsAccounts = 22;
+    		///<summary>
     		/// Grant for edit Materials table
     		///</summary>
     		public const int Materials = 4;

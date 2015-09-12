@@ -27,12 +27,6 @@ namespace ProfiCraftsman.API.Models.Settings
         [DataMember]
         public string number{ get; set; }
         /// <summary>
-        ///     Model property for <see cref="Instruments.ProceedsAccount"/> entity
-        /// </summary>
-        [Required]
-        [DataMember]
-        public int proceedsAccount{ get; set; }
-        /// <summary>
         ///     Model property for <see cref="Instruments.IsForAuto"/> entity
         /// </summary>
         [DataMember]
@@ -48,6 +42,12 @@ namespace ProfiCraftsman.API.Models.Settings
         /// </summary>
         [DataMember]
         public string comment{ get; set; }
+        /// <summary>
+        ///     Model property for <see cref="Instruments.ProceedsAccountId"/> entity
+        /// </summary>
+        [Required]
+        [DataMember]
+        public int proceedsAccountId{ get; set; }
 
     }
 }

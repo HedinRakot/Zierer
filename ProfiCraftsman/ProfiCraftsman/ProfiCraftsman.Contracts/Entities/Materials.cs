@@ -53,10 +53,6 @@ namespace ProfiCraftsman.Contracts.Entities
             /// </summary>
             public static readonly string Price = "Price";
             /// <summary>
-            /// Column name 'ProceedsAccount' for property <see cref="Materials.ProceedsAccount"/>
-            /// </summary>
-            public static readonly string ProceedsAccount = "ProceedsAccount";
-            /// <summary>
             /// Column name 'IsVirtual' for property <see cref="Materials.IsVirtual"/>
             /// </summary>
             public static readonly string IsVirtual = "IsVirtual";
@@ -96,6 +92,10 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'MustCount' for property <see cref="Materials.MustCount"/>
             /// </summary>
             public static readonly string MustCount = "MustCount";
+            /// <summary>
+            /// Column name 'ProceedsAccountId' for property <see cref="Materials.ProceedsAccountId"/>
+            /// </summary>
+            public static readonly string ProceedsAccountId = "ProceedsAccountId";
           
         }
         #endregion
@@ -107,7 +107,6 @@ namespace ProfiCraftsman.Contracts.Entities
         public int? Height{ get; set; }
         public string Color{ get; set; }
         public double Price{ get; set; }
-        public int ProceedsAccount{ get; set; }
         public bool IsVirtual{ get; set; }
         public string BoughtFrom{ get; set; }
         public double BoughtPrice{ get; set; }
@@ -118,14 +117,20 @@ namespace ProfiCraftsman.Contracts.Entities
         public int MaterialAmountType{ get; set; }
         public bool IsForAuto{ get; set; }
         public int MustCount{ get; set; }
+        public int ProceedsAccountId{ get; set; }
         public virtual ICollection<Positions> Positions{ get; set; }
         public virtual ICollection<TermPositionMaterialRsp> TermPositionMaterialRsps{ get; set; }
+        public virtual ProceedsAccounts ProceedsAccounts{ get; set; }
         public virtual ICollection<ProductMaterialRsp> ProductMaterialRsps{ get; set; }
         public virtual ICollection<AutoMaterialRsp> AutoMaterialRsps{ get; set; }
         public virtual ICollection<WarehouseMaterials> WarehouseMaterials{ get; set; }
+        public bool HasProceedsAccounts
+        {
+            get { return !ReferenceEquals(ProceedsAccounts, null); }
+        }
         string IHasTitle<int>.EntityTitle
         {
-            get { return Name; }
+            get { return Name.ToString(); }
         }
         DateTime ISystemFields.CreateDate
         {
@@ -152,7 +157,6 @@ namespace ProfiCraftsman.Contracts.Entities
                        Height = Height,
                        Color = Color,
                        Price = Price,
-                       ProceedsAccount = ProceedsAccount,
                        IsVirtual = IsVirtual,
                        BoughtFrom = BoughtFrom,
                        BoughtPrice = BoughtPrice,
@@ -163,6 +167,7 @@ namespace ProfiCraftsman.Contracts.Entities
                        MaterialAmountType = MaterialAmountType,
                        IsForAuto = IsForAuto,
                        MustCount = MustCount,
+                       ProceedsAccountId = ProceedsAccountId,
         	           };
         }
     }

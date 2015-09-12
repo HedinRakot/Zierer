@@ -30,6 +30,7 @@
             var columns = [
                 { field: 'name', title: this.resources.name, attributes: { "class": "detail-view-grid-cell" } },
                 { field: 'price', title: this.resources.price, attributes: { "class": "detail-view-grid-cell" } },
+                { field: 'proceedsAccountId', title: this.resources.proceedsAccount, collection: this.options.proceedsAccounts, defaultText: this.resources.pleaseSelect, attributes: { "class": "detail-view-grid-cell" } },
             ];
 
             return columns;
@@ -65,6 +66,7 @@
                     model.set('termId', self.model.id);
                     model.set('price', item.get('price'));
                     model.set('name', item.get('name'));
+                    model.set('proceedsAccountId', item.get('proceedsAccountId'));
 
                     model.save({}, {
                         data: kendo.stringify(model),

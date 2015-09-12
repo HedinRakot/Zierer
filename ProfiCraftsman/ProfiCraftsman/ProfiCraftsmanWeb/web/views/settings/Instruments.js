@@ -26,10 +26,10 @@ define([
 [
 				{ field: 'name', title: this.resources.name },
 				{ field: 'number', title: this.resources.number },
-				{ field: 'proceedsAccount', title: this.resources.proceedsAccount },
 				{ field: 'isForAuto', title: this.resources.isForAuto , headerTitle: this.resources.isForAuto, checkbox: true},
 				{ field: 'boughtPrice', title: this.resources.boughtPrice },
 				{ field: 'comment', title: this.resources.comment },
+				{ field: 'proceedsAccountId', title: this.resources.proceedsAccountId , collection: this.options.proceedsAccounts, defaultText: this.resources.pleaseSelect},
 			]);
 		}
 

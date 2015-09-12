@@ -15,7 +15,6 @@ namespace ProfiCraftsman.API.Controllers
         public bool PaymentIntervals { get; set; }
         public bool PaymentTypes { get; set; }
         public bool ProductTypesForDisposition { get; set; }
-        public bool ProceedsAccounts { get; set; }
         public bool ProductAmountTypes { get; set; }
         public bool MaterialAmountTypes { get; set; }
     }
@@ -72,33 +71,6 @@ namespace ProfiCraftsman.API.Controllers
                     new { id = 0, name = "Stück"},
                     new { id = 1, name = "Meter"},
                 });
-
-
-            //todo delete if (model.ProductTypesForDisposition)
-            //{
-            //    var manager = (IProductTypesManager)GlobalConfiguration.Configuration.DependencyResolver.
-            //        GetService(typeof(IProductTypesManager));
-            //    var productTypes = manager.GetEntities().Where(o => o.DispositionRelevant && !o.DeleteDate.HasValue).ToList();
-
-            //    result.Add("ProductTypesForDisposition", productTypes.Cast<IHasTitle<int>>().OrderBy(o => o.EntityTitle)
-            //             .Select(o => new IdNameModel<int> { id = o.Id, name = o.EntityTitle }));
-            //}
-
-            if (model.ProceedsAccounts)
-            {
-                var proceedsAccounts = new List<int>();
-
-                var productManager = (IProductsManager)GlobalConfiguration.Configuration.DependencyResolver.
-                    GetService(typeof(IProductsManager));
-                proceedsAccounts.AddRange(productManager.GetEntities().Select(o => o.ProceedsAccount).Distinct());
-
-                var additionalCostsManager = (IAdditionalCostsManager)GlobalConfiguration.Configuration.DependencyResolver.
-                    GetService(typeof(IAdditionalCostsManager));
-                proceedsAccounts.AddRange(additionalCostsManager.GetEntities().Select(o => o.ProceedsAccount).Distinct());
-
-                result.Add("ProceedsAccounts", proceedsAccounts.OrderBy(o => o)
-                         .Select(o => new IdNameModel<int> { id = o, name = o.ToString() }));
-            }
 
             new MasterDataViewCollectionControllerFactory().GetViewCollections(
                 GlobalConfiguration.Configuration.DependencyResolver, model, result);

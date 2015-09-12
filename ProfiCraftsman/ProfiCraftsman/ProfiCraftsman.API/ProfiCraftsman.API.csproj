@@ -203,10 +203,14 @@
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Settings\Custom.InstrumentsController.cs" />
+    <Compile Include="Controllers\Settings\Custom.ProceedsAccountsController.cs" />
     <Compile Include="Controllers\Settings\CustomProductsController.cs">
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Settings\EmployeeRateRspsController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Settings\ProceedsAccountsController.cs">
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Settings\RatesController.cs">
@@ -258,7 +262,7 @@
     <Compile Include="Controllers\TransportOrders\TransportOrdersController.cs" />
     <Compile Include="Controllers\TransportOrders\TransportPositionsController.cs" />
     <Compile Include="Controllers\Orders\CloseOrderController.cs" />
-    <Compile Include="Controllers\Orders\ContainerSearchController.cs" />
+    <Compile Include="Controllers\Orders\ProductSearchController.cs" />
     <Compile Include="Controllers\Invoices\PayBillController.cs" />
     <Compile Include="Controllers\Terms\ShowTermsController.cs" />
     <Compile Include="Controllers\Orders\PrintController.cs" />
@@ -329,6 +333,9 @@
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Settings\EmployeeRateRspModel.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Settings\ProceedsAccountsModel.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Settings\RatesModel.cs">

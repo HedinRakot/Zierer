@@ -15,9 +15,6 @@ define([
 			,price: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Products', 'price'), 
 				                    validation: { required: true } }			
-			,proceedsAccount: { type: "number", 
-			                        editable: Application.canTableItemBeEdit('Products', 'proceedsAccount'), 
-				                    validation: { required: true } }			
 			,comment: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('Products', 'comment'), 
 				                    validation: { required: false, maxLength: 128 } }			
@@ -26,6 +23,9 @@ define([
 				                    validation: { required: true, maxLength: 250 } }			
 			,productAmountType: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Products', 'productAmountType'), 
+				                    validation: { required: true } }			
+			,proceedsAccountId: { type: "number", 
+			                        editable: Application.canTableItemBeEdit('Products', 'proceedsAccountId'), 
 				                    validation: { required: true } }			
 		},
 		defaults: function () {

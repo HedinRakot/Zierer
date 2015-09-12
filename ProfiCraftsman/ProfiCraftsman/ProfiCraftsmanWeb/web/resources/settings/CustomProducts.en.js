@@ -12,6 +12,7 @@ define(function () {
 		name: 'Name',	
 		price: 'Price',	
 		auto: 'Auto',	
+		proceedsAccountId: 'Account',	
 	};
 
 	return resources;

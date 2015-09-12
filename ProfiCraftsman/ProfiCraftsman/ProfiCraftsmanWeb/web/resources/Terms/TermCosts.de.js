@@ -7,7 +7,8 @@ define(function () {
 	    name: 'Beschreibung',
 	    price: 'Preis',
 	    add: 'Hinzufügen',
-        addCustomProduct: 'Sonderleistungen',
+	    addCustomProduct: 'Sonderleistungen',
+	    proceedsAccount: 'Erlös-Konto',
 	};
 
 	return resources;

@@ -15,7 +15,6 @@ define(function () {
 		height: 'Height',	
 		color: 'Color',	
 		price: 'Price',	
-		proceedsAccount: 'Account',	
 		isVirtual: 'virtual',	
 		boughtFrom: 'Bought from',	
 		boughtPrice: 'Bought price',	
@@ -23,6 +22,7 @@ define(function () {
 		materialAmountType: 'Amount type',	
 		isForAuto: 'For auto',	
 		mustCount: 'Must count',	
+		proceedsAccountId: 'Account',	
 	};
 
 	return resources;
