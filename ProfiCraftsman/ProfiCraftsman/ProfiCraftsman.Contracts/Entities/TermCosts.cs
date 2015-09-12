@@ -51,6 +51,10 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'ProceedsAccountId' for property <see cref="TermCosts.ProceedsAccountId"/>
             /// </summary>
             public static readonly string ProceedsAccountId = "ProceedsAccountId";
+            /// <summary>
+            /// Column name 'Costs' for property <see cref="TermCosts.Costs"/>
+            /// </summary>
+            public static readonly string Costs = "Costs";
           
         }
         #endregion
@@ -62,6 +66,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime? DeleteDate{ get; set; }
         public string Name{ get; set; }
         public int ProceedsAccountId{ get; set; }
+        public double Costs{ get; set; }
         public virtual Terms Terms{ get; set; }
         public virtual ProceedsAccounts ProceedsAccounts{ get; set; }
         public virtual ICollection<InvoicePositions> InvoicePositions{ get; set; }
@@ -98,6 +103,7 @@ namespace ProfiCraftsman.Contracts.Entities
                        DeleteDate = DeleteDate,
                        Name = Name,
                        ProceedsAccountId = ProceedsAccountId,
+                       Costs = Costs,
         	           };
         }
     }

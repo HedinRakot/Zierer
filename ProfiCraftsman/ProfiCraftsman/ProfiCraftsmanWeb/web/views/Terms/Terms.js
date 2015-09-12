@@ -50,7 +50,7 @@
 		columns: function () {
 
 		   return [
-				{ field: 'date', headerAttributes: { width: '140px' }, title: this.resources.date, format: "{0:g}", dateTime: true, attributes: { "class": "detail-view-grid-cell" } },
+				{ field: 'date', headerAttributes: { width: '220px' }, title: this.resources.date, format: "{0:g}", dateTime: true, attributes: { "class": "detail-view-grid-cell" } },
                 {
                     field: 'duration',
                     title: this.resources.duration,

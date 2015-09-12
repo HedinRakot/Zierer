@@ -60,7 +60,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
         public bool Auto{ get; set; }
-        public int? ProceedsAccountId{ get; set; }
+        public int ProceedsAccountId{ get; set; }
         public virtual ProceedsAccounts ProceedsAccounts{ get; set; }
         public bool HasProceedsAccounts
         {

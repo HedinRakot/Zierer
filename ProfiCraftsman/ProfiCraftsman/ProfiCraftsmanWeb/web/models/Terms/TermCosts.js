@@ -10,6 +10,9 @@ define(function () {
 			,price: { type: "number", 
 			                        editable: true, 
 				                    validation: { required: true } }
+            ,costs: { type: "number", 
+			                        editable: true, 
+				                    validation: { required: true } }
             ,proceedsAccountId: { type: "number", 
 			                        editable: true, 
 				                    validation: { required: true } }

@@ -9,6 +9,7 @@ define(function () {
 	    add: 'Hinzufügen',
 	    addCustomProduct: 'Sonderleistungen',
 	    proceedsAccount: 'Erlös-Konto',
+        costs: 'Kosten',
 	};
 
 	return resources;

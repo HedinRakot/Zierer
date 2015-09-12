@@ -57,6 +57,10 @@ namespace ProfiCraftsman.Lib.Data
                 .HasColumnName(TermCosts.Fields.ProceedsAccountId)
                 .IsRequired();
 
+            Property(t => t.Costs)
+                .HasColumnName(TermCosts.Fields.Costs)
+                .IsRequired();
+
 
             //Relationships
             HasRequired(t => t.Terms)

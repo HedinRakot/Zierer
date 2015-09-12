@@ -34,6 +34,7 @@ namespace ProfiCraftsman.API.Controllers
         {
             model.termId = entity.TermId;
             model.price = entity.Price;
+            model.costs = entity.Costs;
             model.proceedsAccountId = entity.ProceedsAccountId;
             model.name = entity.Name;
             model.createDate = ((ISystemFields)entity).CreateDate;
@@ -44,6 +45,7 @@ namespace ProfiCraftsman.API.Controllers
         {
             entity.TermId = model.termId;
             entity.Price = model.price;
+            entity.Costs = model.costs;
             entity.ProceedsAccountId = model.proceedsAccountId;
             entity.Name = model.name;
 

@@ -9,6 +9,7 @@ define(function () {
 		add: 'Add',
 		addCustomProduct: 'Custom product',
 		proceedsAccount: 'Proceeds Account',
+		costs: 'Costs',
 	};
 
 	return resources;

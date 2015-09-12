@@ -54,11 +54,12 @@ namespace ProfiCraftsman.Lib.Data
                 .IsRequired();
 
             Property(t => t.ProceedsAccountId)
-                .HasColumnName(CustomProducts.Fields.ProceedsAccountId);
+                .HasColumnName(CustomProducts.Fields.ProceedsAccountId)
+                .IsRequired();
 
 
             //Relationships
-            HasOptional(c => c.ProceedsAccounts)
+            HasRequired(c => c.ProceedsAccounts)
                 .WithMany(p => p.CustomProducts)
                 .HasForeignKey(t => t.ProceedsAccountId);
         }

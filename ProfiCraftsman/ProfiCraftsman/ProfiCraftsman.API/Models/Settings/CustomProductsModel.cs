@@ -36,7 +36,7 @@ namespace ProfiCraftsman.API.Models.Settings
         /// </summary>
         [Required]
         [DataMember]
-        public int? proceedsAccountId{ get; set; }
+        public int proceedsAccountId{ get; set; }
 
     }
 }

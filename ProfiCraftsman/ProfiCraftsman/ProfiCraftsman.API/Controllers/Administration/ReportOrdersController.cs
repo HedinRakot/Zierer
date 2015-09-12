@@ -53,7 +53,8 @@ namespace ProfiCraftsman.API.Controllers
             model.customerName = entity.CustomerName;
             model.communicationPartnerTitle = entity.CommunicationPartnerTitle;
 
-            model.totalPrice = CalculateTotalPrice(entity.Id).ToString("N2") + " EUR";
+            double profit = 0;
+            model.totalPrice = CalculateTotalPrice(entity.Id, ref profit).ToString("N2") + " EUR";
 
             var invoices = invoicesManager.GetEntities(o => !o.DeleteDate.HasValue && o.OrderId == entity.Id).ToList();
             double totalInvoicesSum = 0;
@@ -74,9 +75,11 @@ namespace ProfiCraftsman.API.Controllers
 
             model.totalPayedSum = entity.Invoices.Where(o => !o.DeleteDate.HasValue).SelectMany(o => o.InvoicePayments.Where(p => !p.DeleteDate.HasValue)).
                 Sum(o => o.Amount).ToString("N2") + " EUR";
+
+            model.totalProfit = profit.ToString("N2") + " EUR";
         }
 
-        protected double CalculateTotalPrice(int orderId)
+        protected double CalculateTotalPrice(int orderId, ref double profit)
         {
             double result = 0;
 
@@ -88,8 +91,13 @@ namespace ProfiCraftsman.API.Controllers
                 //positions
                 if (termPosition.ProccessedAmount.Value > 0)
                 {
-                    result += CalculationHelper.CalculatePositionPrice(termPosition.Positions.Price, termPosition.ProccessedAmount.Value,
+                    var positionProfit = CalculationHelper.CalculatePositionPrice(termPosition.Positions.Price, termPosition.ProccessedAmount.Value,
                         termPosition.Positions.Payment);
+
+                    result += positionProfit;
+
+                    //todo calculate profit
+                    //profit += positionProfit;
                 }
 
                 //materials
@@ -109,6 +117,9 @@ namespace ProfiCraftsman.API.Controllers
                     }
 
                     result += CalculationHelper.CalculatePositionPrice(material.Materials.Price, amount, PaymentTypes.Standard);
+
+                    var materialProfit = material.Materials.Price * amount - material.Materials.BoughtPrice * amount;
+                    profit += materialProfit;
                 }
             }
 
@@ -117,14 +128,22 @@ namespace ProfiCraftsman.API.Controllers
                 !o.TermId.HasValue && o.MaterialId.HasValue && o.IsMaterialPosition).ToList();
             foreach (var position in materialPositionsWithoutTerms)
             {
-                result += CalculationHelper.CalculatePositionPrice(position.Price, position.Amount, position.Payment);
+                var price = CalculationHelper.CalculatePositionPrice(position.Price, position.Amount, position.Payment);
+
+                result += price;
+
+                profit += price - position.Materials.BoughtPrice * position.Amount;
             }
 
             //extra costs
             var termCosts = termCostsManager.GetEntities(o => !o.DeleteDate.HasValue && o.Terms.OrderId == orderId).ToList();
             foreach (var termCost in termCosts)
             {
-                result += CalculationHelper.CalculatePositionPrice(termCost.Price, 1, PaymentTypes.Standard);
+                var price = CalculationHelper.CalculatePositionPrice(termCost.Price, 1, PaymentTypes.Standard);
+
+                result += price;
+
+                profit += price - termCost.Costs;
             }
 
 

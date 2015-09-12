@@ -30,6 +30,7 @@
             var columns = [
                 { field: 'name', title: this.resources.name, attributes: { "class": "detail-view-grid-cell" } },
                 { field: 'price', title: this.resources.price, attributes: { "class": "detail-view-grid-cell" } },
+                { field: 'costs', title: this.resources.costs, attributes: { "class": "detail-view-grid-cell" } },
                 { field: 'proceedsAccountId', title: this.resources.proceedsAccount, collection: this.options.proceedsAccounts, defaultText: this.resources.pleaseSelect, attributes: { "class": "detail-view-grid-cell" } },
             ];
 

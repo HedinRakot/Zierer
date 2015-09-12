@@ -78,6 +78,7 @@ namespace ProfiCraftsman.API.Controllers
                     {
                         Terms = entity,
                         Name = customProduct.Name,
+                        ProceedsAccountId = customProduct.ProceedsAccountId,
                         Price = customProduct.Price,
                         CreateDate = DateTime.Now,
                         ChangeDate = DateTime.Now,
