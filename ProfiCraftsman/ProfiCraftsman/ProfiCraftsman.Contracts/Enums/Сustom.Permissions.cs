@@ -28,5 +28,10 @@ namespace ProfiCraftsman.Contracts.Enums
         /// Grant for view trips
         ///</summary>
         public const int ReportOrders = 1003;
+        
+        ///<summary>
+        /// Grant for view trips
+        ///</summary>
+        public const int ProfitReports = 1004;
     }
 }

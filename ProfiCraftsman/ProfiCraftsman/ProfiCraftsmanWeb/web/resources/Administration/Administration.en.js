@@ -5,6 +5,7 @@ define(function () {
 
 	    Trips: 'Trips',
 	    ReportOrders: 'Report Orders',
+	    ProfitReports: 'Profit reports',
 	};
 
 	return resources;

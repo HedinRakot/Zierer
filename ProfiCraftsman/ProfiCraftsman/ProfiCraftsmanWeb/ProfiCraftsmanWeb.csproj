@@ -329,6 +329,7 @@
       <DependentUpon>web.collections.tt</DependentUpon>
     </Content>
     <Content Include="web\collections\Warehouse\WarehouseMaterials.js" />
+    <Content Include="web\models\Administration\FilterProfitReports.js" />
     <Content Include="web\models\Administration\FilterReportOrders.js" />
     <Content Include="web\models\Administration\FilterTrips.js" />
     <Content Include="web\models\Administration\ReportOrders.js" />
@@ -492,9 +493,13 @@
     <Content Include="web\resources\Administration\FilterReportOrders.en.js" />
     <Content Include="web\resources\Administration\FilterTrips.de.js" />
     <Content Include="web\resources\Administration\FilterTrips.en.js" />
+    <Content Include="web\resources\Administration\ReportAdditionalCosts.de.js" />
+    <Content Include="web\resources\Administration\ReportAdditionalCosts.en.js" />
     <Content Include="web\resources\Administration\ReportOrders.de.js" />
     <Content Include="web\resources\Administration\ReportOrders.en.js" />
+    <Content Include="web\resources\Administration\ProfitReports.de.js" />
     <Content Include="web\resources\Administration\ReportOrdersRelationships.de.js" />
+    <Content Include="web\resources\Administration\ProfitReports.en.js" />
     <Content Include="web\resources\Administration\ReportOrdersRelationships.en.js" />
     <Content Include="web\resources\Administration\ReportPositions.de.js" />
     <Content Include="web\resources\Administration\ReportPositions.en.js" />
@@ -1142,9 +1147,12 @@
       <DependentUpon>web.router.template.tt</DependentUpon>
     </Content>
     <Content Include="web\router.js" />
+    <Content Include="web\templates\Administration\FilterProfitReports.html" />
     <Content Include="web\templates\Administration\FilterReportOrders.html" />
     <Content Include="web\templates\Administration\FilterTrips.html" />
+    <Content Include="web\templates\Administration\ReportAdditionalCosts.html" />
     <Content Include="web\templates\Administration\ReportOrders.html" />
+    <Content Include="web\templates\Administration\ProfitReports.html" />
     <Content Include="web\templates\Administration\ReportOrdersRelationships.html" />
     <Content Include="web\templates\Administration\ReportPositions.html" />
     <Content Include="web\templates\Administration\Trips.html" />
@@ -1476,9 +1484,12 @@
     <Content Include="web\templates\Warehouse\FilterWarehouseMaterials.html" />
     <Content Include="web\templates\Warehouse\WarehouseMaterials.html" />
     <Content Include="web\templates\Warehouse\Warehouse.html" />
+    <Content Include="web\views\Administration\FilterProfitReports.js" />
     <Content Include="web\views\Administration\FilterReportOrders.js" />
     <Content Include="web\views\Administration\FilterTrips.js" />
+    <Content Include="web\views\Administration\ReportAdditionalCosts.js" />
     <Content Include="web\views\Administration\ReportOrders.js" />
+    <Content Include="web\views\Administration\ProfitReports.js" />
     <Content Include="web\views\Administration\ReportOrdersRelationships.js" />
     <Content Include="web\views\Administration\ReportPositions.js" />
     <Content Include="web\views\Administration\Trips.js" />
