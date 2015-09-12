@@ -23,7 +23,6 @@ namespace ProfiCraftsman.API.Controllers.Settings
         protected override void EntityToModel(Employees entity, EmployeesModel model)
         {
             model.number = entity.Number;
-            model.jobPositionId = entity.JobPositionId;
             model.autoId = entity.AutoId;
             model.name = entity.Name;
             model.firstName = entity.FirstName;
@@ -39,11 +38,12 @@ namespace ProfiCraftsman.API.Controllers.Settings
             model.color = entity.Color;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
+
+            ExtraEntityToModel(entity, model);
         }
         protected override void ModelToEntity(EmployeesModel model, Employees entity, ActionTypes actionType)
         {
             entity.Number = model.number;
-            entity.JobPositionId = model.jobPositionId;
             entity.AutoId = model.autoId;
             entity.Name = model.name;
             entity.FirstName = model.firstName;

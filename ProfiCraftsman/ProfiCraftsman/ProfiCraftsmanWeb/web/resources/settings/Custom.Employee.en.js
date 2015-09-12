@@ -4,6 +4,7 @@
     var resources = {
                 
         Color: 'Color',
+        JobPosition: 'Job position',
     };
 
     return resources;

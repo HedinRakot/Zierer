@@ -15,10 +15,6 @@ define([
             var self = this;
             var result = {
 			'#number': 'number',
-			'#jobPositionId': { observe: 'jobPositionId',
-				selectOptions: { labelPath: 'name', valuePath: 'id',
-				collection: self.options.jobPositions
-				,defaultOption: {label: self.resources.pleaseSelect,value: null}},},
 			'#autoId': { observe: 'autoId',
 				selectOptions: { labelPath: 'name', valuePath: 'id',
 				collection: self.options.autos
@@ -46,7 +42,6 @@ define([
 
 			//TODO foreach model field
 			this.disableInput(this, 'number', 'numeric');
-			this.disableInput(this, 'jobPositionId', 'select');
 			this.disableInput(this, 'autoId', 'select');
 			this.disableInput(this, 'name');
 			this.disableInput(this, 'firstName');

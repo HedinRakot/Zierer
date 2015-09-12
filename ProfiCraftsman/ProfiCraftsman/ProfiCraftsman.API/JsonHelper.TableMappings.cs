@@ -101,10 +101,9 @@ namespace ProfiCraftsman.API
                 {"Name", "name"},
             });
 
-            tables.Add("Employees", new TableMapping("Employees", "Employees", 15)
+            tables.Add("Employees", new TableMapping("Employees", "Employees", 14)
             {
                 {"Number", "number"},
-                {"JobPositionId", "jobPositionId"},
                 {"AutoId", "autoId"},
                 {"Name", "name"},
                 {"FirstName", "firstName"},

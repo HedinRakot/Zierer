@@ -4,6 +4,7 @@
     var resources = {
                 
         Color: 'Farbe',
+        JobPosition: 'Dienststelle',
     };
 
     return resources;

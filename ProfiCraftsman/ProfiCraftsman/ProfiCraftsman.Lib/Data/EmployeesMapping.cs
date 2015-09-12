@@ -32,10 +32,6 @@ namespace ProfiCraftsman.Lib.Data
                 .HasColumnName(Employees.Fields.Number)
                 .IsRequired();
 
-            Property(t => t.JobPositionId)
-                .HasColumnName(Employees.Fields.JobPositionId)
-                .IsRequired();
-
             Property(t => t.AutoId)
                 .HasColumnName(Employees.Fields.AutoId)
                 .IsRequired();
@@ -114,9 +110,6 @@ namespace ProfiCraftsman.Lib.Data
 
 
             //Relationships
-            HasRequired(e => e.JobPositions)
-                .WithMany(j => j.Employees)
-                .HasForeignKey(t => t.JobPositionId);
             HasRequired(e => e.Autos)
                 .WithMany(a => a.Employees)
                 .HasForeignKey(t => t.AutoId);

@@ -21,14 +21,9 @@ namespace ProfiCraftsman.API.Models.Settings
         [DataMember]
         public int number{ get; set; }
         /// <summary>
-        ///     Model property for <see cref="Employees.JobPositionId"/> entity
-        /// </summary>
-        [Required]
-        [DataMember]
-        public int jobPositionId{ get; set; }
-        /// <summary>
         ///     Model property for <see cref="Employees.AutoId"/> entity
         /// </summary>
+        [Required]
         [DataMember]
         public int autoId{ get; set; }
         /// <summary>

@@ -29,10 +29,6 @@ namespace ProfiCraftsman.Contracts.Entities
             /// </summary>
             public static readonly string Number = "Number";
             /// <summary>
-            /// Column name 'JobPositionId' for property <see cref="Employees.JobPositionId"/>
-            /// </summary>
-            public static readonly string JobPositionId = "JobPositionId";
-            /// <summary>
             /// Column name 'AutoId' for property <see cref="Employees.AutoId"/>
             /// </summary>
             public static readonly string AutoId = "AutoId";
@@ -101,7 +97,6 @@ namespace ProfiCraftsman.Contracts.Entities
         #endregion
         public int Id{ get; set; }
         public int Number{ get; set; }
-        public int JobPositionId{ get; set; }
         public int AutoId{ get; set; }
         public string Name{ get; set; }
         public string FirstName{ get; set; }
@@ -120,14 +115,9 @@ namespace ProfiCraftsman.Contracts.Entities
         public string Color{ get; set; }
         public virtual ICollection<TermEmployees> TermEmployees{ get; set; }
         public virtual ICollection<EmployeeRateRsp> EmployeeRateRsps{ get; set; }
-        public virtual JobPositions JobPositions{ get; set; }
         public virtual Autos Autos{ get; set; }
         public virtual ICollection<User> Users{ get; set; }
         public virtual ICollection<TermInstruments> TermInstruments{ get; set; }
-        public bool HasJobPositions
-        {
-            get { return !ReferenceEquals(JobPositions, null); }
-        }
         public bool HasAutos
         {
             get { return !ReferenceEquals(Autos, null); }
@@ -155,7 +145,6 @@ namespace ProfiCraftsman.Contracts.Entities
         {
             return new Employees {
                        Number = Number,
-                       JobPositionId = JobPositionId,
                        AutoId = AutoId,
                        Name = Name,
                        FirstName = FirstName,

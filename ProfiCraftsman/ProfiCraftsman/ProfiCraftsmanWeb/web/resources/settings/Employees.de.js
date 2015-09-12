@@ -9,7 +9,6 @@ define(function () {
 	    pageTitle: 'Mitarbeiter',
 		pleaseSelect: 'Bitte auswählen',
 		number: 'Nummer',	
-		jobPositionId: 'Dienststelle',	
 		autoId: 'Auto',	
 		name: 'Name',	
 		firstName: 'Vorname',	

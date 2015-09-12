@@ -9,12 +9,9 @@ define([
 			,number: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Employees', 'number'), 
 				                    validation: { required: true } }			
-			,jobPositionId: { type: "number", 
-			                        editable: Application.canTableItemBeEdit('Employees', 'jobPositionId'), 
-				                    validation: { required: true } }			
 			,autoId: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Employees', 'autoId'), 
-				                    validation: { required: false } }			
+				                    validation: { required: true } }			
 			,name: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('Employees', 'name'), 
 				                    validation: { required: true, maxLength: 128 } }			

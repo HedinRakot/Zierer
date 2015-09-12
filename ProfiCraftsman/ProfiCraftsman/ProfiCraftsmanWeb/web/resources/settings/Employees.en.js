@@ -10,7 +10,6 @@ define(function () {
 	    pageTitle: 'Employee',
 		pleaseSelect: 'Please select',
 		number: 'Number',	
-		jobPositionId: 'Job position',	
 		autoId: 'Auto',	
 		name: 'Name',	
 		firstName: 'First name',	
