@@ -742,7 +742,6 @@ namespace ProfiCraftsman.Lib.Managers
         {
             if (invoice.InvoicePositions != null && invoice.InvoicePositions.Count != 0)
             {
-                double totalPriceForMainPositions = 0;
                 double totalPriceWithoutDiscountWithoutTax = 0;
                 double totalPriceWithoutTax = 0;
                 double totalPrice = 0;
@@ -750,7 +749,7 @@ namespace ProfiCraftsman.Lib.Managers
 
                 if (!invoice.ManualPrice.HasValue)
                 {
-                    CalculationHelper.CalculateInvoicePrices(invoice, out totalPriceForMainPositions, out totalPriceWithoutDiscountWithoutTax, out totalPriceWithoutTax,
+                    CalculationHelper.CalculateInvoicePrices(invoice,out totalPriceWithoutDiscountWithoutTax, out totalPriceWithoutTax,
                         out totalPrice, out summaryPrice);
                 }
                 else
@@ -815,7 +814,7 @@ namespace ProfiCraftsman.Lib.Managers
                 if (!invoice.ManualPrice.HasValue)
                 {
                     //total price without discount and tax for main positions only                
-                    xmlMainXMLDoc = xmlMainXMLDoc.Replace("#TotalPriceWithoutDiscount", totalPriceForMainPositions.ToString("N2"));
+                    xmlMainXMLDoc = xmlMainXMLDoc.Replace("#TotalPriceWithoutDiscount", totalPriceWithoutDiscountWithoutTax.ToString("N2"));
                 }
                 else
                 {
@@ -985,13 +984,12 @@ namespace ProfiCraftsman.Lib.Managers
 
                 foreach (var invoice in invoices)
                 {
-                    double totalPriceForMainPositions = 0;
                     double totalPriceWithoutDiscountWithoutTax = 0;
                     double totalPriceWithoutTax = 0;
                     double totalPrice = 0;
                     double summaryPrice = 0;
 
-                    CalculationHelper.CalculateInvoicePrices(invoice, out totalPriceForMainPositions, out totalPriceWithoutDiscountWithoutTax, out totalPriceWithoutTax,
+                    CalculationHelper.CalculateInvoicePrices(invoice,out totalPriceWithoutDiscountWithoutTax, out totalPriceWithoutTax,
                         out totalPrice, out summaryPrice);
 
                     totalPriceForCustomer += summaryPrice;
@@ -1090,13 +1088,12 @@ namespace ProfiCraftsman.Lib.Managers
         {
             if (invoice.InvoicePositions != null && invoice.InvoicePositions.Count != 0)
             {
-                double totalPriceForMainPositions = 0;
                 double totalPriceWithoutDiscountWithoutTax = 0;
                 double totalPriceWithoutTax = 0;
                 double totalPrice = 0;
                 double summaryPrice = 0;
 
-                CalculationHelper.CalculateInvoicePrices(invoice, out totalPriceForMainPositions, out totalPriceWithoutDiscountWithoutTax, out totalPriceWithoutTax,
+                CalculationHelper.CalculateInvoicePrices(invoice, out totalPriceWithoutDiscountWithoutTax, out totalPriceWithoutTax,
                     out totalPrice, out summaryPrice);
 
                 xmlMainXMLDoc = xmlMainXMLDoc.Replace("#TotalPrice", summaryPrice.ToString("N2"));

@@ -37,5 +37,11 @@ namespace ProfiCraftsman.API.Models
 
         [DataMember]
         public string totalPrice { get; set; }
+        
+        [DataMember]
+        public string totalInvoicesSum { get; set; }
+        
+        [DataMember]
+        public string totalPayedSum { get; set; }
     }
 }

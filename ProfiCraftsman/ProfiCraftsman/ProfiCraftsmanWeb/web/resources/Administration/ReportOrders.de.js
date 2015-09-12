@@ -11,7 +11,9 @@ define(function () {
 		street: 'Straße',
 		zip: 'PLZ',
 		city: 'Ort',
-        totalPrice: 'Gesamtpreis',
+		totalPrice: 'Gesamtpreis',
+		totalInvoicesSum: 'Gebucht',
+		totalPayedSum: 'Bezahlt',
 	};
 
 	return resources;

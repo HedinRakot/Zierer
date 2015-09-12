@@ -32,6 +32,9 @@ define(function () {
             ,totalPrice: { type: "string", 
 			                        editable: false, 
 				                    validation: { required: false} }
+            ,totalInvoicesSum: { type: "string", 
+			                        editable: false, 
+				                    validation: { required: false} }
 		},
 		defaults: function () {
 			var dnf = new Date();

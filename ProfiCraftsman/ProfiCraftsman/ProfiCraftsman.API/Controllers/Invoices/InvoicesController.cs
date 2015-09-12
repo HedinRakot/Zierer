@@ -50,13 +50,12 @@ namespace ProfiCraftsman.API.Controllers.Invoices
 
         private void CalculatePrices(ProfiCraftsman.Contracts.Entities.Invoices entity, InvoicesModel model)
         {
-            double totalPriceForMainPositions = 0;
             double totalPriceWithoutDiscountWithoutTax = 0;
             double totalPriceWithoutTax = 0;
             double totalPrice = 0;
             double summaryPrice = 0;
 
-            CalculationHelper.CalculateInvoicePrices(entity, out totalPriceForMainPositions, out totalPriceWithoutDiscountWithoutTax, out totalPriceWithoutTax,
+            CalculationHelper.CalculateInvoicePrices(entity, out totalPriceWithoutDiscountWithoutTax, out totalPriceWithoutTax,
                 out totalPrice, out summaryPrice);
 
             model.totalPriceWithoutDiscountWithoutTax = totalPriceWithoutDiscountWithoutTax;

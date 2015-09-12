@@ -44,6 +44,8 @@
 				{ field: 'zip', title: this.resources.zip },
 				{ field: 'city', title: this.resources.city },
 				{ field: 'totalPrice', title: this.resources.totalPrice, sortable: false, filterable: false },
+				{ field: 'totalInvoicesSum', title: this.resources.totalInvoicesSum, sortable: false, filterable: false },
+				{ field: 'totalPayedSum', title: this.resources.totalPayedSum, sortable: false, filterable: false },
 			];
 		},		
 

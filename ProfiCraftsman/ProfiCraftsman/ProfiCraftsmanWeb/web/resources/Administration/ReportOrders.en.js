@@ -12,6 +12,8 @@ define(function () {
 		zip: 'ZIP',
 		city: 'City',
 		totalPrice: 'Total Price',
+		totalInvoicesSum: 'Invoiced',
+		totalPayedSum: 'Payed',
 	};
 
 	return resources;

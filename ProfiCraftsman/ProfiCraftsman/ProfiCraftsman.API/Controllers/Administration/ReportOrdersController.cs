@@ -23,14 +23,19 @@ namespace ProfiCraftsman.API.Controllers
         private ITermPositionsManager termPositionsManager { get; set; }
         private IPositionsManager positionsManager { get; set; }
         private ITermCostsManager termCostsManager { get; set; }
+        private ITaxesManager taxesManager { get; set; }
+        private IInvoicesManager invoicesManager { get; set; }
 
         public ReportOrdersController(IOrdersManager manager,
-            ITermPositionsManager termPositionsManager, IPositionsManager positionsManager, ITermCostsManager termCostsManager)
+            ITermPositionsManager termPositionsManager, IPositionsManager positionsManager, ITermCostsManager termCostsManager, 
+            ITaxesManager taxesManager, IInvoicesManager invoicesManager)
             : base(manager)
         {
             this.termPositionsManager = termPositionsManager;
             this.positionsManager = positionsManager;
             this.termCostsManager = termCostsManager;
+            this.taxesManager = taxesManager;
+            this.invoicesManager = invoicesManager;
         }
         
         protected override void EntityToModel(Orders entity, ReportOrdersModel model)
@@ -49,6 +54,23 @@ namespace ProfiCraftsman.API.Controllers
             model.communicationPartnerTitle = entity.CommunicationPartnerTitle;
 
             model.totalPrice = CalculateTotalPrice(entity.Id).ToString("N2") + " EUR";
+
+            var invoices = invoicesManager.GetEntities(o => !o.DeleteDate.HasValue && o.OrderId == entity.Id).ToList();
+            double totalInvoicesSum = 0;
+            foreach (var invoice in invoices)
+            {
+                double totalPriceWithoutDiscountWithoutTax = 0;
+                double totalPriceWithoutTax = 0;
+                double totalPrice = 0;
+                double summaryPrice = 0;
+
+                CalculationHelper.CalculateInvoicePrices(invoice, out totalPriceWithoutDiscountWithoutTax,
+                    out totalPriceWithoutTax, out totalPrice, out summaryPrice);
+
+                totalInvoicesSum += summaryPrice;
+            }
+
+            model.totalInvoicesSum = totalInvoicesSum.ToString("N2") + " EUR";
         }
 
         protected double CalculateTotalPrice(int orderId)
@@ -100,6 +122,17 @@ namespace ProfiCraftsman.API.Controllers
             foreach (var termCost in termCosts)
             {
                 result += CalculationHelper.CalculatePositionPrice(termCost.Price, 1, PaymentTypes.Standard);
+            }
+
+
+            //TODO get taxes from invoices and calculate taxes only for open positions
+            var taxes = CalculationHelper.CalculateTaxes(taxesManager);
+            var order = Manager.GetById(orderId);
+            var taxValue = (result / (double)100) * taxes;
+            if (order.Customers.WithTaxes)
+            {
+                //with taxes
+                result += taxValue;
             }
 
             return result;
