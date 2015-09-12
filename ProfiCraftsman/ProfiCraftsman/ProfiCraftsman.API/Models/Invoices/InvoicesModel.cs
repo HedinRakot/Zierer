@@ -19,7 +19,7 @@ namespace ProfiCraftsman.API.Models.Invoices
         public string invoiceNumber{ get; set; }
 
         [DataMember]
-        public DateTime? payDate{ get; set; }
+        public string paySum { get; set; }
 
         [DataMember]
         public string customerName { get; set; }

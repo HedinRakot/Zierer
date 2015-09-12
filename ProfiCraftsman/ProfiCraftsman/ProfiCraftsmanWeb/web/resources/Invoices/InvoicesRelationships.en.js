@@ -4,7 +4,8 @@ define(function () {
 	var resources = {
 	     title: 'Relationships',
 		 dataLoading: 'Data is loading. Please wait...',
-	    invoicePositions: 'Positions',
+		 invoicePositions: 'Positions',
+		 invoicePayments: 'Payments',
 	};
 
 	return resources;

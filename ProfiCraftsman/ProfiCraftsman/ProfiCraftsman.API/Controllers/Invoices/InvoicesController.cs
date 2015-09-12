@@ -26,7 +26,6 @@ namespace ProfiCraftsman.API.Controllers.Invoices
         {
             model.Id = entity.Id;
             model.invoiceNumber = entity.InvoiceNumber;
-            model.payDate = entity.PayDate;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
             model.customerName = entity.Orders.CustomerName;
@@ -46,6 +45,8 @@ namespace ProfiCraftsman.API.Controllers.Invoices
             model.lastReminderDate = entity.LastReminderDate;
 
             CalculatePrices(entity, model);
+
+            model.paySum = entity.InvoicePayments.Where(o => !o.DeleteDate.HasValue).Sum(o => o.Amount).ToString("N2") + " EUR";
         }
 
         private void CalculatePrices(ProfiCraftsman.Contracts.Entities.Invoices entity, InvoicesModel model)

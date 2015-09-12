@@ -237,6 +237,7 @@
     <Content Include="web\collections\Administration\ReportOrders.js" />
     <Content Include="web\collections\Administration\ReportPositions.js" />
     <Content Include="web\collections\Administration\Trips.js" />
+    <Content Include="web\collections\Invoices\InvoicePayments.js" />
     <Content Include="web\collections\Settings\AdditionalCostTypes.js">
       <DependentUpon>web.collections.tt</DependentUpon>
     </Content>
@@ -333,6 +334,7 @@
     <Content Include="web\models\Administration\ReportOrders.js" />
     <Content Include="web\models\Administration\ReportPositions.js" />
     <Content Include="web\models\Administration\Trip.js" />
+    <Content Include="web\models\Invoices\InvoicePayments.js" />
     <Content Include="web\models\Settings\AdditionalCostTypes.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
@@ -512,7 +514,9 @@
     <Content Include="web\resources\Invoices\AddInvoices.en.js" />
     <Content Include="web\resources\Invoices\FilterInvoices.de.js" />
     <Content Include="web\resources\Invoices\FilterInvoices.en.js" />
+    <Content Include="web\resources\Invoices\InvoicePayments.de.js" />
     <Content Include="web\resources\Invoices\InvoicePositions.de.js" />
+    <Content Include="web\resources\Invoices\InvoicePayments.en.js" />
     <Content Include="web\resources\Invoices\InvoicePositions.en.js" />
     <Content Include="web\resources\Invoices\Invoices.de.js" />
     <Content Include="web\resources\Invoices\Invoices.en.js" />
@@ -1151,6 +1155,7 @@
     <Content Include="web\templates\InvoiceStornos\InvoicesRelationships.html" />
     <Content Include="web\templates\Invoices\AddInvoices.html" />
     <Content Include="web\templates\Invoices\FilterInvoices.html" />
+    <Content Include="web\templates\Invoices\InvoicePayments.html" />
     <Content Include="web\templates\Invoices\InvoicePositions.html" />
     <Content Include="web\templates\Invoices\Invoices.html" />
     <Content Include="web\templates\Invoices\InvoicesRelationships.html" />
@@ -1484,6 +1489,7 @@
     <Content Include="web\views\InvoiceStornos\InvoicesRelationships.js" />
     <Content Include="web\views\Invoices\AddInvoices.js" />
     <Content Include="web\views\Invoices\FilterInvoices.js" />
+    <Content Include="web\views\Invoices\InvoicePayments.js" />
     <Content Include="web\views\Invoices\InvoicePositions.js" />
     <Content Include="web\views\Invoices\Invoices.js" />
     <Content Include="web\views\Invoices\InvoicesRelationships.js" />

@@ -194,6 +194,7 @@
     <Compile Include="Controllers\Administration\TripsController.cs" />
     <Compile Include="Controllers\InvoiceStornos\InvoiceStornosController.cs" />
     <Compile Include="Controllers\Invoices\GenerateMonthInvoicesController.cs" />
+    <Compile Include="Controllers\Invoices\InvoicePaymentsController.cs" />
     <Compile Include="Controllers\Invoices\InvoicePositionsController.cs" />
     <Compile Include="Controllers\Invoices\AddInvoiceController.cs" />
     <Compile Include="Controllers\Invoices\InvoicesController.cs" />
@@ -323,6 +324,7 @@
     <Compile Include="Models\Administration\ReportPositionsModel.cs" />
     <Compile Include="Models\Administration\TripsModel.cs" />
     <Compile Include="Models\InvoiceStornos\InvoiceStornosModel.cs" />
+    <Compile Include="Models\Invoices\InvoicePaymentsModel.cs" />
     <Compile Include="Models\Invoices\InvoicePositionsModel.cs" />
     <Compile Include="Models\Invoices\AddInvoiceModel.cs" />
     <Compile Include="Models\Invoices\InvoicesModel.cs" />

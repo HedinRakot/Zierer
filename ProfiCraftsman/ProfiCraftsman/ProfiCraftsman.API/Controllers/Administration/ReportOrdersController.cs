@@ -71,6 +71,9 @@ namespace ProfiCraftsman.API.Controllers
             }
 
             model.totalInvoicesSum = totalInvoicesSum.ToString("N2") + " EUR";
+
+            model.totalPayedSum = entity.Invoices.Where(o => !o.DeleteDate.HasValue).SelectMany(o => o.InvoicePayments.Where(p => !p.DeleteDate.HasValue)).
+                Sum(o => o.Amount).ToString("N2") + " EUR";
         }
 
         protected double CalculateTotalPrice(int orderId)

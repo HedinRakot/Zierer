@@ -129,6 +129,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime? LastReminderDate{ get; set; }
         public virtual Orders Orders{ get; set; }
         public virtual ICollection<InvoicePositions> InvoicePositions{ get; set; }
+        public virtual ICollection<InvoicePayments> InvoicePayments{ get; set; }
         public virtual ICollection<InvoiceStornos> InvoiceStornos{ get; set; }
         public bool HasOrders
         {

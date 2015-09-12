@@ -12,6 +12,9 @@ namespace ProfiCraftsman.API.Models.Invoices
     public partial class InvoicePositionsModel: BaseModel
     {
         [DataMember]
+        public int invoiceId { get; set; }
+
+        [DataMember]
         public double price{ get; set; }
 
         [DataMember]

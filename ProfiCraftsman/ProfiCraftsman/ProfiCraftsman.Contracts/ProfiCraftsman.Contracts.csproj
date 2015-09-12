@@ -120,6 +120,9 @@
     <Compile Include="Entities\Instruments.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\InvoicePayments.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\InvoicePositions.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
@@ -250,6 +253,9 @@
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\IInstrumentsManager.cs">
+      <DependentUpon>IManagers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\IInvoicePaymentsManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\IJobPositionsManager.cs">

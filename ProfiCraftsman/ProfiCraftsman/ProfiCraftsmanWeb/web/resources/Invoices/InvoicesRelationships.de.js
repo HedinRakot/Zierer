@@ -4,7 +4,8 @@ define(function () {
 	var resources = {
 	    title: 'Zuordnungen',
 		dataLoading: 'Daten werden geladen. Bitte warten...',
-	    invoicePositions: 'Positionen',
+		invoicePositions: 'Positionen',
+	    invoicePayments: 'Einzahlungen',
 	};
 
 	return resources;

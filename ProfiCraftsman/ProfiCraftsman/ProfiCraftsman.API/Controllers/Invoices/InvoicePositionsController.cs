@@ -25,6 +25,7 @@ namespace ProfiCraftsman.API.Controllers.Invoices
         {
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
+            model.invoiceId = entity.InvoiceId;
             model.amount = entity.Amount;
             model.paymentType = entity.PaymentType;
             model.price = entity.Price;
@@ -57,6 +58,7 @@ namespace ProfiCraftsman.API.Controllers.Invoices
         }
         protected override void ModelToEntity(InvoicePositionsModel model, InvoicePositions entity, ActionTypes actionType)
         {
+            entity.InvoiceId = model.invoiceId;
             entity.Price = model.price;
             entity.PaymentType = model.paymentType;
         }

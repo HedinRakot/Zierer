@@ -8,7 +8,7 @@ define(function () {
 			,invoiceNumber: { type: "string", 
 			                        editable: false, 
 				                    validation: { required: false, maxLength: 50 } }			
-			,payDate: { type: "date", 
+			,paySum: { type: "string", 
 			                        editable: false, 
 				                    validation: { required: false, date: true } }	
             ,createDate: { type: "date", 

@@ -8,7 +8,7 @@ define(function () {
 	    pageTitle: 'Invoices',
 		pleaseSelect: 'Please select',
 		invoiceNumber: 'Invoicenumber',	
-		payDate: 'Pay date',
+		paySum: 'Payed',
 		createDate: 'Date',
 		communicationPartnerName: 'Communication partner',
 		customerName: 'Organisation',

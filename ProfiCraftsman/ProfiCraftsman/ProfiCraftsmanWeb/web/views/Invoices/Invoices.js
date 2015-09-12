@@ -83,7 +83,7 @@
                         { field: 'invoiceNumber', title: this.resources.invoiceNumber },
 				        { field: 'createDate', title: this.resources.createDate, format: '{0:d}' },
 				        { field: 'summaryPriceString', title: this.resources.totalPrice, filterable: false, sortable: false },
-				        { field: 'payDate', title: this.resources.payDate, format: '{0:d}' }, 
+				        { field: 'paySum', title: this.resources.paySum }, 
                         { field: 'reminderCount', title: this.resources.reminderCount },
                     ]
                 },
@@ -100,53 +100,54 @@
 
 		events: {
 
-		    'click .pay': function (e) {
+            //todo delete
+		    //'click .pay': function (e) {
 
-		        e.preventDefault();
-		        var self = this,
-                    grid = self.grid,
-					items = grid.select();
+		    //    e.preventDefault();
+		    //    var self = this,
+            //        grid = self.grid,
+			//		items = grid.select();
                 
-		        if (items != undefined && items.length == 1) {
+		    //    if (items != undefined && items.length == 1) {
 
-		            var dataItem = grid.dataItem(items[0]);
-		            if (dataItem.payDate) {
-		                require(['base/information-view'], function (View) {
+		    //        var dataItem = grid.dataItem(items[0]);
+		    //        if (dataItem.payDate) {
+		    //            require(['base/information-view'], function (View) {
 
-		                    var view = new View({
-		                        title: 'Rechnung bezahlen',
-		                        message: 'Ausgewählte Rechnung ist bereits bezahlt!'
-		                    });
+		    //                var view = new View({
+		    //                    title: 'Rechnung bezahlen',
+		    //                    message: 'Ausgewählte Rechnung ist bereits bezahlt!'
+		    //                });
 
-		                    self.addView(view);
-		                    self.$el.append(view.render().$el);
-		                });
-		            }
-		            else {
-		                require(['base/confirmation-view'], function (View) {
+		    //                self.addView(view);
+		    //                self.$el.append(view.render().$el);
+		    //            });
+		    //        }
+		    //        else {
+		    //            require(['base/confirmation-view'], function (View) {
                             
-		                    var view = new View({
-		                        title: 'Rechnung bezahlen',
-		                        message: 'Möchten Sie die ausgewählte Rechnung bezahlen?'
-		                    });
+		    //                var view = new View({
+		    //                    title: 'Rechnung bezahlen',
+		    //                    message: 'Möchten Sie die ausgewählte Rechnung bezahlen?'
+		    //                });
                             
-		                    self.listenTo(view, 'continue', _.bind(payBill, self, dataItem));
-		                    self.addView(view);
-		                    self.$el.append(view.render().$el);
-		                });
-		            }
-		        }
-		        else {
-		            require(['base/information-view'], function (View) {
-		                var view = new View({
-		                    title: 'Rechnung bezahlen',
-		                    message: 'Wählen Sie bitte eine Rechnung aus!'
-		                });
-		                self.addView(view);
-		                self.$el.append(view.render().$el);
-		            });
-		        }
-		    },
+		    //                self.listenTo(view, 'continue', _.bind(payBill, self, dataItem));
+		    //                self.addView(view);
+		    //                self.$el.append(view.render().$el);
+		    //            });
+		    //        }
+		    //    }
+		    //    else {
+		    //        require(['base/information-view'], function (View) {
+		    //            var view = new View({
+		    //                title: 'Rechnung bezahlen',
+		    //                message: 'Wählen Sie bitte eine Rechnung aus!'
+		    //            });
+		    //            self.addView(view);
+		    //            self.$el.append(view.render().$el);
+		    //        });
+		    //    }
+		    //},
 		    'click .printInvoice': function (e) {
 
 		        e.preventDefault();
@@ -198,10 +199,10 @@
 		        result =
 		    [{
 		        template: function () {
-		            return '<a class="k-button k-button-icontext printInvoice" href="#" data-localized="printInvoice"></a>' +
+		            return '<a class="k-button k-button-icontext printInvoice" href="#" data-localized="printInvoice"></a>';
                     //'<a class="k-button k-button-icontext printRemainder" href="#" data-localized="printRemainder"></a>' +
                     //'<a class="k-button k-button-icontext generateMonthInvoices" href="#" data-localized="generateMonthInvoices"></a>' +
-		                   '<a class="k-button k-button-icontext pay" href="#" data-localized="pay"></a>';
+		            //todo delete       '<a class="k-button k-button-icontext pay" href="#" data-localized="pay"></a>';
 		        }
 		    }];
 

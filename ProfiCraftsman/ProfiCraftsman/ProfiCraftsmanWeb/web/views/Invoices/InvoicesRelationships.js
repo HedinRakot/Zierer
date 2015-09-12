@@ -10,6 +10,7 @@ define([
             
             var result = [
 				{ view: 'l!t!Invoices/InvoicePositions', selector: '.invoicePositions' },
+				{ view: 'l!t!Invoices/InvoicePayments', selector: '.invoicePayments' },
                 
             ];
             
