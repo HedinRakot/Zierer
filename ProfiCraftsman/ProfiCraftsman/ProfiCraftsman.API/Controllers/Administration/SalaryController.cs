@@ -70,7 +70,7 @@ namespace ProfiCraftsman.API.Controllers
             GetFilters(filtering, ref fromDate, ref toDate);
             var result = new List<SalaryModel>();
 
-            var rates = employeeRateRspManager.GetEntities().ToList();
+            var rates = employeeRateRspManager.GetEntities(o => o.SalaryTypes == SalaryTypes.Monthly).ToList(); //TODO delete check ?
             var employees = employeeManager.GetEntities().ToList();
 
             foreach (var employee in employees)
