@@ -24,10 +24,6 @@ namespace ProfiCraftsman.Contracts.Entities
             /// </summary>
             public static readonly string Id = "Id";
             /// <summary>
-            /// Column name 'Description' for property <see cref="AdditionalCosts.Description"/>
-            /// </summary>
-            public static readonly string Description = "Description";
-            /// <summary>
             /// Column name 'Price' for property <see cref="AdditionalCosts.Price"/>
             /// </summary>
             public static readonly string Price = "Price";
@@ -63,11 +59,14 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'ProceedsAccountId' for property <see cref="AdditionalCosts.ProceedsAccountId"/>
             /// </summary>
             public static readonly string ProceedsAccountId = "ProceedsAccountId";
+            /// <summary>
+            /// Column name 'Description' for property <see cref="AdditionalCosts.Description"/>
+            /// </summary>
+            public static readonly string Description = "Description";
           
         }
         #endregion
         public int Id{ get; set; }
-        public string Description{ get; set; }
         public double Price{ get; set; }
         public bool Automatic{ get; set; }
         public DateTime CreateDate{ get; set; }
@@ -77,6 +76,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime? ToDate{ get; set; }
         public int AdditionalCostTypeId{ get; set; }
         public int ProceedsAccountId{ get; set; }
+        public string Description{ get; set; }
         public virtual AdditionalCostTypes AdditionalCostTypes{ get; set; }
         public virtual ProceedsAccounts ProceedsAccounts{ get; set; }
         public bool HasAdditionalCostTypes
@@ -110,7 +110,6 @@ namespace ProfiCraftsman.Contracts.Entities
         public AdditionalCosts ShallowCopy()
         {
             return new AdditionalCosts {
-                       Description = Description,
                        Price = Price,
                        Automatic = Automatic,
                        CreateDate = CreateDate,
@@ -120,6 +119,7 @@ namespace ProfiCraftsman.Contracts.Entities
                        ToDate = ToDate,
                        AdditionalCostTypeId = AdditionalCostTypeId,
                        ProceedsAccountId = ProceedsAccountId,
+                       Description = Description,
         	           };
         }
     }

@@ -1147,7 +1147,6 @@
       <DependentUpon>web.router.template.tt</DependentUpon>
     </Content>
     <Content Include="web\router.js" />
-    <Content Include="web\templates\Administration\FilterProfitReports.html" />
     <Content Include="web\templates\Administration\FilterReportOrders.html" />
     <Content Include="web\templates\Administration\FilterTrips.html" />
     <Content Include="web\templates\Administration\ReportAdditionalCosts.html" />
@@ -1484,7 +1483,6 @@
     <Content Include="web\templates\Warehouse\FilterWarehouseMaterials.html" />
     <Content Include="web\templates\Warehouse\WarehouseMaterials.html" />
     <Content Include="web\templates\Warehouse\Warehouse.html" />
-    <Content Include="web\views\Administration\FilterProfitReports.js" />
     <Content Include="web\views\Administration\FilterReportOrders.js" />
     <Content Include="web\views\Administration\FilterTrips.js" />
     <Content Include="web\views\Administration\ReportAdditionalCosts.js" />

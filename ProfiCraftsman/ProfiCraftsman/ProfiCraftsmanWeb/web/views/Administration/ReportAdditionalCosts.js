@@ -6,6 +6,8 @@
     
     var view = BaseView.extend({
 
+        gridSelector: '.additionalCostsGrid',
+
         collectionType: Collection,
         tableName: 'AdditionalCosts',
         
@@ -29,12 +31,12 @@
 		columns: function () {
 			
 			return [
-				{ field: 'description', title: this.resources.description },
 				{ field: 'price', title: this.resources.price },
 				{ field: 'fromDate', title: this.resources.fromDate, format: '{0:d}' },
 				{ field: 'toDate', title: this.resources.toDate, format: '{0:d}' },
 				{ field: 'additionalCostTypeId', title: this.resources.additionalCostTypeId, collection: this.options.additionalCostTypes },
 				{ field: 'proceedsAccountId', title: this.resources.proceedsAccountId, collection: this.options.proceedsAccounts },
+				{ field: 'description', title: this.resources.description },
 			];
 		},		
 

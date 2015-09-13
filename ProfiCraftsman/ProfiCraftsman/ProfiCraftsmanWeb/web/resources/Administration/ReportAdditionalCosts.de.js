@@ -3,7 +3,7 @@
 
 	var resources = {
 
-	    description: 'Beschreibung',
+	    description: 'Bemerkung',
 	    price: 'Preis',
 	    automatic: 'Auto',
 	    fromDate: 'Von Datum',

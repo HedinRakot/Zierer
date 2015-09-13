@@ -14,7 +14,7 @@ define([
 
 	setFilters = function () {
 	    var self = this,
-			dataSource = self.$el.find('.grid').data('kendoGrid').dataSource, //self.options.grid.dataSource,
+			dataSource = self.$el.find('.additionalCostsGrid').data('kendoGrid').dataSource, //self.options.grid.dataSource,
 			expression = dataSource.filter() || { filters: [], logic: 'and' };
 
 	    if (self.validate()) {
