@@ -36,9 +36,6 @@ namespace ProfiCraftsman.Lib.Data
                 .HasColumnName(EmployeeRateRsp.Fields.JobPositionId)
                 .IsRequired();
 
-            Property(t => t.CustomPrice)
-                .HasColumnName(EmployeeRateRsp.Fields.CustomPrice);
-
             Property(t => t.CreateDate)
                 .HasColumnName(EmployeeRateRsp.Fields.CreateDate)
                 .IsRequired();
@@ -56,6 +53,14 @@ namespace ProfiCraftsman.Lib.Data
 
             Property(t => t.ToDate)
                 .HasColumnName(EmployeeRateRsp.Fields.ToDate)
+                .IsRequired();
+
+            Property(t => t.SalaryType)
+                .HasColumnName(EmployeeRateRsp.Fields.SalaryType)
+                .IsRequired();
+
+            Property(t => t.Salary)
+                .HasColumnName(EmployeeRateRsp.Fields.Salary)
                 .IsRequired();
 
 

@@ -9,13 +9,13 @@ define(function () {
 		driverLicenceMasterData: 'Driver licence masterdata',
 	    pageTitle: 'Additional cost',
 		pleaseSelect: 'Please select',
-		description: 'Description',	
 		price: 'Price',	
 		automatic: 'Auto',	
 		fromDate: 'From date',	
 		toDate: 'To date',	
 		additionalCostTypeId: 'Additional cost type',	
 		proceedsAccountId: 'Account',	
+		description: 'Description',	
 	};
 
 	return resources;

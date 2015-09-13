@@ -19,9 +19,13 @@ define([
 				selectOptions: { labelPath: 'name', valuePath: 'id',
 				collection: self.options.jobPositions
 				,defaultOption: {label: self.resources.pleaseSelect,value: null}},},
-			'#customPrice': 'customPrice',
 			'#fromDate': 'fromDate',
 			'#toDate': 'toDate',
+			'#salaryType': { observe: 'salaryType',
+				selectOptions: { labelPath: 'name', valuePath: 'id',
+				collection: self.options.salaryTypes
+				,defaultOption: {label: self.resources.pleaseSelect,value: null}},},
+			'#salary': 'salary',
 			};
 
             return result;
@@ -34,9 +38,10 @@ define([
 			//TODO foreach model field
 			this.disableInput(this, 'employeeId', 'numeric');
 			this.disableInput(this, 'jobPositionId', 'select');
-			this.disableInput(this, 'customPrice', 'numeric');
 			this.disableInput(this, 'fromDate', 'date');
 			this.disableInput(this, 'toDate', 'date');
+			this.disableInput(this, 'salaryType', 'select');
+			this.disableInput(this, 'salary', 'numeric');
 
             return this;
         }

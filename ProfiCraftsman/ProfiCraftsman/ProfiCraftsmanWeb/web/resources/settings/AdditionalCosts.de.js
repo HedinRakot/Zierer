@@ -8,13 +8,13 @@ define(function () {
 	    masterData: 'Einstellungen',
 	    pageTitle: 'Nebenkosten',
 		pleaseSelect: 'Bitte auswählen',
-		description: 'Beschreibung',	
 		price: 'Preis',	
 		automatic: 'Auto',	
 		fromDate: 'Von Datum',	
 		toDate: 'Bis Datum',	
 		additionalCostTypeId: 'Nebenkostenart',	
 		proceedsAccountId: 'Erlös-Konto',	
+		description: 'Bemerkung',	
 	};
 
 	return resources;

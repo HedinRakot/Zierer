@@ -17,6 +17,7 @@ namespace ProfiCraftsman.API.Controllers
         public bool ProductTypesForDisposition { get; set; }
         public bool ProductAmountTypes { get; set; }
         public bool MaterialAmountTypes { get; set; }
+        public bool SalaryTypes { get; set; }
     }
     
     public class ViewCollectionController: ApiController
@@ -70,6 +71,13 @@ namespace ProfiCraftsman.API.Controllers
                 {
                     new { id = 0, name = "Stück"},
                     new { id = 1, name = "Meter"},
+                });
+
+            if (model.SalaryTypes)
+                result.Add("SalaryTypes", new[]
+                {
+                    new { id = 0, name = "Monatseinkommen"},
+                    new { id = 1, name = "Stundensatz"},
                 });
 
             new MasterDataViewCollectionControllerFactory().GetViewCollections(

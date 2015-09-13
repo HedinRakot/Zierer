@@ -26,9 +26,10 @@ define([
 		   
 		   return [
 				{ field: 'jobPositionId', title: this.resources.jobPositionId , collection: this.options.jobPositions, defaultText: this.resources.pleaseSelect, attributes: { "class": "detail-view-grid-cell" }},
-				{ field: 'customPrice', title: this.resources.customPrice , attributes: { "class": "detail-view-grid-cell" }},
 				{ field: 'fromDate', title: this.resources.fromDate , format: '{0:d}', attributes: { "class": "detail-view-grid-cell" }},
 				{ field: 'toDate', title: this.resources.toDate , format: '{0:d}', attributes: { "class": "detail-view-grid-cell" }},
+				{ field: 'salaryType', title: this.resources.salaryType , collection: this.options.salaryTypes, defaultText: this.resources.pleaseSelect, attributes: { "class": "detail-view-grid-cell" }},
+				{ field: 'salary', title: this.resources.salary , attributes: { "class": "detail-view-grid-cell" }},
 			];
 		},
 		

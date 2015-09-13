@@ -6,9 +6,6 @@ define([
 	    urlRoot: 'api/AdditionalCosts',
 		fields:  {
 			id: { type: "number", editable: false }
-			,description: { type: "string", 
-			                        editable: Application.canTableItemBeEdit('AdditionalCosts', 'description'), 
-				                    validation: { required: false, maxLength: 128 } }			
 			,price: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('AdditionalCosts', 'price'), 
 				                    validation: { required: true } }			
@@ -27,6 +24,9 @@ define([
 			,proceedsAccountId: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('AdditionalCosts', 'proceedsAccountId'), 
 				                    validation: { required: true } }			
+			,description: { type: "string", 
+			                        editable: Application.canTableItemBeEdit('AdditionalCosts', 'description'), 
+				                    validation: { required: false, maxLength: 128 } }			
 		},
 		defaults: function () {
 			var dnf = new Date();

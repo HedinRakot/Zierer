@@ -11,9 +11,10 @@ define(function () {
 		pleaseSelect: 'Please select',
 		employeeId: 'Employee',	
 		jobPositionId: 'Job position',	
-		customPrice: 'Special',	
 		fromDate: 'From date',	
 		toDate: 'To date',	
+		salaryType: 'Salary type',	
+		salary: 'Salary',	
 	};
 
 	return resources;

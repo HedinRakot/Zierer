@@ -5,6 +5,7 @@ define(function () {
         title: 'Relationships',
         dataLoading: 'Data is loading. Please wait...',
         additionalCosts: 'Additional costs',
+        salary: 'Salary',
 
         fromDate: 'From Date',
         toDate: 'To Date',

@@ -15,11 +15,6 @@ namespace ProfiCraftsman.API.Models.Settings
     {
 
         /// <summary>
-        ///     Model property for <see cref="AdditionalCosts.Description"/> entity
-        /// </summary>
-        [DataMember]
-        public string description{ get; set; }
-        /// <summary>
         ///     Model property for <see cref="AdditionalCosts.Price"/> entity
         /// </summary>
         [Required]
@@ -53,6 +48,11 @@ namespace ProfiCraftsman.API.Models.Settings
         [Required]
         [DataMember]
         public int proceedsAccountId{ get; set; }
+        /// <summary>
+        ///     Model property for <see cref="AdditionalCosts.Description"/> entity
+        /// </summary>
+        [DataMember]
+        public string description{ get; set; }
 
     }
 }

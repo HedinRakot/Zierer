@@ -10,9 +10,10 @@ define(function () {
 		pleaseSelect: 'Bitte auswählen',
 		employeeId: 'Mitarbeiter',	
 		jobPositionId: 'Dienststelle',	
-		customPrice: 'Spezial',	
 		fromDate: 'Von Datum',	
 		toDate: 'Bis Datum',	
+		salaryType: 'Einkommentyp',	
+		salary: 'Einkommen',	
 	};
 
 	return resources;

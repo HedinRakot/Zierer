@@ -15,37 +15,42 @@
 
 	setFilters = function () {
 	    var self = this,
-			dataSource = self.$el.find('.additionalCostsGrid').data('kendoGrid').dataSource, //self.options.grid.dataSource,
-			expression = dataSource.filter() || { filters: [], logic: 'and' };
+            grids = ['.additionalCostsGrid', '.salaryGrid'];
 
-	    if (self.validate()) {
-	        var sourceFilters = self.getFilters();
+	    grids.forEach(function(gridName, i) {
 
-	        _.each(sourceFilters, function (sourceFilter) {
-	            if (!sourceFilter.value) {
-	                var targetFilter = _.findWhere(expression.filters, { field: sourceFilter.field, operator: sourceFilter.operator }),
-						index = expression.filters.indexOf(targetFilter);
+	        var dataSource = self.$el.find(gridName).data('kendoGrid').dataSource,
+                expression = dataSource.filter() || { filters: [], logic: 'and' };
 
-	                if (index > -1)
-	                    expression.filters.splice(index, 1);
-	            }
-	            else {
-	                var match = _.filter(expression.filters, function (targetFilter) {
-	                    if (sourceFilter.field === targetFilter.field && sourceFilter.operator === targetFilter.operator) {
-	                        targetFilter.value = sourceFilter.value;
+	        if (self.validate()) {
+	            var sourceFilters = self.getFilters();
 
-	                        return true;
-	                    }
-	                });
+	            _.each(sourceFilters, function (sourceFilter) {
+	                if (!sourceFilter.value) {
+	                    var targetFilter = _.findWhere(expression.filters, { field: sourceFilter.field, operator: sourceFilter.operator }),
+                            index = expression.filters.indexOf(targetFilter);
 
-	                if (!match.length)
-	                    expression.filters.push(sourceFilter);
-	            }
-	        });
+	                    if (index > -1)
+	                        expression.filters.splice(index, 1);
+	                }
+	                else {
+	                    var match = _.filter(expression.filters, function (targetFilter) {
+	                        if (sourceFilter.field === targetFilter.field && sourceFilter.operator === targetFilter.operator) {
+	                            targetFilter.value = sourceFilter.value;
+
+	                            return true;
+	                        }
+	                    });
+
+	                    if (!match.length)
+	                        expression.filters.push(sourceFilter);
+	                }
+	            });
 
 
-	        dataSource.filter(expression);
-	    }
+	            dataSource.filter(expression);	    
+	        }
+	    });
 	},
 
     getValues = function (self) {
@@ -54,22 +59,22 @@
             fromDate: self.filterModel.get('fromDate'),
             toDate: self.filterModel.get('toDate')
         },
-                {
-                    success: function (model, response) {
+        {
+            success: function (model, response) {
 
-                    },
-                    error: function (model, response) {
+            },
+            error: function (model, response) {
 
-                        require(['base/information-view'], function (View) {
-                            var view = new View({
-                                title: 'Fehler',
-                                message: 'Die Daten konnten nicht geladen werden. Versuchen Sie bitte später nochmals.'
-                            });
-                            self.addView(view);
-                            self.$el.append(view.render().$el);
-                        });
-                    }
+                require(['base/information-view'], function (View) {
+                    var view = new View({
+                        title: 'Fehler',
+                        message: 'Die Daten konnten nicht geladen werden. Versuchen Sie bitte später nochmals.'
+                    });
+                    self.addView(view);
+                    self.$el.append(view.render().$el);
                 });
+            }
+        });
     },
 
     view = BaseView.extend({
@@ -139,9 +144,9 @@
 
                 self.filterModel.clear().set(self.filterModel.defaults);
 
-                setFilters.call(self);
-
                 getValues(self);
+
+                setFilters.call(self);
             });
 
             self.$el.delegate('.toggle', 'click.base-filter-view', _.bind(toggle, this));
@@ -153,6 +158,7 @@
 
             var result = [
                 { view: 'l!t!Administration/ReportAdditionalCosts', selector: '.additionalCosts' },
+                { view: 'l!t!Administration/Salary', selector: '.salary' },
             ];
 
             return result;

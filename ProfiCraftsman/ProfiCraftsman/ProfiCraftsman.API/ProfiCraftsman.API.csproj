@@ -190,6 +190,7 @@
     <Compile Include="ClientControllers\TermViewModelHelper.cs" />
     <Compile Include="Config\NotificationServerConfigSection.cs" />
     <Compile Include="Controllers\Administration\ReportOrdersController.cs" />
+    <Compile Include="Controllers\Administration\SalaryController.cs" />
     <Compile Include="Controllers\Administration\ReportPositionsController.cs" />
     <Compile Include="Controllers\Administration\ProfitReportsController.cs" />
     <Compile Include="Controllers\Administration\TripsController.cs" />
@@ -322,6 +323,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Models\Administration\ReportOrdersModel.cs" />
+    <Compile Include="Models\Administration\SalaryModel.cs" />
     <Compile Include="Models\Administration\ReportPositionsModel.cs" />
     <Compile Include="Models\Administration\TripsModel.cs" />
     <Compile Include="Models\InvoiceStornos\InvoiceStornosModel.cs" />

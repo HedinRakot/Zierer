@@ -27,11 +27,6 @@ namespace ProfiCraftsman.API.Models.Settings
         [DataMember]
         public int jobPositionId{ get; set; }
         /// <summary>
-        ///     Model property for <see cref="EmployeeRateRsp.CustomPrice"/> entity
-        /// </summary>
-        [DataMember]
-        public double? customPrice{ get; set; }
-        /// <summary>
         ///     Model property for <see cref="EmployeeRateRsp.FromDate"/> entity
         /// </summary>
         [Required]
@@ -43,6 +38,18 @@ namespace ProfiCraftsman.API.Models.Settings
         [Required]
         [DataMember]
         public DateTime toDate{ get; set; }
+        /// <summary>
+        ///     Model property for <see cref="EmployeeRateRsp.SalaryType"/> entity
+        /// </summary>
+        [Required]
+        [DataMember]
+        public int salaryType{ get; set; }
+        /// <summary>
+        ///     Model property for <see cref="EmployeeRateRsp.Salary"/> entity
+        /// </summary>
+        [Required]
+        [DataMember]
+        public double salary{ get; set; }
 
     }
 }

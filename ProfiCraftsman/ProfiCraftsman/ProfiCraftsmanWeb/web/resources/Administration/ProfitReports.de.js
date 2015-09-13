@@ -6,6 +6,7 @@ define(function () {
 	    title: 'Zuordnungen',
 	    dataLoading: 'Daten werden geladen. Bitte warten...',
 	    additionalCosts: 'Nebenkosten',
+	    salary: 'Mitarbeiterlohn',
 
 	    fromDate: 'Von Datum',
 	    toDate: 'Bis Datum',

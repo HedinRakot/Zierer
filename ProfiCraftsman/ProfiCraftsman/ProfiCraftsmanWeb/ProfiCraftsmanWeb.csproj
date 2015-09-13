@@ -236,6 +236,7 @@
     </Content>
     <Content Include="web\collections\Administration\ReportOrders.js" />
     <Content Include="web\collections\Administration\ReportPositions.js" />
+    <Content Include="web\collections\Administration\Salary.js" />
     <Content Include="web\collections\Administration\Trips.js" />
     <Content Include="web\collections\Invoices\InvoicePayments.js" />
     <Content Include="web\collections\Settings\AdditionalCostTypes.js">
@@ -335,6 +336,7 @@
     <Content Include="web\models\Administration\ProfitReports.js" />
     <Content Include="web\models\Administration\ReportOrders.js" />
     <Content Include="web\models\Administration\ReportPositions.js" />
+    <Content Include="web\models\Administration\Salary.js" />
     <Content Include="web\models\Administration\Trip.js" />
     <Content Include="web\models\Invoices\InvoicePayments.js" />
     <Content Include="web\models\Settings\AdditionalCostTypes.js">
@@ -494,7 +496,9 @@
     <Content Include="web\resources\Administration\FilterReportOrders.en.js" />
     <Content Include="web\resources\Administration\FilterTrips.de.js" />
     <Content Include="web\resources\Administration\FilterTrips.en.js" />
+    <Content Include="web\resources\Administration\Salary.de.js" />
     <Content Include="web\resources\Administration\ReportAdditionalCosts.de.js" />
+    <Content Include="web\resources\Administration\Salary.en.js" />
     <Content Include="web\resources\Administration\ReportAdditionalCosts.en.js" />
     <Content Include="web\resources\Administration\ReportOrders.de.js" />
     <Content Include="web\resources\Administration\ReportOrders.en.js" />
@@ -1150,6 +1154,7 @@
     <Content Include="web\router.js" />
     <Content Include="web\templates\Administration\FilterReportOrders.html" />
     <Content Include="web\templates\Administration\FilterTrips.html" />
+    <Content Include="web\templates\Administration\Salary.html" />
     <Content Include="web\templates\Administration\ReportAdditionalCosts.html" />
     <Content Include="web\templates\Administration\ReportOrders.html" />
     <Content Include="web\templates\Administration\ProfitReports.html" />
@@ -1486,6 +1491,7 @@
     <Content Include="web\templates\Warehouse\Warehouse.html" />
     <Content Include="web\views\Administration\FilterReportOrders.js" />
     <Content Include="web\views\Administration\FilterTrips.js" />
+    <Content Include="web\views\Administration\Salary.js" />
     <Content Include="web\views\Administration\ReportAdditionalCosts.js" />
     <Content Include="web\views\Administration\ReportOrders.js" />
     <Content Include="web\views\Administration\ProfitReports.js" />

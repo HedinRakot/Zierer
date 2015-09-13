@@ -22,25 +22,25 @@ namespace ProfiCraftsman.API.Controllers.Settings
 
         protected override void EntityToModel(AdditionalCosts entity, AdditionalCostsModel model)
         {
-            model.description = entity.Description;
             model.price = entity.Price;
             model.automatic = entity.Automatic;
             model.fromDate = entity.FromDate;
             model.toDate = entity.ToDate;
             model.additionalCostTypeId = entity.AdditionalCostTypeId;
             model.proceedsAccountId = entity.ProceedsAccountId;
+            model.description = entity.Description;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
         }
         protected override void ModelToEntity(AdditionalCostsModel model, AdditionalCosts entity, ActionTypes actionType)
         {
-            entity.Description = model.description;
             entity.Price = model.price;
             entity.Automatic = model.automatic;
             entity.FromDate = model.fromDate;
             entity.ToDate = model.toDate;
             entity.AdditionalCostTypeId = model.additionalCostTypeId;
             entity.ProceedsAccountId = model.proceedsAccountId;
+            entity.Description = model.description;
         }
     }
 }

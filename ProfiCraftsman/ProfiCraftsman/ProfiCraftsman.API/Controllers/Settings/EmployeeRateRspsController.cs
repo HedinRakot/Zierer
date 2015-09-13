@@ -23,9 +23,10 @@ namespace ProfiCraftsman.API.Controllers.Settings
         {
             model.employeeId = entity.EmployeeId;
             model.jobPositionId = entity.JobPositionId;
-            model.customPrice = entity.CustomPrice;
             model.fromDate = entity.FromDate;
             model.toDate = entity.ToDate;
+            model.salaryType = entity.SalaryType;
+            model.salary = entity.Salary;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
         }
@@ -33,9 +34,10 @@ namespace ProfiCraftsman.API.Controllers.Settings
         {
             entity.EmployeeId = model.employeeId;
             entity.JobPositionId = model.jobPositionId;
-            entity.CustomPrice = model.customPrice;
             entity.FromDate = model.fromDate;
             entity.ToDate = model.toDate;
+            entity.SalaryType = model.salaryType;
+            entity.Salary = model.salary;
         }
     }
 }

@@ -12,15 +12,18 @@ define([
 			,jobPositionId: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('EmployeeRateRsp', 'jobPositionId'), 
 				                    validation: { required: true } }			
-			,customPrice: { type: "number", 
-			                        editable: Application.canTableItemBeEdit('EmployeeRateRsp', 'customPrice'), 
-				                    validation: { required: false } }			
 			,fromDate: { type: "date", 
 			                        editable: Application.canTableItemBeEdit('EmployeeRateRsp', 'fromDate'), 
 				                    validation: { required: true, date: true } }			
 			,toDate: { type: "date", 
 			                        editable: Application.canTableItemBeEdit('EmployeeRateRsp', 'toDate'), 
 				                    validation: { required: true, date: true } }			
+			,salaryType: { type: "number", 
+			                        editable: Application.canTableItemBeEdit('EmployeeRateRsp', 'salaryType'), 
+				                    validation: { required: true } }			
+			,salary: { type: "number", 
+			                        editable: Application.canTableItemBeEdit('EmployeeRateRsp', 'salary'), 
+				                    validation: { required: true } }			
 		},
 		defaults: function () {
 			var dnf = new Date();

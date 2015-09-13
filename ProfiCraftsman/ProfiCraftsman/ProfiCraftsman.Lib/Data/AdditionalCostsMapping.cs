@@ -28,11 +28,6 @@ namespace ProfiCraftsman.Lib.Data
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
                 .IsRequired();
 
-            Property(t => t.Description)
-                .HasColumnName(AdditionalCosts.Fields.Description)
-                .IsUnicode()
-                .HasMaxLength(128);
-
             Property(t => t.Price)
                 .HasColumnName(AdditionalCosts.Fields.Price)
                 .IsRequired();
@@ -66,6 +61,11 @@ namespace ProfiCraftsman.Lib.Data
             Property(t => t.ProceedsAccountId)
                 .HasColumnName(AdditionalCosts.Fields.ProceedsAccountId)
                 .IsRequired();
+
+            Property(t => t.Description)
+                .HasColumnName(AdditionalCosts.Fields.Description)
+                .IsUnicode()
+                .HasMaxLength(128);
 
 
             //Relationships
