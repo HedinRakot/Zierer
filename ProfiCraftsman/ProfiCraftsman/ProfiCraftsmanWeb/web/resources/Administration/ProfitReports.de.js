@@ -12,6 +12,8 @@ define(function () {
 	    searchTitle: 'erweiterte Suche',
 	    apply: 'Suchen',
 	    cancel: 'Abbruch',
+
+	    additionalCostsSum: 'Nebenkosten Summe:',
 	};
 
 	return resources;

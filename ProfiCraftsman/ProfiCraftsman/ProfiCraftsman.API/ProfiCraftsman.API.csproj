@@ -191,6 +191,7 @@
     <Compile Include="Config\NotificationServerConfigSection.cs" />
     <Compile Include="Controllers\Administration\ReportOrdersController.cs" />
     <Compile Include="Controllers\Administration\ReportPositionsController.cs" />
+    <Compile Include="Controllers\Administration\ProfitReportsController.cs" />
     <Compile Include="Controllers\Administration\TripsController.cs" />
     <Compile Include="Controllers\InvoiceStornos\InvoiceStornosController.cs" />
     <Compile Include="Controllers\Invoices\GenerateMonthInvoicesController.cs" />

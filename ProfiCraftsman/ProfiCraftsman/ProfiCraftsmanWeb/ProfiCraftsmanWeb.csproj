@@ -332,6 +332,7 @@
     <Content Include="web\models\Administration\FilterProfitReports.js" />
     <Content Include="web\models\Administration\FilterReportOrders.js" />
     <Content Include="web\models\Administration\FilterTrips.js" />
+    <Content Include="web\models\Administration\ProfitReports.js" />
     <Content Include="web\models\Administration\ReportOrders.js" />
     <Content Include="web\models\Administration\ReportPositions.js" />
     <Content Include="web\models\Administration\Trip.js" />

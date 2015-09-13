@@ -1,11 +1,12 @@
-define([
+﻿define([
 	'base/base-object-tab-view',
     'kendo/kendo.tabstrip',
     'mixins/bound-form',
     'mixins/kendo-widget-form',
 	'mixins/kendo-validator-form',
-    'models/Administration/FilterProfitReports'
-], function (BaseView, KendoTab, BoundForm, KendoWidgetForm, KendoValidatorForm, FilterModel) {
+    'models/Administration/FilterProfitReports',
+    'models/Administration/ProfitReports',
+], function (BaseView, KendoTab, BoundForm, KendoWidgetForm, KendoValidatorForm, FilterModel, Model) {
     'use strict';
 
     var toggle = function () {
@@ -47,13 +48,37 @@ define([
 	    }
 	},
 
+    getValues = function (self) {
+
+        self.model.save({
+            fromDate: self.filterModel.get('fromDate'),
+            toDate: self.filterModel.get('toDate')
+        },
+                {
+                    success: function (model, response) {
+
+                    },
+                    error: function (model, response) {
+
+                        require(['base/information-view'], function (View) {
+                            var view = new View({
+                                title: 'Fehler',
+                                message: 'Die Daten konnten nicht geladen werden. Versuchen Sie bitte später nochmals.'
+                            });
+                            self.addView(view);
+                            self.$el.append(view.render().$el);
+                        });
+                    }
+                });
+    },
+
     view = BaseView.extend({
 
         getFilters: function () {
 
             var result = [],
-                fromDate = this.model.get('fromDate'),
-                toDate = this.model.get('toDate');
+                fromDate = this.filterModel.get('fromDate'),
+                toDate = this.filterModel.get('toDate');
 
             result.push({
                 field: 'fromDate',
@@ -70,23 +95,16 @@ define([
             return result;
         },
 
-        bindings: function () {
-
-            var self = this;
-
-            var result = {
-
-                '#fromDate': 'fromDate',
-                '#toDate': 'toDate',
-            };
-
-            return result;
-        },
-
         initialize: function () {
             view.__super__.initialize.apply(this, arguments);
 
-            this.model = new FilterModel();
+            var self = this;
+
+            self.filterModel = new FilterModel();
+
+            self.model = new Model();
+
+            getValues(self);
         },
 
         render: function () {
@@ -94,18 +112,36 @@ define([
 
             view.__super__.render.apply(self, arguments);
 
+            self.stickit(self.filterModel, {
+
+                '#fromDate': 'fromDate',
+                '#toDate': 'toDate',
+            });
+
+
+            var bindingsModel = {
+                '#additionalCostsSum': 'additionalCostsSum'
+            };
+
+            self.stickit(self.model, bindingsModel);
+
+
             self.$el.delegate('button[type=submit]', 'click.base-filter-view', function (e) {
                 e.preventDefault();
 
                 setFilters.call(self);
+
+                getValues(self);
             });
 
             self.$el.delegate('button[type=reset]', 'click.base-filter-view', function (e) {
                 e.preventDefault();
 
-                self.model.clear().set(self.model.defaults);
+                self.filterModel.clear().set(self.filterModel.defaults);
 
                 setFilters.call(self);
+
+                getValues(self);
             });
 
             self.$el.delegate('.toggle', 'click.base-filter-view', _.bind(toggle, this));
@@ -114,11 +150,11 @@ define([
         },
 
         tabs: function () {
-            
+
             var result = [
                 { view: 'l!t!Administration/ReportAdditionalCosts', selector: '.additionalCosts' },
             ];
-            
+
             return result;
         }
     });

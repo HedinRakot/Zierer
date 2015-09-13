@@ -11,6 +11,8 @@ define(function () {
         searchTitle: 'Advanced search',
         apply: 'Apply',
         cancel: 'Cancel',
+
+        additionalCostsSum: 'Additional costs sum',
     };
 
     return resources;
