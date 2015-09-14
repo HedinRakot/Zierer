@@ -17,6 +17,8 @@
         showEditButton: false,
         showDeleteButton: false,
 
+        gridSelector: '.reportOrders',
+
         editItemTitle: function () {
             return '';
         },

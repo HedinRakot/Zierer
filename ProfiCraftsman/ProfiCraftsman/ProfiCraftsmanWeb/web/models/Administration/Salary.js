@@ -8,7 +8,7 @@ define(function () {
 			,employeeName: { type: "string", 
 			                        editable: false, 
 				                    validation: { required: false } }			
-			,amount: { type: "string", 
+			,amountString: { type: "string", 
 			                        editable: false, 
 				                    validation: { required: false } }													
 		}

@@ -118,6 +118,9 @@
     <Compile Include="Entities\Employees.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\ForeignProducts.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Instruments.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
@@ -134,6 +137,9 @@
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\JobPositions.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MaterialDeliveryRsp.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Materials.cs">
@@ -254,6 +260,9 @@
     <Compile Include="Managers\IEmployeesManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Managers\IForeignProductsManager.cs">
+      <DependentUpon>IManagers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Managers\IInstrumentsManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
@@ -261,6 +270,9 @@
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\IJobPositionsManager.cs">
+      <DependentUpon>IManagers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\IMaterialDeliveryRspManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\IMaterialsManager.cs">

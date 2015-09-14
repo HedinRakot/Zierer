@@ -17,7 +17,6 @@ namespace ProfiCraftsman.API.Controllers.Settings
                 var clauses = new List<string>();
 
                 clauses.AddRange(new[] {
-                        base.BuildWhereClause<T>(new Filter { Field = "Name", Operator = filter.Operator, Value = filter.Value }),
                         base.BuildWhereClause<T>(new Filter { Field = "Description", Operator = filter.Operator,
                             Value = filter.Value }),
                     });

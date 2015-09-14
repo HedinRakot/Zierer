@@ -41,6 +41,10 @@ namespace ProfiCraftsman.Contracts.Enums
     		///</summary>
     		public const int Materials = 4;
     		///<summary>
+    		/// Grant for edit ForeignProducts table
+    		///</summary>
+    		public const int ForeignProducts = 23;
+    		///<summary>
     		/// Grant for edit Autos table
     		///</summary>
     		public const int Autos = 16;

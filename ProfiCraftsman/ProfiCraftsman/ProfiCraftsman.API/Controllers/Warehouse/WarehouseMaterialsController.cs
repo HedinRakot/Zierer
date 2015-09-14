@@ -20,8 +20,13 @@ namespace ProfiCraftsman.API.Controllers.Settings
     [AuthorizeByPermissions(PermissionTypes = new[] { Permissions.WarehouseMaterials })]
     public partial class WarehouseMaterialsController : ClientApiController<WarehouseMaterialModel, WarehouseMaterials, int, IWarehouseMaterialsManager>
     {
+        protected IMaterialDeliveryRspManager materialDeliveryRspManager { get; set; }
 
-        public WarehouseMaterialsController(IWarehouseMaterialsManager manager) : base(manager) { }
+        public WarehouseMaterialsController(IWarehouseMaterialsManager manager, IMaterialDeliveryRspManager materialDeliveryRspManager) : 
+            base(manager)
+        {
+            this.materialDeliveryRspManager = materialDeliveryRspManager;
+        }
 
         protected override void EntityToModel(WarehouseMaterials entity, WarehouseMaterialModel model)
         {
@@ -37,8 +42,33 @@ namespace ProfiCraftsman.API.Controllers.Settings
         protected override void ModelToEntity(WarehouseMaterialModel model, WarehouseMaterials entity, ActionTypes actionType)
         {
             entity.MaterialId = model.materialId;
-            entity.IsAmount = model.isAmount;
             entity.MustAmount = model.mustAmount;
+
+            if(actionType == ActionTypes.Add)
+            {
+                //todo delete
+                //materialDeliveryRspManager.AddEntity(new MaterialDeliveryRsp()
+                //{
+                //    Amount = model.isAmount,
+                //    MaterialId = entity.MaterialId
+                //});
+            }
+            else if (actionType == ActionTypes.Update)
+            {
+                materialDeliveryRspManager.AddEntity(new MaterialDeliveryRsp()
+                {
+                    Amount = model.isAmount - entity.IsAmount,
+                    MaterialId = entity.MaterialId,
+                    CreateDate = DateTime.Now,
+                    ChangeDate = DateTime.Now
+                });
+            }
+            else
+            {
+                //todo ?
+            }
+
+            entity.IsAmount = model.isAmount;
         }
 
         protected override string BuildWhereClause<T>(Filter filter)

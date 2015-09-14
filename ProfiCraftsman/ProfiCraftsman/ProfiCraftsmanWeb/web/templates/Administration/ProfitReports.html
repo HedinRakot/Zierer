@@ -20,17 +20,40 @@
 </div>
 
 <br />
+<label data-localized="materialsSum"></label>
+<input type="text" id="materialsSum" name="materialsSum" readonly="readonly" class="k-textbox" style="background-color: lightgrey" />
+<br />
+<br />
 <label data-localized="additionalCostsSum"></label>
 <input type="text" id="additionalCostsSum" name="additionalCostsSum" readonly="readonly" class="k-textbox" style="background-color: lightgrey" />
+<br />
+<br />
+<label data-localized="foreignProductsSum"></label>
+<input type="text" id="foreignProductsSum" name="foreignProductsSum" readonly="readonly" class="k-textbox" style="background-color: lightgrey" />
+<br />
+<br />
+<label data-localized="salary"></label>:
+<input type="text" id="salary" name="salary" readonly="readonly" class="k-textbox" style="background-color: lightgrey" />
+<br />
+<br />
+<label data-localized="totalOrdersSum"></label>:
+<input type="text" id="totalOrdersSum" name="totalOrdersSum" readonly="readonly" class="k-textbox" style="background-color: lightgrey" />
+
 
 <br />
 <br />
 
 <div class="tab-strip">
     <ul>
-        <li class="k-state-active" data-localized="additionalCosts:a">additionalCosts</li>
+        <li class="k-state-active" data-localized="materials:a">materials</li>
+        <li class="k-state" data-localized="additionalCosts:a">additionalCosts</li>
+        <li class="k-state" data-localized="foreignProducts:a">foreignProducts</li>
         <li class="k-state" data-localized="salary:a">salary</li>
+        <li class="k-state" data-localized="orders:a">orders</li>
     </ul>
+    <div class="materials"><label data-localized="dataLoading"></label></div>
     <div class="additionalCosts"><label data-localized="dataLoading"></label></div>
+    <div class="foreignProducts"><label data-localized="dataLoading"></label></div>
     <div class="salary"><label data-localized="dataLoading"></label></div>
+    <div class="orders"><label data-localized="dataLoading"></label></div>
 </div>

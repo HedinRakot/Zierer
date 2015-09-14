@@ -15,7 +15,10 @@ namespace ProfiCraftsman.API.Models
         public string employeeName { get; set; }
         
         [DataMember]
-        public string amount { get; set; }
+        public double amount { get; set; }
+
+        [DataMember]
+        public string amountString { get; set; }
 
         [DataMember]
         public string date { get; set; }   

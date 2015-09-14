@@ -10,6 +10,7 @@ namespace ProfiCraftsman.API.Controllers
         public bool AdditionalCostTypes { get; set;}
         public bool ProceedsAccounts { get; set;}
         public bool Materials { get; set;}
+        public bool ForeignProducts { get; set;}
         public bool Autos { get; set;}
         public bool Permission { get; set;}
         public bool JobPositions { get; set;}

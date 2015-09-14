@@ -3,10 +3,10 @@ define(function () {
 
 	var resources = {
 
-		add: 'Nebenkosten anlegen',
-	    edit: 'Nebenkosten editieren',
+		add: 'Sonstige Kosten anlegen',
+	    edit: 'Sonstige Kosten editieren',
 	    masterData: 'Einstellungen',
-	    pageTitle: 'Nebenkosten',
+	    pageTitle: 'Sonstige Kosten',
 		pleaseSelect: 'Bitte auswählen',
 		price: 'Preis',	
 		automatic: 'Auto',	

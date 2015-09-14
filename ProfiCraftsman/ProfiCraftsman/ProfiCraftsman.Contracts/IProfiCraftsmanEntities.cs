@@ -86,6 +86,14 @@ namespace ProfiCraftsman.Contracts
         /// </summary>
         IQueryable<InvoicePayments> InvoicePayments{get;}
         /// <summary>
+        ///     Set of <see cref="MaterialDeliveryRsp"/> entities from table dbo.Material_Delivery_Rsp
+        /// </summary>
+        IQueryable<MaterialDeliveryRsp> MaterialDeliveryRsp{get;}
+        /// <summary>
+        ///     Set of <see cref="ForeignProducts"/> entities from table dbo.ForeignProducts
+        /// </summary>
+        IQueryable<ForeignProducts> ForeignProducts{get;}
+        /// <summary>
         ///     Set of <see cref="Autos"/> entities from table dbo.Autos
         /// </summary>
         IQueryable<Autos> Autos{get;}

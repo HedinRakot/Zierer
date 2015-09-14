@@ -59,6 +59,93 @@ namespace ProfiCraftsman.Lib.Managers
                 ref totalPriceWithoutDiscountWithoutTax, ref totalPriceWithoutTax, ref totalPrice);
         }
 
+        public static double CalculateTotalPrice(int orderId,
+            ITermPositionsManager termPositionsManager,
+            IPositionsManager positionsManager,
+            ITermCostsManager termCostsManager,
+            ITaxesManager taxesManager,
+            IOrdersManager orderManager,
+            ref double profit)
+        {
+            double result = 0;
+
+            //TODO discuss with customer - take positions where proccessed amount not null (but take with 0)
+            var termPositions = termPositionsManager.GetEntities(o => !o.DeleteDate.HasValue && o.Terms.OrderId == orderId && o.ProccessedAmount.HasValue).ToList();
+
+            foreach (var termPosition in termPositions)
+            {
+                //positions
+                if (termPosition.ProccessedAmount.Value > 0)
+                {
+                    var positionProfit = CalculatePositionPrice(termPosition.Positions.Price, termPosition.ProccessedAmount.Value,
+                        termPosition.Positions.Payment);
+
+                    result += positionProfit;
+
+                    //todo calculate profit
+                    profit += positionProfit;
+                }
+
+                //materials
+                foreach (var material in termPosition.TermPositionMaterialRsps.Where(o => !o.DeleteDate.HasValue && o.Amount.HasValue))
+                {
+                    var amount = material.Amount.Value;
+                    if (material.Materials.MaterialAmountTypes == MaterialAmountTypes.Meter)
+                    {
+                        if (material.Materials.Length != 0)
+                        {
+                            amount = amount / (double)material.Materials.Length.Value;
+                        }
+                        else
+                        {
+                            //todo
+                        }
+                    }
+
+                    result += CalculatePositionPrice(material.Materials.Price, amount, PaymentTypes.Standard);
+
+                    var materialProfit = material.Materials.Price * amount - material.Materials.BoughtPrice * amount;
+                    profit += materialProfit;
+                }
+            }
+
+            //material positions without terms
+            var materialPositionsWithoutTerms = positionsManager.GetEntities(o => o.OrderId == orderId && !o.DeleteDate.HasValue &&
+                !o.TermId.HasValue && o.MaterialId.HasValue && o.IsMaterialPosition).ToList();
+            foreach (var position in materialPositionsWithoutTerms)
+            {
+                var price = CalculatePositionPrice(position.Price, position.Amount, position.Payment);
+
+                result += price;
+
+                profit += price - position.Materials.BoughtPrice * position.Amount;
+            }
+
+            //extra costs
+            var termCosts = termCostsManager.GetEntities(o => !o.DeleteDate.HasValue && o.Terms.OrderId == orderId).ToList();
+            foreach (var termCost in termCosts)
+            {
+                var price = CalculatePositionPrice(termCost.Price, 1, PaymentTypes.Standard);
+
+                result += price;
+
+                profit += price - termCost.Costs;
+            }
+
+
+            //TODO get taxes from invoices and calculate taxes only for open positions
+            var taxes = CalculateTaxes(taxesManager);
+            var order = orderManager.GetById(orderId);
+            var taxValue = (result / (double)100) * taxes;
+            if (order.Customers.WithTaxes)
+            {
+                //with taxes
+                result += taxValue;
+            }
+
+            return result;
+        }
+        
         public static double CalculateTaxes(ITaxesManager taxesManager)
         {
             var taxValues = taxesManager.GetEntities(o => o.FromDate.Date <= DateTime.Now.Date && o.ToDate.Date >= DateTime.Now).ToList();

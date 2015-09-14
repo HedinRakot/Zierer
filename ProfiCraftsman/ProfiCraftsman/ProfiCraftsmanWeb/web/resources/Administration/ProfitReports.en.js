@@ -4,7 +4,9 @@ define(function () {
     var resources = {
         title: 'Relationships',
         dataLoading: 'Data is loading. Please wait...',
+        materials: 'Materials delivery',
         additionalCosts: 'Additional costs',
+        foreignProducts: 'Foreign products',
         salary: 'Salary',
 
         fromDate: 'From Date',
@@ -13,7 +15,9 @@ define(function () {
         apply: 'Apply',
         cancel: 'Cancel',
 
-        additionalCostsSum: 'Additional costs sum',
+        additionalCostsSum: 'Additional costs sum:',
+        foreignProductsSum: 'Foreign products sum:',
+        materialsSum: 'Materials sum:',
     };
 
     return resources;

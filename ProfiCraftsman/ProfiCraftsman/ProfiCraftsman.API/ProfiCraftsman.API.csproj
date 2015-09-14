@@ -190,6 +190,8 @@
     <Compile Include="ClientControllers\TermViewModelHelper.cs" />
     <Compile Include="Config\NotificationServerConfigSection.cs" />
     <Compile Include="Controllers\Administration\ReportOrdersController.cs" />
+    <Compile Include="Controllers\Administration\ReportMaterialsController.cs" />
+    <Compile Include="Controllers\Administration\SalaryHelper.cs" />
     <Compile Include="Controllers\Administration\SalaryController.cs" />
     <Compile Include="Controllers\Administration\ReportPositionsController.cs" />
     <Compile Include="Controllers\Administration\ProfitReportsController.cs" />
@@ -205,6 +207,7 @@
     <Compile Include="Controllers\Settings\AdditionalCostTypesController.cs">
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\Settings\Custom.ForeignProductsController.cs" />
     <Compile Include="Controllers\Settings\Custom.EmployeesController.cs" />
     <Compile Include="Controllers\Settings\Custom.InstrumentsController.cs" />
     <Compile Include="Controllers\Settings\Custom.ProceedsAccountsController.cs" />
@@ -212,6 +215,9 @@
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Settings\EmployeeRateRspsController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Settings\ForeignProductsController.cs">
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Settings\ProceedsAccountsController.cs">
@@ -323,6 +329,8 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Models\Administration\ReportOrdersModel.cs" />
+    <Compile Include="Models\Administration\ProfitReportsModel.cs" />
+    <Compile Include="Models\Administration\ReportMaterialModel.cs" />
     <Compile Include="Models\Administration\SalaryModel.cs" />
     <Compile Include="Models\Administration\ReportPositionsModel.cs" />
     <Compile Include="Models\Administration\TripsModel.cs" />
@@ -340,6 +348,9 @@
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Settings\EmployeeRateRspModel.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Settings\ForeignProductsModel.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Settings\ProceedsAccountsModel.cs">

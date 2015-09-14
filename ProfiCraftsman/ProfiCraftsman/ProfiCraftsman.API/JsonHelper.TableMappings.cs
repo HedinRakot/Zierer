@@ -78,6 +78,15 @@ namespace ProfiCraftsman.API
                 {"Amount", "amount"},
             });
 
+            tables.Add("ForeignProducts", new TableMapping("ForeignProducts", "ForeignProducts", 5)
+            {
+                {"Description", "description"},
+                {"Price", "price"},
+                {"FromDate", "fromDate"},
+                {"ToDate", "toDate"},
+                {"ProceedsAccountId", "proceedsAccountId"},
+            });
+
             tables.Add("Autos", new TableMapping("Autos", "Autos", 3)
             {
                 {"Number", "number"},

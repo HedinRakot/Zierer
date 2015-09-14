@@ -31,7 +31,7 @@
 			
 			return [
 				{ field: 'employeeName', title: this.resources.employeeName },
-				{ field: 'amount', title: this.resources.amount },
+				{ field: 'amountString', title: this.resources.amount },
 			];
 		},		
 

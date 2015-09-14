@@ -5,7 +5,9 @@ define(function () {
 
 	    title: 'Zuordnungen',
 	    dataLoading: 'Daten werden geladen. Bitte warten...',
-	    additionalCosts: 'Nebenkosten',
+	    materials: 'Wareneingang',
+	    additionalCosts: 'Sonstige Kosten',
+	    foreignProducts: 'Fremdleistungen',
 	    salary: 'Mitarbeiterlohn',
 
 	    fromDate: 'Von Datum',
@@ -15,6 +17,8 @@ define(function () {
 	    cancel: 'Abbruch',
 
 	    additionalCostsSum: 'Nebenkosten Summe:',
+	    foreignProductsSum: 'Fremdleistungen Summe:',
+	    materialsSum: 'Wareneingang Summe:',
 	};
 
 	return resources;

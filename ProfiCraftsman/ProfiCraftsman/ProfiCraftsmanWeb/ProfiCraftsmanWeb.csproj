@@ -236,6 +236,7 @@
     </Content>
     <Content Include="web\collections\Administration\ReportOrders.js" />
     <Content Include="web\collections\Administration\ReportPositions.js" />
+    <Content Include="web\collections\Administration\ReportMaterials.js" />
     <Content Include="web\collections\Administration\Salary.js" />
     <Content Include="web\collections\Administration\Trips.js" />
     <Content Include="web\collections\Invoices\InvoicePayments.js" />
@@ -248,6 +249,9 @@
       <DependentUpon>web.collections.tt</DependentUpon>
     </Content>
     <Content Include="web\collections\Settings\EmployeeRateRsps.js">
+      <DependentUpon>web.collections.tt</DependentUpon>
+    </Content>
+    <Content Include="web\collections\Settings\ForeignProducts.js">
       <DependentUpon>web.collections.tt</DependentUpon>
     </Content>
     <Content Include="web\collections\Settings\Instruments.js">
@@ -336,6 +340,7 @@
     <Content Include="web\models\Administration\ProfitReports.js" />
     <Content Include="web\models\Administration\ReportOrders.js" />
     <Content Include="web\models\Administration\ReportPositions.js" />
+    <Content Include="web\models\Administration\ReportMaterial.js" />
     <Content Include="web\models\Administration\Salary.js" />
     <Content Include="web\models\Administration\Trip.js" />
     <Content Include="web\models\Invoices\InvoicePayments.js" />
@@ -356,6 +361,9 @@
     <Content Include="web\models\Settings\FilterCustomProducts.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
+    <Content Include="web\models\Settings\FilterForeignProducts.js">
+      <DependentUpon>web.models.tt</DependentUpon>
+    </Content>
     <Content Include="web\models\Settings\FilterInstruments.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
@@ -365,6 +373,9 @@
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
     <Content Include="web\models\Settings\FilterProceedsAccounts.js" />
+    <Content Include="web\models\Settings\ForeignProducts.js">
+      <DependentUpon>web.models.tt</DependentUpon>
+    </Content>
     <Content Include="web\models\Settings\Instruments.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
@@ -496,8 +507,12 @@
     <Content Include="web\resources\Administration\FilterReportOrders.en.js" />
     <Content Include="web\resources\Administration\FilterTrips.de.js" />
     <Content Include="web\resources\Administration\FilterTrips.en.js" />
+    <Content Include="web\resources\Administration\ReportForeignProducts.de.js" />
+    <Content Include="web\resources\Administration\ReportForeignProducts.en.js" />
+    <Content Include="web\resources\Administration\ReportMaterials.de.js" />
     <Content Include="web\resources\Administration\Salary.de.js" />
     <Content Include="web\resources\Administration\ReportAdditionalCosts.de.js" />
+    <Content Include="web\resources\Administration\ReportMaterials.en.js" />
     <Content Include="web\resources\Administration\Salary.en.js" />
     <Content Include="web\resources\Administration\ReportAdditionalCosts.en.js" />
     <Content Include="web\resources\Administration\ReportOrders.de.js" />
@@ -554,6 +569,12 @@
     <Content Include="web\resources\Settings\AddEmployeeRateRsp.en.js">
       <DependentUpon>web.add.resources.tt</DependentUpon>
     </Content>
+    <Content Include="web\resources\Settings\AddForeignProducts.de.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\AddForeignProducts.en.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
     <Content Include="web\resources\Settings\AdditionalCostTypes.de.js">
       <DependentUpon>web.resources.tt</DependentUpon>
     </Content>
@@ -608,6 +629,12 @@
     <Content Include="web\resources\Settings\FilterCustomProducts.en.js">
       <DependentUpon>web.filter.resources.tt</DependentUpon>
     </Content>
+    <Content Include="web\resources\Settings\FilterForeignProducts.de.js">
+      <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\FilterForeignProducts.en.js">
+      <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
     <Content Include="web\resources\Settings\FilterRates.de.js">
       <DependentUpon>web.filter.resources.tt</DependentUpon>
     </Content>
@@ -616,6 +643,18 @@
     </Content>
     <Content Include="web\resources\Settings\FilterProceedsAccounts.de.js" />
     <Content Include="web\resources\Settings\FilterProceedsAccounts.en.js" />
+    <Content Include="web\resources\Settings\ForeignProducts.de.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\ForeignProducts.en.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\ForeignProductsRelationships.de.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\ForeignProductsRelationships.en.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
+    </Content>
     <Content Include="web\resources\Settings\ProceedsAccounts.de.js">
       <DependentUpon>web.resources.tt</DependentUpon>
     </Content>
@@ -1154,6 +1193,8 @@
     <Content Include="web\router.js" />
     <Content Include="web\templates\Administration\FilterReportOrders.html" />
     <Content Include="web\templates\Administration\FilterTrips.html" />
+    <Content Include="web\templates\Administration\ReportMaterials.html" />
+    <Content Include="web\templates\Administration\ReportForeignProducts.html" />
     <Content Include="web\templates\Administration\Salary.html" />
     <Content Include="web\templates\Administration\ReportAdditionalCosts.html" />
     <Content Include="web\templates\Administration\ReportOrders.html" />
@@ -1183,6 +1224,9 @@
     <Content Include="web\templates\Settings\AddEmployeeRateRsp.html">
       <DependentUpon>web.add.templates.tt</DependentUpon>
     </Content>
+    <Content Include="web\templates\Settings\AddForeignProducts.html">
+      <DependentUpon>web.add.templates.tt</DependentUpon>
+    </Content>
     <Content Include="web\templates\Settings\AdditionalCostTypes.html">
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
@@ -1210,10 +1254,19 @@
     <Content Include="web\templates\Settings\FilterCustomProducts.html">
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
+    <Content Include="web\templates\Settings\FilterForeignProducts.html">
+      <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
     <Content Include="web\templates\Settings\FilterRates.html">
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
     <Content Include="web\templates\Settings\FilterProceedsAccounts.html" />
+    <Content Include="web\templates\Settings\ForeignProducts.html">
+      <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\ForeignProductsRelationships.html">
+      <DependentUpon>web.relationships.templates.tt</DependentUpon>
+    </Content>
     <Content Include="web\templates\Settings\ProceedsAccounts.html">
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
@@ -1491,6 +1544,8 @@
     <Content Include="web\templates\Warehouse\Warehouse.html" />
     <Content Include="web\views\Administration\FilterReportOrders.js" />
     <Content Include="web\views\Administration\FilterTrips.js" />
+    <Content Include="web\views\Administration\ReportMaterials.js" />
+    <Content Include="web\views\Administration\ReportForeignProducts.js" />
     <Content Include="web\views\Administration\Salary.js" />
     <Content Include="web\views\Administration\ReportAdditionalCosts.js" />
     <Content Include="web\views\Administration\ReportOrders.js" />
@@ -1518,6 +1573,9 @@
       <DependentUpon>web.add.views.tt</DependentUpon>
     </Content>
     <Content Include="web\views\Settings\AddEmployeeRateRsp.js">
+      <DependentUpon>web.add.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\AddForeignProducts.js">
       <DependentUpon>web.add.views.tt</DependentUpon>
     </Content>
     <Content Include="web\views\Settings\AdditionalCostTypes.js">
@@ -1554,10 +1612,19 @@
     <Content Include="web\views\Settings\FilterCustomProducts.js">
       <DependentUpon>web.views.tt</DependentUpon>
     </Content>
+    <Content Include="web\views\Settings\FilterForeignProducts.js">
+      <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
     <Content Include="web\views\Settings\FilterRates.js">
       <DependentUpon>web.views.tt</DependentUpon>
     </Content>
     <Content Include="web\views\Settings\FilterProceedsAccounts.js" />
+    <Content Include="web\views\Settings\ForeignProducts.js">
+      <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\ForeignProductsRelationships.js">
+      <DependentUpon>web.relationships.views.tt</DependentUpon>
+    </Content>
     <Content Include="web\views\Settings\ImportMaterialResults.js" />
     <Content Include="web\views\Settings\ImportMaterials.js" />
     <Content Include="web\views\Settings\ProceedsAccounts.js">

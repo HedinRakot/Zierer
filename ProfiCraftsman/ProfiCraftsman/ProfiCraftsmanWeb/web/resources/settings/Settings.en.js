@@ -9,6 +9,7 @@ define(function () {
         ProceedsAccounts: 'Proceeds accounts',
         Materials: 'Material',
         ProductMaterialRsps: 'Materials',
+        ForeignProducts: 'Foreign products',
         Autos: 'Auto',
         Permissions: 'Permission',
         JobPositions: 'Job position',

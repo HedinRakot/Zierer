@@ -15,7 +15,7 @@
 
 	setFilters = function () {
 	    var self = this,
-            grids = ['.additionalCostsGrid', '.salaryGrid'];
+            grids = ['.additionalCostsGrid', '.salaryGrid', '.reportOrders', '.foreignProductsGrid', '.materialsGrid'];
 
 	    grids.forEach(function(gridName, i) {
 
@@ -125,7 +125,11 @@
 
 
             var bindingsModel = {
-                '#additionalCostsSum': 'additionalCostsSum'
+                '#materialsSum': 'materialsSum',
+                '#additionalCostsSum': 'additionalCostsSum',
+                '#foreignProductsSum': 'foreignProductsSum',
+                '#salary': 'salary',
+                '#totalOrdersSum': 'totalOrdersSum',
             };
 
             self.stickit(self.model, bindingsModel);
@@ -157,8 +161,11 @@
         tabs: function () {
 
             var result = [
+                { view: 'l!t!Administration/ReportMaterials', selector: '.materials' },
                 { view: 'l!t!Administration/ReportAdditionalCosts', selector: '.additionalCosts' },
+                { view: 'l!t!Administration/ReportForeignProducts', selector: '.foreignProducts' },
                 { view: 'l!t!Administration/Salary', selector: '.salary' },
+                { view: 'l!t!Administration/ReportOrders', selector: '.orders' },
             ];
 
             return result;

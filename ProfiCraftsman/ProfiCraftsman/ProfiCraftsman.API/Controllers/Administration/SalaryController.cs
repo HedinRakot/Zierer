@@ -24,8 +24,8 @@ namespace ProfiCraftsman.API.Controllers
     [AuthorizeByPermissions(PermissionTypes = new[] { Permissions.ProfitReports })]
     public partial class SalaryController: ApiController
     {
-        private IEmployeeRateRspManager employeeRateRspManager { get; set; }
-        private IEmployeesManager employeeManager { get; set; }
+        protected IEmployeeRateRspManager employeeRateRspManager { get; set; }
+        protected IEmployeesManager employeeManager { get; set; }
 
         public SalaryController(IEmployeeRateRspManager employeeRateRspManager, IEmployeesManager employeeManager) 
         {
@@ -68,31 +68,7 @@ namespace ProfiCraftsman.API.Controllers
             var toDate = DateTime.Now.Date;
 
             GetFilters(filtering, ref fromDate, ref toDate);
-            var result = new List<SalaryModel>();
-
-            var rates = employeeRateRspManager.GetEntities(o => o.SalaryTypes == SalaryTypes.Monthly).ToList(); //TODO delete check ?
-            var employees = employeeManager.GetEntities().ToList();
-
-            foreach (var employee in employees)
-            {
-                double amount = 0;
-                for (var date = fromDate; date < toDate; date = date.AddMonths(1))
-                {
-                    var rate = rates.Where(o => o.EmployeeId == employee.Id && o.FromDate <= date && date <= o.ToDate).FirstOrDefault();
-                    
-                    if(rate != null)
-                    {
-                        amount += rate.Salary;
-                    }
-                }
-
-                result.Add(new SalaryModel()
-                {
-                    Id = employee.Id,
-                    employeeName = employee.Name,
-                    amount = amount.ToString("N2") + " EUR"
-                });
-            }
+            var result = SalaryHelper.GetSalary(employeeRateRspManager, employeeManager, fromDate, toDate);
 
             return result;
         }

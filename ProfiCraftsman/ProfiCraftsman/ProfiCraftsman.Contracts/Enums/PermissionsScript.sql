@@ -107,6 +107,20 @@
 		WHERE ID = 4
 	END
 	
+	IF NOT EXISTS (SELECT ID FROM [ProfiCraftsman].[dbo].[PERMISSION] WHERE ID = 23 )
+	BEGIN
+		INSERT INTO [ProfiCraftsman].[dbo].[PERMISSION] ([Id], [Name], [Description], [CreateDate], [ChangeDate], [DeleteDate])
+		VALUES(23, 'ForeignProducts', 'Fremdleistung' ,GETDATE() ,GETDATE() ,NULL);
+		INSERT INTO [ProfiCraftsman].dbo.ROLE_PERMISSION_RSP(RoleId ,PermissionId ,CreateDate ,ChangeDate) 
+		VALUES (1 ,23 ,getdate() ,getdate());
+	END
+	ELSE
+	BEGIN
+		UPDATE [ProfiCraftsman].[dbo].[PERMISSION]
+		SET [DESCRIPTION] = 'Fremdleistung'
+		WHERE ID = 23
+	END
+	
 	IF NOT EXISTS (SELECT ID FROM [ProfiCraftsman].[dbo].[PERMISSION] WHERE ID = 16 )
 	BEGIN
 		INSERT INTO [ProfiCraftsman].[dbo].[PERMISSION] ([Id], [Name], [Description], [CreateDate], [ChangeDate], [DeleteDate])
@@ -208,14 +222,14 @@
 	IF NOT EXISTS (SELECT ID FROM [ProfiCraftsman].[dbo].[PERMISSION] WHERE ID = 5 )
 	BEGIN
 		INSERT INTO [ProfiCraftsman].[dbo].[PERMISSION] ([Id], [Name], [Description], [CreateDate], [ChangeDate], [DeleteDate])
-		VALUES(5, 'AdditionalCosts', 'Nebenkosten' ,GETDATE() ,GETDATE() ,NULL);
+		VALUES(5, 'AdditionalCosts', 'Sonstige Kosten' ,GETDATE() ,GETDATE() ,NULL);
 		INSERT INTO [ProfiCraftsman].dbo.ROLE_PERMISSION_RSP(RoleId ,PermissionId ,CreateDate ,ChangeDate) 
 		VALUES (1 ,5 ,getdate() ,getdate());
 	END
 	ELSE
 	BEGIN
 		UPDATE [ProfiCraftsman].[dbo].[PERMISSION]
-		SET [DESCRIPTION] = 'Nebenkosten'
+		SET [DESCRIPTION] = 'Sonstige Kosten'
 		WHERE ID = 5
 	END
 	
