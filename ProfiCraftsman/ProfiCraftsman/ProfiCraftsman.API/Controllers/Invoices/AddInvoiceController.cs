@@ -90,7 +90,7 @@ namespace ProfiCraftsman.API.Controllers.Invoices
 
                 double amount = 0;
                 var oldAmount = invoicePositions.Sum(o => o.Amount);
-                double usedAmount = termPosition.ProccessedAmount.Value;
+                double usedAmount = termPositions.Where(o => o.PositionId == termPosition.PositionId).Sum(o => o.ProccessedAmount.Value);
                 if (oldAmount == 0)
                 {
                     amount = usedAmount;
@@ -105,7 +105,7 @@ namespace ProfiCraftsman.API.Controllers.Invoices
                 {
                     var newPosition = new InvoicePositions()
                     {
-                        Positions = termPosition.Positions,
+                        PositionId = termPosition.PositionId,
                         Invoices = invoice,
                         Price = termPosition.Positions.Price,
                         Amount = amount,
@@ -115,6 +115,9 @@ namespace ProfiCraftsman.API.Controllers.Invoices
                     };
 
                     invoice.InvoicePositions.Add(newPosition);
+
+                    allInvoicePositions.Add(newPosition);
+
                     result = true;
                 }
 

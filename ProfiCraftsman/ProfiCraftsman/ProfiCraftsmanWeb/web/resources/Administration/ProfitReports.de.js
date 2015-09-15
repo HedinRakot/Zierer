@@ -9,7 +9,7 @@
 	    additionalCosts: 'Sonstige Kosten',
 	    foreignProducts: 'Fremdleistungen',
 	    salary: 'Mitarbeiterlohn',
-	    socialTaxes: 'Sociale Abgaben',
+	    socialTaxes: 'Soziale Abgaben',
 
 	    fromDate: 'Von Datum',
 	    toDate: 'Bis Datum',
@@ -24,7 +24,7 @@
 	    totalInvoicesSum: 'Gebucht:',
 	    totalPayedSum: 'Bezahlt:',
 	    totalProfitSum: 'Gewinn:',
-	    socialTaxesSum: 'Sociale Abgaben:',
+	    socialTaxesSum: 'Soziale Abgaben:',
 	    salarySum: 'Mitarbeiterlohn:',
 	};
 
