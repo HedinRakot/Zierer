@@ -59,18 +59,19 @@ namespace ProfiCraftsman.Lib.Managers
                 ref totalPriceWithoutDiscountWithoutTax, ref totalPriceWithoutTax, ref totalPrice);
         }
 
-        public static double CalculateTotalPrice(int orderId,
+        public static double CalculateTotalPrice(Orders order,
             ITermPositionsManager termPositionsManager,
             IPositionsManager positionsManager,
             ITermCostsManager termCostsManager,
             ITaxesManager taxesManager,
-            IOrdersManager orderManager,
+            DateTime? fromDate,
+            DateTime? toDate,
             ref double profit)
         {
             double result = 0;
 
             //TODO discuss with customer - take positions where proccessed amount not null (but take with 0)
-            var termPositions = termPositionsManager.GetEntities(o => !o.DeleteDate.HasValue && o.Terms.OrderId == orderId && o.ProccessedAmount.HasValue).ToList();
+            var termPositions = termPositionsManager.GetEntities(o => !o.DeleteDate.HasValue && o.Terms.OrderId == order.Id && o.ProccessedAmount.HasValue).ToList();
 
             foreach (var termPosition in termPositions)
             {
@@ -110,7 +111,7 @@ namespace ProfiCraftsman.Lib.Managers
             }
 
             //material positions without terms
-            var materialPositionsWithoutTerms = positionsManager.GetEntities(o => o.OrderId == orderId && !o.DeleteDate.HasValue &&
+            var materialPositionsWithoutTerms = positionsManager.GetEntities(o => o.OrderId == order.Id && !o.DeleteDate.HasValue &&
                 !o.TermId.HasValue && o.MaterialId.HasValue && o.IsMaterialPosition).ToList();
             foreach (var position in materialPositionsWithoutTerms)
             {
@@ -122,7 +123,7 @@ namespace ProfiCraftsman.Lib.Managers
             }
 
             //extra costs
-            var termCosts = termCostsManager.GetEntities(o => !o.DeleteDate.HasValue && o.Terms.OrderId == orderId).ToList();
+            var termCosts = termCostsManager.GetEntities(o => !o.DeleteDate.HasValue && o.Terms.OrderId == order.Id).ToList();
             foreach (var termCost in termCosts)
             {
                 var price = CalculatePositionPrice(termCost.Price, 1, PaymentTypes.Standard);
@@ -135,7 +136,7 @@ namespace ProfiCraftsman.Lib.Managers
 
             //TODO get taxes from invoices and calculate taxes only for open positions
             var taxes = CalculateTaxes(taxesManager);
-            var order = orderManager.GetById(orderId);
+
             var taxValue = (result / (double)100) * taxes;
             if (order.Customers.WithTaxes)
             {

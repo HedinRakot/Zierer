@@ -54,8 +54,8 @@ namespace ProfiCraftsman.API.Controllers
             model.communicationPartnerTitle = entity.CommunicationPartnerTitle;
 
             double profit = 0;
-            model.totalPrice = CalculationHelper.CalculateTotalPrice(entity.Id, 
-                termPositionsManager, positionsManager, termCostsManager, taxesManager, Manager,
+            model.totalPrice = CalculationHelper.CalculateTotalPrice(entity, 
+                termPositionsManager, positionsManager, termCostsManager, taxesManager, null, null,
                 ref profit).ToString("N2") + " EUR";
 
             var invoices = invoicesManager.GetEntities(o => !o.DeleteDate.HasValue && o.OrderId == entity.Id).ToList();

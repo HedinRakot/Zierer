@@ -39,9 +39,19 @@ namespace ProfiCraftsman.API.Controllers
         protected IOrdersManager orderManager { get; set; }
         protected IMaterialDeliveryRspManager materialDeliveryRspManager { get; set; }
 
+        protected ITermPositionsManager termPositionsManager { get; set; }
+        protected IPositionsManager positionsManager { get; set; }
+        protected ITermCostsManager termCostsManager { get; set; }
+        protected ITaxesManager taxesManager { get; set; }
+        protected IInvoicesManager invoicesManager { get; set; }
+
+
         public ProfitReportsController(IAdditionalCostsManager additionalCostsManager, 
             IEmployeeRateRspManager employeeRateRspManager, IEmployeesManager employeeManager, IOrdersManager orderManager,
-            IForeignProductsManager foreignProductsManager, IMaterialDeliveryRspManager materialDeliveryRspManager)
+            IForeignProductsManager foreignProductsManager, IMaterialDeliveryRspManager materialDeliveryRspManager,
+
+            ITermPositionsManager termPositionsManager, IPositionsManager positionsManager, ITermCostsManager termCostsManager,
+            ITaxesManager taxesManager, IInvoicesManager invoicesManager)
         {
             this.additionalCostsManager = additionalCostsManager;
             this.employeeRateRspManager = employeeRateRspManager;
@@ -49,6 +59,12 @@ namespace ProfiCraftsman.API.Controllers
             this.orderManager = orderManager;
             this.foreignProductsManager = foreignProductsManager;
             this.materialDeliveryRspManager = materialDeliveryRspManager;
+
+            this.termPositionsManager = termPositionsManager;
+            this.positionsManager = positionsManager;
+            this.termCostsManager = termCostsManager;
+            this.taxesManager = taxesManager;
+            this.invoicesManager = invoicesManager;
         }
 
 
@@ -117,7 +133,17 @@ namespace ProfiCraftsman.API.Controllers
 
 
             //orders
-            //var orders = orderManager.GetEntities()
+            var orders = orderManager.GetEntities(o => o.Terms.Any(t => t.Date >= model.FromDate.Value && t.Date <= model.ToDate.Value)).ToList();
+            double totalOrdersSum = 0;
+            foreach (var order in orders)
+            {
+                double profit = 0;
+                var totalPrice = CalculationHelper.CalculateTotalPrice(order,
+                    termPositionsManager, positionsManager, termCostsManager, taxesManager, model.FromDate.Value, model.ToDate.Value,
+                    ref profit);
+
+                totalOrdersSum += totalPrice;
+            }
 
             return Ok(new ProfitReportsModel ()
             {
@@ -125,6 +151,7 @@ namespace ProfiCraftsman.API.Controllers
                 additionalCostsSum = additionalCostsSum.ToString("N2") + " EUR",
                 foreignProductsSum = foreignProductsSum.ToString("N2") + " EUR",
                 salary = salary.ToString("N2") + " EUR",
+                totalOrdersSum = totalOrdersSum.ToString("N2") + " EUR",
             });
         }
     }
