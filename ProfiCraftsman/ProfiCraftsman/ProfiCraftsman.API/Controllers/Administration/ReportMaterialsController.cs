@@ -62,8 +62,8 @@ namespace ProfiCraftsman.API.Controllers
 
         protected IEnumerable<ReportMaterialModel> GetEntities(Filtering filtering)
         {
-            var fromDate = DateTime.Now.Date;
-            var toDate = DateTime.Now.Date;
+            var fromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            var toDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
 
             GetFilters(filtering, ref fromDate, ref toDate);
             var result = new List<ReportMaterialModel>();

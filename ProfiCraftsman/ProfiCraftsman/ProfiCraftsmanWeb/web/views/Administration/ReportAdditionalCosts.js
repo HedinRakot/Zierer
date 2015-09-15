@@ -26,6 +26,19 @@
 
         initialize: function () {
             view.__super__.initialize.apply(this, arguments);
+
+            var today = new Date();
+            var fromDate = new Date(today.getFullYear(), today.getMonth(), 1);
+
+            var days = new Date(today.getYear(),
+                    today.getMonth() + 1,
+                    0).getDate();
+
+            var toDate = new Date(today.getFullYear(), today.getMonth(), days);
+
+            this.defaultFiltering = [
+                { field: 'fromDate', operator: 'gte', value: fromDate },
+		        { field: 'toDate', operator: 'lte', value: toDate }];
         },
 		
 		columns: function () {

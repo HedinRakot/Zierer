@@ -64,8 +64,8 @@ namespace ProfiCraftsman.API.Controllers
 
         protected IEnumerable<SalaryModel> GetEntities(Filtering filtering)
         {
-            var fromDate = DateTime.Now.Date;
-            var toDate = DateTime.Now.Date;
+            var fromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            var toDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
 
             GetFilters(filtering, ref fromDate, ref toDate);
             var result = SalaryHelper.GetSalary(employeeRateRspManager, employeeManager, fromDate, toDate);

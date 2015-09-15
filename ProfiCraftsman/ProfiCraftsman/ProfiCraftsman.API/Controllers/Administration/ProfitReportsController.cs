@@ -54,6 +54,13 @@ namespace ProfiCraftsman.API.Controllers
 
         public IHttpActionResult Post(ProfitReportsSearchModel model)
         {
+            if (!model.FromDate.HasValue)
+                model.FromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+
+            if (!model.ToDate.HasValue)
+                model.ToDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
+
+
             //materials
             var materials = materialDeliveryRspManager.GetEntities();
             if (model.FromDate.HasValue)
@@ -83,7 +90,7 @@ namespace ProfiCraftsman.API.Controllers
 
             if (model.ToDate.HasValue)
             {
-                additionalCosts = additionalCosts.Where(o => (!o.ToDate.HasValue || o.ToDate.Value.Date >= model.ToDate.Value) && o.FromDate.Date <= model.ToDate.Value);
+                additionalCosts = additionalCosts.Where(o => (!o.ToDate.HasValue || o.ToDate.Value.Date <= model.ToDate.Value) && o.FromDate.Date <= model.ToDate.Value);
             }
 
             var additionalCostsSum = additionalCosts.Sum(o => o.Price);
@@ -98,14 +105,14 @@ namespace ProfiCraftsman.API.Controllers
 
             if (model.ToDate.HasValue)
             {
-                foreignProducts = foreignProducts.Where(o => (!o.ToDate.HasValue || o.ToDate.Value.Date >= model.ToDate.Value) && o.FromDate.Date <= model.ToDate.Value);
+                foreignProducts = foreignProducts.Where(o => (!o.ToDate.HasValue || o.ToDate.Value.Date <= model.ToDate.Value) && o.FromDate.Date <= model.ToDate.Value);
             }
 
             var foreignProductsSum = foreignProducts.Sum(o => o.Price);
 
 
             //salary
-            var salaries = SalaryHelper.GetSalary(employeeRateRspManager, employeeManager, model.FromDate ?? DateTime.Now, model.ToDate ?? DateTime.Now);
+            var salaries = SalaryHelper.GetSalary(employeeRateRspManager, employeeManager, model.FromDate.Value, model.ToDate.Value);
             var salary = salaries.Sum(o => o.amount);
 
 

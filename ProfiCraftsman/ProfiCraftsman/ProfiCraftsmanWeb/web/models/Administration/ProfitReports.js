@@ -20,7 +20,7 @@ define(function () {
             ,salary: { type: "string", 
 			                        editable: false, 
 			                        validation: { required: false } }	
-		}
+	    }
 	});
 	return model;
 });

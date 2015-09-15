@@ -28,7 +28,7 @@ namespace ProfiCraftsman.API.Controllers.Settings
                 DateTime toDate;
                 DateTime.TryParse(filter.Value, out toDate);
                 return String.Format(" {0}", toDate == DateTime.MinValue ? "1 == 1" :
-                    String.Format("((!ToDate.HasValue || ToDate.Value >=  DateTime({0}, {1}, {2})) && FromDate <= DateTime({0}, {1}, {2}))", toDate.Year, toDate.Month, toDate.Day));
+                    String.Format("((!ToDate.HasValue || ToDate.Value <=  DateTime({0}, {1}, {2})) && FromDate <= DateTime({0}, {1}, {2}))", toDate.Year, toDate.Month, toDate.Day));
             }
 
             return base.BuildWhereClause<T>(filter);

@@ -14,10 +14,9 @@
     },
 
 	setFilters = function () {
-	    var self = this,
-            grids = ['.additionalCostsGrid', '.salaryGrid', '.reportOrders', '.foreignProductsGrid', '.materialsGrid'];
+	    var self = this;
 
-	    grids.forEach(function(gridName, i) {
+	    self.gridNames.forEach(function(gridName, i) {
 
 	        var dataSource = self.$el.find(gridName).data('kendoGrid').dataSource,
                 expression = dataSource.filter() || { filters: [], logic: 'and' };
@@ -79,6 +78,8 @@
 
     view = BaseView.extend({
 
+        gridNames: ['.additionalCostsGrid', '.salaryGrid', /*'.reportOrders',*/ '.foreignProductsGrid', '.materialsGrid'],
+        
         getFilters: function () {
 
             var result = [],
@@ -154,7 +155,7 @@
             });
 
             self.$el.delegate('.toggle', 'click.base-filter-view', _.bind(toggle, this));
-
+           
             return self;
         },
 
@@ -175,6 +176,6 @@
     view.mixin(BoundForm);
     view.mixin(KendoValidatorForm);
     view.mixin(KendoWidgetForm);
-
+    
     return view;
 });

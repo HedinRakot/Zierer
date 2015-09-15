@@ -16,7 +16,7 @@ define(function () {
 	    apply: 'Suchen',
 	    cancel: 'Abbruch',
 
-	    additionalCostsSum: 'Nebenkosten Summe:',
+	    additionalCostsSum: 'Sonstige Kosten Summe:',
 	    foreignProductsSum: 'Fremdleistungen Summe:',
 	    materialsSum: 'Wareneingang Summe:',
 	};
