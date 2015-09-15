@@ -94,6 +94,10 @@ namespace ProfiCraftsman.Contracts
         /// </summary>
         IQueryable<ForeignProducts> ForeignProducts{get;}
         /// <summary>
+        ///     Set of <see cref="SocialTaxes"/> entities from table dbo.SocialTaxes
+        /// </summary>
+        IQueryable<SocialTaxes> SocialTaxes{get;}
+        /// <summary>
         ///     Set of <see cref="Autos"/> entities from table dbo.Autos
         /// </summary>
         IQueryable<Autos> Autos{get;}

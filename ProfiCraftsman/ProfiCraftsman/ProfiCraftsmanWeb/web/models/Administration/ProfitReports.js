@@ -17,6 +17,15 @@ define(function () {
             ,totalOrdersSum: { type: "string", 
 			                        editable: false, 
 			                        validation: { required: false } }	
+            ,totalInvoicesSum: { type: "string", 
+			                        editable: false, 
+			                        validation: { required: false } }	
+            ,totalPayedSum: { type: "string", 
+			                        editable: false, 
+			                        validation: { required: false } }	
+            ,totalProfitSum: { type: "string", 
+			                        editable: false, 
+			                        validation: { required: false } }	
             ,salary: { type: "string", 
 			                        editable: false, 
 			                        validation: { required: false } }	

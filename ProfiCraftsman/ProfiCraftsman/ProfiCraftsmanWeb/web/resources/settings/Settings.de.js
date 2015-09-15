@@ -10,6 +10,7 @@ define(function () {
         Materials: 'Material',
         ProductMaterialRsps: 'Materialien',
         ForeignProducts: 'Fremdleistung',
+        SocialTaxes: 'Soziale Abgaben',
         Autos: 'Auto',
         Permissions: 'Berechtigung',
         JobPositions: 'Dienststelle',

@@ -10,6 +10,7 @@ define(function () {
         Materials: 'Material',
         ProductMaterialRsps: 'Materials',
         ForeignProducts: 'Foreign products',
+        SocialTaxes: 'Social taxes',
         Autos: 'Auto',
         Permissions: 'Permission',
         JobPositions: 'Job position',

@@ -1,4 +1,4 @@
-define(function () {
+﻿define(function () {
 	'use strict';
 
 	var resources = {
@@ -9,6 +9,7 @@ define(function () {
 	    additionalCosts: 'Sonstige Kosten',
 	    foreignProducts: 'Fremdleistungen',
 	    salary: 'Mitarbeiterlohn',
+	    socialTaxes: 'Sociale Abgaben',
 
 	    fromDate: 'Von Datum',
 	    toDate: 'Bis Datum',
@@ -16,10 +17,15 @@ define(function () {
 	    apply: 'Suchen',
 	    cancel: 'Abbruch',
 
-	    additionalCostsSum: 'Sonstige Kosten Summe:',
-	    foreignProductsSum: 'Fremdleistungen Summe:',
-	    materialsSum: 'Wareneingang Summe:',
-	    totalOrdersSum: 'Auftrags Summe:',
+	    additionalCostsSum: 'Sonstige Kosten:',
+	    foreignProductsSum: 'Fremdleistungen:',
+	    materialsSum: 'Wareneingang:',
+	    totalOrdersSum: 'Aufträge:',
+	    totalInvoicesSum: 'Gebucht:',
+	    totalPayedSum: 'Bezahlt:',
+	    totalProfitSum: 'Gewinn:',
+	    socialTaxesSum: 'Sociale Abgaben:',
+	    salarySum: 'Mitarbeiterlohn:',
 	};
 
 	return resources;

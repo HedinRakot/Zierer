@@ -121,6 +121,20 @@
 		WHERE ID = 23
 	END
 	
+	IF NOT EXISTS (SELECT ID FROM [ProfiCraftsman].[dbo].[PERMISSION] WHERE ID = 24 )
+	BEGIN
+		INSERT INTO [ProfiCraftsman].[dbo].[PERMISSION] ([Id], [Name], [Description], [CreateDate], [ChangeDate], [DeleteDate])
+		VALUES(24, 'SocialTaxes', 'Soziale Abgaben' ,GETDATE() ,GETDATE() ,NULL);
+		INSERT INTO [ProfiCraftsman].dbo.ROLE_PERMISSION_RSP(RoleId ,PermissionId ,CreateDate ,ChangeDate) 
+		VALUES (1 ,24 ,getdate() ,getdate());
+	END
+	ELSE
+	BEGIN
+		UPDATE [ProfiCraftsman].[dbo].[PERMISSION]
+		SET [DESCRIPTION] = 'Soziale Abgaben'
+		WHERE ID = 24
+	END
+	
 	IF NOT EXISTS (SELECT ID FROM [ProfiCraftsman].[dbo].[PERMISSION] WHERE ID = 16 )
 	BEGIN
 		INSERT INTO [ProfiCraftsman].[dbo].[PERMISSION] ([Id], [Name], [Description], [CreateDate], [ChangeDate], [DeleteDate])

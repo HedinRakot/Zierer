@@ -3,16 +3,17 @@ define(function () {
 
 	var resources = {
 
-		add: 'Fremdleistung anlegen',
-	    edit: 'Fremdleistung editieren',
+		add: 'Soziale Abgaben anlegen',
+	    edit: 'Soziale Abgaben editieren',
 	    masterData: 'Einstellungen',
-	    pageTitle: 'Fremdleistung',
+	    pageTitle: 'Soziale Abgaben',
 		pleaseSelect: 'Bitte auswählen',
+		employeeId: 'Mitarbeiter',	
 		description: 'Beschreibung',	
-		price: 'Preis',	
+		price: 'Summe',	
+		proceedsAccountId: 'Erlös-Konto',	
 		fromDate: 'Von Datum',	
 		toDate: 'Bis Datum',	
-		proceedsAccountId: 'Erlös-Konto',	
 	};
 
 	return resources;

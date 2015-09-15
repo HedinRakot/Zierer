@@ -178,6 +178,9 @@
     <Compile Include="Entities\SearchPositionView.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\SocialTaxes.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Taxes.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
@@ -288,6 +291,9 @@
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\ISearchPositionViewManager.cs">
+      <DependentUpon>IManagers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\ISocialTaxesManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\ITermCostsManager.cs">

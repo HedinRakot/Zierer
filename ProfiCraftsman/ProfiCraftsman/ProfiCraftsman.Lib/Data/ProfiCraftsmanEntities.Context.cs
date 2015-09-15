@@ -42,6 +42,7 @@ namespace ProfiCraftsman.Lib.Data
             modelBuilder.Configurations.Add(InvoicePaymentsMapping.Instance);
             modelBuilder.Configurations.Add(MaterialDeliveryRspMapping.Instance);
             modelBuilder.Configurations.Add(ForeignProductsMapping.Instance);
+            modelBuilder.Configurations.Add(SocialTaxesMapping.Instance);
             modelBuilder.Configurations.Add(AutosMapping.Instance);
             modelBuilder.Configurations.Add(PermissionMapping.Instance);
             modelBuilder.Configurations.Add(JobPositionsMapping.Instance);
@@ -144,6 +145,10 @@ namespace ProfiCraftsman.Lib.Data
         ///     Set of <see cref="ForeignProducts"/> entities from table dbo.ForeignProducts
         /// </summary>
         public IQueryable<ForeignProducts> ForeignProducts{ get; set; }
+        /// <summary>
+        ///     Set of <see cref="SocialTaxes"/> entities from table dbo.SocialTaxes
+        /// </summary>
+        public IQueryable<SocialTaxes> SocialTaxes{ get; set; }
         /// <summary>
         ///     Set of <see cref="Autos"/> entities from table dbo.Autos
         /// </summary>

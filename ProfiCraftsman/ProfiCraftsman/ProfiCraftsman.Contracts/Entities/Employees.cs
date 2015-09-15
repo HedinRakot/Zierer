@@ -115,6 +115,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public string Color{ get; set; }
         public virtual ICollection<TermEmployees> TermEmployees{ get; set; }
         public virtual ICollection<EmployeeRateRsp> EmployeeRateRsps{ get; set; }
+        public virtual ICollection<SocialTaxes> SocialTaxes{ get; set; }
         public virtual Autos Autos{ get; set; }
         public virtual ICollection<User> Users{ get; set; }
         public virtual ICollection<TermInstruments> TermInstruments{ get; set; }

@@ -78,7 +78,7 @@
 
     view = BaseView.extend({
 
-        gridNames: ['.additionalCostsGrid', '.salaryGrid', /*'.reportOrders',*/ '.foreignProductsGrid', '.materialsGrid'],
+        gridNames: ['.additionalCostsGrid', '.salaryGrid', /*'.reportOrders',*/ '.foreignProductsGrid', '.materialsGrid', '.socialTaxesGrid'],
         
         getFilters: function () {
 
@@ -129,8 +129,12 @@
                 '#materialsSum': 'materialsSum',
                 '#additionalCostsSum': 'additionalCostsSum',
                 '#foreignProductsSum': 'foreignProductsSum',
-                '#salary': 'salary',
+                '#salarySum': 'salarySum',
+                '#socialTaxesSum': 'socialTaxesSum',
                 '#totalOrdersSum': 'totalOrdersSum',
+                '#totalInvoicesSum': 'totalInvoicesSum',
+                '#totalPayedSum': 'totalPayedSum',
+                '#totalProfitSum': 'totalProfitSum',
             };
 
             self.stickit(self.model, bindingsModel);
@@ -168,6 +172,7 @@
                 { view: 'l!t!Administration/ReportAdditionalCosts', selector: '.additionalCosts' },
                 { view: 'l!t!Administration/ReportForeignProducts', selector: '.foreignProducts' },
                 { view: 'l!t!Administration/Salary', selector: '.salary' },
+                { view: 'l!t!Administration/ReportSocialTaxes', selector: '.socialTaxes' },
                 { view: 'l!t!Administration/ReportOrders', selector: '.orders' },
             ];
 

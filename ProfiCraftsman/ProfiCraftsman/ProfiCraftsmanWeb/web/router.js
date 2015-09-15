@@ -45,7 +45,7 @@
 
                 'Trips': _.partial(BaseRouter.showView, this, 'l!t!Administration/Trips', { Autos: true }, { }),
                 'ReportOrders': _.partial(BaseRouter.showView, this, 'l!t!Administration/ReportOrders', { PaymentTypes: true }, {}),
-                'ProfitReports': _.partial(BaseRouter.showView, this, 'l!t!Administration/ProfitReports', { AdditionalCostTypes: true, ProceedsAccounts: true }, {}),
+                'ProfitReports': _.partial(BaseRouter.showView, this, 'l!t!Administration/ProfitReports', { AdditionalCostTypes: true, ProceedsAccounts: true, Employees: true }, {}),
             };
 		    
 		    var result = $.extend({}, commonRoutes, MasterDataRouter.getAllMasterDataRoutes(this));

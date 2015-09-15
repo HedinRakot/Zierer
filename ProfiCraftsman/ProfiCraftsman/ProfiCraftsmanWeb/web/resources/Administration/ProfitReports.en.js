@@ -8,6 +8,8 @@ define(function () {
         additionalCosts: 'Additional costs',
         foreignProducts: 'Foreign products',
         salary: 'Salary',
+        socialTaxes: 'Social taxes',
+        
 
         fromDate: 'From Date',
         toDate: 'To Date',
@@ -19,6 +21,11 @@ define(function () {
         foreignProductsSum: 'Foreign products sum:',
         materialsSum: 'Materials sum:',
         totalOrdersSum: 'Total orders sum:',
+        totalInvoicesSum: 'Total invoices sum:',
+        totalPayedSum: 'Total payed sum:',
+        totalProfitSum: 'Total profit sum:',
+        salarySum: 'Salary sum:',
+        socialTaxesSum: 'Social taxes sum:',
     };
 
     return resources;

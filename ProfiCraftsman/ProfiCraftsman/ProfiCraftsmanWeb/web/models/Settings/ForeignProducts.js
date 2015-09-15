@@ -8,7 +8,7 @@ define([
 			id: { type: "number", editable: false }
 			,description: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('ForeignProducts', 'description'), 
-				                    validation: { required: false, maxLength: 256 } }			
+				                    validation: { required: true, maxLength: 256 } }			
 			,price: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('ForeignProducts', 'price'), 
 				                    validation: { required: true } }			

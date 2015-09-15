@@ -71,9 +71,14 @@ namespace ProfiCraftsman.Lib.Managers
             double result = 0;
 
             //TODO discuss with customer - take positions where proccessed amount not null (but take with 0)
-            var termPositions = termPositionsManager.GetEntities(o => !o.DeleteDate.HasValue && o.Terms.OrderId == order.Id && o.ProccessedAmount.HasValue).ToList();
+            var termPositions = termPositionsManager.GetEntities(o => !o.DeleteDate.HasValue && o.Terms.OrderId == order.Id && o.ProccessedAmount.HasValue);
 
-            foreach (var termPosition in termPositions)
+            if(fromDate.HasValue && toDate.HasValue)
+            {
+                termPositions = termPositions.Where(o => o.Terms.Date >= fromDate.Value && o.Terms.Date <= toDate.Value);
+            }
+
+            foreach (var termPosition in termPositions.ToList())
             {
                 //positions
                 if (termPosition.ProccessedAmount.Value > 0)
@@ -112,8 +117,14 @@ namespace ProfiCraftsman.Lib.Managers
 
             //material positions without terms
             var materialPositionsWithoutTerms = positionsManager.GetEntities(o => o.OrderId == order.Id && !o.DeleteDate.HasValue &&
-                !o.TermId.HasValue && o.MaterialId.HasValue && o.IsMaterialPosition).ToList();
-            foreach (var position in materialPositionsWithoutTerms)
+                !o.TermId.HasValue && o.MaterialId.HasValue && o.IsMaterialPosition);
+
+            if (fromDate.HasValue && toDate.HasValue)
+            {
+                materialPositionsWithoutTerms = materialPositionsWithoutTerms.Where(o => o.ChangeDate >= fromDate.Value && o.ChangeDate <= toDate.Value);
+            }
+
+            foreach (var position in materialPositionsWithoutTerms.ToList())
             {
                 var price = CalculatePositionPrice(position.Price, position.Amount, position.Payment);
 
@@ -123,8 +134,14 @@ namespace ProfiCraftsman.Lib.Managers
             }
 
             //extra costs
-            var termCosts = termCostsManager.GetEntities(o => !o.DeleteDate.HasValue && o.Terms.OrderId == order.Id).ToList();
-            foreach (var termCost in termCosts)
+            var termCosts = termCostsManager.GetEntities(o => !o.DeleteDate.HasValue && o.Terms.OrderId == order.Id);
+
+            if (fromDate.HasValue && toDate.HasValue)
+            {
+                termCosts = termCosts.Where(o => o.Terms.Date >= fromDate.Value && o.Terms.Date <= toDate.Value);
+            }
+
+            foreach (var termCost in termCosts.ToList())
             {
                 var price = CalculatePositionPrice(termCost.Price, 1, PaymentTypes.Standard);
 

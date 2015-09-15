@@ -38,6 +38,7 @@ namespace ProfiCraftsman.API.Controllers
         protected IEmployeesManager employeeManager { get; set; }
         protected IOrdersManager orderManager { get; set; }
         protected IMaterialDeliveryRspManager materialDeliveryRspManager { get; set; }
+        protected ISocialTaxesManager socialTaxesManager { get; set; }
 
         protected ITermPositionsManager termPositionsManager { get; set; }
         protected IPositionsManager positionsManager { get; set; }
@@ -49,7 +50,7 @@ namespace ProfiCraftsman.API.Controllers
         public ProfitReportsController(IAdditionalCostsManager additionalCostsManager, 
             IEmployeeRateRspManager employeeRateRspManager, IEmployeesManager employeeManager, IOrdersManager orderManager,
             IForeignProductsManager foreignProductsManager, IMaterialDeliveryRspManager materialDeliveryRspManager,
-
+            ISocialTaxesManager socialTaxesManager,
             ITermPositionsManager termPositionsManager, IPositionsManager positionsManager, ITermCostsManager termCostsManager,
             ITaxesManager taxesManager, IInvoicesManager invoicesManager)
         {
@@ -59,6 +60,7 @@ namespace ProfiCraftsman.API.Controllers
             this.orderManager = orderManager;
             this.foreignProductsManager = foreignProductsManager;
             this.materialDeliveryRspManager = materialDeliveryRspManager;
+            this.socialTaxesManager = socialTaxesManager;
 
             this.termPositionsManager = termPositionsManager;
             this.positionsManager = positionsManager;
@@ -129,12 +131,27 @@ namespace ProfiCraftsman.API.Controllers
 
             //salary
             var salaries = SalaryHelper.GetSalary(employeeRateRspManager, employeeManager, model.FromDate.Value, model.ToDate.Value);
-            var salary = salaries.Sum(o => o.amount);
+            var salarySum = salaries.Sum(o => o.amount);
 
+
+            //social taxes
+            var socialTaxes = socialTaxesManager.GetEntities();
+            if (model.FromDate.HasValue)
+            {
+                socialTaxes = socialTaxes.Where(o => o.FromDate.Date >= model.FromDate.Value);
+            }
+
+            if (model.ToDate.HasValue)
+            {
+                socialTaxes = socialTaxes.Where(o => (!o.ToDate.HasValue || o.ToDate.Value.Date <= model.ToDate.Value) && o.FromDate.Date <= model.ToDate.Value);
+            }
+
+            var socialTaxesSum = socialTaxes.Sum(o => o.Price);
 
             //orders
             var orders = orderManager.GetEntities(o => o.Terms.Any(t => t.Date >= model.FromDate.Value && t.Date <= model.ToDate.Value)).ToList();
             double totalOrdersSum = 0;
+            double totalOrdersProfit = 0;
             foreach (var order in orders)
             {
                 double profit = 0;
@@ -143,15 +160,40 @@ namespace ProfiCraftsman.API.Controllers
                     ref profit);
 
                 totalOrdersSum += totalPrice;
+                totalOrdersProfit += profit;
             }
+
+
+            //invoices
+            var invoices = invoicesManager.GetEntities(o => !o.DeleteDate.HasValue && o.ChangeDate >= model.FromDate.Value && o.ChangeDate <= model.ToDate.Value).ToList();
+            double totalInvoicesSum = 0;
+            foreach (var invoice in invoices)
+            {
+                double totalPriceWithoutDiscountWithoutTax = 0;
+                double totalPriceWithoutTax = 0;
+                double totalPrice = 0;
+                double summaryPrice = 0;
+
+                CalculationHelper.CalculateInvoicePrices(invoice, out totalPriceWithoutDiscountWithoutTax,
+                    out totalPriceWithoutTax, out totalPrice, out summaryPrice);
+
+                totalInvoicesSum += summaryPrice;
+            }
+
+            var totalPayedSum = invoices.SelectMany(o => o.InvoicePayments.Where(p => !p.DeleteDate.HasValue)).
+                Sum(o => o.Amount);
 
             return Ok(new ProfitReportsModel ()
             {
                 materialsSum = materialsSum.ToString("N2") + " EUR",
                 additionalCostsSum = additionalCostsSum.ToString("N2") + " EUR",
                 foreignProductsSum = foreignProductsSum.ToString("N2") + " EUR",
-                salary = salary.ToString("N2") + " EUR",
+                salarySum = salarySum.ToString("N2") + " EUR",
+                socialTaxesSum = socialTaxesSum.ToString("N2") + " EUR",
                 totalOrdersSum = totalOrdersSum.ToString("N2") + " EUR",
+                totalInvoicesSum = totalInvoicesSum.ToString("N2") + " EUR",
+                totalPayedSum = totalPayedSum.ToString("N2") + " EUR",
+                totalProfitSum = totalOrdersProfit.ToString("N2") + " EUR",
             });
         }
     }

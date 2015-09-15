@@ -87,6 +87,16 @@ namespace ProfiCraftsman.API
                 {"ProceedsAccountId", "proceedsAccountId"},
             });
 
+            tables.Add("SocialTaxes", new TableMapping("SocialTaxes", "SocialTaxes", 6)
+            {
+                {"EmployeeId", "employeeId"},
+                {"Description", "description"},
+                {"Price", "price"},
+                {"ProceedsAccountId", "proceedsAccountId"},
+                {"FromDate", "fromDate"},
+                {"ToDate", "toDate"},
+            });
+
             tables.Add("Autos", new TableMapping("Autos", "Autos", 3)
             {
                 {"Number", "number"},

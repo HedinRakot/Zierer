@@ -17,6 +17,7 @@ namespace ProfiCraftsman.API.Models.Settings
         /// <summary>
         ///     Model property for <see cref="ForeignProducts.Description"/> entity
         /// </summary>
+        [Required]
         [DataMember]
         public string description{ get; set; }
         /// <summary>

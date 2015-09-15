@@ -263,6 +263,9 @@
     <Content Include="web\collections\Settings\Rates.js">
       <DependentUpon>web.collections.tt</DependentUpon>
     </Content>
+    <Content Include="web\collections\Settings\SocialTaxes.js">
+      <DependentUpon>web.collections.tt</DependentUpon>
+    </Content>
     <Content Include="web\collections\Terms\NotProccessedPositions.js" />
     <Content Include="web\collections\Terms\FreeEmployees.js" />
     <Content Include="web\collections\Terms\TermEmployees.js" />
@@ -373,6 +376,9 @@
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
     <Content Include="web\models\Settings\FilterProceedsAccounts.js" />
+    <Content Include="web\models\Settings\FilterSocialTaxes.js">
+      <DependentUpon>web.models.tt</DependentUpon>
+    </Content>
     <Content Include="web\models\Settings\ForeignProducts.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
@@ -383,6 +389,9 @@
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
     <Content Include="web\models\Settings\Rates.js">
+      <DependentUpon>web.models.tt</DependentUpon>
+    </Content>
+    <Content Include="web\models\Settings\SocialTaxes.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
     <Content Include="web\models\Terms\FilterFreeEmployees.js" />
@@ -507,7 +516,9 @@
     <Content Include="web\resources\Administration\FilterReportOrders.en.js" />
     <Content Include="web\resources\Administration\FilterTrips.de.js" />
     <Content Include="web\resources\Administration\FilterTrips.en.js" />
+    <Content Include="web\resources\Administration\ReportSocialTaxes.de.js" />
     <Content Include="web\resources\Administration\ReportForeignProducts.de.js" />
+    <Content Include="web\resources\Administration\ReportSocialTaxes.en.js" />
     <Content Include="web\resources\Administration\ReportForeignProducts.en.js" />
     <Content Include="web\resources\Administration\ReportMaterials.de.js" />
     <Content Include="web\resources\Administration\Salary.de.js" />
@@ -599,6 +610,12 @@
     <Content Include="web\resources\Settings\AddRates.en.js">
       <DependentUpon>web.add.resources.tt</DependentUpon>
     </Content>
+    <Content Include="web\resources\Settings\AddSocialTaxes.de.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\AddSocialTaxes.en.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
     <Content Include="web\resources\Settings\CustomProducts.de.js">
       <DependentUpon>web.resources.tt</DependentUpon>
     </Content>
@@ -643,6 +660,12 @@
     </Content>
     <Content Include="web\resources\Settings\FilterProceedsAccounts.de.js" />
     <Content Include="web\resources\Settings\FilterProceedsAccounts.en.js" />
+    <Content Include="web\resources\Settings\FilterSocialTaxes.de.js">
+      <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\FilterSocialTaxes.en.js">
+      <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
     <Content Include="web\resources\Settings\ForeignProducts.de.js">
       <DependentUpon>web.resources.tt</DependentUpon>
     </Content>
@@ -677,6 +700,18 @@
       <DependentUpon>web.relationships.resources.tt</DependentUpon>
     </Content>
     <Content Include="web\resources\Settings\RatesRelationships.en.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\SocialTaxes.de.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\SocialTaxes.en.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\SocialTaxesRelationships.de.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\SocialTaxesRelationships.en.js">
       <DependentUpon>web.relationships.resources.tt</DependentUpon>
     </Content>
     <Content Include="web\resources\Terms\EmployeeSearch.de.js" />
@@ -1193,6 +1228,7 @@
     <Content Include="web\router.js" />
     <Content Include="web\templates\Administration\FilterReportOrders.html" />
     <Content Include="web\templates\Administration\FilterTrips.html" />
+    <Content Include="web\templates\Administration\ReportSocialTaxes.html" />
     <Content Include="web\templates\Administration\ReportMaterials.html" />
     <Content Include="web\templates\Administration\ReportForeignProducts.html" />
     <Content Include="web\templates\Administration\Salary.html" />
@@ -1239,6 +1275,9 @@
     <Content Include="web\templates\Settings\AddRates.html">
       <DependentUpon>web.add.templates.tt</DependentUpon>
     </Content>
+    <Content Include="web\templates\Settings\AddSocialTaxes.html">
+      <DependentUpon>web.add.templates.tt</DependentUpon>
+    </Content>
     <Content Include="web\templates\Settings\CustomProducts.html">
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
@@ -1261,6 +1300,9 @@
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
     <Content Include="web\templates\Settings\FilterProceedsAccounts.html" />
+    <Content Include="web\templates\Settings\FilterSocialTaxes.html">
+      <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
     <Content Include="web\templates\Settings\ForeignProducts.html">
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
@@ -1277,6 +1319,12 @@
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
     <Content Include="web\templates\Settings\RatesRelationships.html">
+      <DependentUpon>web.relationships.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\SocialTaxes.html">
+      <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\SocialTaxesRelationships.html">
       <DependentUpon>web.relationships.templates.tt</DependentUpon>
     </Content>
     <Content Include="web\templates\Terms\EmployeeSearch.html" />
@@ -1544,6 +1592,7 @@
     <Content Include="web\templates\Warehouse\Warehouse.html" />
     <Content Include="web\views\Administration\FilterReportOrders.js" />
     <Content Include="web\views\Administration\FilterTrips.js" />
+    <Content Include="web\views\Administration\ReportSocialTaxes.js" />
     <Content Include="web\views\Administration\ReportMaterials.js" />
     <Content Include="web\views\Administration\ReportForeignProducts.js" />
     <Content Include="web\views\Administration\Salary.js" />
@@ -1590,6 +1639,9 @@
     <Content Include="web\views\Settings\AddRates.js">
       <DependentUpon>web.add.views.tt</DependentUpon>
     </Content>
+    <Content Include="web\views\Settings\AddSocialTaxes.js">
+      <DependentUpon>web.add.views.tt</DependentUpon>
+    </Content>
     <Content Include="web\views\Settings\Custom.Instruments.js" />
     <Content Include="web\views\Settings\Custom.ProductMaterialRsp.js" />
     <Content Include="web\views\Settings\Custom.Employees.js" />
@@ -1619,6 +1671,9 @@
       <DependentUpon>web.views.tt</DependentUpon>
     </Content>
     <Content Include="web\views\Settings\FilterProceedsAccounts.js" />
+    <Content Include="web\views\Settings\FilterSocialTaxes.js">
+      <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
     <Content Include="web\views\Settings\ForeignProducts.js">
       <DependentUpon>web.views.tt</DependentUpon>
     </Content>
@@ -1637,6 +1692,12 @@
       <DependentUpon>web.views.tt</DependentUpon>
     </Content>
     <Content Include="web\views\Settings\RatesRelationships.js">
+      <DependentUpon>web.relationships.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\SocialTaxes.js">
+      <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\SocialTaxesRelationships.js">
       <DependentUpon>web.relationships.views.tt</DependentUpon>
     </Content>
     <Content Include="web\views\Terms\EmployeeSearch.js" />
