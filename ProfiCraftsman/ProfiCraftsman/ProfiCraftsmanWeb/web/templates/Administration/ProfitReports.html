@@ -4,41 +4,55 @@
 <div class="advanced">
     <form>
         <div class="editor-field">
-            <label data-localized="fromDate"></label>
-            <input type="text" id="fromDate" name="fromDate" data-role="datepicker" />
-            <label data-localized="toDate" style="padding-left: 10px;"></label>
-            <input type="text" id="toDate" name="toDate" data-role="datepicker" />
-            <br />
-            <span class="k-invalid-msg" data-for="fromDate"></span>
-            <span class="k-invalid-msg" data-for="toDate"></span>
-        </div>
-        <div class="editor-field" style="clear: left;">
-            <button class="k-primary k-button" type="submit" data-localized="apply"></button>
-            <button class="k-button" type="reset" data-localized="cancel"></button>
+            <table>
+                <tr>
+                    <td>
+                        <label data-localized="fromDate"></label>
+                        <input type="text" id="fromDate" name="fromDate" data-role="datepicker" required />
+                    </td>
+                    <td style="padding-left: 10px;">
+                        <label data-localized="toDate" style="padding-left: 10px;"></label>
+                        <input type="text" id="toDate" name="toDate" data-role="datepicker" required />
+                    </td>
+                    <td style="padding-left: 20px;">
+                        <button class="k-primary k-button" type="submit" data-localized="apply"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="k-invalid-msg" data-for="fromDate"></span></td>
+                    <td><span class="k-invalid-msg" data-for="toDate"></span></td>
+                    <td></td>
+                </tr>
+            </table>
+                        
+            <!--<button class="k-button" type="reset" data-localized="cancel"></button>-->
         </div>
     </form>
 </div>
 
 <br />
-<label data-localized="materialsSum"></label>
-<input type="text" id="materialsSum" name="materialsSum" readonly="readonly" class="k-textbox" style="background-color: lightgrey" />
-<br />
-<br />
-<label data-localized="additionalCostsSum"></label>
-<input type="text" id="additionalCostsSum" name="additionalCostsSum" readonly="readonly" class="k-textbox" style="background-color: lightgrey" />
-<br />
-<br />
-<label data-localized="foreignProductsSum"></label>
-<input type="text" id="foreignProductsSum" name="foreignProductsSum" readonly="readonly" class="k-textbox" style="background-color: lightgrey" />
-<br />
-<br />
-<label data-localized="salary"></label>:
-<input type="text" id="salary" name="salary" readonly="readonly" class="k-textbox" style="background-color: lightgrey" />
-<br />
-<br />
-<label data-localized="totalOrdersSum"></label>:
-<input type="text" id="totalOrdersSum" name="totalOrdersSum" readonly="readonly" class="k-textbox" style="background-color: lightgrey" />
-
+<table>
+    <tr>
+        <td><label data-localized="materialsSum"></label></td>
+        <td><input type="text" id="materialsSum" name="materialsSum" readonly="readonly" class="k-textbox" style="background-color: lightgrey" /></td>
+    </tr>
+    <tr>
+        <td><label data-localized="additionalCostsSum"></label></td>
+        <td><input type="text" id="additionalCostsSum" name="additionalCostsSum" readonly="readonly" class="k-textbox" style="background-color: lightgrey" /></td>
+    </tr>
+    <tr>
+        <td><label data-localized="foreignProductsSum"></label></td>
+        <td><input type="text" id="foreignProductsSum" name="foreignProductsSum" readonly="readonly" class="k-textbox" style="background-color: lightgrey" /></td>
+    </tr>
+    <tr>
+        <td><label data-localized="salary"></label>:</td>
+        <td><input type="text" id="salary" name="salary" readonly="readonly" class="k-textbox" style="background-color: lightgrey" /></td>
+    </tr>
+    <tr>
+        <td><label data-localized="totalOrdersSum"></label></td>
+        <td><input type="text" id="totalOrdersSum" name="totalOrdersSum" readonly="readonly" class="k-textbox" style="background-color: lightgrey" /></td>
+    </tr>
+</table>
 
 <br />
 <br />

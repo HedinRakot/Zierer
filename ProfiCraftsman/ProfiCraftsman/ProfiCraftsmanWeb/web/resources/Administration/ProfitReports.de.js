@@ -19,6 +19,7 @@ define(function () {
 	    additionalCostsSum: 'Sonstige Kosten Summe:',
 	    foreignProductsSum: 'Fremdleistungen Summe:',
 	    materialsSum: 'Wareneingang Summe:',
+	    totalOrdersSum: 'Auftrags Summe:',
 	};
 
 	return resources;

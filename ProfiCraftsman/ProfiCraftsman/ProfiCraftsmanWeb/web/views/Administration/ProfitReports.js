@@ -21,7 +21,7 @@
 	        var dataSource = self.$el.find(gridName).data('kendoGrid').dataSource,
                 expression = dataSource.filter() || { filters: [], logic: 'and' };
 
-	        if (self.validate()) {
+	        //if (self.validate()) {
 	            var sourceFilters = self.getFilters();
 
 	            _.each(sourceFilters, function (sourceFilter) {
@@ -48,7 +48,7 @@
 
 
 	            dataSource.filter(expression);	    
-	        }
+	        //}
 	    });
 	},
 
@@ -139,9 +139,11 @@
             self.$el.delegate('button[type=submit]', 'click.base-filter-view', function (e) {
                 e.preventDefault();
 
-                setFilters.call(self);
+                if (self.validate()) {
+                    setFilters.call(self);
 
-                getValues(self);
+                    getValues(self);
+                }
             });
 
             self.$el.delegate('button[type=reset]', 'click.base-filter-view', function (e) {
