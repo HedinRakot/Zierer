@@ -45,6 +45,10 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'DeleteDate' for property <see cref="RolePermissionRsp.DeleteDate"/>
             /// </summary>
             public static readonly string DeleteDate = "DeleteDate";
+            /// <summary>
+            /// Column name 'Key' for property <see cref="RolePermissionRsp.Key"/>
+            /// </summary>
+            public static readonly string Key = "Key";
           
         }
         #endregion
@@ -60,6 +64,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime CreateDate{ get; set; }
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
+        public string Key{ get; set; }
         public virtual Permission Permission{ get; set; }
         public virtual Role Role{ get; set; }
         public bool HasPermission
@@ -93,6 +98,7 @@ namespace ProfiCraftsman.Contracts.Entities
                        CreateDate = CreateDate,
                        ChangeDate = ChangeDate,
                        DeleteDate = DeleteDate,
+                       Key = Key,
         	           };
         }
     }

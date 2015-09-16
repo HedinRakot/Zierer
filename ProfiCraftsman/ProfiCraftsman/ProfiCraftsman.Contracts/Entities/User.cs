@@ -58,6 +58,14 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'EmployeeId' for property <see cref="User.EmployeeId"/>
             /// </summary>
             public static readonly string EmployeeId = "EmployeeId";
+            /// <summary>
+            /// Column name 'Key' for property <see cref="User.Key"/>
+            /// </summary>
+            public static readonly string Key = "Key";
+            /// <summary>
+            /// Column name 'Token' for property <see cref="User.Token"/>
+            /// </summary>
+            public static readonly string Token = "Token";
           
         }
         #endregion
@@ -82,6 +90,8 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
         public int? EmployeeId{ get; set; }
+        public string Key{ get; set; }
+        public string Token{ get; set; }
         public virtual ICollection<Terms> Terms{ get; set; }
         public virtual Role Role{ get; set; }
         public virtual Employees Employees{ get; set; }
@@ -119,6 +129,8 @@ namespace ProfiCraftsman.Contracts.Entities
                        ChangeDate = ChangeDate,
                        DeleteDate = DeleteDate,
                        EmployeeId = EmployeeId,
+                       Key = Key,
+                       Token = Token,
         	           };
         }
     }

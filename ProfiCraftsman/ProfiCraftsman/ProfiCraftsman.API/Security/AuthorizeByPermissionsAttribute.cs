@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using ProfiCraftsman.Contracts.Managers;
+using CoreBase;
 
 namespace ProfiCraftsman.API.Security
 {
@@ -49,12 +50,12 @@ namespace ProfiCraftsman.API.Security
                 return false;
             }
 
-            var userPermissionIds = rolePermissionRspManager.GetEntities().Where(e =>
+            var userPermissions = rolePermissionRspManager.GetEntities().Where(e =>
                 !e.DeleteDate.HasValue 
                 && user.RoleId == e.RoleId 
-                && PermissionTypes.Contains(e.PermissionId));
-
-            return userPermissionIds.Any();
+                && PermissionTypes.Contains(e.PermissionId)).ToList();
+            
+            return userPermissions.Where(o => o.Key == StringHelper.GetMD5Hash(String.Format("{0}_{1}", o.RoleId, o.PermissionId))).Any();
         }
 
         protected override void HandleUnauthorizedRequest(HttpActionContext actionContext)

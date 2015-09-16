@@ -32,11 +32,11 @@ namespace ProfiCraftsman.API
 
                 result.IsAuthenticated = true;
                 result.Name = user.Name;
-                var permissionsQuery = from permissionRsp in permissionsRspManager.GetEntities()
-                                       join permission in permissionsManager.GetEntities() on permissionRsp.PermissionId equals permission.Id
-                                       where permissionRsp.RoleId == user.RoleId && !permissionRsp.DeleteDate.HasValue
-                                       select permission.Name;
-                result.Permissions = permissionsQuery.ToList();
+
+                var userPermissions = permissionsRspManager.GetEntities().Where(e => !e.DeleteDate.HasValue && user.RoleId == e.RoleId).ToList();
+
+                result.Permissions = userPermissions.Where(o => o.Key == StringHelper.GetMD5Hash(String.Format("{0}_{1}", o.RoleId, o.PermissionId))).
+                    Select(o => o.Permission.Name).ToList();
             }
 
             return JsonConvert.SerializeObject(result, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });

@@ -37,6 +37,8 @@ namespace ProfiCraftsman.API.Controllers.Settings
             entity.Name = model.name;
             entity.Password = model.password;
             entity.EmployeeId = model.employeeId;
+
+            ExtraModelToEntity(entity, model, actionType);
         }
     }
 }

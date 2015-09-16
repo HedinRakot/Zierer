@@ -30,6 +30,8 @@ namespace ProfiCraftsman.API.Controllers.Settings
         {
             entity.RoleId = model.roleId;
             entity.PermissionId = model.permissionId;
+
+            ExtraModelToEntity(entity, model, actionType);
         }
     }
 }

@@ -5,6 +5,7 @@ using ProfiCraftsman.API.Models;
 using ProfiCraftsman.Contracts.Managers;
 using CoreBase;
 using CoreBase.Models;
+using System;
 
 namespace ProfiCraftsman.API.Controllers
 {
@@ -22,7 +23,8 @@ namespace ProfiCraftsman.API.Controllers
 			if (ModelState.IsValid)
 			{
                 var user = _userManager.GetByLogin(loginModel.Login);
-				if (user != null && user.Password == StringHelper.GetMD5Hash(loginModel.Password))
+				if (user != null && user.Password == StringHelper.GetMD5Hash(loginModel.Password) &&
+                    user.Key == StringHelper.GetMD5Hash(String.Format("{0}_{1}", loginModel.Login, loginModel.Password)))
 				{
 					FormsAuthentication.SetAuthCookie(loginModel.Login, loginModel.RememberMe);
 					return Ok(new LoggedUserModel

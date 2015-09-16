@@ -63,6 +63,17 @@ namespace ProfiCraftsman.Lib.Data
             Property(t => t.EmployeeId)
                 .HasColumnName(User.Fields.EmployeeId);
 
+            Property(t => t.Key)
+                .HasColumnName(User.Fields.Key)
+                .IsRequired()
+                .IsUnicode()
+                .HasMaxLength(128);
+
+            Property(t => t.Token)
+                .HasColumnName(User.Fields.Token)
+                .IsUnicode()
+                .HasMaxLength(128);
+
 
             //Relationships
             HasOptional(u => u.Role)

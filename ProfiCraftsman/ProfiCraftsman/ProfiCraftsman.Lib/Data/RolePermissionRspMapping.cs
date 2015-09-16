@@ -47,6 +47,12 @@ namespace ProfiCraftsman.Lib.Data
             Property(t => t.DeleteDate)
                 .HasColumnName(RolePermissionRsp.Fields.DeleteDate);
 
+            Property(t => t.Key)
+                .HasColumnName(RolePermissionRsp.Fields.Key)
+                .IsRequired()
+                .IsUnicode()
+                .HasMaxLength(128);
+
 
             //Relationships
             HasRequired(r => r.Permission)

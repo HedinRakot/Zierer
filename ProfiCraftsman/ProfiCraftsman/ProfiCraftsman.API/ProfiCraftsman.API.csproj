@@ -212,6 +212,7 @@
     <Compile Include="Controllers\Settings\Custom.EmployeesController.cs" />
     <Compile Include="Controllers\Settings\Custom.InstrumentsController.cs" />
     <Compile Include="Controllers\Settings\Custom.ProceedsAccountsController.cs" />
+    <Compile Include="Controllers\Settings\Custom.RolePermissionRspsController.cs" />
     <Compile Include="Controllers\Settings\CustomProductsController.cs">
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
