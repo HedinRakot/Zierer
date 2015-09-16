@@ -516,6 +516,8 @@
     <Content Include="web\resources\Administration\FilterReportOrders.en.js" />
     <Content Include="web\resources\Administration\FilterTrips.de.js" />
     <Content Include="web\resources\Administration\FilterTrips.en.js" />
+    <Content Include="web\resources\Administration\ReportInstruments.de.js" />
+    <Content Include="web\resources\Administration\ReportInstruments.en.js" />
     <Content Include="web\resources\Administration\ReportSocialTaxes.de.js" />
     <Content Include="web\resources\Administration\ReportForeignProducts.de.js" />
     <Content Include="web\resources\Administration\ReportSocialTaxes.en.js" />
@@ -1228,6 +1230,7 @@
     <Content Include="web\router.js" />
     <Content Include="web\templates\Administration\FilterReportOrders.html" />
     <Content Include="web\templates\Administration\FilterTrips.html" />
+    <Content Include="web\templates\Administration\ReportInstruments.html" />
     <Content Include="web\templates\Administration\ReportSocialTaxes.html" />
     <Content Include="web\templates\Administration\ReportMaterials.html" />
     <Content Include="web\templates\Administration\ReportForeignProducts.html" />
@@ -1592,6 +1595,7 @@
     <Content Include="web\templates\Warehouse\Warehouse.html" />
     <Content Include="web\views\Administration\FilterReportOrders.js" />
     <Content Include="web\views\Administration\FilterTrips.js" />
+    <Content Include="web\views\Administration\ReportInstruments.js" />
     <Content Include="web\views\Administration\ReportSocialTaxes.js" />
     <Content Include="web\views\Administration\ReportMaterials.js" />
     <Content Include="web\views\Administration\ReportForeignProducts.js" />

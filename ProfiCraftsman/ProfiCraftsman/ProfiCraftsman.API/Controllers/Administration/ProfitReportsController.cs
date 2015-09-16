@@ -39,6 +39,7 @@ namespace ProfiCraftsman.API.Controllers
         protected IOrdersManager orderManager { get; set; }
         protected IMaterialDeliveryRspManager materialDeliveryRspManager { get; set; }
         protected ISocialTaxesManager socialTaxesManager { get; set; }
+        protected IInstrumentsManager instrumentsManager { get; set; }
 
         protected ITermPositionsManager termPositionsManager { get; set; }
         protected IPositionsManager positionsManager { get; set; }
@@ -50,7 +51,7 @@ namespace ProfiCraftsman.API.Controllers
         public ProfitReportsController(IAdditionalCostsManager additionalCostsManager, 
             IEmployeeRateRspManager employeeRateRspManager, IEmployeesManager employeeManager, IOrdersManager orderManager,
             IForeignProductsManager foreignProductsManager, IMaterialDeliveryRspManager materialDeliveryRspManager,
-            ISocialTaxesManager socialTaxesManager,
+            ISocialTaxesManager socialTaxesManager, IInstrumentsManager instrumentsManager,
             ITermPositionsManager termPositionsManager, IPositionsManager positionsManager, ITermCostsManager termCostsManager,
             ITaxesManager taxesManager, IInvoicesManager invoicesManager)
         {
@@ -61,6 +62,7 @@ namespace ProfiCraftsman.API.Controllers
             this.foreignProductsManager = foreignProductsManager;
             this.materialDeliveryRspManager = materialDeliveryRspManager;
             this.socialTaxesManager = socialTaxesManager;
+            this.instrumentsManager = instrumentsManager;
 
             this.termPositionsManager = termPositionsManager;
             this.positionsManager = positionsManager;
@@ -134,6 +136,21 @@ namespace ProfiCraftsman.API.Controllers
             var salarySum = salaries.Sum(o => o.amount);
 
 
+            //instruments
+            var instruments = instrumentsManager.GetEntities();
+            if (model.FromDate.HasValue)
+            {
+                instruments = instruments.Where(o => o.ChangeDate.Date >= model.FromDate.Value);
+            }
+
+            if (model.ToDate.HasValue)
+            {
+                instruments = instruments.Where(o => o.ChangeDate.Date <= model.ToDate.Value);
+            }
+
+            var instrumentsSum = instruments.Sum(o => o.BoughtPrice);
+
+
             //social taxes
             var socialTaxes = socialTaxesManager.GetEntities();
             if (model.FromDate.HasValue)
@@ -189,6 +206,7 @@ namespace ProfiCraftsman.API.Controllers
                 additionalCostsSum = additionalCostsSum.ToString("N2") + " EUR",
                 foreignProductsSum = foreignProductsSum.ToString("N2") + " EUR",
                 salarySum = salarySum.ToString("N2") + " EUR",
+                instrumentsSum = instrumentsSum.ToString("N2") + " EUR",
                 socialTaxesSum = socialTaxesSum.ToString("N2") + " EUR",
                 totalOrdersSum = totalOrdersSum.ToString("N2") + " EUR",
                 totalInvoicesSum = totalInvoicesSum.ToString("N2") + " EUR",

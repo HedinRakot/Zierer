@@ -25,6 +25,9 @@ namespace ProfiCraftsman.API.Models
 
         [DataMember]
         public string socialTaxesSum { get; set; }
+        
+        [DataMember]
+        public string instrumentsSum { get; set; }
 
         [DataMember]
         public string totalOrdersSum { get; set; }

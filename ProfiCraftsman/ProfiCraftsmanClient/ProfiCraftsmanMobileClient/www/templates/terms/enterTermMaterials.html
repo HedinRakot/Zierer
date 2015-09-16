@@ -13,7 +13,7 @@
             <ion-item class="term-item">
                 <div class="term-item-column item" style="width: 15%; font-weight: bold;">Artikelnummer</div>
                 <div class="term-item-column item" style="width: 70%; font-weight: bold;">Bezeichnung</div>
-                <div class="term-item-column item" style="width: 15%; font-weight: bold;">Menge</div>
+                <div class="term-item-column item" style="width: 15%; font-weight: bold; border-right: 0px;">Menge</div>
             </ion-item>
 
             <ion-item ng-repeat="material in enterTermMaterialsController.term.materials" class="term-item">
@@ -21,9 +21,11 @@
                 <div class="term-item-column item" style="width: 15%;">{{material.number}}</div>
                 <div class="term-item-column item" style="width: 70%;">{{material.description}}</div>
 
-                <div ng-if="enterTermMaterialsController.term.status == 8" class="term-item-column item" style="width: 15%;">{{material.amount}}</div>
+                <div ng-if="enterTermMaterialsController.term.status == 8" class="term-input-item-column input" style="width: 15%; border-right: 0px;">
+                    <input type="text" style="padding: 0px; font-size: 16px; height: 20px; width: 120px; background-color: white;" readonly="readonly" ng-model="enterTermMaterialsController.term.materials[$index].amount">
+                </div>
                 <div ng-if="enterTermMaterialsController.term.status == 7" class="term-input-item-column input" style="width: 15%; border-right: 0px;">
-                    <input type="text" style="padding: 0px; font-size: 16px;" ng-model="enterTermMaterialsController.term.materials[$index].amount">
+                    <input type="text" style="padding: 0px; font-size: 16px; height: 20px; width: 120px;" ng-model="enterTermMaterialsController.term.materials[$index].amount">
                 </div>
             </ion-item>
         </ion-list>

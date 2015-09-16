@@ -9,7 +9,7 @@ define(function () {
         foreignProducts: 'Foreign products',
         salary: 'Salary',
         socialTaxes: 'Social taxes',
-        
+        instruments: 'Instruments',
 
         fromDate: 'From Date',
         toDate: 'To Date',
@@ -26,6 +26,7 @@ define(function () {
         totalProfitSum: 'Total profit sum:',
         salarySum: 'Salary sum:',
         socialTaxesSum: 'Social taxes sum:',
+        instrumentsSum: 'Instruments:',
     };
 
     return resources;
