@@ -163,8 +163,8 @@
                         requireLogin: true
                     }
                 })
-                .state('/enterTermPositions', {
-                    url: "/terms/enterTermPositions",
+                .state('enterTermPositions', {
+                    url: "/enterTermPositions",
                     views: {
                         'menuContent': {
                             templateUrl: "templates/terms/enterTermPositions.html"
@@ -174,8 +174,8 @@
                         requireLogin: true
                     }
                 })
-                .state('/enterTermMaterials', {
-                    url: "/terms/enterTermMaterials",
+                .state('enterTermMaterials', {
+                    url: "/enterTermMaterials",
                     views: {
                         'menuContent': {
                             templateUrl: "templates/terms/enterTermMaterials.html"
@@ -185,8 +185,8 @@
                         requireLogin: true
                     }
                 })
-                .state('/showDeliveryNote', {
-                    url: "/terms/showDeliveryNote",
+                .state('showDeliveryNote', {
+                    url: "/showDeliveryNote",
                     views: {
                         'menuContent': {
                             templateUrl: "templates/terms/showDeliveryNote.html"
@@ -196,8 +196,8 @@
                         requireLogin: true
                     }
                 })
-                .state('/signDeliveryNote', {
-                    url: "/terms/signDeliveryNote",
+                .state('signDeliveryNote', {
+                    url: "/signDeliveryNote",
                     views: {
                         'menuContent': {
                             templateUrl: "templates/terms/signDeliveryNote.html"
@@ -207,8 +207,8 @@
                         requireLogin: true
                     }
                 })
-                .state('/addNewPosition', {
-                    url: "/terms/addNewPosition",
+                .state('addNewPosition', {
+                    url: "/addNewPosition",
                     views: {
                         'menuContent': {
                             templateUrl: "templates/terms/addNewPosition.html"
@@ -218,8 +218,8 @@
                         requireLogin: true
                     }
                 })
-                .state('/addNewMaterial', {
-                    url: "/terms/addNewMaterial",
+                .state('addNewMaterial', {
+                    url: "/addNewMaterial",
                     views: {
                         'menuContent': {
                             templateUrl: "templates/terms/addNewMaterial.html"

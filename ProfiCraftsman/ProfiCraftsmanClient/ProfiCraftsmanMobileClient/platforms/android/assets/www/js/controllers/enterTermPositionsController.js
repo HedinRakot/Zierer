@@ -103,7 +103,7 @@
             success(function (result) {
                 self.term = result;
 
-                self.state.go('/enterTermPositions');
+                self.state.go('enterTermPositions');
             }).
             error(function (result) {
 
@@ -116,7 +116,7 @@
 
         self.term.status = termStatusTypes.EnterPositions;
 
-        self.state.go('/enterTermPositions');
+        self.state.go('enterTermPositions');
     };
 
     EnterTermPositionsController.prototype.enterMaterials = function () {
@@ -134,7 +134,7 @@
             success(function (result) {
                 self.term = result;
 
-                self.state.go('/enterTermMaterials');
+                self.state.go('enterTermMaterials');
             }).
             error(function (result) {
 
@@ -145,7 +145,7 @@
 
         var self = this;
         
-        self.state.go('/addNewPosition');
+        self.state.go('addNewPosition');
     };
 
         

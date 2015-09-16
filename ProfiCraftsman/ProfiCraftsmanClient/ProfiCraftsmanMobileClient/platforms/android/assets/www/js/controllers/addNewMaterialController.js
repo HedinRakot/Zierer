@@ -124,7 +124,7 @@
             success(function (result) {
                 self.term = result;
 
-                self.state.go('/enterTermMaterials');
+                self.state.go('enterTermMaterials');
             }).
             error(function (result) {
 

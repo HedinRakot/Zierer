@@ -97,7 +97,7 @@
             success(function (result) {
                 self.term = result;
 
-                self.state.go('/termDetails');
+                self.state.go('termDetails');
             }).
             error(function (result) {
 
@@ -118,7 +118,7 @@
             success(function (result) {
                 self.term = result;
                 
-                self.state.go('/termDetails');
+                self.state.go('termDetails');
             }).
             error(function (result) {
 
@@ -138,7 +138,7 @@
             success(function (result) {
                 self.term = result;
 
-                self.state.go('/termDetails');
+                self.state.go('termDetails');
             }).
             error(function (result) {
 
@@ -158,7 +158,7 @@
             success(function (result) {
                 self.term = result;
 
-                self.state.go('/termDetails');
+                self.state.go('termDetails');
             }).
             error(function (result) {
 
@@ -178,7 +178,7 @@
             success(function (result) {
                 self.term = result;
 
-                self.state.go('/enterTermPositions');
+                self.state.go('enterTermPositions');
             }).
             error(function (result) {
 
@@ -198,7 +198,7 @@
             success(function (result) {
                 self.term = result;
 
-                self.state.go('/termDetails');
+                self.state.go('termDetails');
             }).
             error(function (result) {
 
@@ -218,7 +218,7 @@
             success(function (result) {
                 self.term = result;
 
-                self.state.go('/termDetails');
+                self.state.go('termDetails');
             }).
             error(function (result) {
 

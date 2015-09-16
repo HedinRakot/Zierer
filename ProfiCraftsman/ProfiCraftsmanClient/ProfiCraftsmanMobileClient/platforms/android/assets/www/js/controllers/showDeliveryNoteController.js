@@ -102,7 +102,7 @@
             success(function (result) {
                 self.term = result;
 
-                self.state.go('/signDeliveryNote');
+                self.state.go('signDeliveryNote');
             }).
             error(function (result) {
 

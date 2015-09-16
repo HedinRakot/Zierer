@@ -136,7 +136,8 @@
                         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
                     }
                 });
-
+                
+                //todo delete
                 //attrs.$observe("saveVal", function (newValue) {
 
                 //    var signatureData = ctx.canvas.toDataURL();
@@ -153,7 +154,7 @@
                 //        success(function (result) {
                 //            self.term = result;
 
-                //            self.state.go('/termDetails');
+                //            self.state.go('termDetails');
                 //        }).
                 //        error(function (result) {
 

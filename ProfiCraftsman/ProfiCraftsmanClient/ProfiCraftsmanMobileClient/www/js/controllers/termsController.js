@@ -89,13 +89,13 @@
         window.localStorage.setItem("termId", term.id);
         
         if (term.status == termStatusTypes.EnterPositions || term.status == termStatusTypes.CheckPositions)
-            self.state.go('/enterTermPositions');
+            self.state.go('enterTermPositions');
         else if (term.status == termStatusTypes.EnterMaterials || term.status == termStatusTypes.CheckMaterials)
-            self.state.go('/enterTermMaterials');
+            self.state.go('enterTermMaterials');
         else if (term.status == termStatusTypes.ShowDeliveryNote)
-            self.state.go('/showDeliveryNote');
+            self.state.go('showDeliveryNote');
         else if (term.status == termStatusTypes.SignDeliveryNote)
-            self.state.go('/signDeliveryNote');
+            self.state.go('signDeliveryNote');
         else
             self.state.go('termDetails');
     };
