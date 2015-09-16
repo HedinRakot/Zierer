@@ -14,5 +14,8 @@ namespace ProfiCraftsman.API.ClientControllers
     {
         public int termId { get; set; }
         public int productId { get; set; }
+
+        public string Login { get; set; }
+        public string Token { get; set; }
     }
 }

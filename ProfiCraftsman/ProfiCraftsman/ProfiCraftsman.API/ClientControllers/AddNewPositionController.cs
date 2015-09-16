@@ -24,12 +24,15 @@ namespace ProfiCraftsman.API.ClientControllers
 	    private readonly ITermsManager termManager;
         private readonly IProductsManager productManager;
         private readonly IPositionsManager positionsManager;
+        private readonly IUserManager userManager;
 
-        public AddNewPositionController(ITermsManager termManager, IProductsManager productManager, IPositionsManager positionsManager)
+        public AddNewPositionController(ITermsManager termManager, IProductsManager productManager, 
+            IPositionsManager positionsManager, IUserManager userManager)
 	    {
 	        this.termManager = termManager;
 	        this.productManager = productManager;
 	        this.positionsManager = positionsManager;
+            this.userManager = userManager;
         }
 
 	    public IHttpActionResult Post([FromBody]AddNewPositionModel model)
@@ -37,9 +40,11 @@ namespace ProfiCraftsman.API.ClientControllers
             var term = termManager.GetById(model.termId);
             ClientTermViewModel result = null;
 
-            //TODO security check (user id)
             var product = productManager.GetById(model.productId);
-            if (product != null && term != null)
+            var user = userManager.GetByLogin(model.Login);
+
+            if (user != null && user.Token == model.Token &&
+                product != null && term != null)
             {
                 var newPosition = new Positions()
                 {

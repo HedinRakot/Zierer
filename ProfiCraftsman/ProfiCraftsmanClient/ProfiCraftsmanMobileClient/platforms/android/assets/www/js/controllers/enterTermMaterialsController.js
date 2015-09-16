@@ -94,6 +94,7 @@
         this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
             {
                 login: window.localStorage['userLogin'],
+                token: window.localStorage['userToken'],
                 termId: window.localStorage['termId'],
                 status: termStatusTypes.CheckMaterials,
                 materials: self.term.materials,
@@ -125,6 +126,7 @@
         this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
             {
                 login: window.localStorage['userLogin'],
+                token: window.localStorage['userToken'],
                 termId: window.localStorage['termId'],
                 status: termStatusTypes.ShowDeliveryNote,
                 withPositions: true,

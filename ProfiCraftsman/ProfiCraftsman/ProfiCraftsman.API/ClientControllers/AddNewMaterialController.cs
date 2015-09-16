@@ -24,12 +24,15 @@ namespace ProfiCraftsman.API.ClientControllers
 	    private readonly ITermsManager termManager;
         private readonly IMaterialsManager materialManager;
         private readonly IPositionsManager positionsManager;
+        private readonly IUserManager userManager;
 
-        public AddNewMaterialController(ITermsManager termManager, IMaterialsManager materialManager, IPositionsManager positionsManager)
+        public AddNewMaterialController(ITermsManager termManager, IMaterialsManager materialManager, 
+            IPositionsManager positionsManager, IUserManager userManager)
 	    {
 	        this.termManager = termManager;
 	        this.materialManager = materialManager;
 	        this.positionsManager = positionsManager;
+            this.userManager = userManager;
         }
 
 	    public IHttpActionResult Post([FromBody]AddNewMaterialModel model)
@@ -37,9 +40,11 @@ namespace ProfiCraftsman.API.ClientControllers
             var term = termManager.GetById(model.termId);
             ClientTermViewModel result = null;
 
-            //TODO security check (user id)
             var material = materialManager.GetById(model.materialId);
-            if (material != null && term != null)
+            var user = userManager.GetByLogin(model.Login);
+
+            if (user != null && user.Token == model.Token &&
+                material != null && term != null)
             {
                 var newPosition = new Positions()
                 {

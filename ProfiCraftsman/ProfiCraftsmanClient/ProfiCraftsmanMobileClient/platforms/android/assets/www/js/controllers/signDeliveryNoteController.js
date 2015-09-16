@@ -119,6 +119,7 @@
                         $http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
                             {
                                 login: window.localStorage['userLogin'],
+                                token: window.localStorage['userToken'],
                                 termId: window.localStorage['termId'],
                                 status: termStatusTypes.EndWork,
                                 signature: signatureData

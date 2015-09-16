@@ -23,6 +23,7 @@
             if (response.isAuthenticated) {
 
                 window.localStorage.setItem("userLogin", response.login);
+                window.localStorage.setItem("userToken", response.token);
 
                 if (toState) {
                     self.closeLogin();

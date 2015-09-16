@@ -39,10 +39,10 @@ namespace ProfiCraftsman.API.ClientControllers
 		{
             var term = termManager.GetById(model.termId);
             ClientTermViewModel result = null;
-
-            //TODO security check (user id)
+            
             var user = userManager.GetByLogin(model.Login);
-            if (user != null && term != null)
+
+            if (user != null && user.Token == model.Token && term != null)
             {
                 term.User = user;
                 term.Status = model.status;

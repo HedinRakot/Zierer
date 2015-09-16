@@ -9,6 +9,7 @@
     LogoutController.prototype.doLogout = function () {
 
         window.localStorage.setItem("userLogin", "null");
+        window.localStorage.setItem("userToken", "null");
     };
     
     angular.module("app.controllers").controller('LogoutController', ['$state', '$http', LogoutController]);

@@ -90,6 +90,7 @@
         this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
             {
                 login: window.localStorage['userLogin'],
+                token: window.localStorage['userToken'],
                 termId: window.localStorage['termId'],
                 status: termStatusTypes.BeginTripDepartureSelection,
             }).
@@ -109,6 +110,7 @@
         this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
             {
                 login: window.localStorage['userLogin'],
+                token: window.localStorage['userToken'],
                 termId: window.localStorage['termId'],
                 status: termStatusTypes.BeginTrip,
                 beginTripFromOffice: beginTripFromOffice
@@ -129,6 +131,7 @@
         this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
             {
                 login: window.localStorage['userLogin'],
+                token: window.localStorage['userToken'],
                 termId: window.localStorage['termId'],
                 status: termStatusTypes.EndTrip,
             }).
@@ -148,6 +151,7 @@
         this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
             {
                 login: window.localStorage['userLogin'],
+                token: window.localStorage['userToken'],
                 termId: window.localStorage['termId'],
                 status: termStatusTypes.BeginWork,
             }).
@@ -167,6 +171,7 @@
         this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
             {
                 login: window.localStorage['userLogin'],
+                token: window.localStorage['userToken'],
                 termId: window.localStorage['termId'],
                 status: termStatusTypes.EnterPositions,
             }).
@@ -186,6 +191,7 @@
         this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
             {
                 login: window.localStorage['userLogin'],
+                token: window.localStorage['userToken'],
                 termId: window.localStorage['termId'],
                 status: termStatusTypes.BeginReturnTrip,
             }).
@@ -205,6 +211,7 @@
         this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
             {
                 login: window.localStorage['userLogin'],
+                token: window.localStorage['userToken'],
                 termId: window.localStorage['termId'],
                 status: termStatusTypes.EndReturnTrip,
             }).

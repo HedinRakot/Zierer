@@ -116,6 +116,8 @@
 
         this.http.post(window.localStorage['baseAppPath'] + 'AddNewPosition',
             {
+                login: window.localStorage['userLogin'],
+                token: window.localStorage['userToken'],
                 productId: product.id,
                 termId: window.localStorage['termId'],
             }).

@@ -116,6 +116,8 @@
 
         this.http.post(window.localStorage['baseAppPath'] + 'AddNewMaterial',
             {
+                login: window.localStorage['userLogin'],
+                token: window.localStorage['userToken'],
                 materialId: material.id,
                 termId: window.localStorage['termId'],
             }).

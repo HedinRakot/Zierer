@@ -27,8 +27,12 @@ namespace ProfiCraftsman.API.ClientControllers
 				{
                     if (user.Employees != null)
                     {
+                        user.Token = Guid.NewGuid().ToString();
+                        userManager.SaveChanges();
+
                         return Ok(new LoggedUserModel
                         {
+                            Token = user.Token,
                             IsAuthenticated = true,
                             Login = user.Login,
                             Name = String.Format("{0} {1}", user.Employees.Name, user.Employees.FirstName),
