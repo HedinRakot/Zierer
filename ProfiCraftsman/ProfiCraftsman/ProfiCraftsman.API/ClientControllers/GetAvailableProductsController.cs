@@ -7,6 +7,7 @@ using CoreBase;
 using CoreBase.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq.Dynamic;
 
 namespace ProfiCraftsman.API.ClientControllers
 {
@@ -28,7 +29,8 @@ namespace ProfiCraftsman.API.ClientControllers
             var products = productManager.GetEntities();
             if (model != null && !String.IsNullOrEmpty(model.searchWord))
             {
-                products = products.Where(o => o.Number.ToLower().Contains(model.searchWord) || o.Name.ToLower().Contains(model.searchWord));
+                products = productManager.GetEntities().AsQueryable().
+                    Where("Name.Contains(@0) || Number.Contains(@0)", model.searchWord).ToList();
             }
 
             result = products.ToList().Select(product => new ProductViewModel()

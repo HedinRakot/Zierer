@@ -8,6 +8,7 @@ using CoreBase.Models;
 using System;
 using System.Collections.Generic;
 using ProfiCraftsman.Contracts.Entities;
+using System.Linq.Dynamic;
 
 namespace ProfiCraftsman.API.ClientControllers
 {
@@ -29,8 +30,8 @@ namespace ProfiCraftsman.API.ClientControllers
             var materials = new List<Materials>();
             if (model != null && !String.IsNullOrEmpty(model.searchWord))
             {
-                materials = materialManager.GetEntities().
-                    Where(o => o.Number.ToLower().Contains(model.searchWord) || o.Name.ToLower().Contains(model.searchWord)).ToList();
+                materials = materialManager.GetEntities().AsQueryable().
+                    Where("Name.Contains(@0) || Number.Contains(@0)", model.searchWord).ToList();
             }
 
             result = materials.Select(material => new MaterialViewModel()
