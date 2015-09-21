@@ -44,6 +44,7 @@ namespace ProfiCraftsman.API.Controllers
     {
         public int id { get; set; }
         public string title { get; set; }
+        public string address { get; set; }
         public string url { get; set; }
         public string start { get; set; }
         public string end { get; set; }
@@ -116,6 +117,8 @@ namespace ProfiCraftsman.API.Controllers
                             title = String.Format("{0}\n{1}\n{2} {3}\n{4}",
                                  String.Format("{0} {1}", termEmployee.Employees.Name, termEmployee.Employees.FirstName),
                                  term.Orders.Street, term.Orders.Zip, term.Orders.City, term.Orders.CustomerName),
+                            address = String.Format("{0},{1} {2}",
+                                 term.Orders.Street, term.Orders.Zip, term.Orders.City),
                             color = termEmployee.Employees.Color,
                             agendaEvent = false,
                             columnIndex = columnIndexes[termEmployee.EmployeeId],

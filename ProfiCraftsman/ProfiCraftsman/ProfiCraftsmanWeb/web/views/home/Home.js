@@ -12,9 +12,9 @@
 
     var bindCalendar = function (self, needLoadData) {
 
-        var model = self.model;
-
-        var schedulerCreated = false;
+        var model = self.model,
+            schedulerCreated = false,
+            terms = [];
 
         require(['calendarLanguages'], function () {
 
@@ -38,12 +38,53 @@
                                 scheduler.data('kendoScheduler').refresh();
                             }
                         }
+                    },
+                    mapsButton: {
+                        text: 'Karte',
+                        click: function () {
+                            self.$el.find('#calendar').hide();
+
+                            var mapContainer = self.$el.find('#mapContainer');
+                            mapContainer.show();
+
+                            var map = new google.maps.Map(self.$el.find('#map')[0], {
+                                zoom: 12
+                            });
+
+                            var geocoder = new google.maps.Geocoder();
+                            $(terms).each(function () {
+
+                                var address = this.address,
+                                    title = this.title,
+                                    url = this.url;
+
+                                if (address && address != '') {
+                                    geocoder.geocode({ 'address': address }, function (results, status) {
+                                        if (status === google.maps.GeocoderStatus.OK) {
+                                            map.setCenter(results[0].geometry.location);
+                                            var marker = new google.maps.Marker({
+                                                map: map,
+                                                position: results[0].geometry.location,
+                                                title: title,
+                                                url: url
+                                            });
+
+                                            google.maps.event.addListener(marker, 'click', function () {
+                                                location.href = marker.url;
+                                            });
+                                        } else {
+                                            alert('Geocode was not successful for the following reason: ' + status);
+                                        }
+                                    });
+                                }
+                            });
+                        }
                     }
                 },
                 header: {
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'weeklyViewButton'
+                    right: 'weeklyViewButton, mapsButton'
                 },
                 minTime: "07:00:00",
                 maxTime: "18:00:00",
@@ -65,9 +106,10 @@
                                 startDateStr: start.date() + '.' + (start.month() + 1) + '.' + start.year(),
                                 endDateStr: end.date() + '.' + (end.month() + 1) + '.' + end.year(),
                             },
-                            success: function (terms) {
+                            success: function (results) {
 
                                 var events = [];
+                                terms = results;
                                 $(terms).each(function () {
 
                                     events.push({
@@ -268,6 +310,15 @@
 
 	            self.$el.find('#calendar').fullCalendar('destroy');
 	            bindCalendar(self, true);
+	        },
+	        'click .calendarViewButton': function (e) {
+
+	            var self = this;
+
+	            var mapContainer = self.$el.find('#mapContainer');
+	            mapContainer.hide();
+
+	            self.$el.find('#calendar').show();
 	        },
 	    }
 	});
