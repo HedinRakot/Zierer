@@ -119,6 +119,36 @@
         self.state.go('enterTermMaterials');
     };
 
+    EnterTermMaterialsController.prototype.goBack = function () {
+
+        var self = this;
+
+        if (self.term.status == termStatusTypes.EnterMaterials) {
+
+            this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
+            {
+                login: window.localStorage['userLogin'],
+                token: window.localStorage['userToken'],
+                termId: window.localStorage['termId'],
+                status: termStatusTypes.CheckPositions,
+                positions: [],
+                withPositions: true,
+            }).
+            success(function (result) {
+                self.term = result;
+
+                self.state.go('enterTermPositions');
+            }).
+            error(function (result) {
+
+            });
+        }
+        else {
+            self.term.status = termStatusTypes.EnterMaterials;
+            self.state.go('enterTermMaterials');
+        }
+    };
+
     EnterTermMaterialsController.prototype.showDeliveryNote = function () {
 
         var self = this;

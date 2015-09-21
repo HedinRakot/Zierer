@@ -181,7 +181,7 @@ namespace ProfiCraftsman.API.Controllers
             return entities;
         }
 
-        protected ReportPositionsModel PositionsToModel(int id, Positions entity, int amount, DateTime date)
+        protected ReportPositionsModel PositionsToModel(int id, Positions entity, double amount, DateTime date)
         {
             var model = new ReportPositionsModel();
 

@@ -147,7 +147,12 @@
         
         self.state.go('addNewPosition');
     };
+    
+    EnterTermPositionsController.prototype.goBack = function () {
 
+        var self = this;
+        self.term.status = termStatusTypes.EnterPositions;
+    };
         
     EnterTermPositionsController.prototype.setLocale = function () {
         this.globalizationService.setLocale(this.$scope.locale);

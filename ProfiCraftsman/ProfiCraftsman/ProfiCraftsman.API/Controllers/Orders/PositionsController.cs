@@ -62,7 +62,21 @@ namespace ProfiCraftsman.API.Controllers
             {
                 model.number = entity.Materials.Number;
                 model.amountType = entity.Materials.MaterialAmountTypeString;
-                model.totalPrice = CalculationHelper.CalculatePositionPrice(entity.Price, entity.Amount, entity.Payment).ToString("N2") + " EUR";
+
+                var amount = entity.Amount;
+                if (entity.Materials.MaterialAmountTypes == MaterialAmountTypes.Meter)
+                {
+                    if (entity.Materials.Length != 0)
+                    {
+                        amount = amount / (double)entity.Materials.Length.Value;
+                    }
+                    else
+                    {
+                        //todo
+                    }
+                }
+
+                model.totalPrice = CalculationHelper.CalculatePositionPrice(entity.Price, amount, entity.Payment).ToString("N2") + " EUR";
             }
             else
             {

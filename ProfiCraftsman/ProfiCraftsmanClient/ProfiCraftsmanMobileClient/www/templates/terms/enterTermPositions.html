@@ -1,6 +1,18 @@
 ﻿<ion-view ng-controller="EnterTermPositionsController as enterTermPositionsController" cache-view="false">
-    <ion-nav-title>
-        {{"terms_today_title" | translate}}
+    <ion-nav-bar>
+
+    </ion-nav-bar>
+    <ion-nav-buttons side="left">
+        <button class="button button-icon ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button" ng-click="enterTermPositionsController.goBack()" ng-if="enterTermPositionsController.term.status == 6">
+            <i class="icon ion-arrow-left-c"></i> {{"main_menu_back_button" | translate}}
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-title style="text-align: center;">
+        <p ng-if="enterTermPositionsController.term.status == 5">Leistungen eintragen</p>
+        <p ng-if="enterTermPositionsController.term.status == 6">Leistungen überprüfen</p>
     </ion-nav-title>
     <ion-content>
         <br />

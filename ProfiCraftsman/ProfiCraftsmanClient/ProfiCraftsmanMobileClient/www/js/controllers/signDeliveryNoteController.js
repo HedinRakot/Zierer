@@ -93,6 +93,29 @@
         this.moment.locale(this.$scope.locale);
     }
 
+    SignDeliveryNoteController.prototype.goBack = function () {
+
+        var self = this;
+
+        this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
+            {
+                login: window.localStorage['userLogin'],
+                token: window.localStorage['userToken'],
+                termId: window.localStorage['termId'],
+                status: termStatusTypes.ShowDeliveryNote,
+                withPositions: true,
+                withMaterials: true,
+            }).
+            success(function (result) {
+                self.term = result;
+
+                self.state.go('showDeliveryNote');
+            }).
+            error(function (result) {
+
+            });
+    };
+
     
     angular.module('app.controllers').directive("signatureDir", ['$document', '$log', '$rootScope', '$http', '$state',
         function ($document, $log, $rootScope, $http, $state) {

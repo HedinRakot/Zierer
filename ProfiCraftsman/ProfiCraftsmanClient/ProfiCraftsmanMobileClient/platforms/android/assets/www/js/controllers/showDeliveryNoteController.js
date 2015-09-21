@@ -88,6 +88,29 @@
     }
 
 
+    ShowDeliveryNoteController.prototype.goBack = function () {
+
+        var self = this;
+
+        this.http.post(window.localStorage['baseAppPath'] + 'ChangeTermState',
+            {
+                login: window.localStorage['userLogin'],
+                token: window.localStorage['userToken'],
+                termId: window.localStorage['termId'],
+                status: termStatusTypes.CheckMaterials,
+                materials: [],
+                withMaterials: true,
+            }).
+            success(function (result) {
+                self.term = result;
+
+                self.state.go('enterTermMaterials');
+            }).
+            error(function (result) {
+
+            });
+    };
+
     ShowDeliveryNoteController.prototype.signDeliveryNote = function () {
 
         var self = this;

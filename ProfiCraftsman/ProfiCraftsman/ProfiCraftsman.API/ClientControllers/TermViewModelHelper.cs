@@ -34,12 +34,12 @@ namespace ProfiCraftsman.API.ClientControllers
                 if (term.Positions != null && term.Positions.Count != 0)
                 {
                     materials.AddRange(term.Positions.Where(o => !o.DeleteDate.HasValue && o.MaterialId.HasValue).ToList().
-                        Select(material => new ClientTermMaterialViewModel()
+                        Select(position => new ClientTermMaterialViewModel()
                         {
-                            Id = material.MaterialId.Value,
-                            Description = material.Materials.Name,
-                            Number = material.Materials.Number,
-                            Amount = material.Amount,
+                            Id = position.Id,
+                            Description = position.Materials.Name,
+                            Number = position.Materials.Number,
+                            Amount = position.Amount,
                             TermId = term.Id
                         }).ToList());
                 }

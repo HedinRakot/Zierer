@@ -76,7 +76,20 @@ namespace ProfiCraftsman.API.ClientControllers
                         foreach (var material in model.Materials)
                         {
                             var termMaterial = termMaterials.FirstOrDefault(o => o.Id == material.Id);
-                            termMaterial.Amount = material.Amount;
+                            if (termMaterial != null)
+                            {
+                                termMaterial.Amount = material.Amount;
+                            }
+                        }
+
+                        var materialPositions = term.Positions.Where(o => !o.DeleteDate.HasValue).ToList();
+                        foreach (var material in model.Materials)
+                        {
+                            var position = materialPositions.FirstOrDefault(o => o.Id == material.Id);
+                            if (position != null && material.Amount.HasValue)
+                            {
+                                position.Amount = material.Amount.Value;
+                            }
                         }
 
                         termManager.SaveChanges();
