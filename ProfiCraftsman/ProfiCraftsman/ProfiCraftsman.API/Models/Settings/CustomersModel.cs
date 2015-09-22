@@ -67,6 +67,7 @@ namespace ProfiCraftsman.API.Models.Settings
         /// <summary>
         ///     Model property for <see cref="Customers.Email"/> entity
         /// </summary>
+        [Required]
         [DataMember]
         public string email{ get; set; }
         /// <summary>

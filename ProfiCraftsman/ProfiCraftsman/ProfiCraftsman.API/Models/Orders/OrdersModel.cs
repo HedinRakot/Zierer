@@ -74,6 +74,7 @@ namespace ProfiCraftsman.API.Models
         [DataMember]
         public string customerFax { get; set; }
 
+        [Required]
         [DataMember]
         public string customerEmail { get; set; }
 

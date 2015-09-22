@@ -78,6 +78,7 @@ namespace ProfiCraftsman.Lib.Data
 
             Property(t => t.Email)
                 .HasColumnName(Customers.Fields.Email)
+                .IsRequired()
                 .IsUnicode()
                 .HasMaxLength(50);
 

@@ -88,7 +88,8 @@ namespace ProfiCraftsman.API.Controllers
                     Phone = model.customerPhone,
                     Fax = model.customerFax,
                     Email = model.customerEmail,
-                    IsProspectiveCustomer = model.isOffer
+                    IsProspectiveCustomer = model.isOffer,
+                    WithTaxes = true, //TODO
                 };
 
                 if(!model.isOffer)

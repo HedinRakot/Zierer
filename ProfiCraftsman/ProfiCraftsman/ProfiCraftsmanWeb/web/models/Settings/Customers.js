@@ -35,7 +35,7 @@ define([
 				                    validation: { required: false, maxLength: 20 } }			
 			,email: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('Customers', 'email'), 
-				                    validation: { required: false, maxLength: 50 } }			
+				                    validation: { required: true, maxLength: 50 } }			
 			,comment: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('Customers', 'comment'), 
 				                    validation: { required: false, maxLength: 128 } }			

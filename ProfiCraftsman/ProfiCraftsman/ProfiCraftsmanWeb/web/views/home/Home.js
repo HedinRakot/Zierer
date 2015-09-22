@@ -8,13 +8,15 @@
 ], function (BaseView, Calendar, KendoWidgetFormMixin, KendoValidatorFormMixin, BoundForm, Model) {
     'use strict';
 
-    var employees = [];
+    var employees = [],
+        schedulerCreated = false,
+        terms = [],
+        map = null,
+        markers = [];
 
     var bindCalendar = function (self, needLoadData) {
 
-        var model = self.model,
-            schedulerCreated = false,
-            terms = [];
+        var model = self.model;
 
         require(['calendarLanguages'], function () {
 
@@ -47,9 +49,16 @@
                             var mapContainer = self.$el.find('#mapContainer');
                             mapContainer.show();
 
-                            var map = new google.maps.Map(self.$el.find('#map')[0], {
-                                zoom: 12
-                            });
+                            if (map == null) {
+                                map = new google.maps.Map(self.$el.find('#map')[0], {
+                                    zoom: 12
+                                });
+                            }
+
+                            for (var i = 0; i < markers.length; i++) {
+                                markers[i].setMap(null);
+                            }
+
 
                             var geocoder = new google.maps.Geocoder();
                             $(terms).each(function () {
@@ -68,6 +77,8 @@
                                                 title: title,
                                                 url: url
                                             });
+
+                                            markers.push(marker);
 
                                             google.maps.event.addListener(marker, 'click', function () {
                                                 location.href = marker.url;

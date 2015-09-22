@@ -49,7 +49,7 @@ define(function () {
 				                    validation: { required: false, maxLength: 20 } }			
 			,customerEmail: { type: "string", 
 			                        editable: Application.canTableItemBeEdit('Orders', 'customerEmail'), 
-				                    validation: { required: false, maxLength: 50 } }	
+				                    validation: { required: true, maxLength: 50 } }	
             ,customerNumber: { type: "number", 
 			                        editable: Application.canTableItemBeEdit('Orders', 'customerNumber'), 
 				                    validation: { required: true } }			
