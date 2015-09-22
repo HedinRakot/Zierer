@@ -3,7 +3,8 @@
     "main_menu_back_button":  "Back",
     "main_menu_help": "Help",
     "main_menu_settings": "Settings",
-    "terms_today_title":  "Terms",
+    "terms_today_title":  "Terms today",
+    "terms_tommorow_title":  "Terms tommorow",
     "logout_title":  "Logout",
 
     "=====================": "Settings",

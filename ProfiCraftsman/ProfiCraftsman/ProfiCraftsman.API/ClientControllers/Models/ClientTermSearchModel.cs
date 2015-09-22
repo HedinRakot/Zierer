@@ -13,5 +13,6 @@ namespace ProfiCraftsman.API.ClientControllers
     public class ClientTermSearchModel
     {
         public string userLogin { get; set; }
+        public bool termsForTommorow { get; set; }
     }
 }

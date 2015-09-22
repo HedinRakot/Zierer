@@ -25,6 +25,7 @@
     <script src="js/controllers/loginController.js"></script>
     <script src="js/controllers/logoutController.js"></script>
     <script src="js/controllers/termsController.js"></script>
+    <script src="js/controllers/termsForTommorowController.js"></script>
     <script src="js/controllers/enterTermPositionsController.js"></script>
     <script src="js/controllers/enterTermMaterialsController.js"></script>
     <script src="js/controllers/termDetailsController.js"></script>
@@ -65,6 +66,9 @@
                     </ion-item>
                     <ion-item nav-clear menu-close href="#/terms">
                         {{"terms_today_title" | translate}}
+                    </ion-item>
+                    <ion-item nav-clear menu-close href="#/termsForTommorow">
+                        {{"terms_tommorow_title" | translate}}
                     </ion-item>
                     <ion-item nav-clear menu-close ng-click="logoutCtrl.doLogout()">
                         {{"logout_title" | translate}}

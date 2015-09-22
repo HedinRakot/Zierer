@@ -28,8 +28,14 @@ namespace ProfiCraftsman.API.ClientControllers
 
             if(user != null && user.EmployeeId.HasValue)
             {
+                var date = DateTime.Now.Date;
+                if(model.termsForTommorow)
+                {
+                    date = date.AddDays(1);
+                }
+
                 var terms = termManager.GetEntities(o => 
-                o.TermEmployees.Any(e => !e.DeleteDate.HasValue && e.EmployeeId == user.EmployeeId.Value) && o.Date.Date == DateTime.Now.Date);
+                o.TermEmployees.Any(e => !e.DeleteDate.HasValue && e.EmployeeId == user.EmployeeId.Value) && o.Date.Date == date);
                 result = terms.Select(term => TermViewModelHelper.ToModel(term, false, false)).OrderBy(o => o.FromDate).ToList();
             }
 

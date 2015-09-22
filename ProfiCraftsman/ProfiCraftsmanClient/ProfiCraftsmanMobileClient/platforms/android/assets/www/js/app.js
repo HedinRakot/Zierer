@@ -107,7 +107,7 @@
             // // Use $compileProvider.urlSanitizationWhitelist(...) for Angular 1.2
             $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|ms-appx|x-wmapp0):|data:image\//);
 
-            $stateProvider                
+            $stateProvider
                 .state('settings', {
                     url: "/settings",
                     views: {
@@ -223,6 +223,17 @@
                     views: {
                         'menuContent': {
                             templateUrl: "templates/terms/addNewMaterial.html"
+                        }
+                    },
+                    data: {
+                        requireLogin: true
+                    }
+                })
+                .state('termsForTommorow', {
+                    url: "/termsForTommorow",
+                    views: {
+                        'menuContent': {
+                            templateUrl: "templates/terms/termsForTommorow.html"
                         }
                     },
                     data: {

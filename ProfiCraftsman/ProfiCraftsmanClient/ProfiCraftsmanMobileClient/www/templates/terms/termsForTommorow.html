@@ -1,0 +1,21 @@
+﻿<ion-view ng-controller="TermsForTommorowController as termsForTommorowController" cache-view="false">
+    <ion-nav-title>
+        {{"terms_tommorow_title" | translate}}
+    </ion-nav-title>
+    <ion-content>
+        <ion-list>
+
+            <ion-item class="term-item" ng-click="">
+                <div class="term-item-column item" style="width: 80px; font-weight: bold;">Von</div>
+                <div class="term-item-column item" style="width: 80px; font-weight: bold;">Bis</div>
+                <div class="term-item-column item" style="border-right: 0px; font-weight: bold;">Adresse</div>
+            </ion-item>
+
+            <ion-item ng-repeat="term in termsForTommorowController.terms" class="term-item">
+                <div class="term-item-column item" style="width: 80px;">{{term.fromDate}}</div>
+                <div class="term-item-column item" style="width: 80px;">{{term.toDate}}</div>
+                <div class="term-item-column item" style="border-right: 0px;">{{term.address}}</div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
