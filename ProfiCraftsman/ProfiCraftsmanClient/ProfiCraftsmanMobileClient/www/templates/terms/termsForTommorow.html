@@ -6,14 +6,14 @@
 
         <p ng-if="termsForTommorowController.missingMaterials.length > 0" style="font-weight: bold; font-size: 14px; padding-top: 15px">Fehlende Materialien:</p>
 
-        <ion-list>
+        <ion-list ng-if="termsForTommorowController.missingMaterials.length > 0">
             <ion-item class="term-item">
                 <div class="term-item-column item" style="width: 15%; font-weight: bold;">Artikelnummer</div>
                 <div class="term-item-column item" style="width: 70%; font-weight: bold;">Bezeichnung</div>
                 <div class="term-item-column item" style="width: 15%; font-weight: bold; border-right: 0px;">Menge</div>
             </ion-item>
 
-            <ion-item ng-repeat="missingMaterial in termController.missingMaterials" class="term-item">
+            <ion-item ng-repeat="missingMaterial in termsForTommorowController.missingMaterials" class="term-item">
                 <div class="term-item-column item" style="width: 15%;">{{missingMaterial.number}}</div>
                 <div class="term-item-column item" style="width: 70%;">{{missingMaterial.description}}</div>
                 <div class="term-item-column item" style="width: 15%; border-right: 0px;">{{missingMaterial.amount}}</div>
