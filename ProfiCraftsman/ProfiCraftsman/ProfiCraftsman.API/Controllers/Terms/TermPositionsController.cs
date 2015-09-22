@@ -68,7 +68,7 @@ namespace ProfiCraftsman.API.Controllers
                 {
                     TermPositionMaterialRspManager.AddEntity(new TermPositionMaterialRsp()
                     {
-                        Amount = material.Amount.HasValue ? material.Amount.Value * model.amount : (double?)null,
+                        Amount = null,//todo delete? material.Amount.HasValue ? material.Amount.Value * model.amount : (double?)null,
                         TermPositionId = model.Id,
                         MaterialId = material.MaterialId
                     });

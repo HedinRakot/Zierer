@@ -25,8 +25,9 @@ namespace ProfiCraftsman.API.ClientControllers
 		{
             var user = userManager.GetByLogin(model.userLogin);
             var result = new List<ClientTermViewModel>();
+            var missingMaterials = new List<ClientTermMaterialViewModel>();
 
-            if(user != null && user.EmployeeId.HasValue)
+            if (user != null && user.EmployeeId.HasValue)
             {
                 var date = DateTime.Now.Date;
                 if(model.termsForTommorow)
@@ -36,10 +37,33 @@ namespace ProfiCraftsman.API.ClientControllers
 
                 var terms = termManager.GetEntities(o => 
                 o.TermEmployees.Any(e => !e.DeleteDate.HasValue && e.EmployeeId == user.EmployeeId.Value) && o.Date.Date == date);
-                result = terms.Select(term => TermViewModelHelper.ToModel(term, false, false)).OrderBy(o => o.FromDate).ToList();
+                result = terms.Select(term => TermViewModelHelper.ToModel(term, false, true)).OrderBy(o => o.FromDate).ToList();
+
+                var auto = terms.Select(o => o.Autos).FirstOrDefault(); //todo?
+                var materials = result.SelectMany(o => o.Materials.Where(m => !m.Amount.HasValue));
+                foreach(var materialGroup in materials.GroupBy(o => o.MaterialId))
+                {
+                    var neededAmount = materialGroup.Where(o => o.PlannedAmount.HasValue).Sum(o => o.PlannedAmount.Value);
+                    var isAmount = (double)auto.AutoMaterialRsps.Where(o => o.MaterialId == materialGroup.Key).Sum(o => o.Amount);
+
+                    if(neededAmount > isAmount)
+                    {
+                        missingMaterials.Add(new ClientTermMaterialViewModel()
+                        {
+                            Id = materialGroup.Key,
+                            Description = materials.FirstOrDefault(o => o.MaterialId == materialGroup.Key).Description,
+                            Number = materials.FirstOrDefault(o => o.MaterialId == materialGroup.Key).Number,
+                            Amount = neededAmount - isAmount,
+                        });
+                    }
+                }
             }
 
-            return Ok(result);
+            return Ok(new
+            {
+                terms = result,
+                missingMaterials = missingMaterials
+            });
 		}	
 	}
 }

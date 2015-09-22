@@ -98,12 +98,12 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime CreateDate{ get; set; }
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
-        public int Amount{ get; set; }
+        public double Amount{ get; set; }
         public bool IsAlternative{ get; set; }
         public int PaymentType{ get; set; }
         public string Description{ get; set; }
         public int? ParentId{ get; set; }
-        public int? RestAmount{ get; set; }
+        public double? RestAmount{ get; set; }
         public string Number{ get; set; }
         public int? ProductAmountType{ get; set; }
         DateTime ISystemFields.CreateDate

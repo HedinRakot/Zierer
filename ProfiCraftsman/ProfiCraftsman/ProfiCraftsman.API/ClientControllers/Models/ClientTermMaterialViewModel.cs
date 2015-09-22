@@ -13,9 +13,11 @@ namespace ProfiCraftsman.API.ClientControllers
     public class ClientTermMaterialViewModel
     {
         public int Id { get; set; }
+        public int MaterialId { get; set; }
         public int TermId { get; set; }
         public string Number { get; set; }
         public string Description { get; set; }
         public double? Amount { get; set; }
+        public double? PlannedAmount { get; set; }
     }
 }

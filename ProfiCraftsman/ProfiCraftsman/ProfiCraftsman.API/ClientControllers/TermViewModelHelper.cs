@@ -25,9 +25,11 @@ namespace ProfiCraftsman.API.ClientControllers
                     Select(positionMaterialRsp => new ClientTermMaterialViewModel()
                     {
                         Id = positionMaterialRsp.Id,
+                        MaterialId = positionMaterialRsp.MaterialId,
                         Description = positionMaterialRsp.Materials.Name,
                         Number = positionMaterialRsp.Materials.Number,
                         Amount = positionMaterialRsp.Amount,
+                        PlannedAmount = positionMaterialRsp.TermPositions.Amount,
                         TermId = term.Id
                     }).ToList();
 
@@ -37,6 +39,7 @@ namespace ProfiCraftsman.API.ClientControllers
                         Select(position => new ClientTermMaterialViewModel()
                         {
                             Id = position.Id,
+                            MaterialId = position.MaterialId.Value,
                             Description = position.Materials.Name,
                             Number = position.Materials.Number,
                             Amount = position.Amount,

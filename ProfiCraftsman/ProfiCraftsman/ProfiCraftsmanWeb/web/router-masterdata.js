@@ -35,9 +35,9 @@ define([
 				'SocialTaxes': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/SocialTaxes', { ProceedsAccounts: true, Employees: true, }, false),
 	            'SocialTaxes/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddSocialTaxes', 'models/Settings/SocialTaxes', { ProceedsAccounts: true, Employees: true, }, false),
 	            'SocialTaxes/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddSocialTaxes', 'models/Settings/SocialTaxes', { ProceedsAccounts: true, Employees: true, }, false),
-				'Autos': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/Autos', { Instruments: true, }, false),
-	            'Autos/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddAutos', 'models/Settings/Autos', { Instruments: true, }, false),
-	            'Autos/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddAutos', 'models/Settings/Autos', { Instruments: true, }, false),
+				'Autos': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/Autos', { Instruments: true, MaterialAmountTypes: true, }, false),
+	            'Autos/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddAutos', 'models/Settings/Autos', { Instruments: true, MaterialAmountTypes: true, }, false),
+	            'Autos/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddAutos', 'models/Settings/Autos', { Instruments: true, MaterialAmountTypes: true, }, false),
 				'Permissions': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/Permissions', false, false),
 	            'Permissions/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddPermission', 'models/Settings/Permission', false, false),
 	            'Permissions/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddPermission', 'models/Settings/Permission', false, false),
@@ -77,9 +77,9 @@ define([
 				'Instruments': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/Instruments', { ProceedsAccounts: true, }, false),
 	            'Instruments/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddInstruments', 'models/Settings/Instruments', { ProceedsAccounts: true, }, false),
 	            'Instruments/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddInstruments', 'models/Settings/Instruments', { ProceedsAccounts: true, }, false),
-				'Products': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/Products', { ProductTypes: true, ProductAmountTypes: true, ProceedsAccounts: true, }, false),
-	            'Products/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProducts', 'models/Settings/Products', { ProductTypes: true, ProductAmountTypes: true, ProceedsAccounts: true, }, false),
-	            'Products/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProducts', 'models/Settings/Products', { ProductTypes: true, ProductAmountTypes: true, ProceedsAccounts: true, }, false),
+				'Products': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/Products', { ProductTypes: true, ProductAmountTypes: true, ProceedsAccounts: true, MaterialAmountTypes: true, }, false),
+	            'Products/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProducts', 'models/Settings/Products', { ProductTypes: true, ProductAmountTypes: true, ProceedsAccounts: true, MaterialAmountTypes: true, }, false),
+	            'Products/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProducts', 'models/Settings/Products', { ProductTypes: true, ProductAmountTypes: true, ProceedsAccounts: true, MaterialAmountTypes: true, }, false),
 			}
         
 	        return routes;

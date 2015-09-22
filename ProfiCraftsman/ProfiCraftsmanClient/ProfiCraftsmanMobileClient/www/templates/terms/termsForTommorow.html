@@ -3,8 +3,26 @@
         {{"terms_tommorow_title" | translate}}
     </ion-nav-title>
     <ion-content>
-        <ion-list>
 
+        <p ng-if="termsForTommorowController.missingMaterials.length > 0" style="font-weight: bold; font-size: 14px; padding-top: 15px">Fehlende Materialien:</p>
+
+        <ion-list>
+            <ion-item class="term-item">
+                <div class="term-item-column item" style="width: 15%; font-weight: bold;">Artikelnummer</div>
+                <div class="term-item-column item" style="width: 70%; font-weight: bold;">Bezeichnung</div>
+                <div class="term-item-column item" style="width: 15%; font-weight: bold; border-right: 0px;">Menge</div>
+            </ion-item>
+
+            <ion-item ng-repeat="missingMaterial in termController.missingMaterials" class="term-item">
+                <div class="term-item-column item" style="width: 15%;">{{missingMaterial.number}}</div>
+                <div class="term-item-column item" style="width: 70%;">{{missingMaterial.description}}</div>
+                <div class="term-item-column item" style="width: 15%; border-right: 0px;">{{missingMaterial.amount}}</div>
+            </ion-item>
+        </ion-list>
+
+        <p ng-if="termsForTommorowController.missingMaterials.length > 0" style="font-weight: bold; font-size: 14px; padding-top: 25px">Termine:</p>
+
+        <ion-list>
             <ion-item class="term-item" ng-click="">
                 <div class="term-item-column item" style="width: 80px; font-weight: bold;">Von</div>
                 <div class="term-item-column item" style="width: 80px; font-weight: bold;">Bis</div>

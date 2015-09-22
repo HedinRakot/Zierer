@@ -80,7 +80,8 @@
                 termsForTommorow: true
             }).
             success(function (result) {
-                self.terms = result;
+                self.terms = result.terms;
+                self.missingMaterials = result.missingMaterials;
             }).
             error(function (result) {
  

@@ -76,7 +76,8 @@
         var self = this;
         this.http.post(window.localStorage['baseAppPath'] + 'ClientTerms', { userLogin: window.localStorage['userLogin'] }).
             success(function (result) {
-                self.terms = result;
+                self.terms = result.terms;
+                self.missingMaterials = result.missingMaterials;
             }).
             error(function (result) {
  
