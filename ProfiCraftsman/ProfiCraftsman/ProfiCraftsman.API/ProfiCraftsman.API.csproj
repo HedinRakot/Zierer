@@ -189,6 +189,7 @@
     <Compile Include="ClientControllers\Models\GetTermModel.cs" />
     <Compile Include="ClientControllers\TermViewModelHelper.cs" />
     <Compile Include="Config\NotificationServerConfigSection.cs" />
+    <Compile Include="Controllers\MultipartFormDataStreamProvider.cs" />
     <Compile Include="Controllers\Administration\ReportOrdersController.cs" />
     <Compile Include="Controllers\Administration\ReportMaterialsController.cs" />
     <Compile Include="Controllers\Administration\SalaryHelper.cs" />
@@ -204,6 +205,9 @@
     <Compile Include="Controllers\Invoices\InvoicesController.cs" />
     <Compile Include="Controllers\Orders\DeleteAllOrderPositionsController.cs" />
     <Compile Include="Controllers\Orders\CopyOrderController.cs" />
+    <Compile Include="Controllers\Orders\AddFilesController.cs" />
+    <Compile Include="Controllers\Orders\GetOrderFileController.cs" />
+    <Compile Include="Controllers\Orders\OrderFilesController.cs" />
     <Compile Include="Controllers\Settings\AdditionalCostTypesController.cs">
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
@@ -344,6 +348,7 @@
     <Compile Include="Models\Invoices\InvoicePositionsModel.cs" />
     <Compile Include="Models\Invoices\AddInvoiceModel.cs" />
     <Compile Include="Models\Invoices\InvoicesModel.cs" />
+    <Compile Include="Models\Orders\OrderFilesModel.cs" />
     <Compile Include="Models\Settings\AdditionalCostTypesModel.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -401,7 +406,7 @@
     </Compile>
     <Compile Include="Models\TransportOrders\TransportOrdersModel.cs" />
     <Compile Include="Models\TransportOrders\TransportPositionsModel.cs" />
-    <Compile Include="Models\Orders\ContainerSmartModel.cs" />
+    <Compile Include="Models\Orders\ProductSmartModel.cs" />
     <Compile Include="Models\Orders\PositionsModel.cs" />
     <Compile Include="Models\Orders\OrdersModel.cs" />
     <Compile Include="Models\Settings\AdditionalCostsModel.cs">

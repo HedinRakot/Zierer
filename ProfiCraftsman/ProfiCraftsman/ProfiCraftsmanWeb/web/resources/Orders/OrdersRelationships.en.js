@@ -7,6 +7,8 @@ define(function () {
         products: 'Products',
         materials: 'Materials',
         terms: 'Terms',
+        freePositions: 'Free positions',
+        orderFiles: 'Files',
     };
 
     return resources;

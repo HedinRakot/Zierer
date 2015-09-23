@@ -53,6 +53,7 @@ namespace ProfiCraftsman.Lib.Data
             modelBuilder.Configurations.Add(InvoiceStornosMapping.Instance);
             modelBuilder.Configurations.Add(UserMapping.Instance);
             modelBuilder.Configurations.Add(AdditionalCostsMapping.Instance);
+            modelBuilder.Configurations.Add(OrderFilesMapping.Instance);
             modelBuilder.Configurations.Add(TaxesMapping.Instance);
             modelBuilder.Configurations.Add(TransportProductsMapping.Instance);
             modelBuilder.Configurations.Add(CustomersMapping.Instance);
@@ -189,6 +190,10 @@ namespace ProfiCraftsman.Lib.Data
         ///     Set of <see cref="AdditionalCosts"/> entities from table dbo.AdditionalCosts
         /// </summary>
         public IQueryable<AdditionalCosts> AdditionalCosts{ get; set; }
+        /// <summary>
+        ///     Set of <see cref="OrderFiles"/> entities from table dbo.OrderFiles
+        /// </summary>
+        public IQueryable<OrderFiles> OrderFiles{ get; set; }
         /// <summary>
         ///     Set of <see cref="Taxes"/> entities from table dbo.Taxes
         /// </summary>

@@ -145,6 +145,9 @@
     <Compile Include="Entities\Materials.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\OrderFiles.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Orders.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
@@ -279,6 +282,9 @@
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\IMaterialsManager.cs">
+      <DependentUpon>IManagers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\IOrderFilesManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\IProceedsAccountsManager.cs">

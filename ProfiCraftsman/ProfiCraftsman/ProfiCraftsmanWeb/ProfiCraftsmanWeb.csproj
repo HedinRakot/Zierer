@@ -240,6 +240,7 @@
     <Content Include="web\collections\Administration\Salary.js" />
     <Content Include="web\collections\Administration\Trips.js" />
     <Content Include="web\collections\Invoices\InvoicePayments.js" />
+    <Content Include="web\collections\OrderFiles.js" />
     <Content Include="web\collections\Settings\AdditionalCostTypes.js">
       <DependentUpon>web.collections.tt</DependentUpon>
     </Content>
@@ -347,6 +348,7 @@
     <Content Include="web\models\Administration\Salary.js" />
     <Content Include="web\models\Administration\Trip.js" />
     <Content Include="web\models\Invoices\InvoicePayments.js" />
+    <Content Include="web\models\OrderFiles.js" />
     <Content Include="web\models\Settings\AdditionalCostTypes.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
@@ -562,8 +564,14 @@
     <Content Include="web\resources\Invoices\InvoicesRelationships.en.js" />
     <Content Include="web\resources\Invoices\AddInvoicePositions.de.js" />
     <Content Include="web\resources\Invoices\AddInvoicePositions.en.js" />
+    <Content Include="web\resources\Orders\AddFiles.de.js" />
+    <Content Include="web\resources\Orders\AddFiles.en.js" />
     <Content Include="web\resources\Orders\InnerPositions.de.js" />
     <Content Include="web\resources\Orders\InnerPositions.en.js" />
+    <Content Include="web\resources\Orders\FreePositions.de.js" />
+    <Content Include="web\resources\Orders\FreePositions.en.js" />
+    <Content Include="web\resources\Orders\OrderFiles.de.js" />
+    <Content Include="web\resources\Orders\OrderFiles.en.js" />
     <Content Include="web\resources\Settings\AddAdditionalCostTypes.de.js">
       <DependentUpon>web.add.resources.tt</DependentUpon>
     </Content>
@@ -1253,7 +1261,10 @@
     <Content Include="web\templates\Invoices\Invoices.html" />
     <Content Include="web\templates\Invoices\InvoicesRelationships.html" />
     <Content Include="web\templates\Invoices\AddInvoicePositions.html" />
+    <Content Include="web\templates\Orders\AddFiles.html" />
     <Content Include="web\templates\Orders\InnerPositions.html" />
+    <Content Include="web\templates\Orders\FreePositions.html" />
+    <Content Include="web\templates\Orders\OrderFiles.html" />
     <Content Include="web\templates\Settings\AddAdditionalCostTypes.html">
       <DependentUpon>web.add.templates.tt</DependentUpon>
     </Content>
@@ -1618,7 +1629,10 @@
     <Content Include="web\views\Invoices\Invoices.js" />
     <Content Include="web\views\Invoices\InvoicesRelationships.js" />
     <Content Include="web\views\Invoices\AddInvoicePositions.js" />
+    <Content Include="web\views\Orders\AddFiles.js" />
     <Content Include="web\views\Orders\InnerPositions.js" />
+    <Content Include="web\views\Orders\OrderFiles.js" />
+    <Content Include="web\views\Orders\FreePositions.js" />
     <Content Include="web\views\Settings\AddAdditionalCostTypes.js">
       <DependentUpon>web.add.views.tt</DependentUpon>
     </Content>

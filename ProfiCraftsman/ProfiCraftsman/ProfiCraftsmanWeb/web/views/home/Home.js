@@ -49,11 +49,21 @@
                             var mapContainer = self.$el.find('#mapContainer');
                             mapContainer.show();
 
-                            if (map == null) {
+                            //if (map == null) {
+                            try {
+
+                                //var scriptSource = '<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvDrzE8zFvOYMIB8wb1jVCEkWJO0JGfQU&callback=initMap&region=de&language=de-DE" async defer></script>';
+
+                                //self.$el.find('#scriptContainer').append(scriptSource);
+
                                 map = new google.maps.Map(self.$el.find('#map')[0], {
                                     zoom: 12
                                 });
                             }
+                            catch (e) {
+
+                            }
+                            //}
 
                             for (var i = 0; i < markers.length; i++) {
                                 markers[i].setMap(null);
@@ -202,7 +212,7 @@
                     {
                         field: "employees",
                         name: "Employees",
-                        dataSource : employees,
+                        dataSource: employees,
                         multiple: true,
                         title: "Employees"
                     }
@@ -280,8 +290,9 @@
 
 	        var self = this,
                 needLoadData = true;
-            
+
 	        employees = [];
+
 
 	        $.ajax({
 	            url: Application.apiUrl + 'employees',

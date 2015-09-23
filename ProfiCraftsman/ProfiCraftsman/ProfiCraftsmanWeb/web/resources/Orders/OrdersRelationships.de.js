@@ -7,6 +7,8 @@ define(function () {
 	    products: 'Leistungen',
 	    materials: 'Materialien',
 	    terms: 'Termine',
+	    freePositions: 'Offene Leistungen',
+	    orderFiles: 'Dateien',
 	};
 
 	return resources;

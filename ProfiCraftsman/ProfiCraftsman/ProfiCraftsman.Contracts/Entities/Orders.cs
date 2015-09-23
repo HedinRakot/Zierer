@@ -102,6 +102,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public virtual ICollection<Positions> Positions{ get; set; }
         public virtual ICollection<Invoices> Invoices{ get; set; }
         public virtual ICollection<Terms> Terms{ get; set; }
+        public virtual ICollection<OrderFiles> OrderFiles{ get; set; }
         public bool HasCustomers
         {
             get { return !ReferenceEquals(Customers, null); }

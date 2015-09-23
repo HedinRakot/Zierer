@@ -47,6 +47,7 @@ namespace ProfiCraftsman.Configuration
             container.RegisterType<IInvoiceStornosManager, InvoiceStornosManager>(new PerRequestLifetimeManager());
             container.RegisterType<IUserManager, UserManager>(new PerRequestLifetimeManager());
             container.RegisterType<IAdditionalCostsManager, AdditionalCostsManager>(new PerRequestLifetimeManager());
+            container.RegisterType<IOrderFilesManager, OrderFilesManager>(new PerRequestLifetimeManager());
             container.RegisterType<ITaxesManager, TaxesManager>(new PerRequestLifetimeManager());
             container.RegisterType<ITransportProductsManager, TransportProductsManager>(new PerRequestLifetimeManager());
             container.RegisterType<ICustomersManager, CustomersManager>(new PerRequestLifetimeManager());

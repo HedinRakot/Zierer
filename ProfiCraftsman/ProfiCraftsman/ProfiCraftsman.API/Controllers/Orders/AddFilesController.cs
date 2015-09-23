@@ -25,21 +25,21 @@ namespace ProfiCraftsman.API.Controllers
     /// <summary>
     ///     Controller for import materials
     /// </summary>
-    [AuthorizeByPermissions(PermissionTypes = new[] { Permissions.Materials })]
-    public partial class ImportMaterialsController : ApiController
+    [AuthorizeByPermissions(PermissionTypes = new[] { Permissions.Orders })]
+    public partial class AddOrderFilesController : ApiController
     {
-        private readonly IMaterialsManager manager;
+        private readonly IOrderFilesManager manager;
 
-        public ImportMaterialsController(IMaterialsManager manager)
+        public AddOrderFilesController(IOrderFilesManager manager)
         {
             this.manager = manager;
-            Folder = HttpContext.Current.Server.MapPath("~/App_Data/MaterialImport");
+            Folder = HttpContext.Current.Server.MapPath("~/App_Data/OrderFiles");
         }
 
         private string Folder { get; set; }
 
         [HttpPost]
-        public async Task<IHttpActionResult> Post()
+        public async Task<IHttpActionResult> Post(int orderId)
         {
             // Check if the request contains multipart/form-data.
             if (!Request.Content.IsMimeMultipartContent())
@@ -54,27 +54,28 @@ namespace ProfiCraftsman.API.Controllers
                 await Request.Content.ReadAsMultipartAsync(provider);
                 var fileData = provider.FileData[0];
                 filePath = Path.Combine(Folder, fileData.LocalFileName);
-                MaterialImportResults results = null;
 
-                using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+
+                var orderFolder = Path.Combine(Folder, orderId.ToString());
+                if (!Directory.Exists(orderFolder))
                 {
-                    var importer = new MaterialImporter(manager);
-                    results = await importer.ImportFromStream(stream);
-
-                    stream.Close();
+                    Directory.CreateDirectory(orderFolder);
                 }
 
-                //foreach (var question in results.CreatedQuestions)
-                //    await Logger.AddInformation(" \"{0}\" был добавлен в результате импорта.", .Name);
+                var newFilePath = Path.Combine(orderFolder, Path.GetFileName(filePath));
+                File.Copy(filePath, newFilePath);
 
-                //foreach (var question in results.UpdatedQuestions)
-                //    await Logger.AddInformation(" \"{0}\" был обновлен в результате импорта.", .Name);
+                manager.AddEntity(new OrderFiles()
+                {
+                    OrderId = orderId,
+                    FileName = newFilePath,
+                });
+
+                manager.SaveChanges();
 
                 return Ok(new
                 {
-                    CreatedMaterials = results.CreatedMaterials.Count,
-                    UpdatedMaterials = results.UpdatedMaterials.Count,
-                    Errors = results.Errors,
+
                 });
             }
             catch (Exception e)
