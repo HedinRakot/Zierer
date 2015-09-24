@@ -61,6 +61,7 @@
                 { field: 'isAlternative', title: this.resources.isAlternative, headerTitle: this.resources.isAlternativeTitle, checkbox: true, width: '45px', attributes: { "class": "detail-view-grid-cell" } },
                 { field: 'number', title: this.resources.number, width: '100px', filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
                 { field: 'description', title: this.resources.description, filterable: false, sortable: false, width: '300px', attributes: { "class": "detail-view-grid-cell" } },
+                { field: 'comment', title: this.resources.comment, filterable: false, sortable: false, width: '300px', attributes: { "class": "detail-view-grid-cell" } },
                 { field: 'amount', title: this.resources.amount, width: '70px', filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
                 { field: 'proccessedAmount', title: this.resources.proccessedAmount, width: '70px', filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },
                 { field: 'amountType', title: this.resources.amountType, width: '70px', filterable: false, sortable: false, attributes: { "class": "detail-view-grid-cell" } },

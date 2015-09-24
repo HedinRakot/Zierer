@@ -44,6 +44,7 @@ namespace ProfiCraftsman.API.Controllers
             model.proccessedAmount = entity.ProccessedAmount;
             model.price = entity.Positions.Price.ToString("N2") + " EUR";
             model.description = entity.Positions.Description;
+            model.comment = entity.Comment;
             model.createDate = ((ISystemFields)entity).CreateDate;
             model.changeDate = ((ISystemFields)entity).ChangeDate;
 
@@ -59,7 +60,7 @@ namespace ProfiCraftsman.API.Controllers
             entity.PositionId = model.positionId;
             entity.Amount = model.amount;
             entity.ProccessedAmount = model.proccessedAmount;
-
+            entity.Comment = model.comment;
             
             if (actionType == ActionTypes.Add)
             {

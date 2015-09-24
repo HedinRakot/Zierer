@@ -22,6 +22,9 @@ namespace ProfiCraftsman.API.Models
         public string description { get; set; }
 
         [DataMember]
+        public string comment { get; set; }
+
+        [DataMember]
         public string number { get; set; }
                 
         [DataMember]

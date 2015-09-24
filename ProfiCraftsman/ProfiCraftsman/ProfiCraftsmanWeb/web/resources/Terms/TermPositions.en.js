@@ -17,6 +17,7 @@ define(function () {
 		deleteAllTermPositions: 'Delete all positions',
 		amountType: 'Amount type',
 		totalPrice: 'Total price',
+		comment: 'Comment',
 	};
 
 	return resources;

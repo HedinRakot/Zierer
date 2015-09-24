@@ -32,6 +32,9 @@ define(function () {
             ,description: {type: "string",
                                     editable: false,
                                     validation: { required: true } }
+            ,comment: {type: "string",
+                                    editable: true,
+                                    validation: { required: false } }
             ,number: { type: "string", 
                                     editable: false, 
                                     validation: { required: true } }

@@ -17,6 +17,7 @@ define(function () {
 		deleteAllTermPositions: 'Alle löschen',
 		amountType: 'Einheit',
 		totalPrice: 'Gesamtpreis',
+        comment: 'Bemerkung',
 	};
 
 	return resources;

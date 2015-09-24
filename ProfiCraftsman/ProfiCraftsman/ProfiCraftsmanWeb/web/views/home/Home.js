@@ -52,10 +52,6 @@
                             //if (map == null) {
                             try {
 
-                                //var scriptSource = '<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvDrzE8zFvOYMIB8wb1jVCEkWJO0JGfQU&callback=initMap&region=de&language=de-DE" async defer></script>';
-
-                                //self.$el.find('#scriptContainer').append(scriptSource);
-
                                 map = new google.maps.Map(self.$el.find('#map')[0], {
                                     zoom: 12
                                 });
@@ -65,40 +61,53 @@
                             }
                             //}
 
+                            
                             for (var i = 0; i < markers.length; i++) {
                                 markers[i].setMap(null);
                             }
 
 
                             var geocoder = new google.maps.Geocoder();
-                            $(terms).each(function () {
+                            geocoder.geocode({ 'address': 'München' }, function (results, status) {
+                                if (status === google.maps.GeocoderStatus.OK) {
+                                    map.setCenter(results[0].geometry.location);
 
-                                var address = this.address,
-                                    title = this.title,
-                                    url = this.url;
-
-                                if (address && address != '') {
-                                    geocoder.geocode({ 'address': address }, function (results, status) {
-                                        if (status === google.maps.GeocoderStatus.OK) {
-                                            map.setCenter(results[0].geometry.location);
-                                            var marker = new google.maps.Marker({
-                                                map: map,
-                                                position: results[0].geometry.location,
-                                                title: title,
-                                                url: url
-                                            });
-
-                                            markers.push(marker);
-
-                                            google.maps.event.addListener(marker, 'click', function () {
-                                                location.href = marker.url;
-                                            });
-                                        } else {
-                                            alert('Geocode was not successful for the following reason: ' + status);
-                                        }
-                                    });
+                                } else {
+                                    alert('Geocode was not successful for the following reason: ' + status);
                                 }
                             });
+
+ 
+                            if (terms.length > 0) {
+                                $(terms).each(function () {
+
+                                    var address = this.address,
+                                        title = this.title,
+                                        url = this.url;
+
+                                    if (address && address != '') {
+                                        geocoder.geocode({ 'address': address }, function (results, status) {
+                                            if (status === google.maps.GeocoderStatus.OK) {
+                                                map.setCenter(results[0].geometry.location);
+                                                var marker = new google.maps.Marker({
+                                                    map: map,
+                                                    position: results[0].geometry.location,
+                                                    title: title,
+                                                    url: url
+                                                });
+
+                                                markers.push(marker);
+
+                                                google.maps.event.addListener(marker, 'click', function () {
+                                                    location.href = marker.url;
+                                                });
+                                            } else {
+                                                alert('Geocode was not successful for the following reason: ' + status);
+                                            }
+                                        });
+                                    }
+                                });
+                            }
                         }
                     }
                 },
