@@ -176,7 +176,11 @@ define([
 				}
                 return result;
             case "datetime":
-                return ", format: '{0:d}'";
+				if(property.Column.Content.IsDateTimePicker)
+					return ", format: '{0:g}', dateTime: true";
+                else
+					return ", format: '{0:d}'";
+
             default:
 				return "";
         }

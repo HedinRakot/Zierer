@@ -24,8 +24,8 @@ define([
 			return [
 				{ field: 'employeeId', title: this.resources.employeeId , collection: this.options.employees, defaultText: this.resources.pleaseSelect},
 				{ field: 'description', title: this.resources.description },
-				{ field: 'fromDate', title: this.resources.fromDate , format: '{0:d}'},
-				{ field: 'toDate', title: this.resources.toDate , format: '{0:d}'},
+				{ field: 'fromDate', title: this.resources.fromDate , format: '{0:g}', dateTime: true},
+				{ field: 'toDate', title: this.resources.toDate , format: '{0:g}', dateTime: true},
 			];
 		}
 

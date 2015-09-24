@@ -26,5 +26,6 @@ namespace ProfiCraftsman.Generation
         public int AddViewColumnWidth { get; set; }
         public int? Rows { get; set; }
         public bool IsColorElement { get; set; }
+        public bool IsDateTimePicker { get; set; }
     }
 }
