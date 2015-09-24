@@ -18,8 +18,8 @@
 	BEGIN
 		INSERT INTO [ProfiCraftsman].[dbo].[PERMISSION] ([Id], [Name], [Description], [CreateDate], [ChangeDate], [DeleteDate])
 		VALUES(<#=content.PermissionId#>, '<#=entity.Name#>', '<#=description#>' ,GETDATE() ,GETDATE() ,NULL);
-		INSERT INTO [ProfiCraftsman].dbo.ROLE_PERMISSION_RSP(RoleId ,PermissionId ,CreateDate ,ChangeDate) 
-		VALUES (1 ,<#=content.PermissionId#> ,getdate() ,getdate());
+		INSERT INTO [ProfiCraftsman].dbo.ROLE_PERMISSION_RSP(RoleId ,PermissionId ,CreateDate ,ChangeDate, [Key]) 
+		VALUES (1 ,<#=content.PermissionId#> ,getdate() ,getdate(), '<#= StringHelper.GetMD5Hash(String.Format("{0}_{1}", 1, content.PermissionId)) #>');
 	END
 	ELSE
 	BEGIN

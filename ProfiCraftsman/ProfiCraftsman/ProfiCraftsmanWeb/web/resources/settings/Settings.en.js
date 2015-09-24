@@ -23,8 +23,11 @@ define(function () {
         TransportProducts: 'Transport product',
         Customers: 'Customer',
         CommunicationPartners: 'Communication partner',
+        Absences: 'Absences',
         ProductTypes: 'Product type',
+        NotProductiveWorkHours: 'Workhours',
         Instruments: 'Instrument',
+        OwnProducts: 'Own products',
         Products: 'Product',
 	};
 

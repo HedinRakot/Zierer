@@ -75,6 +75,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration.cs" />
+    <Compile Include="Entities\Absences.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\AdditionalCosts.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
@@ -145,10 +148,16 @@
     <Compile Include="Entities\Materials.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\NotProductiveWorkHours.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\OrderFiles.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Orders.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\OwnProducts.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Permission.cs">
@@ -236,6 +245,9 @@
     </Compile>
     <Compile Include="Enums\UniqueNumberType.cs" />
     <Compile Include="Enums\Сustom.Permissions.cs" />
+    <Compile Include="Managers\IAbsencesManager.cs">
+      <DependentUpon>IManagers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Managers\IAdditionalCostsManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
@@ -284,7 +296,13 @@
     <Compile Include="Managers\IMaterialsManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Managers\INotProductiveWorkHoursManager.cs">
+      <DependentUpon>IManagers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Managers\IOrderFilesManager.cs">
+      <DependentUpon>IManagers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\IOwnProductsManager.cs">
       <DependentUpon>IManagers.tt</DependentUpon>
     </Compile>
     <Compile Include="Managers\IProceedsAccountsManager.cs">

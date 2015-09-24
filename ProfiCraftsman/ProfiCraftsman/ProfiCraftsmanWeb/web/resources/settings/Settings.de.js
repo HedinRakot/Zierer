@@ -23,8 +23,11 @@ define(function () {
         TransportProducts: 'Transport-Leistung',
         Customers: 'Kunde',
         CommunicationPartners: 'Ansprechpartner',
+        Absences: 'Abwesenheiten',
         ProductTypes: 'Leistungsart',
+        NotProductiveWorkHours: 'Arbeitszeiten',
         Instruments: 'Werkzeug',
+        OwnProducts: 'Eigene Leistung',
         Products: 'Leistung',
 	};
 

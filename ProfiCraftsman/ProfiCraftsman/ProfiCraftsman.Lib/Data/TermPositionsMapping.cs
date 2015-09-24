@@ -54,6 +54,11 @@ namespace ProfiCraftsman.Lib.Data
             Property(t => t.ProccessedAmount)
                 .HasColumnName(TermPositions.Fields.ProccessedAmount);
 
+            Property(t => t.Comment)
+                .HasColumnName(TermPositions.Fields.Comment)
+                .IsUnicode()
+                .HasMaxLength(512);
+
 
             //Relationships
             HasRequired(t => t.Terms)

@@ -29,6 +29,9 @@ define(function () {
             ,salary: { type: "string", 
 			                        editable: false, 
 			                        validation: { required: false } }	
+            ,ownProductsSum: { type: "string", 
+			                        editable: false, 
+			                        validation: { required: false } }	
 	    }
 	});
 	return model;

@@ -51,6 +51,10 @@ namespace ProfiCraftsman.Contracts.Entities
             /// Column name 'ProccessedAmount' for property <see cref="TermPositions.ProccessedAmount"/>
             /// </summary>
             public static readonly string ProccessedAmount = "ProccessedAmount";
+            /// <summary>
+            /// Column name 'Comment' for property <see cref="TermPositions.Comment"/>
+            /// </summary>
+            public static readonly string Comment = "Comment";
           
         }
         #endregion
@@ -62,6 +66,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public DateTime ChangeDate{ get; set; }
         public DateTime? DeleteDate{ get; set; }
         public int? ProccessedAmount{ get; set; }
+        public string Comment{ get; set; }
         public virtual ICollection<TermPositionMaterialRsp> TermPositionMaterialRsps{ get; set; }
         public virtual Terms Terms{ get; set; }
         public virtual Positions Positions{ get; set; }
@@ -98,6 +103,7 @@ namespace ProfiCraftsman.Contracts.Entities
                        ChangeDate = ChangeDate,
                        DeleteDate = DeleteDate,
                        ProccessedAmount = ProccessedAmount,
+                       Comment = Comment,
         	           };
         }
     }

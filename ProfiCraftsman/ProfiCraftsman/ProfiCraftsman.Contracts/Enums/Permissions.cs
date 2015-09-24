@@ -93,6 +93,10 @@ namespace ProfiCraftsman.Contracts.Enums
     		///</summary>
     		public const int Customers = 8;
     		///<summary>
+    		/// Grant for edit Absences table
+    		///</summary>
+    		public const int Absences = 25;
+    		///<summary>
     		/// Grant for edit TransportOrders table
     		///</summary>
     		public const int TransportOrders = 14;
@@ -101,9 +105,17 @@ namespace ProfiCraftsman.Contracts.Enums
     		///</summary>
     		public const int ProductTypes = 9;
     		///<summary>
+    		/// Grant for edit NotProductiveWorkHours table
+    		///</summary>
+    		public const int NotProductiveWorkHours = 26;
+    		///<summary>
     		/// Grant for edit Instruments table
     		///</summary>
     		public const int Instruments = 18;
+    		///<summary>
+    		/// Grant for edit OwnProducts table
+    		///</summary>
+    		public const int OwnProducts = 27;
     		///<summary>
     		/// Grant for edit Products table
     		///</summary>

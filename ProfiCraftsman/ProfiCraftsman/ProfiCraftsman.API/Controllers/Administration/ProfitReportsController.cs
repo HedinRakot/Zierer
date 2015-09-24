@@ -34,6 +34,7 @@ namespace ProfiCraftsman.API.Controllers
     {
         protected IAdditionalCostsManager additionalCostsManager { get; set; }
         protected IForeignProductsManager foreignProductsManager { get; set; }
+        protected IOwnProductsManager ownProductsManager { get; set; }
         protected IEmployeeRateRspManager employeeRateRspManager { get; set; }
         protected IEmployeesManager employeeManager { get; set; }
         protected IOrdersManager orderManager { get; set; }
@@ -51,7 +52,7 @@ namespace ProfiCraftsman.API.Controllers
         public ProfitReportsController(IAdditionalCostsManager additionalCostsManager, 
             IEmployeeRateRspManager employeeRateRspManager, IEmployeesManager employeeManager, IOrdersManager orderManager,
             IForeignProductsManager foreignProductsManager, IMaterialDeliveryRspManager materialDeliveryRspManager,
-            ISocialTaxesManager socialTaxesManager, IInstrumentsManager instrumentsManager,
+            ISocialTaxesManager socialTaxesManager, IInstrumentsManager instrumentsManager, IOwnProductsManager ownProductsManager,
             ITermPositionsManager termPositionsManager, IPositionsManager positionsManager, ITermCostsManager termCostsManager,
             ITaxesManager taxesManager, IInvoicesManager invoicesManager)
         {
@@ -60,6 +61,7 @@ namespace ProfiCraftsman.API.Controllers
             this.employeeManager = employeeManager;
             this.orderManager = orderManager;
             this.foreignProductsManager = foreignProductsManager;
+            this.ownProductsManager = ownProductsManager;
             this.materialDeliveryRspManager = materialDeliveryRspManager;
             this.socialTaxesManager = socialTaxesManager;
             this.instrumentsManager = instrumentsManager;
@@ -116,7 +118,7 @@ namespace ProfiCraftsman.API.Controllers
             var additionalCostsSum = additionalCosts.Sum(o => o.Price);
 
 
-            //foreignProducts
+            //foreign products
             var foreignProducts = foreignProductsManager.GetEntities();
             if (model.FromDate.HasValue)
             {
@@ -129,7 +131,22 @@ namespace ProfiCraftsman.API.Controllers
             }
 
             var foreignProductsSum = foreignProducts.Sum(o => o.Price);
+            
 
+            //own products
+            var ownProducts = ownProductsManager.GetEntities();
+            if (model.FromDate.HasValue)
+            {
+                ownProducts = ownProducts.Where(o => o.FromDate.Date >= model.FromDate.Value);
+            }
+
+            if (model.ToDate.HasValue)
+            {
+                ownProducts = ownProducts.Where(o => (!o.ToDate.HasValue || o.ToDate.Value.Date <= model.ToDate.Value) && o.FromDate.Date <= model.ToDate.Value);
+            }
+
+            var ownProductsSum = ownProducts.Sum(o => o.Price);
+            
 
             //salary
             var salaries = SalaryHelper.GetSalary(employeeRateRspManager, employeeManager, model.FromDate.Value, model.ToDate.Value);
@@ -205,6 +222,7 @@ namespace ProfiCraftsman.API.Controllers
                 materialsSum = materialsSum.ToString("N2") + " EUR",
                 additionalCostsSum = additionalCostsSum.ToString("N2") + " EUR",
                 foreignProductsSum = foreignProductsSum.ToString("N2") + " EUR",
+                ownProductsSum = ownProductsSum.ToString("N2") + " EUR",
                 salarySum = salarySum.ToString("N2") + " EUR",
                 instrumentsSum = instrumentsSum.ToString("N2") + " EUR",
                 socialTaxesSum = socialTaxesSum.ToString("N2") + " EUR",

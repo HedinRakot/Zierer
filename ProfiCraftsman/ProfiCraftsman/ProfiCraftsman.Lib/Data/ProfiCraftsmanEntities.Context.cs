@@ -58,10 +58,13 @@ namespace ProfiCraftsman.Lib.Data
             modelBuilder.Configurations.Add(TransportProductsMapping.Instance);
             modelBuilder.Configurations.Add(CustomersMapping.Instance);
             modelBuilder.Configurations.Add(CommunicationPartnersMapping.Instance);
+            modelBuilder.Configurations.Add(AbsencesMapping.Instance);
             modelBuilder.Configurations.Add(TransportOrdersMapping.Instance);
             modelBuilder.Configurations.Add(ProductTypesMapping.Instance);
+            modelBuilder.Configurations.Add(NotProductiveWorkHoursMapping.Instance);
             modelBuilder.Configurations.Add(TransportPositionsMapping.Instance);
             modelBuilder.Configurations.Add(InstrumentsMapping.Instance);
+            modelBuilder.Configurations.Add(OwnProductsMapping.Instance);
             modelBuilder.Configurations.Add(ProductsMapping.Instance);
             modelBuilder.Configurations.Add(AutoMaterialRspMapping.Instance);
             modelBuilder.Configurations.Add(AutoInstrumentRspMapping.Instance);
@@ -211,6 +214,10 @@ namespace ProfiCraftsman.Lib.Data
         /// </summary>
         public IQueryable<CommunicationPartners> CommunicationPartners{ get; set; }
         /// <summary>
+        ///     Set of <see cref="Absences"/> entities from table dbo.Absences
+        /// </summary>
+        public IQueryable<Absences> Absences{ get; set; }
+        /// <summary>
         ///     Set of <see cref="TransportOrders"/> entities from table dbo.TransportOrders
         /// </summary>
         public IQueryable<TransportOrders> TransportOrders{ get; set; }
@@ -219,6 +226,10 @@ namespace ProfiCraftsman.Lib.Data
         /// </summary>
         public IQueryable<ProductTypes> ProductTypes{ get; set; }
         /// <summary>
+        ///     Set of <see cref="NotProductiveWorkHours"/> entities from table dbo.NotProductiveWorkHours
+        /// </summary>
+        public IQueryable<NotProductiveWorkHours> NotProductiveWorkHours{ get; set; }
+        /// <summary>
         ///     Set of <see cref="TransportPositions"/> entities from table dbo.TransportPositions
         /// </summary>
         public IQueryable<TransportPositions> TransportPositions{ get; set; }
@@ -226,6 +237,10 @@ namespace ProfiCraftsman.Lib.Data
         ///     Set of <see cref="Instruments"/> entities from table dbo.Instruments
         /// </summary>
         public IQueryable<Instruments> Instruments{ get; set; }
+        /// <summary>
+        ///     Set of <see cref="OwnProducts"/> entities from table dbo.OwnProducts
+        /// </summary>
+        public IQueryable<OwnProducts> OwnProducts{ get; set; }
         /// <summary>
         ///     Set of <see cref="Products"/> entities from table dbo.Products
         /// </summary>

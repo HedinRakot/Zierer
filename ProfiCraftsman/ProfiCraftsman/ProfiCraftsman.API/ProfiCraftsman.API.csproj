@@ -208,6 +208,9 @@
     <Compile Include="Controllers\Orders\AddFilesController.cs" />
     <Compile Include="Controllers\Orders\GetOrderFileController.cs" />
     <Compile Include="Controllers\Orders\OrderFilesController.cs" />
+    <Compile Include="Controllers\Settings\AbsencesController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\Settings\AdditionalCostTypesController.cs">
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
@@ -224,6 +227,12 @@
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Settings\ForeignProductsController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Settings\NotProductiveWorkHoursController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Settings\OwnProductsController.cs">
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Settings\ProceedsAccountsController.cs">
@@ -349,6 +358,9 @@
     <Compile Include="Models\Invoices\AddInvoiceModel.cs" />
     <Compile Include="Models\Invoices\InvoicesModel.cs" />
     <Compile Include="Models\Orders\OrderFilesModel.cs" />
+    <Compile Include="Models\Settings\AbsencesModel.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Settings\AdditionalCostTypesModel.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -361,6 +373,12 @@
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Settings\ForeignProductsModel.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Settings\NotProductiveWorkHoursModel.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Settings\OwnProductsModel.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Settings\ProceedsAccountsModel.cs">

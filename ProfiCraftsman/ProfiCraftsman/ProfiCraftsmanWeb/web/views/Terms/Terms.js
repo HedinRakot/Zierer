@@ -13,7 +13,12 @@
         
 		detailView: DetailView,
 
-        selectable: true,
+		selectable: true,
+
+		defaultSorting: {
+		    field: 'date',
+		    dir: 'desc'
+		},
 
 		initialize: function() {
 			view.__super__.initialize.apply(this, arguments);

@@ -118,6 +118,8 @@ namespace ProfiCraftsman.Contracts.Entities
         public virtual ICollection<SocialTaxes> SocialTaxes{ get; set; }
         public virtual Autos Autos{ get; set; }
         public virtual ICollection<User> Users{ get; set; }
+        public virtual ICollection<Absences> Absences{ get; set; }
+        public virtual ICollection<NotProductiveWorkHours> NotProductiveWorkHours{ get; set; }
         public virtual ICollection<TermInstruments> TermInstruments{ get; set; }
         public bool HasAutos
         {

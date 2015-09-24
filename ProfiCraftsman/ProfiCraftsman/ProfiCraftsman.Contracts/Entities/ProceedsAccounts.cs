@@ -55,6 +55,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public virtual ICollection<SocialTaxes> SocialTaxes{ get; set; }
         public virtual ICollection<AdditionalCosts> AdditionalCosts{ get; set; }
         public virtual ICollection<Instruments> Instruments{ get; set; }
+        public virtual ICollection<OwnProducts> OwnProducts{ get; set; }
         public virtual ICollection<Products> Products{ get; set; }
         string IHasTitle<int>.EntityTitle
         {

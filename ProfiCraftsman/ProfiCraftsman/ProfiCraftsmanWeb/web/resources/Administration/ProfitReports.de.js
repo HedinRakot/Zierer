@@ -10,6 +10,7 @@
 	    foreignProducts: 'Fremdleistungen',
 	    salary: 'Mitarbeiterlohn',
 	    socialTaxes: 'Soziale Abgaben',
+	    ownProducts: 'Eigene Leistungen',
 	    instruments: 'Werkzeuge',
 
 	    fromDate: 'Von Datum',
@@ -27,7 +28,8 @@
 	    totalProfitSum: 'Gewinn:',
 	    socialTaxesSum: 'Soziale Abgaben:',
 	    salarySum: 'Mitarbeiterlohn:',
-        instrumentsSum: 'Werkzeuge:',
+	    instrumentsSum: 'Werkzeuge:',
+	    ownProductsSum: 'Eigene Leistungen:',
 	};
 
 	return resources;

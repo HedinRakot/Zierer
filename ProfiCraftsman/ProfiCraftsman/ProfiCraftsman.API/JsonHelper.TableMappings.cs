@@ -217,10 +217,26 @@ namespace ProfiCraftsman.API
                 {"Email", "email"},
             });
 
+            tables.Add("Absences", new TableMapping("Absences", "Absences", 4)
+            {
+                {"EmployeeId", "employeeId"},
+                {"Description", "description"},
+                {"FromDate", "fromDate"},
+                {"ToDate", "toDate"},
+            });
+
             tables.Add("ProductTypes", new TableMapping("ProductTypes", "ProductTypes", 2)
             {
                 {"Name", "name"},
                 {"Comment", "comment"},
+            });
+
+            tables.Add("NotProductiveWorkHours", new TableMapping("NotProductiveWorkHours", "NotProductiveWorkHours", 4)
+            {
+                {"EmployeeId", "employeeId"},
+                {"Description", "description"},
+                {"FromDate", "fromDate"},
+                {"ToDate", "toDate"},
             });
 
             tables.Add("Instruments", new TableMapping("Instruments", "Instruments", 6)
@@ -230,6 +246,15 @@ namespace ProfiCraftsman.API
                 {"IsForAuto", "isForAuto"},
                 {"BoughtPrice", "boughtPrice"},
                 {"Comment", "comment"},
+                {"ProceedsAccountId", "proceedsAccountId"},
+            });
+
+            tables.Add("OwnProducts", new TableMapping("OwnProducts", "OwnProducts", 5)
+            {
+                {"Description", "description"},
+                {"Price", "price"},
+                {"FromDate", "fromDate"},
+                {"ToDate", "toDate"},
                 {"ProceedsAccountId", "proceedsAccountId"},
             });
 

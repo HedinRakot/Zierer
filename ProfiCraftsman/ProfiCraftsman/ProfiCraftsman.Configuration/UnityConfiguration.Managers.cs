@@ -52,10 +52,13 @@ namespace ProfiCraftsman.Configuration
             container.RegisterType<ITransportProductsManager, TransportProductsManager>(new PerRequestLifetimeManager());
             container.RegisterType<ICustomersManager, CustomersManager>(new PerRequestLifetimeManager());
             container.RegisterType<ICommunicationPartnersManager, CommunicationPartnersManager>(new PerRequestLifetimeManager());
+            container.RegisterType<IAbsencesManager, AbsencesManager>(new PerRequestLifetimeManager());
             container.RegisterType<ITransportOrdersManager, TransportOrdersManager>(new PerRequestLifetimeManager());
             container.RegisterType<IProductTypesManager, ProductTypesManager>(new PerRequestLifetimeManager());
+            container.RegisterType<INotProductiveWorkHoursManager, NotProductiveWorkHoursManager>(new PerRequestLifetimeManager());
             container.RegisterType<ITransportPositionsManager, TransportPositionsManager>(new PerRequestLifetimeManager());
             container.RegisterType<IInstrumentsManager, InstrumentsManager>(new PerRequestLifetimeManager());
+            container.RegisterType<IOwnProductsManager, OwnProductsManager>(new PerRequestLifetimeManager());
             container.RegisterType<IProductsManager, ProductsManager>(new PerRequestLifetimeManager());
             container.RegisterType<IAutoMaterialRspManager, AutoMaterialRspManager>(new PerRequestLifetimeManager());
             container.RegisterType<IAutoInstrumentRspManager, AutoInstrumentRspManager>(new PerRequestLifetimeManager());

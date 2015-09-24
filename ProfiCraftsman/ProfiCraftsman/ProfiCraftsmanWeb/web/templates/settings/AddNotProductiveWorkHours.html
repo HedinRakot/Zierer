@@ -1,0 +1,50 @@
+<% var title = typeof id !== 'undefined' ? '<label data-localized="edit"></label>' : '<label data-localized="add"></label>'; %>
+
+<span class="breadcrumbs"><a href="#Settings" data-localized="masterData"></a> / 
+	<a href="#NotProductiveWorkHours" data-localized="pageTitle"></a> / <%= title %></span>
+
+<form method="post" class="add-model">
+    <table style="width: 100%; vertical-align: top; padding: 0px; margin: 0px; white-space: nowrap;" cellpadding="0" cellspacing="0">
+		<tr>
+			<td style="padding-right: 25px; vertical-align: top; ">
+				<div class="editor-label" style="float: left; padding-right: 10px;">
+					<label for="employeeId" data-localized="employeeId"></label><br />
+				
+					<select style="width: 362px" id="employeeId" name="employeeId" />
+				</div> 
+				<div class="editor-label" style="float: left; padding-right: 10px;">
+					<label for="description" data-localized="description"></label><br />
+				
+					<input type="text" class="k-textbox" style="width: 362px" id="description" name="description" />
+				</div> 
+				<div class="editor-label" style="float: left; padding-right: 10px;">
+					<label for="fromDate" data-localized="fromDate"></label><br />
+				
+					<input type="text" data-role="datepicker" id="fromDate" name="fromDate" />
+				</div> 
+				<div class="editor-label" style="float: left; padding-right: 10px;">
+					<label for="toDate" data-localized="toDate"></label><br />
+				
+					<input type="text" data-role="datepicker" id="toDate" name="toDate" />
+				</div> 
+			</td>
+			<td style="width: 100%;">&nbsp;</td>
+		</tr>
+	</table>
+	<div class="inline-block">        
+    </div>      
+
+    <br />
+    <br />
+
+    <div class="relations-container">
+    </div>
+
+    <br />
+
+    <div>
+        <button class="k-primary k-button save" data-localized="save"></button>
+        <button class="k-button remove" data-localized="delete"></button>
+        <button class="k-button cancel" data-localized="cancel"></button>
+    </div>
+</form>

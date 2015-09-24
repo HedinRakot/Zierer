@@ -138,6 +138,10 @@ namespace ProfiCraftsman.Contracts
         /// </summary>
         IQueryable<AdditionalCosts> AdditionalCosts{get;}
         /// <summary>
+        ///     Set of <see cref="OrderFiles"/> entities from table dbo.OrderFiles
+        /// </summary>
+        IQueryable<OrderFiles> OrderFiles{get;}
+        /// <summary>
         ///     Set of <see cref="Taxes"/> entities from table dbo.Taxes
         /// </summary>
         IQueryable<Taxes> Taxes{get;}
@@ -154,6 +158,10 @@ namespace ProfiCraftsman.Contracts
         /// </summary>
         IQueryable<CommunicationPartners> CommunicationPartners{get;}
         /// <summary>
+        ///     Set of <see cref="Absences"/> entities from table dbo.Absences
+        /// </summary>
+        IQueryable<Absences> Absences{get;}
+        /// <summary>
         ///     Set of <see cref="TransportOrders"/> entities from table dbo.TransportOrders
         /// </summary>
         IQueryable<TransportOrders> TransportOrders{get;}
@@ -162,6 +170,10 @@ namespace ProfiCraftsman.Contracts
         /// </summary>
         IQueryable<ProductTypes> ProductTypes{get;}
         /// <summary>
+        ///     Set of <see cref="NotProductiveWorkHours"/> entities from table dbo.NotProductiveWorkHours
+        /// </summary>
+        IQueryable<NotProductiveWorkHours> NotProductiveWorkHours{get;}
+        /// <summary>
         ///     Set of <see cref="TransportPositions"/> entities from table dbo.TransportPositions
         /// </summary>
         IQueryable<TransportPositions> TransportPositions{get;}
@@ -169,6 +181,10 @@ namespace ProfiCraftsman.Contracts
         ///     Set of <see cref="Instruments"/> entities from table dbo.Instruments
         /// </summary>
         IQueryable<Instruments> Instruments{get;}
+        /// <summary>
+        ///     Set of <see cref="OwnProducts"/> entities from table dbo.OwnProducts
+        /// </summary>
+        IQueryable<OwnProducts> OwnProducts{get;}
         /// <summary>
         ///     Set of <see cref="Products"/> entities from table dbo.Products
         /// </summary>

@@ -10,6 +10,7 @@ define(function () {
         salary: 'Salary',
         socialTaxes: 'Social taxes',
         instruments: 'Instruments',
+        ownProducts: 'Own products',
 
         fromDate: 'From Date',
         toDate: 'To Date',
@@ -27,6 +28,7 @@ define(function () {
         salarySum: 'Salary sum:',
         socialTaxesSum: 'Social taxes sum:',
         instrumentsSum: 'Instruments:',
+        ownProductsSum: 'Own products sum:',
     };
 
     return resources;
