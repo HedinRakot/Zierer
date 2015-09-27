@@ -217,6 +217,12 @@ namespace ProfiCraftsman.API.Controllers
             var totalPayedSum = invoices.SelectMany(o => o.InvoicePayments.Where(p => !p.DeleteDate.HasValue)).
                 Sum(o => o.Amount);
 
+            var totalProductsSum = totalOrdersSum + ownProductsSum;
+            var grossProfit = totalProductsSum - materialsSum - instrumentsSum;
+            var totalCosts = additionalCostsSum + foreignProductsSum + salarySum + socialTaxesSum;
+            var operatingIncome = grossProfit - totalCosts;
+            var ebit = operatingIncome;
+
             return Ok(new ProfitReportsModel ()
             {
                 materialsSum = materialsSum.ToString("N2") + " EUR",
@@ -228,6 +234,12 @@ namespace ProfiCraftsman.API.Controllers
                 socialTaxesSum = socialTaxesSum.ToString("N2") + " EUR",
                 totalOrdersSum = totalOrdersSum.ToString("N2") + " EUR",
                 totalInvoicesSum = totalInvoicesSum.ToString("N2") + " EUR",
+                notBookedOrdersSum = (totalOrdersSum - totalInvoicesSum).ToString("N2") + " EUR",
+                totalProductsSum = totalProductsSum.ToString("N2") + " EUR",
+                grossProfit = grossProfit.ToString("N2") + " EUR",
+                totalCosts = totalCosts.ToString("N2") + " EUR",
+                operatingIncome = operatingIncome.ToString("N2") + " EUR",
+                ebit = ebit.ToString("N2") + " EUR",
                 totalPayedSum = totalPayedSum.ToString("N2") + " EUR",
                 totalProfitSum = totalOrdersProfit.ToString("N2") + " EUR",
             });

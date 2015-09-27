@@ -27,7 +27,7 @@ define(function () {
         ProductTypes: 'Leistungsart',
         NotProductiveWorkHours: 'Arbeitszeiten',
         Instruments: 'Werkzeug',
-        OwnProducts: 'Eigene Leistung',
+        OwnProducts: 'Eigenleistung',
         Products: 'Leistung',
 	};
 

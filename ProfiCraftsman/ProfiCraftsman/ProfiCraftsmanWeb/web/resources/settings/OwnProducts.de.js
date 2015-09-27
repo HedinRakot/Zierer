@@ -3,10 +3,10 @@ define(function () {
 
 	var resources = {
 
-		add: 'Eigene Leistung anlegen',
-	    edit: 'Eigene Leistung editieren',
+		add: 'Eigenleistung anlegen',
+	    edit: 'Eigenleistung editieren',
 	    masterData: 'Einstellungen',
-	    pageTitle: 'Eigene Leistung',
+	    pageTitle: 'Eigenleistung',
 		pleaseSelect: 'Bitte auswählen',
 		description: 'Beschreibung',	
 		price: 'Preis',	

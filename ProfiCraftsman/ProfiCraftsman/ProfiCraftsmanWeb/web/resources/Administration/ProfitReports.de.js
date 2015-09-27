@@ -10,7 +10,7 @@
 	    foreignProducts: 'Fremdleistungen',
 	    salary: 'Mitarbeiterlohn',
 	    socialTaxes: 'Soziale Abgaben',
-	    ownProducts: 'Eigene Leistungen',
+	    ownProducts: 'Eigenleistungen',
 	    instruments: 'Werkzeuge',
 
 	    fromDate: 'Von Datum',
@@ -21,15 +21,22 @@
 
 	    additionalCostsSum: 'Sonstige Kosten:',
 	    foreignProductsSum: 'Fremdleistungen:',
-	    materialsSum: 'Wareneingang:',
+	    materialsSum: 'Mat./Wareneinkauf:',
 	    totalOrdersSum: 'Aufträge:',
-	    totalInvoicesSum: 'Gebucht:',
+	    totalInvoicesSum: 'Umsatzerlöse:',
+	    notBookedOrdersSum: 'Best. Verdg. FE/UE:',
+	    totalProductsSum: 'Gesamtleistung:',
+	    grossProfit: 'Rohertrag:',
+	    costArts: 'Kostenarten:',
+	    totalCosts: 'Gesamtkosten:',
+	    operatingIncome: 'Betriebsergebnis:',
+	    ebit: 'Ergebnis vor Steuern:',
 	    totalPayedSum: 'Bezahlt:',
 	    totalProfitSum: 'Gewinn:',
 	    socialTaxesSum: 'Soziale Abgaben:',
 	    salarySum: 'Mitarbeiterlohn:',
 	    instrumentsSum: 'Werkzeuge:',
-	    ownProductsSum: 'Eigene Leistungen:',
+	    ownProductsSum: 'Eigenleistungen:',
 	};
 
 	return resources;
