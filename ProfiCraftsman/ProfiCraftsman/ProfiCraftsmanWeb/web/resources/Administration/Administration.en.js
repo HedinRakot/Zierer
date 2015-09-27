@@ -4,6 +4,7 @@ define(function () {
 	var resources = {
 
 	    Trips: 'Trips',
+	    WorkHours: 'Work hours',
 	    ReportOrders: 'Report Orders',
 	    ProfitReports: 'Profit reports',
 	};

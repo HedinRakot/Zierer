@@ -4,6 +4,7 @@
 	var resources = {
 
 	    Trips: 'Reisezeiten',
+	    WorkHours: 'Arbeitszeiten',
 	    ReportOrders: 'Auswertung Auftäge',
         ProfitReports: 'Auswertungen',
 	};

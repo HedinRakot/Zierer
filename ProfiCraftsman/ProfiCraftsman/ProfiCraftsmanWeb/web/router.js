@@ -43,7 +43,8 @@
                 'Invoices/:id': _.partial(BaseRouter.showViewWithModel, this, 'l!t!Invoices/AddInvoices', 'models/Invoices/Invoices', { PaymentIntervals: true, PaymentTypes: true }, false),
                 'InvoiceStornos': _.partial(BaseRouter.showView, this, 'l!t!InvoiceStornos/Invoices', { ProceedsAccounts: true }, false),
 
-                'Trips': _.partial(BaseRouter.showView, this, 'l!t!Administration/Trips', { Autos: true }, { }),
+                'Trips': _.partial(BaseRouter.showView, this, 'l!t!Administration/Trips', { Autos: true }, {}),
+                'WorkHours': _.partial(BaseRouter.showView, this, 'l!t!Administration/WorkHours', { Employees: true }, {}),
                 'ReportOrders': _.partial(BaseRouter.showView, this, 'l!t!Administration/ReportOrders', { PaymentTypes: true }, {}),
                 'ProfitReports': _.partial(BaseRouter.showView, this, 'l!t!Administration/ProfitReports', { AdditionalCostTypes: true, ProceedsAccounts: true, Employees: true }, {}),
             };

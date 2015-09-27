@@ -189,6 +189,8 @@
     <Compile Include="ClientControllers\Models\GetTermModel.cs" />
     <Compile Include="ClientControllers\TermViewModelHelper.cs" />
     <Compile Include="Config\NotificationServerConfigSection.cs" />
+    <Compile Include="Controllers\Administration\WorkHoursHelper.cs" />
+    <Compile Include="Controllers\Administration\WorkHoursController.cs" />
     <Compile Include="Controllers\MultipartFormDataStreamProvider.cs" />
     <Compile Include="Controllers\Administration\ReportOrdersController.cs" />
     <Compile Include="Controllers\Administration\ReportMaterialsController.cs" />
@@ -349,6 +351,7 @@
     <Compile Include="Models\Administration\ReportOrdersModel.cs" />
     <Compile Include="Models\Administration\ProfitReportsModel.cs" />
     <Compile Include="Models\Administration\ReportMaterialModel.cs" />
+    <Compile Include="Models\Administration\WorkHoursModel.cs" />
     <Compile Include="Models\Administration\SalaryModel.cs" />
     <Compile Include="Models\Administration\ReportPositionsModel.cs" />
     <Compile Include="Models\Administration\TripsModel.cs" />
