@@ -57,6 +57,7 @@ namespace ProfiCraftsman.Contracts.Entities
         public virtual ICollection<Instruments> Instruments{ get; set; }
         public virtual ICollection<OwnProducts> OwnProducts{ get; set; }
         public virtual ICollection<Products> Products{ get; set; }
+        public virtual ICollection<Interests> Interests{ get; set; }
         string IHasTitle<int>.EntityTitle
         {
             get { return Value.ToString(); }

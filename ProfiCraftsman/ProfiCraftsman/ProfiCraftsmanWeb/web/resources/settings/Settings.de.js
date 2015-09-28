@@ -29,6 +29,7 @@ define(function () {
         Instruments: 'Werkzeug',
         OwnProducts: 'Eigenleistung',
         Products: 'Leistung',
+        Interests: 'Zinsen',
 	};
 
 	return resources;

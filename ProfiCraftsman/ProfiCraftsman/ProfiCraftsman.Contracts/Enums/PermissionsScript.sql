@@ -362,14 +362,14 @@
 	IF NOT EXISTS (SELECT ID FROM [ProfiCraftsman].[dbo].[PERMISSION] WHERE ID = 27 )
 	BEGIN
 		INSERT INTO [ProfiCraftsman].[dbo].[PERMISSION] ([Id], [Name], [Description], [CreateDate], [ChangeDate], [DeleteDate])
-		VALUES(27, 'OwnProducts', 'Eigene Leistung' ,GETDATE() ,GETDATE() ,NULL);
+		VALUES(27, 'OwnProducts', 'Eigenleistung' ,GETDATE() ,GETDATE() ,NULL);
 		INSERT INTO [ProfiCraftsman].dbo.ROLE_PERMISSION_RSP(RoleId ,PermissionId ,CreateDate ,ChangeDate, [Key]) 
 		VALUES (1 ,27 ,getdate() ,getdate(), '487a6cf65eb7f0a29db8c423aa58202c');
 	END
 	ELSE
 	BEGIN
 		UPDATE [ProfiCraftsman].[dbo].[PERMISSION]
-		SET [DESCRIPTION] = 'Eigene Leistung'
+		SET [DESCRIPTION] = 'Eigenleistung'
 		WHERE ID = 27
 	END
 	
@@ -385,6 +385,20 @@
 		UPDATE [ProfiCraftsman].[dbo].[PERMISSION]
 		SET [DESCRIPTION] = 'Leistung'
 		WHERE ID = 10
+	END
+	
+	IF NOT EXISTS (SELECT ID FROM [ProfiCraftsman].[dbo].[PERMISSION] WHERE ID = 28 )
+	BEGIN
+		INSERT INTO [ProfiCraftsman].[dbo].[PERMISSION] ([Id], [Name], [Description], [CreateDate], [ChangeDate], [DeleteDate])
+		VALUES(28, 'Interests', 'Zinsen' ,GETDATE() ,GETDATE() ,NULL);
+		INSERT INTO [ProfiCraftsman].dbo.ROLE_PERMISSION_RSP(RoleId ,PermissionId ,CreateDate ,ChangeDate, [Key]) 
+		VALUES (1 ,28 ,getdate() ,getdate(), '4619445188371e1cfe34593d015c1b98');
+	END
+	ELSE
+	BEGIN
+		UPDATE [ProfiCraftsman].[dbo].[PERMISSION]
+		SET [DESCRIPTION] = 'Zinsen'
+		WHERE ID = 28
 	END
 	SET IDENTITY_INSERT [ProfiCraftsman].[dbo].[PERMISSION] OFF;
 

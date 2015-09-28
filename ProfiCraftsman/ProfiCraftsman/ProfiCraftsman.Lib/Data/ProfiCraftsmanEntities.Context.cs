@@ -67,6 +67,7 @@ namespace ProfiCraftsman.Lib.Data
             modelBuilder.Configurations.Add(OwnProductsMapping.Instance);
             modelBuilder.Configurations.Add(ProductsMapping.Instance);
             modelBuilder.Configurations.Add(AutoMaterialRspMapping.Instance);
+            modelBuilder.Configurations.Add(InterestsMapping.Instance);
             modelBuilder.Configurations.Add(AutoInstrumentRspMapping.Instance);
             modelBuilder.Configurations.Add(WarehouseMaterialsMapping.Instance);
             modelBuilder.Configurations.Add(TermPositionsMapping.Instance);
@@ -249,6 +250,10 @@ namespace ProfiCraftsman.Lib.Data
         ///     Set of <see cref="AutoMaterialRsp"/> entities from table dbo.Auto_Material_Rsp
         /// </summary>
         public IQueryable<AutoMaterialRsp> AutoMaterialRsp{ get; set; }
+        /// <summary>
+        ///     Set of <see cref="Interests"/> entities from table dbo.Interests
+        /// </summary>
+        public IQueryable<Interests> Interests{ get; set; }
         /// <summary>
         ///     Set of <see cref="AutoInstrumentRsp"/> entities from table dbo.Auto_Instrument_Rsp
         /// </summary>

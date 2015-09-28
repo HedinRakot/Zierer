@@ -35,7 +35,7 @@
 		   return [
 				{ field: 'date', title: this.resources.date, format: "{0:d}", dateTime: true, sortable: false, filterable: false },
 				{ field: 'duration', title: this.resources.duration, format: "{0:HH:mm}", sortable: false, filterable: false },
-				{ field: 'employeeId', title: this.resources.employee, sortable: true, filterable: true, collection: this.options.employees },
+				{ field: 'employeeId', title: this.resources.employee, sortable: false, filterable: true, collection: this.options.employees },
 				{ field: 'amountString', title: this.resources.amount, sortable: false, filterable: false },
 			];
 		},

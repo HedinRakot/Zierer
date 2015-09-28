@@ -41,6 +41,7 @@ namespace ProfiCraftsman.API.Controllers
         protected IMaterialDeliveryRspManager materialDeliveryRspManager { get; set; }
         protected ISocialTaxesManager socialTaxesManager { get; set; }
         protected IInstrumentsManager instrumentsManager { get; set; }
+        protected IInterestsManager interestsManager { get; set; }
 
         protected ITermPositionsManager termPositionsManager { get; set; }
         protected IPositionsManager positionsManager { get; set; }
@@ -54,7 +55,7 @@ namespace ProfiCraftsman.API.Controllers
             IForeignProductsManager foreignProductsManager, IMaterialDeliveryRspManager materialDeliveryRspManager,
             ISocialTaxesManager socialTaxesManager, IInstrumentsManager instrumentsManager, IOwnProductsManager ownProductsManager,
             ITermPositionsManager termPositionsManager, IPositionsManager positionsManager, ITermCostsManager termCostsManager,
-            ITaxesManager taxesManager, IInvoicesManager invoicesManager)
+            ITaxesManager taxesManager, IInvoicesManager invoicesManager, IInterestsManager interestsManager)
         {
             this.additionalCostsManager = additionalCostsManager;
             this.employeeRateRspManager = employeeRateRspManager;
@@ -65,6 +66,7 @@ namespace ProfiCraftsman.API.Controllers
             this.materialDeliveryRspManager = materialDeliveryRspManager;
             this.socialTaxesManager = socialTaxesManager;
             this.instrumentsManager = instrumentsManager;
+            this.interestsManager = interestsManager;
 
             this.termPositionsManager = termPositionsManager;
             this.positionsManager = positionsManager;
@@ -146,7 +148,22 @@ namespace ProfiCraftsman.API.Controllers
             }
 
             var ownProductsSum = ownProducts.Sum(o => o.Price);
-            
+
+
+            //interests
+            var interests = interestsManager.GetEntities();
+            if (model.FromDate.HasValue)
+            {
+                interests = interests.Where(o => o.FromDate.Date >= model.FromDate.Value);
+            }
+
+            if (model.ToDate.HasValue)
+            {
+                interests = interests.Where(o => (!o.ToDate.HasValue || o.ToDate.Value.Date <= model.ToDate.Value) && o.FromDate.Date <= model.ToDate.Value);
+            }
+
+            var interestsSum = interests.Sum(o => o.Price);
+
 
             //salary
             var salaries = SalaryHelper.GetSalary(employeeRateRspManager, employeeManager, model.FromDate.Value, model.ToDate.Value);
@@ -221,7 +238,7 @@ namespace ProfiCraftsman.API.Controllers
             var grossProfit = totalProductsSum - materialsSum - instrumentsSum;
             var totalCosts = additionalCostsSum + foreignProductsSum + salarySum + socialTaxesSum;
             var operatingIncome = grossProfit - totalCosts;
-            var ebit = operatingIncome;
+            var ebit = operatingIncome - interestsSum;
 
             return Ok(new ProfitReportsModel ()
             {
@@ -229,6 +246,7 @@ namespace ProfiCraftsman.API.Controllers
                 additionalCostsSum = additionalCostsSum.ToString("N2") + " EUR",
                 foreignProductsSum = foreignProductsSum.ToString("N2") + " EUR",
                 ownProductsSum = ownProductsSum.ToString("N2") + " EUR",
+                interestsSum = interestsSum.ToString("N2") + " EUR",
                 salarySum = salarySum.ToString("N2") + " EUR",
                 instrumentsSum = instrumentsSum.ToString("N2") + " EUR",
                 socialTaxesSum = socialTaxesSum.ToString("N2") + " EUR",

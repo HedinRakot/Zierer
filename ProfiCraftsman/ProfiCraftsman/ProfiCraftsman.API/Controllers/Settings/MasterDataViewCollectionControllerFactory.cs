@@ -27,10 +27,6 @@ namespace ProfiCraftsman.API.Controllers
             	result.Add("Materials", GetViewCollection<Materials, int, IMaterialsManager>(
             		(IMaterialsManager)resolver.GetService(typeof(IMaterialsManager))));
 
-            if (model.ForeignProducts)
-            	result.Add("ForeignProducts", GetViewCollection<ForeignProducts, int, IForeignProductsManager>(
-            		(IForeignProductsManager)resolver.GetService(typeof(IForeignProductsManager))));
-
             if (model.Autos)
             	result.Add("Autos", GetViewCollection<Autos, int, IAutosManager>(
             		(IAutosManager)resolver.GetService(typeof(IAutosManager))));

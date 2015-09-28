@@ -5,14 +5,14 @@
     <form>
         <div class="editor-field">
             <label data-localized="fromDate"></label>
-            <input type="text" id="fromDate" name="fromDate" data-role="datepicker" />
+            <input type="text" id="fromDate" name="fromDate" data-role="datepicker" required />
             <label data-localized="toDate"></label>
-            <input type="text" id="toDate" name="toDate" data-role="datepicker" />
+            <input type="text" id="toDate" name="toDate" data-role="datepicker" required />
             <br />
             <span class="k-invalid-msg" data-for="fromDate"></span>
             <span class="k-invalid-msg" data-for="toDate"></span>
         </div>
         <button class="k-primary k-button" type="submit" data-localized="apply"></button>
-        <button class="k-button" type="reset" data-localized="cancel"></button>
+        <!--<button class="k-button" type="reset" data-localized="cancel"></button>-->
     </form>
 </div>

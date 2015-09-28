@@ -11,6 +11,7 @@ define(function () {
         socialTaxes: 'Social taxes',
         instruments: 'Instruments',
         ownProducts: 'Own products',
+        interests: 'Interest',
 
         fromDate: 'From Date',
         toDate: 'To Date',
@@ -36,6 +37,7 @@ define(function () {
         socialTaxesSum: 'Social taxes sum:',
         instrumentsSum: 'Instruments:',
         ownProductsSum: 'Own products sum:',
+        interestsSum: 'Interests sum:',
     };
 
     return resources;

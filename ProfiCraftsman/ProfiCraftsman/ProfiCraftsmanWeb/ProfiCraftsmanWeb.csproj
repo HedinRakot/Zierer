@@ -262,6 +262,9 @@
     <Content Include="web\collections\Settings\Instruments.js">
       <DependentUpon>web.collections.tt</DependentUpon>
     </Content>
+    <Content Include="web\collections\Settings\Interests.js">
+      <DependentUpon>web.collections.tt</DependentUpon>
+    </Content>
     <Content Include="web\collections\Settings\NotProductiveWorkHours.js">
       <DependentUpon>web.collections.tt</DependentUpon>
     </Content>
@@ -392,6 +395,9 @@
     </Content>
     <Content Include="web\models\Settings\AutoMaterialRsp.js" />
     <Content Include="web\models\Settings\Custom.ProductMaterialRsp.js" />
+    <Content Include="web\models\Settings\FilterInterests.js">
+      <DependentUpon>web.models.tt</DependentUpon>
+    </Content>
     <Content Include="web\models\Settings\FilterNotProductiveWorkHours.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
@@ -409,6 +415,9 @@
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
     <Content Include="web\models\Settings\Instruments.js">
+      <DependentUpon>web.models.tt</DependentUpon>
+    </Content>
+    <Content Include="web\models\Settings\Interests.js">
       <DependentUpon>web.models.tt</DependentUpon>
     </Content>
     <Content Include="web\models\Settings\NotProductiveWorkHours.js">
@@ -550,6 +559,8 @@
     <Content Include="web\resources\Administration\FilterTrips.en.js" />
     <Content Include="web\resources\Administration\FilterWorkHours.de.js" />
     <Content Include="web\resources\Administration\FilterWorkHours.en.js" />
+    <Content Include="web\resources\Administration\ReportInterests.de.js" />
+    <Content Include="web\resources\Administration\ReportInterests.en.js" />
     <Content Include="web\resources\Administration\ReportOwnProducts.de.js" />
     <Content Include="web\resources\Administration\ReportOwnProducts.en.js" />
     <Content Include="web\resources\Administration\ReportInstruments.de.js" />
@@ -650,6 +661,12 @@
     <Content Include="web\resources\Settings\AddForeignProducts.en.js">
       <DependentUpon>web.add.resources.tt</DependentUpon>
     </Content>
+    <Content Include="web\resources\Settings\AddInterests.de.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\AddInterests.en.js">
+      <DependentUpon>web.add.resources.tt</DependentUpon>
+    </Content>
     <Content Include="web\resources\Settings\AdditionalCostTypes.de.js">
       <DependentUpon>web.resources.tt</DependentUpon>
     </Content>
@@ -734,6 +751,12 @@
     <Content Include="web\resources\Settings\FilterForeignProducts.en.js">
       <DependentUpon>web.filter.resources.tt</DependentUpon>
     </Content>
+    <Content Include="web\resources\Settings\FilterInterests.de.js">
+      <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\FilterInterests.en.js">
+      <DependentUpon>web.filter.resources.tt</DependentUpon>
+    </Content>
     <Content Include="web\resources\Settings\FilterNotProductiveWorkHours.de.js">
       <DependentUpon>web.filter.resources.tt</DependentUpon>
     </Content>
@@ -770,6 +793,18 @@
       <DependentUpon>web.relationships.resources.tt</DependentUpon>
     </Content>
     <Content Include="web\resources\Settings\ForeignProductsRelationships.en.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\Interests.de.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\Interests.en.js">
+      <DependentUpon>web.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\InterestsRelationships.de.js">
+      <DependentUpon>web.relationships.resources.tt</DependentUpon>
+    </Content>
+    <Content Include="web\resources\Settings\InterestsRelationships.en.js">
       <DependentUpon>web.relationships.resources.tt</DependentUpon>
     </Content>
     <Content Include="web\resources\Settings\NotProductiveWorkHours.de.js">
@@ -1347,6 +1382,7 @@
     <Content Include="web\templates\Administration\FilterReportOrders.html" />
     <Content Include="web\templates\Administration\FilterWorkHours.html" />
     <Content Include="web\templates\Administration\FilterTrips.html" />
+    <Content Include="web\templates\Administration\ReportInterests.html" />
     <Content Include="web\templates\Administration\ReportOwnProducts.html" />
     <Content Include="web\templates\Administration\ReportInstruments.html" />
     <Content Include="web\templates\Administration\ReportSocialTaxes.html" />
@@ -1397,6 +1433,9 @@
     <Content Include="web\templates\Settings\AddForeignProducts.html">
       <DependentUpon>web.add.templates.tt</DependentUpon>
     </Content>
+    <Content Include="web\templates\Settings\AddInterests.html">
+      <DependentUpon>web.add.templates.tt</DependentUpon>
+    </Content>
     <Content Include="web\templates\Settings\AdditionalCostTypes.html">
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
@@ -1439,6 +1478,9 @@
     <Content Include="web\templates\Settings\FilterForeignProducts.html">
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
+    <Content Include="web\templates\Settings\FilterInterests.html">
+      <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
     <Content Include="web\templates\Settings\FilterNotProductiveWorkHours.html">
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
@@ -1456,6 +1498,12 @@
       <DependentUpon>web.templates.tt</DependentUpon>
     </Content>
     <Content Include="web\templates\Settings\ForeignProductsRelationships.html">
+      <DependentUpon>web.relationships.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\Interests.html">
+      <DependentUpon>web.templates.tt</DependentUpon>
+    </Content>
+    <Content Include="web\templates\Settings\InterestsRelationships.html">
       <DependentUpon>web.relationships.templates.tt</DependentUpon>
     </Content>
     <Content Include="web\templates\Settings\NotProductiveWorkHours.html">
@@ -1754,6 +1802,7 @@
     <Content Include="web\views\Administration\FilterReportOrders.js" />
     <Content Include="web\views\Administration\FilterWorkHours.js" />
     <Content Include="web\views\Administration\FilterTrips.js" />
+    <Content Include="web\views\Administration\ReportInterests.js" />
     <Content Include="web\views\Administration\ReportOwnProducts.js" />
     <Content Include="web\views\Administration\ReportInstruments.js" />
     <Content Include="web\views\Administration\ReportSocialTaxes.js" />
@@ -1802,6 +1851,9 @@
       <DependentUpon>web.add.views.tt</DependentUpon>
     </Content>
     <Content Include="web\views\Settings\AddForeignProducts.js">
+      <DependentUpon>web.add.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\AddInterests.js">
       <DependentUpon>web.add.views.tt</DependentUpon>
     </Content>
     <Content Include="web\views\Settings\AdditionalCostTypes.js">
@@ -1853,6 +1905,9 @@
     <Content Include="web\views\Settings\FilterForeignProducts.js">
       <DependentUpon>web.views.tt</DependentUpon>
     </Content>
+    <Content Include="web\views\Settings\FilterInterests.js">
+      <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
     <Content Include="web\views\Settings\FilterNotProductiveWorkHours.js">
       <DependentUpon>web.views.tt</DependentUpon>
     </Content>
@@ -1874,6 +1929,12 @@
     </Content>
     <Content Include="web\views\Settings\ImportMaterialResults.js" />
     <Content Include="web\views\Settings\ImportMaterials.js" />
+    <Content Include="web\views\Settings\Interests.js">
+      <DependentUpon>web.views.tt</DependentUpon>
+    </Content>
+    <Content Include="web\views\Settings\InterestsRelationships.js">
+      <DependentUpon>web.relationships.views.tt</DependentUpon>
+    </Content>
     <Content Include="web\views\Settings\NotProductiveWorkHours.js">
       <DependentUpon>web.views.tt</DependentUpon>
     </Content>

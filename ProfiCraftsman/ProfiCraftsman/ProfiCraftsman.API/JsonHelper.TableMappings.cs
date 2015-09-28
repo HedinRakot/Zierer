@@ -269,6 +269,15 @@ namespace ProfiCraftsman.API
                 {"ProceedsAccountId", "proceedsAccountId"},
             });
 
+            tables.Add("Interests", new TableMapping("Interests", "Interests", 5)
+            {
+                {"Description", "description"},
+                {"Price", "price"},
+                {"ProceedsAccountId", "proceedsAccountId"},
+                {"FromDate", "fromDate"},
+                {"ToDate", "toDate"},
+            });
+
         }
     }
 }

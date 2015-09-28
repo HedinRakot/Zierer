@@ -89,6 +89,9 @@ define([
 				'Products': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/Products', { ProductTypes: true, ProductAmountTypes: true, ProceedsAccounts: true, MaterialAmountTypes: true, }, false),
 	            'Products/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProducts', 'models/Settings/Products', { ProductTypes: true, ProductAmountTypes: true, ProceedsAccounts: true, MaterialAmountTypes: true, }, false),
 	            'Products/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddProducts', 'models/Settings/Products', { ProductTypes: true, ProductAmountTypes: true, ProceedsAccounts: true, MaterialAmountTypes: true, }, false),
+				'Interests': _.partial(BaseRouter.showView, baseRouter, 'l!t!Settings/Interests', { ProceedsAccounts: true, }, false),
+	            'Interests/create': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddInterests', 'models/Settings/Interests', { ProceedsAccounts: true, }, false),
+	            'Interests/:id': _.partial(BaseRouter.showViewWithModel, baseRouter, 'l!t!Settings/AddInterests', 'models/Settings/Interests', { ProceedsAccounts: true, }, false),
 			}
         
 	        return routes;

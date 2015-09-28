@@ -78,7 +78,7 @@ namespace ProfiCraftsman.API.Controllers
                         employeeName = termEmployee.Employees.Name,
                         amountString = amount.ToString("N2") + " EUR",
                         amount = amount,
-                        duration = String.Format("{0} min", duration),
+                        duration = String.Format("{0} Min.", duration),
                         date = term.Date,
                     });
                 }

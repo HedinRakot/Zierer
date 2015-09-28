@@ -194,6 +194,10 @@ namespace ProfiCraftsman.Contracts
         /// </summary>
         IQueryable<AutoMaterialRsp> AutoMaterialRsp{get;}
         /// <summary>
+        ///     Set of <see cref="Interests"/> entities from table dbo.Interests
+        /// </summary>
+        IQueryable<Interests> Interests{get;}
+        /// <summary>
         ///     Set of <see cref="AutoInstrumentRsp"/> entities from table dbo.Auto_Instrument_Rsp
         /// </summary>
         IQueryable<AutoInstrumentRsp> AutoInstrumentRsp{get;}

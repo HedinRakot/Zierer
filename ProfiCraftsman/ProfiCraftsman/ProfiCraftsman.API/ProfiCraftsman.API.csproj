@@ -216,6 +216,8 @@
     <Compile Include="Controllers\Settings\AdditionalCostTypesController.cs">
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\Settings\Custom.OwnProductsController.cs" />
+    <Compile Include="Controllers\Settings\Custom.InterestsController.cs" />
     <Compile Include="Controllers\Settings\Custom.SocialTaxesController.cs" />
     <Compile Include="Controllers\Settings\Custom.ForeignProductsController.cs" />
     <Compile Include="Controllers\Settings\Custom.EmployeesController.cs" />
@@ -229,6 +231,9 @@
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Settings\ForeignProductsController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Settings\InterestsController.cs">
       <DependentUpon>Controllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Settings\NotProductiveWorkHoursController.cs">
@@ -376,6 +381,9 @@
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Settings\ForeignProductsModel.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Settings\InterestsModel.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Settings\NotProductiveWorkHoursModel.cs">

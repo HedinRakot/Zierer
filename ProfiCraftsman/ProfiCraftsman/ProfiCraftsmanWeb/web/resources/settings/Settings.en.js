@@ -29,6 +29,7 @@ define(function () {
         Instruments: 'Instrument',
         OwnProducts: 'Own products',
         Products: 'Product',
+        Interests: 'Interests',
 	};
 
 	return resources;

@@ -12,6 +12,7 @@
 	    socialTaxes: 'Soziale Abgaben',
 	    ownProducts: 'Eigenleistungen',
 	    instruments: 'Werkzeuge',
+	    interests: 'Zinsen',
 
 	    fromDate: 'Von Datum',
 	    toDate: 'Bis Datum',
@@ -37,6 +38,7 @@
 	    salarySum: 'Mitarbeiterlohn:',
 	    instrumentsSum: 'Werkzeuge:',
 	    ownProductsSum: 'Eigenleistungen:',
+        interestsSum: 'Zinsaufwand:',
 	};
 
 	return resources;

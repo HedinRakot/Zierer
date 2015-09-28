@@ -120,6 +120,10 @@ namespace ProfiCraftsman.Contracts.Enums
     		/// Grant for edit Products table
     		///</summary>
     		public const int Products = 10;
+    		///<summary>
+    		/// Grant for edit Interests table
+    		///</summary>
+    		public const int Interests = 28;
     	}
 }
 

@@ -61,6 +61,7 @@ namespace ProfiCraftsman.Configuration
             container.RegisterType<IOwnProductsManager, OwnProductsManager>(new PerRequestLifetimeManager());
             container.RegisterType<IProductsManager, ProductsManager>(new PerRequestLifetimeManager());
             container.RegisterType<IAutoMaterialRspManager, AutoMaterialRspManager>(new PerRequestLifetimeManager());
+            container.RegisterType<IInterestsManager, InterestsManager>(new PerRequestLifetimeManager());
             container.RegisterType<IAutoInstrumentRspManager, AutoInstrumentRspManager>(new PerRequestLifetimeManager());
             container.RegisterType<IWarehouseMaterialsManager, WarehouseMaterialsManager>(new PerRequestLifetimeManager());
             container.RegisterType<ITermPositionsManager, TermPositionsManager>(new PerRequestLifetimeManager());

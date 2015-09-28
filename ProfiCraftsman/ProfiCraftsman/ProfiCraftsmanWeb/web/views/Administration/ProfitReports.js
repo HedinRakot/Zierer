@@ -78,7 +78,8 @@
 
     view = BaseView.extend({
 
-        gridNames: ['.additionalCostsGrid', '.salaryGrid', /*'.reportOrders',*/ '.foreignProductsGrid', '.materialsGrid', '.socialTaxesGrid', '.instrumentsGrid', '.ownProductsGrid'],
+        gridNames: ['.additionalCostsGrid', '.salaryGrid', /*'.reportOrders',*/ '.foreignProductsGrid', '.materialsGrid',
+            '.socialTaxesGrid', '.instrumentsGrid', '.ownProductsGrid', '.interestsGrid'],
         
         getFilters: function () {
 
@@ -133,6 +134,7 @@
                 '#socialTaxesSum': 'socialTaxesSum',
                 '#ownProductsSum': 'ownProductsSum',
                 '#instrumentsSum': 'instrumentsSum',
+                '#interestsSum': 'interestsSum',
                 '#totalOrdersSum': 'totalOrdersSum',
                 '#notBookedOrdersSum': 'notBookedOrdersSum',
                 '#totalProductsSum': 'totalProductsSum',
@@ -183,6 +185,7 @@
                 { view: 'l!t!Administration/ReportSocialTaxes', selector: '.socialTaxes' },
                 { view: 'l!t!Administration/ReportOwnProducts', selector: '.ownProducts' },
                 { view: 'l!t!Administration/ReportInstruments', selector: '.instruments' },
+                { view: 'l!t!Administration/ReportInterests', selector: '.interests' },
                 { view: 'l!t!Administration/ReportOrders', selector: '.orders' },
             ];
 
