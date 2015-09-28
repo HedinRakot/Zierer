@@ -26,11 +26,13 @@ namespace ProfiCraftsman.API.Controllers
     {
         protected IEmployeeRateRspManager employeeRateRspManager { get; set; }
         protected IEmployeesManager employeeManager { get; set; }
+        protected ITermsManager termsManager { get; set; }
 
-        public SalaryController(IEmployeeRateRspManager employeeRateRspManager, IEmployeesManager employeeManager) 
+        public SalaryController(IEmployeeRateRspManager employeeRateRspManager, IEmployeesManager employeeManager, ITermsManager termsManager) 
         {
             this.employeeRateRspManager = employeeRateRspManager;
             this.employeeManager = employeeManager;
+            this.termsManager = termsManager;
         }
 
 
@@ -68,7 +70,7 @@ namespace ProfiCraftsman.API.Controllers
             var toDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
 
             GetFilters(filtering, ref fromDate, ref toDate);
-            var result = SalaryHelper.GetSalary(employeeRateRspManager, employeeManager, fromDate, toDate);
+            var result = SalaryHelper.GetSalary(termsManager, employeeRateRspManager, employeeManager, fromDate, toDate);
 
             return result;
         }

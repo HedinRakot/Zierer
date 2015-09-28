@@ -48,6 +48,7 @@ namespace ProfiCraftsman.API.Controllers
         protected ITermCostsManager termCostsManager { get; set; }
         protected ITaxesManager taxesManager { get; set; }
         protected IInvoicesManager invoicesManager { get; set; }
+        protected ITermsManager termsManager { get; set; }
 
 
         public ProfitReportsController(IAdditionalCostsManager additionalCostsManager, 
@@ -55,7 +56,7 @@ namespace ProfiCraftsman.API.Controllers
             IForeignProductsManager foreignProductsManager, IMaterialDeliveryRspManager materialDeliveryRspManager,
             ISocialTaxesManager socialTaxesManager, IInstrumentsManager instrumentsManager, IOwnProductsManager ownProductsManager,
             ITermPositionsManager termPositionsManager, IPositionsManager positionsManager, ITermCostsManager termCostsManager,
-            ITaxesManager taxesManager, IInvoicesManager invoicesManager, IInterestsManager interestsManager)
+            ITaxesManager taxesManager, IInvoicesManager invoicesManager, IInterestsManager interestsManager, ITermsManager termsManager)
         {
             this.additionalCostsManager = additionalCostsManager;
             this.employeeRateRspManager = employeeRateRspManager;
@@ -73,6 +74,7 @@ namespace ProfiCraftsman.API.Controllers
             this.termCostsManager = termCostsManager;
             this.taxesManager = taxesManager;
             this.invoicesManager = invoicesManager;
+            this.termsManager = termsManager;
         }
 
 
@@ -166,7 +168,7 @@ namespace ProfiCraftsman.API.Controllers
 
 
             //salary
-            var salaries = SalaryHelper.GetSalary(employeeRateRspManager, employeeManager, model.FromDate.Value, model.ToDate.Value);
+            var salaries = SalaryHelper.GetSalary(termsManager, employeeRateRspManager, employeeManager, model.FromDate.Value, model.ToDate.Value);
             var salarySum = salaries.Sum(o => o.amount);
 
 

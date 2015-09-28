@@ -23,8 +23,8 @@ namespace ProfiCraftsman.API.Controllers
     /// </summary>
     public static class SalaryHelper
     {
-        public static IEnumerable<SalaryModel> GetSalary(IEmployeeRateRspManager employeeRateRspManager, IEmployeesManager employeeManager,
-            DateTime fromDate, DateTime toDate)
+        public static IEnumerable<SalaryModel> GetSalary(ITermsManager termsManager, IEmployeeRateRspManager employeeRateRspManager, 
+            IEmployeesManager employeeManager, DateTime fromDate, DateTime toDate)
         {
             var result = new List<SalaryModel>();
 
@@ -51,6 +51,31 @@ namespace ProfiCraftsman.API.Controllers
                     amountString = amount.ToString("N2") + " EUR",
                     amount = amount,
                 });
+            }
+
+            var workHours = WorkHoursHelper.GetWorkHours(termsManager, employeeRateRspManager, employeeManager, fromDate, toDate, null);
+
+            foreach (var group in workHours.GroupBy(o => o.employeeId))
+            {
+                var model = result.FirstOrDefault(o => o.Id == group.Key);
+                var amount = group.Sum(o => o.amount);
+                if (model == null)
+                {
+                    model = new SalaryModel()
+                    {
+                        Id = group.Key,
+                        employeeName = employees.FirstOrDefault(o => o.Id == group.Key).Name,
+                        amountString = amount.ToString("N2") + " EUR",
+                        amount = amount,
+                    };
+
+                    result.Add(model);
+                }
+                else
+                {
+                    model.amount += amount;
+                    model.amountString = model.amount.ToString("N2") + " EUR";
+                }
             }
 
             return result;
