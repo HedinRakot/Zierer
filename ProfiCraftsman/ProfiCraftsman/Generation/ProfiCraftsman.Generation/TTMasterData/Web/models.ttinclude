@@ -14,7 +14,7 @@ define([<#= entityContent.CustomViewModelPropeties ? "'models/" + context.Curren
 	'use strict';
 
 	var model = Backbone.Model.extend({
-	    urlRoot: 'api/<#=entityContent.CodeNamePlural#>',
+	    urlRoot: Application.apiUrl + '/<#=entityContent.CodeNamePlural#>',
 		fields: <#= entityContent.CustomViewModelPropeties ? "_.extend(CustomProperties(), " : "" #> {
 			id: { type: "number", editable: false }
 <#

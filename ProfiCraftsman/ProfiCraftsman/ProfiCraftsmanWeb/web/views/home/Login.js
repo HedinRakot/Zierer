@@ -14,7 +14,7 @@
         if (!self.validate())
             return;
 
-        userModel.url = '/api/login';
+        userModel.url = Application.apiUrl + '/login';
         userModel.save({}, {
             data: kendo.stringify(self.model.toJSON()),
             contentType: 'application/json',
@@ -22,6 +22,7 @@
                 Backbone.trigger('logged-in');
             },
             error: function (model, xhr) {
+                debugger;
                 self.$('.summary').html(
                     '<span class="k-icon k-warning"></span>' +
                     self.resources.invalid).show();

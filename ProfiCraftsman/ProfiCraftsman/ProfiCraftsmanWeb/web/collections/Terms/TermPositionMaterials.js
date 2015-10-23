@@ -5,7 +5,7 @@ define([
 	'use strict';
 
 	var collection = BaseCollection.extend({
-	    url: 'api/TermPositionMaterials',
+	    url: Application.apiUrl + '/TermPositionMaterials',
 		model: Model
 	});
 

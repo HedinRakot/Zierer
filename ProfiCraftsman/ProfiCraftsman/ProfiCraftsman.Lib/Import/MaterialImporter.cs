@@ -9,7 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
-using EntityFramework.BulkInsert.Extensions;
+//using EntityFramework.BulkInsert.Extensions;
+using ErikEJ.SqlCe;
 using System.Data.Entity;
 
 namespace ProfiCraftsman.Lib.Import
@@ -113,7 +114,7 @@ namespace ProfiCraftsman.Lib.Import
 
                 using (var transactionScope = new TransactionScope())
                 {
-                    (MaterialManager.DataContext as DbContext).BulkInsert(result.CreatedMaterials);
+                    //(MaterialManager.DataContext as DbContext).BulkInsert(result.CreatedMaterials);
                     
                     transactionScope.Complete();
                 }

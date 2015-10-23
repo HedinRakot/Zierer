@@ -125,12 +125,13 @@
                 var ctx = element[0].getContext('2d');
 
                 ctx.canvas.width = window.innerWidth - 30;
+                ctx.canvas.height = window.innerHeight - 30;
 
                 // the last coordinates before the current move
                 var lastPt;
 
                 function getOffset(obj) {
-                    return { left: 15, top: 116 }; //Got a fixed offset
+                    return { left: 0, top: 80 }; //Got a fixed offset
                 }
 
                 attrs.$observe("value", function (newValue) {
@@ -149,6 +150,7 @@
                             }).
                             success(function (result) {
                                 
+                                ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
                                 $state.go('termDetails');
                             }).
                             error(function (result) {

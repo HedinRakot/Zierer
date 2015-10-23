@@ -3,7 +3,7 @@ define(['models/Settings/Custom.Instruments'
 	'use strict';
 
 	var model = Backbone.Model.extend({
-	    urlRoot: 'api/Instruments',
+	    urlRoot: Application.apiUrl + '/Instruments',
 		fields: _.extend(CustomProperties(),  {
 			id: { type: "number", editable: false }
 			,name: { type: "string", 

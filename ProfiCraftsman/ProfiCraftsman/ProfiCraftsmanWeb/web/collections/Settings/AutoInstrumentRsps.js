@@ -5,7 +5,7 @@ define([
     'use strict';
 
     var collection = BaseCollection.extend({
-        url: 'api/AutoInstrumentRsps',
+        url: Application.apiUrl + '/AutoInstrumentRsps',
         model: Model
     });
 

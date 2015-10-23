@@ -3,7 +3,7 @@ define([
 	'use strict';
 
 	var model = Backbone.Model.extend({
-	    urlRoot: 'api/Permissions',
+	    urlRoot: Application.apiUrl + '/Permissions',
 		fields:  {
 			id: { type: "number", editable: false }
 			,name: { type: "string", 

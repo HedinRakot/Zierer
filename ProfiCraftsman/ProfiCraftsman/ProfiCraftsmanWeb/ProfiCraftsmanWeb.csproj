@@ -15,7 +15,7 @@
     <RootNamespace>ProfiCraftsmanWeb</RootNamespace>
     <AssemblyName>ProfiCraftsmanWeb</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -95,7 +95,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="Salient.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=03b0b5a60fec3719, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ErikEJ.SqlCeBulkCopy.2.1.6.11\lib\net40\Salient.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Linq.Dynamic, Version=1.1.14.15853, Culture=neutral, PublicKeyToken=b72be0322d1b32a8, processorArchitecture=MSIL">
       <HintPath>..\..\packages\System.Linq.Dynamic.Library.1.1.14\lib\net40\System.Linq.Dynamic.dll</HintPath>
       <Private>True</Private>
@@ -2265,6 +2273,7 @@
     <Content Include="App_Data\InvoiceStornoFile.docx" />
     <None Include="Properties\PublishProfiles\ContainerStar.pubxml" />
     <None Include="Properties\PublishProfiles\MasterData.pubxml" />
+    <None Include="Properties\PublishProfiles\Proficraftsman.pubxml" />
     <None Include="Properties\PublishProfiles\RTNU.deploy.pubxml" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Web.Debug.config">
@@ -2393,7 +2402,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>40909</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55992/</IISUrl>
+          <IISUrl>http://localhost/ProfiCraftsmanWeb</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -2404,10 +2413,9 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>rmdir  /s /q "$(SolutionDir)ProfiCraftsman/ProfiCraftsmanWeb/web.libs"
-rmdir  /s /q "$(SolutionDir)ProfiCraftsman/ProfiCraftsmanWeb/web.components"
-xcopy "$(SolutionDir)..\..\..\CoreProjects\web.scripts\web.libs" "$(SolutionDir)ProfiCraftsman/ProfiCraftsmanWeb/web.libs" /r /s /i /y
-xcopy "$(SolutionDir)..\..\..\CoreProjects\web.scripts\web.components" "$(SolutionDir)ProfiCraftsman/ProfiCraftsmanWeb/web.components" /r /s /i /y</PostBuildEvent>
+    <PostBuildEvent>rmdir  /s /q "$(SolutionDir)ProfiCraftsman\ProfiCraftsmanWeb\web.libs"
+rmdir  /s /q "$(SolutionDir)ProfiCraftsman\ProfiCraftsmanWeb\web.components"
+xcopy "$(SolutionDir)..\..\..\CoreProjects\web.scripts\*" "$(SolutionDir)ProfiCraftsman\ProfiCraftsmanWeb" /r /s /i /y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

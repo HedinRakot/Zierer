@@ -68,7 +68,7 @@
     angular.module('app', ['ionic', 'app.services', 'app.controllers', 'pascalprecht.translate', 'angularMoment'])
         .run(function ($ionicPlatform, $translate, translateProviderStorageService, amMoment, $rootScope, modalWindowService) {
             
-            window.localStorage.setItem("baseAppPath", "http://localhost:55992/api/");
+            window.localStorage.setItem("baseAppPath", "http://192.168.0.105/ProfiCraftsmanWeb/api/");
 
             $ionicPlatform.ready(function () {
                 // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

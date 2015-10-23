@@ -3,7 +3,7 @@ define(['models/Settings/Custom.ProductMaterialRsp'
 	'use strict';
 
 	var model = Backbone.Model.extend({
-	    urlRoot: 'api/ProductMaterialRsps',
+	    urlRoot: Application.apiUrl + '/ProductMaterialRsps',
 		fields: _.extend(CustomProperties(),  {
 			id: { type: "number", editable: false }
 			,productId: { type: "number", 

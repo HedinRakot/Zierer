@@ -5,7 +5,7 @@ define([
 	'use strict';
 
 	var collection = BaseCollection.extend({
-	    url: 'api/InvoicePayments',
+	    url: Application.apiUrl + '/InvoicePayments',
 		model: Model
 	});
 

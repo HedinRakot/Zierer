@@ -2,7 +2,7 @@ define(function () {
 	'use strict';
 
 	var model = Backbone.Model.extend({
-	    urlRoot: 'api/ProfitReports',
+	    urlRoot: Application.apiUrl + '/ProfitReports',
 	    fields: {
 				
 			additionalCostsSum: { type: "string", 

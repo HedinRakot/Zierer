@@ -2,7 +2,7 @@
     'use strict';
 
         var model = Backbone.Model.extend({
-            urlRoot: 'api/ProductSearch',
+            urlRoot: Application.apiUrl + '/ProductSearch',
                 fields: {
                     id: { type: "number", editable: false },
                     fromDate: {

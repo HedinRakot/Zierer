@@ -3,7 +3,7 @@ define([
 	'use strict';
 
 	var model = Backbone.Model.extend({
-	    urlRoot: 'api/SocialTaxes',
+	    urlRoot: Application.apiUrl + '/SocialTaxes',
 		fields:  {
 			id: { type: "number", editable: false }
 			,employeeId: { type: "number", 
